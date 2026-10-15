@@ -32,7 +32,7 @@ html:has(#splash){overflow:hidden}
 #splash .shine{animation:sp-shine .9s ease-in-out 2.05s both}
 #splash h1{margin:30px 0 6px;font:800 36px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.4px;display:flex;position:relative}
 #splash h1 span{display:inline-block;opacity:0;transform:translateY(18px) scale(.8);filter:blur(6px);animation:sp-letter .5s cubic-bezier(.2,1.2,.4,1) forwards}
-#splash h1 .gold{color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,.55)}
+#splash h1 .gold{color:#fbbf24;font-size:1.3em;font-weight:900;line-height:.9;-webkit-text-stroke:1px #d97706;text-shadow:0 3px 0 rgba(120,53,15,.4),0 0 22px rgba(251,191,36,.75);animation:sp-letter .5s cubic-bezier(.2,1.2,.4,1) forwards,ipo-hue 3.5s linear infinite}
 #splash .spline{display:block;height:3px;width:0;margin:6px 0 10px;border-radius:3px;background:linear-gradient(90deg,transparent,#fbbf24,transparent);animation:sp-line .7s ease-out 2.75s forwards}
 #splash p{margin:0;font:600 12.5px system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:2.2px;opacity:0;transform:translateY(8px);animation:sp-fade .6s ease 2.85s forwards;color:#c7d2fe;text-transform:uppercase}
 @keyframes sp-drop{0%{transform:translateY(-150px) scale(.5) rotate(-18deg);opacity:0}55%{opacity:1}100%{transform:none;opacity:1}}
@@ -46,6 +46,7 @@ html:has(#splash){overflow:hidden}
 @keyframes sp-glow{0%{opacity:0;transform:scale(.6)}60%{opacity:1}100%{opacity:.75;transform:scale(1)}}
 @keyframes sp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 @keyframes sp-rise{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:.9}100%{opacity:0;transform:translateY(-105vh) scale(1.2)}}
+@keyframes ipo-hue{0%{filter:hue-rotate(0deg) brightness(1)}50%{filter:hue-rotate(180deg) brightness(1.35)}100%{filter:hue-rotate(360deg) brightness(1)}}
 @keyframes sp-letter{to{opacity:1;transform:none;filter:none}}
 @keyframes sp-line{to{width:150px}}
 @keyframes sp-fade{to{opacity:1;transform:none}}

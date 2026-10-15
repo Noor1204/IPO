@@ -299,3 +299,8 @@ a.uprow{border-left-color:#8b5cf6}
 
 /* small company logos inside list rows and the calendar */
 .uprow .logo,.calrow .logo{width:44px;height:36px;font-size:13px;border-radius:8px}
+
+/* ---- "IPO" in the logo text: bigger, bulkier, colour-cycling glow ---- */
+@keyframes ipo-hue{0%{filter:hue-rotate(0deg) brightness(1);transform:scale(1)}50%{filter:hue-rotate(180deg) brightness(1.35);transform:scale(1.08)}100%{filter:hue-rotate(360deg) brightness(1);transform:scale(1)}}
+.brand b,.navbrand b{display:inline-block;font-size:1.45em;font-weight:900;letter-spacing:1.5px;line-height:1;color:#fbbf24;-webkit-text-stroke:.7px #d97706;text-shadow:0 2px 0 rgba(120,53,15,.35),0 0 12px rgba(251,191,36,.65);animation:ipo-hue 4s linear infinite;margin-left:2px}
+@media(prefers-reduced-motion:reduce){.brand b,.navbrand b{animation:none}}
