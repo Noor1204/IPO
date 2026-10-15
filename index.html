@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trendy IPO</title>
+<meta name="description" content="Trendy IPO: IPO details, subscription, GMP and a data-based score. Information only, not investment advice. | IPO की जानकारी, सब्सक्रिप्शन, GMP और डेटा-आधारित स्कोर। सिर्फ़ जानकारी के लिए, निवेश सलाह नहीं।">
+<meta name="theme-color" content="#2563EB">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="stylesheet" href="style.css"></head>
+<body><style>
+html:has(#splash){overflow:hidden}
+#splash{position:fixed;inset:0;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle at 50% 42%,#4458d8 0%,#232d86 50%,#0d1247 100%);color:#fff;transition:opacity .6s ease,transform .6s ease}
+#splash.out{opacity:0;transform:scale(1.08);pointer-events:none}
+/* rising gold sparks in the background */
+#splash .fx{position:absolute;inset:0;pointer-events:none}
+#splash .fx i{position:absolute;bottom:-12px;width:6px;height:6px;border-radius:50%;background:#fbbf24;opacity:0;box-shadow:0 0 10px 2px rgba(251,191,36,.7);animation:sp-rise 3.2s ease-in infinite}
+/* shock rings behind the logo */
+#splash .wave{position:absolute;left:50%;top:42%;width:150px;height:150px;margin:-75px 0 0 -75px;border-radius:50%;border:2px solid rgba(251,191,36,.7);opacity:0;animation:sp-wave 1.5s ease-out forwards}
+#splash .w2{animation-delay:.12s;border-color:rgba(165,180,252,.7)}
+#splash .logo-wrap{position:relative;width:168px;height:168px;display:grid;place-items:center;animation:sp-float 2.6s ease-in-out 1.6s infinite}
+#splash .logo-wrap::before{content:"";position:absolute;inset:-26px;border-radius:50%;background:radial-gradient(circle,rgba(251,191,36,.38),rgba(251,191,36,0) 65%);opacity:0;animation:sp-glow 1.2s ease-out 1.5s forwards}
+#splash svg{width:156px;height:156px;overflow:visible;filter:drop-shadow(0 14px 30px rgba(0,0,0,.45));position:relative}
+#splash .tile{transform-box:fill-box;transform-origin:center;animation:sp-drop .85s cubic-bezier(.2,1.5,.35,1) both}
+#splash .spbar{transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);animation:sp-grow .6s cubic-bezier(.2,1.1,.3,1.25) forwards}
+#splash .b1{animation-delay:.55s}#splash .b2{animation-delay:.72s}#splash .b3{animation-delay:.89s}
+#splash .ln{stroke-dasharray:100;stroke-dashoffset:100;animation:sp-draw .75s cubic-bezier(.5,0,.2,1) 1.15s forwards}
+#splash .lns{stroke-dasharray:100;stroke-dashoffset:100;animation:sp-draw .75s cubic-bezier(.5,0,.2,1) 1.15s forwards}
+#splash .arrow{transform-box:fill-box;transform-origin:30% 50%;transform:scale(0);animation:sp-pop .45s cubic-bezier(.2,1.9,.4,1) 1.78s forwards}
+#splash .star{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:sp-star 1s cubic-bezier(.2,1.6,.4,1) 1.95s forwards,sp-twinkle 1.6s ease-in-out 3s infinite}
+#splash .shine{animation:sp-shine .9s ease-in-out 2.05s both}
+#splash h1{margin:30px 0 6px;font:800 36px/1 system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:.4px;display:flex;position:relative}
+#splash h1 span{display:inline-block;opacity:0;transform:translateY(18px) scale(.8);filter:blur(6px);animation:sp-letter .5s cubic-bezier(.2,1.2,.4,1) forwards}
+#splash h1 .gold{color:#fbbf24;text-shadow:0 0 18px rgba(251,191,36,.55)}
+#splash .spline{display:block;height:3px;width:0;margin:6px 0 10px;border-radius:3px;background:linear-gradient(90deg,transparent,#fbbf24,transparent);animation:sp-line .7s ease-out 2.75s forwards}
+#splash p{margin:0;font:600 12.5px system-ui,-apple-system,"Segoe UI",sans-serif;letter-spacing:2.2px;opacity:0;transform:translateY(8px);animation:sp-fade .6s ease 2.85s forwards;color:#c7d2fe;text-transform:uppercase}
+@keyframes sp-drop{0%{transform:translateY(-150px) scale(.5) rotate(-18deg);opacity:0}55%{opacity:1}100%{transform:none;opacity:1}}
+@keyframes sp-grow{to{transform:scaleY(1)}}
+@keyframes sp-draw{to{stroke-dashoffset:0}}
+@keyframes sp-pop{from{transform:scale(0) rotate(-30deg)}to{transform:scale(1) rotate(0)}}
+@keyframes sp-star{0%{transform:scale(0) rotate(-90deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes sp-twinkle{0%,100%{transform:scale(1)}50%{transform:scale(1.35)}}
+@keyframes sp-shine{0%{transform:translateX(-140px)}100%{transform:translateX(140px)}}
+@keyframes sp-wave{0%{opacity:.9;transform:scale(.7)}100%{opacity:0;transform:scale(4)}}
+@keyframes sp-glow{0%{opacity:0;transform:scale(.6)}60%{opacity:1}100%{opacity:.75;transform:scale(1)}}
+@keyframes sp-float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes sp-rise{0%{opacity:0;transform:translateY(0) scale(.6)}15%{opacity:.9}100%{opacity:0;transform:translateY(-105vh) scale(1.2)}}
+@keyframes sp-letter{to{opacity:1;transform:none;filter:none}}
+@keyframes sp-line{to{width:150px}}
+@keyframes sp-fade{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#splash *,#splash *::before{animation-duration:.01s!important;animation-delay:0s!important;animation-iteration-count:1!important}}
+</style>
+<div id="splash" aria-hidden="true">
+<div class="fx"><i style="left:12%;animation-delay:.2s"></i><i style="left:26%;animation-delay:1.1s;width:4px;height:4px"></i><i style="left:41%;animation-delay:.6s"></i><i style="left:58%;animation-delay:1.6s;width:4px;height:4px"></i><i style="left:73%;animation-delay:.9s"></i><i style="left:88%;animation-delay:1.9s;width:5px;height:5px"></i></div>
+<div class="wave" style="animation-delay:1.8s"></div><div class="wave w2" style="animation-delay:1.95s"></div>
+<div class="logo-wrap">
+<svg viewBox="0 0 100 100"><defs>
+<linearGradient id="spt" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3B82F6"/><stop offset=".55" stop-color="#4F46E5"/><stop offset="1" stop-color="#312E81"/></linearGradient>
+<linearGradient id="spb" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#BFCFFF"/></linearGradient>
+<linearGradient id="spg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FDE68A"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
+<linearGradient id="spgl" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<linearGradient id="spsh" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".5" stop-color="#fff" stop-opacity=".55"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+<clipPath id="spc"><rect width="100" height="100" rx="24"/></clipPath></defs>
+<g class="tile"><rect width="100" height="100" rx="24" fill="url(#spt)"/><path d="M0 24a24 24 0 0 1 24-24h52a24 24 0 0 1 24 24v26H0z" fill="url(#spgl)"/>
+<g><rect class="spbar b1" x="13" y="62.5" width="21" height="28" rx="4.5" fill="#0a0a3c" opacity=".3"/><rect class="spbar b2" x="39.5" y="46.5" width="21" height="44" rx="4.5" fill="#0a0a3c" opacity=".3"/><rect class="spbar b3" x="66" y="30.5" width="21" height="60" rx="4.5" fill="#0a0a3c" opacity=".3"/></g>
+<g><rect class="spbar b1" x="13" y="60" width="21" height="28" rx="4.5" fill="url(#spb)"/><rect class="spbar b2" x="39.5" y="44" width="21" height="44" rx="4.5" fill="url(#spb)"/><rect class="spbar b3" x="66" y="28" width="21" height="60" rx="4.5" fill="url(#spb)"/></g>
+<polyline class="lns" pathLength="100" points="11,50 35,35 53,42 77,19" transform="translate(0 3)" fill="none" stroke="#140A46" stroke-opacity=".38" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline class="ln" pathLength="100" points="11,50 35,35 53,42 77,19" fill="none" stroke="url(#spg)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(85.7 10.7) rotate(-43.8)"><path class="arrow" d="M0 0L-17 -9.5L-17 9.5Z" fill="url(#spg)" stroke="#F59E0B" stroke-width=".6" stroke-linejoin="round"/></g>
+<path class="star" d="M20 18Q20 24 26 24Q20 24 20 30Q20 24 14 24Q20 24 20 18Z" fill="#fff"/>
+<g clip-path="url(#spc)"><rect class="shine" x="-30" y="-20" width="26" height="150" fill="url(#spsh)" transform="rotate(20 50 50)"/></g></g></svg></div>
+<h1 aria-label="Trendy IPO"></h1><span class="spline"></span><p>IPO · GMP · Score</p></div>
+<script>(function(){try{var s=document.getElementById("splash"),h=s.querySelector("h1"),t="Trendy IPO";for(var i=0;i<t.length;i++){var c=document.createElement("span");c.textContent=t[i]===" "?" ":t[i];c.style.animationDelay=(2.15+i*.055)+"s";if(i>=7)c.className="gold";h.appendChild(c)}
+var done=function(){s.classList.add("out");setTimeout(function(){s.remove()},650)};var m=matchMedia("(prefers-reduced-motion:reduce)").matches;setTimeout(done,m?300:4200);s.addEventListener("click",done)}catch(e){}})();</script>
+<div id="app"></div>
+<nav><div><span class="navbrand"><img src="icons/logo.svg" alt="" width="34" height="34"><span>Trendy <b>IPO</b></span></span>
+<button data-tab="ipo"><b>📈</b>IPO</button><button data-tab="compare"><b>⚖️</b>Compare</button><button data-tab="allot"><b>🧾</b>Allotment</button><button data-tab="unlisted"><b>🔗</b>Unlisted</button><button data-tab="settings"><b>⚙️</b>Settings</button>
+</div></nav>
+<script src="app.js"></script>
+<script>if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
+</body></html>

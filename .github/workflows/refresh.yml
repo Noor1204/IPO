@@ -1,0 +1,74 @@
+name: Refresh data and publish site
+
+# Every hour: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, commit it and publish the site on GitHub Pages.
+# Company fundamentals (the score) are extracted on your own computer (needs your Claude login) and committed under data/fundamentals/.
+on:
+  schedule:
+    - cron: "7 * * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: ["index.html", "style.css", "app.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: refresh
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # a source that is down (or blocks the runner) must not stop the others: the last good file stays in the repo
+      - name: NSE
+        continue-on-error: true
+        env: { SKIP_DOCS: "1" }
+        run: node pipeline/fetch-nse.mjs
+      - name: BSE
+        continue-on-error: true
+        run: node pipeline/fetch-bse.mjs --no-docs
+      - name: GMP
+        continue-on-error: true
+        run: node pipeline/gmp.mjs
+      - name: SEBI
+        continue-on-error: true
+        run: node pipeline/sebi.mjs
+      - name: Offer-document links
+        continue-on-error: true
+        run: node pipeline/offerdocs.mjs
+      - name: Yahoo quotes
+        continue-on-error: true
+        run: node pipeline/quotes.mjs
+      - name: Verify and build
+        run: |
+          node pipeline/verify.mjs || true
+          node pipeline/build.mjs
+      - name: Commit data
+        run: |
+          git config user.name "trendy-ipo-bot"
+          git config user.email "trendy-ipo-bot@users.noreply.github.com"
+          git add data/ipos.json data/gmp.json data/sub-history.json data/quotes.json data/sebi.json data/bse.json data/nse.json data/nse-history.json data/verify.json data/offer-docs.json data/fundamentals data/logos data/logos.json
+          git diff --cached --quiet || { git commit -m "data: refresh $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull --rebase origin main; git push; }
+      - name: Build site
+        run: node pipeline/make-site.mjs _site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

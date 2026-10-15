@@ -1,0 +1,11 @@
+{
+  "name": "trendy-ipo",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "refresh": "node pipeline/run.mjs",
+    "live": "node pipeline/run.mjs --live",
+    "serve": "npx -y http-server . -p 8740 -c-1",
+    "verify": "node pipeline/verify.mjs"
+  }
+}
