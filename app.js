@@ -22,7 +22,7 @@ const inr = n => isNum(n) ? Math.round(n).toLocaleString("en-IN") : "—";
 const f2 = n => isNum(n) ? n.toFixed(2) : "—";
 const cr = n => isNum(n) ? n.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—";
 const pd = s => { const [y, m, d] = s.split("-"); return new Date(+y, m - 1, +d); };
-const today = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
+let today = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
 const dayDiff = s => s ? Math.round((pd(s) - today) / 864e5) : null;
 const fmtD = s => s ? pd(s).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—";
 const fmtS = s => s ? pd(s).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "—";
@@ -107,10 +107,45 @@ const ring = (s, big) => `<div class="ring ${big ? "big" : ""} ${s === null || s
 const hue = s => [...s].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 const logoText = i => /^IG-/.test(i.symbol) ? i.name.split(/\s+/).map(w => w[0]).join("").slice(0, 3).toUpperCase() : i.symbol.slice(0, 3);   // IG-only entries have no exchange symbol
 const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 42%)"><span>${esc(logoText(i))}</span>${logoSrc(i.logo) ? `<img src="${esc(logoSrc(i.logo))}" alt="" referrerpolicy="no-referrer">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
+// ---------- where an IPO is in its journey ----------
+// bidding open -> (closing time passes) waiting for allotment -> allotment day -> waiting for listing -> listed
+const IST_OFFSET = "+05:30";
+const cutoffHM = i => {
+  const m = String(i.upiCutoff || "").match(/up ?to ([0-9]{1,2})[:.]([0-9]{2}) *([ap])/i);   // "(upto 7:00 PM)" or "Upto 5.00 P.M."
+  if (!m) return "17:00";                                                                     // NSE market timings: bidding ends at 5:00 PM
+  let h = +m[1] % 12; if (m[3].toLowerCase() === "p") h += 12;
+  return String(h).padStart(2, "0") + ":" + m[2];
+};
+const endAt = i => i.close ? new Date(i.close + "T" + cutoffHM(i) + ":00" + IST_OFFSET).getTime() : null;   // last moment to apply, in absolute time
+const endLabel = i => { const [h, m] = cutoffHM(i).split(":").map(Number); return ((h + 11) % 12 + 1) + ":" + String(m).padStart(2, "0") + " " + (h >= 12 ? "PM" : "AM"); };
+function phase(i, now = Date.now()) {
+  if (i.status === "upcoming") return { k: "apply" };
+  const end = endAt(i);
+  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null };
+  if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
+  const ex = i.datesExpected ? " (exp.)" : "";
+  if (i.listing && dayDiff(i.listing) === 0) return { k: "listingToday", label: "🔔 Listing today" };
+  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: "📈 Listing on " + fmtD(i.listing) + ex };
+  if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", label: "✅ Allotment day: check your status" };
+  return { k: "wait", label: "⏳ Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : "") };
+}
+const pad2 = n => String(n).padStart(2, "0");
+const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); return (h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
+// the live countdown (numbers are updated every second by tick() at the end of this file)
+const cdFor = i => { const p = phase(i); if (!p.end) return ""; return `<div class="cd${p.end - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${p.end}">⏱ Closes in <b data-cdtxt>${fmtCd(p.end - Date.now())}</b> <span>(by ${endLabel(i)})</span></div>`; };
+// the button (or the status that replaces it once bidding is over)
+function actionBtn(i, wide) {
+  const p = phase(i), w = wide ? ' style="width:100%"' : "";
+  if (p.k === "apply") return `<button class="btn ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}"${w}>${applyLabel(i)}</button>`;
+  if (p.k === "allotDay") return `<button class="btn allotbtn" data-allot-open="${i.symbol}"${w}>${p.label}</button>`;
+  if (p.k === "listed") return "";
+  return `<div class="phase ${p.k}">${p.label}</div>`;
+}
 function stLabel(i) {
   if (i.status !== "listed" && !i.close && !i.open) return `<span class="st gray">Dates not announced</span>`;
   if (i.status === "live" && !i.close) return `<span class="st red">● Open now</span>`;
   if (i.status === "upcoming" && !i.open) return `<span class="st blue">Upcoming</span>`;
+  if (i.status === "live" && i.close && dayDiff(i.close) === 0 && endAt(i) && Date.now() >= endAt(i)) return `<span class="st gray">Bidding closed</span>`;
   if (i.status === "live") { const d = dayDiff(i.close); return `<span class="st red">● ${d === 0 ? "Closes Today" : `Closes in ${d} day${d > 1 ? "s" : ""}`}</span>`; }
   if (i.status === "upcoming") { const o = dayDiff(i.open); return `<span class="st blue">Opens in ${o} day${o > 1 ? "s" : ""}</span>`; }
   return `<span class="st grn">Closed</span>`;
@@ -130,14 +165,14 @@ const registrarLink = i => { const n = (i.registrar?.name || "").toLowerCase(); 
 const fmtGain = p => isNum(p) ? `<span class="${p >= 0 ? "grn-t" : "red-t"}">${p >= 0 ? "+" : ""}${p.toFixed(1)}%</span>` : "—";
 function listCard(i) {
   const sc = scoreOf(i), v = verdict(sc.score), t = totalTimes(i), g = gmpNow(i);
-  return `<div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
+  return `<div class="card ipoc" data-open="${i.symbol}"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div style="flex:1"><h3>${esc(i.name)}</h3><div class="mut" style="margin-top:3px">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div>
   <div style="text-align:center">${ring(sc.score)}<span class="badge ${v.c}" style="font-size:10px;margin-top:5px">${v.t}</span></div></div>
   <div class="g3"><div>Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div>Offer Price<b>${price(i)}</b></div><div>Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div></div>
   <div class="g3"><div>Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div>${i.listingPerf ? "Day-1 gain" : "Subs"}<b>${i.listingPerf ? fmtGain(i.listingPerf.dayOpenGainPct) : isNum(t) ? f2(t) + "x" : "—"}</b></div>
   <div class="${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut"}">GMP (Rumors)<b>${gmpTxt(i)}</b></div></div>
-  <div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
-  <button class="btn ${i.status === "listed" ? "off" : ""} ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}">${applyLabel(i)}</button></div></div>`;
+  ${cdFor(i)}<div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
+  ${actionBtn(i)}</div></div>`;
 }
 const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
@@ -249,7 +284,7 @@ function gmpSeen(i) {
 }
 // ---- IPOs whose bidding ends today: last chance, shown first on the Live tab
 const isoLocal = d => d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
-const isClosingToday = i => i.status === "live" && i.close === isoLocal(today);
+const isClosingToday = i => i.status === "live" && i.close === isoLocal(today) && (endAt(i) === null || Date.now() < endAt(i));
 function closeRow(i) {
   const t = totalTimes(i), g = gmpNow(i), N = retailN(i), sc = scoreOf(i);
   const gcls = isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut";
@@ -258,7 +293,7 @@ function closeRow(i) {
     ${logo(i)}<div class="upmain"><div class="upname">${esc(i.name)}</div>
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${isNum(i.priceHigh) && i.priceHigh > 0 ? price(i) : "Price —"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${isNum(i.lot) && i.priceHigh ? " · ₹" + inr(i.lot * i.priceHigh) : ""}</div>
       <div class="mut sm">${N !== null && isNum(i.bids?.retail?.times) ? "Retail " + f2(i.bids.retail.times) + "x (≈1 in " + N + ")" : "Retail subscription —"}${sc.score !== null ? " · Score " + sc.score : ""}</div>
-      <div class="dots sm"><span class="wait">● Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span></div></div>
+      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">⏱ Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> (by ${endLabel(i)})</span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
     <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="mut sm">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div></div>`;
 }
 function closingBlock(list) {
@@ -388,7 +423,7 @@ function detail(forReport = false) {
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
   <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${isNum(t) ? f2(t) + "x" : "—"}</b></div>
-  <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile"><button class="btn ${i.status === "listed" ? "off" : ""} ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}" style="width:100%">${applyLabel(i)}</button></div></div>
+  <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile">${cdFor(i)}${actionBtn(i, true)}</div></div>
   <div class="row"><button class="btn ghost" data-watch="${i.symbol}">${inW ? "★ Watching" : "☆ Watchlist"}</button><button class="btn" data-cmp="${i.symbol}">${state.cmp.includes(i.symbol) ? "✓ In compare" : "+ Compare"}</button></div></div>
 
   <div class="card"><div class="tiles"><button class="tile k" data-jump="fin"><div class="v" style="font-size:26px">📒</div>Company Financials</button>
@@ -633,9 +668,10 @@ function render() {
 }
 function toast(m) { state.toast = m; render(); setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-review-send],[data-review-reload]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-review-send],[data-review-reload],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
+  if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.dataset.star) { state.rv.rating = +t.dataset.star; state.rv.msg = ""; render(); return; }
   if (t.hasAttribute("data-review-send")) { sendReview(); return; }
   if (t.hasAttribute("data-review-reload")) { loadReviews(true); return; }
@@ -660,7 +696,7 @@ document.addEventListener("click", e => {
   else if (t.hasAttribute("data-search")) { state.search = !state.search; if (!state.search) state.q = ""; }
   else if (d.watch) { const k = state.watch.indexOf(d.watch); k < 0 ? state.watch.push(d.watch) : state.watch.splice(k, 1); store.set("watch", state.watch); }
   else if (d.cmp) { const k = state.cmp.indexOf(d.cmp); if (k >= 0) state.cmp.splice(k, 1); else if (state.cmp.length < 3) state.cmp.push(d.cmp); store.set("cmp", state.cmp); }
-  else if (d.apply) { const i = byId(d.apply); if (i.status === "listed") return toast("This IPO is already closed"); state.modal = i.symbol; }
+  else if (d.apply) { const i = byId(d.apply); if (phase(i).k !== "apply") return toast("Bidding is closed for this IPO"); state.modal = i.symbol; }
   else if (t.hasAttribute("data-close")) state.modal = null;
   else if (t.hasAttribute("data-share")) { const i = byId(state.detail), txt = `${i.name} — Trendy IPO score ${score(i) ?? "N/A"}/100 (${verdict(score(i)).t})`; if (navigator.share) navigator.share({ text: txt }).catch(() => {}); else { try { navigator.clipboard.writeText(txt); } catch {} return toast("Copied to clipboard"); } return; }
   else if (d.toast) return toast(d.toast);
@@ -674,6 +710,8 @@ document.addEventListener("change", e => {
   if (d.alert) { state.alerts[d.alert] = e.target.checked; store.set("alerts", state.alerts); }
   else if (d.board) { state[d.board] = e.target.checked; if (!state.main && !state.sme) state.main = true; render(); }
 });
+// status is recomputed from today's date so a stale data file never shows a closed IPO as live
+const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" });
 let loadingData = false, lastLoad = 0;
 async function loadData(manual) {
   if (loadingData) return;
@@ -687,7 +725,7 @@ async function loadData(manual) {
     if (changed || first) {
       state.meta = j;
       // status is recomputed from today's date so a stale data file never shows a closed IPO as live
-      state.ipos = j.ipos.map(i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" }));
+      state.ipos = j.ipos.map(withStatus);
       state.loaded = true; state.error = "";
       if (first && !j.ipos.some(i => i.status === "live")) state.seg = "upcoming";
     }
@@ -721,3 +759,18 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
   document.addEventListener("touchend", done, { passive: true });
   document.addEventListener("touchcancel", () => { y0 = null; dy = 0; hide(); }, { passive: true });
 })();
+
+// ---------- once a second: countdowns, the closing moment, and midnight ----------
+function tick() {
+  const d0 = new Date(); d0.setHours(0, 0, 0, 0);
+  if (d0.getTime() !== today.getTime()) { today = d0; if (state.loaded) state.ipos = state.ipos.map(withStatus); render(); return; }   // a new day began while the app was open
+  let redraw = false;
+  document.querySelectorAll("[data-end]").forEach(el => {
+    const ms = +el.dataset.end - Date.now();
+    if (ms <= 0) { redraw = true; return; }                                                      // bidding just closed: swap the button for the new status
+    const b = el.querySelector("[data-cdtxt]"); if (b) b.textContent = fmtCd(ms);
+    el.classList.toggle("urgent", ms < 3600e3);
+  });
+  if (redraw) render();
+}
+setInterval(tick, 1000);

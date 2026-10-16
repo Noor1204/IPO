@@ -366,3 +366,19 @@ textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--
 .rvitem{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;min-width:0;overflow-wrap:anywhere}
 .btn[disabled]{opacity:.55;cursor:not-allowed;animation:none}
 nav button{min-width:0}
+
+/* ---- closing countdown and the status that replaces the Apply button ---- */
+.cd{margin:10px 0 0;padding:8px 12px;border-radius:10px;background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.5);color:#b45309;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.cd b{font-size:15px}.cd span{font-weight:500;opacity:.85}
+.cd.urgent{background:rgba(239,68,68,.12);border-color:rgba(239,68,68,.55);color:#b91c1c;animation:cd-pulse 1.4s ease-in-out infinite}
+@keyframes cd-pulse{0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,.35)}50%{box-shadow:0 0 0 6px rgba(239,68,68,0)}}
+.cdline b{font-variant-numeric:tabular-nums}.cdline.urgent{color:var(--bad);font-weight:700}
+.tile .cd{margin:0 0 8px;font-size:12px;padding:6px 8px}
+.phase{flex:1;text-align:center;padding:11px 12px;border-radius:10px;font-size:13.5px;font-weight:700;border:1.5px solid}
+.phase.wait{background:rgba(245,158,11,.12);border-color:rgba(245,158,11,.55);color:#b45309}
+.phase.listing{background:rgba(99,102,241,.12);border-color:rgba(99,102,241,.55);color:#4f46e5}
+.phase.listingToday{background:rgba(34,197,94,.14);border-color:rgba(34,197,94,.6);color:#15803d}
+.btn.allotbtn{background:linear-gradient(135deg,#16a34a,#22c55e);animation:none}
+.tile .phase{padding:9px 6px;font-size:12.5px}
+@media(prefers-color-scheme:dark){.cd{color:#fcd34d}.cd.urgent{color:#fca5a5}.phase.wait{color:#fcd34d}.phase.listing{color:#a5b4fc}.phase.listingToday{color:#86efac}}
+@media(prefers-reduced-motion:reduce){.cd.urgent{animation:none}}
