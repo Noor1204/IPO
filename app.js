@@ -212,7 +212,7 @@ function ipoTab() {
   const cand = state.ipos.filter(i => i.status === state.seg && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
   const shown = state.seg === "listed" && !state.showAll && !state.q ? list.slice(0, 12) : list;
   const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c}">${cnt[k]}</b></button>`;
-  return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib" data-tab="settings">🔔</button>`)}
+  return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib${state.refreshing ? " spin" : ""}" data-refresh title="Refresh data" aria-label="Refresh data">🔄</button><button class="ib" data-tab="settings">🔔</button>`)}
   ${state.search ? `<input id="q" placeholder="Search IPO" value="${esc(state.q)}">` : ""}
   <div class="stats">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
   <div class="seg">${["live", "upcoming", "listed"].map(s => `<button data-seg="${s}" class="${state.seg === s ? "on" : ""}">${s === "listed" ? "Closed" : s[0].toUpperCase() + s.slice(1)}</button>`).join("")}</div>
@@ -529,7 +529,7 @@ const staleBar = () => {
   const h = state.meta?.generatedAt ? (Date.now() - new Date(state.meta.generatedAt).getTime()) / 3600e3 : 0;
   if (!(h > STALE_HOURS)) return "";
   const age = h >= 48 ? Math.floor(h / 24) + " days" : Math.floor(h) + " hours", ageHi = h >= 48 ? Math.floor(h / 24) + " दिन" : Math.floor(h) + " घंटे";
-  return `<div class="stale">⚠️ Data is ${age} old: live updates may have stopped. <span>डेटा ${ageHi} पुराना है।</span></div>`;
+  return `<div class="stale" data-refresh style="cursor:pointer">⚠️ Data is ${age} old: live updates may have stopped. Tap to refresh. <span>डेटा ${ageHi} पुराना है।</span></div>`;
 };
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
@@ -551,7 +551,8 @@ function render() {
 }
 function toast(m) { state.toast = m; render(); setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh]"); if (!t) return;
+  if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
   if (t.dataset.rtab) { state.reportTab = t.dataset.rtab; render(); scrollTo(0, 0); return; }
@@ -584,10 +585,33 @@ document.addEventListener("change", e => {
   if (d.alert) { state.alerts[d.alert] = e.target.checked; store.set("alerts", state.alerts); }
   else if (d.board) { state[d.board] = e.target.checked; if (!state.main && !state.sme) state.main = true; render(); }
 });
+let loadingData = false, lastLoad = 0;
+async function loadData(manual) {
+  if (loadingData) return;
+  loadingData = true; if (manual) { state.refreshing = true; render(); }
+  const first = !state.loaded;
+  try {
+    const r = await fetch("data/ipos.json?t=" + Date.now(), { cache: "no-store" });
+    if (!r.ok) throw new Error(r.status);
+    const j = clean(await r.json()), changed = state.meta?.generatedAt !== j.generatedAt;
+    lastLoad = Date.now();
+    if (changed || first) {
+      state.meta = j;
+      // status is recomputed from today's date so a stale data file never shows a closed IPO as live
+      state.ipos = j.ipos.map(i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" }));
+      state.loaded = true; state.error = "";
+      if (first && !j.ipos.some(i => i.status === "live")) state.seg = "upcoming";
+    }
+    state.refreshing = false; loadingData = false;
+    if (manual) toast(changed ? "Data updated" : "You already have the latest data"); else if (changed || first) render();
+  } catch (e) {
+    state.refreshing = false; loadingData = false;
+    if (first) { state.error = "Could not load data/ipos.json. Check your internet connection and try again. (" + e.message + ")"; render(); }
+    else if (manual) toast("Could not refresh: check your internet connection");
+    else render();
+  }
+}
 render();
-fetch("data/ipos.json", { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(j => { j = clean(j); state.meta = j;
-    // status is recomputed from today's date so a stale data file never shows a closed IPO as live
-    state.ipos = j.ipos.map(i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" }));
-    state.loaded = true; const live = j.ipos.filter(i => i.status === "live"); if (!live.length) state.seg = "upcoming"; render(); })
-  .catch(e => { state.error = "Could not load data/ipos.json — run `npm run refresh` and serve this folder over http. (" + e.message + ")"; render(); });
+loadData(false);
+setInterval(() => { if (document.visibilityState === "visible") loadData(false); }, 5 * 60 * 1000);
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - lastLoad > 5 * 60 * 1000) loadData(false); });

@@ -1,5 +1,6 @@
 name: Refresh data and publish site
 
+# Runs every hour, and also whenever fresh data is pushed from your PC (scripts/push-data.cmd), so the site never has to wait for the next hour.
 # Every hour: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, check it, commit it and publish the site on GitHub Pages.
 # Company fundamentals (the score) are extracted on your own computer (needs your Claude login) and committed under data/fundamentals/.
 on:
@@ -8,7 +9,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["index.html", "style.css", "app.js", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+    paths: ["data/ipos.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
 
 # no permissions by default; each job asks only for what it needs
 permissions: {}
