@@ -212,7 +212,6 @@ function ipoTab() {
   ${closingBlock(closingToday)}
   ${state.seg === "upcoming" ? upDashboard() : (shown.length ? `<div class="cards">${shown.map(listCard).join("")}</div>` : (closingToday.length ? "" : '<p class="mut" style="text-align:center;margin-top:40px">No IPOs in this category.</p>'))}
   ${shown.length < list.length ? `<button class="btn ghost morebtn" data-more>Show all ${list.length}</button>` : ""}
-  ${state.seg === "live" && !state.q ? `<div class="two">${calendarCard("live", 7)}</div>` : ""}
   ${state.seg === "upcoming" && !state.q ? `<div class="two">${calendarCard("upcoming", 14)}</div>` : ""}
   ${state.seg === "upcoming" ? gmpNote() + filingsBlock() : ""}
   <p class="disc">Live data: NSE India, SEBI, RHP documents; GMP from ipowatch.in + investorgain.com (unofficial). Updated ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}. Not investment advice.</p>`;
