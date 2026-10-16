@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-16T11:46:56.234Z",
+ "generatedAt": "2026-10-16T14:49:20.387Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-16T11:43:35.566Z"
+   "fetchedAt": "2026-10-16T14:46:02.160Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-16T11:43:39.694Z"
+   "fetchedAt": "2026-10-16T14:46:04.490Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-16T11:43:36.242Z"
+   "fetchedAt": "2026-10-16T14:46:02.880Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -136,21 +136,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 224,
-    "min": 224,
-    "max": 224,
+    "value": 220,
+    "min": 220,
+    "max": 220,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 224,
-      "pct": 20.02,
-      "updated": "16-Oct 14:02",
+      "gmp": 220,
+      "pct": 19.66,
+      "updated": "16-Oct 18:02",
       "seenLow": 148,
-      "seenHigh": 224
+      "seenHigh": 221
      }
     ],
-    "rating": 4,
-    "updated": "16-Oct 14:02",
+    "rating": 3,
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -158,7 +158,7 @@
      },
      {
       "date": "2026-10-16",
-      "gmp": 224
+      "gmp": 220
      }
     ]
    },
@@ -192,7 +192,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:42:50.743Z"
+   "fetchedAt": "2026-10-16T14:44:59.766Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -307,21 +307,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 94,
-    "min": 94,
-    "max": 94,
+    "value": 97,
+    "min": 97,
+    "max": 97,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 94,
-      "pct": 13.56,
-      "updated": "16-Oct 14:02",
+      "gmp": 97,
+      "pct": 14,
+      "updated": "16-Oct 18:02",
       "seenLow": 83,
-      "seenHigh": 95
+      "seenHigh": 97
      }
     ],
     "rating": 3,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -329,7 +329,7 @@
      },
      {
       "date": "2026-10-16",
-      "gmp": 94
+      "gmp": 97
      }
     ]
    },
@@ -363,1109 +363,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:42:56.416Z"
-  },
-  {
-   "symbol": "SMT",
-   "name": "Sahajanand Medical Technologies Limited",
-   "board": "Mainboard",
-   "status": "live",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 327,
-   "priceHigh": 344,
-   "lot": 43,
-   "faceValue": 1,
-   "issueShares": 13822093,
-   "issueSizeCr": 475.48,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Offer for sale upto 13,822,116 Equity Shares (Including Eligible Employees Reservation Portion of up to 2,50,000 Equity Shares and Anchor Allocation of 40,71,634 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 2714423,
-     "bid": 3048700,
-     "times": 1.1231484554912776
-    },
-    "nii": {
-     "offered": 2035818,
-     "bid": 1037375,
-     "times": 0.5095617584676037
-    },
-    "bnii": {
-     "offered": 1357212,
-     "bid": 517118,
-     "times": 0.3810149040827815
-    },
-    "snii": {
-     "offered": 678606,
-     "bid": 520257,
-     "times": 0.7666554672372481
-    },
-    "retail": {
-     "offered": 4750241,
-     "bid": 3917515,
-     "times": 0.8246981574198025
-    },
-    "employee": {
-     "offered": 250000,
-     "bid": 34185,
-     "times": 0.13674
-    },
-    "total": {
-     "offered": 9750482,
-     "bid": 8037775,
-     "times": 0.8243464271817537
-    }
-   },
-   "demand": {
-    "asOn": "As on 16-Oct-2026 17:00:00 IST",
-    "totalBids": 8052610,
-    "timesSubscribed": 0.83,
-    "byPrice": {
-     "327": "80,52,610",
-     "328": "80,47,106",
-     "329": "80,46,633",
-     "330": "80,46,547",
-     "331": "80,44,483",
-     "332": "80,44,397",
-     "333": "80,44,268",
-     "334": "80,43,924",
-     "335": "80,43,666",
-     "336": "80,42,032",
-     "337": "80,41,946",
-     "338": "80,41,688",
-     "339": "80,41,559",
-     "340": "80,41,430",
-     "341": "80,40,570",
-     "342": "80,39,882",
-     "343": "80,39,194",
-     "344": "80,37,689",
-     "Cut-Off": "33,98,075"
-    }
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, +91 810 811 4949 , Tel: +91 810 811 4949, sahajanandmedical.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "Motilal Oswal Investment Advisors Limited, Avendus Capital Private Limited, HSBC Securities and Capital Markets (India) Private Limited , Nuvama Wealth Management Limited",
-   "sponsorBank": "Axis Bank Limited and Kotak Mahindra Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip"
-   },
-   "logo": "data/logos/SMT.ico",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791785603861.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/sahajanand-medical-technologies-ipo/1842/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 35,
-    "min": 35,
-    "max": 35,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 35,
-      "pct": 10.17,
-      "updated": "16-Oct 14:02",
-      "seenLow": 35,
-      "seenHigh": 43
-     }
-    ],
-    "rating": 3,
-    "updated": "16-Oct 14:02",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 46
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 37
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 43
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 46
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 35
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.218Z",
-     "date": "2026-10-15",
-     "qib": 0.371985501154389,
-     "bnii": 0.12739572004963115,
-     "snii": 0.35807670430264393,
-     "nii": 0.20428938146730208,
-     "retail": 0.40083924163005624,
-     "total": 0.3436125516666766
-    },
-    {
-     "at": "2026-10-16T11:46:56.210Z",
-     "date": "2026-10-16",
-     "qib": 1.1231484554912776,
-     "bnii": 0.3810149040827815,
-     "snii": 0.7666554672372481,
-     "nii": 0.5095617584676037,
-     "retail": 0.8246981574198025,
-     "total": 0.8243464271817537
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 475.48,
-     "other": 475.48,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 43,
-     "other": 43,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 344,
-     "other": 344,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Sahajanand Medical Technologies Limited",
-    "basis": "Consolidated",
-    "about": "SMT is a Surat-based Class III medical device maker focused on vascular intervention (drug-eluting stents, PTCA balloons) and structural heart products (TAVI valves, occluders). It has two plants in India and one in Thailand, and sold in 77 countries in FY26. It claims nearly 25% share of India's DES volume. Europe is its largest market at 38.66% of FY26 revenue.",
-    "sector": "Medical Devices (Cardiovascular)",
-    "headquarters": "Surat, Gujarat",
-    "founded_year": 2001,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      970.58,
-      1094.9,
-      1276.43
-     ],
-     "revenue": [
-      901.6,
-      1024.88,
-      1210.5
-     ],
-     "other_income": [
-      6.99,
-      11.08,
-      8.22
-     ],
-     "ebitda": [
-      110.05,
-      128.02,
-      170.66
-     ],
-     "pbt": [
-      33.09,
-      40.81,
-      80.29
-     ],
-     "pat": [
-      -7.35,
-      25.15,
-      69.08
-     ],
-     "net_worth": [
-      540.09,
-      565.73,
-      695.46
-     ],
-     "reserves": [
-      530.34,
-      555.97,
-      685.65
-     ],
-     "borrowings": [
-      175.27,
-      224.96,
-      269.53
-     ],
-     "cash_and_bank": [
-      73.53,
-      101.84,
-      75.49
-     ],
-     "operating_cash_flow": [
-      41.1,
-      73.52,
-      105.19
-     ]
-    },
-    "kpi": {
-     "roce": [
-      8.05,
-      10.37,
-      11.57
-     ],
-     "ronw": [
-      -2.43,
-      3.73,
-      10.6
-     ],
-     "roe": [
-      -2.34,
-      3.68,
-      10.35
-     ],
-     "eps_basic": [
-      -1.31,
-      2.09,
-      6.67
-     ],
-     "eps_diluted": [
-      -1.31,
-      2.01,
-      6.48
-     ],
-     "pat_margin": [
-      -0.82,
-      2.45,
-      5.71
-     ],
-     "ebitda_margin": [
-      12.21,
-      12.49,
-      14.1
-     ],
-     "debt_equity": [
-      0.31,
-      0.38,
-      0.38
-     ],
-     "current_ratio": [
-      1.7,
-      1.6,
-      1.65
-     ],
-     "nav_per_share": 62.76,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 3.69,
-     "other": [
-      {
-       "name": "Net debt to EBITDA",
-       "unit": "times",
-       "values": [
-        0.86,
-        0.91,
-        1.12
-       ]
-      },
-      {
-       "name": "Europe share of revenue",
-       "unit": "%",
-       "values": [
-        29.52,
-        32.96,
-        38.66
-       ]
-      },
-      {
-       "name": "India share of revenue",
-       "unit": "%",
-       "values": [
-        34.8,
-        31.28,
-        26.13
-       ]
-      },
-      {
-       "name": "Net working capital days",
-       "unit": "days",
-       "values": [
-        144,
-        144,
-        138
-       ]
-      },
-      {
-       "name": "Countries with revenue",
-       "unit": "number",
-       "values": [
-        56,
-        76,
-        77
-       ]
-      },
-      {
-       "name": "Gross tangible fixed asset turnover",
-       "unit": "times",
-       "values": [
-        3.37,
-        3.49,
-        3.41
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Poly Medicure Limited",
-      "revenue_cr": 1875.26,
-      "face_value": 5,
-      "cmp": 1632.25,
-      "eps_basic": 31.79,
-      "eps_diluted": 31.75,
-      "nav": 306.4,
-      "pe": 51.4,
-      "ronw": 10.37
-     },
-     {
-      "name": "Laxmi Dental Limited",
-      "revenue_cr": 277.86,
-      "face_value": 2,
-      "cmp": 191.1,
-      "eps_basic": 5.27,
-      "eps_diluted": 5.26,
-      "nav": 44.27,
-      "pe": 36.35,
-      "ronw": 11.91
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 0,
-     "ofs_shares": 13822116,
-     "pre_issue_shares": 101646778,
-     "post_issue_shares": null,
-     "face_value": 1,
-     "objects": [
-      {
-       "purpose": "Offer for Sale by Selling Shareholders (company receives no proceeds); listing benefits",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": 30,
-      "qib": 50,
-      "nii": 15,
-      "retail": 35,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Bhargav Dhirajlal Kotadia",
-      "Shree Hari Trust"
-     ],
-     "holding_pre_pct": 36.71,
-     "holding_post_pct": null,
-     "background": "Company was founded in 2001 by Dhirajlal Kotadia; Bhargav Kotadia is Managing Director and CEO. Samara Capital (29.61%), NHPEA Sparkle (15.24%) and Kotak Pre-IPO Fund (5.98%) are other large shareholders and sellers in the OFS."
-    },
-    "concentration": {
-     "top_customers_pct": 15.71,
-     "govt_share_pct": null,
-     "note": "Top 10 distributors were 15.71% of FY26 revenue (26.34% in FY24); top distributor 3.01%; no single customer above 10%. Top 10 countries were 78.76% of FY26 revenue."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Against the Company: 2 criminal, 98 tax and 5 regulatory proceedings with quantifiable amount Rs 131.97 crore; against Directors Rs 24.85 crore (4 criminal, 4 tax); against Promoters Rs 6.10 crore (4 tax); against subsidiaries Rs 7.00 crore. No material civil litigation.",
-    "strengths": [
-     "Nearly 25% share of India's drug-eluting stent volume in FY26 and top-five DES player in Germany, Spain, Poland and Brazil, per the F&S industry report.",
-     "Diversified revenue: India 26%, Europe 39% and rest of world 35% in FY26, sold in 77 countries.",
-     "Broad Class III portfolio across stents, balloons, TAVI valves and occluders, backed by 75 clinical studies including the Lancet-published TALENT trial.",
-     "Strong R&D with 119 patents granted, 78 pending and R&D spend of about 8.6% of FY26 revenue.",
-     "Integrated manufacturing in India and Thailand, with large spare capacity (stent utilisation 78% in FY26).",
-     "Improving profitability: PAT swung from a Rs 7 crore loss in FY24 to Rs 69 crore profit in FY26; EBITDA margin up to 14.1%.",
-     "Falling distributor concentration: top 10 distributors dropped from 26% of revenue in FY24 to 16% in FY26.",
-     "Proven acquisition playbook (Imex Spain, Zarek Brazil, Vascular Concepts, Vascular Innovations) and institutional investor backing."
-    ],
-    "risks": [
-     {
-      "title": "High receivables and rising bad debts",
-      "detail": "Trade receivables were Rs 306.56 crore at June 2026 (76 days of sales); bad debts jumped to Rs 18.56 crore in FY26 from Rs 2.95 crore in FY25. Long credit is extended to distributors.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy borrowings and covenant breaches",
-      "detail": "Borrowings were Rs 320.63 crore at June 2026 (Rs 269.53 crore at March 2026), mostly short-term. The company has breached financial covenants in the past, and a subsidiary breached a term loan covenant in FY26 (waived by lender).",
-      "severity": "high"
-     },
-     {
-      "title": "Extensive regulatory and certification dependence",
-      "detail": "Products are Class III devices needing CE and Indian approvals. Many CE certificates under the old MDD expire December 31, 2027 and must move to the stricter EU MDR; only Supraflex Cruz has MDR certification so far.",
-      "severity": "high"
-     },
-     {
-      "title": "Pure offer for sale, no money to the company",
-      "detail": "The whole offer is 13,822,116 shares sold by existing investors (13.60% of pre-offer capital); the company receives nothing, so no funds go to debt reduction or growth.",
-      "severity": "medium"
-     },
-     {
-      "title": "Weak debt service coverage",
-      "detail": "Debt service coverage ratio was only 0.65 in FY26, 0.47 in FY25 and 0.12 in the June 2026 quarter, while interest coverage was 4.29 in FY26.",
-      "severity": "medium"
-     },
-     {
-      "title": "Pending litigation and tax disputes",
-      "detail": "98 tax proceedings and 2 criminal cases against the company, with quantifiable amount of Rs 131.97 crore; Directors face Rs 24.85 crore and Promoters Rs 6.10 crore.",
-      "severity": "medium"
-     },
-     {
-      "title": "International operations risk",
-      "detail": "About 74% of FY26 revenue is outside India (Europe 38.66%, rest of world 35.21%), exposing results to currency, tariff, regulatory and tender risks across 77 countries.",
-      "severity": "medium"
-     },
-     {
-      "title": "Untraceable historical corporate records",
-      "detail": "Several RoC filings and challans for share allotments since 2001 (items up to 13.68% of pre-offer capital) could not be located, which could invite regulatory action.",
-      "severity": "medium"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "FY24-FY26 restated consolidated, Rs crore (converted from INR million); June 2026 quarter stub ignored (revenue Rs 351.67 crore, PAT Rs 15.09 crore). net_worth and reserves are attributable to owners (excl. NCI). borrowings = current plus non-current (matches RHP). cash_and_bank = cash equivalents plus other bank balances. debt_equity is the RHP total borrowings/total equity; current_ratio computed from the balance sheet; weighted_avg_eps is diluted. Price band, issue size, P/E and post-issue shares are blank in the RHP. Balance sheet was reconstructed from garbled text and cross-checked to totals. Reservation percentages are SEBI limits (QIB up to 50%, anchor up to 60% of QIB, NII at least 15%, retail at least 35%); employee reservation is up to 250,000 shares."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 67,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-16T11:42:21.956Z"
-  },
-  {
-   "symbol": "ZETWERK",
-   "name": "Zetwerk Manufacturing Businesses Limited",
-   "board": "Mainboard",
-   "status": "live",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 143,
-   "priceHigh": 151,
-   "lot": 99,
-   "faceValue": 1,
-   "issueShares": 331942384,
-   "issueSizeCr": 5012.33,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public offer comprising Fresh issue of aggregating up to Rs. 28,300 million and offer for sale up to 14,45,25,036 Equity Shares (Including Eligible Employee Reservation up to 7,00,000 Equity Shares and Anchor portion 14,90,88,220 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 98917930,
-     "bid": 36664155,
-     "times": 0.3706522669853686
-    },
-    "nii": {
-     "offered": 51269349,
-     "bid": 8366292,
-     "times": 0.16318311355972162
-    },
-    "bnii": {
-     "offered": 34179566,
-     "bid": 5823279,
-     "times": 0.1703731112326002
-    },
-    "snii": {
-     "offered": 17089783,
-     "bid": 2543013,
-     "times": 0.14880311821396444
-    },
-    "retail": {
-     "offered": 34179566,
-     "bid": 12129975,
-     "times": 0.3548896729701015
-    },
-    "employee": {
-     "offered": 700000,
-     "bid": 338778,
-     "times": 0.4839685714285714
-    },
-    "total": {
-     "offered": 1.85066845,
-     "bid": 5.74992,
-     "times": 0.31069422510552874
-    }
-   },
-   "demand": {
-    "asOn": "As on 16-Oct-2026 17:00:00 IST",
-    "totalBids": 57541077,
-    "timesSubscribed": 0.31,
-    "byPrice": {
-     "143": "5,75,41,077",
-     "144": "5,74,80,687",
-     "145": "5,74,77,123",
-     "146": "5,74,61,679",
-     "147": "5,74,54,848",
-     "148": "5,74,48,215",
-     "149": "5,74,39,899",
-     "150": "5,74,31,583",
-     "151": "5,74,20,693",
-     "Cut-Off": "1,08,50,004"
-    }
-   },
-   "registrar": {
-    "name": "KFin Technologies Limited",
-    "address": "The Centrium, 3rd Floor, 57 Lal Bahadur Shastri Road, Nav Pada, Kurla (West) Mumbai 400 070 Maharashtra, India",
-    "contact": "Williams R., +91 40 6716 2222/180 0309 4001, zetwerk.ipo@kfintech.com"
-   },
-   "leadManagers": "Kotak Mahindra Capital Company Limited, Morgan Stanley India Company Private Limited, Goldman Sachs (India) Securities Private Limited, Avendus Capital Private Limited, JM Financial Limited, HSBC Securities and Capital Markets (India) Private Limited and Pantomath Capital Advisors Private Limited",
-   "sponsorBank": "Kotak Mahindra Bank Limited and ICICI Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_ZETWERK.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_ZETWERK.zip"
-   },
-   "logo": "data/logos/ZETWERK.svg",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_ZETWERK.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791884682162.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/zetwerk-ipo/2279/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 11.5,
-    "min": 11.5,
-    "max": 11.5,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 11.5,
-      "pct": 7.62,
-      "updated": "16-Oct 14:02",
-      "seenLow": 11.5,
-      "seenHigh": 30
-     }
-    ],
-    "rating": 2,
-    "updated": "16-Oct 14:02",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 15.5
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 17
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 15
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 11.5
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.220Z",
-     "date": "2026-10-15",
-     "qib": 0.30015682697767737,
-     "bnii": 0.08455078101342774,
-     "snii": 0.08410182856037435,
-     "nii": 0.08440113019574327,
-     "retail": 0.21617784731380146,
-     "total": 0.2247333497256086
-    },
-    {
-     "at": "2026-10-16T11:46:56.211Z",
-     "date": "2026-10-16",
-     "qib": 0.3706522669853686,
-     "bnii": 0.1703731112326002,
-     "snii": 0.14880311821396444,
-     "nii": 0.16318311355972162,
-     "retail": 0.3548896729701015,
-     "total": 0.31069422510552874
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 5012.33,
-     "other": 5012.33,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 99,
-     "other": 99,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 151,
-     "other": 151,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Zetwerk Manufacturing Businesses Limited",
-    "basis": "Consolidated",
-    "about": "Zetwerk is a technology-led, asset-light manufacturing platform that aggregates capacity from 6,979 third-party suppliers in 26 countries plus 26 own facilities, run on its proprietary Zetwerk OS. It has two segments: Manufacturing (Energy, Precision and Capital Goods products; 58.9% of FY26 revenue) and Ecosystem/Terra91 (commodity trading). It exited its Civil Infrastructure Works segment in FY26 (shown as discontinued).",
-    "sector": "Manufacturing platform / industrial and consumer goods",
-    "headquarters": "Bengaluru, Karnataka",
-    "founded_year": 2017,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      10330.85,
-      10355.43,
-      13384.63
-     ],
-     "revenue": [
-      12364.37,
-      11331.86,
-      15913.32
-     ],
-     "other_income": [
-      159.09,
-      160.37,
-      187.31
-     ],
-     "ebitda": [
-      97.03,
-      322.59,
-      421.34
-     ],
-     "pbt": [
-      -798.41,
-      -204.55,
-      -916.44
-     ],
-     "pat": [
-      -852.53,
-      -215.07,
-      -964.39
-     ],
-     "net_worth": [
-      4065.26,
-      4411.79,
-      4653.9
-     ],
-     "reserves": [
-      4025,
-      4355.22,
-      -15.96
-     ],
-     "borrowings": [
-      1232.1,
-      1746.55,
-      1936.16
-     ],
-     "cash_and_bank": [
-      1150.34,
-      1908.19,
-      2443.79
-     ],
-     "operating_cash_flow": [
-      -281.54,
-      -386.29,
-      -681.53
-     ]
-    },
-    "kpi": {
-     "roce": [
-      null,
-      null,
-      null
-     ],
-     "ronw": [
-      -21,
-      -4.76,
-      -21.11
-     ],
-     "roe": [
-      null,
-      null,
-      null
-     ],
-     "eps_basic": [
-      -4.86,
-      -1.17,
-      -6.69
-     ],
-     "eps_diluted": [
-      -4.86,
-      -1.17,
-      -6.69
-     ],
-     "pat_margin": [
-      -6.89,
-      -1.9,
-      -6.06
-     ],
-     "ebitda_margin": [
-      0.78,
-      2.85,
-      2.65
-     ],
-     "debt_equity": [
-      null,
-      null,
-      null
-     ],
-     "current_ratio": [
-      1.44,
-      1.39,
-      1.34
-     ],
-     "nav_per_share": 31.26,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": -4.54,
-     "other": [
-      {
-       "name": "Manufacturing order book",
-       "unit": "Rs crore",
-       "values": [
-        6169.75,
-        8628.98,
-        12370.01
-       ]
-      },
-      {
-       "name": "Manufacturing new orders",
-       "unit": "Rs crore",
-       "values": [
-        8994.14,
-        11327.11,
-        15393.35
-       ]
-      },
-      {
-       "name": "Manufacturing segment revenue",
-       "unit": "Rs crore",
-       "values": [
-        6081.85,
-        6249.1,
-        9374.68
-       ]
-      },
-      {
-       "name": "Gross margin",
-       "unit": "%",
-       "values": [
-        7.66,
-        12.06,
-        12.13
-       ]
-      },
-      {
-       "name": "Contribution margin",
-       "unit": "%",
-       "values": [
-        6.21,
-        9.09,
-        8.17
-       ]
-      },
-      {
-       "name": "Revenue from repeat customers (Manufacturing)",
-       "unit": "%",
-       "values": [
-        78.11,
-        84.8,
-        80.15
-       ]
-      }
-     ]
-    },
-    "peers": [],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": 2830,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
-     "ofs_shares": 144525036,
-     "pre_issue_shares": 1506772659,
-     "post_issue_shares": null,
-     "face_value": 1,
-     "objects": [
-      {
-       "purpose": "Repayment/prepayment of borrowings of the Company",
-       "amount_cr": 1300
-      },
-      {
-       "purpose": "Repayment/prepayment of borrowings of certain subsidiaries via investment in them",
-       "amount_cr": 860
-      },
-      {
-       "purpose": "Unidentified inorganic acquisitions and general corporate purposes (capped at 35% of gross proceeds)",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": 75,
-      "nii": 15,
-      "retail": 10,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Amrit Pratik Acharya",
-      "Srinath Ramakkrushnan"
-     ],
-     "holding_pre_pct": 15.86,
-     "holding_post_pct": null,
-     "background": "Both founders are IIT Madras alumni who began their careers at ITC; promoter group holds a further 4.80%. About 28.46 million promoter shares were previously pledged to a security trustee under promoter borrowing arrangements."
-    },
-    "concentration": {
-     "top_customers_pct": 35.9,
-     "govt_share_pct": null,
-     "note": "Top 10 customers were 35.90% of FY26 revenue (26.89% FY25, 22.37% FY24). Top 10 suppliers were 38.18% of FY26 expenses. India 82.54% and USA 14.33% of FY26 revenue."
-    },
-    "order_book_cr": 12370.01,
-    "litigation_note": "Material litigation per RHP: 66 criminal proceedings by the Company (Rs 620.14 crore involved) and 1 material civil case by it; against the Company 5 criminal, 30 tax, 12 regulatory and 1 civil matter (about Rs 22.97 crore). Contingent liabilities at Jun-26: corporate guarantees Rs 379.29 crore, bank guarantees Rs 650.20 crore, excise Rs 46.11 crore, GST Rs 58.71 crore.",
-    "strengths": [
-     "Manufacturing order book of Rs 12,370 crore at Mar-26 (Rs 13,062 crore at Jun-26) gives good revenue visibility, with new orders of Rs 15,393 crore in FY26.",
-     "FY26 revenue rose 40.4% to Rs 15,913 crore, driven by Manufacturing segment revenue growing 50% to Rs 9,375 crore.",
-     "Asset-light hybrid model: 6,979 suppliers in 26 countries plus 26 own facilities, coordinated through proprietary Zetwerk OS.",
-     "Repeat customers contributed 80.15% of Manufacturing revenue in FY26; 906 active Manufacturing customers including 102 of India's Fortune 500.",
-     "Adjusted EBITDA grew from Rs 97 crore in FY24 to Rs 421 crore in FY26; Manufacturing EBITDA margin was 6.03% in FY26.",
-     "Gross margin improved from 7.66% in FY24 to 12.13% in FY26 as own manufacturing and ODM share (13.93% of GMV) increased.",
-     "Manufacturing business ROCE of 22.75% in FY26 and 30.76% in FY25 (segment level, per RHP).",
-     "About Rs 2,160 crore of fresh issue proceeds are earmarked to repay borrowings, which should reduce interest cost."
-    ],
-    "risks": [
-     {
-      "title": "Persistent losses",
-      "detail": "Loss from continuing operations of Rs 964 crore in FY26, Rs 215 crore in FY25 and Rs 853 crore in FY24; including discontinued operations FY26 loss was Rs 1,606 crore. Basic EPS was -6.69 in FY26 and RoNW -21.11%.",
-      "severity": "high"
-     },
-     {
-      "title": "Negative operating cash flow",
-      "detail": "Net cash used in operations was Rs 682 crore in FY26, Rs 386 crore in FY25 and Rs 282 crore in FY24, and also negative in both Q1 periods (Rs 506 crore in Q1 FY27). Growth is consuming cash.",
-      "severity": "high"
-     },
-     {
-      "title": "High debt and working capital needs",
-      "detail": "Total borrowings including non-fund-based facilities were Rs 5,208 crore at Aug-31-2026. Business needs significant working capital; only about 64% of fund-based borrowings are to be repaid from the issue.",
-      "severity": "high"
-     },
-     {
-      "title": "Offer for sale and valuation",
-      "detail": "The OFS of 144.5 million shares goes to selling shareholders, not the company; only Rs 2,830 crore is fresh. No listed peer exists for comparison, and the company has issued shares at Rs 171 per share in the last 12 months.",
-      "severity": "medium"
-     },
-     {
-      "title": "Customer concentration",
-      "detail": "Top 10 customers contributed 35.90% of FY26 revenue, up from 22.37% in FY24, and many orders are short-term purchase orders without firm long-term commitments.",
-      "severity": "medium"
-     },
-     {
-      "title": "Supplier dependence and Ecosystem low margin",
-      "detail": "Top 10 suppliers were 38.18% of FY26 expenses. The commodity-trading Ecosystem segment is 41% of FY26 segment revenue at only a 1.24% EBITDA margin.",
-      "severity": "medium"
-     },
-     {
-      "title": "Large share-based payments and related-party items",
-      "detail": "Related-party share-based payments and fair-value dilution items to key management were Rs 572 crore in FY26 (64.72% of the relevant denominator); promoters had pledged 28.46 million shares; auditors included emphasis of matter paragraphs.",
-      "severity": "medium"
-     },
-     {
-      "title": "Litigation and contingent liabilities",
-      "detail": "Against the Company: 5 criminal, 30 tax, 12 regulatory proceedings; contingent liabilities at Jun-26 include corporate guarantees of Rs 379 crore and bank guarantees of Rs 650 crore given for joint ventures and associates.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "RHP: price band, issue price, OFS value, post-issue shares, P/E left null. Restated consolidated, Rs million converted to Rs crore. Q1 FY27 stub ignored in arrays (Q1 FY27 revenue Rs 4,118 crore, loss from continuing ops Rs 64 crore). pbt/pat/margin are continuing operations (revenue is also continuing); FY26 total loss incl. discontinued is Rs 1,606 crore (FY25 Rs 371 crore, FY24 Rs 918 crore). ebitda is company-reported Adjusted EBITDA (adds back share-based payments), not conventional EBITDA. net_worth is equity attributable to owners (RoNW denominators differ slightly). reserves is other equity (Mar-26 negative; CCPS instrument equity of Rs 4,658 crore reported separately). borrowings = current plus non-current borrowings from the balance sheet; cash_and_bank = cash plus other bank balances. current_ratio computed from balance sheet totals. EPS are continuing-ops and adjusted for bonus/capital reduction. ROCE, ROE, debt/equity not reported at company level."
-   },
-   "verification": {
-    "status": "warn",
-    "checked": 48,
-    "notFound": 0,
-    "issues": [
-     "no peer companies extracted"
-    ],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-16T11:42:27.569Z"
+   "fetchedAt": "2026-10-16T14:45:05.086Z"
   },
   {
    "symbol": "BONFIG",
@@ -1637,21 +535,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 135,
-    "min": 135,
-    "max": 135,
+    "value": 127,
+    "min": 127,
+    "max": 127,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 135,
-      "pct": 23.04,
-      "updated": "16-Oct 14:02",
-      "seenLow": 135,
+      "gmp": 127,
+      "pct": 21.67,
+      "updated": "16-Oct 18:02",
+      "seenLow": 127,
       "seenHigh": 178
      }
     ],
     "rating": 4,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -1671,7 +569,7 @@
      },
      {
       "date": "2026-10-16",
-      "gmp": 135
+      "gmp": 127
      }
     ]
    },
@@ -1687,7 +585,7 @@
      "total": 0.4709272701274968
     },
     {
-     "at": "2026-10-16T11:46:56.212Z",
+     "at": "2026-10-16T14:49:20.355Z",
      "date": "2026-10-16",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -2055,7 +953,1109 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:42:33.180Z"
+   "fetchedAt": "2026-10-16T14:44:32.541Z"
+  },
+  {
+   "symbol": "ZETWERK",
+   "name": "Zetwerk Manufacturing Businesses Limited",
+   "board": "Mainboard",
+   "status": "live",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 143,
+   "priceHigh": 151,
+   "lot": 99,
+   "faceValue": 1,
+   "issueShares": 331942384,
+   "issueSizeCr": 5012.33,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public offer comprising Fresh issue of aggregating up to Rs. 28,300 million and offer for sale up to 14,45,25,036 Equity Shares (Including Eligible Employee Reservation up to 7,00,000 Equity Shares and Anchor portion 14,90,88,220 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 98917930,
+     "bid": 36664155,
+     "times": 0.3706522669853686
+    },
+    "nii": {
+     "offered": 51269349,
+     "bid": 8366292,
+     "times": 0.16318311355972162
+    },
+    "bnii": {
+     "offered": 34179566,
+     "bid": 5823279,
+     "times": 0.1703731112326002
+    },
+    "snii": {
+     "offered": 17089783,
+     "bid": 2543013,
+     "times": 0.14880311821396444
+    },
+    "retail": {
+     "offered": 34179566,
+     "bid": 12129975,
+     "times": 0.3548896729701015
+    },
+    "employee": {
+     "offered": 700000,
+     "bid": 338778,
+     "times": 0.4839685714285714
+    },
+    "total": {
+     "offered": 1.85066845,
+     "bid": 5.74992,
+     "times": 0.31069422510552874
+    }
+   },
+   "demand": {
+    "asOn": "As on 16-Oct-2026 17:00:00 IST",
+    "totalBids": 57541077,
+    "timesSubscribed": 0.31,
+    "byPrice": {
+     "143": "5,75,41,077",
+     "144": "5,74,80,687",
+     "145": "5,74,77,123",
+     "146": "5,74,61,679",
+     "147": "5,74,54,848",
+     "148": "5,74,48,215",
+     "149": "5,74,39,899",
+     "150": "5,74,31,583",
+     "151": "5,74,20,693",
+     "Cut-Off": "1,08,50,004"
+    }
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "The Centrium, 3rd Floor, 57 Lal Bahadur Shastri Road, Nav Pada, Kurla (West) Mumbai 400 070 Maharashtra, India",
+    "contact": "Williams R., +91 40 6716 2222/180 0309 4001, zetwerk.ipo@kfintech.com"
+   },
+   "leadManagers": "Kotak Mahindra Capital Company Limited, Morgan Stanley India Company Private Limited, Goldman Sachs (India) Securities Private Limited, Avendus Capital Private Limited, JM Financial Limited, HSBC Securities and Capital Markets (India) Private Limited and Pantomath Capital Advisors Private Limited",
+   "sponsorBank": "Kotak Mahindra Bank Limited and ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_ZETWERK.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_ZETWERK.zip"
+   },
+   "logo": "data/logos/ZETWERK.svg",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_ZETWERK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791884682162.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/zetwerk-ipo/2279/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 5,
+    "min": 5,
+    "max": 5,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 5,
+      "pct": 3.31,
+      "updated": "16-Oct 18:02",
+      "seenLow": 5,
+      "seenHigh": 30
+     }
+    ],
+    "rating": 1,
+    "updated": "16-Oct 18:02",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 15.5
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 21
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 17
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 15
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 5
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.220Z",
+     "date": "2026-10-15",
+     "qib": 0.30015682697767737,
+     "bnii": 0.08455078101342774,
+     "snii": 0.08410182856037435,
+     "nii": 0.08440113019574327,
+     "retail": 0.21617784731380146,
+     "total": 0.2247333497256086
+    },
+    {
+     "at": "2026-10-16T14:49:20.356Z",
+     "date": "2026-10-16",
+     "qib": 0.3706522669853686,
+     "bnii": 0.1703731112326002,
+     "snii": 0.14880311821396444,
+     "nii": 0.16318311355972162,
+     "retail": 0.3548896729701015,
+     "total": 0.31069422510552874
+    }
+   ],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 5012.33,
+     "other": 5012.33,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 99,
+     "other": 99,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 151,
+     "other": 151,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Zetwerk Manufacturing Businesses Limited",
+    "basis": "Consolidated",
+    "about": "Zetwerk is a technology-led, asset-light manufacturing platform that aggregates capacity from 6,979 third-party suppliers in 26 countries plus 26 own facilities, run on its proprietary Zetwerk OS. It has two segments: Manufacturing (Energy, Precision and Capital Goods products; 58.9% of FY26 revenue) and Ecosystem/Terra91 (commodity trading). It exited its Civil Infrastructure Works segment in FY26 (shown as discontinued).",
+    "sector": "Manufacturing platform / industrial and consumer goods",
+    "headquarters": "Bengaluru, Karnataka",
+    "founded_year": 2017,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      10330.85,
+      10355.43,
+      13384.63
+     ],
+     "revenue": [
+      12364.37,
+      11331.86,
+      15913.32
+     ],
+     "other_income": [
+      159.09,
+      160.37,
+      187.31
+     ],
+     "ebitda": [
+      97.03,
+      322.59,
+      421.34
+     ],
+     "pbt": [
+      -798.41,
+      -204.55,
+      -916.44
+     ],
+     "pat": [
+      -852.53,
+      -215.07,
+      -964.39
+     ],
+     "net_worth": [
+      4065.26,
+      4411.79,
+      4653.9
+     ],
+     "reserves": [
+      4025,
+      4355.22,
+      -15.96
+     ],
+     "borrowings": [
+      1232.1,
+      1746.55,
+      1936.16
+     ],
+     "cash_and_bank": [
+      1150.34,
+      1908.19,
+      2443.79
+     ],
+     "operating_cash_flow": [
+      -281.54,
+      -386.29,
+      -681.53
+     ]
+    },
+    "kpi": {
+     "roce": [
+      null,
+      null,
+      null
+     ],
+     "ronw": [
+      -21,
+      -4.76,
+      -21.11
+     ],
+     "roe": [
+      null,
+      null,
+      null
+     ],
+     "eps_basic": [
+      -4.86,
+      -1.17,
+      -6.69
+     ],
+     "eps_diluted": [
+      -4.86,
+      -1.17,
+      -6.69
+     ],
+     "pat_margin": [
+      -6.89,
+      -1.9,
+      -6.06
+     ],
+     "ebitda_margin": [
+      0.78,
+      2.85,
+      2.65
+     ],
+     "debt_equity": [
+      null,
+      null,
+      null
+     ],
+     "current_ratio": [
+      1.44,
+      1.39,
+      1.34
+     ],
+     "nav_per_share": 31.26,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": -4.54,
+     "other": [
+      {
+       "name": "Manufacturing order book",
+       "unit": "Rs crore",
+       "values": [
+        6169.75,
+        8628.98,
+        12370.01
+       ]
+      },
+      {
+       "name": "Manufacturing new orders",
+       "unit": "Rs crore",
+       "values": [
+        8994.14,
+        11327.11,
+        15393.35
+       ]
+      },
+      {
+       "name": "Manufacturing segment revenue",
+       "unit": "Rs crore",
+       "values": [
+        6081.85,
+        6249.1,
+        9374.68
+       ]
+      },
+      {
+       "name": "Gross margin",
+       "unit": "%",
+       "values": [
+        7.66,
+        12.06,
+        12.13
+       ]
+      },
+      {
+       "name": "Contribution margin",
+       "unit": "%",
+       "values": [
+        6.21,
+        9.09,
+        8.17
+       ]
+      },
+      {
+       "name": "Revenue from repeat customers (Manufacturing)",
+       "unit": "%",
+       "values": [
+        78.11,
+        84.8,
+        80.15
+       ]
+      }
+     ]
+    },
+    "peers": [],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 2830,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": 144525036,
+     "pre_issue_shares": 1506772659,
+     "post_issue_shares": null,
+     "face_value": 1,
+     "objects": [
+      {
+       "purpose": "Repayment/prepayment of borrowings of the Company",
+       "amount_cr": 1300
+      },
+      {
+       "purpose": "Repayment/prepayment of borrowings of certain subsidiaries via investment in them",
+       "amount_cr": 860
+      },
+      {
+       "purpose": "Unidentified inorganic acquisitions and general corporate purposes (capped at 35% of gross proceeds)",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": 75,
+      "nii": 15,
+      "retail": 10,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Amrit Pratik Acharya",
+      "Srinath Ramakkrushnan"
+     ],
+     "holding_pre_pct": 15.86,
+     "holding_post_pct": null,
+     "background": "Both founders are IIT Madras alumni who began their careers at ITC; promoter group holds a further 4.80%. About 28.46 million promoter shares were previously pledged to a security trustee under promoter borrowing arrangements."
+    },
+    "concentration": {
+     "top_customers_pct": 35.9,
+     "govt_share_pct": null,
+     "note": "Top 10 customers were 35.90% of FY26 revenue (26.89% FY25, 22.37% FY24). Top 10 suppliers were 38.18% of FY26 expenses. India 82.54% and USA 14.33% of FY26 revenue."
+    },
+    "order_book_cr": 12370.01,
+    "litigation_note": "Material litigation per RHP: 66 criminal proceedings by the Company (Rs 620.14 crore involved) and 1 material civil case by it; against the Company 5 criminal, 30 tax, 12 regulatory and 1 civil matter (about Rs 22.97 crore). Contingent liabilities at Jun-26: corporate guarantees Rs 379.29 crore, bank guarantees Rs 650.20 crore, excise Rs 46.11 crore, GST Rs 58.71 crore.",
+    "strengths": [
+     "Manufacturing order book of Rs 12,370 crore at Mar-26 (Rs 13,062 crore at Jun-26) gives good revenue visibility, with new orders of Rs 15,393 crore in FY26.",
+     "FY26 revenue rose 40.4% to Rs 15,913 crore, driven by Manufacturing segment revenue growing 50% to Rs 9,375 crore.",
+     "Asset-light hybrid model: 6,979 suppliers in 26 countries plus 26 own facilities, coordinated through proprietary Zetwerk OS.",
+     "Repeat customers contributed 80.15% of Manufacturing revenue in FY26; 906 active Manufacturing customers including 102 of India's Fortune 500.",
+     "Adjusted EBITDA grew from Rs 97 crore in FY24 to Rs 421 crore in FY26; Manufacturing EBITDA margin was 6.03% in FY26.",
+     "Gross margin improved from 7.66% in FY24 to 12.13% in FY26 as own manufacturing and ODM share (13.93% of GMV) increased.",
+     "Manufacturing business ROCE of 22.75% in FY26 and 30.76% in FY25 (segment level, per RHP).",
+     "About Rs 2,160 crore of fresh issue proceeds are earmarked to repay borrowings, which should reduce interest cost."
+    ],
+    "risks": [
+     {
+      "title": "Persistent losses",
+      "detail": "Loss from continuing operations of Rs 964 crore in FY26, Rs 215 crore in FY25 and Rs 853 crore in FY24; including discontinued operations FY26 loss was Rs 1,606 crore. Basic EPS was -6.69 in FY26 and RoNW -21.11%.",
+      "severity": "high"
+     },
+     {
+      "title": "Negative operating cash flow",
+      "detail": "Net cash used in operations was Rs 682 crore in FY26, Rs 386 crore in FY25 and Rs 282 crore in FY24, and also negative in both Q1 periods (Rs 506 crore in Q1 FY27). Growth is consuming cash.",
+      "severity": "high"
+     },
+     {
+      "title": "High debt and working capital needs",
+      "detail": "Total borrowings including non-fund-based facilities were Rs 5,208 crore at Aug-31-2026. Business needs significant working capital; only about 64% of fund-based borrowings are to be repaid from the issue.",
+      "severity": "high"
+     },
+     {
+      "title": "Offer for sale and valuation",
+      "detail": "The OFS of 144.5 million shares goes to selling shareholders, not the company; only Rs 2,830 crore is fresh. No listed peer exists for comparison, and the company has issued shares at Rs 171 per share in the last 12 months.",
+      "severity": "medium"
+     },
+     {
+      "title": "Customer concentration",
+      "detail": "Top 10 customers contributed 35.90% of FY26 revenue, up from 22.37% in FY24, and many orders are short-term purchase orders without firm long-term commitments.",
+      "severity": "medium"
+     },
+     {
+      "title": "Supplier dependence and Ecosystem low margin",
+      "detail": "Top 10 suppliers were 38.18% of FY26 expenses. The commodity-trading Ecosystem segment is 41% of FY26 segment revenue at only a 1.24% EBITDA margin.",
+      "severity": "medium"
+     },
+     {
+      "title": "Large share-based payments and related-party items",
+      "detail": "Related-party share-based payments and fair-value dilution items to key management were Rs 572 crore in FY26 (64.72% of the relevant denominator); promoters had pledged 28.46 million shares; auditors included emphasis of matter paragraphs.",
+      "severity": "medium"
+     },
+     {
+      "title": "Litigation and contingent liabilities",
+      "detail": "Against the Company: 5 criminal, 30 tax, 12 regulatory proceedings; contingent liabilities at Jun-26 include corporate guarantees of Rs 379 crore and bank guarantees of Rs 650 crore given for joint ventures and associates.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "RHP: price band, issue price, OFS value, post-issue shares, P/E left null. Restated consolidated, Rs million converted to Rs crore. Q1 FY27 stub ignored in arrays (Q1 FY27 revenue Rs 4,118 crore, loss from continuing ops Rs 64 crore). pbt/pat/margin are continuing operations (revenue is also continuing); FY26 total loss incl. discontinued is Rs 1,606 crore (FY25 Rs 371 crore, FY24 Rs 918 crore). ebitda is company-reported Adjusted EBITDA (adds back share-based payments), not conventional EBITDA. net_worth is equity attributable to owners (RoNW denominators differ slightly). reserves is other equity (Mar-26 negative; CCPS instrument equity of Rs 4,658 crore reported separately). borrowings = current plus non-current borrowings from the balance sheet; cash_and_bank = cash plus other bank balances. current_ratio computed from balance sheet totals. EPS are continuing-ops and adjusted for bonus/capital reduction. ROCE, ROE, debt/equity not reported at company level."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 48,
+    "notFound": 0,
+    "issues": [
+     "no peer companies extracted"
+    ],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-16T14:44:37.778Z"
+  },
+  {
+   "symbol": "SMT",
+   "name": "Sahajanand Medical Technologies Limited",
+   "board": "Mainboard",
+   "status": "live",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 327,
+   "priceHigh": 344,
+   "lot": 43,
+   "faceValue": 1,
+   "issueShares": 13822093,
+   "issueSizeCr": 475.48,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Offer for sale upto 13,822,116 Equity Shares (Including Eligible Employees Reservation Portion of up to 2,50,000 Equity Shares and Anchor Allocation of 40,71,634 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 2714423,
+     "bid": 3048700,
+     "times": 1.1231484554912776
+    },
+    "nii": {
+     "offered": 2035818,
+     "bid": 1037375,
+     "times": 0.5095617584676037
+    },
+    "bnii": {
+     "offered": 1357212,
+     "bid": 517118,
+     "times": 0.3810149040827815
+    },
+    "snii": {
+     "offered": 678606,
+     "bid": 520257,
+     "times": 0.7666554672372481
+    },
+    "retail": {
+     "offered": 4750241,
+     "bid": 3917515,
+     "times": 0.8246981574198025
+    },
+    "employee": {
+     "offered": 250000,
+     "bid": 34185,
+     "times": 0.13674
+    },
+    "total": {
+     "offered": 9750482,
+     "bid": 8037775,
+     "times": 0.8243464271817537
+    }
+   },
+   "demand": {
+    "asOn": "As on 16-Oct-2026 17:00:00 IST",
+    "totalBids": 8052610,
+    "timesSubscribed": 0.83,
+    "byPrice": {
+     "327": "80,52,610",
+     "328": "80,47,106",
+     "329": "80,46,633",
+     "330": "80,46,547",
+     "331": "80,44,483",
+     "332": "80,44,397",
+     "333": "80,44,268",
+     "334": "80,43,924",
+     "335": "80,43,666",
+     "336": "80,42,032",
+     "337": "80,41,946",
+     "338": "80,41,688",
+     "339": "80,41,559",
+     "340": "80,41,430",
+     "341": "80,40,570",
+     "342": "80,39,882",
+     "343": "80,39,194",
+     "344": "80,37,689",
+     "Cut-Off": "33,98,075"
+    }
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, +91 810 811 4949 , Tel: +91 810 811 4949, sahajanandmedical.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "Motilal Oswal Investment Advisors Limited, Avendus Capital Private Limited, HSBC Securities and Capital Markets (India) Private Limited , Nuvama Wealth Management Limited",
+   "sponsorBank": "Axis Bank Limited and Kotak Mahindra Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip"
+   },
+   "logo": "data/logos/SMT.ico",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791785603861.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/sahajanand-medical-technologies-ipo/1842/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 38,
+    "min": 38,
+    "max": 38,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 38,
+      "pct": 11.05,
+      "updated": "16-Oct 18:02",
+      "seenLow": 35,
+      "seenHigh": 43
+     }
+    ],
+    "rating": 3,
+    "updated": "16-Oct 18:02",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 46
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 37
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 43
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 46
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 38
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.218Z",
+     "date": "2026-10-15",
+     "qib": 0.371985501154389,
+     "bnii": 0.12739572004963115,
+     "snii": 0.35807670430264393,
+     "nii": 0.20428938146730208,
+     "retail": 0.40083924163005624,
+     "total": 0.3436125516666766
+    },
+    {
+     "at": "2026-10-16T14:49:20.357Z",
+     "date": "2026-10-16",
+     "qib": 1.1231484554912776,
+     "bnii": 0.3810149040827815,
+     "snii": 0.7666554672372481,
+     "nii": 0.5095617584676037,
+     "retail": 0.8246981574198025,
+     "total": 0.8243464271817537
+    }
+   ],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 475.48,
+     "other": 475.48,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 43,
+     "other": 43,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 344,
+     "other": 344,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Sahajanand Medical Technologies Limited",
+    "basis": "Consolidated",
+    "about": "SMT is a Surat-based Class III medical device maker focused on vascular intervention (drug-eluting stents, PTCA balloons) and structural heart products (TAVI valves, occluders). It has two plants in India and one in Thailand, and sold in 77 countries in FY26. It claims nearly 25% share of India's DES volume. Europe is its largest market at 38.66% of FY26 revenue.",
+    "sector": "Medical Devices (Cardiovascular)",
+    "headquarters": "Surat, Gujarat",
+    "founded_year": 2001,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      970.58,
+      1094.9,
+      1276.43
+     ],
+     "revenue": [
+      901.6,
+      1024.88,
+      1210.5
+     ],
+     "other_income": [
+      6.99,
+      11.08,
+      8.22
+     ],
+     "ebitda": [
+      110.05,
+      128.02,
+      170.66
+     ],
+     "pbt": [
+      33.09,
+      40.81,
+      80.29
+     ],
+     "pat": [
+      -7.35,
+      25.15,
+      69.08
+     ],
+     "net_worth": [
+      540.09,
+      565.73,
+      695.46
+     ],
+     "reserves": [
+      530.34,
+      555.97,
+      685.65
+     ],
+     "borrowings": [
+      175.27,
+      224.96,
+      269.53
+     ],
+     "cash_and_bank": [
+      73.53,
+      101.84,
+      75.49
+     ],
+     "operating_cash_flow": [
+      41.1,
+      73.52,
+      105.19
+     ]
+    },
+    "kpi": {
+     "roce": [
+      8.05,
+      10.37,
+      11.57
+     ],
+     "ronw": [
+      -2.43,
+      3.73,
+      10.6
+     ],
+     "roe": [
+      -2.34,
+      3.68,
+      10.35
+     ],
+     "eps_basic": [
+      -1.31,
+      2.09,
+      6.67
+     ],
+     "eps_diluted": [
+      -1.31,
+      2.01,
+      6.48
+     ],
+     "pat_margin": [
+      -0.82,
+      2.45,
+      5.71
+     ],
+     "ebitda_margin": [
+      12.21,
+      12.49,
+      14.1
+     ],
+     "debt_equity": [
+      0.31,
+      0.38,
+      0.38
+     ],
+     "current_ratio": [
+      1.7,
+      1.6,
+      1.65
+     ],
+     "nav_per_share": 62.76,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 3.69,
+     "other": [
+      {
+       "name": "Net debt to EBITDA",
+       "unit": "times",
+       "values": [
+        0.86,
+        0.91,
+        1.12
+       ]
+      },
+      {
+       "name": "Europe share of revenue",
+       "unit": "%",
+       "values": [
+        29.52,
+        32.96,
+        38.66
+       ]
+      },
+      {
+       "name": "India share of revenue",
+       "unit": "%",
+       "values": [
+        34.8,
+        31.28,
+        26.13
+       ]
+      },
+      {
+       "name": "Net working capital days",
+       "unit": "days",
+       "values": [
+        144,
+        144,
+        138
+       ]
+      },
+      {
+       "name": "Countries with revenue",
+       "unit": "number",
+       "values": [
+        56,
+        76,
+        77
+       ]
+      },
+      {
+       "name": "Gross tangible fixed asset turnover",
+       "unit": "times",
+       "values": [
+        3.37,
+        3.49,
+        3.41
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Poly Medicure Limited",
+      "revenue_cr": 1875.26,
+      "face_value": 5,
+      "cmp": 1632.25,
+      "eps_basic": 31.79,
+      "eps_diluted": 31.75,
+      "nav": 306.4,
+      "pe": 51.4,
+      "ronw": 10.37
+     },
+     {
+      "name": "Laxmi Dental Limited",
+      "revenue_cr": 277.86,
+      "face_value": 2,
+      "cmp": 191.1,
+      "eps_basic": 5.27,
+      "eps_diluted": 5.26,
+      "nav": 44.27,
+      "pe": 36.35,
+      "ronw": 11.91
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 0,
+     "ofs_shares": 13822116,
+     "pre_issue_shares": 101646778,
+     "post_issue_shares": null,
+     "face_value": 1,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by Selling Shareholders (company receives no proceeds); listing benefits",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": 30,
+      "qib": 50,
+      "nii": 15,
+      "retail": 35,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Bhargav Dhirajlal Kotadia",
+      "Shree Hari Trust"
+     ],
+     "holding_pre_pct": 36.71,
+     "holding_post_pct": null,
+     "background": "Company was founded in 2001 by Dhirajlal Kotadia; Bhargav Kotadia is Managing Director and CEO. Samara Capital (29.61%), NHPEA Sparkle (15.24%) and Kotak Pre-IPO Fund (5.98%) are other large shareholders and sellers in the OFS."
+    },
+    "concentration": {
+     "top_customers_pct": 15.71,
+     "govt_share_pct": null,
+     "note": "Top 10 distributors were 15.71% of FY26 revenue (26.34% in FY24); top distributor 3.01%; no single customer above 10%. Top 10 countries were 78.76% of FY26 revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Against the Company: 2 criminal, 98 tax and 5 regulatory proceedings with quantifiable amount Rs 131.97 crore; against Directors Rs 24.85 crore (4 criminal, 4 tax); against Promoters Rs 6.10 crore (4 tax); against subsidiaries Rs 7.00 crore. No material civil litigation.",
+    "strengths": [
+     "Nearly 25% share of India's drug-eluting stent volume in FY26 and top-five DES player in Germany, Spain, Poland and Brazil, per the F&S industry report.",
+     "Diversified revenue: India 26%, Europe 39% and rest of world 35% in FY26, sold in 77 countries.",
+     "Broad Class III portfolio across stents, balloons, TAVI valves and occluders, backed by 75 clinical studies including the Lancet-published TALENT trial.",
+     "Strong R&D with 119 patents granted, 78 pending and R&D spend of about 8.6% of FY26 revenue.",
+     "Integrated manufacturing in India and Thailand, with large spare capacity (stent utilisation 78% in FY26).",
+     "Improving profitability: PAT swung from a Rs 7 crore loss in FY24 to Rs 69 crore profit in FY26; EBITDA margin up to 14.1%.",
+     "Falling distributor concentration: top 10 distributors dropped from 26% of revenue in FY24 to 16% in FY26.",
+     "Proven acquisition playbook (Imex Spain, Zarek Brazil, Vascular Concepts, Vascular Innovations) and institutional investor backing."
+    ],
+    "risks": [
+     {
+      "title": "High receivables and rising bad debts",
+      "detail": "Trade receivables were Rs 306.56 crore at June 2026 (76 days of sales); bad debts jumped to Rs 18.56 crore in FY26 from Rs 2.95 crore in FY25. Long credit is extended to distributors.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy borrowings and covenant breaches",
+      "detail": "Borrowings were Rs 320.63 crore at June 2026 (Rs 269.53 crore at March 2026), mostly short-term. The company has breached financial covenants in the past, and a subsidiary breached a term loan covenant in FY26 (waived by lender).",
+      "severity": "high"
+     },
+     {
+      "title": "Extensive regulatory and certification dependence",
+      "detail": "Products are Class III devices needing CE and Indian approvals. Many CE certificates under the old MDD expire December 31, 2027 and must move to the stricter EU MDR; only Supraflex Cruz has MDR certification so far.",
+      "severity": "high"
+     },
+     {
+      "title": "Pure offer for sale, no money to the company",
+      "detail": "The whole offer is 13,822,116 shares sold by existing investors (13.60% of pre-offer capital); the company receives nothing, so no funds go to debt reduction or growth.",
+      "severity": "medium"
+     },
+     {
+      "title": "Weak debt service coverage",
+      "detail": "Debt service coverage ratio was only 0.65 in FY26, 0.47 in FY25 and 0.12 in the June 2026 quarter, while interest coverage was 4.29 in FY26.",
+      "severity": "medium"
+     },
+     {
+      "title": "Pending litigation and tax disputes",
+      "detail": "98 tax proceedings and 2 criminal cases against the company, with quantifiable amount of Rs 131.97 crore; Directors face Rs 24.85 crore and Promoters Rs 6.10 crore.",
+      "severity": "medium"
+     },
+     {
+      "title": "International operations risk",
+      "detail": "About 74% of FY26 revenue is outside India (Europe 38.66%, rest of world 35.21%), exposing results to currency, tariff, regulatory and tender risks across 77 countries.",
+      "severity": "medium"
+     },
+     {
+      "title": "Untraceable historical corporate records",
+      "detail": "Several RoC filings and challans for share allotments since 2001 (items up to 13.68% of pre-offer capital) could not be located, which could invite regulatory action.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "FY24-FY26 restated consolidated, Rs crore (converted from INR million); June 2026 quarter stub ignored (revenue Rs 351.67 crore, PAT Rs 15.09 crore). net_worth and reserves are attributable to owners (excl. NCI). borrowings = current plus non-current (matches RHP). cash_and_bank = cash equivalents plus other bank balances. debt_equity is the RHP total borrowings/total equity; current_ratio computed from the balance sheet; weighted_avg_eps is diluted. Price band, issue size, P/E and post-issue shares are blank in the RHP. Balance sheet was reconstructed from garbled text and cross-checked to totals. Reservation percentages are SEBI limits (QIB up to 50%, anchor up to 60% of QIB, NII at least 15%, retail at least 35%); employee reservation is up to 250,000 shares."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 67,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-16T14:44:43.038Z"
   },
   {
    "symbol": "TONBO",
@@ -2252,13 +2252,13 @@
       "source": "investorgain.com",
       "gmp": 500,
       "pct": 71.43,
-      "updated": "16-Oct 14:02",
+      "updated": "16-Oct 18:02",
       "seenLow": 270,
       "seenHigh": 500
      }
     ],
     "rating": 5,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -2294,7 +2294,7 @@
      "total": 3.992078144665872
     },
     {
-     "at": "2026-10-16T11:46:56.212Z",
+     "at": "2026-10-16T14:49:20.357Z",
      "date": "2026-10-16",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -2668,7 +2668,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:42:38.639Z"
+   "fetchedAt": "2026-10-16T14:44:48.264Z"
   },
   {
    "symbol": "SHELLZ",
@@ -2708,7 +2708,7 @@
     "total": {
      "offered": null,
      "bid": null,
-     "times": 0.8
+     "times": 0.89
     }
    },
    "demand": {
@@ -2791,14 +2791,14 @@
      "total": 0.76
     },
     {
-     "at": "2026-10-16T11:46:56.223Z",
+     "at": "2026-10-16T14:49:20.373Z",
      "date": "2026-10-16",
      "qib": null,
      "bnii": null,
      "snii": null,
      "nii": null,
      "retail": null,
-     "total": 0.8
+     "total": 0.89
     }
    ],
    "listingPerf": null,
@@ -3125,7 +3125,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:10.584Z"
+   "fetchedAt": "2026-10-16T14:45:19.116Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -3178,37 +3178,37 @@
     },
     "retail": {
      "offered": 2552727,
-     "bid": 14541069,
-     "times": 5.696288322253026
+     "bid": 14541630,
+     "times": 5.69650808723377
     },
     "employee": null,
     "total": {
      "offered": 1.404,
-     "bid": 6.2463831,
-     "times": 4.448990811965812
+     "bid": 6.2464392,
+     "times": 4.449030769230769
     }
    },
    "demand": {
-    "asOn": "As on 16-Oct-2026 17:09:00 IST",
-    "totalBids": 62526867,
+    "asOn": "As on 16-Oct-2026 19:00:00 IST",
+    "totalBids": 62527428,
     "timesSubscribed": 4.45,
     "byPrice": {
-     "275": "6,25,26,867",
-     "276": "6,24,80,355",
-     "277": "6,24,77,091",
-     "278": "6,24,75,714",
-     "279": "6,24,74,286",
-     "280": "6,24,72,399",
-     "281": "6,24,59,598",
-     "282": "6,24,54,447",
-     "283": "6,24,53,631",
-     "284": "6,24,52,968",
-     "285": "6,24,52,560",
-     "286": "6,24,44,655",
-     "287": "6,24,42,615",
-     "288": "6,24,41,493",
-     "289": "6,24,38,331",
-     "Cut-Off": "1,26,66,309"
+     "275": "6,25,27,428",
+     "276": "6,24,80,916",
+     "277": "6,24,77,652",
+     "278": "6,24,76,275",
+     "279": "6,24,74,847",
+     "280": "6,24,72,960",
+     "281": "6,24,60,159",
+     "282": "6,24,55,008",
+     "283": "6,24,54,192",
+     "284": "6,24,53,529",
+     "285": "6,24,53,121",
+     "286": "6,24,45,216",
+     "287": "6,24,43,176",
+     "288": "6,24,42,054",
+     "289": "6,24,38,892",
+     "Cut-Off": "1,26,66,870"
     }
    },
    "registrar": {
@@ -3290,21 +3290,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 14,
-    "min": 14,
-    "max": 14,
+    "value": 8,
+    "min": 8,
+    "max": 8,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 14,
-      "pct": 4.84,
-      "updated": "16-Oct 14:02",
-      "seenLow": 14,
+      "gmp": 8,
+      "pct": 2.77,
+      "updated": "16-Oct 18:02",
+      "seenLow": 8,
       "seenHigh": 55
      }
     ],
     "rating": 1,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-09",
@@ -3328,7 +3328,7 @@
      },
      {
       "date": "2026-10-16",
-      "gmp": 14
+      "gmp": 8
      }
     ]
    },
@@ -3354,14 +3354,14 @@
      "total": 1.0991807692307691
     },
     {
-     "at": "2026-10-16T11:46:56.213Z",
+     "at": "2026-10-16T14:49:20.358Z",
      "date": "2026-10-16",
      "qib": 4.007220250547682,
      "bnii": 4.490457851544642,
      "snii": 4.52208580160973,
      "nii": 4.501000498813034,
-     "retail": 5.696288322253026,
-     "total": 4.448990811965812
+     "retail": 5.69650808723377,
+     "total": 4.449030769230769
     }
    ],
    "listingPerf": null,
@@ -3747,7 +3747,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:42:44.338Z"
+   "fetchedAt": "2026-10-16T14:44:53.553Z"
   },
   {
    "symbol": "RAVITA",
@@ -3791,7 +3791,7 @@
     }
    },
    "demand": {
-    "asOn": "As on 16-Oct-2026 17:09:00 IST",
+    "asOn": "As on 16-Oct-2026 19:00:00 IST",
     "totalBids": 49538400,
     "timesSubscribed": 6.68,
     "byPrice": {
@@ -3875,13 +3875,13 @@
       "source": "investorgain.com",
       "gmp": 2,
       "pct": 1.79,
-      "updated": "16-Oct 14:02",
+      "updated": "16-Oct 18:02",
       "seenLow": 2,
       "seenHigh": 12
      }
     ],
     "rating": 1,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -3927,7 +3927,7 @@
      "total": 1.62
     },
     {
-     "at": "2026-10-16T11:46:56.213Z",
+     "at": "2026-10-16T14:49:20.359Z",
      "date": "2026-10-16",
      "qib": null,
      "bnii": null,
@@ -4247,7 +4247,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:42:45.241Z"
+   "fetchedAt": "2026-10-16T14:44:54.500Z"
   },
   {
    "symbol": "HDFIRE",
@@ -4407,13 +4407,13 @@
       "source": "investorgain.com",
       "gmp": 82,
       "pct": 30.26,
-      "updated": "16-Oct 14:02",
+      "updated": "16-Oct 18:02",
       "seenLow": 63,
       "seenHigh": 91
      }
     ],
     "rating": 4,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-07",
@@ -4973,13 +4973,13 @@
       "source": "investorgain.com",
       "gmp": 2,
       "pct": 3.7,
-      "updated": "16-Oct 14:02",
+      "updated": "16-Oct 18:02",
       "seenLow": 2,
       "seenHigh": 2
      }
     ],
     "rating": 1,
-    "updated": "16-Oct 14:02",
+    "updated": "16-Oct 18:02",
     "history": [
      {
       "date": "2026-10-13",
@@ -6242,12 +6242,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 73,
+    "dayOpen": 80,
     "ltp": 78.57,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -2.67,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": 4.76
    },
    "checks": [
@@ -6830,12 +6830,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 150.1699981689453,
+    "dayOpen": 215,
     "ltp": 150.17,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -31.74,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -31.74
    },
    "checks": [
@@ -8144,7 +8144,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:13.741Z"
+   "fetchedAt": "2026-10-16T14:45:22.418Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8591,7 +8591,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:14.690Z"
+   "fetchedAt": "2026-10-16T14:45:23.468Z"
   },
   {
    "symbol": "TNA",
@@ -9053,7 +9053,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:15.631Z"
+   "fetchedAt": "2026-10-16T14:45:24.232Z"
   },
   {
    "symbol": "DSL",
@@ -9468,7 +9468,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:16.430Z"
+   "fetchedAt": "2026-10-16T14:45:24.905Z"
   },
   {
    "symbol": "OMARA",
@@ -9927,7 +9927,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:19.167Z"
+   "fetchedAt": "2026-10-16T14:45:27.035Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10587,7 +10587,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:43:17.456Z"
+   "fetchedAt": "2026-10-16T14:45:25.595Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -10735,7 +10735,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:43:21.732Z"
+   "fetchedAt": "2026-10-16T14:45:29.929Z"
   },
   {
    "symbol": "VANS",
@@ -11193,7 +11193,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:23.195Z"
+   "fetchedAt": "2026-10-16T14:45:30.612Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -12913,7 +12913,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:19.951Z"
+   "fetchedAt": "2026-10-16T14:45:27.908Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13013,7 +13013,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:43:24.042Z"
+   "fetchedAt": "2026-10-16T14:45:31.445Z"
   },
   {
    "symbol": "PIND",
@@ -13494,7 +13494,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:25.196Z"
+   "fetchedAt": "2026-10-16T14:45:32.229Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -13679,7 +13679,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:43:26.693Z"
+   "fetchedAt": "2026-10-16T14:45:33.911Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -13903,12 +13903,12 @@
    },
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 401.6000061035156,
+    "dayOpen": 450,
     "ltp": 393.65,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": 47.65,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 44.72
    },
    "checks": [
@@ -15089,12 +15089,12 @@
    },
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 120.3499984741211,
+    "dayOpen": 142,
     "ltp": 119.7,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -13.42,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -13.88
    },
    "checks": [
@@ -15618,12 +15618,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 25.309999465942383,
+    "dayOpen": 28.31999969482422,
     "ltp": 24.94,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -20.91,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -22.06
    },
    "checks": [
@@ -15976,450 +15976,6 @@
     "sourceDoc": "Prospectus"
    },
    "fetchedAt": "2026-10-01T12:46:28.526Z"
-  },
-  {
-   "symbol": "HIMALAYAN",
-   "name": "Himalayan Solar Limited",
-   "board": "SME",
-   "status": "listed",
-   "open": "2026-09-25",
-   "close": "2026-09-29",
-   "timeline": {
-    "open": "2026-09-25",
-    "close": "2026-09-29",
-    "allotment": "2026-09-30",
-    "refund": "2026-10-01",
-    "demat": "2026-10-01",
-    "listing": "2026-10-05"
-   },
-   "allotment": "2026-09-30",
-   "listing": "2026-10-05",
-   "datesExpected": false,
-   "priceLow": 98,
-   "priceHigh": 103,
-   "lot": 1200,
-   "faceValue": 10,
-   "issueShares": 6222330,
-   "issueSizeCr": 64.09,
-   "issueType": "Book Building",
-   "maxRetailAmount": null,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue up to 58,90,800 Equity Shares and Offer for Sale up to 7,14,000 (Including market maker portion of 3,31,200 Equity Shares and Anchor Allocation of 7,52,400 Equity Shares)",
-   "upiCutoff": "29-Sep-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "total": {
-     "offered": 0,
-     "bid": 2940000,
-     "times": 0
-    }
-   },
-   "demand": {
-    "asOn": "As on 29-Sep-2026 19:00:00 IST",
-    "totalBids": 6904800,
-    "timesSubscribed": 1.18,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "Maashitla Securities Private Limited",
-    "address": "451, Krishna Apra Business Square Netaji Subhash Place, Pitampura, North West, New Delhi, Delhi, India, 110034.",
-    "contact": "Mr Mukul Agrawal ,011-47581432 , ipo@maashitla.com"
-   },
-   "leadManagers": "Finshore Management Services Limited",
-   "sponsorBank": "Kotak Mahindra Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_HIMALAYAN.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HIMALAYAN.zip"
-   },
-   "logo": null,
-   "documents": [
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HIMALAYAN.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/himalayan-solar-ipo/1975/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": null,
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 64.09,
-     "other": 68.03,
-     "ok": false
-    },
-    {
-     "field": "Lot size",
-     "nse": 1200,
-     "other": 1200,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 103,
-     "other": 103,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-09-29",
-     "other": "2026-09-29",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Himalayan Solar Limited",
-    "basis": "Standalone",
-    "about": "Himalayan Solar designs, manufactures, supplies, installs and commissions solar products, mainly solar water pumping systems, plus solar PV modules, inverter charge systems and rooftop power systems. It is based in Panchkula, Haryana, with a manufacturing unit in Karnal (60 MW Mono PERC module capacity). It has executed over 85,000 HP of solar pumping systems for government projects.",
-    "sector": "Solar energy equipment and solar water pumping systems",
-    "headquarters": "Panchkula, Haryana",
-    "founded_year": 2015,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      84.14,
-      93.82,
-      158.22
-     ],
-     "revenue": [
-      138.32,
-      142.44,
-      170.34
-     ],
-     "other_income": [
-      0.33,
-      0.7,
-      1.35
-     ],
-     "ebitda": [
-      7.83,
-      23.58,
-      29.04
-     ],
-     "pbt": [
-      6.87,
-      21.99,
-      27.69
-     ],
-     "pat": [
-      4.95,
-      16.43,
-      20.67
-     ],
-     "net_worth": [
-      10.33,
-      26.46,
-      46.93
-     ],
-     "reserves": [
-      6.73,
-      22.85,
-      30.71
-     ],
-     "borrowings": [
-      23.54,
-      26.95,
-      36.12
-     ],
-     "cash_and_bank": [
-      4.61,
-      6.84,
-      10.32
-     ],
-     "operating_cash_flow": [
-      -5.52,
-      3.9,
-      -2.07
-     ]
-    },
-    "kpi": {
-     "roce": [
-      23.37,
-      44.32,
-      35.84
-     ],
-     "ronw": [
-      47.86,
-      62.11,
-      44.04
-     ],
-     "roe": [
-      null,
-      null,
-      null
-     ],
-     "eps_basic": [
-      3.05,
-      10.13,
-      12.74
-     ],
-     "eps_diluted": [
-      3.05,
-      10.13,
-      12.74
-     ],
-     "pat_margin": [
-      3.58,
-      11.54,
-      12.13
-     ],
-     "ebitda_margin": [
-      5.66,
-      16.55,
-      17.05
-     ],
-     "debt_equity": [
-      2.28,
-      1.02,
-      0.77
-     ],
-     "current_ratio": [
-      null,
-      null,
-      null
-     ],
-     "nav_per_share": 28.93,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 10.26,
-     "other": [
-      {
-       "name": "Top 1 customer share of revenue",
-       "unit": "%",
-       "values": [
-        88.48,
-        85.15,
-        50
-       ]
-      },
-      {
-       "name": "Haryana share of domestic revenue",
-       "unit": "%",
-       "values": [
-        88.93,
-        86.15,
-        52.81
-       ]
-      },
-      {
-       "name": "Total income growth",
-       "unit": "%",
-       "values": [
-        191.13,
-        3.24,
-        19.95
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Ganesh Green Bharat Limited",
-      "revenue_cr": 1064.27,
-      "face_value": 10,
-      "cmp": 215.5,
-      "eps_basic": 30.31,
-      "eps_diluted": null,
-      "nav": 113.02,
-      "pe": 7.11,
-      "ronw": 26.82
-     },
-     {
-      "name": "Solarium Green Energy Limited",
-      "revenue_cr": 368.15,
-      "face_value": 10,
-      "cmp": 147.05,
-      "eps_basic": 9.81,
-      "eps_diluted": null,
-      "nav": 77.93,
-      "pe": 14.99,
-      "ronw": 12.58
-     },
-     {
-      "name": "Australian Premium Solar (India) Limited",
-      "revenue_cr": 707.96,
-      "face_value": 10,
-      "cmp": 239.3,
-      "eps_basic": 28.7,
-      "eps_diluted": null,
-      "nav": 81.44,
-      "pe": 8.34,
-      "ronw": 35.24
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 5890800,
-     "ofs_shares": 714000,
-     "pre_issue_shares": 16218899,
-     "post_issue_shares": 22109699,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Funding capital expenditure for expansion and upgradation of existing manufacturing facility (60 MW to 160 MW)",
-       "amount_cr": 12.98
-      },
-      {
-       "purpose": "Incremental working capital requirements",
-       "amount_cr": 29.5
-      },
-      {
-       "purpose": "Repayment/prepayment of certain outstanding borrowings",
-       "amount_cr": 2.12
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": 50,
-      "nii": 15,
-      "retail": 35,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Karthyayini M",
-      "Manjeet Singh",
-      "Himanshu Dalal",
-      "Mehtab Singh",
-      "Anita Kumari"
-     ],
-     "holding_pre_pct": 99.99,
-     "holding_post_pct": 70.13,
-     "background": "Promoters have no prior experience running a listed company. Karthyayini M holds 50.22% pre-issue and sells 7,14,000 shares in the OFS. Manjeet Singh holds 22.00% and is the key person driving the business."
-    },
-    "concentration": {
-     "top_customers_pct": 99.54,
-     "govt_share_pct": null,
-     "note": "Top 1 customer was 50.00% of FY26 revenue (85.15% FY25, 88.48% FY24); top 5 customers were 99.54% of FY26 revenue. Business is mainly government-linked solar pump projects."
-    },
-    "order_book_cr": 140.22,
-    "litigation_note": "Promoters: 1 criminal case (Rs 9.02 lakh) and against promoters 1 criminal, 1 tax and 1 other matter totalling about Rs 59.99 lakh; 1 tax matter of Rs 1.30 lakh against KMP/SMP. Contingent liabilities of Rs 29.18 crore (mostly bank guarantees) at Mar-26.",
-    "strengths": [
-     "Revenue grew from Rs 138.32 crore (FY24) to Rs 170.34 crore (FY26) while PAT rose from Rs 4.95 crore to Rs 20.67 crore.",
-     "Reported RoNW of 44.04% and ROCE of 35.84% in FY26 are high for the sector.",
-     "EBITDA margin improved from 5.66% in FY24 to 17.05% in FY26.",
-     "Pending order book of Rs 140.22 crore as of July 31, 2026, about 82% of FY26 revenue.",
-     "Empanelled solar partner with several state government departments, with over 85,000 HP of solar pumps executed.",
-     "Debt-to-equity improved from 2.28 in FY24 to 0.77 in FY26 as net worth grew.",
-     "Plans to raise module capacity from 60 MW to 160 MW with TOPCon bifacial technology using IPO funds.",
-     "Revenue base broadened beyond Haryana: Haryana share fell from 88.93% to 52.81% of domestic sales."
-    ],
-    "risks": [
-     {
-      "title": "Extreme customer concentration",
-      "detail": "Top 1 customer was 50.00% and top 5 customers 99.54% of FY26 revenue (top 1 was 88.48% in FY24). Losing one buyer would hurt revenue badly.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy working capital and receivables",
-      "detail": "Trade receivables jumped to Rs 125.34 crore at Mar-26 from Rs 66.32 crore, about 74% of FY26 revenue. Short-term borrowings are Rs 27.01 crore.",
-      "severity": "high"
-     },
-     {
-      "title": "Negative operating cash flow",
-      "detail": "Operating cash flow was negative Rs 2.07 crore in FY26 and negative Rs 5.52 crore in FY24 despite reported profits; FY25 was positive Rs 3.90 crore.",
-      "severity": "high"
-     },
-     {
-      "title": "Dependence on government schemes and policy",
-      "detail": "Business relies on subsidised solar pump schemes and government projects. Policy or MNRE standard changes, or the government assembling pumps itself, could hurt demand.",
-      "severity": "high"
-     },
-     {
-      "title": "Debt and lender charge over assets",
-      "detail": "Secured debt of Rs 51.11 crore at Mar-26 with charge on movable and immovable assets; Rs 3.05 crore unsecured director loan is repayable on demand. Borrowings were Rs 36.12 crore per KPI table.",
-      "severity": "medium"
-     },
-     {
-      "title": "Legal proceedings and compliance lapses",
-      "detail": "Criminal, tax and other cases against promoters (about Rs 59.99 lakh involved), plus Section 42 share application account non-compliance and delayed RoC, GST, EPF and ESIC filings.",
-      "severity": "medium"
-     },
-     {
-      "title": "Geographic and supplier concentration",
-      "detail": "Haryana was 52.81% of FY26 domestic revenue (88.93% in FY24); top suppliers contribute most supplies with no long-term contracts. Restated financials were signed by a peer-review CA who is not the statutory auditor.",
-      "severity": "medium"
-     },
-     {
-      "title": "Expansion execution and promoter control",
-      "detail": "No machinery orders yet placed for the Rs 12.98 crore capex; promoters will hold 70.13% post-issue and have no listed-company experience. Part of the issue is an OFS of 7,14,000 shares.",
-      "severity": "medium"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Restated standalone financials in Rs lakh converted to Rs crore; FY24-FY26 only (no stub period). Borrowings = long-term plus short-term (matches KPI table 3,612.38 lakh for FY26). Cash and bank includes other bank balances. EBITDA, margins, ROCE, RoNW, debt/equity as reported by the RHP (EBITDA excludes other income). EPS shown is adjusted for 3.5:1 bonus; unadjusted basic EPS was 13.72, 45.59, 12.74. Price band, issue price, issue size in rupees and P/E are blank in the RHP. Objects table: general corporate expenses amount is blank. Order book is Rs 14,021.69 lakh at July 31, 2026. Peer EPS is basic only."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 70,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-01T12:46:33.131Z"
   },
   {
    "symbol": "BMISL",
@@ -16937,6 +16493,450 @@
    "fetchedAt": "2026-10-01T12:46:37.838Z"
   },
   {
+   "symbol": "HIMALAYAN",
+   "name": "Himalayan Solar Limited",
+   "board": "SME",
+   "status": "listed",
+   "open": "2026-09-25",
+   "close": "2026-09-29",
+   "timeline": {
+    "open": "2026-09-25",
+    "close": "2026-09-29",
+    "allotment": "2026-09-30",
+    "refund": "2026-10-01",
+    "demat": "2026-10-01",
+    "listing": "2026-10-05"
+   },
+   "allotment": "2026-09-30",
+   "listing": "2026-10-05",
+   "datesExpected": false,
+   "priceLow": 98,
+   "priceHigh": 103,
+   "lot": 1200,
+   "faceValue": 10,
+   "issueShares": 6222330,
+   "issueSizeCr": 64.09,
+   "issueType": "Book Building",
+   "maxRetailAmount": null,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue up to 58,90,800 Equity Shares and Offer for Sale up to 7,14,000 (Including market maker portion of 3,31,200 Equity Shares and Anchor Allocation of 7,52,400 Equity Shares)",
+   "upiCutoff": "29-Sep-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "total": {
+     "offered": 0,
+     "bid": 2940000,
+     "times": 0
+    }
+   },
+   "demand": {
+    "asOn": "As on 29-Sep-2026 19:00:00 IST",
+    "totalBids": 6904800,
+    "timesSubscribed": 1.18,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "Maashitla Securities Private Limited",
+    "address": "451, Krishna Apra Business Square Netaji Subhash Place, Pitampura, North West, New Delhi, Delhi, India, 110034.",
+    "contact": "Mr Mukul Agrawal ,011-47581432 , ipo@maashitla.com"
+   },
+   "leadManagers": "Finshore Management Services Limited",
+   "sponsorBank": "Kotak Mahindra Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_HIMALAYAN.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HIMALAYAN.zip"
+   },
+   "logo": null,
+   "documents": [
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HIMALAYAN.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/himalayan-solar-ipo/1975/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 64.09,
+     "other": 68.03,
+     "ok": false
+    },
+    {
+     "field": "Lot size",
+     "nse": 1200,
+     "other": 1200,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 103,
+     "other": 103,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-09-29",
+     "other": "2026-09-29",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Himalayan Solar Limited",
+    "basis": "Standalone",
+    "about": "Himalayan Solar designs, manufactures, supplies, installs and commissions solar products, mainly solar water pumping systems, plus solar PV modules, inverter charge systems and rooftop power systems. It is based in Panchkula, Haryana, with a manufacturing unit in Karnal (60 MW Mono PERC module capacity). It has executed over 85,000 HP of solar pumping systems for government projects.",
+    "sector": "Solar energy equipment and solar water pumping systems",
+    "headquarters": "Panchkula, Haryana",
+    "founded_year": 2015,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      84.14,
+      93.82,
+      158.22
+     ],
+     "revenue": [
+      138.32,
+      142.44,
+      170.34
+     ],
+     "other_income": [
+      0.33,
+      0.7,
+      1.35
+     ],
+     "ebitda": [
+      7.83,
+      23.58,
+      29.04
+     ],
+     "pbt": [
+      6.87,
+      21.99,
+      27.69
+     ],
+     "pat": [
+      4.95,
+      16.43,
+      20.67
+     ],
+     "net_worth": [
+      10.33,
+      26.46,
+      46.93
+     ],
+     "reserves": [
+      6.73,
+      22.85,
+      30.71
+     ],
+     "borrowings": [
+      23.54,
+      26.95,
+      36.12
+     ],
+     "cash_and_bank": [
+      4.61,
+      6.84,
+      10.32
+     ],
+     "operating_cash_flow": [
+      -5.52,
+      3.9,
+      -2.07
+     ]
+    },
+    "kpi": {
+     "roce": [
+      23.37,
+      44.32,
+      35.84
+     ],
+     "ronw": [
+      47.86,
+      62.11,
+      44.04
+     ],
+     "roe": [
+      null,
+      null,
+      null
+     ],
+     "eps_basic": [
+      3.05,
+      10.13,
+      12.74
+     ],
+     "eps_diluted": [
+      3.05,
+      10.13,
+      12.74
+     ],
+     "pat_margin": [
+      3.58,
+      11.54,
+      12.13
+     ],
+     "ebitda_margin": [
+      5.66,
+      16.55,
+      17.05
+     ],
+     "debt_equity": [
+      2.28,
+      1.02,
+      0.77
+     ],
+     "current_ratio": [
+      null,
+      null,
+      null
+     ],
+     "nav_per_share": 28.93,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 10.26,
+     "other": [
+      {
+       "name": "Top 1 customer share of revenue",
+       "unit": "%",
+       "values": [
+        88.48,
+        85.15,
+        50
+       ]
+      },
+      {
+       "name": "Haryana share of domestic revenue",
+       "unit": "%",
+       "values": [
+        88.93,
+        86.15,
+        52.81
+       ]
+      },
+      {
+       "name": "Total income growth",
+       "unit": "%",
+       "values": [
+        191.13,
+        3.24,
+        19.95
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Ganesh Green Bharat Limited",
+      "revenue_cr": 1064.27,
+      "face_value": 10,
+      "cmp": 215.5,
+      "eps_basic": 30.31,
+      "eps_diluted": null,
+      "nav": 113.02,
+      "pe": 7.11,
+      "ronw": 26.82
+     },
+     {
+      "name": "Solarium Green Energy Limited",
+      "revenue_cr": 368.15,
+      "face_value": 10,
+      "cmp": 147.05,
+      "eps_basic": 9.81,
+      "eps_diluted": null,
+      "nav": 77.93,
+      "pe": 14.99,
+      "ronw": 12.58
+     },
+     {
+      "name": "Australian Premium Solar (India) Limited",
+      "revenue_cr": 707.96,
+      "face_value": 10,
+      "cmp": 239.3,
+      "eps_basic": 28.7,
+      "eps_diluted": null,
+      "nav": 81.44,
+      "pe": 8.34,
+      "ronw": 35.24
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 5890800,
+     "ofs_shares": 714000,
+     "pre_issue_shares": 16218899,
+     "post_issue_shares": 22109699,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Funding capital expenditure for expansion and upgradation of existing manufacturing facility (60 MW to 160 MW)",
+       "amount_cr": 12.98
+      },
+      {
+       "purpose": "Incremental working capital requirements",
+       "amount_cr": 29.5
+      },
+      {
+       "purpose": "Repayment/prepayment of certain outstanding borrowings",
+       "amount_cr": 2.12
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": 50,
+      "nii": 15,
+      "retail": 35,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Karthyayini M",
+      "Manjeet Singh",
+      "Himanshu Dalal",
+      "Mehtab Singh",
+      "Anita Kumari"
+     ],
+     "holding_pre_pct": 99.99,
+     "holding_post_pct": 70.13,
+     "background": "Promoters have no prior experience running a listed company. Karthyayini M holds 50.22% pre-issue and sells 7,14,000 shares in the OFS. Manjeet Singh holds 22.00% and is the key person driving the business."
+    },
+    "concentration": {
+     "top_customers_pct": 99.54,
+     "govt_share_pct": null,
+     "note": "Top 1 customer was 50.00% of FY26 revenue (85.15% FY25, 88.48% FY24); top 5 customers were 99.54% of FY26 revenue. Business is mainly government-linked solar pump projects."
+    },
+    "order_book_cr": 140.22,
+    "litigation_note": "Promoters: 1 criminal case (Rs 9.02 lakh) and against promoters 1 criminal, 1 tax and 1 other matter totalling about Rs 59.99 lakh; 1 tax matter of Rs 1.30 lakh against KMP/SMP. Contingent liabilities of Rs 29.18 crore (mostly bank guarantees) at Mar-26.",
+    "strengths": [
+     "Revenue grew from Rs 138.32 crore (FY24) to Rs 170.34 crore (FY26) while PAT rose from Rs 4.95 crore to Rs 20.67 crore.",
+     "Reported RoNW of 44.04% and ROCE of 35.84% in FY26 are high for the sector.",
+     "EBITDA margin improved from 5.66% in FY24 to 17.05% in FY26.",
+     "Pending order book of Rs 140.22 crore as of July 31, 2026, about 82% of FY26 revenue.",
+     "Empanelled solar partner with several state government departments, with over 85,000 HP of solar pumps executed.",
+     "Debt-to-equity improved from 2.28 in FY24 to 0.77 in FY26 as net worth grew.",
+     "Plans to raise module capacity from 60 MW to 160 MW with TOPCon bifacial technology using IPO funds.",
+     "Revenue base broadened beyond Haryana: Haryana share fell from 88.93% to 52.81% of domestic sales."
+    ],
+    "risks": [
+     {
+      "title": "Extreme customer concentration",
+      "detail": "Top 1 customer was 50.00% and top 5 customers 99.54% of FY26 revenue (top 1 was 88.48% in FY24). Losing one buyer would hurt revenue badly.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy working capital and receivables",
+      "detail": "Trade receivables jumped to Rs 125.34 crore at Mar-26 from Rs 66.32 crore, about 74% of FY26 revenue. Short-term borrowings are Rs 27.01 crore.",
+      "severity": "high"
+     },
+     {
+      "title": "Negative operating cash flow",
+      "detail": "Operating cash flow was negative Rs 2.07 crore in FY26 and negative Rs 5.52 crore in FY24 despite reported profits; FY25 was positive Rs 3.90 crore.",
+      "severity": "high"
+     },
+     {
+      "title": "Dependence on government schemes and policy",
+      "detail": "Business relies on subsidised solar pump schemes and government projects. Policy or MNRE standard changes, or the government assembling pumps itself, could hurt demand.",
+      "severity": "high"
+     },
+     {
+      "title": "Debt and lender charge over assets",
+      "detail": "Secured debt of Rs 51.11 crore at Mar-26 with charge on movable and immovable assets; Rs 3.05 crore unsecured director loan is repayable on demand. Borrowings were Rs 36.12 crore per KPI table.",
+      "severity": "medium"
+     },
+     {
+      "title": "Legal proceedings and compliance lapses",
+      "detail": "Criminal, tax and other cases against promoters (about Rs 59.99 lakh involved), plus Section 42 share application account non-compliance and delayed RoC, GST, EPF and ESIC filings.",
+      "severity": "medium"
+     },
+     {
+      "title": "Geographic and supplier concentration",
+      "detail": "Haryana was 52.81% of FY26 domestic revenue (88.93% in FY24); top suppliers contribute most supplies with no long-term contracts. Restated financials were signed by a peer-review CA who is not the statutory auditor.",
+      "severity": "medium"
+     },
+     {
+      "title": "Expansion execution and promoter control",
+      "detail": "No machinery orders yet placed for the Rs 12.98 crore capex; promoters will hold 70.13% post-issue and have no listed-company experience. Part of the issue is an OFS of 7,14,000 shares.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Restated standalone financials in Rs lakh converted to Rs crore; FY24-FY26 only (no stub period). Borrowings = long-term plus short-term (matches KPI table 3,612.38 lakh for FY26). Cash and bank includes other bank balances. EBITDA, margins, ROCE, RoNW, debt/equity as reported by the RHP (EBITDA excludes other income). EPS shown is adjusted for 3.5:1 bonus; unadjusted basic EPS was 13.72, 45.59, 12.74. Price band, issue price, issue size in rupees and P/E are blank in the RHP. Objects table: general corporate expenses amount is blank. Order book is Rs 14,021.69 lakh at July 31, 2026. Peer EPS is basic only."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 70,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-01T12:46:33.131Z"
+  },
+  {
    "symbol": "SAIURJA",
    "name": "Sai Urja Indo Ventures Limited",
    "board": "SME",
@@ -17420,7 +17420,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:32.279Z"
+   "fetchedAt": "2026-10-16T14:45:58.409Z"
   },
   {
    "symbol": "GREENASIA",
@@ -18128,12 +18128,12 @@
    },
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 391.3999938964844,
+    "dayOpen": 455,
     "ltp": 392.75,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-10-01",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -3.36,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": -3.02
    },
    "checks": [
@@ -19498,7 +19498,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:34.782Z"
+   "fetchedAt": "2026-10-16T14:46:01.023Z"
   },
   {
    "symbol": "ROOPA",
@@ -19985,7 +19985,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-16T11:43:35.566Z"
+   "fetchedAt": "2026-10-16T14:46:02.160Z"
   },
   {
    "symbol": "ADROITIND",
@@ -20703,12 +20703,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 313.1499938964844,
+    "dayOpen": 355.1000061035156,
     "ltp": 320.5,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": -13.49,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -11.46
    },
    "checks": [],
@@ -21793,12 +21793,12 @@
    },
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 230,
+    "dayOpen": 200,
     "ltp": 234.36,
     "exchange": "NSE",
-    "listDate": "2026-10-16",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-16",
-    "dayOpenGainPct": 24.32,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 26.68
    },
    "checks": [
@@ -22609,7 +22609,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-16T11:43:01.685Z"
+   "fetchedAt": "2026-10-16T14:45:10.012Z"
   }
  ],
  "filings": [
