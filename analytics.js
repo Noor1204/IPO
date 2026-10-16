@@ -2,7 +2,7 @@
 // It stays OFF until a site code is set in CODE below. It never runs on localhost, and never when the browser sends "Do Not Track".
 // Setup: see ADMIN.md. The dashboard (visitors, screens, countries, devices, actions) is at https://<CODE>.goatcounter.com
 (function () {
-  var CODE = "";   // <- your GoatCounter site code, for example "trendyipo" for https://trendyipo.goatcounter.com
+  var CODE = "trendyipo";   // <- your GoatCounter site code, for example "trendyipo" for https://trendyipo.goatcounter.com
   var local = ["localhost", "127.0.0.1", "[::1]"].indexOf(location.hostname) >= 0;
   var dnt = navigator.doNotTrack === "1" || window.doNotTrack === "1";
   var on = !!CODE && !local && !dnt && !window.TRENDY_NO_ANALYTICS;

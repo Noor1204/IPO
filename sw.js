@@ -1,6 +1,6 @@
 // App shell is cached for offline use. data/ipos.json is always fetched fresh; when offline we serve the last good copy of it.
 // An HTML page must never be handed back in place of the JSON (it used to, which made the app look empty).
-const CACHE = "ipo-radar-v53";
+const CACHE = "ipo-radar-v54";
 const SHELL = ["./", "index.html", "style.css", "app.js", "boot.js", "analytics.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
