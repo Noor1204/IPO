@@ -493,8 +493,30 @@ function settings() {
   <div class="card"><h2>⭐ Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
   <div class="card"><h2>${TEXT.aboutTitle[lang()]}</h2>${about()}</div>
   <div class="card"><h2>👤 Developer</h2><p class="sm" style="margin:0">Developed by <b>Zynora Technology</b> (Noor).</p></div>
+  <div class="card"><h2>🔒 Privacy</h2><p class="sm" style="margin:0">${TEXT.privacy[lang()]}</p>${langBtn()}</div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
+
+// ---------- anonymous usage counting (analytics.js; off until a GoatCounter code is set) ----------
+// Only which screen or button was used is recorded: no names, no personal data.
+function trackClick(t, d) {
+  const T = window.trendyTrack; if (!T) return;
+  const nm = id => byId(id)?.name || id;
+  if (d.open) T("ipo/" + d.open, "IPO opened: " + nm(d.open));
+  else if (d.apply) T("apply/" + d.apply, "Apply clicked: " + nm(d.apply));
+  else if (d.report) T("report/" + d.report, "Full report: " + nm(d.report));
+  else if (d.tab) T("tab/" + d.tab, "Tab: " + d.tab);
+  else if (d.seg) T("list/" + d.seg, "List: " + d.seg);
+  else if (d.stat) T("list/" + d.stat, "List: " + d.stat);
+  else if (d.pill) T("filter/" + d.pill, "Filter: " + d.pill);
+  else if (d.cmp) T("compare/add", "Compare: add or remove");
+  else if (d.watch) T("watchlist", "Watchlist: add or remove");
+  else if (d.lang) T("language/" + d.lang, "Language: " + d.lang);
+  else if (t.hasAttribute("data-refresh")) T("refresh", "Refresh data");
+  else if (t.hasAttribute("data-share")) T("share", "Share");
+  else if (t.hasAttribute("data-search")) T("search", "Search");
+}
+document.addEventListener("click", e => { const a = e.target.closest("a[data-track]"); if (a && window.trendyTrack) window.trendyTrack(a.dataset.track, "Broker link: " + a.dataset.track.split("/")[1]); });
 
 // ---------- disclaimer ----------
 // English by default; the "Translate to Hindi" button swaps the same message to Hindi (choice is remembered)
@@ -511,6 +533,10 @@ Data may be delayed, incomplete or wrong. Investing in IPOs involves <b>risk of 
     hi: `Trendy IPO सिर्फ़ <b>जानकारी</b> के लिए है, <b>निवेश सलाह नहीं</b>। हम SEBI-रजिस्टर्ड निवेश सलाहकार या रिसर्च एनालिस्ट नहीं हैं।
 स्कोर NSE, RHP और GMP के डेटा से बना एक ऑटोमैटिक फ़ॉर्मूला है — यह <b>खरीदने, बेचने या अप्लाई करने की सलाह नहीं</b> है। GMP <b>अफ़वाह (अनौपचारिक)</b> डेटा है और सही न भी हो सकता है।
 डेटा देर से आया, अधूरा या ग़लत हो सकता है। IPO में <b>पैसा डूबने का जोखिम</b> है। निवेश से पहले RHP ख़ुद पढ़ें और अपने लाइसेंस-प्राप्त सलाहकार से पूछें। इसे अपने जोखिम पर इस्तेमाल करें।`,
+  },
+  privacy: {
+    en: "Trendy IPO counts anonymous visits and which screens and buttons are used, so the app can be improved. No names, phone numbers, accounts or cookies are collected, and no IP address is stored by the counter. Browsers set to Do Not Track are not counted.",
+    hi: "Trendy IPO सिर्फ़ बिना नाम की गिनती करता है कि कितने लोग आए और कौन सी स्क्रीन या बटन इस्तेमाल हुए, ताकि ऐप बेहतर बन सके। नाम, फ़ोन नंबर, अकाउंट या कुकी नहीं ली जातीं, और काउंटर कोई IP एड्रेस सेव नहीं करता। 'Do Not Track' वाले ब्राउज़र गिने नहीं जाते।",
   },
   aboutTitle: { en: "About", hi: "ऐप के बारे में" },
   about: {
@@ -540,7 +566,7 @@ function render() {
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
-    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
+    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
@@ -552,6 +578,7 @@ function render() {
 function toast(m) { state.toast = m; render(); setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh]"); if (!t) return;
+  trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
