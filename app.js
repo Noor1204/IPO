@@ -484,7 +484,7 @@ function settings() {
   return `${head("Settings")}<div class="card"><h2>🔔 Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
   <div class="card"><h2>⭐ Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
   <div class="card"><h2>${TEXT.aboutTitle[lang()]}</h2>${about()}</div>
-  <div class="card"><h2>👤 Developer</h2><p class="sm" style="margin:0">Trendy IPO is built by <b>Noor</b>, <b>Zynora Technology</b>.</p></div>
+  <div class="card"><h2>👤 Developer</h2><p class="sm" style="margin:0">Developed by <b>Zynora Technology</b> (Noor).</p></div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
 
@@ -506,15 +506,15 @@ Data may be delayed, incomplete or wrong. Investing in IPOs involves <b>risk of 
   },
   aboutTitle: { en: "About", hi: "ऐप के बारे में" },
   about: {
-    en: `<b>Trendy IPO</b> — IPO information in one place: dates, price band, subscription (QIB / NII / retail), GMP, company numbers (from the RHP), risks, allotment links and a data-based 0–100 score. Data comes from official sources such as NSE, SEBI and the RHP; GMP is unofficial. Built by Noor, Zynora Technology.`,
-    hi: `<b>Trendy IPO</b> — IPO की जानकारी एक जगह: तारीखें, प्राइस बैंड, सब्सक्रिप्शन (QIB / NII / रिटेल), GMP, कंपनी के आँकड़े (RHP से), जोखिम, अलॉटमेंट लिंक और डेटा पर आधारित 0–100 स्कोर। डेटा NSE, SEBI और RHP जैसे आधिकारिक स्रोतों से आता है; GMP अनौपचारिक है। Noor द्वारा बनाया गया — Zynora Technology।`,
+    en: `<b>Trendy IPO</b> — IPO information in one place: dates, price band, subscription (QIB / NII / retail), GMP, company numbers (from the RHP), risks, allotment links and a data-based 0–100 score. Data comes from official sources such as NSE, SEBI and the RHP; GMP is unofficial. Developed by Zynora Technology (Noor).`,
+    hi: `<b>Trendy IPO</b> — IPO की जानकारी एक जगह: तारीखें, प्राइस बैंड, सब्सक्रिप्शन (QIB / NII / रिटेल), GMP, कंपनी के आँकड़े (RHP से), जोखिम, अलॉटमेंट लिंक और डेटा पर आधारित 0–100 स्कोर। डेटा NSE, SEBI और RHP जैसे आधिकारिक स्रोतों से आता है; GMP अनौपचारिक है। Zynora Technology (Noor) द्वारा विकसित।`,
   },
 };
 const lang = () => store.get("lang", "en") === "hi" ? "hi" : "en";
 const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">🌐 Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">🌐 Show in English / अंग्रेज़ी में पढ़ें</button>`;
 const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.disclaimer[lang()]}<br>${langBtn()}`;
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
-const credit = () => `<div class="credit">Built by <b>Noor</b> · <b>Zynora Technology</b><span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
+const credit = () => `<div class="credit">Developed by <b>Zynora Technology</b> (Noor)<span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
 // ---------- render & events ----------
