@@ -382,3 +382,6 @@ nav button{min-width:0}
 .tile .phase{padding:9px 6px;font-size:12.5px}
 @media(prefers-color-scheme:dark){.cd{color:#fcd34d}.cd.urgent{color:#fca5a5}.phase.wait{color:#fcd34d}.phase.listing{color:#a5b4fc}.phase.listingToday{color:#86efac}}
 @media(prefers-reduced-motion:reduce){.cd.urgent{animation:none}}
+
+.cd.soft{background:rgba(99,102,241,.1);border-color:rgba(99,102,241,.45);color:#4f46e5}
+@media(prefers-color-scheme:dark){.cd.soft{color:#a5b4fc}}

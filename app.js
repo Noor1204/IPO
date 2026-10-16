@@ -121,18 +121,18 @@ const endLabel = i => { const [h, m] = cutoffHM(i).split(":").map(Number); retur
 function phase(i, now = Date.now()) {
   if (i.status === "upcoming") return { k: "apply" };
   const end = endAt(i);
-  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null };
+  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: "Closes in", sub: "by " + endLabel(i) };
   if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
   const ex = i.datesExpected ? " (exp.)" : "";
-  if (i.listing && dayDiff(i.listing) === 0) return { k: "listingToday", label: "🔔 Listing today" };
-  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: "📈 Listing on " + fmtD(i.listing) + ex };
+  if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: "🔔 Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
+  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: "📈 Listing on " + fmtD(i.listing) + ex, end: i.listing ? new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime() : null, tl: "Listing in", sub: "10:00 AM" };
   if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", label: "✅ Allotment day: check your status" };
-  return { k: "wait", label: "⏳ Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : "") };
+  return { k: "wait", label: "⏳ Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : ""), end: i.allotment ? new Date(i.allotment + "T00:00:00" + IST_OFFSET).getTime() : null, tl: "Allotment day starts in", sub: i.allotment ? fmtD(i.allotment) + ex : "" };
 }
 const pad2 = n => String(n).padStart(2, "0");
-const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60); return (h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
+const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d > 0 ? d + "d " + pad2(h) + "h " + pad2(m) + "m " : h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
 // the live countdown (numbers are updated every second by tick() at the end of this file)
-const cdFor = i => { const p = phase(i); if (!p.end) return ""; return `<div class="cd${p.end - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${p.end}">⏱ Closes in <b data-cdtxt>${fmtCd(p.end - Date.now())}</b> <span>(by ${endLabel(i)})</span></div>`; };
+const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) return ""; return `<div class="cd${p.k === "apply" ? (p.end - Date.now() < 3600e3 ? " urgent" : "") : " soft"}" data-end="${p.end}" data-k="${p.k}">⏱ ${p.tl} <b data-cdtxt>${fmtCd(p.end - Date.now())}</b>${p.sub ? ` <span>(${p.sub})</span>` : ""}</div>`; };
 // the button (or the status that replaces it once bidding is over)
 function actionBtn(i, wide) {
   const p = phase(i), w = wide ? ' style="width:100%"' : "";
@@ -761,15 +761,16 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 })();
 
 // ---------- once a second: countdowns, the closing moment, and midnight ----------
+const firedEnds = new Set();   // each closing / allotment / listing moment redraws the screen once
 function tick() {
   const d0 = new Date(); d0.setHours(0, 0, 0, 0);
   if (d0.getTime() !== today.getTime()) { today = d0; if (state.loaded) state.ipos = state.ipos.map(withStatus); render(); return; }   // a new day began while the app was open
   let redraw = false;
   document.querySelectorAll("[data-end]").forEach(el => {
     const ms = +el.dataset.end - Date.now();
-    if (ms <= 0) { redraw = true; return; }                                                      // bidding just closed: swap the button for the new status
+    if (ms <= 0) { if (!firedEnds.has(el.dataset.end)) { firedEnds.add(el.dataset.end); redraw = true; } return; }                                                      // bidding just closed: swap the button for the new status
     const b = el.querySelector("[data-cdtxt]"); if (b) b.textContent = fmtCd(ms);
-    el.classList.toggle("urgent", ms < 3600e3);
+    if (!el.dataset.k || el.dataset.k === "apply") el.classList.toggle("urgent", ms < 3600e3);
   });
   if (redraw) render();
 }
