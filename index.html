@@ -2,6 +2,8 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Trendy IPO</title>
 <meta name="description" content="Trendy IPO: IPO details, subscription, GMP and a data-based score. Information only, not investment advice. | IPO की जानकारी, सब्सक्रिप्शन, GMP और डेटा-आधारित स्कोर। सिर्फ़ जानकारी के लिए, निवेश सलाह नहीं।">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; font-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
 <meta name="author" content="Zynora Technology (Noor)">
 <meta name="theme-color" content="#2563EB">
 <link rel="manifest" href="manifest.webmanifest">
@@ -75,12 +77,11 @@ html:has(#splash){overflow:hidden}
 <path class="star" d="M20 18Q20 24 26 24Q20 24 20 30Q20 24 14 24Q20 24 20 18Z" fill="#fff"/>
 <g clip-path="url(#spc)"><rect class="shine" x="-30" y="-20" width="26" height="150" fill="url(#spsh)" transform="rotate(20 50 50)"/></g></g></svg></div>
 <h1 aria-label="Trendy IPO"></h1><span class="spline"></span><p>IPO · GMP · Score</p><div class="by">Developed by <b>Zynora Technology</b> (Noor)</div></div>
-<script>(function(){try{var s=document.getElementById("splash"),h=s.querySelector("h1"),t="Trendy IPO";for(var i=0;i<t.length;i++){var c=document.createElement("span");c.textContent=t[i]===" "?" ":t[i];c.style.animationDelay=(2.15+i*.055)+"s";if(i>=7)c.className="gold";h.appendChild(c)}
-var done=function(){s.classList.add("out");setTimeout(function(){s.remove()},650)};var m=matchMedia("(prefers-reduced-motion:reduce)").matches;setTimeout(done,m?300:4200);s.addEventListener("click",done)}catch(e){}})();</script>
+<script src="boot.js"></script>
 <div id="app"></div>
 <nav><div><span class="navbrand"><img src="icons/logo.svg" alt="" width="34" height="34"><span>Trendy <b>IPO</b></span></span>
 <button data-tab="ipo"><b>📈</b>IPO</button><button data-tab="compare"><b>⚖️</b>Compare</button><button data-tab="allot"><b>🧾</b>Allotment</button><button data-tab="unlisted"><b>🔗</b>Unlisted</button><button data-tab="settings"><b>⚙️</b>Settings</button>
 </div></nav>
 <script src="app.js"></script>
-<script>if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("sw.js").catch(() => {}));</script>
+
 </body></html>

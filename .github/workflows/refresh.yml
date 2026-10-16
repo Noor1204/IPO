@@ -1,6 +1,6 @@
 name: Refresh data and publish site
 
-# Every hour: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, commit it and publish the site on GitHub Pages.
+# Every hour: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, check it, commit it and publish the site on GitHub Pages.
 # Company fundamentals (the score) are extracted on your own computer (needs your Claude login) and committed under data/fundamentals/.
 on:
   schedule:
@@ -8,12 +8,10 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["index.html", "style.css", "app.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+    paths: ["index.html", "style.css", "app.js", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+# no permissions by default; each job asks only for what it needs
+permissions: {}
 
 concurrency:
   group: refresh
@@ -22,11 +20,16 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write          # to commit the refreshed data
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Remember the last published data
+        run: cp data/ipos.json data/_prev.json
       # a source that is down (or blocks the runner) must not stop the others: the last good file stays in the repo
       - name: NSE
         continue-on-error: true
@@ -51,6 +54,10 @@ jobs:
       # The committed data/verify.json (from your last local run) is used as it is.
       - name: Build
         run: node pipeline/build.mjs
+      # if the data looks wrong (garbage, markup, unknown links, impossible numbers) this step fails and nothing below runs:
+      # the last good data stays in the repository and on the site
+      - name: Check the data
+        run: node pipeline/validate.mjs data/_prev.json
       - name: Commit data
         run: |
           git config user.name "trendy-ipo-bot"
@@ -66,6 +73,10 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write             # publish to GitHub Pages
+      id-token: write          # proves to Pages that this run is the one publishing
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

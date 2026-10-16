@@ -1,4 +1,7 @@
 const $ = s => document.querySelector(s);
+// logo images: show when loaded, remove when they fail (initials stay). Load/error do not bubble, so listen in the capture phase.
+document.addEventListener("load", e => { if (e.target.tagName === "IMG" && e.target.closest(".logo")) e.target.classList.add("ok"); }, true);
+document.addEventListener("error", e => { if (e.target.tagName === "IMG" && e.target.closest(".logo")) e.target.remove(); }, true);
 const store = {
   get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
   set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} }
@@ -24,6 +27,16 @@ const dayDiff = s => s ? Math.round((pd(s) - today) / 864e5) : null;
 const fmtD = s => s ? pd(s).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—";
 const fmtS = s => s ? pd(s).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "—";
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// ---------- security: nothing from the data file may become markup or a script ----------
+// Every string in the loaded data loses the characters that make tags and break out of attributes, and any javascript:/data: value is emptied.
+// esc() is still used wherever text is placed in HTML; this is the second layer.
+const cleanStr = s => {
+  const t = s.replace(/[<>"]/g, c => c === "<" ? "‹" : c === ">" ? "›" : "”"), l = t.trim().toLowerCase();
+  return l.startsWith("javascript:") || l.startsWith("vbscript:") || l.startsWith("data:") ? "" : t;
+};
+const clean = v => Array.isArray(v) ? v.map(clean) : v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [cleanStr(k), clean(x)])) : typeof v === "string" ? cleanStr(v) : v;
+const safeUrl = u => { const t = typeof u === "string" ? u.trim() : ""; return (t.startsWith("https://") || t.startsWith("http://") || t.startsWith("data/logos/")) && !t.includes(" ") && !t.includes("..") ? t : ""; };
+const logoSrc = u => typeof u === "string" && u.startsWith("data/logos/") && !u.includes("..") && !u.includes(" ") ? u : "";
 const byId = id => state.ipos.find(i => i.symbol === id);
 const FU = i => i.verification?.status === "fail" ? null : i.fundamentals;   // data that failed verification against the offer document is not used
 const last = a => Array.isArray(a) ? a[a.length - 1] : null;
@@ -93,7 +106,7 @@ function reasons(i) {
 const ring = (s, big) => `<div class="ring ${big ? "big" : ""} ${s === null || s === undefined ? "na" : ""}" ${s === null || s === undefined ? 'title="Score not available: the offer document has not been analysed yet"' : ""} style="background:conic-gradient(${col(s)} ${(s ?? 0) * 3.6}deg,var(--bd) 0)"><span>${s ?? "N/A"}</span></div>`;
 const hue = s => [...s].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 const logoText = i => /^IG-/.test(i.symbol) ? i.name.split(/\s+/).map(w => w[0]).join("").slice(0, 3).toUpperCase() : i.symbol.slice(0, 3);   // IG-only entries have no exchange symbol
-const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 42%)"><span>${esc(logoText(i))}</span>${i.logo ? `<img src="${esc(i.logo)}" alt="" onload="this.classList.add('ok')" onerror="this.remove()">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
+const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 42%)"><span>${esc(logoText(i))}</span>${logoSrc(i.logo) ? `<img src="${esc(logoSrc(i.logo))}" alt="" referrerpolicy="no-referrer">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
 function stLabel(i) {
   if (i.status !== "listed" && !i.close && !i.open) return `<span class="st gray">Dates not announced</span>`;
   if (i.status === "live" && !i.close) return `<span class="st red">● Open now</span>`;
@@ -285,7 +298,7 @@ const niceName = n => n === n.toUpperCase() ? n.toLowerCase().replace(/(^|[ (.&-
 // Companies that filed a draft/red-herring document with SEBI but have no IPO dates or price band yet
 function filingRow(f) {
   const d = pd(f.date), ago = -dayDiff(f.date), g = f.gmp;
-  return `<a class="uprow" href="${esc(f.url)}" target="_blank" rel="noopener">
+  return `<a class="uprow" href="${esc(safeUrl(f.url) || "#")}" target="_blank" rel="noopener noreferrer">
     <div class="datebox"><em style="margin:0 0 2px">FILED</em><b>${d.getDate()}</b><span>${d.toLocaleString("en-IN", { month: "short" }).toUpperCase()}</span></div>
     ${logo({ symbol: "IG-" + f.company, name: niceName(f.company), logo: f.logo })}<div class="upmain"><div class="upname">${esc(niceName(f.company))}</div>
       <div class="mut sm"><span class="pill sm">${esc(TYPE_LABEL[f.type] || f.type)}</span> ${ago <= 0 ? "today" : ago === 1 ? "yesterday" : ago + " days ago"}</div>
@@ -309,13 +322,13 @@ const tlRow = (label, d, est) => [label, d ? `${fmtD(d)}${est ? " (exp.)" : ""}`
 const reportCard = i => `<div class="card"><button class="btn" data-report="${i.symbol}" style="width:100%">📄 Full company report</button><p class="mut sm" style="margin:8px 0 0">All documents (read or download) and the complete data for this company.</p></div>`;
 const docIcon = d => d.kind === "pdf" || d.kind === "pdf-link" ? "📕" : d.kind === "link" ? "🔗" : d.kind === "zip" ? "🗜️" : "📄";
 function docRow(d) {
-  const url = esc(d.url), meta = [d.source, d.kind === "pdf" || d.kind === "pdf-link" ? "PDF" : d.kind === "zip" ? "ZIP" : null, d.sizeMB ? d.sizeMB + " MB" : null].filter(Boolean).join(" · ");
+  const url = esc(safeUrl(d.url)), meta = [d.source, d.kind === "pdf" || d.kind === "pdf-link" ? "PDF" : d.kind === "zip" ? "ZIP" : null, d.sizeMB ? d.sizeMB + " MB" : null].filter(Boolean).join(" · ");
   const btns = d.kind === "pdf-link"
-    ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener">Read</a><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener">Download</a>`
+    ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener noreferrer">Read</a><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Download</a>`
     : d.hosted && d.kind === "pdf"
-    ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener">Read</a><a class="btn sm ghost" href="${url}" download>Download</a>`
-    : d.kind === "link" ? `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener">Open ↗</a>`
-    : `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener" download>Download</a>`;
+    ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener noreferrer">Read</a><a class="btn sm ghost" href="${url}" download>Download</a>`
+    : d.kind === "link" ? `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Open ↗</a>`
+    : `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer" download>Download</a>`;
   return `<div class="docrow"><div class="docinfo"><b>${docIcon(d)} ${esc(d.label)}</b><div class="mut sm">${esc(meta)}</div></div><div class="docbtns">${btns}</div></div>`;
 }
 // all documents of an IPO, grouped; each hosted PDF can be read (opens in the browser's PDF viewer) or downloaded
@@ -404,20 +417,20 @@ function detail(forReport = false) {
 
   ${card("Subscription Detail (No. of Shares)", anyBid && rows.length ? tbl(["Category", "Offered", "Bid for", "Times"], [...rows.map(r => [r[0], inr(r[1].offered), inr(r[1].bid), f2(r[1].times)]), ...(b.total ? [["<b>Total</b>", inr(b.total.offered), inr(b.total.bid), `<b>${f2(b.total.times)}</b>`]] : [])]) + `<p class="mut sm">As on ${esc(i.demand?.asOn || "—")} (NSE).</p>` : `<p class="mut">Subscription data appears once the issue opens (${fmtD(i.open)}).</p>`, "subs")}
   ${dwRows.length ? card("Day Wise Subscription (snapshots)", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows)) : ""}
-  ${i.demand?.byPrice ? card("Cumulative Demand by Price (NSE)", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [k, x]))) : ""}
+  ${i.demand?.byPrice ? card("Cumulative Demand by Price (NSE)", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)]))) : ""}
   ${L ? card("Lot(s) Distribution", tbl(["Category", "Lot(s)", "Qty", "Amount"], [["RETAIL", 1, inr(i.lot), inr(i.lot * pr)], ["sHNI (from ₹2L)", L.s, inr(L.s * i.lot), inr(L.s * i.lot * pr)], ["bHNI (from ₹10L)", L.b, inr(L.b * i.lot), inr(L.b * i.lot * pr)]])) : ""}
 
   ${f ? `
   ${card("Key Performance Indicator", tbl(["KPI", ...rv(per)], [fr("ROCE (%)", K.roce), fr("RoNW (%)", K.ronw), fr("ROE (%)", K.roe), fr("EPS basic (₹)", K.eps_basic), fr("EPS diluted (₹)", K.eps_diluted), fr("PAT margin (%)", K.pat_margin), fr("EBITDA margin (%)", K.ebitda_margin), fr("Debt/Equity", K.debt_equity), ...(K.other || []).map(o => [`${esc(o.name)} (${esc(o.unit)})`, ...rv(o.values)])].map(r => r.map((c, k) => k ? (c === "—" ? c : c) : c))) + `<p class="mut sm">NAV/share: ${isNum(K.nav_per_share) ? "₹" + K.nav_per_share : "—"} · P/E post-IPO: ${isNum(p) ? p.toFixed(2) : "—"} · Pre-IPO P/E: ${isNum(K.pe_pre_ipo) ? K.pe_pre_ipo : "—"}</p>`, "fin")}
   ${card("Company Financials", tbl(["Period Ended", ...rv(per)], [fr("Total assets", F.total_assets), fr("Revenue", F.revenue), fr("EBITDA", F.ebitda), fr("Profit before tax", F.pbt), fr("Profit after tax", F.pat), fr("Net worth", F.net_worth), fr("Reserves", F.reserves), fr("Total borrowing", F.borrowings), fr("Cash & bank", F.cash_and_bank), fr("Operating cash flow", F.operating_cash_flow)]) + `<div class="mut sm" style="text-align:right;margin-top:6px">₹ crore · ${esc(f.basis || "")} · restated, per RHP</div>`)}
   ${(f.peers || []).length ? card("Peer Comparison", tbl(["Company", "P/E", "CMP (₹)", "EPS (₹)", "NAV (₹)", "RoNW %"], [[`<b>${esc(i.name)}</b>`, isNum(p) ? p.toFixed(2) : "—", pr, last(K.eps_diluted) ?? "—", K.nav_per_share ?? "—", last(K.ronw) ?? "—"], ...f.peers.map(x => [esc(x.name), x.pe ?? "—", x.cmp ?? "—", x.eps_diluted ?? x.eps_basic ?? "—", x.nav ?? "—", x.ronw ?? "—"])]) + (pa && p ? `<p class="mut sm">Peer avg P/E ${pa.toFixed(1)} → IPO at ${p < pa ? "a discount" : "a premium"} of ${Math.abs((p / pa - 1) * 100).toFixed(0)}%.</p>` : "")) : ""}
-  ${card("Issue Details", tbl(["", ""], [["Issue size", isNum(i.issueSizeCr) ? `₹${cr(i.issueSizeCr)} Cr (${inr(i.issueShares)} shares)` : "—"], ["Fresh issue", isNum(iss.fresh_issue_cr) ? `₹${cr(iss.fresh_issue_cr)} Cr` : "—"], ["Offer for sale", isNum(iss.ofs_cr) ? `₹${cr(iss.ofs_cr)} Cr` : iss.ofs_shares === 0 ? "-" : "—"], ["Face value", isNum(i.faceValue) ? `₹${i.faceValue}` : "—"], ["Issue type", esc(i.issueType || "—")], ["Shares pre-issue", inr(iss.pre_issue_shares)], ["Shares post-issue", inr(iss.post_issue_shares)], ["Reservation", iss.reservation_pct ? Object.entries(iss.reservation_pct).filter(([, x]) => isNum(x)).map(([k, x]) => `${k} ${x}%`).join(" · ") : "—"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, ""))}
+  ${card("Issue Details", tbl(["", ""], [["Issue size", isNum(i.issueSizeCr) ? `₹${cr(i.issueSizeCr)} Cr (${inr(i.issueShares)} shares)` : "—"], ["Fresh issue", isNum(iss.fresh_issue_cr) ? `₹${cr(iss.fresh_issue_cr)} Cr` : "—"], ["Offer for sale", isNum(iss.ofs_cr) ? `₹${cr(iss.ofs_cr)} Cr` : iss.ofs_shares === 0 ? "-" : "—"], ["Face value", isNum(i.faceValue) ? `₹${i.faceValue}` : "—"], ["Issue type", esc(i.issueType || "—")], ["Shares pre-issue", inr(iss.pre_issue_shares)], ["Shares post-issue", inr(iss.post_issue_shares)], ["Reservation", iss.reservation_pct ? Object.entries(iss.reservation_pct).filter(([, x]) => isNum(x)).map(([k, x]) => `${esc(k)} ${x}%`).join(" · ") : "—"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, ""))}
   ${(iss.objects || []).length ? card("Objects of the Issue", tbl(["Purpose", "₹ Cr"], iss.objects.map(o => [esc(o.purpose), o.amount_cr ?? "—"]))) : ""}
   ${card("About Company", `<p class="sub">${esc(f.about)}</p><div class="mut sm">${[f.headquarters && "HQ: " + esc(f.headquarters), f.founded_year && "Founded: " + f.founded_year, isNum(f.order_book_cr) && "Order book: ₹" + cr(f.order_book_cr) + " Cr"].filter(Boolean).join(" · ")}</div>`)}
   ${f.promoters?.names?.length ? card("Promoters", `<p class="sm">${f.promoters.names.map(esc).join(", ")}</p><div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? `<p class="sm">${esc(f.promoters.background)}</p>` : ""}`) : ""}
   ${(f.strengths || []).length ? card("Strength Factor", `<ul class="lst">${f.strengths.map(x => `<li>• ${esc(x)}</li>`).join("")}</ul>`) : ""}
   ${(f.risks || []).length ? card("Risk Factor", `<ul class="lst">${f.risks.map(x => `<li>${x.severity === "high" ? "🔴" : x.severity === "medium" ? "🟠" : "🟡"} <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`).join("")}</ul>`) : ""}
-  ${f.notes ? `<p class="mut sm">Data note: ${esc(f.notes)}</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : i.sourceNote || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
+  ${f.notes ? `<p class="mut sm">Data note: ${esc(f.notes)}</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
 
   ${forReport ? "" : reportCard(i)}
   ${card("Registrar", `<b>${esc(i.registrar.name || "—")}</b><div class="sm" style="margin-top:6px">${esc(i.registrar.address || "")}<br>${esc(i.registrar.contact || "")}</div>`)}
@@ -470,7 +483,7 @@ function allotment() {
   return `${head("Allotment Status")}<div class="card"><p class="mut">Select the IPO, then check on the registrar's official page using your PAN or application number.</p>
   <select id="allotSel">${list.map(i => `<option value="${i.symbol}" ${sel && sel.symbol === i.symbol ? "selected" : ""}>${esc(i.name)} (${fmtS(i.allotment)})</option>`).join("")}</select>
   ${sel ? `<div class="note"><b>Registrar:</b> ${esc(sel.registrar.name || "—")}<br>Allotment date: ${fmtD(sel.allotment)} ${sel.datesExpected ? "(expected)" : ""}<br>${esc(sel.registrar.contact || "")}</div>
-  ${registrarLink(sel) ? `<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px" href="${registrarLink(sel)}" target="_blank" rel="noopener">Check allotment status ↗</a>` : '<p class="mut sm">Registrar page not known for this IPO; use the NSE/BSE allotment page.</p>'}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
+  ${registrarLink(sel) ? `<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px" href="${registrarLink(sel)}" target="_blank" rel="noopener noreferrer">Check allotment status ↗</a>` : '<p class="mut sm">Registrar page not known for this IPO; use the NSE/BSE allotment page.</p>'}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
   <div class="note">Allotment is decided by the registrar's computerised lottery. Use the registrar's official website or the NSE/BSE allotment pages.</div>`;
 }
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
@@ -519,7 +532,7 @@ function render() {
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
   $("#app").innerHTML = (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
-    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
+    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
@@ -565,7 +578,7 @@ document.addEventListener("change", e => {
 });
 render();
 fetch("data/ipos.json", { cache: "no-store" }).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-  .then(j => { state.meta = j;
+  .then(j => { j = clean(j); state.meta = j;
     // status is recomputed from today's date so a stale data file never shows a closed IPO as live
     state.ipos = j.ipos.map(i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" }));
     state.loaded = true; const live = j.ipos.filter(i => i.status === "live"); if (!live.length) state.seg = "upcoming"; render(); })
