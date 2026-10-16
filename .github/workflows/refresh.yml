@@ -47,6 +47,7 @@ jobs:
         run: node pipeline/sebi.mjs
       - name: Offer-document links
         continue-on-error: true
+        timeout-minutes: 3          # this step downloads big PDFs from SEBI; the first run took 6 minutes, so it is capped
         run: node pipeline/offerdocs.mjs
       - name: Yahoo quotes
         continue-on-error: true
