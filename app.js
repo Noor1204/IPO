@@ -477,6 +477,60 @@ function compare() {
   ${wins.length ? `<div class="chips" style="margin:12px 0">${wins.join("")}</div>` : ""}${picker}
   <p class="mut sm">Green ✔ = best of the selected IPOs on that row, red = weakest. A highlight is only a comparison of these IPOs, not advice.</p>`;
 }
+// ---------- public reviews ----------
+// Visitors send a review; it lands in the admin's Google Sheet as "pending" and appears here only after the admin approves it (reviews-backend/Code.gs).
+const RV_URL = () => String(window.TRENDY_REVIEWS_URL || "").trim();
+state.rv = { name: "", rating: 0, text: "", consent: false, sending: false, msg: "", ok: false };
+state.reviews = { list: [], avg: 0, count: 0, loading: false, at: 0, error: "" };
+async function loadReviews(force) {
+  const R = state.reviews, url = RV_URL();
+  if (!url || R.loading || (!force && R.at && Date.now() - R.at < 5 * 60 * 1000)) return;   // not more than once in 5 minutes (this also stops a retry loop after an error)
+  R.loading = true; R.error = ""; render();
+  try {
+    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "action=list&t=" + Date.now());
+    const j = clean(await r.json());
+    R.list = (Array.isArray(j.reviews) ? j.reviews : []).slice(0, 100).map(x => ({ name: String(x.name || "Anonymous").slice(0, 40), rating: Math.max(1, Math.min(5, Math.round(+x.rating) || 1)), text: String(x.text || "").slice(0, 500), date: String(x.date || "") }));
+    R.avg = Math.max(0, Math.min(5, +j.avg || 0)); R.count = Math.max(0, +j.count || R.list.length);
+  } catch (e) { R.error = "Could not load reviews. Check your internet connection and try again."; }
+  R.at = Date.now(); R.loading = false; render();
+}
+async function sendReview() {
+  const F = state.rv, url = RV_URL(), name = F.name.trim(), text = F.text.trim(), hp = ($("#rv-site") || {}).value || "";
+  const fail = m => { F.msg = m; F.ok = false; render(); };
+  if (!url) return fail("Reviews are not open yet.");
+  if (!(F.rating >= 1)) return fail("Please tap the stars to give a rating.");
+  if (text.length < 5) return fail("Please write at least 5 characters.");
+  const low = (text + " " + name).toLowerCase();
+  if (low.includes("http") || low.includes("www.") || low.includes(".com")) return fail("Please do not add links or web addresses.");
+  if (!F.consent) return fail("Please tick the box to agree.");
+  if (Date.now() - (+store.get("rv_last", 0) || 0) < 10 * 60 * 1000) return fail("You sent a review a moment ago. Please try again after a few minutes.");
+  F.sending = true; F.msg = ""; render();
+  try {
+    await fetch(url, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ name, rating: F.rating, text, consent: true, website: hp }) });
+    store.set("rv_last", Date.now());
+    state.rv = { name: "", rating: 0, text: "", consent: false, sending: false, msg: "Thank you! Your review was sent. It will appear here after the admin approves it.", ok: true };
+  } catch (e) { F.sending = false; F.msg = "Could not send. Check your internet connection and try again."; F.ok = false; }
+  render();
+}
+function reviews() {
+  const R = state.reviews, F = state.rv, on = !!RV_URL();
+  const stars = n => "★".repeat(n) + "☆".repeat(5 - n);
+  const when = s => { const d = new Date(s); return isNaN(d) ? "" : d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }); };
+  const summary = !on ? card("⭐ Reviews", '<p class="mut sm" style="margin:0">Public reviews will open soon. Check back later.</p>')
+    : R.loading && !R.at ? card("⭐ Reviews", '<p class="mut sm" style="margin:0">Loading reviews…</p>')
+    : R.error ? card("⭐ Reviews", `<p class="mut sm">${esc(R.error)}</p><button class="btn ghost" data-review-reload style="width:100%">Try again</button>`)
+    : card("⭐ What users say", `<div class="rvsum"><div class="rvavg">${R.count ? R.avg.toFixed(1) : "-"}</div><div><div class="rvstars">${R.count ? stars(Math.round(R.avg)) : "☆☆☆☆☆"}</div><div class="mut sm">${R.count ? R.count + " review" + (R.count > 1 ? "s" : "") : "No reviews yet. Be the first."}</div></div></div>`);
+  const list = on && R.list.length ? R.list.map(x => `<div class="rvitem"><div class="row"><b>${esc(x.name)}</b><span class="rvstars sm">${stars(x.rating)}</span></div><p class="sm" style="margin:6px 0 4px;white-space:pre-line">${esc(x.text)}</p><div class="mut sm">${esc(when(x.date))}</div></div>`).join("") : "";
+  const form = card("✍️ Write a public review", `<div class="rvpick" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(n => `<button class="star${F.rating >= n ? " on" : ""}" data-star="${n}" aria-label="${n} star${n > 1 ? "s" : ""}">★</button>`).join("")}</div>
+    <input id="rv-name" maxlength="40" placeholder="Your name (optional)" value="${esc(F.name)}" autocomplete="off">
+    <textarea id="rv-text" maxlength="500" rows="4" placeholder="Your experience with Trendy IPO (5 to 500 characters). Please do not write phone numbers, emails or links.">${esc(F.text)}</textarea>
+    <input id="rv-site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="rvchk"><input type="checkbox" id="rv-consent" ${F.consent ? "checked" : ""}> <span>I agree that my review and name will be shown publicly after the admin approves it.</span></label>
+    <button class="btn" data-review-send ${F.sending || !on ? "disabled" : ""} style="width:100%">${F.sending ? "Sending…" : "Submit review"}</button>
+    ${F.msg ? `<p class="rvmsg ${F.ok ? "ok" : "bad"}">${esc(F.msg)}</p>` : ""}
+    <p class="mut sm" style="margin:10px 0 0">Reviews are checked by the admin before they appear.</p>`);
+  return `${head("Reviews")}<div class="rvwrap">${summary}${form}</div>${list ? `<h2 style="margin:18px 0 10px">All reviews</h2><div class="rvlist">${list}</div>` : ""}`;
+}
 function allotment() {
   const list = state.ipos.filter(i => i.status === "listed" || (i.status === "live" && i.close && dayDiff(i.close) <= 0));
   const sel = byId(state.allotIpo) || list[0];
@@ -513,6 +567,7 @@ function trackClick(t, d) {
   else if (d.watch) T("watchlist", "Watchlist: add or remove");
   else if (d.lang) T("language/" + d.lang, "Language: " + d.lang);
   else if (t.hasAttribute("data-refresh")) T("refresh", "Refresh data");
+  else if (t.hasAttribute("data-review-send")) T("review/send", "Review: submit pressed");
   else if (t.hasAttribute("data-share")) T("share", "Share");
   else if (t.hasAttribute("data-search")) T("search", "Search");
 }
@@ -535,8 +590,8 @@ Data may be delayed, incomplete or wrong. Investing in IPOs involves <b>risk of 
 डेटा देर से आया, अधूरा या ग़लत हो सकता है। IPO में <b>पैसा डूबने का जोखिम</b> है। निवेश से पहले RHP ख़ुद पढ़ें और अपने लाइसेंस-प्राप्त सलाहकार से पूछें। इसे अपने जोखिम पर इस्तेमाल करें।`,
   },
   privacy: {
-    en: "Trendy IPO counts anonymous visits and which screens and buttons are used, so the app can be improved. No names, phone numbers, accounts or cookies are collected, and no IP address is stored by the counter. Browsers set to Do Not Track are not counted.",
-    hi: "Trendy IPO सिर्फ़ बिना नाम की गिनती करता है कि कितने लोग आए और कौन सी स्क्रीन या बटन इस्तेमाल हुए, ताकि ऐप बेहतर बन सके। नाम, फ़ोन नंबर, अकाउंट या कुकी नहीं ली जातीं, और काउंटर कोई IP एड्रेस सेव नहीं करता। 'Do Not Track' वाले ब्राउज़र गिने नहीं जाते।",
+    en: "Trendy IPO counts anonymous visits and which screens and buttons are used, so the app can be improved. No names, phone numbers, accounts or cookies are collected, and no IP address is stored by the counter. Browsers set to Do Not Track are not counted. If you write a review, your rating, text and the optional name are kept by the admin and shown publicly only after approval; please do not write personal details.",
+    hi: "Trendy IPO सिर्फ़ बिना नाम की गिनती करता है कि कितने लोग आए और कौन सी स्क्रीन या बटन इस्तेमाल हुए, ताकि ऐप बेहतर बन सके। नाम, फ़ोन नंबर, अकाउंट या कुकी नहीं ली जातीं, और काउंटर कोई IP एड्रेस सेव नहीं करता। 'Do Not Track' वाले ब्राउज़र गिने नहीं जाते। अगर आप रिव्यू लिखते हैं तो आपकी रेटिंग, टेक्स्ट और वैकल्पिक नाम एडमिन के पास रहते हैं और मंज़ूरी के बाद ही सबको दिखते हैं; कृपया निजी जानकारी न लिखें।",
   },
   aboutTitle: { en: "About", hi: "ऐप के बारे में" },
   about: {
@@ -562,12 +617,13 @@ const acked = () => state.ack;   // shown on every app open, gone after the user
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, reviews, settings };
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
+  if (state.tab === "reviews" && !state.detail && !state.report) loadReviews(false);
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };
@@ -577,9 +633,12 @@ function render() {
 }
 function toast(m) { state.toast = m; render(); setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-review-send],[data-review-reload]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
+  if (t.dataset.star) { state.rv.rating = +t.dataset.star; state.rv.msg = ""; render(); return; }
+  if (t.hasAttribute("data-review-send")) { sendReview(); return; }
+  if (t.hasAttribute("data-review-reload")) { loadReviews(true); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
   if (t.dataset.rtab) { state.reportTab = t.dataset.rtab; render(); scrollTo(0, 0); return; }
@@ -607,8 +666,11 @@ document.addEventListener("click", e => {
   else if (d.toast) return toast(d.toast);
   render();
 });
+// typing in the review form is kept in state (the screen is not redrawn while typing)
+document.addEventListener("input", e => { const id = e.target.id; if (id === "rv-name") state.rv.name = e.target.value; else if (id === "rv-text") state.rv.text = e.target.value; });
 document.addEventListener("change", e => {
   const d = e.target.dataset;
+  if (e.target.id === "rv-consent") { state.rv.consent = e.target.checked; return; }
   if (d.alert) { state.alerts[d.alert] = e.target.checked; store.set("alerts", state.alerts); }
   else if (d.board) { state[d.board] = e.target.checked; if (!state.main && !state.sme) state.main = true; render(); }
 });

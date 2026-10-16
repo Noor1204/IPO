@@ -344,3 +344,25 @@ a.uprow{border-left-color:#8b5cf6}
 
 /* the browser's own pull-to-reload is switched off so the app's own pull-to-refresh behaves the same on every phone */
 html,body{overscroll-behavior-y:contain}
+
+/* ---- reviews ---- */
+.rvwrap{display:grid;gap:14px;align-items:start}
+@media(min-width:960px){.rvwrap{grid-template-columns:1fr 1fr}}
+.rvwrap .card{margin:0}
+.rvsum{display:flex;gap:16px;align-items:center}
+.rvavg{font-size:44px;font-weight:900;line-height:1;color:var(--pri)}
+.rvstars{color:#f59e0b;letter-spacing:2px;font-size:18px}.rvstars.sm{font-size:14px}
+.rvpick{display:flex;gap:4px;margin:2px 0 10px}
+.star{background:none;border:0;font-size:34px;line-height:1;color:var(--bd);cursor:pointer;padding:2px 4px;transition:transform .15s,color .15s}
+.star.on{color:#f59e0b}.star:hover{transform:scale(1.2)}
+textarea{width:100%;padding:11px 12px;border-radius:10px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;font-size:14px;margin-bottom:10px;resize:vertical;min-height:96px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.rvchk{display:flex;gap:8px;align-items:flex-start;font-size:12.5px;margin:0 0 12px;color:var(--mut)}
+.rvchk input{margin-top:2px}
+.rvmsg{margin:10px 0 0;font-size:13px;font-weight:600}.rvmsg.ok{color:var(--ok)}.rvmsg.bad{color:var(--bad)}
+.rvlist{display:grid;gap:10px}
+@media(min-width:720px){.rvlist{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:960px){.rvlist{grid-template-columns:repeat(3,1fr)}}
+.rvitem{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px 14px;min-width:0;overflow-wrap:anywhere}
+.btn[disabled]{opacity:.55;cursor:not-allowed;animation:none}
+nav button{min-width:0}
