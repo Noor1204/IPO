@@ -139,7 +139,7 @@ function listCard(i) {
   <div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
   <button class="btn ${i.status === "listed" ? "off" : ""} ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}">${applyLabel(i)}</button></div></div>`;
 }
-const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span></div>`;
+const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
 function spark(arr, w = 300, h = 90) {
   const mn = Math.min(...arr, 0), mx = Math.max(...arr, 1), sx = w / (arr.length - 1 || 1), y = v => h - 10 - (v - mn) / (mx - mn || 1) * (h - 20);
@@ -212,7 +212,7 @@ function ipoTab() {
   const cand = state.ipos.filter(i => i.status === state.seg && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
   const shown = state.seg === "listed" && !state.showAll && !state.q ? list.slice(0, 12) : list;
   const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c}">${cnt[k]}</b></button>`;
-  return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib${state.refreshing ? " spin" : ""}" data-refresh title="Refresh data" aria-label="Refresh data">🔄</button><button class="ib" data-tab="settings">🔔</button>`)}
+  return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib" data-tab="settings">🔔</button>`)}
   ${state.search ? `<input id="q" placeholder="Search IPO" value="${esc(state.q)}">` : ""}
   <div class="stats">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
   <div class="seg">${["live", "upcoming", "listed"].map(s => `<button data-seg="${s}" class="${state.seg === s ? "on" : ""}">${s === "listed" ? "Closed" : s[0].toUpperCase() + s.slice(1)}</button>`).join("")}</div>
@@ -615,3 +615,18 @@ render();
 loadData(false);
 setInterval(() => { if (document.visibilityState === "visible") loadData(false); }, 5 * 60 * 1000);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - lastLoad > 5 * 60 * 1000) loadData(false); });
+
+// ---------- pull to refresh ----------
+(() => {
+  let y0 = null, dy = 0, bar = null;
+  const hide = () => { if (bar) bar.classList.remove("show"); };
+  document.addEventListener("touchstart", e => { y0 = window.scrollY <= 0 && e.touches.length === 1 && !document.querySelector(".modal") ? e.touches[0].clientY : null; dy = 0; }, { passive: true });
+  document.addEventListener("touchmove", e => {
+    if (y0 === null) return;
+    dy = e.touches[0].clientY - y0;
+    if (dy < 10) return hide();
+    if (!bar) { bar = document.createElement("div"); bar.id = "ptr"; document.body.appendChild(bar); }
+    bar.textContent = dy > 90 ? "Release to refresh" : "Pull down to refresh"; bar.classList.add("show");
+  }, { passive: true });
+  document.addEventListener("touchend", () => { const go = y0 !== null && dy > 90; y0 = null; dy = 0; hide(); if (go) loadData(true); }, { passive: true });
+})();
