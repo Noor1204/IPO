@@ -626,7 +626,9 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
     dy = e.touches[0].clientY - y0;
     if (dy < 10) return hide();
     if (!bar) { bar = document.createElement("div"); bar.id = "ptr"; document.body.appendChild(bar); }
-    bar.textContent = dy > 90 ? "Release to refresh" : "Pull down to refresh"; bar.classList.add("show");
+    bar.textContent = dy > 70 ? "Release to refresh" : "Pull down to refresh"; bar.classList.add("show");
   }, { passive: true });
-  document.addEventListener("touchend", () => { const go = y0 !== null && dy > 90; y0 = null; dy = 0; hide(); if (go) loadData(true); }, { passive: true });
+  const done = () => { const go = y0 !== null && dy > 70; y0 = null; dy = 0; if (!go) return hide(); bar.textContent = "Refreshing…"; bar.classList.add("show"); loadData(true).finally(hide); navigator.serviceWorker?.getRegistration().then(r => r && r.update()).catch(() => {}); };   // also looks for a new version of the app
+  document.addEventListener("touchend", done, { passive: true });
+  document.addEventListener("touchcancel", () => { y0 = null; dy = 0; hide(); }, { passive: true });
 })();
