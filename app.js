@@ -140,7 +140,7 @@ const card = (title, inner, id = "") => `<div class="card" ${id ? `id="${id}"` :
 // ---------- dashboard extras: insights, this week's calendar, recent listings ----------
 const shortName = n => n.replace(/[ ]+(Limited|Ltd|Ltd[.])$/i, "");
 function insights() {
-  const open = state.ipos.filter(i => i.status !== "listed" && boardOk(i));
+  const open = state.ipos.filter(i => i.status === "live" && boardOk(i));
   const best = (arr, f) => arr.filter(i => isNum(f(i))).sort((x, y) => f(y) - f(x))[0];
   const g = best(open, gmpPct), s = best(open.filter(i => i.status === "live"), totalTimes), sc = best(open, score), today = open.filter(isClosingToday);
   const card = (icon, label, value, sub, cls, sym) => `<div class="ins${sym ? " ipoc" : ""}" ${sym ? `data-open="${sym}"` : ""}><div class="insl"><i>${icon}</i>${label}</div><b class="${cls}">${value}</b><div class="mut sm insn">${sub}</div></div>`;
@@ -153,13 +153,13 @@ function insights() {
   return `<div class="insights">${cards.join("")}</div>`;
 }
 // everything that happens in the next 7 days: opens, closes, allotment, listing
-function calendarCard() {
+function calendarCard(status, days) {
   const ev = [];
   for (const i of state.ipos) {
-    if (!boardOk(i)) continue;
+    if (!boardOk(i) || i.status !== status) continue;
     for (const [k, label, cls] of [["open", "Opens", "c-open"], ["close", "Closes", "c-close"], ["allotment", "Allotment", "c-allot"], ["listing", "Listing", "c-list"]]) {
       const d = i[k], n = dayDiff(d);
-      if (d && n !== null && n >= 0 && n <= 7 && (k !== "open" || i.status === "upcoming") && !(i.status === "listed" && k !== "listing")) ev.push({ d, n, label, cls, i, est: i.datesExpected && (k === "allotment" || k === "listing") });
+      if (d && n !== null && n >= 0 && n <= days && (k !== "open" || i.status === "upcoming")) ev.push({ d, n, label, cls, i, est: i.datesExpected && (k === "allotment" || k === "listing") });
     }
   }
   ev.sort((x, y) => x.d.localeCompare(y.d) || x.label.localeCompare(y.label));
@@ -168,7 +168,7 @@ function calendarCard() {
     return `<div class="calrow ipoc" data-open="${e.i.symbol}"><div class="calday"><b>${dt.getDate()}</b><span>${dt.toLocaleString("en-IN", { month: "short" })}</span></div>
       ${logo(e.i)}<div class="calmain"><div class="calname">${esc(shortName(e.i.name))}</div><div class="mut sm">${e.n === 0 ? "Today" : e.n === 1 ? "Tomorrow" : dt.toLocaleDateString("en-IN", { weekday: "long" })}</div></div><span class="calchip ${e.cls}">${e.label}${e.est ? " (exp.)" : ""}</span></div>`;
   }).join("");
-  return `<div class="card dcard"><h2>📅 Next 7 days</h2>${rows || '<p class="mut sm">No IPO events in the next 7 days.</p>'}</div>`;
+  return `<div class="card dcard"><h2>📅 ${status === "live" ? "Live IPOs" : "Upcoming IPOs"} · next ${days} days</h2>${rows || `<p class="mut sm">No events in the next ${days} days.</p>`}</div>`;
 }
 // day-1 gain of the latest listings, drawn to one scale
 function recentCard() {
@@ -196,7 +196,7 @@ function ipoTab() {
   list.sort(sorters[state.sort]);
   const closingToday = state.seg === "live" ? list.filter(isClosingToday) : [];
   if (closingToday.length) list = list.filter(i => !isClosingToday(i));   // shown in their own block above
-  const cand = state.ipos.filter(i => i.status !== "listed" && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
+  const cand = state.ipos.filter(i => i.status === state.seg && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
   const shown = state.seg === "listed" && !state.showAll && !state.q ? list.slice(0, 12) : list;
   const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c}">${cnt[k]}</b></button>`;
   return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib" data-tab="settings">🔔</button>`)}
@@ -207,12 +207,13 @@ function ipoTab() {
   <select id="sort" style="width:auto;margin:0;padding:6px"><option value="score" ${state.sort === "score" ? "selected" : ""}>Sort: Score</option><option value="gmp" ${state.sort === "gmp" ? "selected" : ""}>Sort: GMP %</option><option value="subs" ${state.sort === "subs" ? "selected" : ""}>Sort: Subscription</option><option value="date" ${state.sort === "date" ? "selected" : ""}>Sort: Open date</option></select></div>
   ${top && state.seg !== "listed" && !state.q ? `<div class="note" style="margin:0 0 12px">🏆 <b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</div>` : ""}
   ${state.seg === "live" && !state.q ? insights() : ""}
+  ${state.seg === "listed" && !state.q ? `<div class="two">${recentCard()}</div>` : ""}
   ${state.seg === "listed" ? outcomes() : ""}
   ${closingBlock(closingToday)}
   ${state.seg === "upcoming" ? upDashboard() : (shown.length ? `<div class="cards">${shown.map(listCard).join("")}</div>` : (closingToday.length ? "" : '<p class="mut" style="text-align:center;margin-top:40px">No IPOs in this category.</p>'))}
   ${shown.length < list.length ? `<button class="btn ghost morebtn" data-more>Show all ${list.length}</button>` : ""}
-  ${state.seg === "live" && !state.q ? `<div class="two">${calendarCard()}${recentCard()}</div>` : ""}
-  ${state.seg === "live" ? upcomingStrip() : ""}
+  ${state.seg === "live" && !state.q ? `<div class="two">${calendarCard("live", 7)}</div>` : ""}
+  ${state.seg === "upcoming" && !state.q ? `<div class="two">${calendarCard("upcoming", 14)}</div>` : ""}
   ${state.seg === "upcoming" ? gmpNote() + filingsBlock() : ""}
   <p class="disc">Live data: NSE India, SEBI, RHP documents; GMP from ipowatch.in + investorgain.com (unofficial). Updated ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}. Not investment advice.</p>`;
 }
@@ -279,11 +280,6 @@ function upDashboard() {
   return `<div class="tiles" style="margin-bottom:12px"><div class="tile ut ut1"><i>📅</i>Upcoming<b>${ups.length}</b></div><div class="tile ut ut2"><i>⏰</i>Opening in 7 days<b>${wk}</b></div><div class="tile ut ut3"><i>🚀</i>Highest GMP<b>${top ? "₹" + gmpNow(top) : "—"}</b><span class="mut sm">${top ? esc(top.name.split(" ").slice(0, 2).join(" ")) : ""}</span></div></div>` +
     groups.map(([t, f], gi) => { const l = ups.filter(f); return l.length ? `<h2 class="grp gp${gi}">${t} (${l.length})</h2><div class="cards">${l.map(upRow).join("")}</div>` : ""; }).join("") +
     `<p class="mut sm">* Allotment/listing dates are estimates until the issuer confirms them.</p>`;
-}
-function upcomingStrip() {
-  const ups = upList();
-  if (!ups.length) return "";
-  return `<h2 style="margin:22px 0 8px">⏳ Upcoming IPOs (${ups.length})</h2><div class="cards">${ups.map(upRow).join("")}</div>${gmpNote()}`;
 }
 const TYPE_LABEL = { DRHP: "Draft prospectus", UDRHP: "Updated draft", Addendum: "Addendum", Abridged: "Abridged draft", Other: "Filing" };
 const niceName = n => n === n.toUpperCase() ? n.toLowerCase().replace(/(^|[ (.&-])([a-z])/g, (m, p, c) => p + c.toUpperCase()) : n;   // "OSWAL CABLES LIMITED" -> "Oswal Cables Limited"

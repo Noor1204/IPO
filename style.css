@@ -318,3 +318,8 @@ a.uprow{border-left-color:#8b5cf6}
 .credit span{display:block;margin-top:3px;font-size:11px;opacity:.8}
 @media(min-width:960px){.credit{margin-bottom:0}}
 @media print{.credit{display:none}}
+
+.two:has(> :only-child){grid-template-columns:1fr}
+.two{margin-top:0;margin-bottom:18px}
+/* ---- IPO in the logo: extra bold ---- */
+.brand b,.navbrand b,#splash h1 .gold{font-family:"Arial Black","Segoe UI Black","Helvetica Neue",Impact,system-ui,sans-serif;font-weight:900;-webkit-text-stroke-width:1.4px}
