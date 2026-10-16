@@ -323,3 +323,9 @@ a.uprow{border-left-color:#8b5cf6}
 .two{margin-top:0;margin-bottom:18px}
 /* ---- IPO in the logo: extra bold ---- */
 .brand b,.navbrand b,#splash h1 .gold{font-family:"Arial Black","Segoe UI Black","Helvetica Neue",Impact,system-ui,sans-serif;font-weight:900;-webkit-text-stroke-width:1.4px}
+
+/* stale-data warning */
+.stale{margin:0 0 12px;padding:10px 14px;border-radius:12px;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.45);color:#b91c1c;font-size:13px;font-weight:600}
+.stale span{display:block;font-weight:500;opacity:.9;margin-top:2px}
+@media(prefers-color-scheme:dark){.stale{color:#fca5a5}}
+@media print{.stale{display:none}}

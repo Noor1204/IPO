@@ -6,3 +6,4 @@ if not exist data\logs mkdir data\logs
 echo ==== %date% %time% ==== >> data\logs\daily.log
 call npm run refresh >> data\logs\daily.log 2>&1
 echo exit code %errorlevel% >> data\logs\daily.log
+call scripts\push-data.cmd

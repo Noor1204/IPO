@@ -523,6 +523,14 @@ const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">
 const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.disclaimer[lang()]}<br>${langBtn()}`;
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
 const credit = () => `<div class="credit">Developed by <b>Zynora Technology</b> (Noor)<span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
+// If the data file stops being refreshed, say so on every screen instead of quietly showing old numbers.
+const STALE_HOURS = 3;
+const staleBar = () => {
+  const h = state.meta?.generatedAt ? (Date.now() - new Date(state.meta.generatedAt).getTime()) / 3600e3 : 0;
+  if (!(h > STALE_HOURS)) return "";
+  const age = h >= 48 ? Math.floor(h / 24) + " days" : Math.floor(h) + " hours", ageHi = h >= 48 ? Math.floor(h / 24) + " दिन" : Math.floor(h) + " घंटे";
+  return `<div class="stale">⚠️ Data is ${age} old: live updates may have stopped. <span>डेटा ${ageHi} पुराना है।</span></div>`;
+};
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
 // ---------- render & events ----------
@@ -530,7 +538,7 @@ function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
   const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings };
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
-  $("#app").innerHTML = (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
+  $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");

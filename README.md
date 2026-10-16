@@ -24,6 +24,11 @@ Information only, not investment advice.
 `npm run live` = fast hourly refresh (NSE without document downloads, BSE, GMP, SEBI, Yahoo, verify, build).
 `npm run serve` serves the app on http://localhost:8740.
 
+### Two routes to the live site
+1. **Cloud (GitHub Actions)**: every hour the workflow refreshes the data and publishes the site.
+2. **This PC (backup)**: after each hourly/daily run, `scripts/push-data.cmd` checks the data and pushes it to GitHub (only once a GitHub remote named `origin` exists). It is also the only route for company figures and logos, which need this PC.
+If neither route updates the data for more than 3 hours, the app shows a red "Data is N hours old" bar.
+
 ### Scheduling
 Windows Task Scheduler tasks (set to run on battery, hidden window):
 - `IPORadar-Live` — every hour → `scripts/run-live.cmd` → `data/logs/live.log`
