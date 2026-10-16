@@ -304,3 +304,17 @@ a.uprow{border-left-color:#8b5cf6}
 @keyframes ipo-hue{0%{filter:hue-rotate(0deg) brightness(1);transform:scale(1)}50%{filter:hue-rotate(180deg) brightness(1.35);transform:scale(1.08)}100%{filter:hue-rotate(360deg) brightness(1);transform:scale(1)}}
 .brand b,.navbrand b{display:inline-block;font-size:1.45em;font-weight:900;letter-spacing:1.5px;line-height:1;color:#fbbf24;-webkit-text-stroke:.7px #d97706;text-shadow:0 2px 0 rgba(120,53,15,.35),0 0 12px rgba(251,191,36,.65);animation:ipo-hue 4s linear infinite;margin-left:2px}
 @media(prefers-reduced-motion:reduce){.brand b,.navbrand b{animation:none}}
+
+/* ---- Apply = app blue (not green); Pre Apply = grey; both keep blinking ---- */
+.btn[data-apply]:not(.off){background:linear-gradient(135deg,#2563EB,#4F46E5);animation:apply-blink-blue 1.5s ease-in-out infinite}
+.btn[data-apply].pre:not(.off){background:linear-gradient(135deg,#64748b,#94a3b8);animation-name:apply-blink-grey}
+.btn[data-apply]:not(.off):hover{animation-duration:.9s}
+.dots .prea{background:linear-gradient(90deg,#64748b,#94a3b8);animation:apply-blink-grey 1.5s ease-in-out infinite}
+@keyframes apply-blink-blue{0%,100%{box-shadow:0 0 0 0 rgba(79,70,229,.6);filter:brightness(1)}50%{box-shadow:0 0 0 9px rgba(79,70,229,0);filter:brightness(1.2)}}
+@keyframes apply-blink-grey{0%,100%{box-shadow:0 0 0 0 rgba(100,116,139,.6);filter:brightness(1)}50%{box-shadow:0 0 0 9px rgba(100,116,139,0);filter:brightness(1.2)}}
+/* ---- credit line ---- */
+.credit{margin:18px 0 6px;text-align:center;font-size:12.5px;color:var(--mut)}
+.credit b{color:var(--pri2)}
+.credit span{display:block;margin-top:3px;font-size:11px;opacity:.8}
+@media(min-width:960px){.credit{margin-bottom:0}}
+@media print{.credit{display:none}}

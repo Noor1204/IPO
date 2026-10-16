@@ -7,5 +7,6 @@
     "live": "node pipeline/run.mjs --live",
     "serve": "npx -y http-server . -p 8740 -c-1",
     "verify": "node pipeline/verify.mjs"
-  }
+  },
+  "author": "Noor (Zynora Technology)"
 }

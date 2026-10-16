@@ -1,5 +1,7 @@
 # Trendy IPO
 
+Built by **Noor** · **Zynora Technology**.
+
 IPO tracker with a 0–100 score. Everything is fetched automatically — nothing is typed in by hand.
 Information only, not investment advice.
 

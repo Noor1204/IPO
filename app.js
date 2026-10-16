@@ -124,7 +124,7 @@ function listCard(i) {
   <div class="g3"><div>Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div>${i.listingPerf ? "Day-1 gain" : "Subs"}<b>${i.listingPerf ? fmtGain(i.listingPerf.dayOpenGainPct) : isNum(t) ? f2(t) + "x" : "—"}</b></div>
   <div class="${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut"}">GMP (Rumors)<b>${gmpTxt(i)}</b></div></div>
   <div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
-  <button class="btn ${i.status === "listed" ? "off" : ""}" data-apply="${i.symbol}">${applyLabel(i)}</button></div></div>`;
+  <button class="btn ${i.status === "listed" ? "off" : ""} ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}">${applyLabel(i)}</button></div></div>`;
 }
 const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
@@ -380,7 +380,7 @@ function detail(forReport = false) {
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
   <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${isNum(t) ? f2(t) + "x" : "—"}</b></div>
-  <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile"><button class="btn ${i.status === "listed" ? "off" : ""}" data-apply="${i.symbol}" style="width:100%">${applyLabel(i)}</button></div></div>
+  <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile"><button class="btn ${i.status === "listed" ? "off" : ""} ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}" style="width:100%">${applyLabel(i)}</button></div></div>
   <div class="row"><button class="btn ghost" data-watch="${i.symbol}">${inW ? "★ Watching" : "☆ Watchlist"}</button><button class="btn" data-cmp="${i.symbol}">${state.cmp.includes(i.symbol) ? "✓ In compare" : "+ Compare"}</button></div></div>
 
   <div class="card"><div class="tiles"><button class="tile k" data-jump="fin"><div class="v" style="font-size:26px">📒</div>Company Financials</button>
@@ -484,6 +484,7 @@ function settings() {
   return `${head("Settings")}<div class="card"><h2>🔔 Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
   <div class="card"><h2>⭐ Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
   <div class="card"><h2>${TEXT.aboutTitle[lang()]}</h2>${about()}</div>
+  <div class="card"><h2>👤 Developer</h2><p class="sm" style="margin:0">Trendy IPO is built by <b>Noor</b>, <b>Zynora Technology</b>.</p></div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
 
@@ -505,14 +506,15 @@ Data may be delayed, incomplete or wrong. Investing in IPOs involves <b>risk of 
   },
   aboutTitle: { en: "About", hi: "ऐप के बारे में" },
   about: {
-    en: `<b>Trendy IPO</b> — IPO information in one place: dates, price band, subscription (QIB / NII / retail), GMP, company numbers (from the RHP), risks, allotment links and a data-based 0–100 score. Data comes from official sources such as NSE, SEBI and the RHP; GMP is unofficial.`,
-    hi: `<b>Trendy IPO</b> — IPO की जानकारी एक जगह: तारीखें, प्राइस बैंड, सब्सक्रिप्शन (QIB / NII / रिटेल), GMP, कंपनी के आँकड़े (RHP से), जोखिम, अलॉटमेंट लिंक और डेटा पर आधारित 0–100 स्कोर। डेटा NSE, SEBI और RHP जैसे आधिकारिक स्रोतों से आता है; GMP अनौपचारिक है।`,
+    en: `<b>Trendy IPO</b> — IPO information in one place: dates, price band, subscription (QIB / NII / retail), GMP, company numbers (from the RHP), risks, allotment links and a data-based 0–100 score. Data comes from official sources such as NSE, SEBI and the RHP; GMP is unofficial. Built by Noor, Zynora Technology.`,
+    hi: `<b>Trendy IPO</b> — IPO की जानकारी एक जगह: तारीखें, प्राइस बैंड, सब्सक्रिप्शन (QIB / NII / रिटेल), GMP, कंपनी के आँकड़े (RHP से), जोखिम, अलॉटमेंट लिंक और डेटा पर आधारित 0–100 स्कोर। डेटा NSE, SEBI और RHP जैसे आधिकारिक स्रोतों से आता है; GMP अनौपचारिक है। Noor द्वारा बनाया गया — Zynora Technology।`,
   },
 };
 const lang = () => store.get("lang", "en") === "hi" ? "hi" : "en";
 const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">🌐 Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">🌐 Show in English / अंग्रेज़ी में पढ़ें</button>`;
 const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.disclaimer[lang()]}<br>${langBtn()}`;
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
+const credit = () => `<div class="credit">Built by <b>Noor</b> · <b>Zynora Technology</b><span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
 // ---------- render & events ----------
@@ -520,9 +522,9 @@ function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
   const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings };
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
-  $("#app").innerHTML = (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) +
+  $("#app").innerHTML = (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
-    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
+    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" target="_blank" rel="noopener">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" href="${u}" target="_blank" rel="noopener">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
