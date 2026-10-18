@@ -181,7 +181,7 @@ function listCard(i) {
   ${actionBtn(i)}</div></div>`;
 }
 const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
-const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
+const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back">←</button>` : ""}<h1>${title}</h1>${extra}</div>`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
@@ -677,7 +677,7 @@ const APP_URL = () => location.origin + location.pathname.replace(/index\.html$/
 
 const mrow = (ic, label, sub, extra = "") => `<button class="mrow" data-sub="${sub}"><span class="mic">${ic}</span><span class="mlb">${label}${extra}</span><span class="mgo">›</span></button>`;
 const msec = (title, rows) => `<div class="msec"><h3>${title}</h3>${rows}</div>`;
-const subPage = (title, inner) => `${head(title, `<button class="btn ghost" data-sub="" style="flex:none;width:auto;padding:6px 14px">← Back</button>`)}<div class="subpg">${inner}</div>`;
+const subPage = (title, inner) => `${head(title)}<div class="subpg">${inner}</div>`;
 
 // notifications built from the live data (no server): opening soon, closing, allotment, listing
 const nRead = () => store.get("nread", []);
@@ -733,8 +733,8 @@ function subContent(k) {
   }
   if (k === "pan") {
     const p = state.pan;
-    return subPage("Add PAN Number", card("Your PAN", `<p class="sm" style="margin-top:0">Save your PAN here so you can copy it quickly when you check allotment on the registrar's site. <b>It stays only on this phone/browser</b> and is never sent to us or anyone else.</p>
-      ${p ? `<div class="row" style="padding:8px 0"><div><div class="mut sm">Saved PAN</div><b style="letter-spacing:1.5px">${esc(p.slice(0, 5) + "••••" + p.slice(9))}</b></div><div style="display:flex;gap:6px"><button class="btn" style="width:auto;padding:6px 12px" data-pancopy>Copy</button><button class="btn ghost" style="width:auto;padding:6px 12px" data-pandel>Remove</button></div></div>` : ""}
+    return subPage("Add PAN Number", card("Your PAN", `<p class="sm" style="margin-top:0">Save your PAN here so it is kept ready for allotment checks. <b>It stays only on this phone/browser</b> and is never sent to us or anyone else.</p>
+      ${p ? `<div class="row" style="padding:8px 0"><div><div class="mut sm">Saved PAN</div><b style="letter-spacing:1.5px">${esc(p.slice(0, 5) + "••••" + p.slice(9))}</b></div><div style="display:flex;gap:6px"><button class="btn ghost" style="width:auto;padding:6px 12px" data-pandel>Remove</button></div></div>` : ""}
       <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
   }
   if (k === "notif") {
@@ -792,7 +792,6 @@ function aboutClick(t) {
   if (a.rate) { state.rate = +a.rate; store.set("rate", state.rate); if (window.trendyTrack) window.trendyTrack("rate/" + a.rate, "Rated " + a.rate); render(); return true; }
   if (t.hasAttribute("data-pansave")) { const v = (document.getElementById("pan-in")?.value || "").trim().toUpperCase(); if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v)) { toast("PAN looks wrong. Format: ABCDE1234F"); return true; } state.pan = v; store.set("pan", v); toast("PAN saved on this device"); return true; }
   if (t.hasAttribute("data-pandel")) { state.pan = ""; store.set("pan", ""); render(); return true; }
-  if (t.hasAttribute("data-pancopy")) { navigator.clipboard?.writeText(state.pan).then(() => toast("PAN copied"), () => toast("Could not copy")); return true; }
   return false;
 }
 document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });
@@ -822,11 +821,11 @@ function render() {
 let toastTimer = null;
 function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-pancopy],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
-  if (t.hasAttribute("data-menu")) { state.drawer = !state.drawer; render(); return; }
-  if (t.hasAttribute("data-drawer-close")) { state.drawer = false; render(); return; }
+  if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
+  if (t.hasAttribute("data-drawer-close")) { goBack(); return; }
   if (aboutClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
@@ -845,7 +844,7 @@ document.addEventListener("click", e => {
   if (d.open) { const pend = d.jump; state.detail = d.open; render(); scrollTo(0, 0); if (pend) document.getElementById(pend)?.scrollIntoView(); return; }
   if (d.jump) { document.getElementById(d.jump)?.scrollIntoView({ behavior: "smooth" }); return; }
   if (t.hasAttribute("data-back")) { goBack(); return; }
-  else if (d.tab) { state.tab = d.tab; state.detail = null; state.report = null; state.drawer = false; state.sub = null; }
+  else if (d.tab) { if (state.drawer) replaceNext = true; state.tab = d.tab; state.detail = null; state.report = null; state.drawer = false; state.sub = null; }
   else if (d.seg) { state.seg = d.seg; state.perf = null; state.showAll = false; }
   else if (t.hasAttribute("data-search")) { state.search = !state.search; if (!state.search) state.q = ""; }
   else if (d.watch) { const k = state.watch.indexOf(d.watch); k < 0 ? state.watch.push(d.watch) : state.watch.splice(k, 1); store.set("watch", state.watch); }
@@ -864,29 +863,35 @@ document.addEventListener("change", e => {
 // status is recomputed from today's date so a stale data file never shows a closed IPO as live
 const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" });
 // ---------- the phone's Back button ----------
-// Opening an IPO, a full report or the Apply popup adds one history step; Back then closes it. Switching tabs and report tabs do not add steps.
-const levelKey = () => [state.detail || "", state.report || "", state.modal || ""].join("|");
-let navLevel = levelKey();
-const histState = () => ({ tab: state.tab, level: levelKey(), rtab: state.reportTab });
+// Every screen you move to (tab, menu page, an IPO, a report, the Apply popup, the side menu) adds one history step, so Back goes to the screen you came from
+// instead of leaving the app. Switching report tabs does not add steps. Choosing a page from the side menu replaces the "menu open" step.
+const levelKey = () => [state.tab, state.sub || "", state.detail || "", state.report || "", state.modal || "", state.drawer ? "d" : ""].join("|");
+let navLevel = levelKey(), replaceNext = false;
+const histState = () => ({ level: levelKey(), rtab: state.reportTab });
 try { history.replaceState(histState(), ""); } catch {}
 function pushView() {
   const lv = levelKey();
   try {
-    if (lv !== navLevel) { navLevel = lv; history.pushState(histState(), ""); }
-    else { const h = history.state || {}; if (h.tab !== state.tab || h.rtab !== state.reportTab) history.replaceState(histState(), ""); }
+    if (lv !== navLevel) { navLevel = lv; replaceNext ? history.replaceState(histState(), "") : history.pushState(histState(), ""); }
+    else { const h = history.state || {}; if (h.rtab !== state.reportTab) history.replaceState(histState(), ""); }
   } catch {}
+  replaceNext = false;
 }
 window.addEventListener("popstate", e => {
   const s = e.state; if (!s || typeof s.level !== "string") return;
-  const [detail, report, modal] = s.level.split("|");
-  navLevel = s.level; state.tab = s.tab || "ipo"; state.detail = detail || null; state.report = report || null; state.modal = modal || null; if (s.rtab) state.reportTab = s.rtab;
+  const [tab, sub, detail, report, modal, drawer] = s.level.split("|"); if (drawer === undefined) return;
+  navLevel = s.level; state.tab = tab || "ipo"; state.sub = sub || null; state.detail = detail || null; state.report = report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
   render(); window.scrollTo(0, 0);
 });
-// the on-screen back / close buttons use the same history, so the Back button and the arrow always agree
+// the on-screen back arrows use the same history, so the phone's Back button and the arrow always agree
 function goBack() {
   const before = levelKey();
   try { history.back(); } catch {}
-  setTimeout(() => { if (levelKey() === before) { if (state.modal) state.modal = null; else if (state.report) state.report = null; else state.detail = null; render(); } }, 250);   // if the browser could not go back, close it directly
+  setTimeout(() => {                                                    // if the browser could not go back, step out one level directly
+    if (levelKey() !== before) return;
+    if (state.drawer) state.drawer = false; else if (state.modal) state.modal = null; else if (state.report) state.report = null; else if (state.detail) state.detail = null; else if (state.sub) state.sub = null; else state.tab = "ipo";
+    render();
+  }, 250);
 }
 let loadingData = false, lastLoad = 0;
 async function loadData(manual) {
@@ -952,4 +957,4 @@ function tick() {
 }
 setInterval(tick, 1000);
 
-document.addEventListener("keydown", e => { if (e.key === "Escape" && state.drawer) { state.drawer = false; render(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape" && state.drawer) goBack(); });
