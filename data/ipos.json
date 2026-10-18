@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-18T06:44:34.567Z",
+ "generatedAt": "2026-10-18T06:48:21.802Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-18T06:40:13.604Z"
+   "fetchedAt": "2026-10-18T06:45:03.035Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-18T06:40:17.623Z"
+   "fetchedAt": "2026-10-18T06:45:06.172Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-18T06:40:14.632Z"
+   "fetchedAt": "2026-10-18T06:45:03.729Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -136,15 +136,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 235.5,
+    "value": 235,
     "min": 235,
     "max": 235,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 236,
-      "updated": "21-23 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 235,
@@ -171,7 +166,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 235.5
+      "gmp": 235
      }
     ]
    },
@@ -205,7 +200,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:39:37.712Z"
+   "fetchedAt": "2026-10-18T06:44:21.883Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -320,15 +315,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 505,
-    "min": 505,
-    "max": 505,
+    "value": 96,
+    "min": 96,
+    "max": 96,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 95,
-      "updated": "21-23 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 96,
@@ -355,7 +345,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 95.5
+      "gmp": 96
      }
     ]
    },
@@ -389,7 +379,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:39:38.620Z"
+   "fetchedAt": "2026-10-18T06:44:27.284Z"
   },
   {
    "symbol": "TONBO",
@@ -578,15 +568,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 15,
-    "min": 15,
-    "max": 15,
+    "value": 505,
+    "min": 505,
+    "max": 505,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 525,
-      "updated": "15-19 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 505,
@@ -625,7 +610,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 515
+      "gmp": 505
      }
     ]
    },
@@ -651,7 +636,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-18T06:44:34.401Z",
+     "at": "2026-10-18T06:48:21.769Z",
      "date": "2026-10-18",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -1025,7 +1010,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:16.093Z"
+   "fetchedAt": "2026-10-18T06:44:09.270Z"
   },
   {
    "symbol": "BONFIG",
@@ -1197,15 +1182,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 131,
-    "min": 130,
+    "value": 132,
+    "min": 132,
     "max": 132,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 130,
-      "updated": "15-19 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 132,
@@ -1244,7 +1224,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 131
+      "gmp": 132
      }
     ]
    },
@@ -1270,7 +1250,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-18T06:44:34.407Z",
+     "at": "2026-10-18T06:48:21.771Z",
      "date": "2026-10-18",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1638,7 +1618,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:21.534Z"
+   "fetchedAt": "2026-10-18T06:44:10.171Z"
   },
   {
    "symbol": "SMT",
@@ -1801,8 +1781,54 @@
      "group": "Offer document"
     }
    ],
-   "anchor": null,
-   "gmp": null,
+   "anchor": true,
+   "gmp": {
+    "value": 15,
+    "min": 15,
+    "max": 15,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 15,
+      "pct": 4.36,
+      "updated": "18-Oct 7:37",
+      "seenLow": 15,
+      "seenHigh": 43
+     }
+    ],
+    "rating": 1,
+    "updated": "18-Oct 7:37",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 46
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 37
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 43
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 46
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 35
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 15
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 15
+     }
+    ]
+   },
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.218Z",
@@ -1825,7 +1851,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-18T06:44:34.413Z",
+     "at": "2026-10-18T06:48:21.771Z",
      "date": "2026-10-18",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2140,7 +2166,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:26.988Z"
+   "fetchedAt": "2026-10-18T06:44:15.491Z"
   },
   {
    "symbol": "ZETWERK",
@@ -2303,15 +2329,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 3,
-    "min": 3,
-    "max": 3,
+    "value": 7.2,
+    "min": 7.2,
+    "max": 7.2,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 5,
-      "updated": "15-19 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 7.2,
@@ -2350,7 +2371,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 6.1
+      "gmp": 7.2
      }
     ]
    },
@@ -2376,7 +2397,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-18T06:44:34.417Z",
+     "at": "2026-10-18T06:48:21.772Z",
      "date": "2026-10-18",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2703,7 +2724,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:32.283Z"
+   "fetchedAt": "2026-10-18T06:44:20.872Z"
   },
   {
    "symbol": "SHELLZ",
@@ -2836,7 +2857,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 12.5
+      "gmp": 25
      }
     ]
    },
@@ -2862,7 +2883,7 @@
      "total": 0.8
     },
     {
-     "at": "2026-10-18T06:43:34.726Z",
+     "at": "2026-10-18T06:48:21.787Z",
      "date": "2026-10-18",
      "qib": null,
      "bnii": null,
@@ -3196,7 +3217,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:50.080Z"
+   "fetchedAt": "2026-10-18T06:44:39.379Z"
   },
   {
    "symbol": "RAVITA",
@@ -3301,8 +3322,54 @@
      "group": "Anchor investors"
     }
    ],
-   "anchor": null,
-   "gmp": null,
+   "anchor": true,
+   "gmp": {
+    "value": 3,
+    "min": 3,
+    "max": 3,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 3,
+      "pct": 2.68,
+      "updated": "18-Oct 7:37",
+      "seenLow": 2,
+      "seenHigh": 12
+     }
+    ],
+    "rating": 1,
+    "updated": "18-Oct 7:37",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 8
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 2
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 7
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 2
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 2
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 3
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 3
+     }
+    ]
+   },
    "subHistory": [
     {
      "at": "2026-10-14T12:40:25.463Z",
@@ -3768,15 +3835,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 13.5,
-    "min": 12,
+    "value": 15,
+    "min": 15,
     "max": 15,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 12,
-      "updated": "14-16 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 15,
@@ -3819,7 +3881,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 13.5
+      "gmp": 15
      }
     ]
    },
@@ -4390,15 +4452,10 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 69.5,
+    "value": 69,
     "min": 69,
     "max": 69,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 70,
-      "updated": "13-15 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 69,
@@ -4449,7 +4506,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 69.5
+      "gmp": 69
      }
     ]
    },
@@ -4973,11 +5030,6 @@
     "min": 5,
     "max": 5,
     "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 5,
-      "updated": "13-15 Oct"
-     },
      {
       "source": "investorgain.com",
       "gmp": 5,
@@ -8193,7 +8245,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:54.356Z"
+   "fetchedAt": "2026-10-18T06:44:43.599Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8640,7 +8692,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:55.148Z"
+   "fetchedAt": "2026-10-18T06:44:44.405Z"
   },
   {
    "symbol": "TNA",
@@ -9102,7 +9154,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:55.945Z"
+   "fetchedAt": "2026-10-18T06:44:45.173Z"
   },
   {
    "symbol": "DSL",
@@ -9517,7 +9569,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:56.627Z"
+   "fetchedAt": "2026-10-18T06:44:45.965Z"
   },
   {
    "symbol": "OMARA",
@@ -9976,7 +10028,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:58.821Z"
+   "fetchedAt": "2026-10-18T06:44:48.228Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10644,7 +10696,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:39:57.329Z"
+   "fetchedAt": "2026-10-18T06:44:46.726Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -10792,7 +10844,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:40:01.175Z"
+   "fetchedAt": "2026-10-18T06:44:50.839Z"
   },
   {
    "symbol": "VANS",
@@ -11258,7 +11310,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:40:01.927Z"
+   "fetchedAt": "2026-10-18T06:44:51.600Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -13002,7 +13054,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:39:59.597Z"
+   "fetchedAt": "2026-10-18T06:44:49.135Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13102,7 +13154,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:40:02.737Z"
+   "fetchedAt": "2026-10-18T06:44:52.345Z"
   },
   {
    "symbol": "PIND",
@@ -13591,7 +13643,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:40:03.551Z"
+   "fetchedAt": "2026-10-18T06:44:53.179Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -13660,14 +13712,14 @@
    "documents": [
     {
      "label": "Prospectus / RHP with GID (zip from BSE)",
-     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/282344/Prospectus_And_GID_Document_Prospectus_and_GID.zip",
+     "url": "https://www.bseindia.com/downloads/ipo/RHP_071020261840.zip",
      "source": "BSE",
      "kind": "zip",
      "group": "Offer document"
     },
     {
      "label": "Price band advertisement",
-     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/282344/Price_Band_Advertisement_Pre-Issue_&_Price_Band_Advertisement_-_Shivchem.pdf",
+     "url": "https://www.bseindia.com/downloads/ipo/-Pre-Issue%20&%20Price%20Band%20Advertisement%20-%20Shivchem.pdf_071020261840.url",
      "source": "BSE",
      "kind": "pdf-link",
      "group": "Price band & basis"
@@ -13784,7 +13836,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:40:05.218Z"
+   "fetchedAt": "2026-10-18T06:44:54.641Z"
   },
   {
    "symbol": "ACEVECTOR",
@@ -17557,7 +17609,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:40:10.493Z"
+   "fetchedAt": "2026-10-18T06:44:59.712Z"
   },
   {
    "symbol": "GREENASIA",
@@ -19651,7 +19703,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:40:12.878Z"
+   "fetchedAt": "2026-10-18T06:45:02.148Z"
   },
   {
    "symbol": "ROOPA",
@@ -20146,7 +20198,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T06:40:13.604Z"
+   "fetchedAt": "2026-10-18T06:45:03.035Z"
   },
   {
    "symbol": "ADROITIND",
@@ -22794,7 +22846,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T06:39:43.528Z"
+   "fetchedAt": "2026-10-18T06:44:32.247Z"
   }
  ],
  "filings": [
