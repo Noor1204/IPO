@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T06:48:21.802Z",
+ "generatedAt": "2026-10-18T06:48:22.867Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -315,9 +315,9 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 96,
-    "min": 96,
-    "max": 96,
+    "value": 505,
+    "min": 505,
+    "max": 505,
     "sources": [
      {
       "source": "investorgain.com",
@@ -636,7 +636,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-18T06:48:21.769Z",
+     "at": "2026-10-18T06:48:22.833Z",
      "date": "2026-10-18",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -1250,7 +1250,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-18T06:48:21.771Z",
+     "at": "2026-10-18T06:48:22.835Z",
      "date": "2026-10-18",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1630,14 +1630,14 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-20",
-    "refund": "2026-10-21",
-    "demat": "2026-10-21",
-    "listing": "2026-10-22"
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
    },
-   "allotment": "2026-10-20",
-   "listing": "2026-10-22",
-   "datesExpected": true,
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
+   "datesExpected": false,
    "priceLow": 327,
    "priceHigh": 344,
    "lot": 43,
@@ -1779,6 +1779,13 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/sahajanand-medical-technologies-ipo/1842/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
     }
    ],
    "anchor": true,
@@ -1851,7 +1858,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-18T06:48:21.771Z",
+     "at": "2026-10-18T06:48:22.836Z",
      "date": "2026-10-18",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -1862,7 +1869,32 @@
     }
    ],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 475.48,
+     "other": 475.48,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 43,
+     "other": 43,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 344,
+     "other": 344,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
    "fundamentals": {
     "company": "Sahajanand Medical Technologies Limited",
     "basis": "Consolidated",
@@ -2397,7 +2429,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-18T06:48:21.772Z",
+     "at": "2026-10-18T06:48:22.836Z",
      "date": "2026-10-18",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2736,13 +2768,13 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-26",
-    "refund": "2026-10-27",
-    "demat": "2026-10-27",
-    "listing": "2026-10-28"
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
    },
-   "allotment": "2026-10-26",
-   "listing": "2026-10-28",
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
    "datesExpected": false,
    "priceLow": 170,
    "priceHigh": 179,
@@ -2761,7 +2793,11 @@
     "snii": null,
     "retail": null,
     "employee": null,
-    "total": null
+    "total": {
+     "offered": null,
+     "bid": null,
+     "times": 0.89
+    }
    },
    "demand": {
     "asOn": "Friday, October 16 ,  2026  5:00:00 PM",
@@ -2883,7 +2919,7 @@
      "total": 0.8
     },
     {
-     "at": "2026-10-18T06:48:21.787Z",
+     "at": "2026-10-18T06:48:22.853Z",
      "date": "2026-10-18",
      "qib": null,
      "bnii": null,
@@ -2898,20 +2934,20 @@
     {
      "field": "Lot size",
      "nse": 800,
-     "other": 21,
-     "ok": false
+     "other": 800,
+     "ok": true
     },
     {
      "field": "Cap price",
      "nse": 179,
-     "other": 693,
-     "ok": false
+     "other": 179,
+     "ok": true
     },
     {
      "field": "Close date",
      "nse": "2026-10-19",
-     "other": "2026-10-23",
-     "ok": false
+     "other": "2026-10-19",
+     "ok": true
     }
    ],
    "fundamentals": {
@@ -3232,11 +3268,11 @@
     "allotment": "2026-10-19",
     "refund": "2026-10-20",
     "demat": "2026-10-20",
-    "listing": "2026-10-21"
+    "listing": "2026-10-22"
    },
    "allotment": "2026-10-19",
-   "listing": "2026-10-21",
-   "datesExpected": true,
+   "listing": "2026-10-22",
+   "datesExpected": false,
    "priceLow": 105,
    "priceHigh": 112,
    "lot": 1200,
@@ -3320,6 +3356,13 @@
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/ravita-engineering-services-ipo/2220/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
     }
    ],
    "anchor": true,
@@ -3403,7 +3446,32 @@
     }
    ],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 116.05,
+     "other": 116.05,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 1200,
+     "other": 1200,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 112,
+     "other": 112,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-16",
+     "other": "2026-10-16",
+     "ok": true
+    }
+   ],
    "fundamentals": {
     "company": "Ravita Engineering Services Limited",
     "basis": "Standalone",
