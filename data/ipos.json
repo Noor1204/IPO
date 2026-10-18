@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T04:07:10.193Z",
+ "generatedAt": "2026-10-18T04:13:58.533Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -61,7 +61,7 @@
     "total": {
      "offered": 0,
      "bid": 0,
-     "times": 0
+     "times": null
     }
    },
    "demand": {
@@ -231,7 +231,24 @@
    "issueDetail": null,
    "upiCutoff": null,
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
    },
    "demand": null,
    "registrar": {
@@ -549,7 +566,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-18T04:07:08.911Z",
+     "at": "2026-10-18T04:13:58.350Z",
      "date": "2026-10-18",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -1163,7 +1180,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-18T04:07:08.936Z",
+     "at": "2026-10-18T04:13:58.354Z",
      "date": "2026-10-18",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1771,7 +1788,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-18T04:07:08.940Z",
+     "at": "2026-10-18T04:13:58.359Z",
      "date": "2026-10-18",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2342,7 +2359,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-18T04:07:08.965Z",
+     "at": "2026-10-18T04:13:58.362Z",
      "date": "2026-10-18",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2832,7 +2849,7 @@
      "total": 0.8
     },
     {
-     "at": "2026-10-18T04:07:09.869Z",
+     "at": "2026-10-18T04:13:58.444Z",
      "date": "2026-10-18",
      "qib": null,
      "bnii": null,
@@ -4926,9 +4943,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 10208000,
-     "times": 0
+     "offered": null,
+     "bid": 17212000,
+     "times": 3.08
     }
    },
    "demand": {
@@ -5462,7 +5479,7 @@
     "total": {
      "offered": 0,
      "bid": 0,
-     "times": 0
+     "times": null
     }
    },
    "demand": {
@@ -5581,9 +5598,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 3672000,
-     "times": 0
+     "offered": null,
+     "bid": 11150400,
+     "times": 2.61
     }
    },
    "demand": {
@@ -7287,9 +7304,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 4946400,
-     "times": 0
+     "offered": null,
+     "bid": 7504800,
+     "times": 2.32
     }
    },
    "demand": {
@@ -10047,9 +10064,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 3960000,
-     "times": 0
+     "offered": null,
+     "bid": 6888000,
+     "times": 2.46
     }
    },
    "demand": {
@@ -16611,9 +16628,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 140581200,
-     "times": 0
+     "offered": null,
+     "bid": 265002000,
+     "times": 95.97
     }
    },
    "demand": {
@@ -17134,9 +17151,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 2940000,
-     "times": 0
+     "offered": null,
+     "bid": 6904800,
+     "times": 1.18
     }
    },
    "demand": {
@@ -18072,9 +18089,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 5681600,
-     "times": 0
+     "offered": null,
+     "bid": 6923200,
+     "times": 0.98
     }
    },
    "demand": {
@@ -19127,8 +19144,8 @@
    "priceHigh": 34,
    "lot": 441,
    "faceValue": 1,
-   "issueShares": 100494118,
-   "issueSizeCr": 341.68,
+   "issueShares": 321082353,
+   "issueSizeCr": 1091.68,
    "issueType": "Book Building",
    "maxRetailAmount": 200000,
    "issueDetail": "Initial public offering comprising of aggregating up to 7500 million and offer for sale up to 10,04,94,200 Equity Shares (including Anchor portion of 9,63,24,729 Equity Shares)",
@@ -19346,9 +19363,9 @@
    "checks": [
     {
      "field": "Issue size (Cr)",
-     "nse": 341.68,
+     "nse": 1091.68,
      "other": 1091.68,
-     "ok": false
+     "ok": true
     },
     {
      "field": "Lot size",
@@ -22811,9 +22828,9 @@
     "retail": null,
     "employee": null,
     "total": {
-     "offered": 0,
-     "bid": 2176000,
-     "times": 0
+     "offered": null,
+     "bid": 3891200,
+     "times": 1.38
     }
    },
    "demand": {
@@ -23207,7 +23224,7 @@
     "total": {
      "offered": 0,
      "bid": 0,
-     "times": 0
+     "times": null
     }
    },
    "demand": {

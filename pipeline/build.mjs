@@ -23,6 +23,8 @@ function parseIssueSize(txt, price) {
   const parts = []; const re = /(fresh issue|offer for sale)/gi; let m;
   while ((m = re.exec(txt))) parts.push(m.index);
   if (!parts.length || !price) return { shares: null, cr: null };
+  // an amount written before the first keyword ("comprising of aggregating up to 7500 million and offer for sale ...") is part of the issue too
+  if (/([\d,]+(?:\.\d+)?)\s*(lakhs?|million|crores?|cr\b)/i.test(txt.slice(0, parts[0]))) parts.unshift(0);
   let cr = 0;
   for (let k = 0; k < parts.length; k++) {
     const seg = txt.slice(parts[k], parts[k + 1] ?? parts[k] + 220);
@@ -141,6 +143,11 @@ for (const r of nse) {
   if (row.series === "SME" && row.noOfTime != null) b.total = { offered: num(row.noOfSharesOffered), bid: num(row.noOfsharesBid), times: num(row.noOfTime) };
   if (!b.total && ig?.igSub != null && statusOf(open, close) !== "upcoming") b.total = { offered: null, bid: null, times: ig.igSub };   // BSE issues: only InvestorGain has the headline subscription
   if (!b.total && row.noOfTime != null) b.total = { offered: num(row.noOfSharesOffered), bid: num(row.noOfsharesBid), times: num(row.noOfTime) };
+  // Finished SME issues: NSE's category table is all zeros ("offered 0", "0.00x") and has no Retail row. Its demand figures
+  // (all bids and times subscribed) are the real ones, so they are used instead. The offered figure is then unknown, not 0.
+  { const dt = num(r.demand?.noOfTimesIssueSubscribed), db = num(r.demand?.totalBidRecieved);
+    if (b.total && !(b.total.offered > 0 && b.total.times > 0) && dt > 0 && db > 0) b.total = { offered: null, bid: db, times: dt };
+    if (b.total && !(b.total.offered > 0) && !(b.total.times > 0)) b.total = { ...b.total, times: null }; }
   const status = statusOf(open, close);
   const fund = await fs.readFile(path.join(DATA, "fundamentals", `${r.symbol}.json`), "utf8").then(t => { try { return JSON.parse(t); } catch { return null; } }, () => null);   // tolerate a file that is mid-write
   if (b.total?.times != null && status === "live") {
