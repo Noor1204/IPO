@@ -680,14 +680,16 @@ const msec = (title, rows) => `<div class="msec"><h3>${title}</h3>${rows}</div>`
 const subPage = (title, inner) => `${head(title, `<button class="btn ghost" data-sub="" style="flex:none;width:auto;padding:6px 14px">← Back</button>`)}<div class="subpg">${inner}</div>`;
 
 // notifications built from the live data (no server): opening soon, closing, allotment, listing
+const nRead = () => store.get("nread", []);
+const unreadCount = () => { const r = nRead(); return notifList().filter(x => !r.includes(x[4])).length; };
 function notifList() {
   const out = [], when = n => n === 0 ? "today" : n === 1 ? "tomorrow" : n > 0 ? `in ${n} days` : n === -1 ? "yesterday" : `${-n} days ago`;
   for (const i of state.ipos) {
     const nm = esc(shortName(i.name)), o = dayDiff(i.open), c = dayDiff(i.close), a = dayDiff(i.allotment), l = dayDiff(i.listing);
-    if (o !== null && o >= 0 && o <= 3) out.push([o, "🟢", `<b>${nm}</b> opens ${when(o)}`, i.symbol]);
-    if (c !== null && c >= 0 && c <= 1 && (o === null || o <= 0)) out.push([c, "⏰", `<b>${nm}</b> closes ${when(c)}`, i.symbol]);
-    if (a !== null && a >= -1 && a <= 1) out.push([a, "📋", `<b>${nm}</b> allotment ${a === 0 ? "is today" : a < 0 ? "was " + when(a) : "is " + when(a)}`, i.symbol]);
-    if (l !== null && l >= -1 && l <= 1) out.push([l, "🔔", `<b>${nm}</b> ${l < 0 ? "listed " + when(l) : "lists " + when(l)}`, i.symbol]);
+    if (o !== null && o >= 0 && o <= 3) out.push([o, "🟢", `<b>${nm}</b> opens ${when(o)}`, i.symbol, i.symbol + "|open|" + i.open]);
+    if (c !== null && c >= 0 && c <= 1 && (o === null || o <= 0)) out.push([c, "⏰", `<b>${nm}</b> closes ${when(c)}`, i.symbol, i.symbol + "|close|" + i.close]);
+    if (a !== null && a >= -1 && a <= 1) out.push([a, "📋", `<b>${nm}</b> allotment ${a === 0 ? "is today" : a < 0 ? "was " + when(a) : "is " + when(a)}`, i.symbol, i.symbol + "|allot|" + i.allotment]);
+    if (l !== null && l >= -1 && l <= 1) out.push([l, "🔔", `<b>${nm}</b> ${l < 0 ? "listed " + when(l) : "lists " + when(l)}`, i.symbol, i.symbol + "|list|" + i.listing]);
   }
   return out.sort((x, y) => Math.abs(x[0]) - Math.abs(y[0]));
 }
@@ -736,8 +738,8 @@ function subContent(k) {
       <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
   }
   if (k === "notif") {
-    const n = notifList();
-    return subPage("Notifications", card("Latest updates", n.map(([, ic, t, s]) => `<button class="nrow" data-open="${esc(s)}"><span>${ic}</span><span>${t}</span><span class="mgo">›</span></button>`).join("") || `<p class="mut sm" style="margin:0">Nothing new right now. You will see IPOs opening, closing, allotment and listing here.</p>`) +
+    const n = notifList(), rd = nRead(), left = n.filter(x => !rd.includes(x[4])).length;
+    return subPage("Notifications", card(`Latest updates${left ? ` <span class="nbadge">${left} new</span>` : ""}`, (n.length ? `<button class="btn ${left ? "" : "ghost"} nall" data-nreadall ${left ? "" : "disabled"}>${left ? "✓ Mark all as read" : "✓ All read"}</button>` : "") + n.map(([, ic, t, s, key]) => `<button class="nrow${rd.includes(key) ? " read" : ""}" data-open="${esc(s)}" data-nkey="${esc(key)}"><span>${ic}</span><span>${t}</span>${rd.includes(key) ? "" : `<i class="ndot"></i>`}<span class="mgo">›</span></button>`).join("") || `<p class="mut sm" style="margin:0">Nothing new right now. You will see IPOs opening, closing, allotment and listing here.</p>`) +
       `<p class="mut sm">This list is made from the live data each time you open the app.</p>`);
   }
   if (k === "nsettings") {
@@ -767,7 +769,7 @@ function sectionPage(tab) {
   if (sp) return sp;
   state.sub = null;
   if (tab === "general") {
-    const unread = notifList().length;
+    const unread = unreadCount();
     return `${head("General")}<div class="aboutmenu">${msec("General", mrow("✅", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("📄", "Download ASBA Form", "asba") + mrow("🪪", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("🔔", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("⚙️", "Notification Settings", "nsettings") +
       `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
       `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}</div>`;
@@ -783,6 +785,8 @@ async function shareApp() {
 function aboutClick(t) {
   const a = t.dataset;
   if (t.hasAttribute("data-appshare")) { shareApp(); return true; }
+  if (t.hasAttribute("data-nreadall")) { store.set("nread", [...new Set([...nRead(), ...notifList().map(x => x[4])])].slice(-300)); render(); toast("All notifications marked as read"); return true; }
+  if (a.nkey) { const r = nRead(); if (!r.includes(a.nkey)) store.set("nread", [...r, a.nkey].slice(-300)); return false; }
   if ("sub" in a) { state.sub = a.sub || null; render(); scrollTo(0, 0); return true; }
   if (a.applied) { const k = state.applied.indexOf(a.applied); k < 0 ? state.applied.push(a.applied) : state.applied.splice(k, 1); store.set("applied", state.applied); render(); return true; }
   if (a.rate) { state.rate = +a.rate; store.set("rate", state.rate); if (window.trendyTrack) window.trendyTrack("rate/" + a.rate, "Rated " + a.rate); render(); return true; }
@@ -791,7 +795,7 @@ function aboutClick(t) {
   if (t.hasAttribute("data-pancopy")) { navigator.clipboard?.writeText(state.pan).then(() => toast("PAN copied"), () => toast("Could not copy")); return true; }
   return false;
 }
-document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); applyTheme(); } });
+document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
@@ -818,7 +822,7 @@ function render() {
 let toastTimer = null;
 function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-pancopy],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-pancopy],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { state.drawer = !state.drawer; render(); return; }

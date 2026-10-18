@@ -470,3 +470,24 @@ nav button{min-width:0}
 .asbtn:hover{border-color:var(--pri);background:var(--soft);transform:translateY(-1px)}
 .asbtn b{display:block;font-size:14px}.asbtn small{color:var(--mut);font-size:12px}
 .asbtn>span:nth-child(2){flex:1;min-width:0}.asic{font-size:22px}
+
+/* ---- notifications: unread dot, dimmed when read, mark-all button ---- */
+.nrow.read{opacity:.55}
+.ndot{width:9px;height:9px;border-radius:50%;background:var(--pri);flex:none;box-shadow:0 0 0 0 rgba(37,99,235,.5);animation:ndot 1.8s infinite}
+@keyframes ndot{70%{box-shadow:0 0 0 7px rgba(37,99,235,0)}100%{box-shadow:0 0 0 0 rgba(37,99,235,0)}}
+.nbadge{margin-left:8px;background:var(--pri);color:#fff;border-radius:99px;padding:2px 9px;font-size:12px;font-weight:700;vertical-align:middle}
+.nall{width:100%;margin:0 0 6px}
+
+/* ---- dark mode switch: a real rocker (press feel, sliding knob, glow, label that swaps) ---- */
+.switch{position:relative;transition:background .3s,border-color .3s,box-shadow .3s,transform .12s;-webkit-tap-highlight-color:transparent}
+.switch::after{bottom:auto;top:30px;transform:none;transition:top .28s cubic-bezier(.3,1.5,.5,1),height .12s,background .3s,box-shadow .3s}
+.switch:checked::after{top:3px;bottom:auto}
+.switch:active{transform:scale(.94)}
+.switch:active::after{height:32px}
+.switch:active:not(:checked)::after{top:24px}
+.switch:checked{box-shadow:inset 0 2px 4px #0003,0 0 14px 2px rgba(59,130,246,.65)}
+.switch:not(:checked)::before{transition:opacity .2s}
+.switch:focus-visible{outline:3px solid var(--pri);outline-offset:3px}
+/* the whole page glides between light and dark instead of jumping */
+html.themefade,html.themefade *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease!important}
+@media(prefers-reduced-motion:reduce){.switch,.switch::after{transition:none}html.themefade *{transition:none!important}.ndot{animation:none}}
