@@ -23,15 +23,20 @@ const slot = key => (cur[key] ||= { sources: [] });
 // ---- source 1: ipowatch.in
 try {
   let html = ""; for (let k = 0; k < 2 && !html; k++) { try { html = await (await fetch("https://ipowatch.in/ipo-grey-market-premium-latest-ipo-gmp/", { headers: { "user-agent": UA }, signal: AbortSignal.timeout(25000) })).text(); } catch (e) { if (k) throw e; } }
-  const table = html.match(/<table[\s\S]*?<\/table>/)?.[0] || "";
+  // two tables (mainboard, SME): Company (with a status word at the end), GMP, Trend, Price Band, Est. Gain, Date. Read by the header names, so a changed column order is noticed.
   let n = 0;
-  for (const row of table.match(/<tr>[\s\S]*?<\/tr>/g)?.slice(1) || []) {
-    const c = (row.match(/<td[\s\S]*?<\/td>/g) || []).map(strip);
-    if (c.length < 5) continue;
-    let v = /\d/.test(c[1]) ? num(c[1]) : null; if (v !== null && /-\s*₹|₹\s*-/.test(c[1])) v = -Math.abs(v);
-    const r = slot(norm(c[0])); r.name ||= c[0];
-    if (v !== null) r.sources.push({ source: "ipowatch.in", gmp: v, updated: c[7] || null });
-    n++;
+  for (const table of html.match(/<table[\s\S]*?<\/table>/g) || []) {
+    const rows = (table.match(/<tr[\s\S]*?<\/tr>/g) || []).map(row => (row.match(/<t[dh][\s\S]*?<\/t[dh]>/g) || []).map(strip));
+    const head = (rows[0] || []).map(h => h.toLowerCase()), iName = head.findIndex(h => h.startsWith("company")), iGmp = head.findIndex(h => h.startsWith("gmp")), iDate = head.findIndex(h => h.startsWith("date"));
+    if (iName < 0 || iGmp < 0) continue;                                       // not a GMP table
+    for (const c of rows.slice(1)) {
+      if (c.length <= iGmp || !c[iName]) continue;
+      const name = c[iName].replace(/\s+(Upcoming|Open|Closed|Listed|Allotment|Pending)$/i, "").trim();
+      let v = /\d/.test(c[iGmp]) ? num(c[iGmp]) : null; if (v !== null && /-\s*₹|₹\s*-/.test(c[iGmp])) v = -Math.abs(v);
+      const r = slot(norm(name)); r.name ||= name;
+      if (v !== null) r.sources.push({ source: "ipowatch.in", gmp: v, updated: iDate >= 0 ? c[iDate] || null : null });
+      n++;
+    }
   }
   console.log(`GMP ipowatch: ${n} rows`);
 } catch (e) { console.log("ipowatch failed:", e.message); }

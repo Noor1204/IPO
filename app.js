@@ -22,7 +22,8 @@ const inr = n => isNum(n) ? Math.round(n).toLocaleString("en-IN") : "—";
 const f2 = n => isNum(n) ? n.toFixed(2) : "—";
 const cr = n => isNum(n) ? n.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : "—";
 const pd = s => { const [y, m, d] = s.split("-"); return new Date(+y, m - 1, +d); };
-let today = (() => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; })();
+const istDay = () => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());   // "2026-10-18"
+let today = pd(istDay());
 const dayDiff = s => s ? Math.round((pd(s) - today) / 864e5) : null;
 const fmtD = s => s ? pd(s).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—";
 const fmtS = s => s ? pd(s).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "—";
@@ -145,23 +146,28 @@ function stLabel(i) {
   if (i.status !== "listed" && !i.close && !i.open) return `<span class="st gray">Dates not announced</span>`;
   if (i.status === "live" && !i.close) return `<span class="st red">● Open now</span>`;
   if (i.status === "upcoming" && !i.open) return `<span class="st blue">Upcoming</span>`;
+  if (notOpenYet(i)) return `<span class="st blue" data-end="${opensAt(i)}" data-k="open">Opens today · 10:00 AM</span>`;
   if (i.status === "live" && i.close && dayDiff(i.close) === 0 && endAt(i) && Date.now() >= endAt(i)) return `<span class="st gray">Bidding closed</span>`;
   if (i.status === "live") { const d = dayDiff(i.close); return `<span class="st red">● ${d === 0 ? "Closes Today" : `Closes in ${d} day${d > 1 ? "s" : ""}`}</span>`; }
   if (i.status === "upcoming") { const o = dayDiff(i.open); return `<span class="st blue">Opens in ${o} day${o > 1 ? "s" : ""}</span>`; }
   return `<span class="st grn">Closed</span>`;
 }
 // Pre-apply: the IPO has not opened yet but the price band is out, so brokers/UPI apps let you place the bid in advance
-const preApply = i => i.status === "upcoming" && isNum(i.priceHigh) && i.priceHigh > 0 && !!i.open;
+const opensAt = i => i.open ? new Date(i.open + "T10:00:00" + IST_OFFSET).getTime() : null;
+const notOpenYet = i => i.status === "live" && !!i.open && i.open === isoLocal(today) && Date.now() < opensAt(i);
+const preApply = i => (i.status === "upcoming" || notOpenYet(i)) && isNum(i.priceHigh) && i.priceHigh > 0 && !!i.open;
 const applyLabel = i => preApply(i) ? "Pre Apply" : "Apply";
 // Broker / platform IPO pages: an IPO bid is placed through a broker or a UPI app, there is no single official site to apply on
 const BROKERS = [["Zerodha", "https://zerodha.com/ipo"], ["Groww", "https://groww.in/ipo"], ["Upstox", "https://upstox.com/ipo/"], ["Angel One", "https://www.angelone.in/ipo"], ["5paisa", "https://www.5paisa.com/ipo"],
   ["ICICI Direct", "https://www.icicidirect.com/ipo"], ["HDFC Securities", "https://www.hdfcsec.com/ipo"], ["Kotak Neo", "https://www.kotakneo.com/ipo/"], ["Paytm Money", "https://www.paytmmoney.com/ipo"], ["Sharekhan", "https://www.sharekhan.com/ipo"]];
 const price = i => isNum(i.priceLow) ? `₹${i.priceLow} - ₹${i.priceHigh}` : isNum(i.priceHigh) ? `₹${i.priceHigh}` : "—";
 // Registrar allotment-status pages (public), matched by the registrar name NSE gives us
-const REGISTRARS = [["kfin", "https://ipostatus.kfintech.com/"], ["link intime", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"], ["mufg", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html"],
-  ["skyline", "https://www.skylinerta.com/ipo.php"], ["bigshare", "https://ipo.bigshareonline.com/IPO_Status.html"], ["cameo", "https://ipostatus.cameoindia.com/"], ["purva", "https://www.purvashare.com/investor-service/ipo-query"],
-  ["maashitla", "https://maashitla.com/allotment-status"], ["integrated", "https://www.integratedregistry.in/IPOStatus.aspx"], ["beetal", "https://www.beetalfinancial.com/ipo-status"]];
-const registrarLink = i => { const n = (i.registrar?.name || "").toLowerCase(); return REGISTRARS.find(([k]) => n.includes(k))?.[1] || null; };
+// [name part, address, kind]: "status" = the page where you enter your PAN / application number; "site" = the registrar's own website (find "IPO status" there)
+const REGISTRARS = [["kfin", "https://ipostatus.kfintech.com/", "status"], ["link intime", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html", "status"], ["mufg", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html", "status"],
+  ["skyline", "https://www.skylinerta.com/ipo.php", "status"], ["bigshare", "https://ipo.bigshareonline.com/IPO_Status.html", "status"], ["cameo", "https://ipostatus1.cameoindia.com/", "status"], ["purva", "https://www.purvashare.com/investor-service/ipo-query", "status"],
+  ["maashitla", "https://maashitla.com/allotment-status", "status"], ["mas services", "https://www.masserv.com/", "site"], ["integrated", "https://www.integratedregistry.in/", "site"], ["beetal", "https://beetal.in/", "site"]];
+const BSE_STATUS = "https://www.bseindia.com/investors/appli_check.aspx";
+const registrarLink = i => { const n = (i.registrar?.name || "").toLowerCase(), r = REGISTRARS.find(([k]) => n.includes(k)); return r ? { url: r[1], kind: r[2] } : null; };
 const fmtGain = p => isNum(p) ? `<span class="${p >= 0 ? "grn-t" : "red-t"}">${p >= 0 ? "+" : ""}${p.toFixed(1)}%</span>` : "—";
 function listCard(i) {
   const sc = scoreOf(i), v = verdict(sc.score), t = totalTimes(i), g = gmpNow(i);
@@ -190,13 +196,13 @@ const shortName = n => n.replace(/[ ]+(Limited|Ltd|Ltd[.])$/i, "");
 function insights() {
   const open = state.ipos.filter(i => i.status === "live" && boardOk(i));
   const best = (arr, f) => arr.filter(i => isNum(f(i))).sort((x, y) => f(y) - f(x))[0];
-  const g = best(open, gmpPct), s = best(open.filter(i => i.status === "live"), totalTimes), sc = best(open, score), today = open.filter(isClosingToday);
+  const g = best(open, gmpPct), s = best(open.filter(i => i.status === "live"), totalTimes), sc = best(open, score), closingNow = open.filter(isClosingToday);
   const card = (icon, label, value, sub, cls, sym) => `<div class="ins${sym ? " ipoc" : ""}" ${sym ? `data-open="${sym}"` : ""}><div class="insl"><i>${icon}</i>${label}</div><b class="${cls}">${value}</b><div class="mut sm insn">${sub}</div></div>`;
   const cards = [
     g && card("🚀", "Highest GMP", "₹" + gmpNow(g), `${esc(shortName(g.name))} · ${gmpPct(g).toFixed(0)}%`, gmpNow(g) >= 0 ? "grn-t" : "red-t", g.symbol),
     s && card("🔥", "Most subscribed", f2(totalTimes(s)) + "x", esc(shortName(s.name)), "", s.symbol),
     sc && card("⭐", "Top score", score(sc) + "/100", esc(shortName(sc.name)), "", sc.symbol),
-    card("⏰", "Closing today", String(today.length), today.length ? today.map(i => esc(shortName(i.name))).join(", ") : "No IPO closes today", today.length ? "red-t" : "")
+    card("⏰", "Closing today", String(closingNow.length), closingNow.length ? closingNow.map(i => esc(shortName(i.name))).join(", ") : "No IPO closes today", closingNow.length ? "red-t" : "")
   ].filter(Boolean);
   return `<div class="insights">${cards.join("")}</div>`;
 }
@@ -348,7 +354,18 @@ function upDashboard() {
     `<p class="mut sm">* Allotment/listing dates are estimates until the issuer confirms them.</p>`;
 }
 const TYPE_LABEL = { DRHP: "Draft prospectus", UDRHP: "Updated draft", Addendum: "Addendum", Abridged: "Abridged draft", Other: "Filing" };
-const niceName = n => n === n.toUpperCase() ? n.toLowerCase().replace(/(^|[ (.&-])([a-z])/g, (m, p, c) => p + c.toUpperCase()) : n;   // "OSWAL CABLES LIMITED" -> "Oswal Cables Limited"
+// "OSWAL CABLES LIMITED" -> "Oswal Cables Limited"; names already in proper capitals are kept; initials and vowel-less acronyms stay capital ("PM CONA" -> "PM Cona")
+const SMALL_WORDS = new Set(["and", "of", "the", "in", "for", "to", "on", "at", "by", "a", "an"]);
+const niceName = n => {
+  const t = String(n).trim().replace(/\s+/g, " ");
+  if (t !== t.toUpperCase()) return t;
+  return t.split(" ").map((w, k) => {
+    const lw = w.toLowerCase(), letters = lw.replace(/[^a-z]/g, "");
+    if (k > 0 && SMALL_WORDS.has(lw)) return lw;
+    if (letters.length === 1 || (letters.length >= 2 && letters.length <= 4 && !/[aeiouy]/.test(letters)) || /^([a-z]\.)+[a-z]?\.?$/.test(lw)) return w.toUpperCase();
+    return lw.replace(/(^|[^a-z'])([a-z])/g, (_, p, c) => p + c.toUpperCase());
+  }).join(" ");
+};
 // Companies that filed a draft/red-herring document with SEBI but have no IPO dates or price band yet
 function filingRow(f) {
   const d = pd(f.date), ago = -dayDiff(f.date), g = f.gmp;
@@ -376,6 +393,7 @@ const tlRow = (label, d, est) => [label, d ? `${fmtD(d)}${est ? " (exp.)" : ""}`
 const reportCard = i => `<div class="card"><button class="btn" data-report="${i.symbol}" style="width:100%">📄 Full company report</button><p class="mut sm" style="margin:8px 0 0">All documents (read or download) and the complete data for this company.</p></div>`;
 const docIcon = d => d.kind === "pdf" || d.kind === "pdf-link" ? "📕" : d.kind === "link" ? "🔗" : d.kind === "zip" ? "🗜️" : "📄";
 function docRow(d) {
+  if (!safeUrl(d.url)) return "";                                  // a link that is not a normal web address is not shown
   const url = esc(safeUrl(d.url)), meta = [d.source, d.kind === "pdf" || d.kind === "pdf-link" ? "PDF" : d.kind === "zip" ? "ZIP" : null, d.sizeMB ? d.sizeMB + " MB" : null].filter(Boolean).join(" · ");
   const btns = d.kind === "pdf-link"
     ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener noreferrer">Read</a><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Download</a>`
@@ -407,6 +425,7 @@ function rawRows(i) {
   add("Registrar", i.registrar?.name); add("Registrar address", i.registrar?.address); add("Registrar contact", i.registrar?.contact); add("Lead managers", i.leadManagers); add("Sponsor bank", i.sponsorBank);
   if (i.listingPerf) { add("Day-1 open", `₹${f2(i.listingPerf.dayOpen)} (${i.listingPerf.dayOpenGainPct}%)`); add("Last price", `₹${f2(i.listingPerf.ltp)} (${i.listingPerf.ltpGainPct}%)`); }
   if (i.verification) add("Data verification", `${i.verification.status.toUpperCase()}: ${i.verification.checked - i.verification.notFound} of ${i.verification.checked} extracted figures found in the ${i.verification.sourceDoc || "offer document"}${i.verification.issues?.length ? "; notes: " + i.verification.issues.join(" | ") : ""}`);
+  const fz = FU(i); if (fz?.notes) add("Extraction notes (technical)", fz.notes);
   const sc = scoreOf(i); add("Trendy IPO score", sc.score === null ? "Insufficient data" : `${sc.score}/100 (${sc.coverage}% data coverage)`);
   add("Data fetched", i.fetchedAt ? new Date(i.fetchedAt).toLocaleString("en-IN") : null);
   return R;
@@ -427,7 +446,7 @@ function reportView() {
 
 
 function detail(forReport = false) {
-  const i = byId(state.detail), sc = scoreOf(i), v = verdict(sc.score), f = FU(i), b = i.bids || {}, g = gmpNow(i), L = isNum(i.lot) && isNum(i.priceHigh) ? lotsFor(i) : null;
+  const i = byId(state.detail), sc = scoreOf(i), v = verdict(sc.score), f = FU(i), b = i.bids || {}, g = gmpNow(i), L = isNum(i.lot) && isNum(i.priceHigh) && i.lot > 0 && i.priceHigh > 0 ? lotsFor(i) : null;
   const inW = state.watch.includes(i.symbol), t = totalTimes(i), N = retailN(i), { v: fv } = factors(i);
   const risk = N === null ? null : N > 10 ? ["LOW ALLOTMENT CHANCE", "r"] : N > 3 ? ["MODERATE ALLOTMENT CHANCE", "y"] : ["GOOD ALLOTMENT CHANCE", "g"];
   const pr = i.priceHigh, F = f?.financials || {}, K = f?.kpi || {}, per = f?.periods || [], rv = a => Array.isArray(a) ? [...a].reverse() : [];
@@ -484,7 +503,7 @@ function detail(forReport = false) {
   ${f.promoters?.names?.length ? card("Promoters", `<p class="sm">${f.promoters.names.map(esc).join(", ")}</p><div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? `<p class="sm">${esc(f.promoters.background)}</p>` : ""}`) : ""}
   ${(f.strengths || []).length ? card("Strength Factor", `<ul class="lst">${f.strengths.map(x => `<li>• ${esc(x)}</li>`).join("")}</ul>`) : ""}
   ${(f.risks || []).length ? card("Risk Factor", `<ul class="lst">${f.risks.map(x => `<li>${x.severity === "high" ? "🔴" : x.severity === "medium" ? "🟠" : "🟡"} <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`).join("")}</ul>`) : ""}
-  ${f.notes ? `<p class="mut sm">Data note: ${esc(f.notes)}</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
+  ${f.notes ? `<p class="mut sm">ℹ️ A few figures could not be read clearly from the offer document and are left blank (—).</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
 
   ${forReport ? "" : reportCard(i)}
   ${card("Registrar", `<b>${esc(i.registrar.name || "—")}</b><div class="sm" style="margin-top:6px">${esc(i.registrar.address || "")}<br>${esc(i.registrar.contact || "")}</div>`)}
@@ -493,6 +512,7 @@ function detail(forReport = false) {
 }
 
 function compare() {
+  state.cmp = state.cmp.filter(byId);                                  // forget IPOs that are no longer in the data
   const sel = state.cmp.map(byId).filter(Boolean);
   const picker = state.cmp.length < 3 ? `<select id="pick"><option value="">+ Add IPO to compare (max 3)</option>${state.ipos.filter(i => !state.cmp.includes(i.symbol) && i.status !== "listed").map(i => `<option value="${i.symbol}">${esc(i.name)}</option>`).join("")}</select>` : "";
   if (sel.length < 2) return `${head("Compare")}<div class="note" style="margin:0 0 12px">⚖️ Pick 2–3 IPOs to compare side by side. Green = best value, red = weakest.</div>${sel.map(listCard).join("")}${picker}`;
@@ -591,7 +611,7 @@ function allotment() {
   return `${head("Allotment Status")}<div class="card"><p class="mut">Select the IPO, then check on the registrar's official page using your PAN or application number.</p>
   <select id="allotSel">${list.map(i => `<option value="${i.symbol}" ${sel && sel.symbol === i.symbol ? "selected" : ""}>${esc(i.name)} (${fmtS(i.allotment)})</option>`).join("")}</select>
   ${sel ? `<div class="note"><b>Registrar:</b> ${esc(sel.registrar.name || "—")}<br>Allotment date: ${fmtD(sel.allotment)} ${sel.datesExpected ? "(expected)" : ""}<br>${esc(sel.registrar.contact || "")}</div>
-  ${registrarLink(sel) ? `<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px" href="${registrarLink(sel)}" target="_blank" rel="noopener noreferrer">Check allotment status ↗</a>` : '<p class="mut sm">Registrar page not known for this IPO; use the NSE/BSE allotment page.</p>'}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
+  ${(r => r ? `<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px" href="${r.url}" target="_blank" rel="noopener noreferrer">${r.kind === "status" ? "Check allotment status ↗" : "Open the registrar's website ↗"}</a>${r.kind === "status" ? "" : '<p class="mut sm">Look for "IPO status" or "allotment" on their site.</p>'}` : `<p class="mut sm">The registrar's status page is not known for this IPO. If it is listed on BSE you can check here:</p><a class="btn ghost" style="display:block;text-align:center;text-decoration:none" href="${BSE_STATUS}" target="_blank" rel="noopener noreferrer">BSE: application status ↗</a>`)(registrarLink(sel))}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
   <div class="note">Allotment is decided by the registrar's computerised lottery. Use the registrar's official website or the NSE/BSE allotment pages.</div>`;
 }
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
@@ -659,7 +679,7 @@ const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.discl
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
 const credit = () => `<div class="credit">Developed by <b>Zynora Technology</b> (Noor)<span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
 // If the data file stops being refreshed, say so on every screen instead of quietly showing old numbers.
-const STALE_HOURS = 3;
+const STALE_HOURS = 8;
 const staleBar = () => {
   const h = state.meta?.generatedAt ? (Date.now() - new Date(state.meta.generatedAt).getTime()) / 3600e3 : 0;
   if (!(h > STALE_HOURS)) return "";
@@ -672,11 +692,16 @@ const acked = () => state.ack;   // shown on every app open, gone after the user
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
   const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, reviews, settings };
+  if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
+  if (state.report && !byId(state.report)) state.report = null;
+  if (state.modal && !byId(state.modal)) state.modal = null;
+  const ae = document.activeElement, keep = ae && ae.id && ae !== document.body ? { id: ae.id, s: ae.selectionStart, e: ae.selectionEnd } : null;
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
+  if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
   if (state.tab === "reviews" && !state.detail && !state.report) loadReviews(false);
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
@@ -684,8 +709,10 @@ function render() {
   sel("#pick", v => { if (v) { state.cmp.push(v); store.set("cmp", state.cmp); render(); } });
   sel("#sort", v => { state.sort = v; render(); });
   sel("#allotSel", v => { state.allotIpo = v; render(); });
+  pushView();
 }
-function toast(m) { state.toast = m; render(); setTimeout(() => { state.toast = ""; render(); }, 1800); }
+let toastTimer = null;
+function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
   const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-review-send],[data-review-reload],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
@@ -697,7 +724,7 @@ document.addEventListener("click", e => {
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
   if (t.dataset.rtab) { state.reportTab = t.dataset.rtab; render(); scrollTo(0, 0); return; }
-  if (t.hasAttribute("data-report-close")) { state.report = null; render(); return; }
+  if (t.hasAttribute("data-report-close")) { goBack(); return; }
   if (t.hasAttribute("data-print")) { window.print(); return; }
   if (t.hasAttribute("data-lang")) { store.set("lang", t.dataset.lang); return render(); }
   if (t.hasAttribute("data-ack")) { state.ack = true; return render(); }
@@ -709,14 +736,14 @@ document.addEventListener("click", e => {
   if (d.goto) { state.seg = d.goto; state.perf = null; render(); scrollTo(0, 0); return; }
   if (d.open) { const pend = d.jump; state.detail = d.open; render(); scrollTo(0, 0); if (pend) document.getElementById(pend)?.scrollIntoView(); return; }
   if (d.jump) { document.getElementById(d.jump)?.scrollIntoView({ behavior: "smooth" }); return; }
-  if (t.hasAttribute("data-back")) state.detail = null;
+  if (t.hasAttribute("data-back")) { goBack(); return; }
   else if (d.tab) { state.tab = d.tab; state.detail = null; }
   else if (d.seg) { state.seg = d.seg; state.perf = null; state.showAll = false; }
   else if (t.hasAttribute("data-search")) { state.search = !state.search; if (!state.search) state.q = ""; }
   else if (d.watch) { const k = state.watch.indexOf(d.watch); k < 0 ? state.watch.push(d.watch) : state.watch.splice(k, 1); store.set("watch", state.watch); }
   else if (d.cmp) { const k = state.cmp.indexOf(d.cmp); if (k >= 0) state.cmp.splice(k, 1); else if (state.cmp.length < 3) state.cmp.push(d.cmp); store.set("cmp", state.cmp); }
   else if (d.apply) { const i = byId(d.apply); if (phase(i).k !== "apply") return toast("Bidding is closed for this IPO"); state.modal = i.symbol; }
-  else if (t.hasAttribute("data-close")) state.modal = null;
+  else if (t.hasAttribute("data-close")) { goBack(); return; }
   else if (t.hasAttribute("data-share")) { const i = byId(state.detail), txt = `${i.name} — Trendy IPO score ${score(i) ?? "N/A"}/100 (${verdict(score(i)).t})`; if (navigator.share) navigator.share({ text: txt }).catch(() => {}); else { try { navigator.clipboard.writeText(txt); } catch {} return toast("Copied to clipboard"); } return; }
   else if (d.toast) return toast(d.toast);
   render();
@@ -731,6 +758,31 @@ document.addEventListener("change", e => {
 });
 // status is recomputed from today's date so a stale data file never shows a closed IPO as live
 const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" });
+// ---------- the phone's Back button ----------
+// Opening an IPO, a full report or the Apply popup adds one history step; Back then closes it. Switching tabs and report tabs do not add steps.
+const levelKey = () => [state.detail || "", state.report || "", state.modal || ""].join("|");
+let navLevel = levelKey();
+const histState = () => ({ tab: state.tab, level: levelKey(), rtab: state.reportTab });
+try { history.replaceState(histState(), ""); } catch {}
+function pushView() {
+  const lv = levelKey();
+  try {
+    if (lv !== navLevel) { navLevel = lv; history.pushState(histState(), ""); }
+    else { const h = history.state || {}; if (h.tab !== state.tab || h.rtab !== state.reportTab) history.replaceState(histState(), ""); }
+  } catch {}
+}
+window.addEventListener("popstate", e => {
+  const s = e.state; if (!s || typeof s.level !== "string") return;
+  const [detail, report, modal] = s.level.split("|");
+  navLevel = s.level; state.tab = s.tab || "ipo"; state.detail = detail || null; state.report = report || null; state.modal = modal || null; if (s.rtab) state.reportTab = s.rtab;
+  render(); window.scrollTo(0, 0);
+});
+// the on-screen back / close buttons use the same history, so the Back button and the arrow always agree
+function goBack() {
+  const before = levelKey();
+  try { history.back(); } catch {}
+  setTimeout(() => { if (levelKey() === before) { if (state.modal) state.modal = null; else if (state.report) state.report = null; else state.detail = null; render(); } }, 250);   // if the browser could not go back, close it directly
+}
 let loadingData = false, lastLoad = 0;
 async function loadData(manual) {
   if (loadingData) return;
@@ -782,8 +834,8 @@ document.addEventListener("visibilitychange", () => { if (document.visibilitySta
 // ---------- once a second: countdowns, the closing moment, and midnight ----------
 const firedEnds = new Set();   // each closing / allotment / listing moment redraws the screen once
 function tick() {
-  const d0 = new Date(); d0.setHours(0, 0, 0, 0);
-  if (d0.getTime() !== today.getTime()) { today = d0; if (state.loaded) state.ipos = state.ipos.map(withStatus); render(); return; }   // a new day began while the app was open
+  const dayNow = istDay();
+  if (dayNow !== isoLocal(today)) { today = pd(dayNow); if (state.loaded) state.ipos = state.ipos.map(withStatus); render(); return; }   // a new day began while the app was open
   let redraw = false;
   document.querySelectorAll("[data-end]").forEach(el => {
     const ms = +el.dataset.end - Date.now();

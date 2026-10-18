@@ -55,7 +55,20 @@ const gkeys = Object.keys(gmp.current);
 const findG = name => { const nk = norm(name); return gkeys.find(k => k === nk || (k.length > 4 && (nk.startsWith(k + " ") || k.startsWith(nk + " ")))) || null; };
 const statusOf = (open, close) => close && close < today ? "listed" : open && open > today ? "upcoming" : "live";
 const pct = (a, b) => (a != null && b ? Math.round((a / b - 1) * 10000) / 100 : null);
-const prettyName = s => s.replace(/\b(\w)(\w*)/g, (_, a, c) => a.toUpperCase() + c.toLowerCase()).replace(/ Ltd\b/, " Limited");
+// Company names: if the exchange already wrote the name in proper capitals ("HD Fire Protect Limited", "AceVector Limited") it is kept as it is.
+// Only ALL-CAPS or all-lowercase names are rewritten: small words stay small, initials and vowel-less acronyms (SMC, PM, R.K.) stay capital, "Shah Investor's" keeps its apostrophe.
+const SMALL_WORDS = new Set(["and", "of", "the", "in", "for", "to", "on", "at", "by", "a", "an"]);
+const prettyName = s => {
+  const t = String(s).trim().replace(/\s+/g, " ");
+  if (t !== t.toUpperCase() && t !== t.toLowerCase()) return t.replace(/ Ltd\.?$/i, " Limited");
+  const word = (w, k) => {
+    const lw = w.toLowerCase(), letters = lw.replace(/[^a-z]/g, "");
+    if (k > 0 && SMALL_WORDS.has(lw)) return lw;
+    if (letters.length === 1 || (letters.length >= 2 && letters.length <= 4 && !/[aeiouy]/.test(letters)) || /^([a-z]\.)+[a-z]?\.?$/.test(lw)) return w.toUpperCase();   // initials, SMC, PM, R.K.
+    return lw.replace(/(^|[^a-z'])([a-z])/g, (_, p, c) => p + c.toUpperCase());
+  };
+  return t.split(" ").map(word).join(" ").replace(/ Ltd\.?$/i, " Limited");
+};
 const matchedKeys = new Set();
 
 function gmpBlock(gk) {
@@ -197,7 +210,11 @@ for (const [k, g] of Object.entries(gmp.current)) {
 
 // DRHP / RHP filings that are not yet (or no longer) an open IPO -> "to be announced"
 const known = out.map(i => norm(i.name));
-const filingsRaw = (sebi.filings || []).filter(f => { const n = norm(f.company); return !known.some(k => k === n || k.startsWith(n + " ") || n.startsWith(k + " ")); });
+const filingsRaw = (() => {
+  const seen = new Map();                                             // one row per company: the same company can be filed twice (e.g. "(I)" and "I" in its name); the newest filing wins
+  for (const f of sebi.filings || []) { const n = norm(f.company), p = seen.get(n); if (!p || String(f.date) > String(p.date)) seen.set(n, f); }
+  return [...seen.values()].filter(f => { const n = norm(f.company); return !known.some(k => k === n || k.startsWith(n + " ") || n.startsWith(k + " ")); });
+})();
 const filings = filingsRaw.map(f => { const k = findG(f.company), g = k ? gmp.current[k] : null;   // grey-market quote / dates if InvestorGain already lists it
   const lk = "F-" + String(f.company).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");   // same key logos.mjs uses
   return { ...f, gmp: g?.gmp ?? null, gmpUpdated: g?.igUpdated || null, open: g?.open || null, close: g?.close || null, logo: logos[lk]?.file || null }; });
