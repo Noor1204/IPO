@@ -7,7 +7,7 @@ const dir = import.meta.dirname;
 const live = process.argv.includes("--live");
 const steps = live
   ? [["fetch-nse", "--no-docs"], ["fetch-bse", "--no-docs"], ["gmp"], ["sebi"], ["quotes"], ["verify"], ["build"]]
-  : [["fetch-nse"], ["fetch-bse"], ["sebi"], ["offerdocs"], ["docs"], ["logos"], ["gmp"], ["quotes"], ["extract"], ["verify"], ["build"]];
+  : [["fetch-nse"], ["fetch-bse"], ["sebi"], ["offerdocs"], ["docs"], ["logos"], ["gmp"], ["quotes"], ["extract"], ["verify"], ["prune"], ["build"]];
 for (const [step, ...args] of steps) {
   console.log(`
 ── ${step} ──`);

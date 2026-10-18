@@ -25,11 +25,12 @@ Information only, not investment advice.
 `npm run serve` serves the app on http://localhost:8740.
 
 ### Two routes to the live site
-1. **Cloud (GitHub Actions)**: every hour the workflow refreshes the data and publishes the site.
+1. **Cloud (GitHub Actions)**: the workflow is set to run every hour, but GitHub in practice starts scheduled runs only every ~2–5 hours. It refreshes the data, checks it (`validate.mjs`) and publishes the site.
 2. **This PC (backup)**: after each hourly/daily run, `scripts/push-data.cmd` checks the data and pushes it to GitHub (only once a GitHub remote named `origin` exists). It is also the only route for company figures and logos, which need this PC.
 A push from this PC also makes the workflow run (it is triggered by pushes to `data/`), so the site does not wait for the next hourly run.
 In the app, the 🔄 button re-reads the latest data at any time, and the app re-checks by itself every 5 minutes while it is open.
-If neither route updates the data for more than 3 hours, the app shows a red "Data is N hours old" bar.
+If both routes merge (PC and cloud push at the same time), `ipos.json` is rebuilt and checked again after the merge before anything is pushed. `prune.mjs` (daily) deletes downloaded documents older than 21 days once their text is extracted, and `scripts/trim-logs.cmd` keeps the logs small.
+If neither route updates the data for more than 8 hours, the app shows a red "Data is N hours old" bar.
 
 ### Scheduling
 Windows Task Scheduler tasks (set to run on battery, hidden window):
