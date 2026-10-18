@@ -180,7 +180,7 @@ function listCard(i) {
   ${cdFor(i)}<div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
   ${actionBtn(i)}</div></div>`;
 }
-const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
+const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ About</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
@@ -661,19 +661,25 @@ const staleBar = () => {
 };
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
-// ---------- About side bar (slides in from the left; holds Compare and Settings) ----------
-const aboutDrawer = () => `<div class="dim" data-drawer-close></div><aside class="drawer" role="dialog" aria-label="About">
-  <div class="dhead"><img src="icons/logo.svg" alt="" width="44" height="44"><div><b>Trendy <span>IPO</span></b><div class="mut sm">About</div></div><button class="ib" data-drawer-close aria-label="Close">✕</button></div>
-  <div class="dnav"><button data-tab="compare" class="${state.tab === "compare" ? "on" : ""}"><b>⚖️</b>Compare</button><button data-tab="settings" class="${state.tab === "settings" ? "on" : ""}"><b>⚙️</b>Settings</button></div>
-  <div class="dabout"><h3>About Trendy IPO</h3>
-    <p>Live IPO tracker for Mainboard and SME issues: subscription, GMP trend, a 0–100 score, allotment links and listing results — all fetched automatically.</p>
-    <p class="mut sm">Data: NSE, BSE, SEBI, offer documents, InvestorGain and ipowatch (GMP is unofficial), Yahoo Finance.</p>
-    <p class="mut sm">Information only — not investment advice. IPOs carry risk; read the RHP before you apply.</p>
-    <p class="sm"><b>Developed by</b> Zynora Technology (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p></div></aside>`;
+// ---------- left side bar (About, Compare, Settings) + About page ----------
+// Laptop: always visible on the left. Phone: opens from the "☰ About" button at the top and closes again after a choice.
+const SIDE = [["about", "ℹ️", "About"], ["compare", "⚖️", "Compare"], ["settings", "⚙️", "Settings"]];
+const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="drawer" aria-label="Menu">
+  <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">✕</button></div>
+  <div class="dnav">${SIDE.map(([k, ic, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}"><b>${ic}</b>${l}</button>`).join("")}</div>
+  <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology</div></aside>`;
+function aboutPage() {
+  return `${head("About")}<div class="cards aboutpg">
+  ${card(TEXT.aboutTitle[lang()], about())}
+  ${card("Where the data comes from", `<ul class="alist"><li><b>NSE, BSE, SEBI</b> — issue details, dates, subscription, offer documents</li><li><b>Offer documents (RHP)</b> — company financials used for the score</li><li><b>InvestorGain, ipowatch</b> — GMP (unofficial grey-market rumours)</li><li><b>Yahoo Finance</b> — listing-day prices</li></ul>`)}
+  ${card("How the score works", `<p class="sm">The 0–100 score is a formula on public data: financials, GMP, subscription, valuation, business quality and peers. It is an indication, not a recommendation.</p>`)}
+  ${card("Disclaimer", `<p class="sm">${disclaimer()}</p>`)}
+  ${card("Developer", `<p style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut sm">© 2026 Zynora Technology. All rights reserved.</span></p>`)}</div>`;
+}
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
@@ -682,9 +688,9 @@ function render() {
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
-    (state.drawer ? aboutDrawer() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
+  const side = $("#side"); side.innerHTML = sideMenu(); side.classList.toggle("open", !!state.drawer);
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", !state.detail && (b.dataset.tab === state.tab || (b.hasAttribute("data-menu") && (state.drawer || state.tab === "compare" || state.tab === "settings")))));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };

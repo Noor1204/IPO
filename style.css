@@ -392,3 +392,23 @@ nav button{min-width:0}
 .dnav button.on{border-color:var(--pri);color:var(--pri)}
 .dabout{padding:6px 16px 22px;border-top:1px solid var(--bd);margin-top:4px}
 .dabout h3{margin:14px 0 6px}.dabout p{margin:0 0 10px;line-height:1.5;font-size:13.5px}
+
+/* ---- side bar: always open on a laptop, slides in on a phone ---- */
+.menubtn{background:var(--soft);border:1px solid var(--bd);color:var(--tx);border-radius:99px;padding:5px 12px;font-size:13px;font-weight:700;cursor:pointer;margin-right:4px;transition:transform .15s,border-color .15s}
+.menubtn:hover{transform:translateY(-1px);border-color:var(--pri)}
+#side:not(.open){display:none}
+.dfoot{margin-top:auto;padding:14px 16px;border-top:1px solid var(--bd);line-height:1.5}
+.alist{margin:0;padding-left:18px;font-size:13.5px;line-height:1.7}
+.aboutpg .card{margin:0}
+@media(min-width:960px){
+  #side,#side:not(.open){display:block}
+  #side .dim{display:none}
+  #side .dclose{display:none}
+  #side .drawer{top:0;width:230px;animation:none;box-shadow:none;border-right:1px solid var(--bd);z-index:4}
+  .navbrand{display:none}
+  nav div{justify-content:flex-end}
+  #side .dnav{padding-top:16px}
+  body{padding-left:230px}
+  nav{left:230px}
+  .cards.aboutpg{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
