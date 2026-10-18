@@ -1,6 +1,6 @@
 // App shell is cached for offline use. data/ipos.json is always fetched fresh; when offline we serve the last good copy of it.
 // An HTML page must never be handed back in place of the JSON (it used to, which made the app look empty).
-const CACHE = "ipo-radar-v69";
+const CACHE = "ipo-radar-v70";
 const SHELL = ["./", "index.html", "style.css", "app.js", "boot.js", "analytics.js", "manifest.webmanifest", "icons/icon-192.png", "icons/icon-512.png"];
 
 self.addEventListener("install", e => { e.waitUntil(caches.open(CACHE).then(c => c.addAll(SHELL)).then(() => self.skipWaiting())); });
@@ -15,7 +15,7 @@ self.addEventListener("fetch", e => {
   if (!isData && !isShell) return;                      // everything else: plain network
   const key = isData ? url.origin + url.pathname : e.request;   // ignore ?query so one cached copy always matches
   e.respondWith(
-    fetch(e.request).then(r => {
+    fetch(e.request, { cache: "no-cache" }).then(r => {
       // only keep good responses; never cache an HTML error page as data
       if (r.ok && (!isData || /json/i.test(r.headers.get("content-type") || ""))) { const copy = r.clone(); caches.open(CACHE).then(c => c.put(key, copy)); return r; }
       return caches.match(key, { ignoreSearch: true }).then(m => m || r);

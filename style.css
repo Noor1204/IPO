@@ -491,3 +491,11 @@ nav button{min-width:0}
 /* the whole page glides between light and dark instead of jumping */
 html.themefade,html.themefade *{transition:background-color .45s ease,color .45s ease,border-color .45s ease,box-shadow .45s ease!important}
 @media(prefers-reduced-motion:reduce){.switch,.switch::after{transition:none}html.themefade *{transition:none!important}.ndot{animation:none}}
+
+/* ---- Back and Share are clearly visible labelled buttons ---- */
+.ib[data-back],.ib[data-report-close],.ib[data-share]{display:inline-flex;align-items:center;gap:6px;flex:none;font-size:14px;font-weight:700;padding:7px 14px;border-radius:99px;border:1.5px solid var(--bd);background:var(--card);color:var(--tx);box-shadow:0 1px 3px rgba(15,23,42,.08);transition:transform .15s,border-color .15s,background .15s}
+.ib[data-back] span,.ib[data-report-close] span,.ib[data-share] span{font-size:17px;line-height:1}
+.ib[data-back]:hover,.ib[data-report-close]:hover,.ib[data-share]:hover{border-color:var(--pri);background:var(--soft);transform:translateY(-1px)}
+.ib[data-back]:active,.ib[data-report-close]:active,.ib[data-share]:active{transform:scale(.95)}
+.ib[data-share]{color:var(--pri)}
+.top h1{min-width:0;overflow-wrap:anywhere}

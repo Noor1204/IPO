@@ -181,7 +181,7 @@ function listCard(i) {
   ${actionBtn(i)}</div></div>`;
 }
 const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
-const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back">←</button>` : ""}<h1>${title}</h1>${extra}</div>`;
+const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
@@ -460,7 +460,7 @@ function rawRows(i) {
 }
 function reportView() {
   const i = byId(state.report), tab = state.reportTab;
-  const head = `<div class="noprint row" style="margin-bottom:10px"><button class="ib" data-report-close>←</button><b>${esc(i.name)}</b><span></span></div>
+  const head = `<div class="noprint row" style="margin-bottom:10px"><button class="ib" data-report-close aria-label="Back"><span>←</span> Back</button><b>${esc(i.name)}</b><span></span></div>
   <div class="seg noprint"><button data-rtab="docs" class="${tab === "docs" ? "on" : ""}">📁 Documents</button><button data-rtab="data" class="${tab === "data" ? "on" : ""}">📊 Company data</button></div>`;
   if (tab === "docs") return `<div class="report">${head}${docsPanel(i)}</div>`;
   const saved = state.detail; state.detail = i.symbol; const body = detail(true); state.detail = saved;
@@ -485,7 +485,7 @@ function detail(forReport = false) {
   const gh = (i.gmp?.history || []).map(x => x.gmp);
   const pa = peerAvg(i, "pe"), p = pe(i), iss = f?.issue || {};
   const tot = (iss.fresh_issue_cr || 0) + (iss.ofs_cr || 0);
-  return `<div class="top"><button class="ib" data-back>←</button><h1>${esc(i.name)}</h1><button class="ib" data-share>⤴</button></div>
+  return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="Share"><span>⤴</span> Share</button></div>
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
   <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${isNum(t) ? f2(t) + "x" : "—"}</b></div>
