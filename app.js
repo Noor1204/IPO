@@ -265,12 +265,31 @@ function ipoTab() {
   <p class="disc">Live data: NSE India, SEBI, RHP documents; GMP from ipowatch.in + investorgain.com (unofficial). Updated ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}. Not investment advice.</p>`;
 }
 
-// Closed tab: how did our score compare with what actually happened on listing?
+// How close did our GMP and our score come to the real day-1 open? Built only from stored data (GMP history, Yahoo day-1 open, the score formula).
+// GMP: the last reading on or before listing day, as % of the issue price, compared with the actual day-1 gain. Close = within 5 points, Near = within 10.
+// Score: 60+ means "expects no loss on day 1" (open at or above the issue price), below 60 means "expects a loss"; matched when the real day-1 open agrees.
+function listingMatch(i) {
+  const lp = i.listingPerf; if (!lp || !isNum(lp.dayOpenGainPct)) return null;
+  const actual = lp.dayOpenGainPct;
+  const h = (i.gmp?.history || []).filter(x => isNum(x.gmp) && (!lp.listDate || x.date <= lp.listDate));
+  const g = h.length ? h[h.length - 1].gmp : null, gmpP = isNum(g) && i.priceHigh > 0 ? g / i.priceHigh * 100 : null;
+  const err = gmpP === null ? null : actual - gmpP, a = err === null ? null : Math.abs(err);
+  const s = score(i);
+  return { actual, gmp: g, gmpP, err, gmpHit: a === null ? null : a <= 5 ? "close" : a <= 10 ? "near" : "miss", score: s, scoreHit: s === null ? null : (s >= 60) === (actual >= 0) };
+}
+const GMP_HIT = { close: `<span class="grn-t">✅ Close</span>`, near: `<span style="color:var(--warn)">⚠️ Near</span>`, miss: `<span class="red-t">❌ Missed</span>` };
+const fmtPts = e => isNum(e) ? `<span class="${Math.abs(e) <= 5 ? "grn-t" : Math.abs(e) <= 10 ? "" : "red-t"}">${e >= 0 ? "+" : ""}${e.toFixed(1)} pts</span>` : "—";
+const SCORE_HIT = h => h === null ? "—" : h ? `<span class="grn-t">✅ Matched</span>` : `<span class="red-t">❌ Not matched</span>`;
+// Closed tab: how did our GMP and score compare with what actually happened on listing?
 function outcomes() {
-  const rows = state.ipos.filter(i => i.listingPerf && score(i) !== null).sort((a, b) => score(b) - score(a));
+  const rows = state.ipos.map(i => ({ i, m: listingMatch(i) })).filter(r => r.m && (r.m.gmpP !== null || r.m.score !== null)).sort((a, b) => (b.i.listing || "").localeCompare(a.i.listing || ""));
   if (rows.length < 2) return "";
-  return card("📊 Score vs actual listing", tbl(["IPO", "Score", "Day-1 open", "Now"], rows.map(i => [esc(i.name), score(i), fmtGain(i.listingPerf.dayOpenGainPct), fmtGain(i.listingPerf.ltpGainPct)])) +
-    `<p class="mut sm">Gain vs issue price. "Day-1 open" is the first trade price from Yahoo Finance, which can differ slightly from the exchange's discovered listing price.</p>`);
+  const g = rows.filter(r => r.m.gmpHit), s = rows.filter(r => r.m.scoreHit !== null);
+  const close = g.filter(r => r.m.gmpHit === "close").length, near = g.filter(r => r.m.gmpHit === "near").length;
+  const avg = g.length ? g.reduce((a, r) => a + Math.abs(r.m.err), 0) / g.length : null, hit = s.filter(r => r.m.scoreHit).length;
+  const sum = `<div class="stats" style="margin:0 0 10px">${g.length ? `<div class="stat" style="cursor:default"><b>${close}/${g.length}</b><span>GMP close (within 5 pts)</span></div><div class="stat" style="cursor:default"><b>${close + near}/${g.length}</b><span>GMP within 10 pts</span></div><div class="stat" style="cursor:default"><b>${avg.toFixed(1)} pts</b><span>Average GMP miss</span></div>` : ""}${s.length ? `<div class="stat" style="cursor:default"><b>${hit}/${s.length}</b><span>Score matched the outcome</span></div>` : ""}</div>`;
+  return card("📊 GMP & score vs actual listing", sum + tbl(["IPO", "Score", "GMP at listing", "Actual day-1 open", "GMP vs actual", "Score"], rows.map(({ i, m }) => [esc(i.name), m.score ?? "—", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`, fmtGain(m.actual), m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—", SCORE_HIT(m.scoreHit)])) +
+    `<p class="mut sm"><b>GMP</b> = last grey-market reading on or before listing day, as % of the issue price. "GMP vs actual" = actual day-1 gain minus the GMP % (✅ within 5 points, ⚠️ within 10). <b>Score</b> 60+ expects no loss (day-1 open at or above the issue price), below 60 expects a loss; "Matched" means the real day-1 open agreed. Day-1 open is from Yahoo Finance and can differ slightly from the exchange's discovered listing price. GMP is rumour data; this is information, not investment advice.</p>`);
 }
 // SEBI DRHP / RHP filings = companies that have filed but not announced a price band yet
 // Dashboard: every IPO that has not opened yet, soonest first, with its current GMP
@@ -442,7 +461,7 @@ function detail(forReport = false) {
   <div class="mut sm">Updated ${esc(i.gmp.updated || "—")}</div>` : `<p class="mut sm">No GMP published for this IPO yet.</p>`}
   <div class="note gr">Exp. Premium is derived from market rumors and internet sources. It does not reflect the actual IPO listing price or value. Review the RHP and consult a financial advisor.</div></div>
 
-  ${i.listingPerf ? card("📈 Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + i.listingPerf.exchange + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : ""}
+  ${i.listingPerf ? card("📈 Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + i.listingPerf.exchange + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : ""}
 
   ${card("IPO Timeline", tbl(["", ""], [tlRow("Opens", i.timeline?.open), tlRow("Closes", i.timeline?.close), tlRow("Allotment finalised", i.timeline?.allotment, i.datesExpected), tlRow("Refund initiated", i.timeline?.refund, i.datesExpected), tlRow("Shares credited to demat", i.timeline?.demat, i.datesExpected), tlRow("Listing", i.timeline?.listing, i.datesExpected)]).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`)}
 

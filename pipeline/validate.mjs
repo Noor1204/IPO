@@ -52,6 +52,13 @@ for (const i of j.ipos || []) {
   num(i.bids?.total?.times, 0, 10000, "subscription", i);
   if (i.gmp && i.priceHigh) num(i.gmp.value, -i.priceHigh, i.priceHigh * 5, "GMP", i);
   num(i.listingPerf?.dayOpenGainPct, -100, 2000, "listing gain", i);
+  // the Total row must agree with the categories (this caught NSE's "1.404E7" being read as 1.404)
+  const bb = i.bids || {}; let so = 0, sb = 0;
+  for (const k of ["qib", "nii", "retail", "employee"]) if (bb[k]) { so += bb[k].offered || 0; sb += bb[k].bid || 0; }
+  if (bb.total && bb.total.offered != null && so > 0) {
+    const ro = bb.total.offered / so, rb = sb > 0 && bb.total.bid != null ? bb.total.bid / sb : 1;
+    if (ro < 0.9 || ro > 1.1 || rb < 0.9 || rb > 1.1) bad(`${i.symbol}: Total row (${bb.total.offered} offered, ${bb.total.bid} bid) does not match the categories (${so}, ${sb})`);
+  }
   for (const k of ["open", "close", "allotment", "listing"]) if (i[k] && !/^\d{4}-\d{2}-\d{2}$/.test(i[k])) bad(`${i.symbol}: bad ${k} date ${i[k]}`);
 }
 

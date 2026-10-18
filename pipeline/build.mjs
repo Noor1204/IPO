@@ -11,7 +11,7 @@ const nse = await loadEntries();   // NSE issues + BSE-only issues
 const gmp = await read("gmp.json", { current: {}, history: {} });
 const subHist = await read("sub-history.json", {});
 
-const num = s => { const m = String(s ?? "").replace(/,/g, "").match(/-?\d+(\.\d+)?/); return m ? Number(m[0]) : null; };
+const num = s => { const m = String(s ?? "").replace(/,/g, "").match(/-?\d+(\.\d+)?([eE][+-]?\d+)?/); return m ? Number(m[0]) : null; };   // NSE writes some totals as "1.404E7"
 const MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
 const iso = s => { const m = String(s || "").match(/(\d{1,2})[- ]([A-Za-z]{3})[A-Za-z]*[- ](\d{4})/); if (!m) return null; return `${m[3]}-${String(MON[m[2].toLowerCase()] + 1).padStart(2, "0")}-${m[1].padStart(2, "0")}`; };
 const addWorkdays = (d, n) => { const x = new Date(d + "T00:00:00"); while (n > 0) { x.setDate(x.getDate() + 1); if (x.getDay() % 6) n--; } return `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`; };
