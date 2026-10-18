@@ -593,9 +593,6 @@ function settings() {
   const A = state.alerts, w = state.watch.map(byId).filter(Boolean);
   return `${head("Settings")}<div class="card"><h2>🔔 Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
   <div class="card"><h2>⭐ Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
-  <div class="card"><h2>${TEXT.aboutTitle[lang()]}</h2>${about()}</div>
-  <div class="card"><h2>👤 Developer</h2><p class="sm" style="margin:0">Developed by <b>Zynora Technology</b> (Noor).</p></div>
-  <div class="card"><h2>🔒 Privacy</h2><p class="sm" style="margin:0">${TEXT.privacy[lang()]}</p>${langBtn()}</div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
 
@@ -668,14 +665,124 @@ const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="d
   <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">✕</button></div>
   <div class="dnav">${SIDE.map(([k, ic, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}"><b>${ic}</b>${l}</button>`).join("")}</div>
   <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology</div></aside>`;
-function aboutPage() {
-  return `${head("About")}<div class="cards aboutpg">
-  ${card(TEXT.aboutTitle[lang()], about())}
-  ${card("Where the data comes from", `<ul class="alist"><li><b>NSE, BSE, SEBI</b> — issue details, dates, subscription, offer documents</li><li><b>Offer documents (RHP)</b> — company financials used for the score</li><li><b>InvestorGain, ipowatch</b> — GMP (unofficial grey-market rumours)</li><li><b>Yahoo Finance</b> — listing-day prices</li></ul>`)}
-  ${card("How the score works", `<p class="sm">The 0–100 score is a formula on public data: financials, GMP, subscription, valuation, business quality and peers. It is an indication, not a recommendation.</p>`)}
-  ${card("Disclaimer", `<p class="sm">${disclaimer()}</p>`)}
-  ${card("Developer", `<p style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut sm">© 2026 Zynora Technology. All rights reserved.</span></p>`)}</div>`;
+// ---------- About page: menu of General / Share / Help & Support, each row opens its own page ----------
+state.sub = null;
+state.applied = store.get("applied", []);
+state.pan = store.get("pan", "");
+state.theme = store.get("theme", null);                                   // "dark" | "light" | null = follow the phone
+const isDark = () => state.theme ? state.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
+const applyTheme = () => { if (state.theme) document.documentElement.dataset.theme = state.theme; else delete document.documentElement.dataset.theme; };
+applyTheme();
+const APP_URL = () => location.origin + location.pathname.replace(/index\.html$/, "");
+
+const mrow = (ic, label, sub, extra = "") => `<button class="mrow" data-sub="${sub}"><span class="mic">${ic}</span><span class="mlb">${label}${extra}</span><span class="mgo">›</span></button>`;
+const msec = (title, rows) => `<div class="msec"><h3>${title}</h3>${rows}</div>`;
+const subPage = (title, inner) => `${head(title, `<button class="btn ghost" data-sub="" style="flex:none;width:auto;padding:6px 14px">← Back</button>`)}<div class="subpg">${inner}</div>`;
+
+// notifications built from the live data (no server): opening soon, closing, allotment, listing
+function notifList() {
+  const out = [], when = n => n === 0 ? "today" : n === 1 ? "tomorrow" : n > 0 ? `in ${n} days` : n === -1 ? "yesterday" : `${-n} days ago`;
+  for (const i of state.ipos) {
+    const nm = esc(shortName(i.name)), o = dayDiff(i.open), c = dayDiff(i.close), a = dayDiff(i.allotment), l = dayDiff(i.listing);
+    if (o !== null && o >= 0 && o <= 3) out.push([o, "🟢", `<b>${nm}</b> opens ${when(o)}`, i.symbol]);
+    if (c !== null && c >= 0 && c <= 1 && (o === null || o <= 0)) out.push([c, "⏰", `<b>${nm}</b> closes ${when(c)}`, i.symbol]);
+    if (a !== null && a >= -1 && a <= 1) out.push([a, "📋", `<b>${nm}</b> allotment ${a === 0 ? "is today" : a < 0 ? "was " + when(a) : "is " + when(a)}`, i.symbol]);
+    if (l !== null && l >= -1 && l <= 1) out.push([l, "🔔", `<b>${nm}</b> ${l < 0 ? "listed " + when(l) : "lists " + when(l)}`, i.symbol]);
+  }
+  return out.sort((x, y) => Math.abs(x[0]) - Math.abs(y[0]));
 }
+const FAQ = [
+  ["What is an IPO?", "An Initial Public Offering is when a company sells its shares to the public for the first time, so that the shares can then be bought and sold on the stock exchange."],
+  ["What is GMP?", "Grey Market Premium is the unofficial extra price people are ready to pay for an IPO share before it lists. It is only a rumour-based indication and can be wrong."],
+  ["How is the score calculated?", "The 0–100 score is a formula on public data: financials from the offer document, GMP, subscription, valuation, business quality and peers. It is an indication, not advice."],
+  ["How do I apply for an IPO?", "Open your broker or UPI app, go to the IPO section, pick the issue and category, enter lots and your UPI ID, then approve the mandate in your UPI app before the closing time."],
+  ["How do I check allotment?", "Open the Allotment tab, choose the IPO and go to the registrar's website. Enter your PAN or application number there. Allotment is usually announced one to two days after the issue closes."],
+  ["What is ASBA?", "Application Supported by Blocked Amount. Your money stays in your bank account and is only blocked while the application is open. If you do not get shares, it is released."],
+  ["What do QIB, NII and Retail mean?", "Qualified Institutional Buyers, Non-Institutional Investors (big individuals) and Retail investors (applying up to ₹2 lakh). Each category has its own quota and subscription count."],
+  ["Is the data live?", "The data refreshes automatically from NSE, BSE and SEBI. Pull down on your phone, or press Refresh, to load the latest. GMP is unofficial."],
+  ["Does Trendy IPO give investment advice?", "No. Everything here is information only. Please read the RHP and decide for yourself."]
+];
+const TERMS = ["Trendy IPO is an information tool. It is not a SEBI-registered investment adviser or research analyst and does not recommend buying, selling or applying for any security.",
+  "Data comes from public sources (NSE, BSE, SEBI, offer documents, InvestorGain, ipowatch, Yahoo Finance). It may be delayed, incomplete or wrong. GMP is unofficial and based on market rumours.",
+  "The 0–100 score is a formula on public data. It is an indication only and is not a prediction of listing gains.",
+  "Investing in IPOs and shares involves risk, including the loss of your money. Read the RHP and take your own decision or consult a licensed adviser.",
+  "Zynora Technology does not accept any liability for loss arising from use of this app or its data. Links to third-party sites (brokers, registrars, exchanges) are for convenience; we do not control them.",
+  "By using the app you accept these terms. They may change from time to time; continued use means you accept the latest version."];
+
+function subContent(k) {
+  const A = state.alerts;
+  if (k === "applied") {
+    const mine = state.applied.map(byId).filter(Boolean), rest = state.ipos.filter(i => !state.applied.includes(i.symbol) && (i.status === "live" || i.status === "upcoming" || (dayDiff(i.close) !== null && dayDiff(i.close) >= -10)));
+    const line = (i, on) => `<div class="row" style="padding:9px 0"><div style="min-width:0"><b>${esc(shortName(i.name))}</b><div class="mut sm">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><div style="display:flex;gap:6px;flex:none">${on ? `<button class="btn ghost" style="width:auto;padding:6px 10px" data-allot-open="${esc(i.symbol)}">Allotment</button>` : ""}<button class="btn ${on ? "ghost" : ""}" style="width:auto;padding:6px 12px" data-applied="${esc(i.symbol)}">${on ? "Remove" : "I applied"}</button></div></div>`;
+    return subPage("Applied IPO", card("Your applied IPOs", mine.map(i => line(i, true)).join("") || `<p class="mut sm" style="margin:0">Nothing marked yet. Mark an IPO below after you apply, to keep track of it. Saved only on this device.</p>`) + card("Mark an IPO as applied", rest.map(i => line(i, false)).join("") || `<p class="mut sm" style="margin:0">No open or recent IPOs.</p>`));
+  }
+  if (k === "asba") {
+    const g = i => (i.documents || []).filter(d => d.group === "Application forms & centres" && safeUrl(d.url)), list = state.ipos.filter(i => ["live", "upcoming"].includes(i.status) && g(i).length);
+    return subPage("Download ASBA Form", card("What is ASBA?", `<p class="sm" style="margin:0">Application Supported by Blocked Amount: your money stays in your bank account and is only blocked while your application is open. You can apply through your broker / UPI app, or with a physical ASBA form at your bank. The forms below are the ones published by the exchange for each IPO.</p>`) +
+      card("Forms for current and upcoming IPOs", list.map(i => `<div style="padding:8px 0"><b>${esc(shortName(i.name))}</b><div class="dlinks">${g(i).map(d => `<a class="linkbtn" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer">📄 ${esc(d.label.replace(/\s*\(.*?\)\s*$/, ""))}</a>`).join("")}</div></div>`).join("") || `<p class="mut sm" style="margin:0">No forms are published yet for current IPOs. They appear here automatically when the exchange publishes them.</p>`));
+  }
+  if (k === "pan") {
+    const p = state.pan;
+    return subPage("Add PAN Number", card("Your PAN", `<p class="sm" style="margin-top:0">Save your PAN here so you can copy it quickly when you check allotment on the registrar's site. <b>It stays only on this phone/browser</b> and is never sent to us or anyone else.</p>
+      ${p ? `<div class="row" style="padding:8px 0"><div><div class="mut sm">Saved PAN</div><b style="letter-spacing:1.5px">${esc(p.slice(0, 5) + "••••" + p.slice(9))}</b></div><div style="display:flex;gap:6px"><button class="btn" style="width:auto;padding:6px 12px" data-pancopy>Copy</button><button class="btn ghost" style="width:auto;padding:6px 12px" data-pandel>Remove</button></div></div>` : ""}
+      <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
+  }
+  if (k === "notif") {
+    const n = notifList();
+    return subPage("Notifications", card("Latest updates", n.map(([, ic, t, s]) => `<button class="nrow" data-open="${esc(s)}"><span>${ic}</span><span>${t}</span><span class="mgo">›</span></button>`).join("") || `<p class="mut sm" style="margin:0">Nothing new right now. You will see IPOs opening, closing, allotment and listing here.</p>`) +
+      `<p class="mut sm">This list is made from the live data each time you open the app.</p>`);
+  }
+  if (k === "nsettings") {
+    return subPage("Notification Settings", card("🔔 Alerts", [["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([x, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${x}" ${A[x] ? "checked" : ""}></div>`).join("") + `<p class="mut sm">Saved on this device. The Notifications page shows these events from the live data.</p>`));
+  }
+  if (k === "rate") {
+    const r = state.rate = store.get("rate", 0);
+    return subPage("Rate App", card("How do you like Trendy IPO?", `<div class="stars" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(n => `<button class="starb${n <= r ? " on" : ""}" data-rate="${n}" aria-label="${n} star">★</button>`).join("")}</div><p class="mut sm" style="text-align:center;margin:8px 0 0">${r ? `Thank you! You rated ${r} / 5.` : "Tap a star."}</p>`) +
+      card("Tell us more", `<p class="sm" style="margin:0">Found a problem or have an idea? <a class="linkbtn" href="https://github.com/Noor1204/IPO/issues/new" target="_blank" rel="noopener noreferrer">Write to us here</a>.</p>`));
+  }
+  if (k === "support") {
+    return subPage("Support", card("Need help?", `<p class="sm" style="margin-top:0">Check the <button class="linkbtn" data-sub="faq">FAQs</button> first. If something is wrong with the data or the app, tell us and we will fix it.</p><a class="btn" style="display:block;text-align:center;text-decoration:none" href="https://github.com/Noor1204/IPO/issues/new" target="_blank" rel="noopener noreferrer">Report a problem / ask a question</a><p class="mut sm" style="margin-bottom:0">When reporting, please write the IPO name and what looked wrong.</p>`) + card("Developer", `<p class="sm" style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p>`));
+  }
+  if (k === "us") {
+    return subPage("About Us", card(TEXT.aboutTitle[lang()], about()) + card("Where the data comes from", `<ul class="alist"><li><b>NSE, BSE, SEBI</b> — issue details, dates, subscription, offer documents</li><li><b>Offer documents (RHP)</b> — company financials used for the score</li><li><b>InvestorGain, ipowatch</b> — GMP (unofficial grey-market rumours)</li><li><b>Yahoo Finance</b> — listing-day prices</li></ul><p class="mut sm" style="margin-bottom:0">Last refreshed: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</p>`) + card("Developer", `<p class="sm" style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p>`));
+  }
+  if (k === "terms") return subPage("Terms & Condition", card("", `<ol class="alist" style="padding-left:20px">${TERMS.map(t => `<li>${esc(t)}</li>`).join("")}</ol>`));
+  if (k === "privacy") {
+    return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, alerts, applied IPOs, language, theme and (if you add it) your PAN — in this browser only.</li><li>Nothing like that is sent to a server.</li></ul>`));
+  }
+  if (k === "faq") return subPage("FAQs", card("", FAQ.map(([q, a]) => `<details class="faq"><summary>${esc(q)}</summary><p class="sm">${esc(a)}</p></details>`).join("")));
+  return null;
+}
+function aboutPage() {
+  const sp = state.sub && subContent(state.sub);
+  if (sp) return sp;
+  state.sub = null;
+  const unread = notifList().length;
+  return `${head("About")}<div class="aboutmenu">
+  ${msec("General", mrow("✅", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("📄", "Download ASBA Form", "asba") + mrow("🪪", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("🔔", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("⚙️", "Notification Settings", "nsettings") +
+    `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
+    `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}
+  ${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">Share App</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}
+  ${msec("Help & Support", mrow("💬", "Support", "support") + mrow("ℹ️", "About Us", "us") + mrow("📋", "Terms & Condition", "terms") + mrow("🔒", "Privacy Policy", "privacy") + mrow("❓", "FAQs", "faq"))}
+  </div>`;
+}
+async function shareApp() {
+  const data = { title: "Trendy IPO", text: "Live IPO tracker: subscription, GMP trend, score and allotment links.", url: APP_URL() };
+  try { if (navigator.share) { await navigator.share(data); return; } } catch (e) { if (e && e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(data.url); toast("Link copied. Paste it to share."); } catch { toast(data.url); }
+}
+function aboutClick(t) {
+  const a = t.dataset;
+  if (t.hasAttribute("data-appshare")) { shareApp(); return true; }
+  if ("sub" in a) { state.sub = a.sub || null; render(); scrollTo(0, 0); return true; }
+  if (a.applied) { const k = state.applied.indexOf(a.applied); k < 0 ? state.applied.push(a.applied) : state.applied.splice(k, 1); store.set("applied", state.applied); render(); return true; }
+  if (a.rate) { state.rate = +a.rate; store.set("rate", state.rate); if (window.trendyTrack) window.trendyTrack("rate/" + a.rate, "Rated " + a.rate); render(); return true; }
+  if (t.hasAttribute("data-pansave")) { const v = (document.getElementById("pan-in")?.value || "").trim().toUpperCase(); if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v)) { toast("PAN looks wrong. Format: ABCDE1234F"); return true; } state.pan = v; store.set("pan", v); toast("PAN saved on this device"); return true; }
+  if (t.hasAttribute("data-pandel")) { state.pan = ""; store.set("pan", ""); render(); return true; }
+  if (t.hasAttribute("data-pancopy")) { navigator.clipboard?.writeText(state.pan).then(() => toast("PAN copied"), () => toast("Could not copy")); return true; }
+  return false;
+}
+document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); applyTheme(); } });
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
@@ -702,11 +809,12 @@ function render() {
 let toastTimer = null;
 function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-pancopy],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { state.drawer = !state.drawer; render(); return; }
   if (t.hasAttribute("data-drawer-close")) { state.drawer = false; render(); return; }
+  if (aboutClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
@@ -724,7 +832,7 @@ document.addEventListener("click", e => {
   if (d.open) { const pend = d.jump; state.detail = d.open; render(); scrollTo(0, 0); if (pend) document.getElementById(pend)?.scrollIntoView(); return; }
   if (d.jump) { document.getElementById(d.jump)?.scrollIntoView({ behavior: "smooth" }); return; }
   if (t.hasAttribute("data-back")) { goBack(); return; }
-  else if (d.tab) { state.tab = d.tab; state.detail = null; state.report = null; state.drawer = false; }
+  else if (d.tab) { state.tab = d.tab; state.detail = null; state.report = null; state.drawer = false; state.sub = null; }
   else if (d.seg) { state.seg = d.seg; state.perf = null; state.showAll = false; }
   else if (t.hasAttribute("data-search")) { state.search = !state.search; if (!state.search) state.q = ""; }
   else if (d.watch) { const k = state.watch.indexOf(d.watch); k < 0 ? state.watch.push(d.watch) : state.watch.splice(k, 1); store.set("watch", state.watch); }
