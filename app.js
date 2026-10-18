@@ -182,11 +182,39 @@ function listCard(i) {
 }
 const brand = () => `<div class="brand"><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
-function spark(arr, w = 300, h = 90) {
-  const mn = Math.min(...arr, 0), mx = Math.max(...arr, 1), sx = w / (arr.length - 1 || 1), y = v => h - 10 - (v - mn) / (mx - mn || 1) * (h - 20);
-  const up = last(arr) >= arr[0], c = up ? "var(--ok)" : "var(--bad)";
-  return `<svg viewBox="0 0 ${w} ${h}" width="100%"><line x1="0" x2="${w}" y1="${y(0)}" y2="${y(0)}" stroke="var(--bd)" stroke-dasharray="4"/><polyline fill="none" stroke="${c}" stroke-width="3" points="${arr.map((v, k) => `${k * sx},${y(v)}`).join(" ")}"/>${arr.map((v, k) => `<circle cx="${k * sx}" cy="${y(v)}" r="3.5" fill="${c}"/>`).join("")}</svg>`;
+// GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
+let GCH = [];
+function gmpDay(p, k, arr) {
+  const prev = k > 0 ? arr[k - 1].gmp : null, d = prev === null ? null : p.gmp - prev;
+  const when = p.date === istDay() ? "Today" : fmtD(p.date), wd = pd(p.date).toLocaleDateString("en-IN", { weekday: "short" });
+  const chg = d === null ? "first record" : d === 0 ? "no change from the day before" : `<span class="${d > 0 ? "grn-t" : "red-t"}">${d > 0 ? "▲ up" : "▼ down"} ₹${Math.abs(d % 1 ? +d.toFixed(1) : d)}</span> from the day before`;
+  return `<b>${when}</b> <span class="mut">(${wd}${p.date === istDay() ? ", " + fmtD(p.date) : ""})</span><br>GMP <b class="${p.gmp >= 0 ? "grn-t" : "red-t"}">₹${p.gmp}</b> · ${chg}`;
 }
+function gmpChart(hist) {
+  const h = (hist || []).filter(x => x && isNum(x.gmp) && x.date).sort((a, b) => a.date < b.date ? -1 : 1);
+  if (h.length < 2) return "";
+  GCH = h;
+  const W = 320, H = 150, L = 40, R = 12, T = 12, B = 26, v = h.map(x => x.gmp), mn = Math.min(...v), mx = Math.max(...v), pad = (mx - mn || Math.abs(mx) || 1) * .15;
+  const lo = mn - pad, hi = mx + pad, X = k => L + k * (W - L - R) / (h.length - 1), Y = g => T + (hi - g) / (hi - lo) * (H - T - B);
+  const up = last(v) >= v[0], c = up ? "var(--ok)" : "var(--bad)", pts = h.map((x, k) => `${X(k).toFixed(1)},${Y(x.gmp).toFixed(1)}`).join(" ");
+  const ticks = [mx, (mx + mn) / 2, mn].filter((t, k, a) => a.indexOf(t) === k).map(t => `<line x1="${L}" x2="${W - R}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--bd)" stroke-dasharray="3 4"/><text x="${L - 5}" y="${Y(t) + 3.5}" text-anchor="end" class="gax">₹${Math.round(t)}</text>`).join("");
+  const dl = k => pd(h[k].date).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
+  const idx = [...new Set([0, Math.floor((h.length - 1) / 2), h.length - 1])];
+  const xl = idx.map(k => `<text x="${X(k)}" y="${H - 7}" text-anchor="${k === 0 ? "start" : k === h.length - 1 ? "end" : "middle"}" class="gax">${k === h.length - 1 && h[k].date === istDay() ? "Today" : dl(k)}</text>`).join("");
+  const dots = h.map((x, k) => `<circle class="gdot${k === h.length - 1 ? " on" : ""}" data-k="${k}" cx="${X(k)}" cy="${Y(x.gmp)}" r="${k === h.length - 1 ? 5 : 3.5}" fill="${c}"/>`).join("");
+  return `<div class="gch" data-n="${h.length}" data-l="${L}" data-r="${R}" data-w="${W}"><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="GMP trend by day">${ticks}<polyline fill="none" stroke="${c}" stroke-width="2.5" stroke-linejoin="round" points="${pts}"/><line class="gcur" x1="${X(h.length - 1)}" x2="${X(h.length - 1)}" y1="${T}" y2="${H - B}"/>${dots}${xl}</svg>
+  <div class="gread" aria-live="polite">${gmpDay(h[h.length - 1], h.length - 1, h)}</div><div class="mut sm">${h.length} days recorded · move your cursor or finger over the line to see any day</div></div>`;
+}
+function gmpPick(e) {
+  const box = e.target.closest?.(".gch"); if (!box) return;
+  const svg = box.querySelector("svg"), r = svg.getBoundingClientRect(), n = +box.dataset.n, W = +box.dataset.w, L = +box.dataset.l, Rr = +box.dataset.r;
+  const x = (e.clientX - r.left) / r.width * W, k = Math.max(0, Math.min(n - 1, Math.round((x - L) / (W - L - Rr) * (n - 1)))), p = GCH[k];
+  if (!p) return;
+  box.querySelector(".gread").innerHTML = gmpDay(p, k, GCH);
+  box.querySelectorAll(".gdot").forEach(d => d.classList.toggle("on", +d.dataset.k === k));
+  const cur = box.querySelector(".gcur"), cx = L + k * (W - L - Rr) / (n - 1); cur.setAttribute("x1", cx); cur.setAttribute("x2", cx);
+}
+["pointermove", "pointerdown", "click"].forEach(t => document.addEventListener(t, gmpPick));
 const tbl = (head, rows) => `<div class="tw"><table><tr>${head.map(h => `<th>${h}</th>`).join("")}</tr>${rows.map(r => `<tr>${r.map(c => `<td>${c ?? "—"}</td>`).join("")}</tr>`).join("")}</table></div>`;
 const card = (title, inner, id = "") => `<div class="card" ${id ? `id="${id}"` : ""}>${title ? `<h2>${title}</h2>` : ""}${inner}</div>`;
 
@@ -474,7 +502,7 @@ function detail(forReport = false) {
   <div class="note"><b>🧠 Analysis (${sc.coverage}% of score weight had data)</b><ul style="margin:6px 0 0;padding-left:18px">${reasons(i).map(r => `<li>${esc(r)}</li>`).join("")}</ul></div>
   <p class="mut sm" style="margin-bottom:0">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p></div>
 
-  <div class="card" id="gmp"><h2>GMP Trend</h2>${gh.length > 1 ? spark(gh) + `<div class="mut sm">${gh.length} daily snapshots</div>` : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`}
+  <div class="card" id="gmp"><h2>GMP Trend</h2>${gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`}
   ${i.gmp ? `<div class="row sm"><span class="mut">Average of ${i.gmp.sources.length} source${i.gmp.sources.length > 1 ? "s" : ""}${i.gmp.rating ? " · rating " + "🔥".repeat(i.gmp.rating) : ""}</span><b>${isNum(pr) ? "Est. listing ₹" + f2(pr + g) : ""}</b></div>
   <div class="sm" style="margin-top:6px">${i.gmp.sources.map(s => `${esc(s.source)}: <b>₹${s.gmp}</b>`).join(" · ")}${i.gmp.sources.length > 1 && i.gmp.min !== i.gmp.max ? ` <span class="mut">(range ₹${i.gmp.min}–₹${i.gmp.max})</span>` : ""}</div>
   <div class="mut sm">Updated ${esc(i.gmp.updated || "—")}</div>` : `<p class="mut sm">No GMP published for this IPO yet.</p>`}
@@ -551,60 +579,6 @@ function compare() {
   ${wins.length ? `<div class="chips" style="margin:12px 0">${wins.join("")}</div>` : ""}${picker}
   <p class="mut sm">Green ✔ = best of the selected IPOs on that row, red = weakest. A highlight is only a comparison of these IPOs, not advice.</p>`;
 }
-// ---------- public reviews ----------
-// Visitors send a review; it lands in the admin's Google Sheet as "pending" and appears here only after the admin approves it (reviews-backend/Code.gs).
-const RV_URL = () => String(window.TRENDY_REVIEWS_URL || "").trim();
-state.rv = { name: "", rating: 0, text: "", consent: false, sending: false, msg: "", ok: false };
-state.reviews = { list: [], avg: 0, count: 0, loading: false, at: 0, error: "" };
-async function loadReviews(force) {
-  const R = state.reviews, url = RV_URL();
-  if (!url || R.loading || (!force && R.at && Date.now() - R.at < 5 * 60 * 1000)) return;   // not more than once in 5 minutes (this also stops a retry loop after an error)
-  R.loading = true; R.error = ""; render();
-  try {
-    const r = await fetch(url + (url.includes("?") ? "&" : "?") + "action=list&t=" + Date.now());
-    const j = clean(await r.json());
-    R.list = (Array.isArray(j.reviews) ? j.reviews : []).slice(0, 100).map(x => ({ name: String(x.name || "Anonymous").slice(0, 40), rating: Math.max(1, Math.min(5, Math.round(+x.rating) || 1)), text: String(x.text || "").slice(0, 500), date: String(x.date || "") }));
-    R.avg = Math.max(0, Math.min(5, +j.avg || 0)); R.count = Math.max(0, +j.count || R.list.length);
-  } catch (e) { R.error = "Could not load reviews. Check your internet connection and try again."; }
-  R.at = Date.now(); R.loading = false; render();
-}
-async function sendReview() {
-  const F = state.rv, url = RV_URL(), name = F.name.trim(), text = F.text.trim(), hp = ($("#rv-site") || {}).value || "";
-  const fail = m => { F.msg = m; F.ok = false; render(); };
-  if (!url) return fail("Reviews are not open yet.");
-  if (!(F.rating >= 1)) return fail("Please tap the stars to give a rating.");
-  if (text.length < 5) return fail("Please write at least 5 characters.");
-  const low = (text + " " + name).toLowerCase();
-  if (low.includes("http") || low.includes("www.") || low.includes(".com")) return fail("Please do not add links or web addresses.");
-  if (!F.consent) return fail("Please tick the box to agree.");
-  if (Date.now() - (+store.get("rv_last", 0) || 0) < 10 * 60 * 1000) return fail("You sent a review a moment ago. Please try again after a few minutes.");
-  F.sending = true; F.msg = ""; render();
-  try {
-    await fetch(url, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ name, rating: F.rating, text, consent: true, website: hp }) });
-    store.set("rv_last", Date.now());
-    state.rv = { name: "", rating: 0, text: "", consent: false, sending: false, msg: "Thank you! Your review was sent. It will appear here after the admin approves it.", ok: true };
-  } catch (e) { F.sending = false; F.msg = "Could not send. Check your internet connection and try again."; F.ok = false; }
-  render();
-}
-function reviews() {
-  const R = state.reviews, F = state.rv, on = !!RV_URL();
-  const stars = n => "★".repeat(n) + "☆".repeat(5 - n);
-  const when = s => { const d = new Date(s); return isNaN(d) ? "" : d.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }); };
-  const summary = !on ? card("⭐ Reviews", '<p class="mut sm" style="margin:0">Public reviews will open soon. Check back later.</p>')
-    : R.loading && !R.at ? card("⭐ Reviews", '<p class="mut sm" style="margin:0">Loading reviews…</p>')
-    : R.error ? card("⭐ Reviews", `<p class="mut sm">${esc(R.error)}</p><button class="btn ghost" data-review-reload style="width:100%">Try again</button>`)
-    : card("⭐ What users say", `<div class="rvsum"><div class="rvavg">${R.count ? R.avg.toFixed(1) : "-"}</div><div><div class="rvstars">${R.count ? stars(Math.round(R.avg)) : "☆☆☆☆☆"}</div><div class="mut sm">${R.count ? R.count + " review" + (R.count > 1 ? "s" : "") : "No reviews yet. Be the first."}</div></div></div>`);
-  const list = on && R.list.length ? R.list.map(x => `<div class="rvitem"><div class="row"><b>${esc(x.name)}</b><span class="rvstars sm">${stars(x.rating)}</span></div><p class="sm" style="margin:6px 0 4px;white-space:pre-line">${esc(x.text)}</p><div class="mut sm">${esc(when(x.date))}</div></div>`).join("") : "";
-  const form = card("✍️ Write a public review", `<div class="rvpick" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(n => `<button class="star${F.rating >= n ? " on" : ""}" data-star="${n}" aria-label="${n} star${n > 1 ? "s" : ""}">★</button>`).join("")}</div>
-    <input id="rv-name" maxlength="40" placeholder="Your name (optional)" value="${esc(F.name)}" autocomplete="off">
-    <textarea id="rv-text" maxlength="500" rows="4" placeholder="Your experience with Trendy IPO (5 to 500 characters). Please do not write phone numbers, emails or links.">${esc(F.text)}</textarea>
-    <input id="rv-site" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-    <label class="rvchk"><input type="checkbox" id="rv-consent" ${F.consent ? "checked" : ""}> <span>I agree that my review and name will be shown publicly after the admin approves it.</span></label>
-    <button class="btn" data-review-send ${F.sending || !on ? "disabled" : ""} style="width:100%">${F.sending ? "Sending…" : "Submit review"}</button>
-    ${F.msg ? `<p class="rvmsg ${F.ok ? "ok" : "bad"}">${esc(F.msg)}</p>` : ""}
-    <p class="mut sm" style="margin:10px 0 0">Reviews are checked by the admin before they appear.</p>`);
-  return `${head("Reviews")}<div class="rvwrap">${summary}${form}</div>${list ? `<h2 style="margin:18px 0 10px">All reviews</h2><div class="rvlist">${list}</div>` : ""}`;
-}
 function allotment() {
   const list = state.ipos.filter(i => i.status === "listed" || (i.status === "live" && i.close && dayDiff(i.close) <= 0));
   const sel = byId(state.allotIpo) || list[0];
@@ -641,7 +615,6 @@ function trackClick(t, d) {
   else if (d.watch) T("watchlist", "Watchlist: add or remove");
   else if (d.lang) T("language/" + d.lang, "Language: " + d.lang);
   else if (t.hasAttribute("data-refresh")) T("refresh", "Refresh data");
-  else if (t.hasAttribute("data-review-send")) T("review/send", "Review: submit pressed");
   else if (t.hasAttribute("data-share")) T("share", "Share");
   else if (t.hasAttribute("data-search")) T("search", "Search");
 }
@@ -691,7 +664,7 @@ const acked = () => state.ack;   // shown on every app open, gone after the user
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, reviews, settings };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
@@ -702,7 +675,6 @@ function render() {
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
-  if (state.tab === "reviews" && !state.detail && !state.report) loadReviews(false);
   document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };
@@ -718,9 +690,6 @@ document.addEventListener("click", e => {
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
-  if (t.dataset.star) { state.rv.rating = +t.dataset.star; state.rv.msg = ""; render(); return; }
-  if (t.hasAttribute("data-review-send")) { sendReview(); return; }
-  if (t.hasAttribute("data-review-reload")) { loadReviews(true); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
   if (t.dataset.rtab) { state.reportTab = t.dataset.rtab; render(); scrollTo(0, 0); return; }
@@ -748,11 +717,8 @@ document.addEventListener("click", e => {
   else if (d.toast) return toast(d.toast);
   render();
 });
-// typing in the review form is kept in state (the screen is not redrawn while typing)
-document.addEventListener("input", e => { const id = e.target.id; if (id === "rv-name") state.rv.name = e.target.value; else if (id === "rv-text") state.rv.text = e.target.value; });
 document.addEventListener("change", e => {
   const d = e.target.dataset;
-  if (e.target.id === "rv-consent") { state.rv.consent = e.target.checked; return; }
   if (d.alert) { state.alerts[d.alert] = e.target.checked; store.set("alerts", state.alerts); }
   else if (d.board) { state[d.board] = e.target.checked; if (!state.main && !state.sme) state.main = true; render(); }
 });

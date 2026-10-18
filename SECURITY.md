@@ -15,7 +15,6 @@ Developed by Zynora Technology (Noor). The site is static (HTML, CSS, JavaScript
 | Supply chain | No npm dependencies at all. The workflow uses only GitHub's own actions. |
 | Over-powerful automation | The workflow starts with no permissions; the build job can only write repository contents, the deploy job can only publish Pages. |
 | Visitor counting | Optional, anonymous (GoatCounter, no cookies, no names). Off until a site code is set in `analytics.js`; the Content-Security-Policy allows only `gc.zgo.at` and `*.goatcounter.com` for it. See ADMIN.md. |
-| Public reviews | Nothing is public until the admin approves it (Google Sheet). Links, bots and floods are refused; `<` and `>` are removed on the server; the app shows review text as plain text only. The CSP allows only `script.google.com` and `script.googleusercontent.com` for it. See REVIEWS.md. |
 | Secrets | None in the repository. `ANTHROPIC_API_KEY` (only needed to extract company figures on your own PC) is read from your environment and never committed. |
 
 ## Do this on GitHub (free)
