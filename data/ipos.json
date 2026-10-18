@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-18T04:17:26.181Z",
+ "generatedAt": "2026-10-18T04:22:15.946Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-18T04:08:45.649Z"
+   "fetchedAt": "2026-10-18T04:18:55.330Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-18T04:08:49.121Z"
+   "fetchedAt": "2026-10-18T04:18:57.974Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-18T04:05:03.573Z"
+   "fetchedAt": "2026-10-18T04:18:56.079Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -200,11 +200,11 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:06.003Z"
+   "fetchedAt": "2026-10-18T04:18:13.705Z"
   },
   {
-   "symbol": "IG-1728",
-   "name": "Paras Healthcare",
+   "symbol": "PARASHLTH",
+   "name": "Paras Healthcare Limited",
    "board": "Mainboard",
    "status": "upcoming",
    "open": "2026-10-21",
@@ -220,29 +220,91 @@
    "allotment": "2026-10-26",
    "listing": "2026-10-28",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 660,
    "priceHigh": 693,
    "lot": 21,
-   "faceValue": null,
-   "issueShares": null,
+   "faceValue": 1,
+   "issueShares": 20923521,
    "issueSizeCr": 1450,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9500 million",
+   "upiCutoff": "23-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "demand": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
    "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, Tel: +91 810 811 4949, parashealthcare.ipo@in.mpms.mufg.com"
    },
-   "leadManagers": null,
-   "sponsorBank": null,
-   "docs": {},
+   "leadManagers": "JM Financial Limited, BofA Securities India Limited, Nuvama Wealth Management Limited",
+   "sponsorBank": "ICICI Bank Limited and HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792057816601.PDF",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/paras-healthcare-ipo/1728/",
@@ -289,10 +351,35 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 1450,
+     "other": 1450,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 21,
+     "other": 21,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 693,
+     "other": 693,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-23",
+     "other": "2026-10-23",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-10-18T04:05:03.499Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-10-18T04:18:19.051Z"
   },
   {
    "symbol": "TONBO",
@@ -549,7 +636,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-18T04:17:26.062Z",
+     "at": "2026-10-18T04:22:15.920Z",
      "date": "2026-10-18",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -923,7 +1010,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:07:48.025Z"
+   "fetchedAt": "2026-10-18T04:17:56.792Z"
   },
   {
    "symbol": "BONFIG",
@@ -1163,7 +1250,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-18T04:17:26.067Z",
+     "at": "2026-10-18T04:22:15.922Z",
      "date": "2026-10-18",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1531,7 +1618,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:07:48.870Z"
+   "fetchedAt": "2026-10-18T04:18:02.084Z"
   },
   {
    "symbol": "SMT",
@@ -1771,7 +1858,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-18T04:17:26.069Z",
+     "at": "2026-10-18T04:22:15.922Z",
      "date": "2026-10-18",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2111,7 +2198,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:07:55.324Z"
+   "fetchedAt": "2026-10-18T04:18:07.456Z"
   },
   {
    "symbol": "ZETWERK",
@@ -2342,7 +2429,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-18T04:17:26.071Z",
+     "at": "2026-10-18T04:22:15.923Z",
      "date": "2026-10-18",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2669,7 +2756,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:00.628Z"
+   "fetchedAt": "2026-10-18T04:18:12.823Z"
   },
   {
    "symbol": "SHELLZ",
@@ -2832,7 +2919,7 @@
      "total": 0.8
     },
     {
-     "at": "2026-10-18T04:17:26.126Z",
+     "at": "2026-10-18T04:22:15.934Z",
      "date": "2026-10-18",
      "qib": null,
      "bnii": null,
@@ -3166,7 +3253,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:21.657Z"
+   "fetchedAt": "2026-10-18T04:18:30.313Z"
   },
   {
    "symbol": "RAVITA",
@@ -8226,7 +8313,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:25.843Z"
+   "fetchedAt": "2026-10-18T04:18:34.299Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8673,7 +8760,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:26.848Z"
+   "fetchedAt": "2026-10-18T04:18:35.083Z"
   },
   {
    "symbol": "TNA",
@@ -9135,7 +9222,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:27.790Z"
+   "fetchedAt": "2026-10-18T04:18:36.096Z"
   },
   {
    "symbol": "DSL",
@@ -9550,7 +9637,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:28.638Z"
+   "fetchedAt": "2026-10-18T04:18:37.286Z"
   },
   {
    "symbol": "OMARA",
@@ -10009,7 +10096,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:31.284Z"
+   "fetchedAt": "2026-10-18T04:18:39.904Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10677,7 +10764,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:29.285Z"
+   "fetchedAt": "2026-10-18T04:18:38.034Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -10825,7 +10912,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:33.610Z"
+   "fetchedAt": "2026-10-18T04:18:42.776Z"
   },
   {
    "symbol": "VANS",
@@ -11291,7 +11378,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:34.344Z"
+   "fetchedAt": "2026-10-18T04:18:43.551Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -13035,7 +13122,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:32.027Z"
+   "fetchedAt": "2026-10-18T04:18:41.133Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13135,7 +13222,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:35.163Z"
+   "fetchedAt": "2026-10-18T04:18:44.405Z"
   },
   {
    "symbol": "PIND",
@@ -13624,7 +13711,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:35.813Z"
+   "fetchedAt": "2026-10-18T04:18:45.123Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -13817,7 +13904,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:37.522Z"
+   "fetchedAt": "2026-10-18T04:18:46.695Z"
   },
   {
    "symbol": "ACEVECTOR",
@@ -17590,7 +17677,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:42.224Z"
+   "fetchedAt": "2026-10-18T04:18:52.127Z"
   },
   {
    "symbol": "GREENASIA",
@@ -19684,7 +19771,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:44.788Z"
+   "fetchedAt": "2026-10-18T04:18:54.470Z"
   },
   {
    "symbol": "ROOPA",
@@ -20179,7 +20266,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-18T04:08:45.649Z"
+   "fetchedAt": "2026-10-18T04:18:55.330Z"
   },
   {
    "symbol": "ADROITIND",
@@ -22827,7 +22914,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-18T04:08:10.808Z"
+   "fetchedAt": "2026-10-18T04:18:24.059Z"
   }
  ],
  "filings": [
