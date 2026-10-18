@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-18T04:12:04.721Z",
+ "generatedAt": "2026-10-18T04:12:05.340Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -203,8 +203,8 @@
    "fetchedAt": "2026-10-18T04:08:06.003Z"
   },
   {
-   "symbol": "PARASHLTH",
-   "name": "Paras Healthcare Limited",
+   "symbol": "IG-1728",
+   "name": "Paras Healthcare",
    "board": "Mainboard",
    "status": "upcoming",
    "open": "2026-10-21",
@@ -220,91 +220,29 @@
    "allotment": "2026-10-26",
    "listing": "2026-10-28",
    "datesExpected": false,
-   "priceLow": 660,
+   "priceLow": null,
    "priceHigh": 693,
    "lot": 21,
-   "faceValue": 1,
-   "issueShares": 20923521,
+   "faceValue": null,
+   "issueShares": null,
    "issueSizeCr": 1450,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9500 million",
-   "upiCutoff": "23-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": 0
-    }
+    "total": null
    },
-   "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
-    "byPrice": {
-     "-": "-"
-    }
-   },
+   "demand": null,
    "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, Tel: +91 810 811 4949, parashealthcare.ipo@in.mpms.mufg.com"
+    "name": null,
+    "address": null,
+    "contact": null
    },
-   "leadManagers": "JM Financial Limited, BofA Securities India Limited, Nuvama Wealth Management Limited",
-   "sponsorBank": "ICICI Bank Limited and HDFC Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
-    "anchor": null
-   },
-   "logo": null,
+   "leadManagers": null,
+   "sponsorBank": null,
+   "docs": {},
    "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792057816601.PDF",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/paras-healthcare-ipo/1728/",
@@ -351,35 +289,10 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 1450,
-     "other": 1450,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 21,
-     "other": 21,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 693,
-     "other": 693,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-23",
-     "other": "2026-10-23",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-10-18T04:03:28.261Z"
+   "fetchedAt": "2026-10-18T04:08:46.222Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
    "symbol": "TONBO",
@@ -636,7 +549,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-18T04:12:04.690Z",
+     "at": "2026-10-18T04:12:05.309Z",
      "date": "2026-10-18",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -1250,7 +1163,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-18T04:12:04.692Z",
+     "at": "2026-10-18T04:12:05.311Z",
      "date": "2026-10-18",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1858,7 +1771,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-18T04:12:04.692Z",
+     "at": "2026-10-18T04:12:05.311Z",
      "date": "2026-10-18",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2429,7 +2342,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-18T04:12:04.693Z",
+     "at": "2026-10-18T04:12:05.312Z",
      "date": "2026-10-18",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2919,7 +2832,7 @@
      "total": 0.8
     },
     {
-     "at": "2026-10-18T04:12:04.707Z",
+     "at": "2026-10-18T04:12:05.326Z",
      "date": "2026-10-18",
      "qib": null,
      "bnii": null,
