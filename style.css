@@ -375,3 +375,20 @@ nav button{min-width:0}
 .gdot{stroke:var(--card);stroke-width:1.5;transition:r .15s}
 .gdot.on{r:6;stroke:var(--tx);stroke-width:2}
 .gread{margin:8px 0 6px;padding:9px 12px;border-radius:10px;background:var(--soft);font-size:13.5px;line-height:1.5;min-height:3em}
+
+/* ---- About side bar (left drawer) ---- */
+.dim{position:fixed;inset:0;background:#0007;z-index:20;animation:dfade .2s}
+.drawer{position:fixed;top:0;bottom:0;left:0;width:min(310px,86vw);background:var(--card);z-index:21;box-shadow:6px 0 28px #0005;display:flex;flex-direction:column;overflow-y:auto;animation:dslide .25s cubic-bezier(.2,.8,.3,1)}
+@keyframes dslide{from{transform:translateX(-100%)}to{transform:none}}
+@keyframes dfade{from{opacity:0}to{opacity:1}}
+.dhead{display:flex;align-items:center;gap:12px;padding:18px 16px 14px;border-bottom:1px solid var(--bd)}
+.dhead img{border-radius:12px;box-shadow:0 2px 8px rgba(37,99,235,.35)}
+.dhead b{font-size:18px}.dhead b span{color:#d97706}
+.dhead>div{flex:1;min-width:0}
+.dnav{display:grid;gap:6px;padding:12px}
+.dnav button{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--soft);border:1px solid transparent;border-radius:12px;padding:13px 14px;font-size:15px;font-weight:600;color:var(--tx);cursor:pointer;transition:transform .15s,border-color .15s}
+.dnav button b{font-size:20px}
+.dnav button:hover{transform:translateX(4px);border-color:var(--pri)}
+.dnav button.on{border-color:var(--pri);color:var(--pri)}
+.dabout{padding:6px 16px 22px;border-top:1px solid var(--bd);margin-top:4px}
+.dabout h3{margin:14px 0 6px}.dabout p{margin:0 0 10px;line-height:1.5;font-size:13.5px}

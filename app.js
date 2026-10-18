@@ -661,6 +661,15 @@ const staleBar = () => {
 };
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
+// ---------- About side bar (slides in from the left; holds Compare and Settings) ----------
+const aboutDrawer = () => `<div class="dim" data-drawer-close></div><aside class="drawer" role="dialog" aria-label="About">
+  <div class="dhead"><img src="icons/logo.svg" alt="" width="44" height="44"><div><b>Trendy <span>IPO</span></b><div class="mut sm">About</div></div><button class="ib" data-drawer-close aria-label="Close">✕</button></div>
+  <div class="dnav"><button data-tab="compare" class="${state.tab === "compare" ? "on" : ""}"><b>⚖️</b>Compare</button><button data-tab="settings" class="${state.tab === "settings" ? "on" : ""}"><b>⚙️</b>Settings</button></div>
+  <div class="dabout"><h3>About Trendy IPO</h3>
+    <p>Live IPO tracker for Mainboard and SME issues: subscription, GMP trend, a 0–100 score, allotment links and listing results — all fetched automatically.</p>
+    <p class="mut sm">Data: NSE, BSE, SEBI, offer documents, InvestorGain and ipowatch (GMP is unofficial), Yahoo Finance.</p>
+    <p class="mut sm">Information only — not investment advice. IPOs carry risk; read the RHP before you apply.</p>
+    <p class="sm"><b>Developed by</b> Zynora Technology (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p></div></aside>`;
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
@@ -673,9 +682,10 @@ function render() {
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
+    (state.drawer ? aboutDrawer() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
-  document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", b.dataset.tab === state.tab && !state.detail));
+  document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", !state.detail && (b.dataset.tab === state.tab || (b.hasAttribute("data-menu") && (state.drawer || state.tab === "compare" || state.tab === "settings")))));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };
   sel("#pick", v => { if (v) { state.cmp.push(v); store.set("cmp", state.cmp); render(); } });
@@ -686,9 +696,11 @@ function render() {
 let toastTimer = null;
 function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-review-send],[data-review-reload],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
+  if (t.hasAttribute("data-menu")) { state.drawer = !state.drawer; render(); return; }
+  if (t.hasAttribute("data-drawer-close")) { state.drawer = false; render(); return; }
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
@@ -706,7 +718,7 @@ document.addEventListener("click", e => {
   if (d.open) { const pend = d.jump; state.detail = d.open; render(); scrollTo(0, 0); if (pend) document.getElementById(pend)?.scrollIntoView(); return; }
   if (d.jump) { document.getElementById(d.jump)?.scrollIntoView({ behavior: "smooth" }); return; }
   if (t.hasAttribute("data-back")) { goBack(); return; }
-  else if (d.tab) { state.tab = d.tab; state.detail = null; }
+  else if (d.tab) { state.tab = d.tab; state.detail = null; state.report = null; state.drawer = false; }
   else if (d.seg) { state.seg = d.seg; state.perf = null; state.showAll = false; }
   else if (t.hasAttribute("data-search")) { state.search = !state.search; if (!state.search) state.q = ""; }
   else if (d.watch) { const k = state.watch.indexOf(d.watch); k < 0 ? state.watch.push(d.watch) : state.watch.splice(k, 1); store.set("watch", state.watch); }
@@ -812,3 +824,5 @@ function tick() {
   if (redraw) render();
 }
 setInterval(tick, 1000);
+
+document.addEventListener("keydown", e => { if (e.key === "Escape" && state.drawer) { state.drawer = false; render(); } });
