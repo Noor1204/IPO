@@ -65,7 +65,8 @@ jobs:
           git config user.name "trendy-ipo-bot"
           git config user.email "trendy-ipo-bot@users.noreply.github.com"
           git add data/ipos.json data/gmp.json data/sub-history.json data/quotes.json data/sebi.json data/bse.json data/nse.json data/nse-history.json data/offer-docs.json data/fundamentals data/logos data/logos.json
-          git diff --cached --quiet || { git commit -m "data: refresh $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull --rebase origin main; git push; }
+          # if the PC pushed in the meantime, merging two versions of ipos.json can mix them up: after the merge it is built again in one piece and checked again (a failure stops here, nothing is pushed)
+          git diff --cached --quiet || { git commit -m "data: refresh $(date -u +'%Y-%m-%d %H:%M') UTC"; git pull --rebase -X theirs origin main; node pipeline/build.mjs; node pipeline/validate.mjs data/_prev.json; git add data/ipos.json; git diff --cached --quiet || git commit -m "data: rebuilt after merge"; git push; }
       - name: Build site
         run: node pipeline/make-site.mjs _site
       - uses: actions/upload-pages-artifact@v3

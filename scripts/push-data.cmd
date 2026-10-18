@@ -14,8 +14,16 @@ if errorlevel 1 (
 git add data/ipos.json data/gmp.json data/sub-history.json data/quotes.json data/sebi.json data/bse.json data/nse.json data/nse-history.json data/offer-docs.json data/verify.json data/fundamentals data/logos data/logos.json >> data\logs\push.log 2>&1
 git diff --cached --quiet && (echo nothing new to push >> data\logs\push.log & exit /b 0)
 git commit -q -m "data: refresh from PC %date% %time%" >> data\logs\push.log 2>&1
-rem the cloud job also commits data: on a clash this PC's newer files win
+rem the cloud job also commits data. Merging two versions of ipos.json can mix them up, so after the merge it is built again in one piece and checked again.
 git pull --rebase -X theirs -q origin main >> data\logs\push.log 2>&1
+call node pipeline\build.mjs >> data\logs\push.log 2>&1
+call node pipeline\validate.mjs >> data\logs\push.log 2>&1
+if errorlevel 1 (
+  echo data failed the check after the merge, NOT pushing >> data\logs\push.log
+  exit /b 0
+)
+git add data/ipos.json >> data\logs\push.log 2>&1
+git diff --cached --quiet || git commit -q -m "data: rebuilt after merge" >> data\logs\push.log 2>&1
 git push -q origin main >> data\logs\push.log 2>&1
 echo push exit code %errorlevel% >> data\logs\push.log
 exit /b 0
