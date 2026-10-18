@@ -485,7 +485,7 @@ function detail(forReport = false) {
   const gh = (i.gmp?.history || []).map(x => x.gmp);
   const pa = peerAvg(i, "pe"), p = pe(i), iss = f?.issue || {};
   const tot = (iss.fresh_issue_cr || 0) + (iss.ofs_cr || 0);
-  return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="Share"><span>⤴</span> Share</button></div>
+  return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${onWebsite() ? "<span>⧉</span> Copy link" : "<span>⤴</span> Share"}</button></div>
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
   <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${isNum(t) ? f2(t) + "x" : "—"}</b></div>
@@ -673,6 +673,8 @@ state.theme = store.get("theme", null);                                   // "da
 const isDark = () => state.theme ? state.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
 const applyTheme = () => { if (state.theme) document.documentElement.dataset.theme = state.theme; else delete document.documentElement.dataset.theme; };
 applyTheme();
+const onWebsite = () => matchMedia("(min-width: 960px)").matches;
+matchMedia("(min-width: 960px)").addEventListener?.("change", () => { if (state.loaded) render(); });
 const APP_URL = () => location.origin + location.pathname.replace(/index\.html$/, "");
 
 const mrow = (ic, label, sub, extra = "") => `<button class="mrow" data-sub="${sub}"><span class="mic">${ic}</span><span class="mlb">${label}${extra}</span><span class="mgo">›</span></button>`;
@@ -774,13 +776,25 @@ function sectionPage(tab) {
       `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
       `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}</div>`;
   }
-  if (tab === "share") return `${head("Share")}<div class="aboutmenu">${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">Share App</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}</div>`;
+  if (tab === "share") return `${head("Share")}<div class="aboutmenu">${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">${onWebsite() ? "Copy App Link" : "Share App"}</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}</div>`;
   return `${head("Help & Support")}<div class="aboutmenu">${msec("Help & Support", mrow("💬", "Support", "support") + mrow("📋", "Terms & Condition", "terms") + mrow("🔒", "Privacy Policy", "privacy") + mrow("❓", "FAQs", "faq"))}</div>`;
 }
+// copies text; falls back to a hidden textarea where the Clipboard API is blocked (older browsers, http pages)
+async function copyText(t) {
+  try { await navigator.clipboard.writeText(t); return true; } catch {}
+  try { const a = document.createElement("textarea"); a.value = t; a.setAttribute("readonly", ""); a.style.cssText = "position:fixed;opacity:0;top:0"; document.body.appendChild(a); a.select(); const ok = document.execCommand("copy"); a.remove(); return ok; } catch { return false; }
+}
+async function shareIpo() {
+  const i = byId(state.detail); if (!i) return;
+  const txt = `${i.name} — Trendy IPO score ${score(i) ?? "N/A"}/100 (${verdict(score(i)).t})`, url = APP_URL();
+  if (!onWebsite() && navigator.share) { try { await navigator.share({ title: "Trendy IPO", text: txt, url }); } catch {} return; }
+  toast(await copyText(txt + "\n" + url) ? "Link copied" : "Could not copy. Select the address bar and copy it.");
+}
 async function shareApp() {
+  if (onWebsite()) { toast(await copyText(APP_URL()) ? "Link copied. Paste it to share." : APP_URL()); return; }
   const data = { title: "Trendy IPO", text: "Live IPO tracker: subscription, GMP trend, score and allotment links.", url: APP_URL() };
   try { if (navigator.share) { await navigator.share(data); return; } } catch (e) { if (e && e.name === "AbortError") return; }
-  try { await navigator.clipboard.writeText(data.url); toast("Link copied. Paste it to share."); } catch { toast(data.url); }
+  toast(await copyText(data.url) ? "Link copied. Paste it to share." : data.url);
 }
 function aboutClick(t) {
   const a = t.dataset;
@@ -851,7 +865,7 @@ document.addEventListener("click", e => {
   else if (d.cmp) { const k = state.cmp.indexOf(d.cmp); if (k >= 0) state.cmp.splice(k, 1); else if (state.cmp.length < 3) state.cmp.push(d.cmp); store.set("cmp", state.cmp); }
   else if (d.apply) { const i = byId(d.apply); if (phase(i).k !== "apply") return toast("Bidding is closed for this IPO"); state.modal = i.symbol; }
   else if (t.hasAttribute("data-close")) { goBack(); return; }
-  else if (t.hasAttribute("data-share")) { const i = byId(state.detail), txt = `${i.name} — Trendy IPO score ${score(i) ?? "N/A"}/100 (${verdict(score(i)).t})`; if (navigator.share) navigator.share({ text: txt }).catch(() => {}); else { try { navigator.clipboard.writeText(txt); } catch {} return toast("Copied to clipboard"); } return; }
+  else if (t.hasAttribute("data-share")) { shareIpo(); return; }
   else if (d.toast) return toast(d.toast);
   render();
 });
