@@ -443,3 +443,30 @@ nav button{min-width:0}
 .faq{border-top:1px solid var(--bd);padding:10px 0}.faq:first-child{border-top:0}
 .faq summary{cursor:pointer;font-weight:600;font-size:15px}.faq p{margin:8px 0 0;line-height:1.55}
 @media(min-width:960px){.aboutmenu,.subpg{max-width:680px}}
+
+/* ---- dark mode: a real up/down light switch (down = off, up = on) ---- */
+.switch{width:34px;min-width:34px;height:62px;border-radius:10px;background:linear-gradient(#cbd5e1,#e2e8f0);border:2px solid #94a3b8;box-shadow:inset 0 2px 4px #0003}
+.switch::after{top:auto;bottom:3px;left:3px;width:24px;height:26px;border-radius:7px;background:linear-gradient(#fff,#cbd5e1);box-shadow:0 2px 4px #0005;transition:bottom .2s,top .2s}
+.switch:checked{background:linear-gradient(#1d4ed8,#3b82f6);border-color:#1e40af}
+.switch:checked::after{bottom:auto;top:3px;transform:none}
+.switch:not(:checked)::before,.switch:checked::before{position:absolute;left:0;right:0;text-align:center;font-size:9.5px;font-weight:800;letter-spacing:.5px;color:#475569}
+.switch:not(:checked)::before{content:"OFF";top:7px}
+.switch:checked::before{content:"ON";bottom:7px;color:#dbeafe}
+
+/* ---- ASBA page ---- */
+.ashero{display:flex;gap:14px;align-items:flex-start;padding:16px;border-radius:16px;background:linear-gradient(135deg,#1e3a8a,#4f46e5);color:#fff}
+.ashero h2{margin:0 0 4px;font-size:22px;color:#fff}.ashero p{margin:0;font-size:13.5px;line-height:1.55;opacity:.95}
+.ashi{width:46px;height:46px;border-radius:12px;background:#ffffff26;display:grid;place-items:center;font-size:24px;flex:none}
+.astiles{display:grid;gap:10px}
+@media(min-width:620px){.astiles{grid-template-columns:repeat(3,1fr)}}
+.astile{background:var(--soft);border-radius:12px;padding:12px;display:grid;gap:4px}
+.astile span{font-size:24px}.astile small{color:var(--mut);line-height:1.45;font-size:12.5px}
+.assteps{margin:0;padding-left:20px;font-size:14px;line-height:1.7}
+.asipo{border-top:1px solid var(--bd);padding:12px 0}.asipo:first-of-type{border-top:0}
+.ashead{display:flex;gap:12px;align-items:center;margin-bottom:10px}
+.asbtns{display:grid;gap:8px}
+@media(min-width:520px){.asbtns{grid-template-columns:1fr 1fr}}
+.asbtn{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);text-decoration:none;transition:transform .15s,border-color .15s,background .15s}
+.asbtn:hover{border-color:var(--pri);background:var(--soft);transform:translateY(-1px)}
+.asbtn b{display:block;font-size:14px}.asbtn small{color:var(--mut);font-size:12px}
+.asbtn>span:nth-child(2){flex:1;min-width:0}.asic{font-size:22px}
