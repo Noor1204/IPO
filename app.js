@@ -180,7 +180,7 @@ function listCard(i) {
   ${cdFor(i)}<div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
   ${actionBtn(i)}</div></div>`;
 }
-const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ About</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
+const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
 const head = (title, extra = "") => `${brand()}<div class="top"><h1>${title}</h1>${extra}</div>`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
@@ -660,7 +660,7 @@ const acked = () => state.ack;   // shown on every app open, gone after the user
 
 // ---------- left side bar (About, Compare, Settings) + About page ----------
 // Laptop: always visible on the left. Phone: opens from the "☰ About" button at the top and closes again after a choice.
-const SIDE = [["about", "ℹ️", "About"], ["compare", "⚖️", "Compare"], ["settings", "⚙️", "Settings"]];
+const SIDE = [["about", "ℹ️", "About"], ["general", "🧰", "General"], ["share", "🔗", "Share"], ["help", "🛟", "Help & Support"], ["compare", "⚖️", "Compare"], ["settings", "⚙️", "Settings"]];
 const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="drawer" aria-label="Menu">
   <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">✕</button></div>
   <div class="dnav">${SIDE.map(([k, ic, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}"><b>${ic}</b>${l}</button>`).join("")}</div>
@@ -743,9 +743,7 @@ function subContent(k) {
   if (k === "support") {
     return subPage("Support", card("Need help?", `<p class="sm" style="margin-top:0">Check the <button class="linkbtn" data-sub="faq">FAQs</button> first. If something is wrong with the data or the app, tell us and we will fix it.</p><a class="btn" style="display:block;text-align:center;text-decoration:none" href="https://github.com/Noor1204/IPO/issues/new" target="_blank" rel="noopener noreferrer">Report a problem / ask a question</a><p class="mut sm" style="margin-bottom:0">When reporting, please write the IPO name and what looked wrong.</p>`) + card("Developer", `<p class="sm" style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p>`));
   }
-  if (k === "us") {
-    return subPage("About Us", card(TEXT.aboutTitle[lang()], about()) + card("Where the data comes from", `<ul class="alist"><li><b>NSE, BSE, SEBI</b> — issue details, dates, subscription, offer documents</li><li><b>Offer documents (RHP)</b> — company financials used for the score</li><li><b>InvestorGain, ipowatch</b> — GMP (unofficial grey-market rumours)</li><li><b>Yahoo Finance</b> — listing-day prices</li></ul><p class="mut sm" style="margin-bottom:0">Last refreshed: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</p>`) + card("Developer", `<p class="sm" style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p>`));
-  }
+  if (k === "us") return subPage("About Us", usCards());
   if (k === "terms") return subPage("Terms & Condition", card("", `<ol class="alist" style="padding-left:20px">${TERMS.map(t => `<li>${esc(t)}</li>`).join("")}</ol>`));
   if (k === "privacy") {
     return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, alerts, applied IPOs, language, theme and (if you add it) your PAN — in this browser only.</li><li>Nothing like that is sent to a server.</li></ul>`));
@@ -753,18 +751,21 @@ function subContent(k) {
   if (k === "faq") return subPage("FAQs", card("", FAQ.map(([q, a]) => `<details class="faq"><summary>${esc(q)}</summary><p class="sm">${esc(a)}</p></details>`).join("")));
   return null;
 }
-function aboutPage() {
+const usCards = () => card(TEXT.aboutTitle[lang()], about()) + card("Where the data comes from", `<ul class="alist"><li><b>NSE, BSE, SEBI</b> — issue details, dates, subscription, offer documents</li><li><b>Offer documents (RHP)</b> — company financials used for the score</li><li><b>InvestorGain, ipowatch</b> — GMP (unofficial grey-market rumours)</li><li><b>Yahoo Finance</b> — listing-day prices</li></ul><p class="mut sm" style="margin-bottom:0">Last refreshed: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</p>`) + card("Developer", `<p class="sm" style="margin:0"><b>Zynora Technology</b> (Noor)<br><span class="mut">© 2026 Zynora Technology. All rights reserved.</span></p>`);
+// About, General, Share and Help & Support are separate screens in the side bar; General / Share / Help list their rows, each row opens its own page
+function aboutPage() { return `${head("About")}<div class="subpg">${usCards()}</div>`; }
+function sectionPage(tab) {
   const sp = state.sub && subContent(state.sub);
   if (sp) return sp;
   state.sub = null;
-  const unread = notifList().length;
-  return `${head("About")}<div class="aboutmenu">
-  ${msec("General", mrow("✅", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("📄", "Download ASBA Form", "asba") + mrow("🪪", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("🔔", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("⚙️", "Notification Settings", "nsettings") +
-    `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
-    `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}
-  ${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">Share App</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}
-  ${msec("Help & Support", mrow("💬", "Support", "support") + mrow("ℹ️", "About Us", "us") + mrow("📋", "Terms & Condition", "terms") + mrow("🔒", "Privacy Policy", "privacy") + mrow("❓", "FAQs", "faq"))}
-  </div>`;
+  if (tab === "general") {
+    const unread = notifList().length;
+    return `${head("General")}<div class="aboutmenu">${msec("General", mrow("✅", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("📄", "Download ASBA Form", "asba") + mrow("🪪", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("🔔", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("⚙️", "Notification Settings", "nsettings") +
+      `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
+      `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}</div>`;
+  }
+  if (tab === "share") return `${head("Share")}<div class="aboutmenu">${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">Share App</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}</div>`;
+  return `${head("Help & Support")}<div class="aboutmenu">${msec("Help & Support", mrow("💬", "Support", "support") + mrow("📋", "Terms & Condition", "terms") + mrow("🔒", "Privacy Policy", "privacy") + mrow("❓", "FAQs", "faq"))}</div>`;
 }
 async function shareApp() {
   const data = { title: "Trendy IPO", text: "Live IPO tracker: subscription, GMP trend, score and allotment links.", url: APP_URL() };
@@ -786,7 +787,7 @@ document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-t
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help") };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
