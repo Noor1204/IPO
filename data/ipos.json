@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-19T01:08:39.997Z",
+ "generatedAt": "2026-10-19T04:29:12.059Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-19T01:05:22.048Z"
+   "fetchedAt": "2026-10-19T04:28:51.122Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,15 +11,15 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-19T01:05:24.002Z"
+   "fetchedAt": "2026-10-19T04:28:56.908Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-19T01:05:22.809Z"
+   "fetchedAt": "2026-10-19T04:28:53.676Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
-   "fetchedAt": "2026-10-16"
+   "fetchedAt": "2026-10-19"
   }
  ],
  "ipos": [
@@ -136,21 +136,26 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 250,
+    "value": 250.5,
     "min": 250,
-    "max": 250,
+    "max": 251,
     "sources": [
      {
-      "source": "investorgain.com",
+      "source": "ipowatch.in",
       "gmp": 250,
-      "pct": 22.34,
-      "updated": "18-Oct 23:37",
+      "updated": "21-23 Oct"
+     },
+     {
+      "source": "investorgain.com",
+      "gmp": 251,
+      "pct": 22.43,
+      "updated": "19-Oct 8:37",
       "seenLow": 148,
-      "seenHigh": 250
+      "seenHigh": 251
      }
     ],
     "rating": 4,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -166,11 +171,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 250
+      "gmp": 235.5
      },
      {
       "date": "2026-10-19",
-      "gmp": 250
+      "gmp": 250.5
      }
     ]
    },
@@ -204,7 +209,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:04:44.321Z"
+   "fetchedAt": "2026-10-19T04:28:05.513Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -319,21 +324,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 92,
+    "value": 93.5,
     "min": 92,
-    "max": 92,
+    "max": 95,
     "sources": [
      {
       "source": "investorgain.com",
       "gmp": 92,
       "pct": 13.28,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 83,
       "seenHigh": 96
      }
     ],
     "rating": 3,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -349,11 +354,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 92
+      "gmp": 95.5
      },
      {
       "date": "2026-10-19",
-      "gmp": 92
+      "gmp": 93.5
      }
     ]
    },
@@ -387,7 +392,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:04:49.673Z"
+   "fetchedAt": "2026-10-19T04:28:11.137Z"
   },
   {
    "symbol": "TONBO",
@@ -576,21 +581,26 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 515,
+    "value": 517.5,
     "min": 515,
-    "max": 515,
+    "max": 520,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 520,
+      "updated": "15-19 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 515,
       "pct": 73.57,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 270,
       "seenHigh": 516
      }
     ],
     "rating": 5,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -622,7 +632,7 @@
      },
      {
       "date": "2026-10-19",
-      "gmp": 515
+      "gmp": 517.5
      }
     ]
    },
@@ -658,7 +668,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-19T01:08:39.978Z",
+     "at": "2026-10-19T04:29:11.918Z",
      "date": "2026-10-19",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -1032,7 +1042,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:04:40.434Z"
+   "fetchedAt": "2026-10-19T04:27:44.411Z"
   },
   {
    "symbol": "BONFIG",
@@ -1204,21 +1214,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 130,
-    "min": 130,
+    "value": 127.5,
+    "min": 125,
     "max": 130,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 130,
-      "pct": 22.18,
-      "updated": "18-Oct 23:37",
-      "seenLow": 129,
+      "gmp": 125,
+      "pct": 21.33,
+      "updated": "19-Oct 8:37",
+      "seenLow": 125,
       "seenHigh": 178
      }
     ],
     "rating": 4,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -1246,11 +1256,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 130
+      "gmp": 131
      },
      {
       "date": "2026-10-19",
-      "gmp": 130
+      "gmp": 127.5
      }
     ]
    },
@@ -1286,7 +1296,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-19T01:08:39.979Z",
+     "at": "2026-10-19T04:29:11.923Z",
      "date": "2026-10-19",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1654,7 +1664,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:04:41.566Z"
+   "fetchedAt": "2026-10-19T04:27:45.205Z"
   },
   {
    "symbol": "SMT",
@@ -1834,13 +1844,18 @@
       "source": "investorgain.com",
       "gmp": 25,
       "pct": 7.27,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 15,
       "seenHigh": 43
+     },
+     {
+      "source": "ipowatch.in",
+      "gmp": 25,
+      "updated": "15-19 Oct"
      }
     ],
     "rating": 2,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -1868,7 +1883,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 25
+      "gmp": 15
      },
      {
       "date": "2026-10-19",
@@ -1908,7 +1923,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-19T01:08:39.980Z",
+     "at": "2026-10-19T04:29:11.926Z",
      "date": "2026-10-19",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2248,7 +2263,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:04:42.582Z"
+   "fetchedAt": "2026-10-19T04:27:54.225Z"
   },
   {
    "symbol": "ZETWERK",
@@ -2419,13 +2434,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 3.31,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 5,
       "seenHigh": 30
      }
     ],
     "rating": 1,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -2453,7 +2468,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 5
+      "gmp": 6.1
      },
      {
       "date": "2026-10-19",
@@ -2493,7 +2508,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-19T01:08:39.980Z",
+     "at": "2026-10-19T04:29:11.929Z",
      "date": "2026-10-19",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2820,7 +2835,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:04:43.452Z"
+   "fetchedAt": "2026-10-19T04:27:56.525Z"
   },
   {
    "symbol": "SHELLZ",
@@ -2863,16 +2878,7 @@
      "times": 0.89
     }
    },
-   "demand": {
-    "asOn": "Friday, October 16 ,  2026  5:02:23 PM",
-    "totalBids": 2216800,
-    "timesSubscribed": null,
-    "byPrice": {
-     "170": 2216800,
-     "175": 2215200,
-     "179": 2213600
-    }
-   },
+   "demand": null,
    "registrar": {
     "name": "BIGSHARE SERVICES PRIVATE LIMITED",
     "address": "S6-2, 6TH FLOOR, PINNACLE BUSINESS PARK, NEXT TO AHURA CENTRE, MAHAKALI CAVES ROAD, ANDHERI EAST, MUMBAI 400093, MAHARASTHRA INDIA",
@@ -2936,16 +2942,21 @@
     "max": 35,
     "sources": [
      {
+      "source": "ipowatch.in",
+      "gmp": 35,
+      "updated": "15-19 Oct"
+     },
+     {
       "source": "investorgain.com",
       "gmp": 35,
       "pct": 19.55,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 25,
       "seenHigh": 35
      }
     ],
     "rating": 3,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -2957,7 +2968,7 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 35
+      "gmp": 12.5
      },
      {
       "date": "2026-10-19",
@@ -2997,7 +3008,7 @@
      "total": 0.89
     },
     {
-     "at": "2026-10-19T01:08:39.989Z",
+     "at": "2026-10-19T04:29:12.001Z",
      "date": "2026-10-19",
      "qib": null,
      "bnii": null,
@@ -3331,7 +3342,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:01.771Z"
+   "fetchedAt": "2026-10-19T04:28:29.223Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -3479,21 +3490,26 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 19,
+    "value": 19.5,
     "min": 19,
-    "max": 19,
+    "max": 20,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 20,
+      "updated": "14-16 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 19,
       "pct": 6.57,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 10,
       "seenHigh": 55
      }
     ],
     "rating": 2,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-09",
@@ -3525,11 +3541,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 19
+      "gmp": 13.5
      },
      {
       "date": "2026-10-19",
-      "gmp": 19
+      "gmp": 19.5
      }
     ]
    },
@@ -4062,21 +4078,26 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 4.5,
+    "value": 4.75,
     "min": 4.5,
-    "max": 4.5,
+    "max": 5,
     "sources": [
      {
       "source": "investorgain.com",
       "gmp": 4.5,
       "pct": 4.02,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 2,
       "seenHigh": 12
+     },
+     {
+      "source": "ipowatch.in",
+      "gmp": 5,
+      "updated": "14-16 Oct"
      }
     ],
     "rating": 1,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -4104,11 +4125,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 4.5
+      "gmp": 2.5
      },
      {
       "date": "2026-10-19",
-      "gmp": 4.5
+      "gmp": 4.75
      }
     ]
    },
@@ -4606,21 +4627,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 65,
+    "value": 67.5,
     "min": 65,
-    "max": 65,
+    "max": 70,
     "sources": [
      {
       "source": "investorgain.com",
       "gmp": 65,
       "pct": 23.99,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 63,
       "seenHigh": 91
      }
     ],
     "rating": 4,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-07",
@@ -4660,11 +4681,11 @@
      },
      {
       "date": "2026-10-18",
-      "gmp": 65
+      "gmp": 69.5
      },
      {
       "date": "2026-10-19",
-      "gmp": 65
+      "gmp": 67.5
      }
     ]
    },
@@ -5192,13 +5213,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 9.26,
-      "updated": "18-Oct 23:37",
+      "updated": "19-Oct 8:37",
       "seenLow": 2,
       "seenHigh": 5
      }
     ],
     "rating": 2,
-    "updated": "18-Oct 23:37",
+    "updated": "19-Oct 8:37",
     "history": [
      {
       "date": "2026-10-13",
@@ -6490,12 +6511,12 @@
    ],
    "listingPerf": {
     "dayOpen": 215,
-    "ltp": 150.17,
+    "ltp": 142.67,
     "exchange": "NSE",
     "listDate": "2026-10-08",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": -2.27,
-    "ltpGainPct": -31.74
+    "ltpGainPct": -35.15
    },
    "checks": [
     {
@@ -7088,12 +7109,12 @@
    ],
    "listingPerf": {
     "dayOpen": 80,
-    "ltp": 78.98,
+    "ltp": 76.05,
     "exchange": "NSE",
     "listDate": "2026-10-08",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 6.67,
-    "ltpGainPct": 5.31
+    "ltpGainPct": 1.4
    },
    "checks": [
     {
@@ -8423,7 +8444,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:06.453Z"
+   "fetchedAt": "2026-10-19T04:28:32.713Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8870,7 +8891,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:07.164Z"
+   "fetchedAt": "2026-10-19T04:28:33.631Z"
   },
   {
    "symbol": "TNA",
@@ -9332,7 +9353,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:07.939Z"
+   "fetchedAt": "2026-10-19T04:28:34.222Z"
   },
   {
    "symbol": "DSL",
@@ -9747,7 +9768,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:08.644Z"
+   "fetchedAt": "2026-10-19T04:28:34.848Z"
   },
   {
    "symbol": "OMARA",
@@ -10206,7 +10227,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:11.178Z"
+   "fetchedAt": "2026-10-19T04:28:36.744Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10878,7 +10899,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:05:09.333Z"
+   "fetchedAt": "2026-10-19T04:28:35.453Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -11026,7 +11047,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:05:13.650Z"
+   "fetchedAt": "2026-10-19T04:28:40.979Z"
   },
   {
    "symbol": "VANS",
@@ -11496,7 +11517,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:14.562Z"
+   "fetchedAt": "2026-10-19T04:28:41.663Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -11740,12 +11761,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 139.4,
+    "ltp": 140.1,
     "exchange": "NSE",
     "listDate": "2026-10-06",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -16.53
+    "ltpGainPct": -16.11
    },
    "checks": [
     {
@@ -12337,12 +12358,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 114.7,
+    "ltp": 119.76,
     "exchange": "NSE",
     "listDate": "2026-10-06",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -11.77
+    "ltpGainPct": -7.88
    },
    "checks": [
     {
@@ -13252,7 +13273,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:11.986Z"
+   "fetchedAt": "2026-10-19T04:28:37.459Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13352,7 +13373,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:05:15.289Z"
+   "fetchedAt": "2026-10-19T04:28:42.318Z"
   },
   {
    "symbol": "PIND",
@@ -13845,7 +13866,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:15.975Z"
+   "fetchedAt": "2026-10-19T04:28:42.908Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -14042,7 +14063,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:05:17.388Z"
+   "fetchedAt": "2026-10-19T04:28:45.598Z"
   },
   {
    "symbol": "RUNWALENTR",
@@ -14197,12 +14218,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 259.9,
+    "ltp": 250.55,
     "exchange": "NSE",
     "listDate": "2026-10-05",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -13.94
+    "ltpGainPct": -17.04
    },
    "checks": [
     {
@@ -14836,12 +14857,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 142,
-    "ltp": 119.25,
+    "ltp": 114.5,
     "exchange": "NSE",
     "listDate": "2026-10-05",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 2.16,
-    "ltpGainPct": -14.21
+    "ltpGainPct": -17.63
    },
    "checks": [
     {
@@ -15365,12 +15386,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 28.31999969482422,
-    "ltp": 24.9,
+    "ltp": 24.24,
     "exchange": "NSE",
     "listDate": "2026-10-05",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": -11.5,
-    "ltpGainPct": -22.19
+    "ltpGainPct": -24.25
    },
    "checks": [
     {
@@ -15958,12 +15979,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 450,
-    "ltp": 390.5,
+    "ltp": 385.85,
     "exchange": "NSE",
     "listDate": "2026-10-05",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 65.44,
-    "ltpGainPct": 43.57
+    "ltpGainPct": 41.86
    },
    "checks": [
     {
@@ -17831,7 +17852,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T01:05:22.048Z"
+   "fetchedAt": "2026-10-19T04:28:51.122Z"
   },
   {
    "symbol": "GREENASIA",
@@ -18552,12 +18573,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 455,
-    "ltp": 400,
+    "ltp": 423.5,
     "exchange": "NSE",
     "listDate": "2026-10-01",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 12.35,
-    "ltpGainPct": -1.23
+    "ltpGainPct": 4.57
    },
    "checks": [
     {
@@ -19141,12 +19162,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 59.09,
+    "ltp": 58.05,
     "exchange": "NSE",
     "listDate": "2026-10-01",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 73.79
+    "ltpGainPct": 70.74
    },
    "checks": [
     {
@@ -19755,12 +19776,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 177.85,
+    "ltp": 171.28,
     "exchange": "NSE",
     "listDate": "2026-09-30",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 32.72
+    "ltpGainPct": 27.82
    },
    "checks": [
     {
@@ -20249,12 +20270,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 321.7,
+    "ltp": 313.45,
     "exchange": "NSE",
     "listDate": "2026-09-30",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": -1.91,
-    "ltpGainPct": -11.13
+    "ltpGainPct": -13.41
    },
    "checks": [],
    "fundamentals": {
@@ -20777,12 +20798,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 260,
+    "ltp": 255.45,
     "exchange": "NSE",
     "listDate": "2026-09-30",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -30.67
+    "ltpGainPct": -31.88
    },
    "checks": [
     {
@@ -21363,12 +21384,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 200,
-    "ltp": 235.51,
+    "ltp": 237,
     "exchange": "NSE",
     "listDate": "2026-09-30",
-    "asOf": "2026-10-16",
+    "asOf": "2026-10-19",
     "dayOpenGainPct": 8.11,
-    "ltpGainPct": 27.3
+    "ltpGainPct": 28.11
    },
    "checks": [
     {
@@ -22178,7 +22199,65 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T01:04:54.721Z"
+   "fetchedAt": "2026-10-19T04:28:16.628Z"
+  },
+  {
+   "symbol": "IG-1849",
+   "name": "BLS Polymers",
+   "board": "Mainboard",
+   "status": "live",
+   "open": null,
+   "close": null,
+   "timeline": {
+    "open": null,
+    "close": null,
+    "allotment": null,
+    "refund": null,
+    "demat": null,
+    "listing": null
+   },
+   "allotment": null,
+   "listing": null,
+   "datesExpected": true,
+   "priceLow": null,
+   "priceHigh": null,
+   "lot": null,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": null,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/bls-polymers-ipo/1849/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-19T04:28:53.675Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
  "filings": [
