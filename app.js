@@ -230,7 +230,7 @@ function insights() {
     g && card("🚀", "Highest GMP", "₹" + gmpNow(g), `${esc(shortName(g.name))} · ${gmpPct(g).toFixed(0)}%`, gmpNow(g) >= 0 ? "grn-t" : "red-t", g.symbol),
     s && card("🔥", "Most subscribed", f2(totalTimes(s)) + "x", esc(shortName(s.name)), "", s.symbol),
     sc && card("⭐", "Top score", score(sc) + "/100", esc(shortName(sc.name)), "", sc.symbol),
-    card("⏰", "Closing today", String(closingNow.length), closingNow.length ? closingNow.map(i => esc(shortName(i.name))).join(", ") : "No IPO closes today", closingNow.length ? "red-t" : "")
+    card("⏰", "Closing today", String(closingNow.length), closingNow.length ? ["Mainboard", "SME"].map(b => { const g = closingNow.filter(i => (i.board === "SME" ? "SME" : "Mainboard") === b); return g.length ? `<div class="bdline"><span class="bd ${b === "SME" ? "sme" : "main"}">${b} · ${g.length}</span> ${g.map(i => esc(shortName(i.name))).join(", ")}</div>` : ""; }).join("") : "No IPO closes today", closingNow.length ? "red-t" : "")
   ].filter(Boolean);
   return `<div class="insights">${cards.join("")}</div>`;
 }
