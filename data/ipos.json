@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-19T04:29:12.059Z",
+ "generatedAt": "2026-10-19T04:29:20.321Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -329,6 +329,11 @@
     "max": 95,
     "sources": [
      {
+      "source": "ipowatch.in",
+      "gmp": 95,
+      "updated": "21-23 Oct"
+     },
+     {
       "source": "investorgain.com",
       "gmp": 92,
       "pct": 13.28,
@@ -404,14 +409,14 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
+    "allotment": "2026-10-20",
+    "refund": "2026-10-21",
+    "demat": "2026-10-21",
+    "listing": "2026-10-22"
    },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
+   "allotment": "2026-10-20",
+   "listing": "2026-10-22",
+   "datesExpected": true,
    "priceLow": 665,
    "priceHigh": 700,
    "lot": 21,
@@ -570,72 +575,10 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/tonbo-imaging-india-ipo/2369/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": true,
-   "gmp": {
-    "value": 517.5,
-    "min": 515,
-    "max": 520,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 520,
-      "updated": "15-19 Oct"
-     },
-     {
-      "source": "investorgain.com",
-      "gmp": 515,
-      "pct": 73.57,
-      "updated": "19-Oct 8:37",
-      "seenLow": 270,
-      "seenHigh": 516
-     }
-    ],
-    "rating": 5,
-    "updated": "19-Oct 8:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 343
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 468
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 500
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 495
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 516
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 505
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 515
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 517.5
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.215Z",
@@ -668,7 +611,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-19T04:29:11.918Z",
+     "at": "2026-10-19T04:29:20.238Z",
      "date": "2026-10-19",
      "qib": 3.9525963925297973,
      "bnii": 11.480183058457818,
@@ -679,32 +622,7 @@
     }
    ],
    "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 852.18,
-     "other": 852.18,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 21,
-     "other": 21,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 700,
-     "other": 700,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Tonbo Imaging India Limited",
     "basis": "Consolidated",
@@ -1296,7 +1214,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-19T04:29:11.923Z",
+     "at": "2026-10-19T04:29:20.240Z",
      "date": "2026-10-19",
      "qib": 0.15946175233346238,
      "bnii": 1.4372566657520829,
@@ -1923,7 +1841,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-19T04:29:11.926Z",
+     "at": "2026-10-19T04:29:20.242Z",
      "date": "2026-10-19",
      "qib": 1.1231484554912776,
      "bnii": 0.3810149040827815,
@@ -2275,14 +2193,14 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
+    "allotment": "2026-10-20",
+    "refund": "2026-10-21",
+    "demat": "2026-10-21",
+    "listing": "2026-10-22"
    },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
+   "allotment": "2026-10-20",
+   "listing": "2026-10-22",
+   "datesExpected": true,
    "priceLow": 143,
    "priceHigh": 151,
    "lot": 99,
@@ -2415,67 +2333,10 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/zetwerk-ipo/2279/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": true,
-   "gmp": {
-    "value": 5,
-    "min": 5,
-    "max": 5,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 5,
-      "pct": 3.31,
-      "updated": "19-Oct 8:37",
-      "seenLow": 5,
-      "seenHigh": 30
-     }
-    ],
-    "rating": 1,
-    "updated": "19-Oct 8:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 15.5
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 17
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 15
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 7.5
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 7.2
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 6.1
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 5
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.220Z",
@@ -2508,7 +2369,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-19T04:29:11.929Z",
+     "at": "2026-10-19T04:29:20.244Z",
      "date": "2026-10-19",
      "qib": 0.3706522669853686,
      "bnii": 0.1703731112326002,
@@ -2519,32 +2380,7 @@
     }
    ],
    "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 5012.33,
-     "other": 5012.33,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 99,
-     "other": 99,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 151,
-     "other": 151,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Zetwerk Manufacturing Businesses Limited",
     "basis": "Consolidated",
@@ -3008,7 +2844,7 @@
      "total": 0.89
     },
     {
-     "at": "2026-10-19T04:29:12.001Z",
+     "at": "2026-10-19T04:29:20.290Z",
      "date": "2026-10-19",
      "qib": null,
      "bnii": null,
