@@ -1,7 +1,9 @@
 name: Refresh data and publish site
 
-# Runs every hour, and also whenever fresh data is pushed from your PC (scripts/push-data.cmd), so the site never has to wait for the next hour.
-# Every hour: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, check it, commit it and publish the site on GitHub Pages.
+# GitHub's own schedule only starts a run every 2-5 hours, so while an IPO is open (or opens within a day) the last job of every run waits a few minutes and starts the
+# next run itself (a refresh about every 12 minutes, free). When no IPO is open the chain stops and the hourly schedule / a push from your PC takes over.
+# Also runs whenever fresh data is pushed from your PC (scripts/push-data.cmd).
+# Each run: fetch live data (NSE, BSE, GMP, SEBI, Yahoo), rebuild data/ipos.json, check it, commit it and publish the site on GitHub Pages.
 # Company fundamentals (the score) are extracted on your own computer (needs your Claude login) and committed under data/fundamentals/.
 on:
   schedule:
@@ -98,3 +100,38 @@ jobs:
     steps:
       - id: deployment
         uses: actions/deploy-pages@v4
+
+  # keeps the refresh going every ~12 minutes while an IPO is live (or opens today / tomorrow); sleeps, then starts the next run
+  next:
+    needs: [build, deploy]
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+      actions: write            # only to start the next run of this same workflow
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Is an IPO open?
+        id: live
+        run: |
+          if node -e '
+            const ist = d => new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Kolkata" }).format(d);
+            const today = ist(new Date()), tomorrow = ist(new Date(Date.now() + 864e5));
+            const j = JSON.parse(require("fs").readFileSync("data/ipos.json", "utf8"));
+            const hit = (j.ipos || []).filter(i => (i.status === "live" && i.close >= today) || (i.open && i.open >= today && i.open <= tomorrow));
+            console.log(hit.length + " IPO(s) open or opening soon");
+            process.exit(hit.length ? 0 : 1);
+          '; then echo "go=yes" >> "$GITHUB_OUTPUT"; else echo "go=no" >> "$GITHUB_OUTPUT"; fi
+      - name: Wait, then start the next run
+        if: steps.live.outputs.go == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          sleep 420
+          gh workflow run refresh.yml --ref main
