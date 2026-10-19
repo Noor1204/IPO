@@ -13,6 +13,8 @@ const j = await read(path.join(DATA, "ipos.json")).catch(e => { bad("ipos.json m
 if (!j) { console.error(problems.join("\n")); process.exit(1); }
 const prev = process.argv[2] ? await read(process.argv[2]).catch(() => null) : null;
 
+// ---- one row per symbol (a repeated row once showed wrong subscription numbers)
+if (Array.isArray(j.ipos)) { const seen = new Set(); for (const i of j.ipos) { if (seen.has(i.symbol)) bad(`duplicate IPO row: ${i.symbol}`); seen.add(i.symbol); } }
 // ---- shape and size
 if (!Array.isArray(j.ipos) || !Array.isArray(j.filings)) bad("ipos / filings are not lists");
 const n = j.ipos?.length || 0, nf = j.filings?.length || 0;

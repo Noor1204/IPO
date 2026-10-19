@@ -7,7 +7,14 @@ import { norm } from "./util.mjs";
 const DATA = path.resolve(import.meta.dirname, "..", "data");
 const read = async (f, d) => JSON.parse(await fs.readFile(path.join(DATA, f), "utf8").catch(() => JSON.stringify(d)));
 import { loadEntries } from "./entries.mjs";
-const nse = await loadEntries();   // NSE issues + BSE-only issues
+const nseAll = await loadEntries();   // NSE issues + BSE-only issues
+// NSE's past-issues list can return the same symbol twice (seen with SRIT: two different snapshots). Keep one row per symbol: the one with the most bids,
+// because a finished issue's bid count never goes down, so the larger one is the later and complete snapshot.
+const nse = [...nseAll.reduce((m, r) => {
+  const p = m.get(r.symbol), bids = e => Number(e?.demand?.totalBidRecieved) || Number(e?.row?.noOfsharesBid) || 0;
+  if (!p || bids(r) > bids(p)) m.set(r.symbol, r);
+  return m;
+}, new Map()).values()];
 const gmp = await read("gmp.json", { current: {}, history: {} });
 const subHist = await read("sub-history.json", {});
 
