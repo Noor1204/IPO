@@ -53,7 +53,7 @@ const logos = await read("logos.json", {});
 const offerFiles = await read("offer-docs.json", {});
 const gkeys = Object.keys(gmp.current);
 const findG = name => { const nk = norm(name); return gkeys.find(k => k === nk || (k.length > 4 && (nk.startsWith(k + " ") || k.startsWith(nk + " ")))) || null; };
-const statusOf = (open, close) => close && close < today ? "listed" : open && open > today ? "upcoming" : "live";
+const statusOf = (open, close) => close && close < today ? "listed" : !open && !close ? "upcoming" : open && open > today ? "upcoming" : "live";   // no dates yet = it has not opened
 const pct = (a, b) => (a != null && b ? Math.round((a / b - 1) * 10000) / 100 : null);
 // Company names: if the exchange already wrote the name in proper capitals ("HD Fire Protect Limited", "AceVector Limited") it is kept as it is.
 // Only ALL-CAPS or all-lowercase names are rewritten: small words stay small, initials and vowel-less acronyms (SMC, PM, R.K.) stay capital, "Shah Investor's" keeps its apostrophe.

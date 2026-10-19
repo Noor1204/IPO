@@ -875,7 +875,7 @@ document.addEventListener("change", e => {
   else if (d.board) { state[d.board] = e.target.checked; if (!state.main && !state.sme) state.main = true; render(); }
 });
 // status is recomputed from today's date so a stale data file never shows a closed IPO as live
-const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" });
+const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "listed" : !i.open && !i.close && i.status !== "listed" ? "upcoming" : i.open && dayDiff(i.open) > 0 ? "upcoming" : i.status === "listed" ? "listed" : "live" });
 // ---------- the phone's Back button ----------
 // Every screen you move to (tab, menu page, an IPO, a report, the Apply popup, the side menu) adds one history step, so Back goes to the screen you came from
 // instead of leaving the app. Switching report tabs does not add steps. Choosing a page from the side menu replaces the "menu open" step.
