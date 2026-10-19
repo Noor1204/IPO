@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-19T17:58:50.010Z",
+ "generatedAt": "2026-10-19T18:11:05.395Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-19T17:55:30.595Z"
+   "fetchedAt": "2026-10-19T18:07:42.925Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-19T17:55:34.159Z"
+   "fetchedAt": "2026-10-19T18:07:46.668Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-19T17:55:31.265Z"
+   "fetchedAt": "2026-10-19T18:07:44.333Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -100,7 +100,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-19T17:55:31.248Z",
+   "fetchedAt": "2026-10-19T18:07:44.146Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -158,7 +158,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-19T17:55:31.248Z",
+   "fetchedAt": "2026-10-19T18:07:44.146Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -356,7 +356,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:54:51.282Z"
+   "fetchedAt": "2026-10-19T18:07:09.160Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -384,7 +384,7 @@
    "issueSizeCr": 1450,
    "issueType": "Book Building",
    "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9500 million",
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9,500 million (including Anchor reservation portion of 94,15,584 Equity Shares)",
    "upiCutoff": "23-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
     "qib": null,
@@ -415,7 +415,7 @@
    "sponsorBank": "ICICI Bank Limited and HDFC Bank Limited",
    "docs": {
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
-    "anchor": null
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip"
    },
    "logo": "data/logos/PARASHLTH.png",
    "documents": [
@@ -450,6 +450,20 @@
     {
      "label": "Security parameters (before anchor) (zip from NSE)",
      "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip",
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
@@ -539,7 +553,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:54:56.642Z"
+   "fetchedAt": "2026-10-19T18:07:14.507Z"
   },
   {
    "symbol": "TONBO",
@@ -811,7 +825,7 @@
      "total": 7.772149720743516
     },
     {
-     "at": "2026-10-19T17:58:49.979Z",
+     "at": "2026-10-19T18:11:05.367Z",
      "date": "2026-10-19",
      "qib": 293.5569379060686,
      "bnii": 184.72579224592005,
@@ -1185,7 +1199,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:54:47.473Z"
+   "fetchedAt": "2026-10-19T18:06:51.972Z"
   },
   {
    "symbol": "BONFIG",
@@ -1443,7 +1457,7 @@
      "total": 0.9915716525115471
     },
     {
-     "at": "2026-10-19T17:58:49.981Z",
+     "at": "2026-10-19T18:11:05.368Z",
      "date": "2026-10-19",
      "qib": 120.78396220429998,
      "bnii": 46.438177037929755,
@@ -1811,7 +1825,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:54:48.648Z"
+   "fetchedAt": "2026-10-19T18:06:57.382Z"
   },
   {
    "symbol": "SMT",
@@ -2065,7 +2079,7 @@
      "total": 0.8243464271817537
     },
     {
-     "at": "2026-10-19T17:58:49.981Z",
+     "at": "2026-10-19T18:11:05.369Z",
      "date": "2026-10-19",
      "qib": 34.69606763573695,
      "bnii": 16.3664372257245,
@@ -2405,7 +2419,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:54:49.570Z"
+   "fetchedAt": "2026-10-19T18:07:02.818Z"
   },
   {
    "symbol": "ZETWERK",
@@ -2650,7 +2664,7 @@
      "total": 0.31069422510552874
     },
     {
-     "at": "2026-10-19T17:58:49.982Z",
+     "at": "2026-10-19T18:11:05.369Z",
      "date": "2026-10-19",
      "qib": 4.733238807160643,
      "bnii": 1.683754176398846,
@@ -2977,7 +2991,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:54:50.452Z"
+   "fetchedAt": "2026-10-19T18:07:08.269Z"
   },
   {
    "symbol": "SHELLZ",
@@ -3160,7 +3174,7 @@
      "total": 0.89
     },
     {
-     "at": "2026-10-19T17:58:49.996Z",
+     "at": "2026-10-19T18:11:05.381Z",
      "date": "2026-10-19",
      "qib": null,
      "bnii": null,
@@ -3494,7 +3508,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:08.891Z"
+   "fetchedAt": "2026-10-19T18:07:24.429Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -6531,12 +6545,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 142.6699981689453,
+    "dayOpen": 215,
     "ltp": 142.67,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": -35.15,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -35.15
    },
    "checks": [
@@ -7129,12 +7143,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 77.27999877929688,
+    "dayOpen": 80,
     "ltp": 76.96,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": 3.04,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": 2.61
    },
    "checks": [
@@ -8465,7 +8479,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:13.083Z"
+   "fetchedAt": "2026-10-19T18:07:27.968Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8912,7 +8926,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:13.847Z"
+   "fetchedAt": "2026-10-19T18:07:28.845Z"
   },
   {
    "symbol": "TNA",
@@ -9374,7 +9388,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:14.695Z"
+   "fetchedAt": "2026-10-19T18:07:29.560Z"
   },
   {
    "symbol": "DSL",
@@ -9789,7 +9803,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:16.032Z"
+   "fetchedAt": "2026-10-19T18:07:30.222Z"
   },
   {
    "symbol": "OMARA",
@@ -10248,7 +10262,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:18.454Z"
+   "fetchedAt": "2026-10-19T18:07:32.300Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10920,7 +10934,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:55:16.866Z"
+   "fetchedAt": "2026-10-19T18:07:30.954Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -11068,7 +11082,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:55:21.048Z"
+   "fetchedAt": "2026-10-19T18:07:34.692Z"
   },
   {
    "symbol": "VANS",
@@ -11538,7 +11552,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:21.879Z"
+   "fetchedAt": "2026-10-19T18:07:35.412Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -13066,7 +13080,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:19.325Z"
+   "fetchedAt": "2026-10-19T18:07:33.128Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13166,7 +13180,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:55:22.765Z"
+   "fetchedAt": "2026-10-19T18:07:36.111Z"
   },
   {
    "symbol": "PIND",
@@ -13551,7 +13565,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:23.640Z"
+   "fetchedAt": "2026-10-19T18:07:36.814Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -13636,7 +13650,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:55:25.353Z"
+   "fetchedAt": "2026-10-19T18:07:38.168Z"
   },
   {
    "symbol": "RUNWALENTR",
@@ -14304,12 +14318,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 120.9000015258789,
+    "dayOpen": 142,
     "ltp": 111.5,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": -13.02,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -19.78
    },
    "checks": [],
@@ -14801,12 +14815,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 24.940000534057617,
+    "dayOpen": 28.31999969482422,
     "ltp": 24.04,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": -22.06,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -24.88
    },
    "checks": [],
@@ -15276,12 +15290,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 391,
+    "dayOpen": 450,
     "ltp": 384.7,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": 43.75,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 41.43
    },
    "checks": [],
@@ -16875,7 +16889,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-19T17:55:30.595Z"
+   "fetchedAt": "2026-10-19T18:07:42.925Z"
   },
   {
    "symbol": "GREENASIA",
@@ -17502,12 +17516,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 398.95001220703125,
+    "dayOpen": 455,
     "ltp": 417.4,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-10-01",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": -1.49,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": 3.06
    },
    "checks": [],
@@ -18944,12 +18958,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 317.54998779296875,
+    "dayOpen": 355.1000061035156,
     "ltp": 313.9,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": -12.28,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -13.29
    },
    "checks": [],
@@ -19867,12 +19881,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 240,
+    "dayOpen": 200,
     "ltp": 244.14,
     "exchange": "NSE",
-    "listDate": "2026-10-19",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-19",
-    "dayOpenGainPct": 29.73,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 31.97
    },
    "checks": [],
@@ -20658,7 +20672,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-19T17:55:01.628Z"
+   "fetchedAt": "2026-10-19T18:07:19.547Z"
   }
  ],
  "filings": [
