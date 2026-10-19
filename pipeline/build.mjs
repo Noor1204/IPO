@@ -53,6 +53,7 @@ const logos = await read("logos.json", {});
 const offerFiles = await read("offer-docs.json", {});
 const gkeys = Object.keys(gmp.current);
 const findG = name => { const nk = norm(name); return gkeys.find(k => k === nk || (k.length > 4 && (nk.startsWith(k + " ") || k.startsWith(nk + " ")))) || null; };
+const boardFor = (board, lot, price) => { const v = lot > 0 && price > 0 ? lot * price : null; return v === null ? board : v >= 100000 ? "SME" : v <= 20000 ? "Mainboard" : board; };
 const statusOf = (open, close) => close && close < today ? "listed" : !open && !close ? "upcoming" : open && open > today ? "upcoming" : "live";   // no dates yet = it has not opened
 const pct = (a, b) => (a != null && b ? Math.round((a / b - 1) * 10000) / 100 : null);
 // Company names: if the exchange already wrote the name in proper capitals ("HD Fire Protect Limited", "AceVector Limited") it is kept as it is.
@@ -141,6 +142,7 @@ async function docsFor(symbol, name, info, ig, bse = null) {
 
 const out = [];
 for (const r of nse) {
+  if (r.row?.series === "DEBT" || /\bZCZP\b/i.test(r.name || "")) continue;                // not an IPO (social-stock bond): never shown
   const info = r.info || {}, row = r.row || {}, past = r.bucket === "listed" ? r.row : null;
   const band = [row.issuePrice, row.priceRange, info["Price Range"]].map(x => String(x || "").match(/(\d[\d,.]*)\D+(\d[\d,.]*)/)).find(Boolean) || null;
   const gk = findG(r.name), ig = gk ? gmp.current[gk] : null; if (gk) matchedKeys.add(gk);
@@ -171,7 +173,7 @@ for (const r of nse) {
   const listing = listedOn || ig?.listing || (close ? addWorkdays(close, 3) : null);
   const q = quotes[r.symbol] || null;
   out.push({
-    symbol: r.symbol, name: prettyName(r.name), board: row.series === "SME" ? "SME" : ig?.board || (Object.keys(info).length ? "Mainboard" : "SME"), status, open, close,
+    symbol: r.symbol, name: prettyName(r.name), board: boardFor(row.series === "SME" ? "SME" : ig?.board || (Object.keys(info).length ? "Mainboard" : "SME"), lot, priceHigh), status, open, close,
     // T = close. Allotment T+1, refund + demat credit T+2, listing T+3 (InvestorGain's announced dates win when available)
     timeline: { open, close, allotment, refund: allotment ? addWorkdays(allotment, 1) : null, demat: allotment ? addWorkdays(allotment, 1) : null, listing },
     allotment, listing, datesExpected: !(listedOn || ig?.listing),
@@ -198,7 +200,7 @@ for (const [k, g] of Object.entries(gmp.current)) {
   if (g.close && g.close < new Date(Date.now() - 7 * 864e5).toISOString().slice(0, 10)) continue;
   const status = statusOf(g.open, g.close);
   out.push({
-    symbol: "IG-" + (g.igUrl?.match(/\/(\d+)\/?$/)?.[1] || k.replace(/\W+/g, "")), name: g.name, board: g.board || "SME", status, open: g.open, close: g.close,
+    symbol: "IG-" + (g.igUrl?.match(/\/(\d+)\/?$/)?.[1] || k.replace(/\W+/g, "")), name: g.name, board: boardFor(g.board || "SME", g.igLot, g.igPrice), status, open: g.open, close: g.close,
     timeline: { open: g.open, close: g.close, allotment: g.allotment, refund: g.allotment ? addWorkdays(g.allotment, 1) : null, demat: g.allotment ? addWorkdays(g.allotment, 1) : null, listing: g.listing },
     allotment: g.allotment, listing: g.listing, datesExpected: !g.listing, priceLow: null, priceHigh: g.igPrice, lot: g.igLot, faceValue: null, issueShares: null, issueSizeCr: g.igSizeCr,
     issueType: null, maxRetailAmount: null, issueDetail: null, upiCutoff: null,
