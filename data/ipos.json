@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-20T07:13:36.629Z",
+ "generatedAt": "2026-10-20T07:25:31.312Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-20T07:10:14.655Z"
+   "fetchedAt": "2026-10-20T07:22:08.574Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-20T07:10:19.030Z"
+   "fetchedAt": "2026-10-20T07:22:13.759Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-20T07:10:16.388Z"
+   "fetchedAt": "2026-10-20T07:22:10.024Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -23,6 +23,64 @@
   }
  ],
  "ipos": [
+  {
+   "symbol": "IG-1642",
+   "name": "SFC Environmental Technologies",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "timeline": {
+    "open": "2026-10-27",
+    "close": "2026-10-29",
+    "allotment": "2026-10-30",
+    "refund": "2026-11-02",
+    "demat": "2026-11-02",
+    "listing": "2026-11-03"
+   },
+   "allotment": "2026-10-30",
+   "listing": "2026-11-03",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": null,
+   "lot": null,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": null,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/sfc-environmental-technologies-ipo/1642/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-20T07:22:09.990Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
   {
    "symbol": "IG-1849",
    "name": "BLS Polymers",
@@ -74,21 +132,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 18,
-    "min": 18,
-    "max": 18,
+    "value": 30,
+    "min": 30,
+    "max": 30,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 18,
-      "pct": 12,
-      "updated": "20-Oct 9:37",
+      "gmp": 30,
+      "pct": 20,
+      "updated": "20-Oct 11:02",
       "seenLow": 18,
-      "seenHigh": 18
+      "seenHigh": 30
      }
     ],
-    "rating": 3,
-    "updated": "20-Oct 9:37",
+    "rating": 4,
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-19",
@@ -96,7 +154,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 18
+      "gmp": 30
      }
     ]
    },
@@ -104,7 +162,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-20T07:10:16.203Z",
+   "fetchedAt": "2026-10-20T07:22:09.990Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -162,7 +220,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-20T07:10:16.203Z",
+   "fetchedAt": "2026-10-20T07:22:10.024Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -220,7 +278,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-20T07:10:16.388Z",
+   "fetchedAt": "2026-10-20T07:22:10.024Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -350,21 +408,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 244,
-    "min": 244,
-    "max": 244,
+    "value": 243,
+    "min": 243,
+    "max": 243,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 244,
-      "pct": 21.81,
-      "updated": "20-Oct 9:37",
+      "gmp": 243,
+      "pct": 21.72,
+      "updated": "20-Oct 11:02",
       "seenLow": 148,
       "seenHigh": 250
      }
     ],
     "rating": 4,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -388,7 +446,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 244
+      "gmp": 243
      }
     ]
    },
@@ -422,7 +480,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:09:41.980Z"
+   "fetchedAt": "2026-10-20T07:21:41.386Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -559,13 +617,13 @@
       "source": "investorgain.com",
       "gmp": 81,
       "pct": 11.69,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 78,
       "seenHigh": 96
      }
     ],
     "rating": 3,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -623,7 +681,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:09:47.411Z"
+   "fetchedAt": "2026-10-20T07:21:42.236Z"
   },
   {
    "symbol": "TONBO",
@@ -783,13 +841,13 @@
       "source": "investorgain.com",
       "gmp": 501,
       "pct": 71.57,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 270,
       "seenHigh": 516
      }
     ],
     "rating": 5,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -1235,7 +1293,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:09:24.857Z"
+   "fetchedAt": "2026-10-20T07:21:24.131Z"
   },
   {
    "symbol": "BONFIG",
@@ -1380,21 +1438,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 127,
-    "min": 127,
-    "max": 127,
+    "value": 126,
+    "min": 126,
+    "max": 126,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 127,
-      "pct": 21.67,
-      "updated": "20-Oct 9:37",
-      "seenLow": 127,
+      "gmp": 126,
+      "pct": 21.5,
+      "updated": "20-Oct 11:02",
+      "seenLow": 126,
       "seenHigh": 178
      }
     ],
     "rating": 4,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -1430,7 +1488,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 127
+      "gmp": 126
      }
     ]
    },
@@ -1834,7 +1892,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:09:30.408Z"
+   "fetchedAt": "2026-10-20T07:21:29.495Z"
   },
   {
    "symbol": "SMT",
@@ -1986,21 +2044,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 21,
-    "min": 21,
-    "max": 21,
+    "value": 24,
+    "min": 24,
+    "max": 24,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 21,
-      "pct": 6.1,
-      "updated": "20-Oct 9:37",
+      "gmp": 24,
+      "pct": 6.98,
+      "updated": "20-Oct 11:02",
       "seenLow": 15,
       "seenHigh": 43
      }
     ],
     "rating": 2,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -2036,7 +2094,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 21
+      "gmp": 24
      }
     ]
    },
@@ -2412,7 +2470,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:09:35.603Z"
+   "fetchedAt": "2026-10-20T07:21:35.029Z"
   },
   {
    "symbol": "ZETWERK",
@@ -2564,21 +2622,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 3.5,
-    "min": 3.5,
-    "max": 3.5,
+    "value": 3.75,
+    "min": 3.75,
+    "max": 3.75,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 3.5,
-      "pct": 2.32,
-      "updated": "20-Oct 9:37",
+      "gmp": 3.75,
+      "pct": 2.48,
+      "updated": "20-Oct 11:02",
       "seenLow": 3.5,
       "seenHigh": 30
      }
     ],
     "rating": 1,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -2614,7 +2672,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 3.5
+      "gmp": 3.75
      }
     ]
    },
@@ -2977,7 +3035,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:09:41.080Z"
+   "fetchedAt": "2026-10-20T07:21:40.525Z"
   },
   {
    "symbol": "SHELLZ",
@@ -3102,13 +3160,13 @@
       "source": "investorgain.com",
       "gmp": 46,
       "pct": 25.7,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 25,
       "seenHigh": 46
      }
     ],
     "rating": 4,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -3498,7 +3556,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:09:58.799Z"
+   "fetchedAt": "2026-10-20T07:21:52.520Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -3646,21 +3704,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 19,
-    "min": 19,
-    "max": 19,
+    "value": 18,
+    "min": 18,
+    "max": 18,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 19,
-      "pct": 6.57,
-      "updated": "20-Oct 9:37",
+      "gmp": 18,
+      "pct": 6.23,
+      "updated": "20-Oct 11:02",
       "seenLow": 10,
       "seenHigh": 55
      }
     ],
     "rating": 2,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-09",
@@ -3700,7 +3758,7 @@
      },
      {
       "date": "2026-10-20",
-      "gmp": 19
+      "gmp": 18
      }
     ]
    },
@@ -4241,13 +4299,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 4.46,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 2,
       "seenHigh": 12
      }
     ],
     "rating": 1,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -4789,13 +4847,13 @@
       "source": "investorgain.com",
       "gmp": 64,
       "pct": 23.62,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 61,
       "seenHigh": 91
      }
     ],
     "rating": 4,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-07",
@@ -5371,13 +5429,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 9.26,
-      "updated": "20-Oct 9:37",
+      "updated": "20-Oct 11:02",
       "seenLow": 2,
       "seenHigh": 5
      }
     ],
     "rating": 2,
-    "updated": "20-Oct 9:37",
+    "updated": "20-Oct 11:02",
     "history": [
      {
       "date": "2026-10-13",
@@ -8501,7 +8559,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:03.201Z"
+   "fetchedAt": "2026-10-20T07:21:57.142Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -8948,7 +9006,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:04.469Z"
+   "fetchedAt": "2026-10-20T07:21:57.939Z"
   },
   {
    "symbol": "TNA",
@@ -9410,7 +9468,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:05.277Z"
+   "fetchedAt": "2026-10-20T07:21:58.722Z"
   },
   {
    "symbol": "DSL",
@@ -9825,7 +9883,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:05.978Z"
+   "fetchedAt": "2026-10-20T07:21:59.468Z"
   },
   {
    "symbol": "OMARA",
@@ -10284,7 +10342,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:08.318Z"
+   "fetchedAt": "2026-10-20T07:22:02.191Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -10960,7 +11018,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:10:06.794Z"
+   "fetchedAt": "2026-10-20T07:22:00.448Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -10972,14 +11030,14 @@
    "timeline": {
     "open": "2026-09-29",
     "close": "2026-10-01",
-    "allotment": "2026-10-02",
-    "refund": "2026-10-05",
-    "demat": "2026-10-05",
-    "listing": "2026-10-06"
+    "allotment": "2026-10-05",
+    "refund": "2026-10-06",
+    "demat": "2026-10-06",
+    "listing": "2026-10-07"
    },
-   "allotment": "2026-10-02",
-   "listing": "2026-10-06",
-   "datesExpected": true,
+   "allotment": "2026-10-05",
+   "listing": "2026-10-07",
+   "datesExpected": false,
    "priceLow": 185,
    "priceHigh": 197,
    "lot": 600,
@@ -10997,7 +11055,11 @@
     "snii": null,
     "retail": null,
     "employee": null,
-    "total": null
+    "total": {
+     "offered": null,
+     "bid": null,
+     "times": 73.8
+    }
    },
    "demand": {
     "asOn": "",
@@ -11058,9 +11120,16 @@
      "source": "BSE",
      "kind": "pdf-link",
      "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/black-opal-consultants-ipo/2052/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
     }
    ],
-   "anchor": null,
+   "anchor": true,
    "gmp": null,
    "subHistory": [
     {
@@ -11075,10 +11144,29 @@
     }
    ],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Lot size",
+     "nse": 600,
+     "other": 600,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 197,
+     "other": 197,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-01",
+     "other": "2026-10-01",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:10:10.718Z"
+   "fetchedAt": "2026-10-20T07:22:04.557Z"
   },
   {
    "symbol": "VANS",
@@ -11090,14 +11178,14 @@
    "timeline": {
     "open": "2026-09-29",
     "close": "2026-10-01",
-    "allotment": "2026-10-05",
-    "refund": "2026-10-06",
-    "demat": "2026-10-06",
-    "listing": "2026-10-07"
+    "allotment": "2026-10-02",
+    "refund": "2026-10-05",
+    "demat": "2026-10-05",
+    "listing": "2026-10-06"
    },
-   "allotment": "2026-10-05",
-   "listing": "2026-10-07",
-   "datesExpected": false,
+   "allotment": "2026-10-02",
+   "listing": "2026-10-06",
+   "datesExpected": true,
    "priceLow": 112,
    "priceHigh": 118,
    "lot": 1200,
@@ -11115,11 +11203,7 @@
     "snii": null,
     "retail": null,
     "employee": null,
-    "total": {
-     "offered": null,
-     "bid": null,
-     "times": 628.73
-    }
+    "total": null
    },
    "demand": {
     "asOn": "",
@@ -11168,103 +11252,10 @@
      "source": "BSE",
      "kind": "pdf-link",
      "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/vans-electroengineerings-ipo/2351/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": true,
-   "gmp": {
-    "value": 103,
-    "min": 103,
-    "max": 103,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 103,
-      "pct": 87.29,
-      "updated": "7-Oct 9:37",
-      "seenLow": 45,
-      "seenHigh": 103
-     }
-    ],
-    "rating": 5,
-    "updated": "7-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-09-29",
-      "gmp": 90
-     },
-     {
-      "date": "2026-09-30",
-      "gmp": 90
-     },
-     {
-      "date": "2026-10-01",
-      "gmp": 70
-     },
-     {
-      "date": "2026-10-05",
-      "gmp": 70
-     },
-     {
-      "date": "2026-10-06",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-07",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-08",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-09",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-12",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 103
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 103
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-01T13:10:32.376Z",
@@ -11278,26 +11269,7 @@
     }
    ],
    "listingPerf": null,
-   "checks": [
-    {
-     "field": "Lot size",
-     "nse": 1200,
-     "other": 1200,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 118,
-     "other": 118,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-01",
-     "other": "2026-10-01",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Vans Electroengineerings Limited",
     "basis": "Standalone",
@@ -11552,7 +11524,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:11.507Z"
+   "fetchedAt": "2026-10-20T07:22:05.412Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -13084,7 +13056,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:09.052Z"
+   "fetchedAt": "2026-10-20T07:22:03.106Z"
   },
   {
    "symbol": "ACMEUNIV",
@@ -13184,7 +13156,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:10:12.311Z"
+   "fetchedAt": "2026-10-20T07:22:06.191Z"
   },
   {
    "symbol": "PIND",
@@ -13569,7 +13541,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-20T07:10:13.091Z"
+   "fetchedAt": "2026-10-20T07:22:06.958Z"
   },
   {
    "symbol": "SHIVCHEM",
@@ -13654,7 +13626,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:10:14.655Z"
+   "fetchedAt": "2026-10-20T07:22:08.574Z"
   },
   {
    "symbol": "RUNWALENTR",
@@ -16507,12 +16479,12 @@
    "timeline": {
     "open": "2026-09-24",
     "close": "2026-10-01",
-    "allotment": "2026-10-05",
-    "refund": "2026-10-06",
-    "demat": "2026-10-06",
+    "allotment": "2026-10-02",
+    "refund": "2026-10-05",
+    "demat": "2026-10-05",
     "listing": "2026-10-07"
    },
-   "allotment": "2026-10-05",
+   "allotment": "2026-10-02",
    "listing": "2026-10-07",
    "datesExpected": false,
    "priceLow": 84,
@@ -16597,16 +16569,9 @@
      "source": "NSE",
      "kind": "zip",
      "group": "Other"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/green-asia-impex-ipo/2224/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": false,
+   "anchor": null,
    "gmp": null,
    "subHistory": [
     {
@@ -16631,32 +16596,7 @@
     }
    ],
    "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 60.1,
-     "other": 59.34,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 1600,
-     "other": 1600,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 89,
-     "other": 89,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-01",
-     "other": "2026-10-01",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Green Asia Impex Limited",
     "basis": "Consolidated",
@@ -20278,7 +20218,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-20T07:09:52.303Z"
+   "fetchedAt": "2026-10-20T07:21:47.042Z"
   }
  ],
  "filings": [
