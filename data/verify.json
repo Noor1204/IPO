@@ -161,6 +161,14 @@
   "sourceDoc": "RHP",
   "stale": false
  },
+ "JPL": {
+  "status": "ok",
+  "checked": 59,
+  "ungrounded": [],
+  "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
  "JSIPL": {
   "status": "ok",
   "checked": 72,
@@ -242,6 +250,18 @@
   ],
   "issues": [
    "no peer companies extracted"
+  ],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
+ "PARASHLTH": {
+  "status": "warn",
+  "checked": 117,
+  "ungrounded": [],
+  "issues": [
+   "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
+   "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
+   "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
   ],
   "sourceDoc": "RHP",
   "stale": false

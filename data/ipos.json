@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T03:43:25.032Z",
+ "generatedAt": "2026-10-21T05:30:26.482Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -486,8 +486,408 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
+   "fundamentals": {
+    "company": "Paras Healthcare Limited",
+    "basis": "Consolidated",
+    "about": "Paras Healthcare runs eight tertiary and quaternary care hospitals under the 'Paras Health' brand across Haryana, Bihar, Uttar Pradesh, Rajasthan, Jharkhand and Jammu & Kashmir, with 2,211 beds as of June 30, 2026. Cardiac, oncology, neuro, gastro, orthopaedic and renal specialties (CONGOR) made up 74.70% of FY26 revenue from operations. It had 1,084 doctors and 1,937 nurses and plans to add hospitals in Gurugram and Ludhiana.",
+    "sector": "Healthcare - Hospitals",
+    "headquarters": "Gurugram, Haryana",
+    "founded_year": 1987,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      1477.66,
+      1810.45,
+      2071.14
+     ],
+     "revenue": [
+      1129.04,
+      1294.06,
+      1605.95
+     ],
+     "other_income": [
+      21.98,
+      20.14,
+      22.83
+     ],
+     "ebitda": [
+      154.41,
+      156.46,
+      335.58
+     ],
+     "pbt": [
+      6.63,
+      -50.04,
+      76.03
+     ],
+     "pat": [
+      -15.33,
+      -57.98,
+      43.83
+     ],
+     "net_worth": [
+      338.51,
+      280.49,
+      394.94
+     ],
+     "reserves": [
+      328.75,
+      270.73,
+      384.84
+     ],
+     "borrowings": [
+      547.53,
+      727.93,
+      854.1
+     ],
+     "cash_and_bank": [
+      160.29,
+      205.52,
+      302.73
+     ],
+     "operating_cash_flow": [
+      92.48,
+      86.19,
+      163.51
+     ]
+    },
+    "kpi": {
+     "roce": [
+      5.86,
+      2.71,
+      10.76
+     ],
+     "ronw": [
+      -8.32,
+      -18.73,
+      12.98
+     ],
+     "roe": [
+      -8.32,
+      -18.73,
+      12.98
+     ],
+     "eps_basic": [
+      -1.57,
+      -5.94,
+      4.34
+     ],
+     "eps_diluted": [
+      -1.57,
+      -5.94,
+      4.34
+     ],
+     "pat_margin": [
+      -1.33,
+      -4.41,
+      2.69
+     ],
+     "ebitda_margin": [
+      13.42,
+      11.91,
+      20.6
+     ],
+     "debt_equity": [
+      2.73,
+      4.39,
+      3.53
+     ],
+     "current_ratio": [
+      0.89,
+      0.84,
+      1.08
+     ],
+     "nav_per_share": 44.06,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": -0.07,
+     "other": [
+      {
+       "name": "Bed occupancy rate",
+       "unit": "%",
+       "values": [
+        52.46,
+        50.78,
+        61.75
+       ]
+      },
+      {
+       "name": "ARPOB",
+       "unit": "Rs per day",
+       "values": [
+        44305.65,
+        48088.57,
+        47397.82
+       ]
+      },
+      {
+       "name": "Operational beds",
+       "unit": "number",
+       "values": [
+        1332,
+        1465,
+        1502
+       ]
+      },
+      {
+       "name": "Occupied bed days",
+       "unit": "number",
+       "values": [
+        254716,
+        268927,
+        338321
+       ]
+      },
+      {
+       "name": "Average length of stay",
+       "unit": "days",
+       "values": [
+        3.14,
+        2.89,
+        2.93
+       ]
+      },
+      {
+       "name": "In-patient volume",
+       "unit": "number",
+       "values": [
+        81047,
+        93170,
+        115496
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Aster DM Quality Care Limited",
+      "revenue_cr": 4643.22,
+      "face_value": 10,
+      "cmp": 691,
+      "eps_basic": 7.53,
+      "eps_diluted": 7.52,
+      "nav": 88.32,
+      "pe": 91.89,
+      "ronw": 9.7
+     },
+     {
+      "name": "Apollo Hospitals Enterprise Limited",
+      "revenue_cr": 25228.5,
+      "face_value": 5,
+      "cmp": 8010,
+      "eps_basic": 135.04,
+      "eps_diluted": 134.94,
+      "nav": 657.58,
+      "pe": 59.36,
+      "ronw": 21.95
+     },
+     {
+      "name": "Fortis Healthcare Limited",
+      "revenue_cr": 9127.84,
+      "face_value": 10,
+      "cmp": 765,
+      "eps_basic": 13.8,
+      "eps_diluted": 13.8,
+      "nav": 131.07,
+      "pe": 55.43,
+      "ronw": 11.08
+     },
+     {
+      "name": "Global Health Limited",
+      "revenue_cr": 4410.3,
+      "face_value": 2,
+      "cmp": 1331.7,
+      "eps_basic": 20.71,
+      "eps_diluted": 20.66,
+      "nav": 147.06,
+      "pe": 64.46,
+      "ronw": 15.15
+     },
+     {
+      "name": "Jupiter Lifeline Hospitals Limited",
+      "revenue_cr": 1499.79,
+      "face_value": 2,
+      "cmp": 254,
+      "eps_basic": 5.92,
+      "eps_diluted": 5.92,
+      "nav": 47.1,
+      "pe": 42.92,
+      "ronw": 13.41
+     },
+     {
+      "name": "Krishna Institute of Medical Sciences Limited",
+      "revenue_cr": 3904.6,
+      "face_value": 2,
+      "cmp": 701.95,
+      "eps_basic": 6.03,
+      "eps_diluted": 6.03,
+      "nav": 56.17,
+      "pe": 116.41,
+      "ronw": 11.01
+     },
+     {
+      "name": "Manipal Health Enterprises Limited",
+      "revenue_cr": 10935.6,
+      "face_value": 2,
+      "cmp": 667.3,
+      "eps_basic": 7.71,
+      "eps_diluted": 7.67,
+      "nav": 63.26,
+      "pe": 87,
+      "ronw": 12.37
+     },
+     {
+      "name": "Max Healthcare Institute Limited",
+      "revenue_cr": 10065,
+      "face_value": 10,
+      "cmp": 916.6,
+      "eps_basic": 14.83,
+      "eps_diluted": 14.76,
+      "nav": 109.53,
+      "pe": 62.1,
+      "ronw": 14.33
+     },
+     {
+      "name": "Narayana Hrudayalaya Limited",
+      "revenue_cr": 7896.04,
+      "face_value": 10,
+      "cmp": 1721.9,
+      "eps_basic": 39.67,
+      "eps_diluted": 39.67,
+      "nav": 222.02,
+      "pe": 43.41,
+      "ronw": 19.74
+     },
+     {
+      "name": "Yatharth Hospital and Trauma Care Services Limited",
+      "revenue_cr": 1207.17,
+      "face_value": 10,
+      "cmp": 1003.95,
+      "eps_basic": 18.2,
+      "eps_diluted": 18.2,
+      "nav": 184.79,
+      "pe": 55.16,
+      "ronw": 10.36
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 500,
+     "ofs_cr": 950,
+     "fresh_issue_shares": null,
+     "ofs_shares": null,
+     "pre_issue_shares": 100986187,
+     "post_issue_shares": null,
+     "face_value": 1,
+     "objects": [
+      {
+       "purpose": "Prepayment or scheduled repayment of certain outstanding borrowings availed by the Company",
+       "amount_cr": 320.9
+      },
+      {
+       "purpose": "Investment in wholly owned subsidiary PMHPL (Srinagar hospital) for repayment/prepayment of its borrowings",
+       "amount_cr": 54.1
+      },
+      {
+       "purpose": "General corporate purposes (capped at 25% of gross proceeds)",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Dr. Dharminder Kumar Nagar"
+     ],
+     "holding_pre_pct": 72.8,
+     "holding_post_pct": null,
+     "background": "Promoter and Managing Director; has led the commissioning of all the hospitals over two decades and has over 22 years of healthcare experience. Commelina Ltd (affiliate of Creador) invested in 2017 and is a selling shareholder."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": 41.28,
+     "note": "Government schemes and PSUs were 41.28% of FY26 revenue from operations (30.91% in FY25, 29.76% in FY24). Five of eight hospitals in North India gave 66.07% of FY26 revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages notices to a subsidiary from Heavy Engineering Corporation. A Promoter Group member, Harbaksh Singh Khangura, appears in the CIBIL wilful defaulter database.",
+    "strengths": [
+     "One of the largest healthcare providers in North India, Bihar and Jharkhand with 2,211 beds across eight hospitals and a recognised 'Paras Health' brand.",
+     "Focus on high-acuity tertiary and quaternary care: CONGOR specialties gave 74.70% of FY26 revenue from operations.",
+     "Revenue from operations grew at a 19.26% CAGR from Rs 1,129.04 crore in FY24 to Rs 1,605.95 crore in FY26.",
+     "EBITDA grew from Rs 154.41 crore in FY24 to Rs 335.58 crore in FY26, with margin rising from 13.42% to 20.60%.",
+     "Bed occupancy improved from 52.46% in FY24 to 61.75% in FY26 as newer hospitals ramp up.",
+     "Seven of eight hospitals are NABH accredited, with 1,084 doctors and 1,937 nurses as of June 30, 2026.",
+     "Mix of owned, leased and revenue-share hospitals; capex per bed was Rs 7.70 million as of June 30, 2026.",
+     "Committed expansion of a 300-bed Gurugram hospital and a 500-bed Ludhiana hospital, taking capacity to 3,011 beds by March 2028."
+    ],
+    "risks": [
+     {
+      "title": "History of losses",
+      "detail": "The company lost Rs 15.33 crore in FY24 and Rs 57.98 crore in FY25 on a consolidated basis; profit of Rs 43.83 crore in FY26 may not be sustained.",
+      "severity": "high"
+     },
+     {
+      "title": "Loss-making subsidiaries",
+      "detail": "Subsidiaries Paras Healthcare (Ranchi) and Plus Medicare Hospitals lost Rs 87.27 crore in FY24, Rs 82.24 crore in FY25 and Rs 52.09 crore in FY26 collectively.",
+      "severity": "high"
+     },
+     {
+      "title": "High debt and leverage",
+      "detail": "Fund-based borrowings were Rs 888.89 crore at June 30, 2026 and debt to equity (including leases) was 3.53 times in FY26 and 4.39 times in FY25.",
+      "severity": "high"
+     },
+     {
+      "title": "Contingent liabilities",
+      "detail": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages claims by Heavy Engineering Corporation on a subsidiary.",
+      "severity": "high"
+     },
+     {
+      "title": "Dependence on government schemes",
+      "detail": "Government schemes and PSUs contributed 41.28% of FY26 revenue from operations, up from 29.76% in FY24, which raises payment-delay and tariff risk.",
+      "severity": "high"
+     },
+     {
+      "title": "Promoter Group member on wilful defaulter list",
+      "detail": "Promoter Group member Harbaksh Singh Khangura appears in the CIBIL wilful defaulter database in relation to Majestic Hotels Limited defaults from 2014.",
+      "severity": "medium"
+     },
+     {
+      "title": "High staff attrition",
+      "detail": "Attrition of doctors, nurses and support staff was 60.38% in FY26, 66.74% in FY25 and 65.27% in FY24.",
+      "severity": "medium"
+     },
+     {
+      "title": "Regional and specialty concentration",
+      "detail": "Five of eight hospitals are in North India (66.07% of FY26 revenue) and CONGOR specialties gave 74.70% of FY26 revenue; six of eight hospitals are on leased premises.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Consolidated, restated; FY24-FY26 audited. Source tables were garbled so figures were cross-checked (net worth = equity + other equity; borrowings = non-current incl. current maturities + current borrowings, excluding lease liabilities; cash_and_bank = cash and equivalents + other bank balances; current ratio computed from total current assets/liabilities; operating cash flow reconciled to investing and financing flows). Q1FY27 (June 30, 2026) stub ignored: revenue Rs 470.28 crore, PAT Rs 49.68 crore, basic EPS Rs 4.92 (not annualised). Price band, P/E, share counts and reservation not yet disclosed in the RHP (shown as blanks); Fresh Issue is Rs 5,000 million and Offer for Sale up to Rs 3,000 million (promoter) plus Rs 6,500 million (Commelina). pre_issue_shares is the share count as at June 30, 2026 (face value Rs 1). Peer revenue converted from Rs million."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 117,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
+     "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
+     "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
+    ],
+    "sourceDoc": "RHP"
+   },
    "fetchedAt": "2026-10-21T03:39:40.335Z"
   },
   {
@@ -691,8 +1091,312 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
+   "fundamentals": {
+    "company": "Jio Platforms Limited",
+    "basis": "Consolidated",
+    "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
+    "sector": "Telecom / Digital Services",
+    "headquarters": "Ahmedabad, Gujarat",
+    "founded_year": 2019,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      539580.4,
+      581233.8,
+      615594
+     ],
+     "revenue": [
+      109558.1,
+      128218.4,
+      146885.3
+     ],
+     "other_income": [
+      617.3,
+      1114.6,
+      2873.8
+     ],
+     "ebitda": [
+      54958.7,
+      64170,
+      76255.4
+     ],
+     "pbt": [
+      28808,
+      35127.3,
+      40353.1
+     ],
+     "pat": [
+      21423.2,
+      26109,
+      30049.1
+     ],
+     "net_worth": [
+      277866.1,
+      304022.4,
+      334013.4
+     ],
+     "reserves": [
+      268927.1,
+      295083.4,
+      325074.4
+     ],
+     "borrowings": [
+      54348.9,
+      73060.3,
+      70781
+     ],
+     "cash_and_bank": [
+      2910.5,
+      8423.6,
+      16946.6
+     ],
+     "operating_cash_flow": [
+      57661.6,
+      68155.7,
+      77556.3
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.83,
+      12.5,
+      10.76
+     ],
+     "ronw": [
+      8.02,
+      8.97,
+      9.42
+     ],
+     "roe": [
+      null,
+      null,
+      null
+     ],
+     "eps_basic": [
+      23.96,
+      29.21,
+      33.63
+     ],
+     "eps_diluted": [
+      23.93,
+      29.17,
+      33.59
+     ],
+     "pat_margin": [
+      19.55,
+      20.36,
+      20.46
+     ],
+     "ebitda_margin": [
+      50.16,
+      50.05,
+      51.91
+     ],
+     "debt_equity": [
+      null,
+      null,
+      null
+     ],
+     "current_ratio": [
+      null,
+      null,
+      null
+     ],
+     "nav_per_share": 373.66,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 30.55,
+     "other": [
+      {
+       "name": "Total customer base (RJIL)",
+       "unit": "million",
+       "values": [
+        481.8,
+        488.2,
+        524.4
+       ]
+      },
+      {
+       "name": "ARPU (exit quarter)",
+       "unit": "Rs per month",
+       "values": [
+        181.7,
+        206.2,
+        214
+       ]
+      },
+      {
+       "name": "Data traffic",
+       "unit": "billion GB",
+       "values": [
+        148.5,
+        184.5,
+        241.4
+       ]
+      },
+      {
+       "name": "Monthly data consumption per customer (exit quarter)",
+       "unit": "GB/month",
+       "values": [
+        28.7,
+        33.6,
+        42.3
+       ]
+      },
+      {
+       "name": "Monthly churn (exit quarter)",
+       "unit": "%",
+       "values": [
+        1.52,
+        1.81,
+        1.67
+       ]
+      },
+      {
+       "name": "Net leverage (net debt / EBITDA)",
+       "unit": "x",
+       "values": [
+        0.88,
+        0.71,
+        0.36
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Bharti Airtel Limited",
+      "revenue_cr": 210972.8,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 45.96,
+      "eps_diluted": 44.37,
+      "nav": 244.6,
+      "pe": 40.71,
+      "ronw": 20.32
+     },
+     {
+      "name": "Vodafone Idea Limited",
+      "revenue_cr": 44873,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 3.21,
+      "eps_diluted": 3.21,
+      "nav": -3.3,
+      "pe": 3.99,
+      "ronw": null
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 270000000,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL",
+       "amount_cr": 27500
+      },
+      {
+       "purpose": "General corporate purposes (not to exceed 25% of gross proceeds)",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Reliance Industries Limited"
+     ],
+     "holding_pre_pct": 66.43,
+     "holding_post_pct": null,
+     "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": null,
+    "strengths": [
+     "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
+     "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
+     "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
+     "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
+     "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
+     "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
+     "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
+     "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
+    ],
+    "risks": [
+     {
+      "title": "Sole distributor dependence on Reliance Retail",
+      "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy related-party dealings with the Reliance Group",
+      "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.",
+      "severity": "high"
+     },
+     {
+      "title": "Licence and spectrum renewal",
+      "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.",
+      "severity": "high"
+     },
+     {
+      "title": "Significant indebtedness and deferred payments",
+      "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.",
+      "severity": "medium"
+     },
+     {
+      "title": "Overdependence on RJIL",
+      "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.",
+      "severity": "medium"
+     },
+     {
+      "title": "Highly regulated telecom business",
+      "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.",
+      "severity": "medium"
+     },
+     {
+      "title": "Reliance on passive infrastructure and vendors",
+      "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.",
+      "severity": "medium"
+     },
+     {
+      "title": "Intense competition and capital intensity",
+      "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 59,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
    "fetchedAt": "2026-10-21T03:39:41.224Z"
   },
   {

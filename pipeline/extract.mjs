@@ -21,7 +21,11 @@ function findCli() {
   const base = process.env.APPDATA && path.join(process.env.APPDATA, "Claude", "claude-code");
   if (base && fsSync.existsSync(base)) {
     const vers = fsSync.readdirSync(base).sort((a, b) => a.localeCompare(b, undefined, { numeric: true })).reverse();
-    for (const v of vers) cands.push(path.join(base, v, process.platform === "win32" ? "claude.exe" : "claude"));
+    const exe = process.platform === "win32" ? "claude.exe" : "claude";
+    for (const v of vers) {                                            // newer app versions keep the binary one folder deeper: claude-code\<ver>\<hash>\claude.exe
+      cands.push(path.join(base, v, exe));
+      try { for (const h of fsSync.readdirSync(path.join(base, v))) cands.push(path.join(base, v, h, exe)); } catch {}
+    }
   }
   cands.push("claude");
   return cands.find(c => c && (c === "claude" ? spawnSync(c, ["--version"], { stdio: "pipe" }).status === 0 : fsSync.existsSync(c))) || null;

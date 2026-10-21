@@ -43,6 +43,7 @@ const FU = i => i.verification?.status === "fail" ? null : i.fundamentals;   // 
 const last = a => Array.isArray(a) ? a[a.length - 1] : null;
 
 // ---------- derived data ----------
+const subNow = i => { const t = i.bids?.total?.times ?? i.demand?.timesSubscribed ?? null; return isNum(t) ? f2(t) + "x" : i.status === "upcoming" ? "Not open yet" : i.status === "live" ? "Awaiting bids" : "—"; };
 const totalTimes = i => i.bids?.total?.times ?? i.demand?.timesSubscribed ?? null;
 const gmpNow = i => i.gmp?.value ?? null;
 const gmpPct = i => isNum(gmpNow(i)) && i.priceHigh ? gmpNow(i) / i.priceHigh * 100 : null;
@@ -488,13 +489,13 @@ function detail(forReport = false) {
   return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${onWebsite() ? "<span>⧉</span> Copy link" : "<span>⤴</span> Share"}</button></div>
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
-  <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${isNum(t) ? f2(t) + "x" : "—"}</b></div>
+  <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${subNow(i)}</b></div>
   <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile">${cdFor(i)}${actionBtn(i, true)}</div></div>
   <div class="row"><button class="btn ghost" data-watch="${i.symbol}">${inW ? "★ Watching" : "☆ Watchlist"}</button><button class="btn" data-cmp="${i.symbol}">${state.cmp.includes(i.symbol) ? "✓ In compare" : "+ Compare"}</button></div></div>
 
   <div class="card"><div class="tiles"><button class="tile k" data-jump="fin"><div class="v" style="font-size:26px">📒</div>Company Financials</button>
   <button class="tile k" data-jump="gmp"><div class="v ${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? (isNum(gmpPct(i)) ? `₹${g}<br>(${gmpPct(i).toFixed(2)}%)` : `₹${g}`) : "NA"}</div>GMP (Rumors)</button>
-  <button class="tile k" data-jump="subs"><div class="v" style="font-size:18px">${isNum(t) ? f2(t) + "x" : "—"}</div>Subscription</button></div>
+  <button class="tile k" data-jump="subs"><div class="v" style="font-size:${isNum(t) ? 18 : 14}px">${subNow(i)}</div>Subscription</button></div>
   ${isNum(g) && L ? `<div class="gl"><div class="row"><span>GMP x Lots (RETAIL)*</span><b>₹ ${inr(g * i.lot)}</b></div><div class="row"><span>GMP x Lots (sHNI)*</span><b>₹ ${inr(g * i.lot * L.s)}</b></div><div class="row"><span>GMP x Lots (bHNI)*</span><b>₹ ${inr(g * i.lot * L.b)}</b></div></div>` : ""}</div>
 
   <div class="card" id="ai"><h2>⭐ Trendy IPO Score</h2><div class="row"><div style="text-align:center">${ring(sc.score, true)}<div style="margin-top:8px"><span class="badge ${v.c}">${v.t} ${v.e}</span></div></div>
