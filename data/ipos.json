@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-10-21T16:45:20.745Z",
+ "generatedAt": "2026-10-21T16:42:07.975Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -458,6 +458,340 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-21T10:27:59.513Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "JPL",
+   "name": "Jio Platforms Limited",
+   "board": "Mainboard",
+   "status": "live",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "timeline": {
+    "open": "2026-10-21",
+    "close": "2026-10-23",
+    "allotment": "2026-10-26",
+    "refund": "2026-10-27",
+    "demat": "2026-10-27",
+    "listing": "2026-10-28"
+   },
+   "allotment": "2026-10-26",
+   "listing": "2026-10-28",
+   "datesExpected": false,
+   "priceLow": 1065,
+   "priceHigh": 1119,
+   "lot": 12,
+   "faceValue": 10,
+   "issueShares": 270000000,
+   "issueSizeCr": 30213,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 27,00,00,000 equity shares (including Employee Reservation Portion aggregating up to Rs. 5,000 million, Eligible RIL shareholders portion aggregating up to Rs. 25,000 million and Anchor reservation portion of 7,24,74,066 equity shares)",
+   "upiCutoff": "23-Oct-2026 (upto 7:00 PM) The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 49007827,
+     "bid": 392354448,
+     "times": 8.00595480391326
+    },
+    "nii": {
+     "offered": 36444569,
+     "bid": 51921540,
+     "times": 1.4246715333634485
+    },
+    "bnii": {
+     "offered": 24296380,
+     "bid": 37786728,
+     "times": 1.5552410688341227
+    },
+    "snii": {
+     "offered": 12148189,
+     "bid": 14134812,
+     "times": 1.1635324409259684
+    },
+    "retail": {
+     "offered": 85037327,
+     "bid": 53346876,
+     "times": 0.6273348173326285
+    },
+    "employee": {
+     "offered": 4694835,
+     "bid": 5727084,
+     "times": 1.219869068881015
+    },
+    "shareholders": {
+     "offered": 22341376,
+     "bid": 27852624,
+     "times": 1.2466834630060386
+    },
+    "other": null,
+    "total": {
+     "offered": 197525934,
+     "bid": 531202572,
+     "times": 2.689280142829245
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T15:42:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": 200000,
+     "minAmount": 13428,
+     "lot": 12,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 1011,
+     "priceHigh": 1065,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Discount Rs 54 per share"
+    },
+    {
+     "category": "Shareholder",
+     "priceLow": null,
+     "priceHigh": null,
+     "maxAmount": 200000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Price for shareholders not stated by NSE"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": null,
+     "minAmount": 201420,
+     "lot": 12,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 13428,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Kfin Technologies Limited",
+     "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+     "phone": "+91 40 6716 2222",
+     "email": "jioplatforms.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 21-Oct-2026 15:42:00 IST",
+    "totalBids": 531461808,
+    "timesSubscribed": 2.69,
+    "byPrice": {
+     "1065": "53,14,61,808",
+     "1066": "53,10,80,076",
+     "1067": "53,10,55,920",
+     "1068": "53,10,50,628",
+     "1069": "53,10,45,408",
+     "1070": "53,10,39,648",
+     "1071": "53,09,81,052",
+     "1072": "53,09,76,216",
+     "1073": "53,09,73,708",
+     "1074": "53,09,73,024",
+     "1075": "53,09,71,224",
+     "1076": "53,09,45,904",
+     "1077": "53,09,44,776",
+     "1078": "53,09,42,532",
+     "1079": "53,09,41,224",
+     "1080": "53,09,39,748",
+     "1081": "53,08,94,016",
+     "1082": "53,08,92,516",
+     "1083": "53,08,91,712",
+     "1084": "53,08,90,104",
+     "1085": "53,08,88,136",
+     "1086": "53,08,75,680",
+     "1087": "53,08,74,792",
+     "1088": "53,08,73,928",
+     "1089": "53,08,73,028",
+     "1090": "53,08,70,136",
+     "1091": "53,08,35,540",
+     "1092": "53,08,34,556",
+     "1093": "53,08,29,300",
+     "1094": "53,08,28,328",
+     "1095": "53,08,27,728",
+     "1096": "53,08,17,516",
+     "1097": "53,08,16,676",
+     "1098": "53,08,15,764",
+     "1099": "53,08,13,892",
+     "1100": "53,08,05,840",
+     "1101": "53,06,41,800",
+     "1102": "53,06,32,980",
+     "1103": "53,06,32,368",
+     "1104": "53,06,31,432",
+     "1105": "53,06,28,924",
+     "1106": "53,06,24,160",
+     "1107": "53,06,23,332",
+     "1108": "53,06,22,312",
+     "1109": "53,06,20,008",
+     "1110": "53,06,17,416",
+     "1111": "53,05,68,060",
+     "1112": "53,05,27,764",
+     "1113": "53,05,23,168",
+     "1114": "53,05,19,064",
+     "1115": "53,05,15,032",
+     "1116": "53,04,97,560",
+     "1117": "53,04,86,820",
+     "1118": "53,04,68,484",
+     "1119": "53,04,12,792",
+     "Cut-Off": "7,83,82,392"
+    }
+   },
+   "registrar": {
+    "name": "Kfin Technologies Limited",
+    "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+    "contact": "Williams R, +91 40 6716 2222, jioplatforms.ipo@kfintech.com"
+   },
+   "leadManagers": "Kotak Mahindra Capital Company Limited",
+   "sponsorBank": "ICICI Bank Limited, Kotak Mahindra Bank Limited, State Bank of India and Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip"
+   },
+   "logo": "data/logos/JPL.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792045029108.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/jio-platforms-ipo/2306/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 254,
+    "min": 254,
+    "max": 254,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 254,
+      "pct": 22.7,
+      "updated": "21-Oct 15:02",
+      "seenLow": 148,
+      "seenHigh": 273
+     }
+    ],
+    "rating": 4,
+    "updated": "21-Oct 15:02",
+    "history": [
+     {
+      "date": "2026-10-15",
+      "gmp": 222
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 221
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 235
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 235.5
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 245
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 273
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 254
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-21T16:42:07.824Z",
+     "date": "2026-10-21",
+     "qib": 8.00595480391326,
+     "bnii": 1.5552410688341227,
+     "snii": 1.1635324409259684,
+     "nii": 1.4246715333634485,
+     "retail": 0.6273348173326285,
+     "total": 2.689280142829245
+    }
+   ],
+   "listingPerf": null,
    "checks": [
     {
      "field": "Lot size",
@@ -634,7 +968,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
     "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip"
    },
-   "logo": "data/logos/PARASHLTH.png",
+   "logo": null,
    "documents": [
     {
      "label": "Price band ad / basis for issue price (zip from NSE)",
@@ -750,7 +1084,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-21T16:45:20.708Z",
+     "at": "2026-10-21T16:42:07.827Z",
      "date": "2026-10-21",
      "qib": 0.00008921380786987164,
      "bnii": 0.047697510662412325,
@@ -12485,7 +12819,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PAPADMALJI.zip",
     "anchor": null
    },
-   "logo": "data/logos/PAPADMALJI.png",
+   "logo": null,
    "documents": [
     {
      "label": "Red Herring Prospectus (RHP) (zip from NSE)",
@@ -13386,7 +13720,7 @@
     "rhp": null,
     "anchor": null
    },
-   "logo": "data/logos/VANS.png",
+   "logo": null,
    "documents": [
     {
      "label": "Prospectus / RHP with GID (zip from BSE)",
@@ -23313,7 +23647,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-royal-chain-limited.png"
   },
   {
    "company": "Arohan Financial Services Limited",
@@ -23361,7 +23695,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-sunil-gold-india-limited.png"
   },
   {
    "company": "Momai Art Limited",
@@ -23373,7 +23707,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-momai-art-limited.png"
   },
   {
    "company": "Sarva Foam Industries Limited",
@@ -23385,7 +23719,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-sarva-foam-industries-limited.svg"
   },
   {
    "company": "Claroid Pharmaceuticals Limited",
@@ -23397,7 +23731,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-claroid-pharmaceuticals-limited.png"
   },
   {
    "company": "Vardhman Appliances Limited",
@@ -23409,7 +23743,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-vardhman-appliances-limited.ico"
   },
   {
    "company": "Biocon Electric Limited",
@@ -23421,7 +23755,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-biocon-electric-limited.svg"
   },
   {
    "company": "AITMC Ventures Limited",
@@ -23445,7 +23779,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-j-b-ecotex-limited.ico"
   },
   {
    "company": "S G Encon Limited",
@@ -23457,7 +23791,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-s-g-encon-limited.png"
   },
   {
    "company": "S. D. INTERNATIONAL LIMITED",
@@ -23481,7 +23815,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-mount-everest-breweries-limited.png"
   },
   {
    "company": "Technopaints and Chemicals Limited",
@@ -23493,7 +23827,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-technopaints-and-chemicals-limited.png"
   },
   {
    "company": "Rudra Cottex Limited",
@@ -23505,7 +23839,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-rudra-cottex-limited.jpg"
   },
   {
    "company": "ULTRAVIBRANT INTEGRATED ENERGY LIMITED",
@@ -23517,7 +23851,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-ultravibrant-integrated-energy-limited.webp"
   },
   {
    "company": "Iris Global Services Limited",
@@ -23529,7 +23863,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-iris-global-services-limited.png"
   },
   {
    "company": "Anmol Industries Limited",
@@ -23541,7 +23875,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-anmol-industries-limited.jpg"
   },
   {
    "company": "JSW One Platforms Limited",
@@ -23553,7 +23887,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-jsw-one-platforms-limited.png"
   },
   {
    "company": "Anjali Labtech Limited",
@@ -23565,7 +23899,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-anjali-labtech-limited.jpg"
   },
   {
    "company": "Abakkus Asset Manager Limited",
@@ -23577,7 +23911,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-abakkus-asset-manager-limited.ico"
   },
   {
    "company": "VARDAAN BIOTECH LIMITED",
@@ -23589,7 +23923,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-vardaan-biotech-limited.png"
   },
   {
    "company": "Hi-Tech Flow Solutions Limited",
@@ -23601,7 +23935,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-hi-tech-flow-solutions-limited.png"
   },
   {
    "company": "Jai Parvati Forge Limited",
@@ -23613,7 +23947,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-jai-parvati-forge-limited.png"
   },
   {
    "company": "Lalbaba Engineering Limited",
@@ -23625,7 +23959,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-lalbaba-engineering-limited.png"
   },
   {
    "company": "ANCHOR OFFSHORE SERVICES LIMITED",
@@ -23649,7 +23983,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-madhur-iron-steel-india-limited.png"
   },
   {
    "company": "IBERIA PHARMACEUTICALS INDIA LIMITED",
@@ -23661,7 +23995,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-iberia-pharmaceuticals-india-limited.webp"
   },
   {
    "company": "Rayzon Solar Limited",
@@ -23697,7 +24031,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-maharashtra-oil-extractions-limited.png"
   },
   {
    "company": "M K C AGRO FRESH LIMITED",
@@ -23709,7 +24043,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-m-k-c-agro-fresh-limited.png"
   },
   {
    "company": "NOPAPERFORMS SOLUTIONS LIMITED",
@@ -23721,7 +24055,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-nopaperforms-solutions-limited.png"
   },
   {
    "company": "Incred Holdings Limited",
@@ -23745,7 +24079,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-torrent-gas-limited.ico"
   },
   {
    "company": "Mahanadi Coalfields Ltd.",
@@ -23757,7 +24091,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-mahanadi-coalfields-ltd.png"
   },
   {
    "company": "Gaurik Fashions Limited",
@@ -23769,7 +24103,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-gaurik-fashions-limited.png"
   },
   {
    "company": "India Exposition Mart Limited",
@@ -23781,7 +24115,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-india-exposition-mart-limited.png"
   },
   {
    "company": "Kataria Dhulchand Pannalal Jewellers Limited",
@@ -23817,7 +24151,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-aragen-life-sciences-limited.png"
   },
   {
    "company": "ATOMBERG TECHNOLOGIES LIMITED",
@@ -23829,7 +24163,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-atomberg-technologies-limited.png"
   },
   {
    "company": "AVAADA ELECTRO LIMITED",
@@ -23841,7 +24175,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-avaada-electro-limited.png"
   },
   {
    "company": "M P STEEL (INDIA) LIMITED",
@@ -23853,7 +24187,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-m-p-steel-india-limited.jpg"
   },
   {
    "company": "Nobel Hygiene Limited",
@@ -23877,7 +24211,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-jay-jagdamba-limited.png"
   },
   {
    "company": "T.C. Terrytex Limited",
@@ -23901,7 +24235,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-gemini-edibles-fats-india-limited.png"
   }
  ]
 }

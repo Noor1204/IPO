@@ -21,7 +21,7 @@
   var STALE_MIN = 12, POLL_OPEN = 60e3, POLL_IDLE = 300e3, SCHEMA = 1;
   var L = { _now: null };
 
-  var S = { metaFetched: null, meta: null, market: null, qmap: null, imap: null, chains: {}, chainFetched: {}, err: null, inflight: null, chainFlight: {}, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
+  var S = { baseIdx: 0, metaFetched: null, meta: null, market: null, qmap: null, imap: null, chains: {}, chainFetched: {}, err: null, inflight: null, chainFlight: {}, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
 
   function now() { try { var n = typeof L._now === "function" ? L._now() : L._now; if (typeof n === "number" && isFinite(n)) return n; } catch (e) {} return Date.now(); }
   function bases() {
@@ -39,15 +39,15 @@
   // ---------------------------------------------------------------- fetching
   function getJson(file, validate) {
     var list = bases(), q = "?t=" + Math.floor(now() / 30000);
-    var i = 0;
+    var i = 0, off = S.baseIdx % list.length;
     function next(lastErr) {
       if (i >= list.length) return Promise.reject(lastErr || new Error("no source"));
-      var url = list[i++] + file + q;
+      var bi = (off + i++) % list.length, url = list[bi] + file + q;
       var ac = typeof AbortController === "function" ? new AbortController() : null;
       var timer = setTimeout(function () { try { ac && ac.abort(); } catch (e) {} }, 12000);
       return fetch(url, { cache: "no-store", signal: ac ? ac.signal : undefined, credentials: "omit" })
         .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-        .then(function (j) { clearTimeout(timer); var v = validate(j); if (!v) throw new Error("unexpected shape of " + file); return v; })
+        .then(function (j) { clearTimeout(timer); var v = validate(j); if (!v) throw new Error("unexpected shape of " + file); S.baseIdx = bi; return v; })
         .catch(function (e) { clearTimeout(timer); return next(e); });
     }
     try { return next(null); } catch (e) { return Promise.reject(e); }
