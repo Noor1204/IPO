@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-21T14:23:37.544Z",
+ "generatedAt": "2026-10-21T14:38:48.454Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-21T14:22:40.168Z"
+   "fetchedAt": "2026-10-21T14:37:52.802Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-21T14:22:49.302Z"
+   "fetchedAt": "2026-10-21T14:38:02.031Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-21T14:22:40.772Z"
+   "fetchedAt": "2026-10-21T14:37:54.028Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T14:22:40.757Z",
+   "subsAsOn": "2026-10-21T14:37:54.012Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -109,7 +109,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T14:22:40.757Z",
+   "fetchedAt": "2026-10-21T14:37:54.012Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -144,7 +144,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T14:22:40.757Z",
+   "subsAsOn": "2026-10-21T14:37:54.012Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -206,7 +206,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T14:22:40.757Z",
+   "fetchedAt": "2026-10-21T14:37:54.012Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -249,7 +249,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:22.796Z",
+   "subsAsOn": "2026-10-21T14:37:37.289Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -340,11 +340,11 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T14:22:22.796Z"
+   "fetchedAt": "2026-10-21T14:37:37.289Z"
   },
   {
-   "symbol": "IG-2229",
-   "name": "Core4 Engineers",
+   "symbol": "CORE4",
+   "name": "Core4 Engineers Limited",
    "board": "SME",
    "status": "upcoming",
    "open": "2026-10-23",
@@ -360,38 +360,92 @@
    "allotment": "2026-10-28",
    "listing": "2026-10-30",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 88,
    "priceHigh": 93,
    "lot": 1200,
-   "faceValue": null,
-   "issueShares": null,
+   "faceValue": 10,
+   "issueShares": 5894400,
    "issueSizeCr": 54.82,
-   "issueType": null,
+   "issueType": "Book Building",
    "maxRetailAmount": null,
    "issueDetail": null,
    "upiCutoff": null,
    "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
     "total": null
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T14:22:40.772Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T14:37:35.942Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 88,
+     "priceHigh": 93,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
    "minInvestment": null,
    "minInvestmentLots": null,
-   "contacts": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Purva Sharegistry India Private Limited",
+     "address": "9, Shiv Shakti Industrial Estate,J.R. Boricha Marg, Lower Parel (East),Mumbai – 400 011, Maharashtra, India",
+     "phone": null,
+     "email": "newissue@purvashare.com",
+     "contactPerson": "newissue@purvashare.com",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": null,
    "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+    "name": "Purva Sharegistry India Private Limited",
+    "address": "9, Shiv Shakti Industrial Estate,J.R. Boricha Marg, Lower Parel (East),Mumbai – 400 011, Maharashtra, India",
+    "contact": "newissue@purvashare.com"
    },
-   "leadManagers": null,
-   "sponsorBank": null,
-   "docs": {},
+   "leadManagers": "Socradamus Capital Private Limited",
+   "sponsorBank": "KOTAK BANK",
+   "docs": {
+    "rhp": null,
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Prospectus / RHP with GID (zip from BSE)",
+     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/285260/Prospectus_And_GID_Document_Core4EngineersLimitedRHPGID.zip",
+     "source": "BSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Price band advertisement",
+     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/285260/Price_Band_Advertisement_PublicAnnouncement.pdf",
+     "source": "BSE",
+     "kind": "pdf-link",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Corrigendum",
+     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/285260/Corrigendum_Corrigendum_19.10.2026.pdf",
+     "source": "BSE",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/core4-engineers-ipo/2229/",
@@ -404,10 +458,29 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Lot size",
+     "nse": 1200,
+     "other": 1200,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 93,
+     "other": 93,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-27",
+     "other": "2026-10-27",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T14:22:40.772Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-10-21T14:37:35.942Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -677,7 +750,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-21T14:23:37.512Z",
+     "at": "2026-10-21T14:38:48.409Z",
      "date": "2026-10-21",
      "qib": 0.00008921380786987164,
      "bnii": 0.047697510662412325,
@@ -1116,7 +1189,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:11.958Z"
+   "fetchedAt": "2026-10-21T14:37:24.774Z"
   },
   {
    "symbol": "JPL",
@@ -1436,7 +1509,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-21T14:23:37.514Z",
+     "at": "2026-10-21T14:38:48.411Z",
      "date": "2026-10-21",
      "qib": 9.417587358035687,
      "bnii": 1.8305941872822207,
@@ -1779,7 +1852,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:12.816Z"
+   "fetchedAt": "2026-10-21T14:37:25.654Z"
   },
   {
    "symbol": "ZETWERK",
@@ -4381,7 +4454,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:25.631Z",
+   "subsAsOn": "2026-10-21T14:37:40.407Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -4898,7 +4971,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:25.631Z"
+   "fetchedAt": "2026-10-21T14:37:40.407Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -8334,12 +8407,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 76.88999938964844,
+    "dayOpen": 80,
     "ltp": 73.92,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": 2.52,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": -1.44
    },
    "checks": [
@@ -8966,12 +9039,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 135.5399932861328,
+    "dayOpen": 215,
     "ltp": 135.54,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": -38.39,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -38.39
    },
    "checks": [
@@ -9855,7 +9928,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:29.786Z",
+   "subsAsOn": "2026-10-21T14:37:44.294Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -10367,7 +10440,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:29.786Z"
+   "fetchedAt": "2026-10-21T14:37:44.294Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -10413,7 +10486,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:30.500Z",
+   "subsAsOn": "2026-10-21T14:37:44.945Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -10846,7 +10919,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:30.500Z"
+   "fetchedAt": "2026-10-21T14:37:44.945Z"
   },
   {
    "symbol": "TNA",
@@ -10892,7 +10965,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:31.351Z",
+   "subsAsOn": "2026-10-21T14:37:45.739Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11346,7 +11419,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:31.351Z"
+   "fetchedAt": "2026-10-21T14:37:45.739Z"
   },
   {
    "symbol": "DSL",
@@ -11392,7 +11465,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:32.092Z",
+   "subsAsOn": "2026-10-21T14:37:46.667Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11793,7 +11866,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:32.092Z"
+   "fetchedAt": "2026-10-21T14:37:46.667Z"
   },
   {
    "symbol": "OMARA",
@@ -11839,7 +11912,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:34.917Z",
+   "subsAsOn": "2026-10-21T14:37:48.795Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12290,7 +12363,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:34.917Z"
+   "fetchedAt": "2026-10-21T14:37:48.795Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -12806,7 +12879,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:33.373Z",
+   "subsAsOn": "2026-10-21T14:37:47.319Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13033,7 +13106,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T14:22:33.373Z"
+   "fetchedAt": "2026-10-21T14:37:47.319Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -13079,7 +13152,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:37.853Z",
+   "subsAsOn": "2026-10-21T14:37:51.840Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13213,7 +13286,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T14:22:37.853Z"
+   "fetchedAt": "2026-10-21T14:37:51.840Z"
   },
   {
    "symbol": "VANS",
@@ -13259,7 +13332,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:40.168Z",
+   "subsAsOn": "2026-10-21T14:37:52.802Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13723,7 +13796,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:40.168Z"
+   "fetchedAt": "2026-10-21T14:37:52.802Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -14854,7 +14927,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:35.911Z",
+   "subsAsOn": "2026-10-21T14:37:49.898Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15391,7 +15464,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T14:22:35.911Z"
+   "fetchedAt": "2026-10-21T14:37:49.898Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -15581,12 +15654,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 381.1000061035156,
+    "dayOpen": 450,
     "ltp": 374.55,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": 40.11,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 37.7
    },
    "checks": [],
@@ -16756,12 +16829,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 113,
+    "dayOpen": 142,
     "ltp": 104.79,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": -18.71,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -24.61
    },
    "checks": [],
@@ -17300,12 +17373,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 24,
+    "dayOpen": 28.31999969482422,
     "ltp": 22.75,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": -25,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -28.91
    },
    "checks": [],
@@ -19308,12 +19381,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 415,
+    "dayOpen": 455,
     "ltp": 408.65,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-10-01",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": 2.47,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": 0.9
    },
    "checks": [],
@@ -20901,12 +20974,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 300,
+    "dayOpen": 355.1000061035156,
     "ltp": 304.7,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": -17.13,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -15.83
    },
    "checks": [],
@@ -21925,12 +21998,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 249.89999389648438,
+    "dayOpen": 200,
     "ltp": 236.91,
     "exchange": "NSE",
-    "listDate": "2026-10-21",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-21",
-    "dayOpenGainPct": 35.08,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 28.06
    },
    "checks": [],
@@ -22726,7 +22799,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T14:22:17.866Z",
+   "subsAsOn": "2026-10-21T14:37:30.611Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -22806,7 +22879,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T14:22:17.866Z"
+   "fetchedAt": "2026-10-21T14:37:30.611Z"
   }
  ],
  "filings": [
