@@ -99,6 +99,7 @@ for (const r of process.env.SKIP_DOCS || process.argv.includes("--no-docs") ? []
   for (const [title, key, recentOnly] of DOC_KEYS) {
     const url = r.info[title];
     if (!/^https?:/.test(url || "") || (recentOnly && !isRecent(r))) continue;
+    if (process.env.FUND_ONLY && (key !== "rhp" || (await fs.access(path.join(DATA, "fundamentals", `${r.symbol}.json`)).then(() => true, () => false)))) continue;
     const f = path.join(DATA, "docs", `${key}_${r.symbol}.zip`);
     try { await fs.access(f); continue; } catch {}
     try { download(url, f); console.log("downloaded", path.basename(f)); } catch (e) { console.log("download failed", key, r.symbol, e.message.split("\n")[0]); await fs.rm(f, { force: true }); }

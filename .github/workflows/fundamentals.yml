@@ -1,0 +1,79 @@
+name: Company figures (fundamentals)
+
+# Fills in the company figures and score for new IPOs without needing your PC: downloads the offer document (RHP), turns it into text, lets Google Gemini
+# (free key, stored as the repository secret GEMINI_API_KEY) read the figures, checks every number against the document (verify.mjs), finds logos,
+# and commits the result. The commit makes the "Refresh data and publish site" workflow rebuild and publish the site.
+# It does nothing (and costs nothing) when every IPO already has its figures.
+on:
+  schedule:
+    - cron: "37 */3 * * *"
+  workflow_dispatch: {}
+
+permissions: {}
+
+concurrency:
+  group: fundamentals
+  cancel-in-progress: false
+
+jobs:
+  figures:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Is there an IPO without figures?
+        id: need
+        run: node pipeline/need-fundamentals.mjs check
+      - name: Install pdftotext
+        if: steps.need.outputs.need == 'yes'
+        run: sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils
+      - name: Download offer documents (only for IPOs without figures)
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        env: { FUND_ONLY: "1" }
+        run: node pipeline/fetch-nse.mjs
+      - name: SEBI offer-document links
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        timeout-minutes: 10
+        run: node pipeline/offerdocs.mjs
+      - name: Cut the documents into sections
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        run: node pipeline/docs.mjs
+      - name: Read the figures with Gemini
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+        run: node pipeline/extract.mjs
+      - name: Check every number against the document
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        run: node pipeline/verify.mjs
+      - name: Logos
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        timeout-minutes: 8
+        run: node pipeline/logos.mjs
+      - name: Put IPOs that still have nothing on hold
+        if: steps.need.outputs.need == 'yes'
+        run: node pipeline/need-fundamentals.mjs mark
+      - name: Commit
+        if: steps.need.outputs.need == 'yes'
+        run: |
+          git config user.name "trendy-ipo-bot"
+          git config user.email "trendy-ipo-bot@users.noreply.github.com"
+          git add data/fundamentals data/verify.json data/fundamentals-skip.json data/logos data/logos.json
+          if ! git diff --cached --quiet; then
+            git commit -m "fundamentals: new company figures $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git checkout -- .
+            git pull --rebase -X theirs -q origin main
+            git push
+          fi

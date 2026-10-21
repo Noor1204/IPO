@@ -19,10 +19,12 @@ const has = (arr, v, tol = 0.0015) => { v = Math.abs(v); let lo = 0, hi = arr.le
 const moneyIn = (arr, cr) => [cr, cr * 10, cr * 100, cr * 1e5, cr * 1e7].some(c => has(arr, c));   // crore, million, lakh, thousand, rupees
 
 const out = {};
+const old = JSON.parse(await fs.readFile(path.join(DATA, "verify.json"), "utf8").catch(() => "{}"));
 for (const sym of syms) {
   let f; try { f = JSON.parse(await fs.readFile(path.join(DATA, "fundamentals", sym + ".json"), "utf8")); } catch { continue; }   // skip unreadable / half-written files
   const text = await fs.readFile(path.join(DATA, "text", sym, "rhp_full.txt"), "utf8").catch(() => "");
   const sourceDoc = (await fs.readFile(path.join(DATA, "text", sym, "source.txt"), "utf8").catch(() => "")).trim() || null;
+  if (!text && old[sym]) { out[sym] = old[sym]; continue; }          // no document text here (e.g. in the cloud): keep the verdict from when it was last checked
   const arr = numbersIn(text), per = f.periods || [], fin = f.financials || {}, k = f.kpi || {};
   const R = { status: "ok", checked: 0, ungrounded: [], issues: [], sourceDoc, stale: !!(sourceDoc && f.source_doc !== sourceDoc) };
   const check = (label, v, money) => { if (typeof v !== "number") return; R.checked++; if (!(money ? moneyIn(arr, v) : has(arr, v))) R.ungrounded.push(`${label}=${v}`); };

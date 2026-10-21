@@ -57,3 +57,9 @@ Debt/equity uses the figure the offer document reports when present.
 - `build.mjs` lists every file published for an issue (RHP/Prospectus, ratios/price-band ads, anchor report, security parameters, bidding centres, forms) plus SEBI/BSE copies and the SEBI filing page, in `ipo.documents`.
 - Hosted PDFs live in `data/files/<SYMBOL>/` (recent IPOs only). The GitHub Action does not run `docs.mjs`: run `npm run refresh` locally and push `data/files/` when you want hosted PDFs.
 - In the app each IPO has a **Full company report**: a Documents tab (grouped; hosted PDFs can be read or downloaded) and a Company data tab (everything we hold, printable / Save as PDF).
+
+## Company figures without the PC (Gemini)
+The workflow `.github/workflows/fundamentals.yml` (every ~3 hours, or "Run workflow" by hand) finds IPOs that have no company figures yet, downloads their offer document,
+cuts it into sections, lets Google Gemini read the figures (`pipeline/extract.mjs`, key in the repository secret `GEMINI_API_KEY`, free tier), checks every number against the
+document (`pipeline/verify.mjs`) and commits the result; that commit republishes the site. An IPO whose document is not available yet is put on hold
+(`data/fundamentals-skip.json`) and retried later. Optional repository variable `GEMINI_MODEL` overrides the model name. The PC route (Claude CLI) still works.
