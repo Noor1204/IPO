@@ -1,103 +1,327 @@
 {
-  "company": "HD Fire Protect Limited",
-  "basis": "Standalone",
-  "about": "HD Fire Protect is an Indian manufacturer of fire protection equipment and systems (water, foam and gas suppression) with two plants in Jalgaon and Thane, Maharashtra. It sold to 2,066 customers in FY26 and exports to 90+ countries (34.69% of FY26 revenue). It says it is India's second-largest manufacturer in this segment and the largest exporter by value (FY25, CRISIL). FY26 revenue was Rs 489 crore with PAT of Rs 117 crore.",
-  "sector": "Fire Protection Equipment / Capital Goods",
-  "headquarters": "Mumbai, Maharashtra",
-  "founded_year": 1990,
-  "periods": ["Mar-24", "Mar-25", "Mar-26"],
-  "financials": {
-    "total_assets": [392.63, 450.08, 432.03],
-    "revenue": [372.95, 432.80, 489.28],
-    "other_income": [19.07, 17.88, 15.83],
-    "ebitda": [106.63, 138.01, 150.46],
-    "pbt": [115.95, 146.71, 155.98],
-    "pat": [87.92, 109.72, 116.79],
-    "net_worth": [343.41, 397.23, 377.15],
-    "reserves": [340.76, 309.62, 289.53],
-    "borrowings": [0, 0, 0],
-    "cash_and_bank": [33.37, 23.55, 19.44],
-    "operating_cash_flow": [63.77, 98.32, 92.49]
-  },
-  "kpi": {
-    "roce": [37.61, 39.63, 40.33],
-    "ronw": [25.69, 27.71, 31.07],
-    "roe": [28.41, 29.63, 30.17],
-    "eps_basic": [5.01, 6.26, 6.66],
-    "eps_diluted": [5.01, 6.26, 6.66],
-    "pat_margin": [22.43, 24.35, 23.12],
-    "ebitda_margin": [28.59, 31.89, 30.75],
-    "debt_equity": [0, 0, 0],
-    "current_ratio": [4.61, 4.16, 4.53],
-    "nav_per_share": 21.45,
-    "pe_pre_ipo": null,
-    "pe_post_ipo": null,
-    "weighted_avg_eps": 6.25,
-    "other": [
-      {"name": "Domestic revenue", "unit": "Rs crore", "values": [246.58, 273.17, 317.01]},
-      {"name": "Export revenue", "unit": "Rs crore", "values": [123.28, 155.26, 168.41]},
-      {"name": "Number of customers", "unit": "count", "values": [2114, 2179, 2066]},
-      {"name": "Inventory days", "unit": "days", "values": [85, 77, 85]},
-      {"name": "Trade receivable days", "unit": "days", "values": [48, 45, 57]},
-      {"name": "Cash conversion cycle", "unit": "days", "values": [96, 83, 102]}
+ "company": "HD Fire Protect Limited",
+ "basis": "Standalone",
+ "about": "HD Fire Protect Limited is an Indian manufacturer and supplier of fire protection equipment and systems, offering solutions across water, foam, and gas-based suppression technologies. The company operates two vertically integrated manufacturing facilities in Jalgaon and Thane, Maharashtra, spanning 8.50 acres. It serves residential, commercial, and heavy industrial applications, exporting to over 90 countries worldwide.",
+ "sector": "Capital Goods / Fire Protection Equipment",
+ "headquarters": "Mumbai, Maharashtra",
+ "founded_year": 1990,
+ "periods": [
+  "Mar-24",
+  "Mar-25",
+  "Mar-26"
+ ],
+ "financials": {
+  "total_assets": [
+   392.63,
+   450.08,
+   432.03
+  ],
+  "revenue": [
+   372.95,
+   432.8,
+   489.28
+  ],
+  "other_income": [
+   19.07,
+   17.88,
+   15.83
+  ],
+  "ebitda": [
+   106.63,
+   138.01,
+   150.46
+  ],
+  "pbt": [
+   116.35,
+   146.71,
+   155.98
+  ],
+  "pat": [
+   87.92,
+   109.72,
+   116.79
+  ],
+  "net_worth": [
+   343.41,
+   397.23,
+   377.15
+  ],
+  "reserves": [
+   340.76,
+   309.62,
+   289.53
+  ],
+  "borrowings": [
+   0,
+   0,
+   0
+  ],
+  "cash_and_bank": [
+   33.37,
+   23.55,
+   19.44
+  ],
+  "operating_cash_flow": [
+   63.77,
+   98.32,
+   92.49
+  ]
+ },
+ "kpi": {
+  "roce": [
+   37.61,
+   39.63,
+   40.33
+  ],
+  "ronw": [
+   25.69,
+   27.71,
+   31.07
+  ],
+  "roe": [
+   28.41,
+   29.63,
+   30.17
+  ],
+  "eps_basic": [
+   5.01,
+   6.26,
+   6.66
+  ],
+  "eps_diluted": [
+   5.01,
+   6.26,
+   6.66
+  ],
+  "pat_margin": [
+   22.43,
+   24.35,
+   23.12
+  ],
+  "ebitda_margin": [
+   28.59,
+   31.89,
+   30.75
+  ],
+  "debt_equity": [
+   0,
+   0,
+   0
+  ],
+  "current_ratio": null,
+  "nav_per_share": 21.45,
+  "pe_pre_ipo": 40.69,
+  "pe_post_ipo": 40.69,
+  "weighted_avg_eps": 6.25,
+  "other": [
+   {
+    "name": "Domestic Revenue",
+    "unit": "₹ crore",
+    "values": [
+     246.58,
+     273.17,
+     317.01
     ]
+   },
+   {
+    "name": "Exports Revenue",
+    "unit": "₹ crore",
+    "values": [
+     123.28,
+     155.26,
+     168.41
+    ]
+   },
+   {
+    "name": "Fixed Asset Turnover Ratio",
+    "unit": "ratio",
+    "values": [
+     4.86,
+     5.18,
+     5.17
+    ]
+   },
+   {
+    "name": "Inventory Days",
+    "unit": "days",
+    "values": [
+     85,
+     77,
+     85
+    ]
+   },
+   {
+    "name": "Trade Receivable Days",
+    "unit": "days",
+    "values": [
+     48,
+     45,
+     57
+    ]
+   },
+   {
+    "name": "Number of Customers",
+    "unit": "count",
+    "values": [
+     2114,
+     2179,
+     2066
+    ]
+   }
+  ]
+ },
+ "peers": [
+  {
+   "name": "Azad Engineering Limited",
+   "revenue_cr": 648.63,
+   "face_value": 2,
+   "cmp": null,
+   "eps_basic": 20.57,
+   "eps_diluted": 20.57,
+   "nav": 236.74,
+   "pe": 145.13,
+   "ronw": 8.74
   },
-  "peers": [
-    {"name": "Azad Engineering Limited", "revenue_cr": null, "face_value": 2, "cmp": null, "eps_basic": 20.57, "eps_diluted": 20.57, "nav": 236.74, "pe": 145.65, "ronw": 8.74},
-    {"name": "KSB Limited", "revenue_cr": null, "face_value": 2, "cmp": null, "eps_basic": 15.54, "eps_diluted": 15.54, "nav": 96.46, "pe": 55.68, "ronw": 16.11},
-    {"name": "Kirloskar Pneumatic Company Limited", "revenue_cr": null, "face_value": 2, "cmp": null, "eps_basic": 39.45, "eps_diluted": 39.39, "nav": 192.25, "pe": 17.20, "ronw": 20.36},
-    {"name": "Elgi Equipment Limited", "revenue_cr": null, "face_value": 1, "cmp": null, "eps_basic": 13.65, "eps_diluted": 13.61, "nav": 70.41, "pe": 44.83, "ronw": 19.28},
-    {"name": "Ingersoll-Rand (India) Limited", "revenue_cr": null, "face_value": 10, "cmp": null, "eps_basic": 81.10, "eps_diluted": 81.10, "nav": 195.04, "pe": 51.39, "ronw": 20.36}
+  {
+   "name": "KSB Limited",
+   "revenue_cr": 2754.87,
+   "face_value": 2,
+   "cmp": null,
+   "eps_basic": 15.54,
+   "eps_diluted": 15.54,
+   "nav": 96.46,
+   "pe": 50.08,
+   "ronw": 16.11
+  },
+  {
+   "name": "Kirloskar Pneumatic Company Limited",
+   "revenue_cr": 1814.46,
+   "face_value": 2,
+   "cmp": null,
+   "eps_basic": 39.45,
+   "eps_diluted": 39.39,
+   "nav": 192.25,
+   "pe": 16.48,
+   "ronw": 20.36
+  },
+  {
+   "name": "Elgi Equipment Limited",
+   "revenue_cr": 4068.5,
+   "face_value": 1,
+   "cmp": null,
+   "eps_basic": 13.65,
+   "eps_diluted": 13.61,
+   "nav": 70.41,
+   "pe": 43.13,
+   "ronw": 19.28
+  },
+  {
+   "name": "Ingersoll-Rand (India) Limited",
+   "revenue_cr": 1430.8,
+   "face_value": 10,
+   "cmp": null,
+   "eps_basic": 81.1,
+   "eps_diluted": 81.1,
+   "nav": 195.04,
+   "pe": 50.74,
+   "ronw": 41.58
+  }
+ ],
+ "issue": {
+  "price_low": 258,
+  "price_high": 271,
+  "total_issue_cr": 712.13,
+  "fresh_issue_cr": 0,
+  "ofs_cr": 712.13,
+  "fresh_issue_shares": 0,
+  "ofs_shares": 26284500,
+  "pre_issue_shares": 175230000,
+  "post_issue_shares": 175230000,
+  "face_value": 5,
+  "objects": [
+   {
+    "purpose": "Offer for Sale by Promoter Selling Shareholders",
+    "amount_cr": 712.13
+   }
   ],
-  "issue": {
-    "price_low": null,
-    "price_high": null,
-    "total_issue_cr": null,
-    "fresh_issue_cr": 0,
-    "ofs_cr": null,
-    "fresh_issue_shares": 0,
-    "ofs_shares": 26284500,
-    "pre_issue_shares": 175230000,
-    "post_issue_shares": 175230000,
-    "face_value": 5,
-    "objects": [
-      {"purpose": "Offer for Sale by Promoter Selling Shareholders (no proceeds to the company) and listing of equity shares", "amount_cr": null}
-    ],
-    "reservation_pct": {"anchor": null, "qib": 50, "nii": 15, "retail": 35, "employee": null}
-  },
-  "promoters": {
-    "names": ["Harish Narshi Dharamshi", "Miheer Sadanand Ghotikar", "Anik Narendra Dharamshi", "Parika Miheer Ghotikar"],
-    "holding_pre_pct": 100.00,
-    "holding_post_pct": 85.00,
-    "background": "Promoter Harish Dharamshi (Chairman and MD) has 41+ years in fire protection and founded the business in 1990. Promoters and promoter group hold 100% pre-offer. Harish Dharamshi (8,983,700 shares) and Kusum Dharamshi (17,300,800 shares) are the selling shareholders. Post-offer promoter group holding of about 85% is computed from the OFS size."
-  },
-  "concentration": {
-    "top_customers_pct": 23.69,
-    "govt_share_pct": null,
-    "note": "Top 10 customers were 23.69% of FY26 revenue (top 3: 11.40%, top 5: 15.21%). Exports were 34.69% of FY26 revenue."
-  },
-  "order_book_cr": 158.60,
-  "litigation_note": "No litigation against the company. The company has filed 3 tax cases worth Rs 0.04 crore. 2 criminal proceedings are pending against Directors. Nil against Promoters.",
-  "strengths": [
-    "UL Listed (21) and FM Approved (87) product certifications, the most among Indian fire-protection peers, create high entry barriers.",
-    "Second-largest Indian fire protection equipment maker and largest exporter by value in FY25 (CRISIL, company-commissioned).",
-    "Revenue grew at a 14.54% CAGR over FY24-FY26 to Rs 489 crore, with operating EBITDA margin of 30.75% in FY26.",
-    "Return ratios are strong: RoCE 40.33% and RoE 30.17% in FY26, with no borrowings.",
-    "Diversified base of 2,066 customers; top 10 customers are only 23.69% of FY26 revenue.",
-    "Balanced mix of 65.31% domestic and 34.69% export revenue, with sales in 90+ countries.",
-    "Broad portfolio of 8 product categories, in-house designs and patents in the US, India, Turkey and Saudi Arabia.",
-    "Order book of Rs 158.60 crore at June 2026, up from Rs 134.45 crore at March 2026 and Rs 70.35 crore at March 2025."
+  "reservation_pct": {
+   "anchor": null,
+   "qib": null,
+   "nii": null,
+   "retail": null,
+   "employee": null
+  }
+ },
+ "promoters": {
+  "names": [
+   "Harish Narshi Dharamshi",
+   "Miheer Sadanand Ghotikar",
+   "Anik Narendra Dharamshi",
+   "Parika Miheer Ghotikar"
   ],
-  "risks": [
-    {"title": "Pure offer for sale, no money to company", "detail": "The whole issue is an OFS of 26,284,500 shares by promoters Harish and Kusum Dharamshi. The company gets nothing, and the promoter group cuts its holding from 100% to about 85%.", "severity": "high"},
-    {"title": "Supplier concentration rising", "detail": "Top 10 suppliers were 59.28%, 47.76%, 42.90% and 35.59% of total expenses (Jun-26 quarter, FY26, FY25, FY24). There are no long-term purchase agreements, and imports are about 45% of procurement.", "severity": "high"},
-    {"title": "Heavy dependence on export markets", "detail": "Exports were 32.78%, 34.69%, 36.24% and 33.33% of revenue (Jun-26 quarter, FY26, FY25, FY24), with the Middle East and Rest of Asia the key markets. They are exposed to forex and geopolitical swings, and there is no fixed hedging policy.", "severity": "medium"},
-    {"title": "Short-term orders, no long-term contracts", "detail": "Repeat customers gave 85.20% of FY26 revenue, but sales rest on short-term purchase orders with no exclusivity. Customer count fell from 2,179 (FY25) to 2,066 (FY26).", "severity": "medium"},
-    {"title": "Working capital strain and slower collections", "detail": "Receivable days rose from 45 (FY25) to 57 (FY26) and inventory days from 77 to 85. Cash conversion cycle was 112 days at June 2026. Cash and bank balances fell from Rs 33 crore (FY24) to Rs 19 crore (FY26).", "severity": "medium"},
-    {"title": "Large dividends paid out, auditor-to-CFO move", "detail": "Dividends of Rs 140.18 crore were paid in FY26 and Rs 56.15 crore in FY25, with FY26 including a special dividend. A joint statutory auditor resigned and was later appointed CFO, which investors may view negatively.", "severity": "medium"},
-    {"title": "Concentrated manufacturing in Maharashtra", "detail": "Both plants are in Maharashtra, and 63.49% of FY26 revenue came from them. A disruption would hit output. The Jalgaon plant and corporate office are on leasehold land.", "severity": "medium"},
-    {"title": "Past Companies Act non-compliances and statutory delays", "detail": "Compounding and adjudication applications for past Companies Act breaches are pending, and there were delays in PF and ESI dues. Contingent liabilities include bank guarantees of Rs 5.85 crore (Jun-26) and Rs 3.14 crore of export obligations.", "severity": "low"}
-  ],
-  "source_doc": "RHP",
-  "notes": "RHP (price band, issue size and P/E blank). Standalone Ind AS restated statements, FY24-FY26 audited; June-2026 quarter stub ignored in arrays (revenue Rs 109.05 crore, PAT Rs 23.87 crore). Source tables in Rs million converted to crore. Balance sheet reconstructed from garbled text and cross-checked to totals. FY24 PBT is after Rs 0.40 crore exceptional item. EBITDA is the reported operating EBITDA (PBT + finance cost + depreciation - other income). Reported PAT margin is on total income, not revenue; reported RoNW and RoE use different net worth definitions. cash_and_bank is cash plus bank balances other than cash and excludes short-term bank deposits in other financial assets. No borrowings found, so borrowings and debt/equity are 0. Order book is as of June 30, 2026. Peer revenue was not given (table shows total income), so it is null. No peer CMP is given. Post-offer promoter holding is computed from the OFS size."
+  "holding_pre_pct": 100,
+  "holding_post_pct": null,
+  "background": "Harish Narshi Dharamshi brings over 41 years of experience in the fire protection industry. Other promoters Miheer Ghotikar, Anik Dharamshi, and Parika Ghotikar each have over 16 years of experience."
+ },
+ "concentration": {
+  "top_customers_pct": 23.69,
+  "govt_share_pct": null,
+  "note": "Top 10 customers accounted for 23.69% of revenue from operations in Fiscal 2026. Top 10 suppliers contributed 47.76% of total expenses in Fiscal 2026."
+ },
+ "order_book_cr": 134.45,
+ "litigation_note": "The company and its directors are involved in certain outstanding legal proceedings, and compounding and adjudication applications are pending for past Companies Act non-compliances.",
+ "strengths": [
+  "Second-largest fire protection equipment manufacturer in India by operating revenue and largest exporter by value in Fiscal 2025.",
+  "Comprehensive portfolio across eight categories covering water, foam, and gas-based suppression systems.",
+  "Holds the highest number of UL Listed and FM Approved product certifications among fire protection peers in India.",
+  "Established global distribution network spanning over 90 export countries with 34.69% export revenue in Fiscal 2026.",
+  "High customer stickiness with repeat customers accounting for 85.20% of Fiscal 2026 revenue.",
+  "Vertically integrated manufacturing facilities in Jalgaon and Thane with in-house design, casting, machining, and testing.",
+  "Robust financial profile with 14.54% revenue CAGR (FY24-26) and 30.75% Operating EBITDA margin in Fiscal 2026.",
+  "Experienced promoter-led management team with over four decades of industry expertise."
+ ],
+ "risks": [
+  {
+   "title": "Equipment Failure Liability",
+   "detail": "Malfunction of life-safety fire protection equipment can lead to loss of life, extensive property damage, warranty invocations, and severe legal liabilities.",
+   "severity": "high"
+  },
+  {
+   "title": "Supplier Concentration",
+   "detail": "Top 10 suppliers accounted for 47.76% of total expenses in Fiscal 2026, without any long-term supply contracts or firm commitments.",
+   "severity": "high"
+  },
+  {
+   "title": "Geographic Concentration of Manufacturing",
+   "detail": "Manufacturing facilities in Maharashtra accounted for 63.49% of revenue from operations in Fiscal 2026, creating operational shutdown risks.",
+   "severity": "medium"
+  },
+  {
+   "title": "Customer Contract Structure",
+   "detail": "Repeat customers contributed 85.20% of FY26 revenue, but sales rely on short-term purchase orders without long-term commitments or exclusivity.",
+   "severity": "medium"
+  },
+  {
+   "title": "International Market Risk",
+   "detail": "Export revenues represented 34.69% of revenue from operations in FY26, exposing business to geopolitical and economic changes in key markets.",
+   "severity": "medium"
+  },
+  {
+   "title": "Import and Raw Material Dependence",
+   "detail": "Imports constituted approximately 45% of total procurement in Q1 FY27, making operations vulnerable to shipping disruptions and price volatility.",
+   "severity": "medium"
+  },
+  {
+   "title": "Legal and Regulatory Proceedings",
+   "detail": "The company faces outstanding litigation and pending regulatory compounding and adjudication applications for past Companies Act non-compliances.",
+   "severity": "medium"
+  },
+  {
+   "title": "Pure Offer for Sale",
+   "detail": "The entire issue of ₹712.13 crore consists of an Offer for Sale with no proceeds received by the company.",
+   "severity": "low"
+  }
+ ],
+ "source_doc": "Prospectus",
+ "notes": "Financial figures are restated standalone for Fiscals 2024, 2025, and 2026. Stub period for the three months ended June 30, 2026 (Revenue ₹109.05 cr, PAT ₹23.87 cr, Order Book ₹158.60 cr) has been ignored in the financial arrays."
 }
