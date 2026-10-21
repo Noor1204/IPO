@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-21T10:28:39.102Z",
+ "generatedAt": "2026-10-21T10:33:39.792Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-21T10:27:58.508Z"
+   "fetchedAt": "2026-10-21T10:32:10.832Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,7 +11,7 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-21T10:28:01.278Z"
+   "fetchedAt": "2026-10-21T10:02:10.449Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
@@ -54,6 +54,15 @@
    "bids": {
     "total": null
    },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-21T09:23:30.706Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": null,
    "registrar": {
     "name": null,
@@ -112,6 +121,15 @@
    "bids": {
     "total": null
    },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-21T09:23:30.706Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": null,
    "registrar": {
     "name": null,
@@ -200,6 +218,15 @@
    "bids": {
     "total": null
    },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-21T09:23:30.852Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": null,
    "registrar": {
     "name": null,
@@ -258,6 +285,15 @@
    "bids": {
     "total": null
    },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-21T09:23:30.852Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": null,
    "registrar": {
     "name": null,
@@ -284,6 +320,669 @@
    "fundamentals": null,
    "fetchedAt": "2026-10-21T10:27:59.513Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "JPL",
+   "name": "Jio Platforms Limited",
+   "board": "Mainboard",
+   "status": "live",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "timeline": {
+    "open": "2026-10-21",
+    "close": "2026-10-23",
+    "allotment": "2026-10-26",
+    "refund": "2026-10-27",
+    "demat": "2026-10-27",
+    "listing": "2026-10-28"
+   },
+   "allotment": "2026-10-26",
+   "listing": "2026-10-28",
+   "datesExpected": false,
+   "priceLow": 1065,
+   "priceHigh": 1119,
+   "lot": 12,
+   "faceValue": 10,
+   "issueShares": 270000000,
+   "issueSizeCr": 30213,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 27,00,00,000 equity shares (including Employee Reservation Portion aggregating up to Rs. 5,000 million, Eligible RIL shareholders portion aggregating up to Rs. 25,000 million and Anchor reservation portion of 7,24,74,066 equity shares)",
+   "upiCutoff": "23-Oct-2026 (upto 7:00 PM) The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 49007827,
+     "bid": 392354448,
+     "times": 8.00595480391326
+    },
+    "nii": {
+     "offered": 36444569,
+     "bid": 51921540,
+     "times": 1.4246715333634485
+    },
+    "bnii": {
+     "offered": 24296380,
+     "bid": 37786728,
+     "times": 1.5552410688341227
+    },
+    "snii": {
+     "offered": 12148189,
+     "bid": 14134812,
+     "times": 1.1635324409259684
+    },
+    "retail": {
+     "offered": 85037327,
+     "bid": 53346876,
+     "times": 0.6273348173326285
+    },
+    "employee": {
+     "offered": 4694835,
+     "bid": 5727084,
+     "times": 1.219869068881015
+    },
+    "shareholders": {
+     "offered": 22341376,
+     "bid": 27852624,
+     "times": 1.2466834630060386
+    },
+    "other": null,
+    "total": {
+     "offered": 197525934,
+     "bid": 531202572,
+     "times": 2.689280142829245
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T15:42:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": 200000,
+     "minAmount": 13428,
+     "lot": 12,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 1011,
+     "priceHigh": 1065,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Discount Rs 54 per share"
+    },
+    {
+     "category": "Shareholder",
+     "priceLow": null,
+     "priceHigh": null,
+     "maxAmount": 200000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Price for shareholders not stated by NSE"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": null,
+     "minAmount": 201420,
+     "lot": 12,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 13428,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Kfin Technologies Limited",
+     "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+     "phone": "+91 40 6716 2222",
+     "email": "jioplatforms.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 21-Oct-2026 15:42:00 IST",
+    "totalBids": 531461808,
+    "timesSubscribed": 2.69,
+    "byPrice": {
+     "1065": "53,14,61,808",
+     "1066": "53,10,80,076",
+     "1067": "53,10,55,920",
+     "1068": "53,10,50,628",
+     "1069": "53,10,45,408",
+     "1070": "53,10,39,648",
+     "1071": "53,09,81,052",
+     "1072": "53,09,76,216",
+     "1073": "53,09,73,708",
+     "1074": "53,09,73,024",
+     "1075": "53,09,71,224",
+     "1076": "53,09,45,904",
+     "1077": "53,09,44,776",
+     "1078": "53,09,42,532",
+     "1079": "53,09,41,224",
+     "1080": "53,09,39,748",
+     "1081": "53,08,94,016",
+     "1082": "53,08,92,516",
+     "1083": "53,08,91,712",
+     "1084": "53,08,90,104",
+     "1085": "53,08,88,136",
+     "1086": "53,08,75,680",
+     "1087": "53,08,74,792",
+     "1088": "53,08,73,928",
+     "1089": "53,08,73,028",
+     "1090": "53,08,70,136",
+     "1091": "53,08,35,540",
+     "1092": "53,08,34,556",
+     "1093": "53,08,29,300",
+     "1094": "53,08,28,328",
+     "1095": "53,08,27,728",
+     "1096": "53,08,17,516",
+     "1097": "53,08,16,676",
+     "1098": "53,08,15,764",
+     "1099": "53,08,13,892",
+     "1100": "53,08,05,840",
+     "1101": "53,06,41,800",
+     "1102": "53,06,32,980",
+     "1103": "53,06,32,368",
+     "1104": "53,06,31,432",
+     "1105": "53,06,28,924",
+     "1106": "53,06,24,160",
+     "1107": "53,06,23,332",
+     "1108": "53,06,22,312",
+     "1109": "53,06,20,008",
+     "1110": "53,06,17,416",
+     "1111": "53,05,68,060",
+     "1112": "53,05,27,764",
+     "1113": "53,05,23,168",
+     "1114": "53,05,19,064",
+     "1115": "53,05,15,032",
+     "1116": "53,04,97,560",
+     "1117": "53,04,86,820",
+     "1118": "53,04,68,484",
+     "1119": "53,04,12,792",
+     "Cut-Off": "7,83,82,392"
+    }
+   },
+   "registrar": {
+    "name": "Kfin Technologies Limited",
+    "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+    "contact": "Williams R, +91 40 6716 2222, jioplatforms.ipo@kfintech.com"
+   },
+   "leadManagers": "Kotak Mahindra Capital Company Limited",
+   "sponsorBank": "ICICI Bank Limited, Kotak Mahindra Bank Limited, State Bank of India and Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip"
+   },
+   "logo": "data/logos/JPL.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792045029108.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/jio-platforms-ipo/2306/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 245,
+    "min": 245,
+    "max": 245,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 245,
+      "pct": 21.89,
+      "updated": "21-Oct 12:02",
+      "seenLow": 148,
+      "seenHigh": 273
+     }
+    ],
+    "rating": 4,
+    "updated": "21-Oct 12:02",
+    "history": [
+     {
+      "date": "2026-10-15",
+      "gmp": 222
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 221
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 235
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 235.5
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 245
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 273
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 245
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-21T10:33:39.642Z",
+     "date": "2026-10-21",
+     "qib": 8.00595480391326,
+     "bnii": 1.5552410688341227,
+     "snii": 1.1635324409259684,
+     "nii": 1.4246715333634485,
+     "retail": 0.6273348173326285,
+     "total": 2.689280142829245
+    }
+   ],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 30213,
+     "other": 30213,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 12,
+     "other": 12,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 1119,
+     "other": 1119,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-23",
+     "other": "2026-10-23",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Jio Platforms Limited",
+    "basis": "Consolidated",
+    "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
+    "sector": "Telecom / Digital Services",
+    "headquarters": "Ahmedabad, Gujarat",
+    "founded_year": 2019,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      539580.4,
+      581233.8,
+      615594
+     ],
+     "revenue": [
+      109558.1,
+      128218.4,
+      146885.3
+     ],
+     "other_income": [
+      617.3,
+      1114.6,
+      2873.8
+     ],
+     "ebitda": [
+      54958.7,
+      64170,
+      76255.4
+     ],
+     "pbt": [
+      28808,
+      35127.3,
+      40353.1
+     ],
+     "pat": [
+      21423.2,
+      26109,
+      30049.1
+     ],
+     "net_worth": [
+      277866.1,
+      304022.4,
+      334013.4
+     ],
+     "reserves": [
+      268927.1,
+      295083.4,
+      325074.4
+     ],
+     "borrowings": [
+      54348.9,
+      73060.3,
+      70781
+     ],
+     "cash_and_bank": [
+      2910.5,
+      8423.6,
+      16946.6
+     ],
+     "operating_cash_flow": [
+      57661.6,
+      68155.7,
+      77556.3
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.83,
+      12.5,
+      10.76
+     ],
+     "ronw": [
+      8.02,
+      8.97,
+      9.42
+     ],
+     "roe": [
+      null,
+      null,
+      null
+     ],
+     "eps_basic": [
+      23.96,
+      29.21,
+      33.63
+     ],
+     "eps_diluted": [
+      23.93,
+      29.17,
+      33.59
+     ],
+     "pat_margin": [
+      19.55,
+      20.36,
+      20.46
+     ],
+     "ebitda_margin": [
+      50.16,
+      50.05,
+      51.91
+     ],
+     "debt_equity": [
+      null,
+      null,
+      null
+     ],
+     "current_ratio": [
+      null,
+      null,
+      null
+     ],
+     "nav_per_share": 373.66,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 30.55,
+     "other": [
+      {
+       "name": "Total customer base (RJIL)",
+       "unit": "million",
+       "values": [
+        481.8,
+        488.2,
+        524.4
+       ]
+      },
+      {
+       "name": "ARPU (exit quarter)",
+       "unit": "Rs per month",
+       "values": [
+        181.7,
+        206.2,
+        214
+       ]
+      },
+      {
+       "name": "Data traffic",
+       "unit": "billion GB",
+       "values": [
+        148.5,
+        184.5,
+        241.4
+       ]
+      },
+      {
+       "name": "Monthly data consumption per customer (exit quarter)",
+       "unit": "GB/month",
+       "values": [
+        28.7,
+        33.6,
+        42.3
+       ]
+      },
+      {
+       "name": "Monthly churn (exit quarter)",
+       "unit": "%",
+       "values": [
+        1.52,
+        1.81,
+        1.67
+       ]
+      },
+      {
+       "name": "Net leverage (net debt / EBITDA)",
+       "unit": "x",
+       "values": [
+        0.88,
+        0.71,
+        0.36
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Bharti Airtel Limited",
+      "revenue_cr": 210972.8,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 45.96,
+      "eps_diluted": 44.37,
+      "nav": 244.6,
+      "pe": 40.71,
+      "ronw": 20.32
+     },
+     {
+      "name": "Vodafone Idea Limited",
+      "revenue_cr": 44873,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 3.21,
+      "eps_diluted": 3.21,
+      "nav": -3.3,
+      "pe": 3.99,
+      "ronw": null
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 270000000,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL",
+       "amount_cr": 27500
+      },
+      {
+       "purpose": "General corporate purposes (not to exceed 25% of gross proceeds)",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Reliance Industries Limited"
+     ],
+     "holding_pre_pct": 66.43,
+     "holding_post_pct": null,
+     "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": null,
+    "strengths": [
+     "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
+     "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
+     "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
+     "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
+     "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
+     "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
+     "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
+     "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
+    ],
+    "risks": [
+     {
+      "title": "Sole distributor dependence on Reliance Retail",
+      "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy related-party dealings with the Reliance Group",
+      "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.",
+      "severity": "high"
+     },
+     {
+      "title": "Licence and spectrum renewal",
+      "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.",
+      "severity": "high"
+     },
+     {
+      "title": "Significant indebtedness and deferred payments",
+      "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.",
+      "severity": "medium"
+     },
+     {
+      "title": "Overdependence on RJIL",
+      "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.",
+      "severity": "medium"
+     },
+     {
+      "title": "Highly regulated telecom business",
+      "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.",
+      "severity": "medium"
+     },
+     {
+      "title": "Reliance on passive infrastructure and vendors",
+      "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.",
+      "severity": "medium"
+     },
+     {
+      "title": "Intense competition and capital intensity",
+      "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 59,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-21T10:14:27.825Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -321,65 +1020,104 @@
     },
     "nii": {
      "offered": 3295454,
-     "bid": 210105,
-     "times": 0.06375601055271898
+     "bid": 196350,
+     "times": 0.059582078827378565
     },
     "bnii": {
      "offered": 2196970,
-     "bid": 82278,
-     "times": 0.037450670696459215
+     "bid": 74466,
+     "times": 0.03389486429036355
     },
     "snii": {
      "offered": 1098484,
-     "bid": 127827,
-     "times": 0.11636673815913569
+     "bid": 121884,
+     "times": 0.1109565546698905
     },
     "retail": {
      "offered": 2196969,
-     "bid": 1410423,
-     "times": 0.6419858450437853
+     "bid": 1376004,
+     "times": 0.6263192607633516
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 12083331,
-     "bid": 1621116,
-     "times": 0.13416135004495036
+     "bid": 1572942,
+     "times": 0.13017453548197927
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T15:39:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 660,
+     "priceHigh": 693,
+     "maxAmount": 200000,
+     "minAmount": 14553,
+     "lot": 21,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 660,
+     "priceHigh": 693,
+     "maxAmount": null,
+     "minAmount": 203742,
+     "lot": 21,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14553,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "parashealthcare.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 21-Oct-2026 15:51:00 IST",
-    "totalBids": 989940,
+    "asOn": "As on 21-Oct-2026 15:39:00 IST",
+    "totalBids": 954429,
     "timesSubscribed": 0.08,
     "byPrice": {
-     "660": "9,89,940",
-     "661": "9,84,585",
-     "662": "9,83,892",
-     "663": "9,83,766",
-     "664": "9,83,388",
-     "665": "9,83,325",
-     "666": "9,82,611",
-     "668": "9,82,191",
-     "669": "9,82,170",
-     "670": "9,82,128",
-     "671": "9,81,498",
-     "672": "9,81,330",
-     "673": "9,81,267",
-     "674": "9,81,246",
-     "675": "9,81,204",
-     "679": "9,80,805",
-     "680": "9,80,700",
-     "681": "9,79,776",
-     "682": "9,79,461",
-     "683": "9,79,440",
-     "685": "9,79,419",
-     "689": "9,79,188",
-     "690": "9,79,167",
-     "691": "9,78,411",
-     "692": "9,78,327",
-     "693": "9,78,264",
-     "Cut-Off": "7,76,811"
+     "660": "9,54,429",
+     "661": "9,49,158",
+     "662": "9,48,465",
+     "663": "9,48,360",
+     "664": "9,48,276",
+     "665": "9,48,213",
+     "666": "9,47,520",
+     "668": "9,47,100",
+     "669": "9,47,079",
+     "670": "9,47,037",
+     "671": "9,46,407",
+     "672": "9,46,239",
+     "673": "9,46,176",
+     "674": "9,46,155",
+     "675": "9,46,113",
+     "679": "9,45,714",
+     "680": "9,45,609",
+     "681": "9,44,790",
+     "682": "9,44,475",
+     "683": "9,44,454",
+     "685": "9,44,433",
+     "689": "9,44,202",
+     "690": "9,44,181",
+     "691": "9,43,425",
+     "692": "9,43,341",
+     "693": "9,43,278",
+     "Cut-Off": "7,64,736"
     }
    },
    "registrar": {
@@ -509,14 +1247,14 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-21T10:28:39.074Z",
+     "at": "2026-10-21T10:33:39.650Z",
      "date": "2026-10-21",
      "qib": 0.00008921380786987164,
-     "bnii": 0.037450670696459215,
-     "snii": 0.11636673815913569,
-     "nii": 0.06375601055271898,
-     "retail": 0.6419858450437853,
-     "total": 0.13416135004495036
+     "bnii": 0.03389486429036355,
+     "snii": 0.1109565546698905,
+     "nii": 0.059582078827378565,
+     "retail": 0.6263192607633516,
+     "total": 0.13017453548197927
     }
    ],
    "listingPerf": null,
@@ -948,613 +1686,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:32.475Z"
-  },
-  {
-   "symbol": "JPL",
-   "name": "Jio Platforms Limited",
-   "board": "Mainboard",
-   "status": "live",
-   "open": "2026-10-21",
-   "close": "2026-10-23",
-   "timeline": {
-    "open": "2026-10-21",
-    "close": "2026-10-23",
-    "allotment": "2026-10-26",
-    "refund": "2026-10-27",
-    "demat": "2026-10-27",
-    "listing": "2026-10-28"
-   },
-   "allotment": "2026-10-26",
-   "listing": "2026-10-28",
-   "datesExpected": false,
-   "priceLow": 1065,
-   "priceHigh": 1119,
-   "lot": 12,
-   "faceValue": 10,
-   "issueShares": 270000000,
-   "issueSizeCr": 30213,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 27,00,00,000 equity shares (including Employee Reservation Portion aggregating up to Rs. 5,000 million, Eligible RIL shareholders portion aggregating up to Rs. 25,000 million and Anchor reservation portion of 7,24,74,066 equity shares)",
-   "upiCutoff": "23-Oct-2026 (upto 7:00 PM) The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 49007827,
-     "bid": 410416860,
-     "times": 8.374516584871229
-    },
-    "nii": {
-     "offered": 36444569,
-     "bid": 52635864,
-     "times": 1.44427182003442
-    },
-    "bnii": {
-     "offered": 24296380,
-     "bid": 38235756,
-     "times": 1.5737223405297414
-    },
-    "snii": {
-     "offered": 12148189,
-     "bid": 14400108,
-     "times": 1.1853707577318726
-    },
-    "retail": {
-     "offered": 85037327,
-     "bid": 54097836,
-     "times": 0.6361657628302452
-    },
-    "employee": {
-     "offered": 4694835,
-     "bid": 5790696,
-     "times": 1.2334184268456718
-    },
-    "shareholders": {
-     "offered": 22341376,
-     "bid": 28301856,
-     "times": 1.2667910875319408
-    },
-    "other": null,
-    "total": {
-     "offered": 197525934,
-     "bid": 551243112,
-     "times": 2.79073790887631
-    }
-   },
-   "demand": {
-    "asOn": "As on 21-Oct-2026 15:51:00 IST",
-    "totalBids": 270178476,
-    "timesSubscribed": 1.37,
-    "byPrice": {
-     "1065": "27,01,78,476",
-     "1066": "26,99,44,308",
-     "1067": "26,99,27,724",
-     "1068": "26,99,24,352",
-     "1069": "26,99,20,752",
-     "1070": "26,99,17,596",
-     "1071": "26,98,81,104",
-     "1072": "26,98,77,360",
-     "1073": "26,98,75,464",
-     "1074": "26,98,74,972",
-     "1075": "26,98,73,628",
-     "1076": "26,98,57,752",
-     "1077": "26,98,57,044",
-     "1078": "26,98,56,024",
-     "1079": "26,98,55,364",
-     "1080": "26,98,54,656",
-     "1081": "26,98,26,288",
-     "1082": "26,98,25,496",
-     "1083": "26,98,25,136",
-     "1084": "26,98,24,188",
-     "1085": "26,98,22,988",
-     "1086": "26,98,15,368",
-     "1087": "26,98,14,852",
-     "1088": "26,98,14,456",
-     "1089": "26,98,13,832",
-     "1090": "26,98,12,404",
-     "1091": "26,97,93,240",
-     "1092": "26,97,92,520",
-     "1093": "26,97,89,820",
-     "1094": "26,97,89,340",
-     "1095": "26,97,88,992",
-     "1096": "26,97,83,148",
-     "1097": "26,97,82,524",
-     "1098": "26,97,81,864",
-     "1099": "26,97,80,844",
-     "1100": "26,97,76,536",
-     "1101": "26,96,73,336",
-     "1102": "26,96,68,272",
-     "1103": "26,96,67,852",
-     "1104": "26,96,67,672",
-     "1105": "26,96,66,232",
-     "1106": "26,96,63,460",
-     "1107": "26,96,62,980",
-     "1108": "26,96,62,500",
-     "1109": "26,96,60,988",
-     "1110": "26,96,59,464",
-     "1111": "26,96,30,424",
-     "1112": "26,96,06,712",
-     "1113": "26,96,04,120",
-     "1114": "26,96,02,080",
-     "1115": "26,96,00,052",
-     "1116": "26,95,89,084",
-     "1117": "26,95,83,528",
-     "1118": "26,95,79,700",
-     "1119": "26,95,51,596",
-     "Cut-Off": "5,39,57,220"
-    }
-   },
-   "registrar": {
-    "name": "Kfin Technologies Limited",
-    "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
-    "contact": "Williams R, +91 40 6716 2222, jioplatforms.ipo@kfintech.com"
-   },
-   "leadManagers": "Kotak Mahindra Capital Company Limited",
-   "sponsorBank": "ICICI Bank Limited, Kotak Mahindra Bank Limited, State Bank of India and Axis Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip"
-   },
-   "logo": "data/logos/JPL.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792045029108.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/jio-platforms-ipo/2306/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 254,
-    "min": 254,
-    "max": 254,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 254,
-      "pct": 22.7,
-      "updated": "21-Oct 15:02",
-      "seenLow": 148,
-      "seenHigh": 273
-     }
-    ],
-    "rating": 4,
-    "updated": "21-Oct 15:02",
-    "history": [
-     {
-      "date": "2026-10-15",
-      "gmp": 222
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 221
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 235
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 235.5
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 245
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 273
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 254
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-21T10:28:39.076Z",
-     "date": "2026-10-21",
-     "qib": 8.374516584871229,
-     "bnii": 1.5737223405297414,
-     "snii": 1.1853707577318726,
-     "nii": 1.44427182003442,
-     "retail": 0.6361657628302452,
-     "total": 2.79073790887631
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 30213,
-     "other": 30213,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 12,
-     "other": 12,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 1119,
-     "other": 1119,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-23",
-     "other": "2026-10-23",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Jio Platforms Limited",
-    "basis": "Consolidated",
-    "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
-    "sector": "Telecom / Digital Services",
-    "headquarters": "Ahmedabad, Gujarat",
-    "founded_year": 2019,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      539580.4,
-      581233.8,
-      615594
-     ],
-     "revenue": [
-      109558.1,
-      128218.4,
-      146885.3
-     ],
-     "other_income": [
-      617.3,
-      1114.6,
-      2873.8
-     ],
-     "ebitda": [
-      54958.7,
-      64170,
-      76255.4
-     ],
-     "pbt": [
-      28808,
-      35127.3,
-      40353.1
-     ],
-     "pat": [
-      21423.2,
-      26109,
-      30049.1
-     ],
-     "net_worth": [
-      277866.1,
-      304022.4,
-      334013.4
-     ],
-     "reserves": [
-      268927.1,
-      295083.4,
-      325074.4
-     ],
-     "borrowings": [
-      54348.9,
-      73060.3,
-      70781
-     ],
-     "cash_and_bank": [
-      2910.5,
-      8423.6,
-      16946.6
-     ],
-     "operating_cash_flow": [
-      57661.6,
-      68155.7,
-      77556.3
-     ]
-    },
-    "kpi": {
-     "roce": [
-      12.83,
-      12.5,
-      10.76
-     ],
-     "ronw": [
-      8.02,
-      8.97,
-      9.42
-     ],
-     "roe": [
-      null,
-      null,
-      null
-     ],
-     "eps_basic": [
-      23.96,
-      29.21,
-      33.63
-     ],
-     "eps_diluted": [
-      23.93,
-      29.17,
-      33.59
-     ],
-     "pat_margin": [
-      19.55,
-      20.36,
-      20.46
-     ],
-     "ebitda_margin": [
-      50.16,
-      50.05,
-      51.91
-     ],
-     "debt_equity": [
-      null,
-      null,
-      null
-     ],
-     "current_ratio": [
-      null,
-      null,
-      null
-     ],
-     "nav_per_share": 373.66,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 30.55,
-     "other": [
-      {
-       "name": "Total customer base (RJIL)",
-       "unit": "million",
-       "values": [
-        481.8,
-        488.2,
-        524.4
-       ]
-      },
-      {
-       "name": "ARPU (exit quarter)",
-       "unit": "Rs per month",
-       "values": [
-        181.7,
-        206.2,
-        214
-       ]
-      },
-      {
-       "name": "Data traffic",
-       "unit": "billion GB",
-       "values": [
-        148.5,
-        184.5,
-        241.4
-       ]
-      },
-      {
-       "name": "Monthly data consumption per customer (exit quarter)",
-       "unit": "GB/month",
-       "values": [
-        28.7,
-        33.6,
-        42.3
-       ]
-      },
-      {
-       "name": "Monthly churn (exit quarter)",
-       "unit": "%",
-       "values": [
-        1.52,
-        1.81,
-        1.67
-       ]
-      },
-      {
-       "name": "Net leverage (net debt / EBITDA)",
-       "unit": "x",
-       "values": [
-        0.88,
-        0.71,
-        0.36
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Bharti Airtel Limited",
-      "revenue_cr": 210972.8,
-      "face_value": 5,
-      "cmp": null,
-      "eps_basic": 45.96,
-      "eps_diluted": 44.37,
-      "nav": 244.6,
-      "pe": 40.71,
-      "ronw": 20.32
-     },
-     {
-      "name": "Vodafone Idea Limited",
-      "revenue_cr": 44873,
-      "face_value": 10,
-      "cmp": null,
-      "eps_basic": 3.21,
-      "eps_diluted": 3.21,
-      "nav": -3.3,
-      "pe": 3.99,
-      "ronw": null
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 270000000,
-     "ofs_shares": null,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL",
-       "amount_cr": 27500
-      },
-      {
-       "purpose": "General corporate purposes (not to exceed 25% of gross proceeds)",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Reliance Industries Limited"
-     ],
-     "holding_pre_pct": 66.43,
-     "holding_post_pct": null,
-     "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
-    },
-    "concentration": {
-     "top_customers_pct": null,
-     "govt_share_pct": null,
-     "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
-    },
-    "order_book_cr": null,
-    "litigation_note": null,
-    "strengths": [
-     "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
-     "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
-     "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
-     "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
-     "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
-     "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
-     "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
-     "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
-    ],
-    "risks": [
-     {
-      "title": "Sole distributor dependence on Reliance Retail",
-      "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy related-party dealings with the Reliance Group",
-      "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.",
-      "severity": "high"
-     },
-     {
-      "title": "Licence and spectrum renewal",
-      "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.",
-      "severity": "high"
-     },
-     {
-      "title": "Significant indebtedness and deferred payments",
-      "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.",
-      "severity": "medium"
-     },
-     {
-      "title": "Overdependence on RJIL",
-      "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.",
-      "severity": "medium"
-     },
-     {
-      "title": "Highly regulated telecom business",
-      "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.",
-      "severity": "medium"
-     },
-     {
-      "title": "Reliance on passive infrastructure and vendors",
-      "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.",
-      "severity": "medium"
-     },
-     {
-      "title": "Intense competition and capital intensity",
-      "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 59,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-21T10:27:33.338Z"
+   "fetchedAt": "2026-10-21T10:14:28.583Z"
   },
   {
    "symbol": "TONBO",
@@ -1623,6 +1755,60 @@
      "times": 135.90367841644525
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": 200000,
+     "minAmount": 14700,
+     "lot": 21,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 600,
+     "priceHigh": 635,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 21,
+     "note": "Discount Rs 65 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": null,
+     "minAmount": 205800,
+     "lot": 21,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14700,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://tonboimaging.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
+     "phone": "+91 40 6716 2222",
+     "email": "tonbo.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 19-Oct-2026 19:00:00 IST",
     "totalBids": 1160150964,
@@ -2239,8 +2425,72 @@
      "offered": 185066845,
      "bid": 566260695,
      "times": 3.0597630548032524
+    },
+    "anchor": {
+     "offered": 149088220,
+     "bid": 149088220,
+     "times": null
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 143,
+     "priceHigh": 151,
+     "maxAmount": 200000,
+     "minAmount": 14949,
+     "lot": 99,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 129,
+     "priceHigh": 137,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 99,
+     "note": "Discount Rs 14 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 143,
+     "priceHigh": 151,
+     "maxAmount": null,
+     "minAmount": 209286,
+     "lot": 99,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14949,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://zetwerk.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "The Centrium, 3rd Floor, 57 Lal Bahadur Shastri Road, Nav Pada, Kurla (West) Mumbai 400 070 Maharashtra, India",
+     "phone": "+91 40 6716 2222",
+     "email": "zetwerk.ipo@kfintech.com",
+     "contactPerson": "Williams R.",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": {
+    "bidDate": "2026-10-14",
+    "price": 151,
+    "totalShares": 149088220,
+    "totalAmountCr": 2251.23
+   },
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 19-Oct-2026 19:00:00 IST",
     "totalBids": 566361774,
@@ -2326,21 +2576,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 1,
-    "min": 1,
-    "max": 1,
+    "value": 1.9,
+    "min": 1.9,
+    "max": 1.9,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 1,
-      "pct": 0.66,
-      "updated": "21-Oct 15:02",
-      "seenLow": 1,
+      "gmp": 1.9,
+      "pct": 1.26,
+      "updated": "21-Oct 12:02",
+      "seenLow": 1.9,
       "seenHigh": 30
      }
     ],
     "rating": 1,
-    "updated": "21-Oct 15:02",
+    "updated": "21-Oct 12:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -2380,7 +2630,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 1
+      "gmp": 1.9
      }
     ]
    },
@@ -2810,8 +3060,72 @@
      "offered": 9750482,
      "bid": 138472771,
      "times": 14.201633416686478
+    },
+    "anchor": {
+     "offered": 4071634,
+     "bid": 4071634,
+     "times": null
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": 200000,
+     "minAmount": 14792,
+     "lot": 43,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 43,
+     "note": "No discount stated"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": null,
+     "minAmount": 207088,
+     "lot": 43,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14792,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "Sahajanand Estate, Wakharia Wadi, Near Dabholi Char Rasta, Nani Ved, Ved Road, Surat - 395004, Gujarat, India.",
+     "phone": "022 49564000",
+     "email": "investors.grievance@smt.in",
+     "website": "https://www.smtpl.com",
+     "contactPerson": "Deepshikha Singhal"
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "sahajanandmedical.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": {
+    "bidDate": "2026-10-14",
+    "price": 344,
+    "totalShares": 4071634,
+    "totalAmountCr": 140.06
+   },
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 19-Oct-2026 19:00:00 IST",
     "totalBids": 138534777,
@@ -2905,13 +3219,13 @@
       "source": "investorgain.com",
       "gmp": 24,
       "pct": 6.98,
-      "updated": "21-Oct 15:02",
+      "updated": "21-Oct 12:02",
       "seenLow": 15,
       "seenHigh": 43
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 15:02",
+    "updated": "21-Oct 12:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -3396,6 +3710,60 @@
      "times": 46.055135948918064
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 558,
+     "priceHigh": 586,
+     "maxAmount": 200000,
+     "minAmount": 14650,
+     "lot": 25,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 529,
+     "priceHigh": 557,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 25,
+     "note": "Discount Rs 29 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 558,
+     "priceHigh": 586,
+     "maxAmount": null,
+     "minAmount": 205100,
+     "lot": 25,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14650,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://bonfiglioli.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "bonfigliolitransmissions.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 19-Oct-2026 19:00:00 IST",
     "totalBids": 1395447100,
@@ -3977,6 +4345,42 @@
      "times": 58.54
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:31:59.812Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 170,
+     "priceHigh": 179,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 800,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://shellz.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "BIGSHARE SERVICES PRIVATE LIMITED",
+     "address": "S6-2, 6TH FLOOR, PINNACLE BUSINESS PARK, NEXT TO AHURA CENTRE, MAHAKALI CAVES ROAD, ANDHERI EAST, MUMBAI 400093, MAHARASTHRA INDIA",
+     "phone": null,
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "ipo@bigshareonline.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 124202400,
@@ -4459,7 +4863,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:44.081Z"
+   "fetchedAt": "2026-10-21T10:31:59.812Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -4524,6 +4928,51 @@
      "times": 4.449030769230769
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-16T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 275,
+     "priceHigh": 289,
+     "maxAmount": 200000,
+     "minAmount": 14739,
+     "lot": 51,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 275,
+     "priceHigh": 289,
+     "maxAmount": null,
+     "minAmount": 206346,
+     "lot": 51,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14739,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://fusioncx.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai, Maharashtra, 400070",
+     "phone": "+91 40 6716 2222",
+     "email": "fusion.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 16-Oct-2026 19:00:00 IST",
     "totalBids": 62527428,
@@ -5117,20 +5566,86 @@
    "issueDetail": "Initial Public Offer comprising of Fresh Issue of 1,03,62,000 Equity Shares (Including Market Maker portion of 5,22,000 Equity Shares and Anchor allocation of 29,48,400 Equity Shares)",
    "upiCutoff": "16-Oct-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 1969200,
+     "bid": 26012400,
+     "times": 13.21,
+     "applications": 20
+    },
+    "nii": {
+     "offered": 1476000,
+     "bid": 11473200,
+     "times": 7.77,
+     "applications": 1267
+    },
+    "bnii": {
+     "offered": 982800,
+     "bid": 9472800,
+     "times": 9.64,
+     "applications": 727
+    },
+    "snii": {
+     "offered": 493200,
+     "bid": 2000400,
+     "times": 4.06,
+     "applications": 540
+    },
+    "retail": {
+     "offered": 3446400,
+     "bid": 12052800,
+     "times": 3.5,
+     "applications": 5022
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 522000,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 7413600,
      "bid": 49538400,
      "times": 6.68
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-16T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 105,
+     "priceHigh": 112,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": "+91-9136446482",
+     "email": "cs@ravita.co.in",
+     "website": "https://ravita.co.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C 101, Embassy 247, L. B. S Marg, Vikhroli West, Mumbai 400 083",
+     "phone": "+91 8108114949",
+     "email": "ravitaengineering.smeipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "http://www.in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 16-Oct-2026 19:00:00 IST",
     "totalBids": 49538400,
@@ -5602,7 +6117,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-17T17:51:16.187Z"
+   "fetchedAt": "2026-10-21T10:11:39.080Z"
   },
   {
    "symbol": "HDFIRE",
@@ -5671,6 +6186,54 @@
      "times": 131.7012200325594
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-15T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 258,
+     "priceHigh": 271,
+     "maxAmount": 200000,
+     "minAmount": 14905,
+     "lot": 55,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 233,
+     "priceHigh": 246,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 55,
+     "note": "Discount Rs 25 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 258,
+     "priceHigh": 271,
+     "maxAmount": null,
+     "minAmount": 208670,
+     "lot": 55,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14905,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, LBS Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 81081 14949",
+     "email": "hdfire.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 15-Oct-2026 19:00:00 IST",
     "totalBids": 2429385365,
@@ -6258,30 +6821,91 @@
    "issueDetail": "Initial Public Offer comprising of Fresh Issue of Upto 77,96,000 Equity Shares (Including market maker portion of 3,90,000 Equity Shares and Anchor Allocation of 22,00,000 Equity Shares)",
    "upiCutoff": "15-Oct-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 1494000,
+     "bid": 2398000,
+     "times": 1.61,
+     "applications": 5
+    },
+    "nii": {
+     "offered": 1116000,
+     "bid": 7810000,
+     "times": 7,
+     "applications": 537
+    },
+    "bnii": {
+     "offered": 744000,
+     "bid": 6248000,
+     "times": 8.4,
+     "applications": 291
+    },
+    "snii": {
+     "offered": 372000,
+     "bid": 1562000,
+     "times": 4.2,
+     "applications": 246
+    },
+    "retail": {
+     "offered": 2596000,
+     "bid": 7004000,
+     "times": 2.7,
+     "applications": 1751
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 390000,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 5596000,
      "bid": 17212000,
      "times": 3.08
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-15T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 51,
+     "priceHigh": 54,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 2000,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://vaibhav-vyapaar.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Kfin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai, Maharashtra, India, 400070",
+     "phone": "+91-40-67162222",
+     "email": "vaibhav.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 15-Oct-2026 18:03:00 IST",
+    "asOn": "As on 15-Oct-2026 19:00:00 IST",
     "totalBids": 17212000,
     "timesSubscribed": 3.08,
-    "byPrice": {
-     "51": "1,72,12,000",
-     "52": "1,71,80,000",
-     "53": "1,71,52,000",
-     "54": "1,71,44,000"
-    }
+    "byPrice": {}
    },
    "registrar": {
     "name": "Kfin Technologies Limited",
@@ -6775,7 +7399,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-15T12:37:40.527Z"
+   "fetchedAt": "2026-10-21T10:11:43.744Z"
   },
   {
    "symbol": "RKFAL",
@@ -6806,32 +7430,85 @@
    "issueDetail": "Initial Public Offering of upto 42,67,200 fresh equity shares (Including market maker portion of 2,14,400 equity shares)",
    "upiCutoff": "07-Oct-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 43200,
+     "bid": 609600,
+     "times": 14.11,
+     "applications": 2
+    },
+    "nii": {
+     "offered": 1606400,
+     "bid": 3062400,
+     "times": 1.91,
+     "applications": 276
+    },
+    "bnii": {
+     "offered": 1070400,
+     "bid": 2105600,
+     "times": 1.97,
+     "applications": 94
+    },
+    "snii": {
+     "offered": 536000,
+     "bid": 956800,
+     "times": 1.79,
+     "applications": 182
+    },
+    "retail": {
+     "offered": 2403200,
+     "bid": 7478400,
+     "times": 3.11,
+     "applications": 2337
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 214400,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 4267200,
      "bid": 11150400,
      "times": 2.61
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-07T17:42:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 77,
+     "priceHigh": 82,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Cameo Corporate Service Limited",
+     "address": "Subramanian Building, 1 Club House Road, Chennai- 600 002",
+     "phone": "+91 44 6716 2222",
+     "email": "priya@cameoindia.com",
+     "contactPerson": "Mrs. K. Sreepriya",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 07-Oct-2026 17:42:00 IST",
     "totalBids": 11150400,
     "timesSubscribed": 2.61,
-    "byPrice": {
-     "77": "1,11,50,400",
-     "78": "1,02,62,400",
-     "79": "1,02,43,200",
-     "80": "1,02,36,800",
-     "81": "1,02,16,000",
-     "82": "1,02,09,600"
-    }
+    "byPrice": {}
    },
    "registrar": {
     "name": "Cameo Corporate Service Limited",
@@ -7305,7 +7982,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-07T13:37:15.066Z"
+   "fetchedAt": "2026-10-21T10:11:53.313Z"
   },
   {
    "symbol": "NITYAS",
@@ -7374,6 +8051,60 @@
      "times": 2.254012174875484
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-05T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 70,
+     "priceHigh": 75,
+     "maxAmount": 200000,
+     "minAmount": 15000,
+     "lot": 200,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 63,
+     "priceHigh": 68,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 200,
+     "note": "Discount Rs 7 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 70,
+     "priceHigh": 75,
+     "maxAmount": null,
+     "minAmount": 210000,
+     "lot": 200,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 15000,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://nityas.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S6 2, 6th Floor Pinnacle Business Park, Next to Ahura Center Mahakali Caves Road, Andheri East Mumbai - 400 093 Maharashtra, India",
+     "phone": "+91 22 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Vikram Morbale",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 05-Oct-2026 19:00:00 IST",
     "totalBids": 32609000,
@@ -7965,6 +8696,51 @@
      "times": 1.7054117662613342
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-05T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 208,
+     "priceHigh": 220,
+     "maxAmount": 200000,
+     "minAmount": 14960,
+     "lot": 68,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 208,
+     "priceHigh": 220,
+     "maxAmount": null,
+     "minAmount": 209440,
+     "lot": 68,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14960,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://vishalnirmiti.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy, 247 L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "vishalnirmiti.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 05-Oct-2026 19:00:00 IST",
     "totalBids": 14471488,
@@ -8496,29 +9272,91 @@
    "issueDetail": "Initial Public Offer comprising of Fresh Issue up to 32,30,400 Equity Shares and (Including Market Maker portion of 1,62,000 Equity Shares)",
    "upiCutoff": "05-Oct-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 162000,
+     "bid": 4240800,
+     "times": 26.18,
+     "applications": 8
+    },
+    "nii": {
+     "offered": 1051200,
+     "bid": 705600,
+     "times": 0.67,
+     "applications": 104
+    },
+    "bnii": {
+     "offered": 702000,
+     "bid": 382800,
+     "times": 0.55,
+     "applications": 22
+    },
+    "snii": {
+     "offered": 349200,
+     "bid": 322800,
+     "times": 0.92,
+     "applications": 82
+    },
+    "retail": {
+     "offered": 1855200,
+     "bid": 2558400,
+     "times": 1.38,
+     "applications": 1066
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 162000,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 3230400,
      "bid": 7504800,
      "times": 2.32
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-05T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 112,
+     "priceHigh": 118,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://eventions.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Mudra RTA Ventures Private Limited",
+     "address": "B-117, 3rd Floor, DDA Sheds, Okhla Industrial Area Phase -1, New Delhi -110020",
+     "phone": "9958808069",
+     "email": "ipo@mudrarta.com",
+     "contactPerson": "Mr Akshay Tanwar",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 05-Oct-2026 18:03:00 IST",
+    "asOn": "As on 05-Oct-2026 19:00:00 IST",
     "totalBids": 7504800,
     "timesSubscribed": 2.32,
-    "byPrice": {
-     "112": "75,04,800",
-     "116": "74,92,800",
-     "118": "74,90,400"
-    }
+    "byPrice": {}
    },
    "registrar": {
     "name": "Mudra RTA Ventures Private Limited",
@@ -8936,7 +9774,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-05T12:37:41.755Z"
+   "fetchedAt": "2026-10-21T10:11:58.073Z"
   },
   {
    "symbol": "ACMERAIL",
@@ -8981,6 +9819,42 @@
      "times": 124.23
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:04.469Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 186,
+     "priceHigh": 196,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://acmeindia.co",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "S6-2, 6th Floor, Pinnacle Business Park, Next\nto Ahura Centre, Mahakali Caves Road, Andheri (East)\nMumbai – 400093, India",
+     "phone": null,
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "ipo@bigshareonline.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 513228600,
@@ -9458,7 +10332,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:48.923Z"
+   "fetchedAt": "2026-10-21T10:32:04.469Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -9503,6 +10377,36 @@
      "times": 1.88
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:05.211Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 119,
+     "priceHigh": 127,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1000,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "BIGSHARE SERVICES PRIVATE LIMITED",
+     "address": "S6-2, 6th Pinnacle Business Park, Mahakali\nCaves Road, next to Ahura Centre, Andheri East,\nMumbai- 400093, Maharashtra, India",
+     "phone": null,
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "ipo@bigshareonline.com",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 11814000,
@@ -9907,7 +10811,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:49.603Z"
+   "fetchedAt": "2026-10-21T10:32:05.211Z"
   },
   {
    "symbol": "TNA",
@@ -9952,6 +10856,42 @@
      "times": 55.2
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:05.831Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 66,
+     "priceHigh": 70,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 2000,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://tnasolutions.co.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MAASHITLA SECURITIES PRIVATE LIMITED",
+     "address": "451, Krishna Apra Business Square, Netaji Subhash Place, Pitampura, Delhi - 110034, India",
+     "phone": null,
+     "email": "investor.ipo@maashitla.com",
+     "contactPerson": "investor.ipo@maashitla.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 198994000,
@@ -10371,7 +11311,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:50.434Z"
+   "fetchedAt": "2026-10-21T10:32:05.831Z"
   },
   {
    "symbol": "DSL",
@@ -10416,6 +11356,36 @@
      "times": 1.38
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:06.472Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 104,
+     "priceHigh": 111,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "PURVA SHAREGISTRY INDIA PRIVATE LIMITED",
+     "address": "Unit No. 9, Ground Floor, Shiv\nShakti Ind. Estt, J. R. Boricha Marg, Lower Parel East,\nMumbai- 400011, Maharashtra, India;",
+     "phone": null,
+     "email": "newissue@purvashare.com",
+     "contactPerson": "newissue@purvashare.com",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 8962800,
@@ -10788,7 +11758,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:51.922Z"
+   "fetchedAt": "2026-10-21T10:32:06.472Z"
   },
   {
    "symbol": "OMARA",
@@ -10833,6 +11803,42 @@
      "times": 1.06
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:08.246Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 296,
+     "priceHigh": 311,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 400,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://omara.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "BIGSHARE SERVICES PRIVATE LIMITED",
+     "address": "Office No S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Centre, Mahakali Caves Road, Andheri (East) Mumbai – 400093.",
+     "phone": null,
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "ipo@bigshareonline.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 1428000,
@@ -11249,7 +12255,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:54.542Z"
+   "fetchedAt": "2026-10-21T10:32:08.246Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -11280,30 +12286,85 @@
    "issueDetail": "Initial Public Offer comprising of Fresh issue of up to 25,72,800 equity shares and offer for sale of up to 2,30,400 equity shares (including Market Maker portion of 1,44,000 Equity Shares)",
    "upiCutoff": "01-Oct-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 32000,
+     "bid": 2779200,
+     "times": 86.85,
+     "applications": 4
+    },
+    "nii": {
+     "offered": 787200,
+     "bid": 1180800,
+     "times": 1.5,
+     "applications": 39
+    },
+    "bnii": {
+     "offered": 524800,
+     "bid": 1011200,
+     "times": 1.93,
+     "applications": 9
+    },
+    "snii": {
+     "offered": 262400,
+     "bid": 169600,
+     "times": 0.65,
+     "applications": 30
+    },
+    "retail": {
+     "offered": 1840000,
+     "bid": 2928000,
+     "times": 1.59,
+     "applications": 915
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 144000,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 2803200,
      "bid": 6888000,
      "times": 2.46
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-01T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 69,
+     "priceHigh": 72,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MAS Services Limited",
+     "address": "T-34, 2nd Floor, Okhla Industral Area, Phase II, New Delhi 110 020, India.",
+     "phone": "011 4132 0335",
+     "email": "ipo@masserv.com",
+     "contactPerson": "Mr. N. C. Pal",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 01-Oct-2026 17:42:00 IST",
     "totalBids": 6888000,
     "timesSubscribed": 2.46,
-    "byPrice": {
-     "69": "68,88,000",
-     "70": "60,81,600",
-     "71": "60,72,000",
-     "72": "60,65,600"
-    }
+    "byPrice": {}
    },
    "registrar": {
     "name": "MAS Services Limited",
@@ -11664,7 +12725,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-01T12:49:35.134Z"
+   "fetchedAt": "2026-10-21T10:12:02.780Z"
   },
   {
    "symbol": "EIMS",
@@ -11709,6 +12770,42 @@
      "times": 294.22
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:06.962Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 80,
+     "priceHigh": 85,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://everestims.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Maashitla Securities Private Limited",
+     "address": "451, Krishna Apra Business Square,\nNetaji Subhash Place, Pitampura, New Delhi-110034",
+     "phone": null,
+     "email": "ipo@maashitla.com",
+     "contactPerson": "ipo@maashitla.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 1118784000,
@@ -11901,7 +12998,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T10:27:52.870Z"
+   "fetchedAt": "2026-10-21T10:32:06.962Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -11946,6 +13043,36 @@
      "times": 73.8
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:10.126Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 185,
+     "priceHigh": 197,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Skyline Financial Services Private Limited",
+     "address": "D-153A, First Floor, Okhla Industrial Area, Phase-I New Delhi -110020",
+     "phone": null,
+     "email": "ipo@skylinerta.com",
+     "contactPerson": "ipo@skylinerta.com",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 137410800,
@@ -12051,7 +13178,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T10:27:57.463Z"
+   "fetchedAt": "2026-10-21T10:32:10.126Z"
   },
   {
    "symbol": "VANS",
@@ -12096,6 +13223,36 @@
      "times": 628.73
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:10.832Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 112,
+     "priceHigh": 118,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "BIGSHARE SERVICES PRIVATE LTD",
+     "address": "Office No S6-2 6th floor Pinnacle Business ParkNext to Ahura Centre, Mahakali Caves RoadAndheri East",
+     "phone": null,
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "ipo@bigshareonline.com",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 1213297200,
@@ -12531,7 +13688,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:58.508Z"
+   "fetchedAt": "2026-10-21T10:32:10.832Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -12596,6 +13753,51 @@
      "times": 38.11676862180641
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-30T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 159,
+     "priceHigh": 167,
+     "maxAmount": 200000,
+     "minAmount": 14195,
+     "lot": 85,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 159,
+     "priceHigh": 167,
+     "maxAmount": null,
+     "minAmount": 212925,
+     "lot": 85,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14195,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://sihl.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, 1st Floor, 247 Park Lal Bahadur Shastri Marg, Vikhroli West, Mumbai - 400083, Maharashtra, India",
+     "phone": "8108114949",
+     "email": "shahinvestors.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 30-Sep-2026 19:00:00 IST",
     "totalBids": 144164590,
@@ -13081,6 +14283,51 @@
      "times": 125.16035756802721
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-30T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 123,
+     "priceHigh": 130,
+     "maxAmount": 200000,
+     "minAmount": 14950,
+     "lot": 115,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 123,
+     "priceHigh": 130,
+     "maxAmount": null,
+     "minAmount": 209300,
+     "lot": 115,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14950,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://sritindia.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "Selenium Tower-B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad - 500032, Telangana",
+     "phone": "040-67162222",
+     "email": "srit.ipo@kfintech.com",
+     "contactPerson": "M Murali Krishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 30-Sep-2026 19:00:00 IST",
     "totalBids": 1474467210,
@@ -13571,6 +14818,42 @@
      "times": 1.98
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:32:08.899Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 50,
+     "priceHigh": 53,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 2000,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://shreetnbpolymers.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG INTIME INDIA PRIVATE LIMITED",
+     "address": "C-101, 247 Park, 1st Floor, LBS Marg,\nVikroli (West), Mumbai- 400083, Maharashtra, India",
+     "phone": null,
+     "email": "shreetnb.smeipo@in.mpms.mufg.com",
+     "contactPerson": "shreetnb.smeipo@in.mpms.mufg.com",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "",
     "totalBids": 8222000,
@@ -14073,7 +15356,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T10:27:55.727Z"
+   "fetchedAt": "2026-10-21T10:32:08.899Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -14138,6 +15421,51 @@
      "times": 92.26964133657097
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 258,
+     "priceHigh": 272,
+     "maxAmount": 200000,
+     "minAmount": 14960,
+     "lot": 55,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 258,
+     "priceHigh": 272,
+     "maxAmount": null,
+     "minAmount": 209440,
+     "lot": 55,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14960,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://orientcables.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai, Maharashtra, India 400 070",
+     "phone": "+91 40 6716 2222",
+     "email": "orient.ipo@kfintech.com",
+     "contactPerson": "M. Murali Krishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 1382788110,
@@ -14665,8 +15993,72 @@
      "offered": 12111294,
      "bid": 30319681,
      "times": 2.503422095112215
+    },
+    "anchor": {
+     "offered": 4883605,
+     "bid": 4883605,
+     "times": null
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 290,
+     "priceHigh": 302,
+     "maxAmount": 200000,
+     "minAmount": 14798,
+     "lot": 49,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 276,
+     "priceHigh": 288,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 49,
+     "note": "Discount Rs 14 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 290,
+     "priceHigh": 302,
+     "maxAmount": null,
+     "minAmount": 207172,
+     "lot": 49,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14798,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://runwalenterprises.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy, 247 L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "runwalenterprises.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": {
+    "bidDate": "2026-09-24",
+    "price": 305,
+    "totalShares": 4883605,
+    "totalAmountCr": 148.95
+   },
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 30344426,
@@ -14741,6 +16133,13 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
+    },
+    {
+     "label": "SEBI filing page (Addendum)",
+     "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/runwal-enterprises-limited-addendum-to-drhp_104424.html",
+     "source": "SEBI",
+     "kind": "link",
+     "group": "Links"
     }
    ],
    "anchor": null,
@@ -15190,6 +16589,51 @@
      "times": 28.979499316405235
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 132,
+     "priceHigh": 139,
+     "maxAmount": 200000,
+     "minAmount": 14873,
+     "lot": 107,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 132,
+     "priceHigh": 139,
+     "maxAmount": null,
+     "minAmount": 208222,
+     "lot": 107,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14873,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://germansteel.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No S6 2, 6th Floor, Pinnacle Business Park, Mahakali Caves Road, Next to Ahura Centre, Andheri (East), Mumbai 400093, Maharashtra, India",
+     "phone": "+91 22 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Babu Rapheal",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 465783733,
@@ -15264,6 +16708,13 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
+    },
+    {
+     "label": "SEBI filing page (Addendum)",
+     "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/german-green-steel-and-power-limited-addendum-ii-to-drhp_104480.html",
+     "source": "SEBI",
+     "kind": "link",
+     "group": "Links"
     }
    ],
    "anchor": null,
@@ -15689,6 +17140,51 @@
      "times": 4.9326039309130865
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 30,
+     "priceHigh": 32,
+     "maxAmount": 200000,
+     "minAmount": 14976,
+     "lot": 468,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 30,
+     "priceHigh": 32,
+     "maxAmount": null,
+     "minAmount": 209664,
+     "lot": 468,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14976,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://acevector.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy, 247 L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "acevector.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 366326064,
@@ -16132,20 +17628,86 @@
    "issueDetail": "Initial Public Offer comprising of Fresh Issue up to 58,90,800 Equity Shares and Offer for Sale up to 7,14,000 (Including market maker portion of 3,31,200 Equity Shares and Anchor Allocation of 7,52,400 Equity Shares)",
    "upiCutoff": "29-Sep-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 502800,
+     "bid": 836400,
+     "times": 1.66,
+     "applications": 5
+    },
+    "nii": {
+     "offered": 1879200,
+     "bid": 2103600,
+     "times": 1.12,
+     "applications": 62
+    },
+    "bnii": {
+     "offered": 1252800,
+     "bid": 1921200,
+     "times": 1.53,
+     "applications": 16
+    },
+    "snii": {
+     "offered": 626400,
+     "bid": 182400,
+     "times": 0.29,
+     "applications": 46
+    },
+    "retail": {
+     "offered": 3139200,
+     "bid": 3964800,
+     "times": 1.26,
+     "applications": 1652
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 331200,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 5852400,
      "bid": 6904800,
      "times": 1.18
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 98,
+     "priceHigh": 103,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://himalayansolar.co.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Maashitla Securities Private Limited",
+     "address": "451, Krishna Apra Business Square Netaji Subhash Place, Pitampura, North West, New Delhi, Delhi, India, 110034.",
+     "phone": "011-47581432",
+     "email": "ipo@maashitla.com",
+     "contactPerson": "Mr Mukul Agrawal",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 6904800,
@@ -16546,20 +18108,86 @@
    "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 34,00,000 Equity Shares and Offer for sale of up to 4,58,000 Equity Shares (Including Market Maker portion of 1,93,200 Equity Shares and Anchor Allotment of 10,96,800 Equity shares)",
    "upiCutoff": "29-Sep-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 733200,
+     "bid": 64972800,
+     "times": 88.62,
+     "applications": 52
+    },
+    "nii": {
+     "offered": 550800,
+     "bid": 75608400,
+     "times": 137.27,
+     "applications": 10887
+    },
+    "bnii": {
+     "offered": 367200,
+     "bid": 57018000,
+     "times": 155.28,
+     "applications": 5852
+    },
+    "snii": {
+     "offered": 183600,
+     "bid": 18590400,
+     "times": 101.25,
+     "applications": 5035
+    },
+    "retail": {
+     "offered": 1284000,
+     "bid": 124420800,
+     "times": 96.9,
+     "applications": 51842
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 193200,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 2761200,
      "bid": 265002000,
      "times": 95.97
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-09-29T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 104,
+     "priceHigh": 110,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://benchmarkinfo.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFIN Technologies Limited",
+     "address": "SeleniumTower B, Plot31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500032, Telangana",
+     "phone": "+914067162222",
+     "email": "benchmarkinfo.ipo@kfintech.com",
+     "contactPerson": "M Murali Krishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 29-Sep-2026 19:00:00 IST",
     "totalBids": 265002000,
@@ -16957,20 +18585,86 @@
    "issueDetail": "Initial Public Offering comprising of Fresh Issue of upto Rs. 5,310 Lakhs Equity Shares and Offer for Sale up to Rs. 700 Lakhs (Including Market Maker portion of 3,55,200 Equity Shares)",
    "upiCutoff": null,
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 2006400,
+     "bid": 3907200,
+     "times": 1.95,
+     "applications": 10
+    },
+    "nii": {
+     "offered": 2347200,
+     "bid": 1774400,
+     "times": 0.76,
+     "applications": 92
+    },
+    "bnii": {
+     "offered": 1564800,
+     "bid": 1427200,
+     "times": 0.91,
+     "applications": 20
+    },
+    "snii": {
+     "offered": 782400,
+     "bid": 347200,
+     "times": 0.44,
+     "applications": 72
+    },
+    "retail": {
+     "offered": 2348800,
+     "bid": 1241600,
+     "times": 0.53,
+     "applications": 388
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 355200,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 7057600,
      "bid": 6923200,
      "times": 0.98
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-10-01T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 84,
+     "priceHigh": 89,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://greenasiaimpex.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No S6 2, 6th Floor, Pinnacle Business Park, Next to Ahura Centre, Mahakali Caves Road, Andheri East Mumbai 400093, Maharashtra, India.",
+     "phone": "022 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Aniket Seebag",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 01-Oct-2026 17:42:00 IST",
     "totalBids": 6923200,
@@ -17445,6 +19139,60 @@
      "times": 11.605112381505373
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-28T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 385,
+     "priceHigh": 405,
+     "maxAmount": 200000,
+     "minAmount": 14985,
+     "lot": 37,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 347,
+     "priceHigh": 367,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 37,
+     "note": "Discount Rs 38 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 385,
+     "priceHigh": 405,
+     "maxAmount": null,
+     "minAmount": 209790,
+     "lot": 37,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14985,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://aonesteelgroup.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S 62, 6th floor, Pinnacle Business Park, next to Ahura Centre, Mahakali Caves Road, Andheri (East) Mumbai 400 093, Maharashtra, India",
+     "phone": "+91 22 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Vinayak Morbale",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 28-Sep-2026 19:00:00 IST",
     "totalBids": 85815099,
@@ -17916,8 +19664,63 @@
      "offered": 232524175,
      "bid": 22895164593,
      "times": 98.46358811078461
+    },
+    "anchor": {
+     "offered": 96324729,
+     "bid": 96324729,
+     "times": null
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-28T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 32,
+     "priceHigh": 34,
+     "maxAmount": 200000,
+     "minAmount": 14994,
+     "lot": 441,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 32,
+     "priceHigh": 34,
+     "maxAmount": null,
+     "minAmount": 209916,
+     "lot": 441,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14994,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://moneyview.in",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy, 247 L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "moneyview.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": {
+    "bidDate": "2026-09-23",
+    "price": 34,
+    "totalShares": 96324729,
+    "totalAmountCr": 327.5
+   },
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 28-Sep-2026 19:00:00 IST",
     "totalBids": 22907638719,
@@ -18416,6 +20219,51 @@
      "times": 176.8465495560721
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-25T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 126,
+     "priceHigh": 134,
+     "maxAmount": 200000,
+     "minAmount": 14874,
+     "lot": 111,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 126,
+     "priceHigh": 134,
+     "maxAmount": null,
+     "minAmount": 208236,
+     "lot": 111,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14874,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://adroitindustries.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S6-2, 6th Floor Pinnacle Business Park Next to Ahura Center Mahakali Caves Road Andheri East Mumbai - 400 093 Maharashtra, India",
+     "phone": "+91 022 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Babu Rapheal C",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 25-Sep-2026 19:00:00 IST",
     "totalBids": 1395035013,
@@ -18900,6 +20748,51 @@
      "times": 1.7903344259046914
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-25T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 343,
+     "priceHigh": 362,
+     "maxAmount": 200000,
+     "minAmount": 14842,
+     "lot": 41,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 343,
+     "priceHigh": 362,
+     "maxAmount": null,
+     "minAmount": 207788,
+     "lot": 41,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14842,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://elevatecampuses.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "Selenium, Tower-B, Plot No. 31 and 32, Financial District, Nanakramguda, Serilingampally, Rangareddi, Hyderabad 500 032, Telangana, India",
+     "phone": "+91 40 6716 2222",
+     "email": "elevatecampuses.ipo@kfintech.com",
+     "contactPerson": "M. Murali Krishna",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 25-Sep-2026 19:00:00 IST",
     "totalBids": 60288942,
@@ -19338,6 +21231,51 @@
      "times": 2.4439259707071908
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-25T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 350,
+     "priceHigh": 375,
+     "maxAmount": 200000,
+     "minAmount": 15000,
+     "lot": 40,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 350,
+     "priceHigh": 375,
+     "maxAmount": null,
+     "minAmount": 210000,
+     "lot": 40,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 15000,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://armeeinfotech.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Cameo Corporate Services Limited",
+     "address": "Subramanian Building, No. 01, Club House Road, Chennai, Tamil Nadu 600002, India",
+     "phone": "+91 44 4002 0700",
+     "email": "priya@cameoindia.com",
+     "contactPerson": "K. Sreepriya",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 25-Sep-2026 19:00:00 IST",
     "totalBids": 18179360,
@@ -19412,6 +21350,13 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
+    },
+    {
+     "label": "SEBI filing page (Addendum)",
+     "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/armee-infotech-limited-addendum-ii-to-drhp_104294.html",
+     "source": "SEBI",
+     "kind": "link",
+     "group": "Links"
     }
    ],
    "anchor": null,
@@ -19820,6 +21765,51 @@
      "times": 7.600829107998562
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-09-25T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 175,
+     "priceHigh": 185,
+     "maxAmount": 200000,
+     "minAmount": 14985,
+     "lot": 81,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 175,
+     "priceHigh": 185,
+     "maxAmount": null,
+     "minAmount": 209790,
+     "lot": 81,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14985,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://swastikainfra.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C 101, 1st Floor, 247 Park, Lal Bhadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "swastikainfra.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 25-Sep-2026 19:00:00 IST",
     "totalBids": 48189087,
@@ -20224,20 +22214,86 @@
    "issueDetail": "Initial Public Offering comprising of Fresh Issue of upto 28,19,200 Equity Shares (Including Market Maker portion of 1,42,400 Equity Shares)",
    "upiCutoff": "25-Sep-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 267200,
+     "bid": 280000,
+     "times": 1.05,
+     "applications": 1
+    },
+    "nii": {
+     "offered": 1203200,
+     "bid": 1896000,
+     "times": 1.58,
+     "applications": 120
+    },
+    "bnii": {
+     "offered": 801600,
+     "bid": 1038400,
+     "times": 1.3,
+     "applications": 25
+    },
+    "snii": {
+     "offered": 401600,
+     "bid": 857600,
+     "times": 2.14,
+     "applications": 95
+    },
+    "retail": {
+     "offered": 1206400,
+     "bid": 1715200,
+     "times": 1.42,
+     "applications": 536
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
+    "marketMaker": {
+     "offered": 142400,
+     "bid": null,
+     "times": null
+    },
     "total": {
-     "offered": null,
+     "offered": 2819200,
      "bid": 3891200,
      "times": 1.38
     }
    },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-09-25T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 74,
+     "priceHigh": 78,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://coreintegra.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "Purva Sharegistry (India) Private Limited",
+     "address": "Unit No. 9, Ground Floor, Shiv Shakti Industrial Estate, J. R. Boricha Marg, Lower Parel (E) Mumbai 400011, Maharashtra, India",
+     "phone": "+91 22 4961 4132",
+     "email": "newissue@purvashare.com",
+     "contactPerson": "Deepali Dhuri",
+     "website": null
+    },
+    "source": "NSE issue info (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "asOn": "As on 25-Sep-2026 19:00:00 IST",
     "totalBids": 3891200,
@@ -20634,6 +22690,26 @@
      "times": null
     }
    },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T10:14:33.408Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, 247 Park, L.B.S Marg, Vikhroli West, Mumbai-400083",
+     "phone": null,
+     "email": "smcglobal.ncd2026@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
    "demand": {
     "totalBids": null,
     "timesSubscribed": null,
@@ -20695,7 +22771,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T10:27:38.473Z"
+   "fetchedAt": "2026-10-21T10:14:33.408Z"
   }
  ],
  "filings": [
@@ -20703,7 +22779,8 @@
    "company": "Tablespace Technologies Limited",
    "date": "2026-10-21",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/tablespace-technologies-limited-addendum-to-drhp_105343.html",
-   "type": "DRHP",
+   "type": "Addendum",
+   "stage": "Addendum",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20715,6 +22792,7 @@
    "date": "2026-10-14",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/paramotor-digital-technology-limited-udrhp-i_105258.html",
    "type": "UDRHP",
+   "stage": "UDRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20726,6 +22804,7 @@
    "date": "2026-10-13",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/soleos-energy-limited-drhp_105196.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20736,7 +22815,8 @@
    "company": "OSWAL CABLES LIMITED",
    "date": "2026-10-12",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/oswal-cables-limited-addendum-to-drhp_105234.html",
-   "type": "DRHP",
+   "type": "Addendum",
+   "stage": "Addendum",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20747,7 +22827,8 @@
    "company": "Matangi Rubber Limited",
    "date": "2026-10-10",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/matangi-rubber-limited-addendum-to-the-drhp_105143.html",
-   "type": "DRHP",
+   "type": "Addendum",
+   "stage": "Addendum",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20759,6 +22840,7 @@
    "date": "2026-10-07",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/grace-renewable-energy-limited-drhp_105099.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20770,6 +22852,7 @@
    "date": "2026-10-07",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/integrum-energy-infrastructure-limited-drhp_105075.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20777,21 +22860,11 @@
    "logo": "data/logos/F-integrum-energy-infrastructure-limited.png"
   },
   {
-   "company": "PM CONA INDUSTRIES LIMITED",
+   "company": "Pentacle Consultants (I) Limited",
    "date": "2026-10-06",
-   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pm-cona-industries-limited_105041.html",
-   "type": "Other",
-   "gmp": null,
-   "gmpUpdated": null,
-   "open": null,
-   "close": null,
-   "logo": "data/logos/F-pm-cona-industries-limited.ico"
-  },
-  {
-   "company": "Pentacle Consultants I Limited",
-   "date": "2026-10-06",
-   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pentacle-consultants-i-limited_105039.html",
-   "type": "Other",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pentacle-consultants-i-limited-drhp_105036.html",
+   "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20799,10 +22872,23 @@
    "logo": "data/logos/F-pentacle-consultants-i-limited.png"
   },
   {
+   "company": "PM CONA INDUSTRIES LIMITED",
+   "date": "2026-10-06",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pm-cona-industries-limited_105041.html",
+   "type": "Other",
+   "stage": "Other",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": "data/logos/F-pm-cona-industries-limited.ico"
+  },
+  {
    "company": "Electromech Infraprojects Limited",
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/electromech-infraprojects-limited-drhp_105027.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20814,6 +22900,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/baanganga-gold-and-diamond-i-limited-drhp_105025.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20825,6 +22912,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/inox-air-products-limited-drhp_105024.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20836,6 +22924,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/b-s-sponge-limited-drhp_105023.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20847,6 +22936,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/everbrands-india-limited-drhp_105022.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20858,6 +22948,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/arete-22-limited-drhp_105016.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20869,6 +22960,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pes-installations-limited-drhp_105018.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20880,6 +22972,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/deon-energy-limited-drhp_105012.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20891,6 +22984,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/rathod-jewellery-manufacturing-limited-drhp_105014.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20902,6 +22996,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/inox-clean-energy-limited-drhp_105010.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20913,6 +23008,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/rudra-green-ship-recycling-limited-drhp_105008.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20924,6 +23020,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/sanghvi-housing-and-infrastructure-limited-drhp_105004.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20935,6 +23032,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/tenty-limited-drhp_105006.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20946,6 +23044,7 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/tanvi-exports-india-limited-drhp_105002.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
@@ -20957,11 +23056,732 @@
    "date": "2026-10-05",
    "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/nnt-developers-limited-drhp_105000.html",
    "type": "DRHP",
+   "stage": "DRHP",
    "gmp": null,
    "gmpUpdated": null,
    "open": null,
    "close": null,
    "logo": "data/logos/F-nnt-developers-limited.png"
+  },
+  {
+   "company": "KATALINE LIMITED",
+   "date": "2026-10-05",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/kataline-limited-drhp_104993.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": "data/logos/F-kataline-limited.jpg"
+  },
+  {
+   "company": "SHREEJIKRUPA PROJECT LIMITED",
+   "date": "2026-10-05",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/shreejikrupa-project-limited-drhp_104991.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "PCI INFRAPROJECTS LIMITED",
+   "date": "2026-10-05",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/pci-infraprojects-limited-drhp_104989.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Anarock Property Consultants Limited",
+   "date": "2026-10-05",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/anarock-property-consultants-limited-drhp_104988.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Kian-M Export Limited",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/kian-m-export-limited-drhp_104874.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "JAGATJIT AGRI ENGINEERING LIMITED",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/jagatjit-agri-engineering-limited-drhp_104866.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "EKKAA ELECTRONICS (INDIA) LIMITED",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/ekkaa-electronics-india-limited-drhp_104862.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Koolking Industries India Limited",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/koolking-industries-india-limited-drhp_104848.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "SAI INFINIUM LIMITED",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/sai-infinium-limited-drhp_104850.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "J Infratech Limited",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/j-infratech-limited-drhp_104846.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Royal Chain Limited",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/royal-chain-limited-drhp_104015.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Arohan Financial Services Limited",
+   "date": "2026-10-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/arohan-financial-services-limited-addendum-to-drhp_104860.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Vinir Engineering Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/vinir-engineering-limited-drhp_105148.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Vishakha Renewables Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/vishakha-renewables-limited-drhp_105101.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "SUNIL GOLD INDIA LIMITED",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/sunil-gold-india-limited-drhp_105078.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Momai Art Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/momai-art-limited-drhp_105066.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Sarva Foam Industries Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/sarva-foam-industries-limited-drhp_105054.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Claroid Pharmaceuticals Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/claroid-pharmaceuticals-limited-drhp_105048.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Vardhman Appliances Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/vardhman-appliances-limited-drhp_104999.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Biocon Electric Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/biocon-electric-limited-drhp_104995.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "AITMC Ventures Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/aitmc-ventures-limited-udrhp-i_104864.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "J B ECOTEX LIMITED",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/j-b-ecotex-limited-drhp_104830.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "S G Encon Limited",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/s-g-encon-limited_104828.html",
+   "type": "Other",
+   "stage": "Other",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "S. D. INTERNATIONAL LIMITED",
+   "date": "2026-09-30",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/s-d-international-limited_104826.html",
+   "type": "Other",
+   "stage": "Other",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "MOUNT EVEREST BREWERIES LIMITED",
+   "date": "2026-09-29",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/mount-everest-breweries-limited-drhp_105097.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Technopaints and Chemicals Limited",
+   "date": "2026-09-29",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/technopaints-and-chemicals-limited-drhp_105067.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Rudra Cottex Limited",
+   "date": "2026-09-29",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/rudra-cottex-limited-drhp_105050.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "ULTRAVIBRANT INTEGRATED ENERGY LIMITED",
+   "date": "2026-09-29",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/ultravibrant-integrated-energy-limited-drhp_104809.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Iris Global Services Limited",
+   "date": "2026-09-28",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/iris-global-services-limited-drhp_104746.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Anmol Industries Limited",
+   "date": "2026-09-26",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/anmol-industries-limited-drhp_105123.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "JSW One Platforms Limited",
+   "date": "2026-09-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/jsw-one-platforms-limited-drhp_104742.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Anjali Labtech Limited",
+   "date": "2026-09-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/anjali-labtech-limited-udrhp-i_104737.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Abakkus Asset Manager Limited",
+   "date": "2026-09-22",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/abakkus-asset-manager-limited-drhp_105064.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "VARDAAN BIOTECH LIMITED",
+   "date": "2026-09-22",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/vardaan-biotech-limited-drhp_104652.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Hi-Tech Flow Solutions Limited",
+   "date": "2026-09-22",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/hi-tech-flow-solutions-limited-drhp_104635.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Jai Parvati Forge Limited",
+   "date": "2026-09-21",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/jai-parvati-forge-limited-drhp_105049.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Lalbaba Engineering Limited",
+   "date": "2026-09-21",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/lalbaba-engineering-limited-addendum-to-drhp_105062.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "ANCHOR OFFSHORE SERVICES LIMITED",
+   "date": "2026-09-18",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/anchor-offshore-services-limited-drhp_104580.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Madhur Iron & Steel India Limited",
+   "date": "2026-09-18",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/madhur-iron-and-steel-india-limited-drhp_104575.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "IBERIA PHARMACEUTICALS INDIA LIMITED",
+   "date": "2026-09-17",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/iberia-pharmaceuticals-india-limited-drhp_104542.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Rayzon Solar Limited",
+   "date": "2026-09-17",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/rayzon-solar-limited-addendum-to-the-drhp_104532.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Sterlite Electric Limited",
+   "date": "2026-09-16",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/sterlite-electric-limited-second-addendum-to-drhp_104506.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Maharashtra Oil Extractions Limited",
+   "date": "2026-09-15",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/maharashtra-oil-extractions-limited-drhp_104503.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "M K C AGRO FRESH LIMITED",
+   "date": "2026-09-11",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/m-k-c-agro-fresh-limited-drhp_104430.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "NOPAPERFORMS SOLUTIONS LIMITED",
+   "date": "2026-09-11",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/nopaperforms-solutions-limited-udrhp-1_104427.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Incred Holdings Limited",
+   "date": "2026-09-10",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/incred-holdings-limited-corrigendum-to-udrhp_104399.html",
+   "type": "Corrigendum",
+   "stage": "Corrigendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Torrent Gas Limited",
+   "date": "2026-09-09",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/torrent-gas-limited-udrhp-i_104350.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Mahanadi Coalfields Ltd.",
+   "date": "2026-09-04",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/mahanadi-coalfields-ltd-drhp_104290.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Gaurik Fashions Limited",
+   "date": "2026-09-04",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/gaurik-fashions-limited-addendum-to-drhp_104276.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "India Exposition Mart Limited",
+   "date": "2026-09-04",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/india-exposition-mart-limited_104273.html",
+   "type": "Other",
+   "stage": "Other",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Kataria Dhulchand Pannalal Jewellers Limited",
+   "date": "2026-09-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/kataria-dhulchand-pannalal-jewellers-limited-drhp_104178.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Sembcorp Green Infra Limited",
+   "date": "2026-09-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/sembcorp-green-infra-limited-drhp_104162.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "ARAGEN LIFE SCIENCES LIMITED",
+   "date": "2026-09-01",
+   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/aragen-life-sciences-limited-drhp_104157.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "ATOMBERG TECHNOLOGIES LIMITED",
+   "date": "2026-08-27",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/atomberg-technologies-limited-drhp_104037.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "AVAADA ELECTRO LIMITED",
+   "date": "2026-08-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/avaada-electro-limited-udrhp_104034.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "M P STEEL (INDIA) LIMITED",
+   "date": "2026-08-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/m-p-steel-india-limited-drhp_103990.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "Nobel Hygiene Limited",
+   "date": "2026-08-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/nobel-hygiene-limited-drhp_103938.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "JAY JAGDAMBA LIMITED",
+   "date": "2026-08-25",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/jay-jagdamba-limited-udrhp_103937.html",
+   "type": "UDRHP",
+   "stage": "UDRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "T.C. Terrytex Limited",
+   "date": "2026-08-24",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/t-c-terrytex-limited-addendum-cum-corrigendum-to-drhp_103904.html",
+   "type": "Addendum",
+   "stage": "Addendum",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
+  },
+  {
+   "company": "GEMINI EDIBLES & FATS INDIA LIMITED",
+   "date": "2026-08-22",
+   "url": "https://www.sebi.gov.in/filings/public-issues/aug-2026/gemini-edibles-and-fats-india-limited-drhp_104032.html",
+   "type": "DRHP",
+   "stage": "DRHP",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": null
   }
  ]
 }

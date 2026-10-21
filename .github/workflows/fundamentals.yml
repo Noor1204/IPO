@@ -49,6 +49,10 @@ jobs:
         if: steps.need.outputs.need == 'yes'
         continue-on-error: true
         run: node pipeline/docs.mjs
+      - name: Contacts from the offer documents
+        if: steps.need.outputs.need == 'yes'
+        continue-on-error: true
+        run: node pipeline/contacts.mjs
       - name: Read the figures with Gemini
         if: steps.need.outputs.need == 'yes'
         continue-on-error: true
@@ -73,7 +77,7 @@ jobs:
         run: |
           git config user.name "trendy-ipo-bot"
           git config user.email "trendy-ipo-bot@users.noreply.github.com"
-          git add data/fundamentals data/verify.json data/fundamentals-skip.json data/logos data/logos.json
+          git add data/contacts.json data/fundamentals data/verify.json data/fundamentals-skip.json data/logos data/logos.json
           if ! git diff --cached --quiet; then
             git commit -m "fundamentals: new company figures $(date -u +'%Y-%m-%d %H:%M') UTC"
             git checkout -- .

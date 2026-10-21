@@ -1,0 +1,53 @@
+name: Market data (Stocks, F&O, Mutual Fund)
+
+# Official end-of-day data for the Stocks, F&O and Mutual Fund sections: NSE daily files (prices, 52-week range, F&O bhavcopy, lot sizes) and AMFI (NAV and returns).
+# Each script keeps the last good files when a source is down or not published yet, and only writes new files when the date moves forward.
+# A commit here makes the "Refresh data and publish site" workflow rebuild and publish the site.
+on:
+  schedule:
+    - cron: "23 * * * *"
+  workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: [".github/workflows/markets.yml", "pipeline/mf.mjs", "pipeline/stocks.mjs", "pipeline/fno.mjs"]
+
+permissions: {}
+
+concurrency:
+  group: markets
+  cancel-in-progress: false
+
+jobs:
+  markets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Mutual funds (AMFI)
+        continue-on-error: true
+        timeout-minutes: 12
+        run: node pipeline/mf.mjs
+      - name: Stocks (NSE)
+        continue-on-error: true
+        timeout-minutes: 15
+        run: node pipeline/stocks.mjs
+      - name: F&O (NSE)
+        continue-on-error: true
+        timeout-minutes: 10
+        run: node pipeline/fno.mjs
+      - name: Commit
+        run: |
+          git config user.name "trendy-ipo-bot"
+          git config user.email "trendy-ipo-bot@users.noreply.github.com"
+          git add data/mf data/stocks data/fno
+          if ! git diff --cached --quiet; then
+            git commit -m "markets: new data $(date -u +'%Y-%m-%d %H:%M') UTC"
+            git checkout -- .
+            git pull --rebase -X theirs -q origin main
+            git push
+          fi

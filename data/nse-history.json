@@ -185,6 +185,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -258,8 +260,9 @@
    "timestamp": "As on 05-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-06T05:37:11.786Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "NITYAS": {
   "symbol": "NITYAS",
@@ -469,6 +472,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -514,8 +519,9 @@
    "timestamp": "As on 05-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-06T05:37:17.486Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "EVENTIONS": {
   "symbol": "EVENTIONS",
@@ -675,6 +681,105 @@
     "srNo": null
    }
   ],
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "4240800",
+    "applications": "8"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "1695600",
+    "applications": "2"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "2545200",
+    "applications": "6"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "705600",
+    "applications": "104"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "382800",
+    "applications": "22"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "171600",
+    "applications": "2"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "211200",
+    "applications": "20"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "322800",
+    "applications": "82"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "322800",
+    "applications": "82"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "2558400",
+    "applications": "1066"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "7504800",
+    "applications": "1178"
+   }
+  ],
+  "bidsAsOn": "Updated as on 05-Oct-2026 19:00:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -683,11 +788,7 @@
    "TOTAL_BIDS": "7504800",
    "totalIssueSize": "3230400",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
-   "plotData": {
-    "112": "75,04,800",
-    "116": "74,92,800",
-    "118": "74,90,400"
-   },
+   "plotData": {},
    "noOfTimesIssueSubscribed": "2.32",
    "graphData": [
     {
@@ -705,11 +806,11 @@
    ],
    "graphLogic": "https://nsearchives.nseindia.com/content/ipo/ipo_graph_logic.pdf",
    "totalBidRecieved": "7504800",
-   "timestamp": "As on 05-Oct-2026 18:03:00 IST"
+   "timestamp": "As on 05-Oct-2026 19:00:00 IST"
   },
-  "fetchedAt": "2026-10-05T12:37:41.755Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:11:58.073Z",
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z"
  },
  "PAPADMALJI": {
   "symbol": "PAPADMALJI",
@@ -869,6 +970,105 @@
     "srNo": null
    }
   ],
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "2779200",
+    "applications": "4"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "2084800",
+    "applications": "3"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "694400",
+    "applications": "1"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "1180800",
+    "applications": "39"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "1011200",
+    "applications": "9"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "144000",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "867200",
+    "applications": "8"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "169600",
+    "applications": "30"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "4800",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "164800",
+    "applications": "29"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "2928000",
+    "applications": "915"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "6888000",
+    "applications": "958"
+   }
+  ],
+  "bidsAsOn": "Updated as on 01-Oct-2026 19:00:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -877,12 +1077,7 @@
    "TOTAL_BIDS": "6888000",
    "totalIssueSize": "2803200",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
-   "plotData": {
-    "69": "68,88,000",
-    "70": "60,81,600",
-    "71": "60,72,000",
-    "72": "60,65,600"
-   },
+   "plotData": {},
    "noOfTimesIssueSubscribed": "2.46",
    "graphData": [
     {
@@ -906,9 +1101,9 @@
    "totalBidRecieved": "6888000",
    "timestamp": "As on 01-Oct-2026 17:42:00 IST"
   },
-  "fetchedAt": "2026-10-01T12:49:35.134Z",
-  "infoFrom": "2026-10-21T10:18:11.281Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:12:02.780Z",
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z"
  },
  "GREENASIA": {
   "symbol": "GREENASIA",
@@ -1113,7 +1308,107 @@
   },
   "fetchedAt": "2026-10-01T12:49:40.200Z",
   "infoFrom": "2026-10-09T11:37:18.551Z",
-  "savedAt": "2026-10-09T13:37:23.316Z"
+  "savedAt": "2026-10-09T13:37:23.316Z",
+  "bidDetailsTried": true,
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "3907200",
+    "applications": "10"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "2406400",
+    "applications": "6"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "1500800",
+    "applications": "4"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "1774400",
+    "applications": "92"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "1427200",
+    "applications": "20"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "336000",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "1091200",
+    "applications": "19"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "347200",
+    "applications": "72"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "148800",
+    "applications": "31"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "198400",
+    "applications": "41"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "1241600",
+    "applications": "388"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "6923200",
+    "applications": "490"
+   }
+  ],
+  "bidsAsOn": "Updated as on 01-Oct-2026 19:00:00"
  },
  "RKFAL": {
   "symbol": "RKFAL",
@@ -1273,6 +1568,105 @@
     "srNo": null
    }
   ],
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "609600",
+    "applications": "2"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "609600",
+    "applications": "2"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "3062400",
+    "applications": "276"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "2105600",
+    "applications": "94"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "17600",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "1873600",
+    "applications": "92"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "214400",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "956800",
+    "applications": "182"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "956800",
+    "applications": "182"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "7478400",
+    "applications": "2337"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "11150400",
+    "applications": "2615"
+   }
+  ],
+  "bidsAsOn": "Updated as on 07-Oct-2026 17:42:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -1281,14 +1675,7 @@
    "TOTAL_BIDS": "11150400",
    "totalIssueSize": "4267200",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
-   "plotData": {
-    "77": "1,11,50,400",
-    "78": "1,02,62,400",
-    "79": "1,02,43,200",
-    "80": "1,02,36,800",
-    "81": "1,02,16,000",
-    "82": "1,02,09,600"
-   },
+   "plotData": {},
    "noOfTimesIssueSubscribed": "2.61",
    "graphData": [
     {
@@ -1320,9 +1707,9 @@
    "totalBidRecieved": "11150400",
    "timestamp": "As on 07-Oct-2026 17:42:00 IST"
   },
-  "fetchedAt": "2026-10-07T13:37:15.066Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:11:53.313Z",
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z"
  },
  "SHAHINVEST": {
   "symbol": "SHAHINVEST",
@@ -1514,6 +1901,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -1571,8 +1960,9 @@
    "timestamp": "As on 30-Sep-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-01T12:24:47.189Z",
-  "infoFrom": "2026-10-21T10:18:11.281Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "SRIT": {
   "symbol": "SRIT",
@@ -1764,6 +2154,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -1817,8 +2209,9 @@
    "timestamp": "As on 30-Sep-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-01T12:24:52.445Z",
-  "infoFrom": "2026-10-21T10:18:11.281Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "ORIENTCABL": {
   "symbol": "ORIENTCABL",
@@ -3066,7 +3459,107 @@
   },
   "fetchedAt": "2026-10-01T12:46:33.131Z",
   "infoFrom": "2026-10-18T14:29:57.658Z",
-  "savedAt": "2026-10-18T18:00:32.909Z"
+  "savedAt": "2026-10-18T18:00:32.909Z",
+  "bidDetailsTried": true,
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "836400",
+    "applications": "5"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "836400",
+    "applications": "5"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "2103600",
+    "applications": "62"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "1921200",
+    "applications": "16"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "510000",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "794400",
+    "applications": "10"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "616800",
+    "applications": "5"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "182400",
+    "applications": "46"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "3600",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "175200",
+    "applications": "44"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "3600",
+    "applications": "1"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "3964800",
+    "applications": "1652"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "6904800",
+    "applications": "1719"
+   }
+  ],
+  "bidsAsOn": "Updated as on 29-Sep-2026 19:00:00"
  },
  "BMISL": {
   "symbol": "BMISL",
@@ -3276,7 +3769,107 @@
   },
   "fetchedAt": "2026-10-01T12:46:37.838Z",
   "infoFrom": "2026-10-18T14:29:57.658Z",
-  "savedAt": "2026-10-18T18:00:32.909Z"
+  "savedAt": "2026-10-18T18:00:32.909Z",
+  "bidDetailsTried": true,
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "64972800",
+    "applications": "52"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "10737600",
+    "applications": "11"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "8775600",
+    "applications": "5"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "2475600",
+    "applications": "2"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "42984000",
+    "applications": "34"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "75608400",
+    "applications": "10887"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "57018000",
+    "applications": "5852"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "1023600",
+    "applications": "86"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "55399200",
+    "applications": "5705"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "595200",
+    "applications": "61"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "18590400",
+    "applications": "5035"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "315600",
+    "applications": "87"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "17972400",
+    "applications": "4864"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "302400",
+    "applications": "84"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "124420800",
+    "applications": "51842"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "265002000",
+    "applications": "62781"
+   }
+  ],
+  "bidsAsOn": "Updated as on 29-Sep-2026 19:00:00"
  },
  "AONESTEELS": {
   "symbol": "AONESTEELS",
@@ -5127,7 +5720,107 @@
    "timestamp": "As on 25-Sep-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-01T12:50:14.037Z",
-  "savedAt": "2026-10-01T12:50:17.358Z"
+  "savedAt": "2026-10-01T12:50:17.358Z",
+  "bidDetailsTried": true,
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "280000",
+    "applications": "1"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "280000",
+    "applications": "1"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "1896000",
+    "applications": "120"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "1038400",
+    "applications": "25"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "443200",
+    "applications": "4"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "457600",
+    "applications": "20"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "137600",
+    "applications": "1"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "857600",
+    "applications": "95"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "19200",
+    "applications": "2"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "694400",
+    "applications": "75"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "144000",
+    "applications": "18"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "1715200",
+    "applications": "536"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "3891200",
+    "applications": "657"
+   }
+  ],
+  "bidsAsOn": "Updated as on 25-Sep-2026 19:00:00"
  },
  "GCFZCZP": {
   "symbol": "GCFZCZP",
@@ -5414,6 +6107,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -5491,8 +6186,9 @@
    "timestamp": "As on 15-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-16T09:37:40.421Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "RAVITA": {
   "symbol": "RAVITA",
@@ -5656,6 +6352,105 @@
     "srNo": null
    }
   ],
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "26012400",
+    "applications": "20"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "1370400",
+    "applications": "3"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "24642000",
+    "applications": "17"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "11473200",
+    "applications": "1267"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "9472800",
+    "applications": "727"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "1195200",
+    "applications": "22"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "8210400",
+    "applications": "698"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "67200",
+    "applications": "7"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "2000400",
+    "applications": "540"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "1953600",
+    "applications": "527"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "46800",
+    "applications": "13"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "12052800",
+    "applications": "5022"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "49538400",
+    "applications": "6309"
+   }
+  ],
+  "bidsAsOn": "Updated as on 16-Oct-2026 19:00:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -5692,9 +6487,9 @@
    "totalBidRecieved": "49538400",
    "timestamp": "As on 16-Oct-2026 19:00:00 IST"
   },
-  "fetchedAt": "2026-10-17T17:51:16.187Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:11:39.080Z",
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z"
  },
  "LOANFRONT": {
   "symbol": "LOANFRONT",
@@ -5858,6 +6653,105 @@
     "srNo": null
    }
   ],
+  "bidDetails": [
+   {
+    "srNo": "1",
+    "category": "Qualified Institutional Buyers(QIBs)",
+    "shares": "2398000",
+    "applications": "5"
+   },
+   {
+    "srNo": "1(a)",
+    "category": "Foreign Institutional Investors(FIIs)",
+    "shares": "370000",
+    "applications": "1"
+   },
+   {
+    "srNo": "1(b)",
+    "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(c)",
+    "category": "Mutual funds",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "1(d)",
+    "category": "Others",
+    "shares": "2028000",
+    "applications": "4"
+   },
+   {
+    "srNo": "2",
+    "category": "Non Institutional Investors",
+    "shares": "7810000",
+    "applications": "537"
+   },
+   {
+    "srNo": "2.1",
+    "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
+    "shares": "6248000",
+    "applications": "291"
+   },
+   {
+    "srNo": "2.1(a)",
+    "category": "Corporates",
+    "shares": "930000",
+    "applications": "28"
+   },
+   {
+    "srNo": "2.1(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "5318000",
+    "applications": "263"
+   },
+   {
+    "srNo": "2.1(c)",
+    "category": "Others",
+    "shares": "0",
+    "applications": "0"
+   },
+   {
+    "srNo": "2.2",
+    "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
+    "shares": "1562000",
+    "applications": "246"
+   },
+   {
+    "srNo": "2.2(a)",
+    "category": "Corporates",
+    "shares": "90000",
+    "applications": "15"
+   },
+   {
+    "srNo": "2.2(b)",
+    "category": "Individuals(IND category bidding for more than 2 Lots)",
+    "shares": "1442000",
+    "applications": "226"
+   },
+   {
+    "srNo": "2.2(c)",
+    "category": "Others",
+    "shares": "30000",
+    "applications": "5"
+   },
+   {
+    "srNo": "3",
+    "category": "Individual Investors (IND category bidding for 2 Lots)",
+    "shares": "7004000",
+    "applications": "1751"
+   },
+   {
+    "srNo": null,
+    "category": "Total",
+    "shares": "17212000",
+    "applications": "2293"
+   }
+  ],
+  "bidsAsOn": "Updated as on 15-Oct-2026 19:00:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -5866,12 +6760,7 @@
    "TOTAL_BIDS": "17212000",
    "totalIssueSize": "5596000",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
-   "plotData": {
-    "51": "1,72,12,000",
-    "52": "1,71,80,000",
-    "53": "1,71,52,000",
-    "54": "1,71,44,000"
-   },
+   "plotData": {},
    "noOfTimesIssueSubscribed": "3.08",
    "graphData": [
     {
@@ -5893,11 +6782,11 @@
    ],
    "graphLogic": "https://nsearchives.nseindia.com/content/ipo/ipo_graph_logic.pdf",
    "totalBidRecieved": "17212000",
-   "timestamp": "As on 15-Oct-2026 18:03:00 IST"
+   "timestamp": "As on 15-Oct-2026 19:00:00 IST"
   },
-  "fetchedAt": "2026-10-15T12:37:40.527Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:11:43.744Z",
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z"
  },
  "FUSIONCX": {
   "symbol": "FUSIONCX",
@@ -6089,6 +6978,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -6170,8 +7061,9 @@
    "timestamp": "As on 16-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-17T17:51:10.862Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "TONBO": {
   "symbol": "TONBO",
@@ -6385,6 +7277,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -6550,8 +7444,9 @@
    "timestamp": "As on 19-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-20T18:21:44.724Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "BONFIG": {
   "symbol": "BONFIG",
@@ -6765,6 +7660,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -6902,8 +7799,9 @@
    "timestamp": "As on 19-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-20T18:21:51.826Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "SMT": {
   "symbol": "SMT",
@@ -7117,6 +8015,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -7210,8 +8110,9 @@
    "timestamp": "As on 19-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-20T18:21:52.639Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "ZETWERK": {
   "symbol": "ZETWERK",
@@ -7425,6 +8326,8 @@
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": null,
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
@@ -7482,8 +8385,9 @@
    "timestamp": "As on 19-Oct-2026 19:00:00 IST"
   },
   "fetchedAt": "2026-10-20T18:21:57.843Z",
-  "infoFrom": "2026-10-21T10:18:11.280Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "infoFrom": "2026-10-21T10:12:02.780Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "JPL": {
   "symbol": "JPL",
@@ -7500,8 +8404,8 @@
    "symbol": "JPL",
    "category": "Total",
    "noOfSharesOffered": "1.97525934E8",
-   "noOfTime": "1.460620396307049",
-   "noOfsharesBid": "2.88510408E8",
+   "noOfTime": "1.3607176868228352",
+   "noOfsharesBid": "2.68777032E8",
    "srNo": null
   },
   "info": {
@@ -7556,8 +8460,8 @@
    {
     "category": "Qualified Institutional Buyers(QIBs)",
     "noOfShareOffered": "49007827",
-    "noOfSharesBid": "410416860",
-    "noOfTotalMeant": "8.374516584871229",
+    "noOfSharesBid": "392354448",
+    "noOfTotalMeant": "8.00595480391326",
     "srNo": "1"
    },
    {
@@ -7570,7 +8474,7 @@
    {
     "category": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
     "noOfShareOffered": "",
-    "noOfSharesBid": "232352460",
+    "noOfSharesBid": "214479360",
     "noOfTotalMeant": "",
     "srNo": "1(b)"
    },
@@ -7584,243 +8488,293 @@
    {
     "category": "Others",
     "noOfShareOffered": "",
-    "noOfSharesBid": "7961532",
+    "noOfSharesBid": "7961352",
     "noOfTotalMeant": "",
     "srNo": "1(d)"
    },
    {
     "category": "Non Institutional Investors",
     "noOfShareOffered": "36444569",
-    "noOfSharesBid": "52635864",
-    "noOfTotalMeant": "1.44427182003442",
+    "noOfSharesBid": "51921540",
+    "noOfTotalMeant": "1.4246715333634485",
     "srNo": "2"
    },
    {
     "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
     "noOfShareOffered": "24296380",
-    "noOfSharesBid": "38235756",
-    "noOfTotalMeant": "1.5737223405297414",
+    "noOfSharesBid": "37786728",
+    "noOfTotalMeant": "1.5552410688341227",
     "srNo": "2.1"
    },
    {
     "category": "Corporates",
     "noOfShareOffered": "",
-    "noOfSharesBid": "9291348",
+    "noOfSharesBid": "9290448",
     "noOfTotalMeant": "",
     "srNo": "2.1(a)"
    },
    {
     "category": "Individuals(Other than RIIs)",
     "noOfShareOffered": "",
-    "noOfSharesBid": "19181724",
+    "noOfSharesBid": "18743496",
     "noOfTotalMeant": "",
     "srNo": "2.1(b)"
    },
    {
     "category": "Others",
     "noOfShareOffered": "",
-    "noOfSharesBid": "9762684",
+    "noOfSharesBid": "9752784",
     "noOfTotalMeant": "",
     "srNo": "2.1(c)"
    },
    {
     "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
     "noOfShareOffered": "12148189",
-    "noOfSharesBid": "14400108",
-    "noOfTotalMeant": "1.1853707577318726",
+    "noOfSharesBid": "14134812",
+    "noOfTotalMeant": "1.1635324409259684",
     "srNo": "2.2"
    },
    {
     "category": "Corporates",
     "noOfShareOffered": "",
-    "noOfSharesBid": "91788",
+    "noOfSharesBid": "91248",
     "noOfTotalMeant": "",
     "srNo": "2.2(a)"
    },
    {
     "category": "Individuals(Other than RIIs)",
     "noOfShareOffered": "",
-    "noOfSharesBid": "14109072",
+    "noOfSharesBid": "13851648",
     "noOfTotalMeant": "",
     "srNo": "2.2(b)"
    },
    {
     "category": "Others",
     "noOfShareOffered": "",
-    "noOfSharesBid": "199248",
+    "noOfSharesBid": "191916",
     "noOfTotalMeant": "",
     "srNo": "2.2(c)"
    },
    {
     "category": "Retail Individual Investors(RIIs)",
     "noOfShareOffered": "85037327",
-    "noOfSharesBid": "54097836",
-    "noOfTotalMeant": "0.6361657628302452",
+    "noOfSharesBid": "53346876",
+    "noOfTotalMeant": "0.6273348173326285",
     "srNo": "3"
    },
    {
     "category": "Cut Off",
     "noOfShareOffered": "",
-    "noOfSharesBid": "49538316",
+    "noOfSharesBid": "48860940",
     "noOfTotalMeant": "",
     "srNo": "3(a)"
    },
    {
     "category": "Price bids",
     "noOfShareOffered": "",
-    "noOfSharesBid": "4559520",
+    "noOfSharesBid": "4485936",
     "noOfTotalMeant": "",
     "srNo": "3(b)"
    },
    {
     "category": "Employees",
     "noOfShareOffered": "4694835",
-    "noOfSharesBid": "5790696",
-    "noOfTotalMeant": "1.2334184268456718",
+    "noOfSharesBid": "5727084",
+    "noOfTotalMeant": "1.219869068881015",
     "srNo": "4"
    },
    {
     "category": "Cut Off",
     "noOfShareOffered": "",
-    "noOfSharesBid": "5152632",
+    "noOfSharesBid": "5097120",
     "noOfTotalMeant": "",
     "srNo": "4(a)"
    },
    {
     "category": "Price Bids",
     "noOfShareOffered": "",
-    "noOfSharesBid": "638064",
+    "noOfSharesBid": "629964",
     "noOfTotalMeant": "",
     "srNo": "4(b)"
    },
    {
     "category": "Shareholders",
     "noOfShareOffered": "22341376",
-    "noOfSharesBid": "28301856",
-    "noOfTotalMeant": "1.2667910875319408",
+    "noOfSharesBid": "27852624",
+    "noOfTotalMeant": "1.2466834630060386",
     "srNo": "5"
    },
    {
     "category": "Cut Off",
     "noOfShareOffered": "",
-    "noOfSharesBid": "24761124",
+    "noOfSharesBid": "24389376",
     "noOfTotalMeant": "",
     "srNo": "5(a)"
    },
    {
     "category": "Price Bids",
     "noOfShareOffered": "",
-    "noOfSharesBid": "3540732",
+    "noOfSharesBid": "3463248",
     "noOfTotalMeant": "",
     "srNo": "5(b)"
    },
    {
     "category": "Total",
     "noOfShareOffered": "1.97525934E8",
-    "noOfSharesBid": "5.51243112E8",
-    "noOfTotalMeant": "2.79073790887631",
+    "noOfSharesBid": "5.31202572E8",
+    "noOfTotalMeant": "2.689280142829245",
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": "Updated as on 21-Oct-2026 15:42:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
-   "totalBidAtCutOff": "53957220",
+   "totalBidAtCutOff": "78382392",
    "heading1": "Jio Platforms Limited- Graphical display of bids received *",
-   "TOTAL_BIDS": "270178476",
+   "TOTAL_BIDS": "531461808",
    "totalIssueSize": "197525934",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
    "plotData": {
-    "1065": "27,01,78,476",
-    "1066": "26,99,44,308",
-    "1067": "26,99,27,724",
-    "1068": "26,99,24,352",
-    "1069": "26,99,20,752",
-    "1070": "26,99,17,596",
-    "1071": "26,98,81,104",
-    "1072": "26,98,77,360",
-    "1073": "26,98,75,464",
-    "1074": "26,98,74,972",
-    "1075": "26,98,73,628",
-    "1076": "26,98,57,752",
-    "1077": "26,98,57,044",
-    "1078": "26,98,56,024",
-    "1079": "26,98,55,364",
-    "1080": "26,98,54,656",
-    "1081": "26,98,26,288",
-    "1082": "26,98,25,496",
-    "1083": "26,98,25,136",
-    "1084": "26,98,24,188",
-    "1085": "26,98,22,988",
-    "1086": "26,98,15,368",
-    "1087": "26,98,14,852",
-    "1088": "26,98,14,456",
-    "1089": "26,98,13,832",
-    "1090": "26,98,12,404",
-    "1091": "26,97,93,240",
-    "1092": "26,97,92,520",
-    "1093": "26,97,89,820",
-    "1094": "26,97,89,340",
-    "1095": "26,97,88,992",
-    "1096": "26,97,83,148",
-    "1097": "26,97,82,524",
-    "1098": "26,97,81,864",
-    "1099": "26,97,80,844",
-    "1100": "26,97,76,536",
-    "1101": "26,96,73,336",
-    "1102": "26,96,68,272",
-    "1103": "26,96,67,852",
-    "1104": "26,96,67,672",
-    "1105": "26,96,66,232",
-    "1106": "26,96,63,460",
-    "1107": "26,96,62,980",
-    "1108": "26,96,62,500",
-    "1109": "26,96,60,988",
-    "1110": "26,96,59,464",
-    "1111": "26,96,30,424",
-    "1112": "26,96,06,712",
-    "1113": "26,96,04,120",
-    "1114": "26,96,02,080",
-    "1115": "26,96,00,052",
-    "1116": "26,95,89,084",
-    "1117": "26,95,83,528",
-    "1118": "26,95,79,700",
-    "1119": "26,95,51,596",
-    "Cut-Off": "5,39,57,220"
+    "1065": "53,14,61,808",
+    "1066": "53,10,80,076",
+    "1067": "53,10,55,920",
+    "1068": "53,10,50,628",
+    "1069": "53,10,45,408",
+    "1070": "53,10,39,648",
+    "1071": "53,09,81,052",
+    "1072": "53,09,76,216",
+    "1073": "53,09,73,708",
+    "1074": "53,09,73,024",
+    "1075": "53,09,71,224",
+    "1076": "53,09,45,904",
+    "1077": "53,09,44,776",
+    "1078": "53,09,42,532",
+    "1079": "53,09,41,224",
+    "1080": "53,09,39,748",
+    "1081": "53,08,94,016",
+    "1082": "53,08,92,516",
+    "1083": "53,08,91,712",
+    "1084": "53,08,90,104",
+    "1085": "53,08,88,136",
+    "1086": "53,08,75,680",
+    "1087": "53,08,74,792",
+    "1088": "53,08,73,928",
+    "1089": "53,08,73,028",
+    "1090": "53,08,70,136",
+    "1091": "53,08,35,540",
+    "1092": "53,08,34,556",
+    "1093": "53,08,29,300",
+    "1094": "53,08,28,328",
+    "1095": "53,08,27,728",
+    "1096": "53,08,17,516",
+    "1097": "53,08,16,676",
+    "1098": "53,08,15,764",
+    "1099": "53,08,13,892",
+    "1100": "53,08,05,840",
+    "1101": "53,06,41,800",
+    "1102": "53,06,32,980",
+    "1103": "53,06,32,368",
+    "1104": "53,06,31,432",
+    "1105": "53,06,28,924",
+    "1106": "53,06,24,160",
+    "1107": "53,06,23,332",
+    "1108": "53,06,22,312",
+    "1109": "53,06,20,008",
+    "1110": "53,06,17,416",
+    "1111": "53,05,68,060",
+    "1112": "53,05,27,764",
+    "1113": "53,05,23,168",
+    "1114": "53,05,19,064",
+    "1115": "53,05,15,032",
+    "1116": "53,04,97,560",
+    "1117": "53,04,86,820",
+    "1118": "53,04,68,484",
+    "1119": "53,04,12,792",
+    "Cut-Off": "7,83,82,392"
    },
-   "noOfTimesIssueSubscribed": "1.37",
+   "noOfTimesIssueSubscribed": "2.69",
    "graphData": [
     {
      "type": "1065",
-     "value": "2.342"
+     "value": "3.817"
     },
     {
      "type": "1066",
-     "value": "0.166"
+     "value": "0.242"
     },
     {
      "type": "1067",
-     "value": "0.034"
+     "value": "0.053"
     },
     {
      "type": "1068",
-     "value": "0.036"
+     "value": "0.052"
     },
     {
      "type": "1069",
-     "value": "0.032"
+     "value": "0.058"
     },
     {
      "type": "1070",
-     "value": "0.365"
+     "value": "0.586"
     },
     {
      "type": "1071",
-     "value": "0.037"
+     "value": "0.048"
     },
     {
      "type": "1072",
-     "value": "0.019"
+     "value": "0.025"
+    },
+    {
+     "type": "1073",
+     "value": "0.007"
+    },
+    {
+     "type": "1074",
+     "value": "0.018"
+    },
+    {
+     "type": "1075",
+     "value": "0.253"
+    },
+    {
+     "type": "1076",
+     "value": "0.011"
+    },
+    {
+     "type": "1077",
+     "value": "0.022"
+    },
+    {
+     "type": "1078",
+     "value": "0.013"
+    },
+    {
+     "type": "1079",
+     "value": "0.015"
+    },
+    {
+     "type": "1080",
+     "value": "0.457"
+    },
+    {
+     "type": "1081",
+     "value": "0.015"
+    },
+    {
+     "type": "1082",
+     "value": "0.008"
+    },
+    {
+     "type": "1083",
+     "value": "0.016"
+    },
+    {
+     "type": "1084",
+     "value": "0.02"
     },
     {
      "type": "1073",
@@ -7872,18 +8826,42 @@
     },
     {
      "type": "1085",
-     "value": "0.076"
+     "value": "0.125"
     },
     {
      "type": "1086",
-     "value": "0.005"
+     "value": "0.009"
     },
     {
      "type": "1087",
-     "value": "0.004"
+     "value": "0.009"
     },
     {
      "type": "1088",
+     "value": "0.009"
+    },
+    {
+     "type": "1089",
+     "value": "0.029"
+    },
+    {
+     "type": "1090",
+     "value": "0.346"
+    },
+    {
+     "type": "1091",
+     "value": "0.01"
+    },
+    {
+     "type": "1092",
+     "value": "0.053"
+    },
+    {
+     "type": "1093",
+     "value": "0.01"
+    },
+    {
+     "type": "1094",
      "value": "0.006"
     },
     {
@@ -7912,47 +8890,83 @@
     },
     {
      "type": "1095",
-     "value": "0.058"
+     "value": "0.102"
     },
     {
      "type": "1096",
-     "value": "0.006"
+     "value": "0.008"
     },
     {
      "type": "1097",
-     "value": "0.007"
+     "value": "0.009"
     },
     {
      "type": "1098",
-     "value": "0.01"
+     "value": "0.019"
     },
     {
      "type": "1099",
-     "value": "0.043"
+     "value": "0.081"
     },
     {
      "type": "1100",
-     "value": "1.032"
+     "value": "1.64"
     },
     {
      "type": "1101",
-     "value": "0.051"
+     "value": "0.088"
     },
     {
      "type": "1102",
-     "value": "0.004"
+     "value": "0.006"
     },
     {
      "type": "1103",
-     "value": "0.002"
+     "value": "0.009"
     },
     {
      "type": "1104",
-     "value": "0.014"
+     "value": "0.025"
     },
     {
      "type": "1105",
-     "value": "0.028"
+     "value": "0.048"
+    },
+    {
+     "type": "1106",
+     "value": "0.008"
+    },
+    {
+     "type": "1107",
+     "value": "0.01"
+    },
+    {
+     "type": "1108",
+     "value": "0.023"
+    },
+    {
+     "type": "1109",
+     "value": "0.026"
+    },
+    {
+     "type": "1110",
+     "value": "0.494"
+    },
+    {
+     "type": "1111",
+     "value": "0.403"
+    },
+    {
+     "type": "1112",
+     "value": "0.046"
+    },
+    {
+     "type": "1113",
+     "value": "0.041"
+    },
+    {
+     "type": "1114",
+     "value": "0.04"
     },
     {
      "type": "1106",
@@ -7992,35 +9006,36 @@
     },
     {
      "type": "1115",
-     "value": "0.11"
+     "value": "0.175"
     },
     {
      "type": "1116",
-     "value": "0.056"
+     "value": "0.107"
     },
     {
      "type": "1117",
-     "value": "0.038"
+     "value": "0.183"
     },
     {
      "type": "1118",
-     "value": "0.281"
+     "value": "0.557"
     },
     {
      "type": "1119",
-     "value": "2155.944"
+     "value": "4520.304"
     },
     {
      "type": "Cut-off",
-     "value": "539.572"
+     "value": "783.824"
     }
    ],
    "graphLogic": "https://nsearchives.nseindia.com/content/ipo/ipo_graph_logic.pdf",
-   "totalBidRecieved": "270178476",
-   "timestamp": "As on 21-Oct-2026 15:51:00 IST"
+   "totalBidRecieved": "531461808",
+   "timestamp": "As on 21-Oct-2026 15:42:00 IST"
   },
-  "fetchedAt": "2026-10-21T10:27:33.338Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:14:27.825Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  },
  "PARASHLTH": {
   "symbol": "PARASHLTH",
@@ -8037,8 +9052,8 @@
    "symbol": "PARASHLTH",
    "category": "Total",
    "noOfSharesOffered": "1.2083331E7",
-   "noOfTime": "0.08217982276575887",
-   "noOfsharesBid": "993006.0",
+   "noOfTime": "0.07908109113290036",
+   "noOfsharesBid": "955563.0",
    "srNo": null
   },
   "info": {
@@ -8126,15 +9141,15 @@
    {
     "category": "Non Institutional Investors",
     "noOfShareOffered": "3295454",
-    "noOfSharesBid": "210105",
-    "noOfTotalMeant": "0.06375601055271898",
+    "noOfSharesBid": "196350",
+    "noOfTotalMeant": "0.059582078827378565",
     "srNo": "2"
    },
    {
     "category": "Non Institutional Investors(Bid amount of more than Ten Lakh Rupees)",
     "noOfShareOffered": "2196970",
-    "noOfSharesBid": "82278",
-    "noOfTotalMeant": "0.037450670696459215",
+    "noOfSharesBid": "74466",
+    "noOfTotalMeant": "0.03389486429036355",
     "srNo": "2.1"
    },
    {
@@ -8147,7 +9162,7 @@
    {
     "category": "Individuals(Other than RIIs)",
     "noOfShareOffered": "",
-    "noOfSharesBid": "78015",
+    "noOfSharesBid": "74466",
     "noOfTotalMeant": "",
     "srNo": "2.1(b)"
    },
@@ -8161,21 +9176,21 @@
    {
     "category": "Non Institutional Investors(Bid amount of more than Two Lakh Rupees upto Ten Lakh Rupees)",
     "noOfShareOffered": "1098484",
-    "noOfSharesBid": "127827",
-    "noOfTotalMeant": "0.11636673815913569",
+    "noOfSharesBid": "121884",
+    "noOfTotalMeant": "0.1109565546698905",
     "srNo": "2.2"
    },
    {
     "category": "Corporates",
     "noOfShareOffered": "",
-    "noOfSharesBid": "2835",
+    "noOfSharesBid": "2520",
     "noOfTotalMeant": "",
     "srNo": "2.2(a)"
    },
    {
     "category": "Individuals(Other than RIIs)",
     "noOfShareOffered": "",
-    "noOfSharesBid": "122031",
+    "noOfSharesBid": "116403",
     "noOfTotalMeant": "",
     "srNo": "2.2(b)"
    },
@@ -8189,74 +9204,76 @@
    {
     "category": "Retail Individual Investors(RIIs)",
     "noOfShareOffered": "2196969",
-    "noOfSharesBid": "1410423",
-    "noOfTotalMeant": "0.6419858450437853",
+    "noOfSharesBid": "1376004",
+    "noOfTotalMeant": "0.6263192607633516",
     "srNo": "3"
    },
    {
     "category": "Cut Off",
     "noOfShareOffered": "",
-    "noOfSharesBid": "1295700",
+    "noOfSharesBid": "1273755",
     "noOfTotalMeant": "",
     "srNo": "3(a)"
    },
    {
     "category": "Price bids",
     "noOfShareOffered": "",
-    "noOfSharesBid": "114723",
+    "noOfSharesBid": "102249",
     "noOfTotalMeant": "",
     "srNo": "3(b)"
    },
    {
     "category": "Total",
     "noOfShareOffered": "1.2083331E7",
-    "noOfSharesBid": "1621116.0",
-    "noOfTotalMeant": "0.13416135004495036",
+    "noOfSharesBid": "1572942.0",
+    "noOfTotalMeant": "0.13017453548197927",
     "srNo": null
    }
   ],
+  "bidDetails": [],
+  "bidsAsOn": "Updated as on 21-Oct-2026 15:39:00",
   "demand": {
    "noOfShare": "Cumulative Demand(no. of shares in lakhs)",
    "note": "Cumulative bid quantity at each price point includes the quantity bid at that relevant price point and all valid bids at the next higher price point.  The graph is updated every hour.",
-   "totalBidAtCutOff": "776811",
+   "totalBidAtCutOff": "764736",
    "heading1": "Paras Healthcare Limited- Graphical display of bids received *",
-   "TOTAL_BIDS": "989940",
+   "TOTAL_BIDS": "954429",
    "totalIssueSize": "12083331",
    "heading2": "(* indicates bids position and not necessarily the subscription to the issue)",
    "plotData": {
-    "660": "9,89,940",
-    "661": "9,84,585",
-    "662": "9,83,892",
-    "663": "9,83,766",
-    "664": "9,83,388",
-    "665": "9,83,325",
-    "666": "9,82,611",
-    "668": "9,82,191",
-    "669": "9,82,170",
-    "670": "9,82,128",
-    "671": "9,81,498",
-    "672": "9,81,330",
-    "673": "9,81,267",
-    "674": "9,81,246",
-    "675": "9,81,204",
-    "679": "9,80,805",
-    "680": "9,80,700",
-    "681": "9,79,776",
-    "682": "9,79,461",
-    "683": "9,79,440",
-    "685": "9,79,419",
-    "689": "9,79,188",
-    "690": "9,79,167",
-    "691": "9,78,411",
-    "692": "9,78,327",
-    "693": "9,78,264",
-    "Cut-Off": "7,76,811"
+    "660": "9,54,429",
+    "661": "9,49,158",
+    "662": "9,48,465",
+    "663": "9,48,360",
+    "664": "9,48,276",
+    "665": "9,48,213",
+    "666": "9,47,520",
+    "668": "9,47,100",
+    "669": "9,47,079",
+    "670": "9,47,037",
+    "671": "9,46,407",
+    "672": "9,46,239",
+    "673": "9,46,176",
+    "674": "9,46,155",
+    "675": "9,46,113",
+    "679": "9,45,714",
+    "680": "9,45,609",
+    "681": "9,44,790",
+    "682": "9,44,475",
+    "683": "9,44,454",
+    "685": "9,44,433",
+    "689": "9,44,202",
+    "690": "9,44,181",
+    "691": "9,43,425",
+    "692": "9,43,341",
+    "693": "9,43,278",
+    "Cut-Off": "7,64,736"
    },
    "noOfTimesIssueSubscribed": "0.08",
    "graphData": [
     {
      "type": "660",
-     "value": "0.054"
+     "value": "0.053"
     },
     {
      "type": "661",
@@ -8268,7 +9285,7 @@
     },
     {
      "type": "663",
-     "value": "0.004"
+     "value": "0.001"
     },
     {
      "type": "664",
@@ -8320,7 +9337,7 @@
     },
     {
      "type": "680",
-     "value": "0.009"
+     "value": "0.008"
     },
     {
      "type": "681",
@@ -8356,18 +9373,19 @@
     },
     {
      "type": "693",
-     "value": "2.015"
+     "value": "1.785"
     },
     {
      "type": "Cut-off",
-     "value": "7.768"
+     "value": "7.647"
     }
    ],
    "graphLogic": "https://nsearchives.nseindia.com/content/ipo/ipo_graph_logic.pdf",
-   "totalBidRecieved": "989940",
-   "timestamp": "As on 21-Oct-2026 15:51:00 IST"
+   "totalBidRecieved": "954429",
+   "timestamp": "As on 21-Oct-2026 15:39:00 IST"
   },
-  "fetchedAt": "2026-10-21T10:27:32.475Z",
-  "savedAt": "2026-10-21T10:27:38.473Z"
+  "fetchedAt": "2026-10-21T10:14:28.583Z",
+  "savedAt": "2026-10-21T10:14:33.408Z",
+  "bidDetailsTried": true
  }
 }

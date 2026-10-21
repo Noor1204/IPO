@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "app-stocks.js", "app-fno.js", "app-mf.js", "data/mf/**", "data/stocks/**", "data/fno/**", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
 
 # no permissions by default; each job asks only for what it needs
 permissions: {}
@@ -47,6 +47,12 @@ jobs:
       - name: SEBI
         continue-on-error: true
         run: node pipeline/sebi.mjs
+      - name: Category sizes and anchor allocation (NSE PDFs)
+        continue-on-error: true
+        timeout-minutes: 5          # only issues not cached yet are downloaded, so this is usually a few seconds
+        run: |
+          command -v pdftotext >/dev/null || (sudo apt-get update -qq && sudo apt-get install -y -qq poppler-utils)
+          node pipeline/params.mjs
       - name: Offer-document links
         continue-on-error: true
         timeout-minutes: 3          # this step downloads big PDFs from SEBI; the first run took 6 minutes, so it is capped
@@ -66,7 +72,7 @@ jobs:
         run: |
           git config user.name "trendy-ipo-bot"
           git config user.email "trendy-ipo-bot@users.noreply.github.com"
-          git add data/ipos.json data/gmp.json data/sub-history.json data/quotes.json data/sebi.json data/bse.json data/nse.json data/nse-history.json data/offer-docs.json data/fundamentals data/logos data/logos.json
+          git add data/params.json data/contacts.json data/ipos.json data/gmp.json data/sub-history.json data/quotes.json data/sebi.json data/bse.json data/nse.json data/nse-history.json data/offer-docs.json data/fundamentals data/logos data/logos.json
           if ! git diff --cached --quiet; then
             git commit -m "data: refresh $(date -u +'%Y-%m-%d %H:%M') UTC"
             git fetch -q origin main

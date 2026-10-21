@@ -26,7 +26,7 @@ async function api(u, tries = 3) {
 
 // nsearchives rejects Node's HTTP/2 client, curl over HTTP/1.1 works.
 function download(url, file) {
-  execFileSync("curl", ["-sS", "-L", "--http1.1", "--fail", "-m", "240", "-A", UA, "-e", "https://www.nseindia.com/", "-o", file, url], { stdio: "pipe" });
+  execFileSync("curl", ["-sS", "-L", "--http1.1", "--ssl-no-revoke", "--fail", "-m", "240", "-A", UA, "-e", "https://www.nseindia.com/", "-o", file, url], { stdio: "pipe" });
 }
 
 const current = (await api("ipo-current-issue")) || [];
@@ -34,6 +34,7 @@ const upcoming = (await api("all-upcoming-issues?category=ipo")) || [];
 const past = (await api("public-past-issues")) || [];
 console.log(`NSE: ${current.length} live, ${upcoming.length} upcoming, ${past.length} past`);
 
+if (!current.length && !upcoming.length && !past.length) { console.log("NSE unreachable (all three lists empty): nse.json left unchanged"); process.exit(0); }   // never blank the data because of an outage
 const symbols = new Map();
 for (const c of current) if (!symbols.has(c.symbol)) symbols.set(c.symbol, { symbol: c.symbol, name: c.companyName, bucket: "live" });
 for (const c of upcoming) if (c.symbol && !symbols.has(c.symbol)) symbols.set(c.symbol, { symbol: c.symbol, name: c.companyName, bucket: "upcoming", row: c });
@@ -52,8 +53,9 @@ for (const s of symbols.values()) {
   // NSE Emerge (SME) issues only return their full detail (registrar, lead manager, prospectus, ...) with series=SME
   const first = /SME|^SM$/i.test(rowOf?.series || rowOf?.securityType || "") ? "SME" : "EQ";
   const tries = s.bucket === "listed" ? 1 : 3;                  // closed issues often have no detail any more: don't hammer NSE
-  if (s.bucket === "listed" && history[s.symbol]?.info && Object.keys(history[s.symbol].info).length) {
-    result.push({ ...s, row: rowOf, info: history[s.symbol].info, bids: history[s.symbol].bids || [], demand: history[s.symbol].demand || null, fetchedAt: history[s.symbol].fetchedAt, infoFrom: history[s.symbol].savedAt });
+  const hh = history[s.symbol], needBd = hh && /SME/i.test(rowOf?.securityType || rowOf?.series || "") && !hh.bidDetails?.length && !hh.bidDetailsTried;   // finished SME: category-wise bids (bidDetails) were not stored by older runs
+  if (s.bucket === "listed" && hh?.info && Object.keys(hh.info).length && !needBd) {
+    result.push({ ...s, row: rowOf, info: hh.info, bids: hh.bids || [], bidDetails: hh.bidDetails || [], bidsAsOn: hh.bidsAsOn || null, demand: hh.demand || null, fetchedAt: hh.fetchedAt, infoFrom: hh.savedAt });
     console.log(s.bucket.padEnd(9), s.symbol.padEnd(12), "kept from history");
     continue;
   }
@@ -66,6 +68,9 @@ for (const s of symbols.values()) {
     row: rowOf,
     info,
     bids: detail?.activeCat?.dataList || detail?.bidDetails || [],
+    // category-wise bids as NSE publishes them for SME issues (shares bid + number of applications; includes the Retail row that activeCat lacks)
+    bidDetails: (detail?.bidDetails || []).filter(b => b && b.category && b.noOfshareBid != null).map(b => ({ srNo: b.srNo ?? null, category: String(b.category).replace(/\s+/g, " ").trim(), shares: b.noOfshareBid, applications: b.noofapplication ?? null })),
+    bidsAsOn: detail?.activeCat?.updateTime || detail?.demandGraphALL?.timestamp || null,
     demand: detail?.demandGraphALL || detail?.demandGraph || null,
     fetchedAt: new Date().toISOString(),
   });
@@ -75,14 +80,24 @@ for (const s of symbols.values()) {
 // its "past issues" list. Keep the last good copy per symbol in data/nse-history.json so that data doesn't vanish from the app.
 const KEEP_HISTORY_DAYS = 90;
 for (const r of result) {
-  if (Object.keys(r.info).length) history[r.symbol] = { ...r, savedAt: new Date().toISOString() };
-  else if (history[r.symbol]) { const h = history[r.symbol]; r.info = h.info; if (!r.bids?.length) r.bids = h.bids; r.demand ||= h.demand; r.infoFrom = h.savedAt; }
+  if (Object.keys(r.info).length) {
+    const old = history[r.symbol]; history[r.symbol] = { ...r, savedAt: new Date().toISOString() };
+    if (!r.bidDetails?.length) { history[r.symbol].bidDetails = r.bidDetails = old?.bidDetails || []; history[r.symbol].bidDetailsTried = true; if (!r.bidsAsOn) history[r.symbol].bidsAsOn = r.bidsAsOn = old?.bidsAsOn || null; }   // a failed fetch never blanks what we had
+  }
+  else if (history[r.symbol]) { const h = history[r.symbol]; r.info = h.info; if (!r.bids?.length) r.bids = h.bids; if (!r.bidDetails?.length) { r.bidDetails = h.bidDetails || []; r.bidsAsOn ||= h.bidsAsOn || null; } r.demand ||= h.demand; r.infoFrom = h.savedAt; }
 }
 const have = new Set(result.map(r => r.symbol));
 for (const [sym, h] of Object.entries(history)) {
   const closeStr = String(h.info?.["Issue Period"] || "").split(/\s+to\s+/)[1], c = closeStr ? new Date(closeStr.replace(/-/g, " ")) : null;
   if (c && Date.now() - c > KEEP_HISTORY_DAYS * 864e5) { delete history[sym]; continue; }
-  if (!have.has(sym)) result.push({ ...h, bucket: "listed", infoFrom: h.savedAt });     // fell off NSE's lists but still recent
+  if (!have.has(sym)) {                                                                  // fell off NSE's lists but still recent
+    if (/SME/i.test(h.row?.securityType || h.row?.series || "") && !h.bidDetails?.length && !h.bidDetailsTried) {   // finished SME: try once to add the category-wise bids
+      const d = await api(`ipo-detail?symbol=${sym}&series=SME`, 1); await sleep(150);
+      const bd = (d?.bidDetails || []).filter(b => b && b.category && b.noOfshareBid != null).map(b => ({ srNo: b.srNo ?? null, category: String(b.category).replace(/\s+/g, " ").trim(), shares: b.noOfshareBid, applications: b.noofapplication ?? null }));
+      h.bidDetailsTried = true; if (bd.length) { h.bidDetails = bd; h.bidsAsOn = d?.activeCat?.updateTime || h.bidsAsOn || null; }
+    }
+    result.push({ ...h, bucket: "listed", infoFrom: h.savedAt });
+  }
 }
 await fs.writeFile(histFile, JSON.stringify(history, null, 1));
 await fs.writeFile(path.join(DATA, "nse.json"), JSON.stringify(result, null, 1));

@@ -62,6 +62,10 @@ function bids(rows) {
 }
 
 const quotes = await read("quotes.json", {});
+const params = await read("params.json", {});          // category shares + anchor summary parsed from NSE PDFs (params.mjs)
+const contactsFile = await read("contacts.json", {});  // company / registrar contacts parsed from offer documents (contacts.mjs)
+const prevOut = await read("ipos.json", { ipos: [], filings: [] });   // a source failure must never blank what we already had
+const prevBy = new Map((prevOut.ipos || []).map(i => [i.symbol, i]));
 const sebi = await read("sebi.json", { filings: [], offerDocs: [] });
 const verify = await read("verify.json", {});
 const logos = await read("logos.json", {});
@@ -155,6 +159,73 @@ async function docsFor(symbol, name, info, ig, bse = null) {
   return list;
 }
 
+// ---- exchange timestamp ("Updated as on 16-Oct-2026 19:00:00", "As on 16-Oct-2026 19:00:00 IST") -> ISO with the +05:30 offset
+const istIso = s => {
+  const m = String(s || "").match(/(\d{1,2})[- ]([A-Za-z]{3})[A-Za-z]*[- ,]+(\d{4})[ ,T]+(\d{1,2}):(\d{2})(?::(\d{2}))?/); if (!m || MON[m[2].toLowerCase()] == null) return null;
+  const p = n => String(n).padStart(2, "0");
+  return `${m[3]}-${p(MON[m[2].toLowerCase()] + 1)}-${p(m[1])}T${p(m[4])}:${m[5]}:${p(m[6] || 0)}+05:30`;
+};
+const r2 = x => Math.round(x * 100) / 100;
+// ---- finished SME issues: NSE's category table shows "offered 0" and omits Retail. NSE's bidDetails has the real shares bid per category (and number of applications);
+// the shares offered per category come from NSE's Security Parameters PDF (params.json). Everything must reconcile or it is not used.
+function smeBids(r, b, cats) {
+  const bd = r.bidDetails || []; if (!bd.length || b.qib?.offered > 0) return null;
+  const by = {}; for (const x of bd) by[/^total$/i.test(x.category) ? "T" : String(x.srNo ?? "")] = x;
+  const one = (k, off) => { const x = by[k]; if (!x) return null; const bid = num(x.shares); if (bid == null) return null; return { offered: off ?? null, bid, times: off > 0 ? r2(bid / off) : null, applications: num(x.applications) }; };
+  const T = by.T ? num(by.T.shares) : null, q = by["1"] ? num(by["1"].shares) : null, n = by["2"] ? num(by["2"].shares) : null, rt = by["3"] ? num(by["3"].shares) : null;
+  if (T == null || q == null || n == null || rt == null || !(T > 0)) return null;
+  if (Math.abs(q + n + rt - T) > T * 0.1) return null;                                    // categories must add up to the Total row
+  const dt = num(r.demand?.noOfTimesIssueSubscribed);
+  let c = cats?.categories || null;
+  if (c && !(dt > 0 && Math.abs(T / c.total - dt) <= dt * 0.02 + 0.006)) c = null;       // the PDF's issue size must reproduce NSE's own total subscription
+  const out = { qib: one("1", c?.qib), nii: one("2", c?.nii), bnii: one("2.1", c?.bnii), snii: one("2.2", c?.snii), retail: one("3", c?.retail), employee: null, shareholders: null, other: null,
+    marketMaker: c?.marketMaker ? { offered: c.marketMaker, bid: null, times: null } : null,
+    total: { offered: c?.total ?? null, bid: T, times: dt > 0 ? dt : (c ? r2(T / c.total) : null) } };
+  return { bids: out, withOffered: !!c };
+}
+// ---- who to contact: registrar from NSE/BSE issue info, the rest from the offer document (contacts.json)
+const phoneOf = s => { const m = String(s || "").replace(/\s+/g, " ").match(/(\+?\d[\d ()-]{7,}\d)/); return m ? m[1].trim() : null; };
+const emailOf = s => (String(s || "").match(/[\w.+-]+@[\w-]+(?:\.[\w-]+)+/) || [])[0]?.toLowerCase() || null;
+function contactsFor(r, info, domain) {
+  const ci = info["Contact person name number and Email id"];
+  const reg = info["Name of the Registrar"] ? { name: info["Name of the Registrar"], address: info["Address of the Registrar"] || null, phone: phoneOf(ci), email: emailOf(ci),
+    contactPerson: (String(ci || "").split(/[,;]|\+?\d{2}/)[0] || "").trim() || null, website: null } : null;
+  const f = contactsFile[r.symbol] || {};
+  const reg2 = reg ? { ...reg, website: f.registrar?.website || null, phone: reg.phone || f.registrar?.phone || null, email: reg.email || f.registrar?.email || null } : (f.registrar || null);
+  const co = f.company ? { ...f.company } : {};
+  if (!co.website && domain) co.website = "https://" + domain;     // domain read from the offer document's cover page and matched to the company name (logos.mjs)
+  const company = ["address", "phone", "email", "website", "contactPerson"].some(k => co[k]) ? { address: co.address || null, phone: co.phone || null, email: co.email || null, website: co.website || null, contactPerson: co.contactPerson || null } : null;
+  return company || reg2 ? { company, registrar: reg2, source: "NSE issue info" + (f.company || f.registrar ? " + offer document" : "") + (company?.website && !f.company?.website ? " (company website from offer document cover)" : "") } : null;
+}
+// ---- "Apply as": what each investor category pays and may bid, only from what NSE states
+function applyAsFor(info, priceLow, priceHigh, lot, board) {
+  if (!priceHigh || !lot) return { applyAs: null, minInvestment: null, minInvestmentLots: null };
+  const cat = String(info["Categories"] || ""), disc = String(info["Discount"] || "");
+  const rupees = t => { const m = String(t).match(/Rs\.?\s*([\d,]+(?:\.\d+)?)/i); return m ? num(m[1]) : null; };
+  const maxOf = re => { for (const [k, v] of Object.entries(info)) if (re.test(k)) { const x = num(v); if (x) return x; } return null; };
+  const moq = num(info["Minimum Order Quantity"]);                                          // shares, e.g. "43 Equity Shares"
+  const minLots = moq && lot && moq % lot === 0 ? moq / lot : null;
+  const out = [{ category: "Regular", priceLow, priceHigh, maxAmount: maxOf(/Maximum Subscription Amount for Retail/i), minAmount: minLots ? Math.round(minLots * lot * priceHigh) : null, lot, note: "Retail individual investors" }];
+  const empMax = maxOf(/Maximum Subscription Amount for (Eligible )?Employee/i);
+  if (/\bEMP\b/.test(cat) || empMax) {
+    const d = /employee/i.test(disc) ? rupees(disc) : /^\s*(na|nil|-)?\s*$/i.test(disc) ? 0 : null;       // "Rs. 14/- per equity share is being offered to Eligible Employees"
+    out.push({ category: "Employee", priceLow: d != null && priceLow != null ? r2(priceLow - d) : null, priceHigh: d != null ? r2(priceHigh - d) : null, maxAmount: empMax, minAmount: null, lot, note: d ? `Discount Rs ${d} per share` : d === 0 ? "No discount stated" : "Discount not stated" });
+  }
+  const shMax = maxOf(/Maximum Subscription Amount for Shareholder/i);
+  if (/\bSHA\b/.test(cat) || shMax) {
+    const d = /shareholder/i.test(disc) ? rupees(disc) : null;
+    out.push({ category: "Shareholder", priceLow: d != null && priceLow != null ? r2(priceLow - d) : null, priceHigh: d != null ? r2(priceHigh - d) : null, maxAmount: shMax, minAmount: null, lot, note: d ? `Discount Rs ${d} per share` : "Price for shareholders not stated by NSE" });
+  }
+  const retMax = out[0].maxAmount;
+  if (retMax && /\bNOH\b|\bNII\b|\bNIB\b/.test(cat)) {                  // HNI / non-institutional: must bid above the retail limit, no upper limit except the issue size
+    const unit = lot * priceHigh, minAmt = Math.round((Math.floor(retMax / unit) + 1) * unit);
+    out.push({ category: "HNI", priceLow, priceHigh, maxAmount: null, minAmount: minAmt, lot, note: "Non-institutional: bid above the retail limit" });
+  }
+  return { applyAs: out, minInvestment: minLots ? Math.round(minLots * lot * priceHigh) : (moq == null && board === "Mainboard" ? Math.round(lot * priceHigh) : null), minInvestmentLots: minLots ?? (moq == null && board === "Mainboard" ? 1 : null) };
+}
+// anything a source failed to give this time is taken from the previous build instead of being blanked
+const carry = (cur, prev) => cur == null || (Array.isArray(cur) && !cur.length) ? (prev ?? cur) : cur;
+
 const out = [];
 for (const r of nse) {
   if (r.row?.series === "DEBT" || /\bZCZP\b/i.test(r.name || "")) continue;                // not an IPO (social-stock bond): never shown
@@ -179,6 +250,16 @@ for (const r of nse) {
     if (b.total && !(b.total.offered > 0 && b.total.times > 0) && dt > 0 && db > 0) b.total = { offered: null, bid: db, times: dt };
     if (b.total && !(b.total.offered > 0) && !(b.total.times > 0)) b.total = { ...b.total, times: null }; }
   const status = statusOf(open, close);
+  const boardVal = boardFor(row.series === "SME" ? "SME" : ig?.board || (Object.keys(info).length ? "Mainboard" : "SME"), lot, priceHigh);
+  const pc = params[r.symbol] || null, prev = prevBy.get(r.symbol) || null;
+  const sme = smeBids(r, b, pc);
+  let bidsOut = b, bidsSource = "NSE bid table";
+  if (sme) { bidsOut = sme.bids; bidsSource = sme.withOffered ? "NSE bid details + NSE security-parameters PDF (shares offered)" : "NSE bid details (shares bid; shares offered per category not available)"; }
+  const anc = pc?.anchor?.amountVerified && pc.anchor.totalShares ? pc.anchor : null;
+  if (anc) bidsOut = { ...bidsOut, anchor: { offered: anc.totalShares, bid: anc.totalShares, times: null } };
+  if (!bidsOut.total && prev?.bids?.total) { bidsOut = prev.bids; bidsSource = (prev.bidsSource || "previous build") + " (kept from previous build)"; }   // source failed this time
+  const aa = applyAsFor(info, priceLow, priceHigh, lot, boardVal);
+  const subsAsOnX = istIso(r.bidsAsOn) || istIso(r.demand?.timestamp);
   const fund = await fs.readFile(path.join(DATA, "fundamentals", `${r.symbol}.json`), "utf8").then(t => { try { return JSON.parse(t); } catch { return null; } }, () => null);   // tolerate a file that is mid-write
   if (b.total?.times != null && status === "live") {
     const h = (subHist[r.symbol] ||= []); const snap = { at: new Date().toISOString(), date: today, qib: b.qib?.times ?? null, bnii: b.bnii?.times ?? null, snii: b.snii?.times ?? null, nii: b.nii?.times ?? null, retail: b.retail?.times ?? null, total: b.total.times };
@@ -195,7 +276,14 @@ for (const r of nse) {
     priceLow, priceHigh, lot, faceValue: num(info["Face Value"]), issueShares, issueSizeCr: fullCr ?? (issueShares && priceHigh ? Math.round(issueShares * priceHigh / 1e5) / 100 : null) ?? ig?.igSizeCr ?? null,
     issueType: info["Issue Type"] || null, maxRetailAmount: num(info["Maximum Subscription Amount for Retail Investor"]),
     issueDetail: info["Issue Size"] || null, upiCutoff: info["Cut-off time for UPI Mandate Confirmation"] || null,
-    bids: b, demand: r.demand ? { asOn: r.demand.timestamp, totalBids: num(r.demand.totalBidRecieved), timesSubscribed: num(r.demand.noOfTimesIssueSubscribed), byPrice: r.demand.plotData || null } : null,
+    bids: bidsOut, bidsSource,
+    // when the exchange's own table was last updated (ISO, +05:30); else the time we fetched it
+    subsAsOn: subsAsOnX || r.fetchedAt || null, subsAsOnSource: subsAsOnX ? "exchange" : "fetched",
+    applyAs: carry(aa.applyAs, prev?.applyAs), minInvestment: carry(aa.minInvestment, prev?.minInvestment), minInvestmentLots: carry(aa.minInvestmentLots, prev?.minInvestmentLots),
+    contacts: carry(contactsFor(r, info, logos[r.symbol]?.domain), prev?.contacts),
+    anchorSummary: anc ? { bidDate: anc.bidDate, price: anc.price, totalShares: anc.totalShares, totalAmountCr: anc.totalAmountCr } : (prev?.anchorSummary ?? null),
+    anchorInvestors: null,        // the NSE anchor letters are free-form (some scanned images): the list of investors cannot be read reliably, so it is not shown
+    demand: r.demand ? { asOn: r.demand.timestamp, totalBids: num(r.demand.totalBidRecieved), timesSubscribed: num(r.demand.noOfTimesIssueSubscribed), byPrice: r.demand.plotData || null } : null,
     registrar: { name: info["Name of the Registrar"] || null, address: info["Address of the Registrar"] || null, contact: info["Contact person name number and Email id"] || null },
     leadManagers: info["Book Running Lead Managers"] || null, sponsorBank: info["Sponsor Bank"] || null,
     docs: { rhp: info["Red Herring Prospectus"] || null, anchor: info["Anchor Allocation Report"] || null },
@@ -219,7 +307,8 @@ for (const [k, g] of Object.entries(gmp.current)) {
     timeline: { open: g.open, close: g.close, allotment: g.allotment, refund: g.allotment ? addWorkdays(g.allotment, 1) : null, demat: g.allotment ? addWorkdays(g.allotment, 1) : null, listing: g.listing },
     allotment: g.allotment, listing: g.listing, datesExpected: !g.listing, priceLow: null, priceHigh: g.igPrice, lot: g.igLot, faceValue: null, issueShares: null, issueSizeCr: g.igSizeCr,
     issueType: null, maxRetailAmount: null, issueDetail: null, upiCutoff: null,
-    bids: { total: g.igSub != null ? { offered: null, bid: null, times: g.igSub } : null }, demand: null,
+    bids: { total: g.igSub != null ? { offered: null, bid: null, times: g.igSub } : null }, bidsSource: "InvestorGain (unofficial)", subsAsOn: g.igUpdated && istIso(g.igUpdated) || g.scrapedAt || null, subsAsOnSource: "fetched",
+    applyAs: null, minInvestment: null, minInvestmentLots: null, contacts: null, anchorSummary: null, anchorInvestors: null, demand: null,
     registrar: { name: null, address: null, contact: null }, leadManagers: null, sponsorBank: null, docs: {}, documents: await docsFor("IG", g.name, {}, g), anchor: g.anchor ?? null,
     gmp: gmpBlock(k), subHistory: [], listingPerf: null, checks: [], fundamentals: null, fetchedAt: g.scrapedAt, sourceNote: "Schedule from InvestorGain only (not in NSE's public API)",
   });
@@ -230,11 +319,14 @@ const known = out.map(i => norm(i.name));
 const filingsRaw = (() => {
   const seen = new Map();                                             // one row per company: the same company can be filed twice (e.g. "(I)" and "I" in its name); the newest filing wins
   for (const f of sebi.filings || []) { const n = norm(f.company), p = seen.get(n); if (!p || String(f.date) > String(p.date)) seen.set(n, f); }
-  return [...seen.values()].filter(f => { const n = norm(f.company); return !known.some(k => k === n || k.startsWith(n + " ") || n.startsWith(k + " ")); });
+  const cutRhp = new Date(Date.now() - 14 * 864e5).toISOString().slice(0, 10);
+  return [...seen.values()].filter(f => { const n = norm(f.company); return !known.some(k => k === n || k.startsWith(n + " ") || n.startsWith(k + " ")); })
+    .filter(f => !f.prospectusDate && !(f.rhpDate && f.rhpDate < cutRhp));   // a final prospectus means the issue is over; an RHP older than 2 weeks without an IPO row is stale
 })();
-const filings = filingsRaw.map(f => { const k = findG(f.company), g = k ? gmp.current[k] : null;   // grey-market quote / dates if InvestorGain already lists it
+let filings = filingsRaw.map(f => { const k = findG(f.company), g = k ? gmp.current[k] : null;   // grey-market quote / dates if InvestorGain already lists it
   const lk = "F-" + String(f.company).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");   // same key logos.mjs uses
   return { ...f, gmp: g?.gmp ?? null, gmpUpdated: g?.igUpdated || null, open: g?.open || null, close: g?.close || null, logo: logos[lk]?.file || null }; });
+if (!filings.length && !(sebi.filings || []).length && (prevOut.filings || []).length) { filings = prevOut.filings; console.log("build: sebi.json has no filings - kept the previous list"); }   // SEBI source failed: never blank the list
 
 await fs.writeFile(path.join(DATA, "sub-history.json"), JSON.stringify(subHist, null, 1));
 out.sort((a, b) => (b.open || "").localeCompare(a.open || ""));

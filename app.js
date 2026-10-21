@@ -182,7 +182,7 @@ function listCard(i) {
   ${actionBtn(i)}</div></div>`;
 }
 const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
-const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
+const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
@@ -488,7 +488,7 @@ function detail(forReport = false) {
   return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${onWebsite() ? "<span>⧉</span> Copy link" : "<span>⤴</span> Share"}</button></div>
   <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
   <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
-  <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div class="tile">Subscription<b>${subNow(i)}</b></div>
+  <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b>${isNum(i.lot) && i.lot > 0 && isNum(i.priceHigh) && i.priceHigh > 0 ? `<span class="mut sm" style="display:block;font-size:11.5px">Min ₹${inr(i.lot * i.priceHigh)}</span>` : ""}</div><div class="tile">Subscription<b>${subNow(i)}</b></div>
   <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile">${cdFor(i)}${actionBtn(i, true)}</div></div>
   <div class="row"><button class="btn ghost" data-watch="${i.symbol}">${inW ? "★ Watching" : "☆ Watchlist"}</button><button class="btn" data-cmp="${i.symbol}">${state.cmp.includes(i.symbol) ? "✓ In compare" : "+ Compare"}</button></div></div>
 
@@ -516,7 +516,7 @@ function detail(forReport = false) {
 
   ${N !== null && anyBid ? card("", `<div class="alot">👥 ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">ⓘ The final allotment is decided by the registrar's computerised lottery.</div>`) : ""}
 
-  ${card("Subscription Detail (No. of Shares)", anyBid && (rows.length || b.total?.bid > 0) ? tbl(["Category", "Offered", "Bid for", "Times"], [...rows.map(r => [r[0], inr(r[1].offered), inr(r[1].bid), f2(r[1].times)]), ...(b.total ? [["<b>Total</b>", inr(b.total.offered), inr(b.total.bid), `<b>${f2(b.total.times)}</b>`]] : [])]) + `<p class="mut sm">${/^as on/i.test(i.demand?.asOn || "") ? "" : "As on "}${esc(i.demand?.asOn || "—")} (NSE).</p>${rows.length ? "" : '<p class="mut sm">NSE no longer publishes the category-wise split for this finished issue. The total bids and times subscribed are NSE\'s final figures.</p>'}` : `<p class="mut">Subscription data appears once the issue opens (${fmtD(i.open)}).</p>`, "subs")}
+  ${card("Subscription Detail (No. of Shares)", anyBid && (rows.length || b.total?.bid > 0) ? tbl(["Category", "Offered", "Bid for", "Times"], [...rows.map(r => [r[0], inr(r[1].offered), inr(r[1].bid), f2(r[1].times)]), ...(b.total ? [["<b>Total</b>", inr(b.total.offered), inr(b.total.bid), `<b>${f2(b.total.times)}</b>`]] : [])]) + `<p class="mut sm">${i.demand?.asOn ? (/^as on/i.test(i.demand.asOn) ? "" : "As on ") + esc(i.demand.asOn) : i.fetchedAt ? "Data fetched " + esc(new Date(i.fetchedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })) + " IST" : "As on —"} (NSE).</p>${rows.length ? "" : '<p class="mut sm">NSE no longer publishes the category-wise split for this finished issue. The total bids and times subscribed are NSE\'s final figures.</p>'}` : `<p class="mut">Subscription data appears once the issue opens (${fmtD(i.open)}).</p>`, "subs")}
   ${dwRows.length ? card("Day Wise Subscription (snapshots)", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows)) : ""}
   ${i.demand?.byPrice ? card("Cumulative Demand by Price (NSE)", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)]))) : ""}
   ${L ? card("Lot(s) Distribution", tbl(["Category", "Lot(s)", "Qty", "Amount"], [["RETAIL", 1, inr(i.lot), inr(i.lot * pr)], ["sHNI (from ₹2L)", L.s, inr(L.s * i.lot), inr(L.s * i.lot * pr)], ["bHNI (from ₹10L)", L.b, inr(L.b * i.lot), inr(L.b * i.lot * pr)]])) : ""}
@@ -927,7 +927,7 @@ const withStatus = i => ({ ...i, status: i.close && dayDiff(i.close) < 0 ? "list
 // ---------- the phone's Back button ----------
 // Every screen you move to (tab, menu page, an IPO, a report, the Apply popup, the side menu) adds one history step, so Back goes to the screen you came from
 // instead of leaving the app. Switching report tabs does not add steps. Choosing a page from the side menu replaces the "menu open" step.
-const levelKey = () => [state.tab, state.sub || "", state.detail || "", state.report || "", state.modal || "", state.drawer ? "d" : ""].join("|");
+const levelKey = () => [state.tab === "ipo" ? "ipo~" + state.seg : state.tab, state.sub || "", state.detail || "", state.report || "", state.modal || "", state.drawer ? "d" : ""].join("|");
 let navLevel = levelKey(), replaceNext = false;
 const histState = () => ({ level: levelKey(), rtab: state.reportTab });
 try { history.replaceState(histState(), ""); } catch {}
@@ -941,7 +941,8 @@ function pushView() {
 }
 window.addEventListener("popstate", e => {
   const s = e.state; if (!s || typeof s.level !== "string") return;
-  const [tab, sub, detail, report, modal, drawer] = s.level.split("|"); if (drawer === undefined) return;
+  const [tab0, sub, detail, report, modal, drawer] = s.level.split("|"); if (drawer === undefined) return;
+  const [tab, segv] = String(tab0).split("~"); if (segv) state.seg = segv;
   navLevel = s.level; state.tab = tab || "ipo"; state.mod = modOf(state.tab) || state.mod; state.sub = sub || null; state.detail = detail || null; state.report = report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
   render(); window.scrollTo(0, 0);
 });
