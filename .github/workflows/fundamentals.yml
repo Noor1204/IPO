@@ -8,6 +8,9 @@ on:
   schedule:
     - cron: "37 */3 * * *"
   workflow_dispatch: {}
+  push:
+    branches: [main]
+    paths: [".github/workflows/fundamentals.yml", "pipeline/extract.mjs", "pipeline/need-fundamentals.mjs"]   # a change to this job (or its extractor) runs it once so it is tested right away
 
 permissions: {}
 
