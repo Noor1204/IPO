@@ -182,7 +182,7 @@ function listCard(i) {
   ${actionBtn(i)}</div></div>`;
 }
 const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
-const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>`;
+const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
@@ -285,7 +285,6 @@ function ipoTab() {
   return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib" data-tab="settings">🔔</button>`)}
   ${state.search ? `<input id="q" placeholder="Search IPO" value="${esc(state.q)}">` : ""}
   <div class="stats">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
-  <div class="seg">${["live", "upcoming", "listed"].map(s => `<button data-seg="${s}" class="${state.seg === s ? "on" : ""}">${s === "listed" ? "Closed" : s[0].toUpperCase() + s.slice(1)}</button>`).join("")}</div>
   <div class="opts"><label><input type="checkbox" data-board="main" ${state.main ? "checked" : ""}> MainBoard</label><label><input type="checkbox" data-board="sme" ${state.sme ? "checked" : ""}> SME</label><span class="sp"></span>
   <select id="sort" style="width:auto;margin:0;padding:6px"><option value="score" ${state.sort === "score" ? "selected" : ""}>Sort: Score</option><option value="gmp" ${state.sort === "gmp" ? "selected" : ""}>Sort: GMP %</option><option value="subs" ${state.sort === "subs" ? "selected" : ""}>Sort: Subscription</option><option value="date" ${state.sort === "date" ? "selected" : ""}>Sort: Open date</option></select></div>
   ${top && state.seg !== "listed" && !state.q ? `<div class="note" style="margin:0 0 12px">🏆 <b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</div>` : ""}
@@ -810,6 +809,52 @@ function aboutClick(t) {
   return false;
 }
 document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });
+// ---------- modules: IPO (built in), Stocks, F&O, Mutual Fund (each in its own app-<name>.js, see docs/MODULES.md) ----------
+// The bottom bar picks the module, the tab strip under the title picks the screen inside it. Module screens use state.tab = "<module>:<tab>";
+// a module's detail pages use state.sub, so the phone's Back button and the Back arrow work in every module.
+window.TrendyModules = window.TrendyModules || {};
+state.mod = "ipo";
+const modLoaded = {};
+const MOD_LAST = store.get("modLast", {});
+const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"]];
+function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" ? "ipo" : typeof tab === "string" && tab.includes(":") ? tab.split(":")[0] : null; }
+function modTabs(m) { return m === "ipo" ? IPO_TABS : (window.TrendyModules[m]?.tabs || []); }
+function modStrip() {
+  const m = modOf(state.tab); if (!m || state.sub || state.detail || state.report) return "";
+  const on = m === "ipo" ? (state.tab === "ipo" ? state.seg : state.tab) : state.tab.split(":")[1];
+  return '<div class="mtabs" role="tablist">' + modTabs(m).map(([k, l]) => '<button role="tab" data-mtab="' + m + ":" + k + '" class="' + (k === on ? "on" : "") + '">' + l + "</button>").join("") + "</div>";
+}
+function goTab(m, k) {
+  const tabs = modTabs(m); if (!tabs.length) return;
+  if (!k || !tabs.some(t => t[0] === k)) k = tabs.some(t => t[0] === MOD_LAST[m]) ? MOD_LAST[m] : tabs[0][0];
+  if (m === "ipo") { if (k === "allot" || k === "unlisted") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
+  else state.tab = m + ":" + k;
+  state.mod = m; MOD_LAST[m] = k; store.set("modLast", MOD_LAST);
+  state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false;
+  render(); scrollTo(0, 0);
+}
+function hostApi() {
+  return { state, esc, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay,
+    setSub(k) { state.sub = k || null; render(); scrollTo(0, 0); }, back: goBack, go: goTab,
+    get sub() { return state.sub; }, get tab() { return String(state.tab).split(":")[1] || ""; } };
+}
+function modScreen() {
+  const m = modOf(state.tab), mod = m && window.TrendyModules[m];
+  if (!mod) return head("Coming soon") + card("", '<p class="mut">This section is not available yet.</p>');
+  let html; try { html = mod.render(String(state.tab).split(":")[1], state.sub, hostApi()); } catch (e) { console.error(e); html = head(mod.label) + card("", '<p class="mut">This screen could not be shown. Please try again.</p>'); }
+  return html;
+}
+function modClick(t) {
+  const a = t.dataset;
+  if (a.mod) { goTab(a.mod, null); return true; }
+  if (a.mtab) { const [m, k] = a.mtab.split(":"); goTab(m, k); return true; }
+  if (a.m) { const mod = window.TrendyModules[a.m]; try { return !!(mod && mod.click && mod.click(t, hostApi())); } catch (e) { console.error(e); return true; } }
+  return false;
+}
+for (const ev of ["input", "change"]) document.addEventListener(ev, e => {
+  const el = e.target.closest?.("[data-m]"); if (!el) return;
+  const mod = window.TrendyModules[el.dataset.m]; try { mod && mod[ev] && mod[ev](el, hostApi()); } catch (err) { console.error(err); }
+});
 // ---------- render & events ----------
 function render() {
   if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
@@ -818,14 +863,15 @@ function render() {
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
   const ae = document.activeElement, keep = ae && ae.id && ae !== document.body ? { id: ae.id, s: ae.selectionStart, e: ae.selectionEnd } : null;
-  $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : state.tab;
-  $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : screens[state.tab]()) + credit() +
+  $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : modOf(state.tab) && modOf(state.tab) !== "ipo" ? "mod" : state.tab;
+  const mo = modOf(state.tab); if (mo) { state.mod = mo; if (!modLoaded[mo]) { modLoaded[mo] = true; try { TrendyModules[mo]?.load?.(hostApi()); } catch (e) { console.warn(e); } } }
+  $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : (screens[state.tab] || modScreen)()) + credit() +
     (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
     (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
     (state.toast ? `<div class="toast">${state.toast}</div>` : "");
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
   const side = $("#side"); side.innerHTML = sideMenu(); side.classList.toggle("open", !!state.drawer);
-  document.querySelectorAll("nav button").forEach(b => b.classList.toggle("on", !state.detail && (b.dataset.tab === state.tab || (b.hasAttribute("data-menu") && (state.drawer || state.tab === "compare" || state.tab === "settings")))));
+  document.querySelectorAll("nav button[data-mod]").forEach(b => b.classList.toggle("on", b.dataset.mod === state.mod));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };
   sel("#pick", v => { if (v) { state.cmp.push(v); store.set("cmp", state.cmp); render(); } });
@@ -836,12 +882,13 @@ function render() {
 let toastTimer = null;
 function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
   if (t.hasAttribute("data-drawer-close")) { goBack(); return; }
   if (aboutClick(t)) return;
+  if (modClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
   if (t.dataset.report) { state.report = t.dataset.report; state.reportTab = "docs"; render(); scrollTo(0, 0); return; }
@@ -895,7 +942,7 @@ function pushView() {
 window.addEventListener("popstate", e => {
   const s = e.state; if (!s || typeof s.level !== "string") return;
   const [tab, sub, detail, report, modal, drawer] = s.level.split("|"); if (drawer === undefined) return;
-  navLevel = s.level; state.tab = tab || "ipo"; state.sub = sub || null; state.detail = detail || null; state.report = report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
+  navLevel = s.level; state.tab = tab || "ipo"; state.mod = modOf(state.tab) || state.mod; state.sub = sub || null; state.detail = detail || null; state.report = report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
   render(); window.scrollTo(0, 0);
 });
 // the on-screen back arrows use the same history, so the phone's Back button and the arrow always agree

@@ -510,3 +510,14 @@ html.themefade,html.themefade *{transition:background-color .45s ease,color .45s
 .bdline{margin-top:4px;line-height:1.35;max-height:2.75em;overflow:hidden;overflow-wrap:anywhere}
 .bdline .bd{margin:0 4px 0 0}
 .insn:has(.bdline){white-space:normal;overflow:visible;text-overflow:clip}
+
+/* ---- modules: bottom bar (IPO | Stocks | F&O | Mutual Fund) and the tab strip under the title ---- */
+nav button{font-weight:800}
+nav button[data-mod] b{font-size:21px}
+.mtabs{display:flex;gap:2px;overflow-x:auto;border-bottom:2px solid var(--bd);margin:2px 0 14px;scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mtabs button{flex:1 0 auto;background:none;border:0;border-bottom:3px solid transparent;margin-bottom:-2px;padding:9px 8px 10px;font:inherit;font-size:13px;font-weight:800;color:var(--mut);cursor:pointer;white-space:nowrap}
+.mtabs button.on{color:var(--pri);border-bottom-color:var(--pri)}
+.mtabs button:hover{color:var(--tx)}
+@media(min-width:720px){#app[data-view=mod]{max-width:1180px;padding:18px 20px 90px}}
+@media(min-width:960px){#app[data-view=mod]{max-width:none;padding:84px 24px 48px}}
