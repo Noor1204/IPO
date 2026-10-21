@@ -45,11 +45,19 @@ function parseIssueSize(txt, price) {
   return { shares: Math.round(cr * 1e7 / price), cr };
 }
 
+// any other top-level reserved category (not QIB / NII / Retail / Employees / Shareholders) so that the categories always add up to the Total row
+function otherCat(rows) {
+  const top = rows.filter(r => /^\d+$/.test(String(r.srNo).trim()) && !["1", "2", "3"].includes(String(r.srNo).trim()) && !/employee|^shareholders?\b/i.test(String(r.category).trim()) && num(r.noOfShareOffered ?? r.noOfSharesOffered) > 0);
+  if (!top.length) return null;
+  return { offered: top.reduce((a, r) => a + num(r.noOfShareOffered ?? r.noOfSharesOffered), 0), bid: top.reduce((a, r) => a + (num(r.noOfSharesBid) || 0), 0), times: null, label: top.map(r => String(r.category).trim()).join(", ") };
+}
 function bids(rows) {
   const by = {}; for (const r of rows) by[String(r.srNo)] = { offered: num(r.noOfShareOffered ?? r.noOfSharesOffered), bid: num(r.noOfSharesBid), times: num(r.noOfTotalMeant ?? r.noOfTime) };
   const pick = k => by[k] && by[k].offered ? by[k] : null;
   const total = rows.find(r => /^total$/i.test(String(r.category).trim()) || /^total/i.test(String(r.srNo)));
   return { qib: pick("1"), nii: pick("2"), bnii: pick("2.1"), snii: pick("2.2"), retail: pick("3"), employee: rows.some(r => /employee/i.test(r.category)) ? by[rows.find(r => /employee/i.test(r.category)).srNo] : null,
+    shareholders: rows.some(r => /^shareholders?\b/i.test(String(r.category).trim()) && (r.noOfShareOffered ?? r.noOfSharesOffered)) ? by[rows.find(r => /^shareholders?\b/i.test(String(r.category).trim())).srNo] : null,   // e.g. Jio: a reserved portion for the promoter group's shareholders
+    other: otherCat(rows),
     total: total ? { offered: num(total.noOfShareOffered ?? total.noOfSharesOffered), bid: num(total.noOfSharesBid), times: num(total.noOfTotalMeant ?? total.noOfTime) } : null };
 }
 

@@ -448,7 +448,7 @@ function rawRows(i) {
   add("Price band", price(i)); add("Lot size", i.lot); add("Face value", i.faceValue); add("Issue size (₹ Cr)", i.issueSizeCr); add("Issue size (shares)", isNum(i.issueShares) ? inr(i.issueShares) : null);
   add("Max retail application (₹)", i.maxRetailAmount); add("Issue size details (NSE)", i.issueDetail); add("UPI cut-off (NSE)", i.upiCutoff);
   for (const [k, l] of [["open", "Opens"], ["close", "Closes"], ["allotment", "Allotment"], ["refund", "Refund"], ["demat", "Demat credit"], ["listing", "Listing"]]) add(l, t[k] ? fmtD(t[k]) + (i.datesExpected && k !== "open" && k !== "close" ? " (exp.)" : "") : null);
-  for (const [k, l] of [["qib", "QIB"], ["nii", "NII"], ["bnii", "bNII"], ["snii", "sNII"], ["retail", "Retail"], ["employee", "Employees"], ["total", "Total"]]) if (b[k]) add(`Subscription — ${l}`, `${inr(b[k].offered)} offered · ${inr(b[k].bid)} bid · ${f2(b[k].times)}x`);
+  for (const [k, l] of [["qib", "QIB"], ["nii", "NII"], ["bnii", "bNII"], ["snii", "sNII"], ["retail", "Retail"], ["employee", "Employees"], ["shareholders", "Shareholders"], ["total", "Total"]]) if (b[k]) add(`Subscription — ${l}`, `${inr(b[k].offered)} offered · ${inr(b[k].bid)} bid · ${f2(b[k].times)}x`);
   if (i.gmp) { add("GMP (average)", `₹${i.gmp.value}`); add("GMP sources", i.gmp.sources.map(s => `${s.source} ₹${s.gmp}`).join(" · ")); add("GMP rating", i.gmp.rating ? "🔥".repeat(i.gmp.rating) : null); }
   add("Anchor book", i.anchor === true ? "Yes" : i.anchor === false ? "No" : null);
   add("Registrar", i.registrar?.name); add("Registrar address", i.registrar?.address); add("Registrar contact", i.registrar?.contact); add("Lead managers", i.leadManagers); add("Sponsor bank", i.sponsorBank);

@@ -56,7 +56,7 @@ for (const i of j.ipos || []) {
   num(i.listingPerf?.dayOpenGainPct, -100, 2000, "listing gain", i);
   // the Total row must agree with the categories (this caught NSE's "1.404E7" being read as 1.404)
   const bb = i.bids || {}; let so = 0, sb = 0;
-  for (const k of ["qib", "nii", "retail", "employee"]) if (bb[k]) { so += bb[k].offered || 0; sb += bb[k].bid || 0; }
+  for (const k of ["qib", "nii", "retail", "employee", "shareholders", "other"]) if (bb[k]) { so += bb[k].offered || 0; sb += bb[k].bid || 0; }
   if (bb.total && bb.total.bid > 0 && bb.total.times === 0) bad(`${i.symbol}: Total shows bids but 0.00x subscription`);                        // finished SME issues once showed 0 here
   if (bb.total && bb.total.offered > 0 && i.issueShares && bb.total.offered > i.issueShares * 1.10) bad(`${i.symbol}: shares offered (${bb.total.offered}) are more than the whole issue (${i.issueShares})`);   // catches a wrong issue size
   if (bb.total && bb.total.offered != null && so > 0) {
