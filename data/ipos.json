@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-21T08:11:45.861Z",
+ "generatedAt": "2026-10-21T08:20:40.269Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-21T08:11:08.070Z"
+   "fetchedAt": "2026-10-21T08:19:58.189Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-21T08:11:10.509Z"
+   "fetchedAt": "2026-10-21T08:20:01.059Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-21T08:11:08.643Z"
+   "fetchedAt": "2026-10-21T08:19:59.063Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -78,7 +78,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T08:11:08.630Z",
+   "fetchedAt": "2026-10-21T08:19:59.050Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -140,13 +140,13 @@
       "source": "investorgain.com",
       "gmp": 30,
       "pct": 20,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 18,
       "seenHigh": 30
      }
     ],
     "rating": 4,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-19",
@@ -166,7 +166,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T08:11:08.630Z",
+   "fetchedAt": "2026-10-21T08:19:59.050Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -224,7 +224,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T08:11:08.643Z",
+   "fetchedAt": "2026-10-21T08:19:59.063Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -282,7 +282,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T08:11:08.643Z",
+   "fetchedAt": "2026-10-21T08:19:59.063Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -321,8 +321,8 @@
     },
     "nii": {
      "offered": 3295454,
-     "bid": 156387,
-     "times": 0.04745537337192387
+     "bid": 158109,
+     "times": 0.0479779113894474
     },
     "bnii": {
      "offered": 2196970,
@@ -331,53 +331,58 @@
     },
     "snii": {
      "offered": 1098484,
-     "bid": 96411,
-     "times": 0.08776732296510463
+     "bid": 98133,
+     "times": 0.08933493796905553
     },
     "retail": {
      "offered": 2196969,
-     "bid": 1120413,
-     "times": 0.5099812514423281
+     "bid": 1144815,
+     "times": 0.5210883722073457
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 12083331,
-     "bid": 1277388,
-     "times": 0.10571488937942691
+     "bid": 1303512,
+     "times": 0.10787687600381053
     }
    },
    "demand": {
-    "asOn": "As on 21-Oct-2026 13:36:00 IST",
-    "totalBids": 778302,
-    "timesSubscribed": 0.06,
+    "asOn": "As on 21-Oct-2026 13:45:00 IST",
+    "totalBids": 1307334,
+    "timesSubscribed": 0.11,
     "byPrice": {
-     "660": "7,78,302",
-     "661": "7,74,417",
-     "662": "7,73,892",
-     "663": "7,73,787",
-     "664": "7,73,724",
-     "665": "7,73,703",
-     "666": "7,73,178",
-     "668": "7,72,947",
-     "669": "7,72,926",
-     "670": "7,72,905",
-     "671": "7,72,401",
-     "674": "7,72,254",
-     "675": "7,72,212",
-     "679": "7,71,918",
-     "680": "7,71,813",
-     "681": "7,71,120",
-     "682": "7,70,805",
-     "683": "7,70,784",
-     "685": "7,70,763",
-     "689": "7,70,679",
-     "690": "7,70,658",
-     "691": "7,69,881",
-     "692": "7,69,797",
-     "693": "7,69,755",
-     "Cut-Off": "6,20,886"
+     "660": "13,07,334",
+     "661": "13,00,614",
+     "662": "12,99,963",
+     "663": "12,99,858",
+     "664": "12,99,690",
+     "665": "12,99,669",
+     "666": "12,98,955",
+     "668": "12,98,619",
+     "669": "12,98,598",
+     "670": "12,98,577",
+     "671": "12,97,422",
+     "672": "12,97,254",
+     "674": "12,97,233",
+     "675": "12,97,191",
+     "676": "12,96,540",
+     "677": "12,96,519",
+     "678": "12,96,435",
+     "679": "12,96,414",
+     "680": "12,96,288",
+     "681": "12,94,671",
+     "682": "12,94,356",
+     "683": "12,94,335",
+     "684": "12,94,251",
+     "685": "12,94,230",
+     "689": "12,93,936",
+     "690": "12,93,915",
+     "691": "12,92,718",
+     "692": "12,92,613",
+     "693": "12,92,466",
+     "Cut-Off": "10,66,842"
     }
    },
    "registrar": {
@@ -459,21 +464,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 40,
-    "min": 40,
-    "max": 40,
+    "value": 52,
+    "min": 52,
+    "max": 52,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 40,
-      "pct": 5.77,
-      "updated": "21-Oct 12:02",
-      "seenLow": 40,
+      "gmp": 52,
+      "pct": 7.5,
+      "updated": "21-Oct 9:37",
+      "seenLow": 50,
       "seenHigh": 96
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -501,20 +506,20 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 40
+      "gmp": 52
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-10-21T08:11:45.833Z",
+     "at": "2026-10-21T08:20:40.252Z",
      "date": "2026-10-21",
      "qib": 0.00008921380786987164,
      "bnii": 0.027299416924218355,
-     "snii": 0.08776732296510463,
-     "nii": 0.04745537337192387,
-     "retail": 0.5099812514423281,
-     "total": 0.10571488937942691
+     "snii": 0.08933493796905553,
+     "nii": 0.0479779113894474,
+     "retail": 0.5210883722073457,
+     "total": 0.10787687600381053
     }
    ],
    "listingPerf": null,
@@ -946,7 +951,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:10:41.977Z"
+   "fetchedAt": "2026-10-21T08:19:31.709Z"
   },
   {
    "symbol": "JPL",
@@ -984,102 +989,102 @@
     },
     "nii": {
      "offered": 36444569,
-     "bid": 27028284,
-     "times": 0.7416272092557878
+     "bid": 27679740,
+     "times": 0.7595024652370014
     },
     "bnii": {
      "offered": 24296380,
-     "bid": 16079292,
-     "times": 0.6617978480744868
+     "bid": 16565280,
+     "times": 0.6818003340415321
     },
     "snii": {
      "offered": 12148189,
-     "bid": 10948992,
-     "times": 0.9012859447609846
+     "bid": 11114460,
+     "times": 0.914906740420321
     },
     "retail": {
      "offered": 85037327,
-     "bid": 43868736,
-     "times": 0.5158762339742875
+     "bid": 44373888,
+     "times": 0.5218165900252251
     },
     "employee": {
      "offered": 4694835,
-     "bid": 4971204,
-     "times": 1.0588666055356577
+     "bid": 5008188,
+     "times": 1.0667441986779087
     },
     "shareholders": {
      "offered": 22341376,
-     "bid": 21887448,
-     "times": 0.9796821825119455
+     "bid": 22169280,
+     "times": 0.9922969829611211
     },
     "other": null,
     "total": {
      "offered": 197525934,
-     "bid": 336952896,
-     "times": 1.7058666129380256
+     "bid": 338428320,
+     "times": 1.7133361333707198
     }
    },
    "demand": {
-    "asOn": "As on 21-Oct-2026 13:36:00 IST",
-    "totalBids": 177746988,
-    "timesSubscribed": 0.9,
+    "asOn": "As on 21-Oct-2026 13:45:00 IST",
+    "totalBids": 338639772,
+    "timesSubscribed": 1.71,
     "byPrice": {
-     "1065": "17,77,46,988",
-     "1066": "17,75,49,036",
-     "1067": "17,75,34,492",
-     "1068": "17,75,31,552",
-     "1069": "17,75,28,216",
-     "1070": "17,75,25,372",
-     "1071": "17,74,93,956",
-     "1072": "17,74,90,680",
-     "1073": "17,74,88,820",
-     "1074": "17,74,88,436",
-     "1075": "17,74,87,152",
-     "1076": "17,74,73,736",
-     "1077": "17,74,73,232",
-     "1078": "17,74,72,284",
-     "1079": "17,74,72,092",
-     "1080": "17,74,71,456",
-     "1081": "17,74,48,248",
-     "1082": "17,74,47,480",
-     "1083": "17,74,47,192",
-     "1084": "17,74,46,436",
-     "1085": "17,74,45,512",
-     "1086": "17,74,39,116",
-     "1087": "17,74,38,660",
-     "1088": "17,74,38,384",
-     "1089": "17,74,37,880",
-     "1090": "17,74,36,884",
-     "1091": "17,74,21,788",
-     "1092": "17,74,21,152",
-     "1093": "17,74,18,812",
-     "1094": "17,74,18,656",
-     "1095": "17,74,18,368",
-     "1096": "17,74,13,472",
-     "1097": "17,74,12,992",
-     "1098": "17,74,12,560",
-     "1099": "17,74,11,732",
-     "1100": "17,74,08,360",
-     "1101": "17,73,18,864",
-     "1102": "17,73,14,748",
-     "1103": "17,73,14,544",
-     "1104": "17,73,14,376",
-     "1105": "17,73,13,224",
-     "1106": "17,73,11,004",
-     "1107": "17,73,10,656",
-     "1108": "17,73,10,200",
-     "1109": "17,73,08,808",
-     "1110": "17,73,07,572",
-     "1111": "17,72,83,584",
-     "1112": "17,72,63,832",
-     "1113": "17,72,61,588",
-     "1114": "17,72,59,908",
-     "1115": "17,72,58,432",
-     "1116": "17,72,48,868",
-     "1117": "17,72,43,864",
-     "1118": "17,72,40,984",
-     "1119": "17,72,18,244",
-     "Cut-Off": "4,34,23,236"
+     "1065": "33,86,39,772",
+     "1066": "33,83,08,800",
+     "1067": "33,82,87,104",
+     "1068": "33,82,82,388",
+     "1069": "33,82,77,564",
+     "1070": "33,82,72,260",
+     "1071": "33,82,19,748",
+     "1072": "33,82,15,440",
+     "1073": "33,82,13,040",
+     "1074": "33,82,12,476",
+     "1075": "33,82,10,796",
+     "1076": "33,81,88,824",
+     "1077": "33,81,88,248",
+     "1078": "33,81,86,172",
+     "1079": "33,81,85,464",
+     "1080": "33,81,84,120",
+     "1081": "33,81,45,564",
+     "1082": "33,81,44,100",
+     "1083": "33,81,43,392",
+     "1084": "33,81,42,072",
+     "1085": "33,81,40,416",
+     "1086": "33,81,29,748",
+     "1087": "33,81,28,932",
+     "1088": "33,81,28,236",
+     "1089": "33,81,27,480",
+     "1090": "33,81,25,536",
+     "1091": "33,80,96,448",
+     "1092": "33,80,95,572",
+     "1093": "33,80,91,276",
+     "1094": "33,80,90,700",
+     "1095": "33,80,90,160",
+     "1096": "33,80,81,568",
+     "1097": "33,80,80,872",
+     "1098": "33,80,80,188",
+     "1099": "33,80,78,700",
+     "1100": "33,80,71,800",
+     "1101": "33,79,28,232",
+     "1102": "33,79,20,828",
+     "1103": "33,79,20,432",
+     "1104": "33,79,19,736",
+     "1105": "33,79,17,612",
+     "1106": "33,79,13,448",
+     "1107": "33,79,12,668",
+     "1108": "33,79,11,768",
+     "1109": "33,79,09,584",
+     "1110": "33,79,07,280",
+     "1111": "33,78,63,888",
+     "1112": "33,78,28,884",
+     "1113": "33,78,25,068",
+     "1114": "33,78,21,540",
+     "1115": "33,78,18,960",
+     "1116": "33,78,03,516",
+     "1117": "33,77,93,676",
+     "1118": "33,77,77,488",
+     "1119": "33,77,29,008",
+     "Cut-Off": "6,49,33,152"
     }
    },
    "registrar": {
@@ -1161,21 +1166,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 245,
-    "min": 245,
-    "max": 245,
+    "value": 276,
+    "min": 276,
+    "max": 276,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 245,
-      "pct": 21.89,
-      "updated": "21-Oct 12:02",
+      "gmp": 276,
+      "pct": 24.66,
+      "updated": "21-Oct 9:37",
       "seenLow": 148,
-      "seenHigh": 273
+      "seenHigh": 276
      }
     ],
     "rating": 4,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -1203,20 +1208,20 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 245
+      "gmp": 276
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-10-21T08:11:45.834Z",
+     "at": "2026-10-21T08:20:40.253Z",
      "date": "2026-10-21",
      "qib": 4.880796367486361,
-     "bnii": 0.6617978480744868,
-     "snii": 0.9012859447609846,
-     "nii": 0.7416272092557878,
-     "retail": 0.5158762339742875,
-     "total": 1.7058666129380256
+     "bnii": 0.6818003340415321,
+     "snii": 0.914906740420321,
+     "nii": 0.7595024652370014,
+     "retail": 0.5218165900252251,
+     "total": 1.7133361333707198
     }
    ],
    "listingPerf": null,
@@ -1552,7 +1557,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:10:42.831Z"
+   "fetchedAt": "2026-10-21T08:19:32.667Z"
   },
   {
    "symbol": "ZETWERK",
@@ -1706,21 +1711,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 1.9,
-    "min": 1.9,
-    "max": 1.9,
+    "value": 2,
+    "min": 2,
+    "max": 2,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 1.9,
-      "pct": 1.26,
-      "updated": "21-Oct 12:02",
-      "seenLow": 1.9,
+      "gmp": 2,
+      "pct": 1.32,
+      "updated": "21-Oct 9:37",
+      "seenLow": 2,
       "seenHigh": 30
      }
     ],
     "rating": 1,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -1760,7 +1765,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 1.9
+      "gmp": 2
      }
     ]
    },
@@ -2285,13 +2290,13 @@
       "source": "investorgain.com",
       "gmp": 513,
       "pct": 73.29,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 270,
       "seenHigh": 516
      }
     ],
     "rating": 5,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -2896,13 +2901,13 @@
       "source": "investorgain.com",
       "gmp": 135,
       "pct": 23.04,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 127,
       "seenHigh": 178
      }
     ],
     "rating": 4,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -3508,13 +3513,13 @@
       "source": "investorgain.com",
       "gmp": 24,
       "pct": 6.98,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 15,
       "seenHigh": 43
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -4057,13 +4062,13 @@
       "source": "investorgain.com",
       "gmp": 35,
       "pct": 19.55,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 25,
       "seenHigh": 46
      }
     ],
     "rating": 3,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -4457,7 +4462,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:10:53.732Z"
+   "fetchedAt": "2026-10-21T08:19:44.523Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -4607,21 +4612,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 18,
-    "min": 18,
-    "max": 18,
+    "value": 20,
+    "min": 20,
+    "max": 20,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 18,
-      "pct": 6.23,
-      "updated": "21-Oct 12:02",
+      "gmp": 20,
+      "pct": 6.92,
+      "updated": "21-Oct 9:37",
       "seenLow": 10,
       "seenHigh": 55
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-09",
@@ -4665,7 +4670,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 18
+      "gmp": 20
      }
     ]
    },
@@ -5208,13 +5213,13 @@
       "source": "investorgain.com",
       "gmp": 2,
       "pct": 1.79,
-      "updated": "21-Oct 12:02",
+      "updated": "21-Oct 9:37",
       "seenLow": 2,
       "seenHigh": 12
      }
     ],
     "rating": 1,
-    "updated": "21-Oct 12:02",
+    "updated": "21-Oct 9:37",
     "history": [
      {
       "date": "2026-10-12",
@@ -5858,12 +5863,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 307,
+    "ltp": 305.65,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 13.28
+    "ltpGainPct": 12.79
    },
    "checks": [
     {
@@ -7567,12 +7572,12 @@
    ],
    "listingPerf": {
     "dayOpen": 80,
-    "ltp": 74.3,
+    "ltp": 74.39,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 6.67,
-    "ltpGainPct": -0.93
+    "ltpGainPct": -0.81
    },
    "checks": [
     {
@@ -9456,7 +9461,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:10:59.100Z"
+   "fetchedAt": "2026-10-21T08:19:49.139Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -9905,7 +9910,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:10:59.915Z"
+   "fetchedAt": "2026-10-21T08:19:49.845Z"
   },
   {
    "symbol": "TNA",
@@ -10369,7 +10374,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:11:00.658Z"
+   "fetchedAt": "2026-10-21T08:19:50.585Z"
   },
   {
    "symbol": "DSL",
@@ -10786,7 +10791,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:11:01.354Z"
+   "fetchedAt": "2026-10-21T08:19:51.360Z"
   },
   {
    "symbol": "OMARA",
@@ -11247,7 +11252,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:11:04.845Z"
+   "fetchedAt": "2026-10-21T08:19:53.920Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -11899,7 +11904,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T08:11:02.063Z"
+   "fetchedAt": "2026-10-21T08:19:52.169Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -12049,7 +12054,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T08:11:07.273Z"
+   "fetchedAt": "2026-10-21T08:19:56.280Z"
   },
   {
    "symbol": "VANS",
@@ -12529,7 +12534,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:11:08.070Z"
+   "fetchedAt": "2026-10-21T08:19:58.189Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -13171,12 +13176,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 99.91,
+    "ltp": 99.7,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -23.15
+    "ltpGainPct": -23.31
    },
    "checks": [],
    "fundamentals": {
@@ -14071,7 +14076,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T08:11:05.681Z"
+   "fetchedAt": "2026-10-21T08:19:54.794Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -14217,12 +14222,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 450,
-    "ltp": 365.75,
+    "ltp": 368.65,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 65.44,
-    "ltpGainPct": 34.47
+    "ltpGainPct": 35.53
    },
    "checks": [],
    "fundamentals": {
@@ -14746,12 +14751,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 233,
+    "ltp": 232.5,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -22.85
+    "ltpGainPct": -23.01
    },
    "checks": [],
    "fundamentals": {
@@ -15269,12 +15274,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 142,
-    "ltp": 104.59,
+    "ltp": 104.89,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 2.16,
-    "ltpGainPct": -24.76
+    "ltpGainPct": -24.54
    },
    "checks": [],
    "fundamentals": {
@@ -15768,12 +15773,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 28.31999969482422,
-    "ltp": 22.38,
+    "ltp": 22.53,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-21",
     "dayOpenGainPct": -11.5,
-    "ltpGainPct": -30.06
+    "ltpGainPct": -29.59
    },
    "checks": [],
    "fundamentals": {
@@ -17524,12 +17529,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 455,
-    "ltp": 408,
+    "ltp": 405.3,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 12.35,
-    "ltpGainPct": 0.74
+    "ltpGainPct": 0.07
    },
    "checks": [],
    "fundamentals": {
@@ -17997,12 +18002,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 53.88,
+    "ltp": 54.28,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 58.47
+    "ltpGainPct": 59.65
    },
    "checks": [],
    "fundamentals": {
@@ -18495,12 +18500,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 166.24,
+    "ltp": 166.77,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 24.06
+    "ltpGainPct": 24.46
    },
    "checks": [],
    "fundamentals": {
@@ -18972,12 +18977,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 306.05,
+    "ltp": 305.45,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-21",
     "dayOpenGainPct": -1.91,
-    "ltpGainPct": -15.46
+    "ltpGainPct": -15.62
    },
    "checks": [],
    "fundamentals": {
@@ -19417,12 +19422,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 247.9,
+    "ltp": 247.4,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -33.89
+    "ltpGainPct": -34.03
    },
    "checks": [],
    "fundamentals": {
@@ -19899,12 +19904,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 200,
-    "ltp": 243.47,
+    "ltp": 244.1,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-21",
     "dayOpenGainPct": 8.11,
-    "ltpGainPct": 31.61
+    "ltpGainPct": 31.95
    },
    "checks": [],
    "fundamentals": {
@@ -20693,7 +20698,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T08:10:47.990Z"
+   "fetchedAt": "2026-10-21T08:19:37.825Z"
   }
  ],
  "filings": [
