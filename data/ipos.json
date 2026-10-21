@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-21T12:47:24.021Z",
+ "generatedAt": "2026-10-21T12:56:34.686Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-21T12:46:26.709Z"
+   "fetchedAt": "2026-10-21T12:55:39.512Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-21T12:46:37.487Z"
+   "fetchedAt": "2026-10-21T12:55:48.396Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-21T12:46:27.389Z"
+   "fetchedAt": "2026-10-21T12:55:40.180Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T12:46:27.369Z",
+   "subsAsOn": "2026-10-21T12:55:40.165Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -82,12 +82,34 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 31,
+    "min": 31,
+    "max": 31,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 31,
+      "pct": 9.39,
+      "updated": "21-Oct 18:02",
+      "seenLow": 31,
+      "seenHigh": 31
+     }
+    ],
+    "rating": 2,
+    "updated": "21-Oct 18:02",
+    "history": [
+     {
+      "date": "2026-10-21",
+      "gmp": 31
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T12:46:27.369Z",
+   "fetchedAt": "2026-10-21T12:55:40.165Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -122,7 +144,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T12:46:27.369Z",
+   "subsAsOn": "2026-10-21T12:55:40.165Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -158,13 +180,13 @@
       "source": "investorgain.com",
       "gmp": 30,
       "pct": 20,
-      "updated": "21-Oct 13:37",
+      "updated": "21-Oct 18:02",
       "seenLow": 18,
       "seenHigh": 30
      }
     ],
     "rating": 4,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-19",
@@ -184,7 +206,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T12:46:27.369Z",
+   "fetchedAt": "2026-10-21T12:55:40.165Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -219,7 +241,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T12:46:27.388Z",
+   "subsAsOn": "2026-10-21T12:55:40.180Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -251,7 +273,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T12:46:27.388Z",
+   "fetchedAt": "2026-10-21T12:55:40.180Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -286,7 +308,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-21T12:46:27.388Z",
+   "subsAsOn": "2026-10-21T12:55:40.180Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -318,671 +340,8 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-21T12:46:27.388Z",
+   "fetchedAt": "2026-10-21T12:55:40.180Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "JPL",
-   "name": "Jio Platforms Limited",
-   "board": "Mainboard",
-   "status": "live",
-   "open": "2026-10-21",
-   "close": "2026-10-23",
-   "timeline": {
-    "open": "2026-10-21",
-    "close": "2026-10-23",
-    "allotment": "2026-10-26",
-    "refund": "2026-10-27",
-    "demat": "2026-10-27",
-    "listing": "2026-10-28"
-   },
-   "allotment": "2026-10-26",
-   "listing": "2026-10-28",
-   "datesExpected": false,
-   "priceLow": 1065,
-   "priceHigh": 1119,
-   "lot": 12,
-   "faceValue": 10,
-   "issueShares": 270000000,
-   "issueSizeCr": 30213,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 27,00,00,000 equity shares (including Employee Reservation Portion aggregating up to Rs. 5,000 million, Eligible RIL shareholders portion aggregating up to Rs. 25,000 million and Anchor reservation portion of 7,24,74,066 equity shares)",
-   "upiCutoff": "23-Oct-2026 (upto 7:00 PM) The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 49007827,
-     "bid": 442908756,
-     "times": 9.037510600092512
-    },
-    "nii": {
-     "offered": 36444569,
-     "bid": 59410080,
-     "times": 1.6301490628137214
-    },
-    "bnii": {
-     "offered": 24296380,
-     "bid": 43052460,
-     "times": 1.7719701453467553
-    },
-    "snii": {
-     "offered": 12148189,
-     "bid": 16357620,
-     "times": 1.3465068743991389
-    },
-    "retail": {
-     "offered": 85037327,
-     "bid": 60196800,
-     "times": 0.7078867848233282
-    },
-    "employee": {
-     "offered": 4694835,
-     "bid": 6283836,
-     "times": 1.3384572620763031
-    },
-    "shareholders": {
-     "offered": 22341376,
-     "bid": 31806600,
-     "times": 1.4236634305783136
-    },
-    "other": null,
-    "total": {
-     "offered": 197525934,
-     "bid": 600606072,
-     "times": 3.040644131316954
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T18:09:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 1065,
-     "priceHigh": 1119,
-     "maxAmount": 200000,
-     "minAmount": 13428,
-     "lot": 12,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "Employee",
-     "priceLow": 1011,
-     "priceHigh": 1065,
-     "maxAmount": 500000,
-     "minAmount": null,
-     "lot": 12,
-     "note": "Discount Rs 54 per share"
-    },
-    {
-     "category": "Shareholder",
-     "priceLow": null,
-     "priceHigh": null,
-     "maxAmount": 200000,
-     "minAmount": null,
-     "lot": 12,
-     "note": "Price for shareholders not stated by NSE"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 1065,
-     "priceHigh": 1119,
-     "maxAmount": null,
-     "minAmount": 201420,
-     "lot": 12,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 13428,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": null,
-    "registrar": {
-     "name": "Kfin Technologies Limited",
-     "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
-     "phone": "+91 40 6716 2222",
-     "email": "jioplatforms.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": null
-    },
-    "source": "NSE issue info"
-   },
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 21-Oct-2026 18:12:00 IST",
-    "totalBids": 601169844,
-    "timesSubscribed": 3.04,
-    "byPrice": {
-     "1065": "60,11,69,844",
-     "1066": "60,07,36,380",
-     "1067": "60,07,08,900",
-     "1068": "60,07,02,996",
-     "1069": "60,06,97,224",
-     "1070": "60,06,90,060",
-     "1071": "60,06,23,064",
-     "1072": "60,06,17,508",
-     "1073": "60,06,14,712",
-     "1074": "60,06,13,824",
-     "1075": "60,06,11,652",
-     "1076": "60,05,83,788",
-     "1077": "60,05,82,624",
-     "1078": "60,05,80,296",
-     "1079": "60,05,78,784",
-     "1080": "60,05,76,948",
-     "1081": "60,05,24,676",
-     "1082": "60,05,23,008",
-     "1083": "60,05,22,144",
-     "1084": "60,05,20,332",
-     "1085": "60,05,18,172",
-     "1086": "60,05,03,556",
-     "1087": "60,05,02,608",
-     "1088": "60,05,01,696",
-     "1089": "60,05,00,676",
-     "1090": "60,04,97,544",
-     "1091": "60,04,58,400",
-     "1092": "60,04,57,320",
-     "1093": "60,04,51,656",
-     "1094": "60,04,50,564",
-     "1095": "60,04,49,904",
-     "1096": "60,04,38,336",
-     "1097": "60,04,37,364",
-     "1098": "60,04,36,416",
-     "1099": "60,04,34,436",
-     "1100": "60,04,25,592",
-     "1101": "60,02,41,572",
-     "1102": "60,02,31,960",
-     "1103": "60,02,31,120",
-     "1104": "60,02,30,184",
-     "1105": "60,02,27,448",
-     "1106": "60,02,22,384",
-     "1107": "60,02,21,556",
-     "1108": "60,02,20,344",
-     "1109": "60,02,17,980",
-     "1110": "60,02,14,824",
-     "1111": "60,01,57,332",
-     "1112": "60,01,11,000",
-     "1113": "60,01,05,360",
-     "1114": "60,01,00,848",
-     "1115": "60,00,96,612",
-     "1116": "60,00,74,952",
-     "1117": "60,00,63,216",
-     "1118": "60,00,42,864",
-     "1119": "59,99,78,904",
-     "Cut-Off": "8,81,93,340"
-    }
-   },
-   "registrar": {
-    "name": "Kfin Technologies Limited",
-    "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
-    "contact": "Williams R, +91 40 6716 2222, jioplatforms.ipo@kfintech.com"
-   },
-   "leadManagers": "Kotak Mahindra Capital Company Limited",
-   "sponsorBank": "ICICI Bank Limited, Kotak Mahindra Bank Limited, State Bank of India and Axis Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip"
-   },
-   "logo": "data/logos/JPL.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792045029108.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/jio-platforms-ipo/2306/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 255,
-    "min": 255,
-    "max": 255,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 255,
-      "pct": 22.79,
-      "updated": "21-Oct 13:37",
-      "seenLow": 148,
-      "seenHigh": 273
-     }
-    ],
-    "rating": 4,
-    "updated": "21-Oct 13:37",
-    "history": [
-     {
-      "date": "2026-10-15",
-      "gmp": 222
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 221
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 235
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 235.5
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 245
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 273
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 255
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-21T12:47:23.981Z",
-     "date": "2026-10-21",
-     "qib": 9.037510600092512,
-     "bnii": 1.7719701453467553,
-     "snii": 1.3465068743991389,
-     "nii": 1.6301490628137214,
-     "retail": 0.7078867848233282,
-     "total": 3.040644131316954
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 30213,
-     "other": 30213,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 12,
-     "other": 12,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 1119,
-     "other": 1119,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-23",
-     "other": "2026-10-23",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Jio Platforms Limited",
-    "basis": "Consolidated",
-    "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
-    "sector": "Telecom / Digital Services",
-    "headquarters": "Ahmedabad, Gujarat",
-    "founded_year": 2019,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      539580.4,
-      581233.8,
-      615594
-     ],
-     "revenue": [
-      109558.1,
-      128218.4,
-      146885.3
-     ],
-     "other_income": [
-      617.3,
-      1114.6,
-      2873.8
-     ],
-     "ebitda": [
-      54958.7,
-      64170,
-      76255.4
-     ],
-     "pbt": [
-      28808,
-      35127.3,
-      40353.1
-     ],
-     "pat": [
-      21423.2,
-      26109,
-      30049.1
-     ],
-     "net_worth": [
-      277866.1,
-      304022.4,
-      334013.4
-     ],
-     "reserves": [
-      268927.1,
-      295083.4,
-      325074.4
-     ],
-     "borrowings": [
-      54348.9,
-      73060.3,
-      70781
-     ],
-     "cash_and_bank": [
-      2910.5,
-      8423.6,
-      16946.6
-     ],
-     "operating_cash_flow": [
-      57661.6,
-      68155.7,
-      77556.3
-     ]
-    },
-    "kpi": {
-     "roce": [
-      12.83,
-      12.5,
-      10.76
-     ],
-     "ronw": [
-      8.02,
-      8.97,
-      9.42
-     ],
-     "roe": [
-      null,
-      null,
-      null
-     ],
-     "eps_basic": [
-      23.96,
-      29.21,
-      33.63
-     ],
-     "eps_diluted": [
-      23.93,
-      29.17,
-      33.59
-     ],
-     "pat_margin": [
-      19.55,
-      20.36,
-      20.46
-     ],
-     "ebitda_margin": [
-      50.16,
-      50.05,
-      51.91
-     ],
-     "debt_equity": [
-      null,
-      null,
-      null
-     ],
-     "current_ratio": [
-      null,
-      null,
-      null
-     ],
-     "nav_per_share": 373.66,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 30.55,
-     "other": [
-      {
-       "name": "Total customer base (RJIL)",
-       "unit": "million",
-       "values": [
-        481.8,
-        488.2,
-        524.4
-       ]
-      },
-      {
-       "name": "ARPU (exit quarter)",
-       "unit": "Rs per month",
-       "values": [
-        181.7,
-        206.2,
-        214
-       ]
-      },
-      {
-       "name": "Data traffic",
-       "unit": "billion GB",
-       "values": [
-        148.5,
-        184.5,
-        241.4
-       ]
-      },
-      {
-       "name": "Monthly data consumption per customer (exit quarter)",
-       "unit": "GB/month",
-       "values": [
-        28.7,
-        33.6,
-        42.3
-       ]
-      },
-      {
-       "name": "Monthly churn (exit quarter)",
-       "unit": "%",
-       "values": [
-        1.52,
-        1.81,
-        1.67
-       ]
-      },
-      {
-       "name": "Net leverage (net debt / EBITDA)",
-       "unit": "x",
-       "values": [
-        0.88,
-        0.71,
-        0.36
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Bharti Airtel Limited",
-      "revenue_cr": 210972.8,
-      "face_value": 5,
-      "cmp": null,
-      "eps_basic": 45.96,
-      "eps_diluted": 44.37,
-      "nav": 244.6,
-      "pe": 40.71,
-      "ronw": 20.32
-     },
-     {
-      "name": "Vodafone Idea Limited",
-      "revenue_cr": 44873,
-      "face_value": 10,
-      "cmp": null,
-      "eps_basic": 3.21,
-      "eps_diluted": 3.21,
-      "nav": -3.3,
-      "pe": 3.99,
-      "ronw": null
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 270000000,
-     "ofs_shares": null,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL",
-       "amount_cr": 27500
-      },
-      {
-       "purpose": "General corporate purposes (not to exceed 25% of gross proceeds)",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Reliance Industries Limited"
-     ],
-     "holding_pre_pct": 66.43,
-     "holding_post_pct": null,
-     "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
-    },
-    "concentration": {
-     "top_customers_pct": null,
-     "govt_share_pct": null,
-     "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
-    },
-    "order_book_cr": null,
-    "litigation_note": null,
-    "strengths": [
-     "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
-     "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
-     "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
-     "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
-     "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
-     "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
-     "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
-     "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
-    ],
-    "risks": [
-     {
-      "title": "Sole distributor dependence on Reliance Retail",
-      "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy related-party dealings with the Reliance Group",
-      "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.",
-      "severity": "high"
-     },
-     {
-      "title": "Licence and spectrum renewal",
-      "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.",
-      "severity": "high"
-     },
-     {
-      "title": "Significant indebtedness and deferred payments",
-      "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.",
-      "severity": "medium"
-     },
-     {
-      "title": "Overdependence on RJIL",
-      "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.",
-      "severity": "medium"
-     },
-     {
-      "title": "Highly regulated telecom business",
-      "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.",
-      "severity": "medium"
-     },
-     {
-      "title": "Reliance on passive infrastructure and vendors",
-      "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.",
-      "severity": "medium"
-     },
-     {
-      "title": "Intense competition and capital intensity",
-      "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 59,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-21T12:45:58.218Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -1204,21 +563,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 45,
-    "min": 45,
-    "max": 45,
+    "value": 35,
+    "min": 35,
+    "max": 35,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 45,
-      "pct": 6.49,
-      "updated": "21-Oct 13:37",
-      "seenLow": 45,
+      "gmp": 35,
+      "pct": 5.05,
+      "updated": "21-Oct 18:02",
+      "seenLow": 35,
       "seenHigh": 96
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -1246,13 +605,13 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 45
+      "gmp": 35
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-10-21T12:47:23.983Z",
+     "at": "2026-10-21T12:56:34.647Z",
      "date": "2026-10-21",
      "qib": 0.00008921380786987164,
      "bnii": 0.047697510662412325,
@@ -1691,7 +1050,670 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:03.957Z"
+   "fetchedAt": "2026-10-21T12:55:14.192Z"
+  },
+  {
+   "symbol": "JPL",
+   "name": "Jio Platforms Limited",
+   "board": "Mainboard",
+   "status": "live",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "timeline": {
+    "open": "2026-10-21",
+    "close": "2026-10-23",
+    "allotment": "2026-10-26",
+    "refund": "2026-10-27",
+    "demat": "2026-10-27",
+    "listing": "2026-10-28"
+   },
+   "allotment": "2026-10-26",
+   "listing": "2026-10-28",
+   "datesExpected": false,
+   "priceLow": 1065,
+   "priceHigh": 1119,
+   "lot": 12,
+   "faceValue": 10,
+   "issueShares": 270000000,
+   "issueSizeCr": 30213,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 27,00,00,000 equity shares (including Employee Reservation Portion aggregating up to Rs. 5,000 million, Eligible RIL shareholders portion aggregating up to Rs. 25,000 million and Anchor reservation portion of 7,24,74,066 equity shares)",
+   "upiCutoff": "23-Oct-2026 (upto 7:00 PM) The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 49007827,
+     "bid": 443845476,
+     "times": 9.056624281668315
+    },
+    "nii": {
+     "offered": 36444569,
+     "bid": 59782284,
+     "times": 1.640361942543483
+    },
+    "bnii": {
+     "offered": 24296380,
+     "bid": 43320912,
+     "times": 1.7830191987448336
+    },
+    "snii": {
+     "offered": 12148189,
+     "bid": 16461372,
+     "times": 1.355047406654605
+    },
+    "retail": {
+     "offered": 85037327,
+     "bid": 60616800,
+     "times": 0.7128257923723308
+    },
+    "employee": {
+     "offered": 4694835,
+     "bid": 6318876,
+     "times": 1.3459207831585136
+    },
+    "shareholders": {
+     "offered": 22341376,
+     "bid": 32002104,
+     "times": 1.4324141897079212
+    },
+    "other": null,
+    "total": {
+     "offered": 197525934,
+     "bid": 602565540,
+     "times": 3.0505641856628305
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-21T18:21:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": 200000,
+     "minAmount": 13428,
+     "lot": 12,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 1011,
+     "priceHigh": 1065,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Discount Rs 54 per share"
+    },
+    {
+     "category": "Shareholder",
+     "priceLow": null,
+     "priceHigh": null,
+     "maxAmount": 200000,
+     "minAmount": null,
+     "lot": 12,
+     "note": "Price for shareholders not stated by NSE"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 1065,
+     "priceHigh": 1119,
+     "maxAmount": null,
+     "minAmount": 201420,
+     "lot": 12,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 13428,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Kfin Technologies Limited",
+     "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+     "phone": "+91 40 6716 2222",
+     "email": "jioplatforms.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 21-Oct-2026 18:21:00 IST",
+    "totalBids": 602133288,
+    "timesSubscribed": 3.05,
+    "byPrice": {
+     "1065": "60,21,33,288",
+     "1066": "60,16,97,880",
+     "1067": "60,16,70,304",
+     "1068": "60,16,64,400",
+     "1069": "60,16,58,628",
+     "1070": "60,16,51,464",
+     "1071": "60,15,84,000",
+     "1072": "60,15,78,444",
+     "1073": "60,15,75,648",
+     "1074": "60,15,74,760",
+     "1075": "60,15,72,588",
+     "1076": "60,15,44,712",
+     "1077": "60,15,43,548",
+     "1078": "60,15,41,196",
+     "1079": "60,15,39,684",
+     "1080": "60,15,37,836",
+     "1081": "60,14,85,096",
+     "1082": "60,14,83,404",
+     "1083": "60,14,82,540",
+     "1084": "60,14,80,716",
+     "1085": "60,14,78,544",
+     "1086": "60,14,63,808",
+     "1087": "60,14,62,680",
+     "1088": "60,14,61,768",
+     "1089": "60,14,60,724",
+     "1090": "60,14,57,592",
+     "1091": "60,14,18,196",
+     "1092": "60,14,17,116",
+     "1093": "60,14,11,428",
+     "1094": "60,14,10,336",
+     "1095": "60,14,09,676",
+     "1096": "60,13,98,072",
+     "1097": "60,13,97,100",
+     "1098": "60,13,96,152",
+     "1099": "60,13,94,172",
+     "1100": "60,13,85,316",
+     "1101": "60,12,00,132",
+     "1102": "60,11,90,520",
+     "1103": "60,11,89,680",
+     "1104": "60,11,88,744",
+     "1105": "60,11,85,984",
+     "1106": "60,11,80,896",
+     "1107": "60,11,80,056",
+     "1108": "60,11,78,844",
+     "1109": "60,11,76,468",
+     "1110": "60,11,73,288",
+     "1111": "60,11,15,700",
+     "1112": "60,10,69,128",
+     "1113": "60,10,63,488",
+     "1114": "60,10,58,976",
+     "1115": "60,10,54,728",
+     "1116": "60,10,32,852",
+     "1117": "60,10,21,116",
+     "1118": "60,10,00,644",
+     "1119": "60,09,36,324",
+     "Cut-Off": "8,86,04,040"
+    }
+   },
+   "registrar": {
+    "name": "Kfin Technologies Limited",
+    "address": "Selenium Tower B, Plot No. 31 and 32, Gachibowli, Financial District, Nanakramguda, Serilingampally, Hyderabad 500 032, Telangana, India",
+    "contact": "Williams R, +91 40 6716 2222, jioplatforms.ipo@kfintech.com"
+   },
+   "leadManagers": "Kotak Mahindra Capital Company Limited",
+   "sponsorBank": "ICICI Bank Limited, Kotak Mahindra Bank Limited, State Bank of India and Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip"
+   },
+   "logo": "data/logos/JPL.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_JPL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792045029108.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/jio-platforms-ipo/2306/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 249,
+    "min": 249,
+    "max": 249,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 249,
+      "pct": 22.25,
+      "updated": "21-Oct 18:02",
+      "seenLow": 148,
+      "seenHigh": 273
+     }
+    ],
+    "rating": 4,
+    "updated": "21-Oct 18:02",
+    "history": [
+     {
+      "date": "2026-10-15",
+      "gmp": 222
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 221
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 235
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 235.5
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 245
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 273
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 249
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-21T12:56:34.649Z",
+     "date": "2026-10-21",
+     "qib": 9.056624281668315,
+     "bnii": 1.7830191987448336,
+     "snii": 1.355047406654605,
+     "nii": 1.640361942543483,
+     "retail": 0.7128257923723308,
+     "total": 3.0505641856628305
+    }
+   ],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 30213,
+     "other": 30213,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 12,
+     "other": 12,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 1119,
+     "other": 1119,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-23",
+     "other": "2026-10-23",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Jio Platforms Limited",
+    "basis": "Consolidated",
+    "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
+    "sector": "Telecom / Digital Services",
+    "headquarters": "Ahmedabad, Gujarat",
+    "founded_year": 2019,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      539580.4,
+      581233.8,
+      615594
+     ],
+     "revenue": [
+      109558.1,
+      128218.4,
+      146885.3
+     ],
+     "other_income": [
+      617.3,
+      1114.6,
+      2873.8
+     ],
+     "ebitda": [
+      54958.7,
+      64170,
+      76255.4
+     ],
+     "pbt": [
+      28808,
+      35127.3,
+      40353.1
+     ],
+     "pat": [
+      21423.2,
+      26109,
+      30049.1
+     ],
+     "net_worth": [
+      277866.1,
+      304022.4,
+      334013.4
+     ],
+     "reserves": [
+      268927.1,
+      295083.4,
+      325074.4
+     ],
+     "borrowings": [
+      54348.9,
+      73060.3,
+      70781
+     ],
+     "cash_and_bank": [
+      2910.5,
+      8423.6,
+      16946.6
+     ],
+     "operating_cash_flow": [
+      57661.6,
+      68155.7,
+      77556.3
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.83,
+      12.5,
+      10.76
+     ],
+     "ronw": [
+      8.02,
+      8.97,
+      9.42
+     ],
+     "roe": [
+      null,
+      null,
+      null
+     ],
+     "eps_basic": [
+      23.96,
+      29.21,
+      33.63
+     ],
+     "eps_diluted": [
+      23.93,
+      29.17,
+      33.59
+     ],
+     "pat_margin": [
+      19.55,
+      20.36,
+      20.46
+     ],
+     "ebitda_margin": [
+      50.16,
+      50.05,
+      51.91
+     ],
+     "debt_equity": [
+      null,
+      null,
+      null
+     ],
+     "current_ratio": [
+      null,
+      null,
+      null
+     ],
+     "nav_per_share": 373.66,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 30.55,
+     "other": [
+      {
+       "name": "Total customer base (RJIL)",
+       "unit": "million",
+       "values": [
+        481.8,
+        488.2,
+        524.4
+       ]
+      },
+      {
+       "name": "ARPU (exit quarter)",
+       "unit": "Rs per month",
+       "values": [
+        181.7,
+        206.2,
+        214
+       ]
+      },
+      {
+       "name": "Data traffic",
+       "unit": "billion GB",
+       "values": [
+        148.5,
+        184.5,
+        241.4
+       ]
+      },
+      {
+       "name": "Monthly data consumption per customer (exit quarter)",
+       "unit": "GB/month",
+       "values": [
+        28.7,
+        33.6,
+        42.3
+       ]
+      },
+      {
+       "name": "Monthly churn (exit quarter)",
+       "unit": "%",
+       "values": [
+        1.52,
+        1.81,
+        1.67
+       ]
+      },
+      {
+       "name": "Net leverage (net debt / EBITDA)",
+       "unit": "x",
+       "values": [
+        0.88,
+        0.71,
+        0.36
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Bharti Airtel Limited",
+      "revenue_cr": 210972.8,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 45.96,
+      "eps_diluted": 44.37,
+      "nav": 244.6,
+      "pe": 40.71,
+      "ronw": 20.32
+     },
+     {
+      "name": "Vodafone Idea Limited",
+      "revenue_cr": 44873,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 3.21,
+      "eps_diluted": 3.21,
+      "nav": -3.3,
+      "pe": 3.99,
+      "ronw": null
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 270000000,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL",
+       "amount_cr": 27500
+      },
+      {
+       "purpose": "General corporate purposes (not to exceed 25% of gross proceeds)",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Reliance Industries Limited"
+     ],
+     "holding_pre_pct": 66.43,
+     "holding_post_pct": null,
+     "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": null,
+    "strengths": [
+     "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
+     "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
+     "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
+     "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
+     "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
+     "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
+     "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
+     "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
+    ],
+    "risks": [
+     {
+      "title": "Sole distributor dependence on Reliance Retail",
+      "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy related-party dealings with the Reliance Group",
+      "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.",
+      "severity": "high"
+     },
+     {
+      "title": "Licence and spectrum renewal",
+      "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.",
+      "severity": "high"
+     },
+     {
+      "title": "Significant indebtedness and deferred payments",
+      "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.",
+      "severity": "medium"
+     },
+     {
+      "title": "Overdependence on RJIL",
+      "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.",
+      "severity": "medium"
+     },
+     {
+      "title": "Highly regulated telecom business",
+      "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.",
+      "severity": "medium"
+     },
+     {
+      "title": "Reliance on passive infrastructure and vendors",
+      "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.",
+      "severity": "medium"
+     },
+     {
+      "title": "Intense competition and capital intensity",
+      "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 59,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-21T12:55:15.081Z"
   },
   {
    "symbol": "ZETWERK",
@@ -1908,65 +1930,7 @@
     }
    ],
    "anchor": true,
-   "gmp": {
-    "value": 1.5,
-    "min": 1.5,
-    "max": 1.5,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 1.5,
-      "pct": 0.99,
-      "updated": "21-Oct 13:37",
-      "seenLow": 1.5,
-      "seenHigh": 30
-     }
-    ],
-    "rating": 1,
-    "updated": "21-Oct 13:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 15.5
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 17
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 15
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 7.5
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 7.2
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 6.1
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 3.5
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 1.5
-     }
-    ]
-   },
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.220Z",
@@ -2534,21 +2498,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 513,
-    "min": 513,
-    "max": 513,
+    "value": 512,
+    "min": 512,
+    "max": 512,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 513,
-      "pct": 73.29,
-      "updated": "21-Oct 13:37",
+      "gmp": 512,
+      "pct": 73.14,
+      "updated": "21-Oct 18:02",
       "seenLow": 270,
       "seenHigh": 516
      }
     ],
     "rating": 5,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -2588,7 +2552,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 513
+      "gmp": 512
      }
     ]
    },
@@ -3199,21 +3163,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 135,
-    "min": 135,
-    "max": 135,
+    "value": 132,
+    "min": 132,
+    "max": 132,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 135,
-      "pct": 23.04,
-      "updated": "21-Oct 13:37",
+      "gmp": 132,
+      "pct": 22.53,
+      "updated": "21-Oct 18:02",
       "seenLow": 127,
       "seenHigh": 178
      }
     ],
     "rating": 4,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -3253,7 +3217,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 135
+      "gmp": 132
      }
     ]
    },
@@ -3883,13 +3847,13 @@
       "source": "investorgain.com",
       "gmp": 24,
       "pct": 6.98,
-      "updated": "21-Oct 13:37",
+      "updated": "21-Oct 18:02",
       "seenLow": 15,
       "seenHigh": 43
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -4351,7 +4315,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:14.013Z",
+   "subsAsOn": "2026-10-21T12:55:26.771Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -4460,21 +4424,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 35,
-    "min": 35,
-    "max": 35,
+    "value": 25,
+    "min": 25,
+    "max": 25,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 35,
-      "pct": 19.55,
-      "updated": "21-Oct 13:37",
+      "gmp": 25,
+      "pct": 13.97,
+      "updated": "21-Oct 18:02",
       "seenLow": 25,
       "seenHigh": 46
      }
     ],
     "rating": 3,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -4498,7 +4462,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 35
+      "gmp": 25
      }
     ]
    },
@@ -4868,7 +4832,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:14.013Z"
+   "fetchedAt": "2026-10-21T12:55:26.771Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -5063,21 +5027,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 18,
-    "min": 18,
-    "max": 18,
+    "value": 17,
+    "min": 17,
+    "max": 17,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 18,
-      "pct": 6.23,
-      "updated": "21-Oct 13:37",
+      "gmp": 17,
+      "pct": 5.88,
+      "updated": "21-Oct 18:02",
       "seenLow": 10,
       "seenHigh": 55
      }
     ],
     "rating": 2,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-09",
@@ -5121,7 +5085,7 @@
      },
      {
       "date": "2026-10-21",
-      "gmp": 18
+      "gmp": 17
      }
     ]
    },
@@ -5730,13 +5694,13 @@
       "source": "investorgain.com",
       "gmp": 1,
       "pct": 0.89,
-      "updated": "21-Oct 13:37",
+      "updated": "21-Oct 18:02",
       "seenLow": 1,
       "seenHigh": 12
      }
     ],
     "rating": 1,
-    "updated": "21-Oct 13:37",
+    "updated": "21-Oct 18:02",
     "history": [
      {
       "date": "2026-10-12",
@@ -9825,7 +9789,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:18.231Z",
+   "subsAsOn": "2026-10-21T12:55:31.213Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -10337,7 +10301,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:18.231Z"
+   "fetchedAt": "2026-10-21T12:55:31.213Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -10383,7 +10347,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:19.238Z",
+   "subsAsOn": "2026-10-21T12:55:31.924Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -10816,7 +10780,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:19.238Z"
+   "fetchedAt": "2026-10-21T12:55:31.924Z"
   },
   {
    "symbol": "TNA",
@@ -10862,7 +10826,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:20.300Z",
+   "subsAsOn": "2026-10-21T12:55:32.822Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11316,7 +11280,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:20.300Z"
+   "fetchedAt": "2026-10-21T12:55:32.822Z"
   },
   {
    "symbol": "DSL",
@@ -11362,7 +11326,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:21.078Z",
+   "subsAsOn": "2026-10-21T12:55:33.565Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11763,7 +11727,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:21.078Z"
+   "fetchedAt": "2026-10-21T12:55:33.565Z"
   },
   {
    "symbol": "OMARA",
@@ -11809,7 +11773,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:23.538Z",
+   "subsAsOn": "2026-10-21T12:55:36.159Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12260,7 +12224,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:23.538Z"
+   "fetchedAt": "2026-10-21T12:55:36.159Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -12776,7 +12740,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:21.909Z",
+   "subsAsOn": "2026-10-21T12:55:34.361Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13003,7 +12967,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T12:46:21.909Z"
+   "fetchedAt": "2026-10-21T12:55:34.361Z"
   },
   {
    "symbol": "BLACKOPAL",
@@ -13049,7 +13013,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:25.832Z",
+   "subsAsOn": "2026-10-21T12:55:38.686Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13183,7 +13147,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T12:46:25.832Z"
+   "fetchedAt": "2026-10-21T12:55:38.686Z"
   },
   {
    "symbol": "VANS",
@@ -13229,7 +13193,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:26.709Z",
+   "subsAsOn": "2026-10-21T12:55:39.512Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13693,7 +13657,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:26.709Z"
+   "fetchedAt": "2026-10-21T12:55:39.512Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -14824,7 +14788,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:24.293Z",
+   "subsAsOn": "2026-10-21T12:55:36.984Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15361,7 +15325,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-21T12:46:24.293Z"
+   "fetchedAt": "2026-10-21T12:55:36.984Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -22696,7 +22660,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-21T12:46:08.840Z",
+   "subsAsOn": "2026-10-21T12:55:20.443Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -22776,7 +22740,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-21T12:46:08.840Z"
+   "fetchedAt": "2026-10-21T12:55:20.443Z"
   }
  ],
  "filings": [
