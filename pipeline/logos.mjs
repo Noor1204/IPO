@@ -72,7 +72,8 @@ async function igLogo(igUrl, name) {
   const n = norm(name);
   for (const m of html.matchAll(/https:\/\/www\.chittorgarh\.net\/images\/ipo\/([a-z0-9-]+?)-logo\.png/gi)) {
     const slug = m[1].toLowerCase(); if (/ipomatrix|ipo-platform|chittorgarh|white-main/.test(slug)) continue;
-    if (lcs(slug.replace(/-/g, ""), n) < 3) continue;
+    const flat = slug.replace(/-/g, ""), first = n.split(" ")[0] || "";
+    if (first.length >= 3 ? !flat.includes(first.slice(0, 5)) : lcs(flat, n) < 4) continue;      // the logo's file name must start from the company's own first word (a similar-looking sidebar logo of another IPO is not accepted)
     const i = await image(m[0]); if (i) return { ...i, source: "InvestorGain" };
   }
   return null;

@@ -1,4 +1,6 @@
 const $ = s => document.querySelector(s);
+// one icon set: Tabler outline icons as an inline sprite in index.html (<symbol id="ti-name">)
+const ic = (name, cls = "") => `<svg class="ic${cls ? " " + cls : ""}" aria-hidden="true"><use href="#ti-${name}"/></svg>`;
 // logo images: show when loaded, remove when they fail (initials stay). Load/error do not bubble, so listen in the capture phase.
 document.addEventListener("load", e => { if (e.target.tagName === "IMG" && e.target.closest(".logo")) e.target.classList.add("ok"); }, true);
 document.addEventListener("error", e => { if (e.target.tagName === "IMG" && e.target.closest(".logo")) e.target.remove(); }, true);
@@ -94,18 +96,18 @@ function scoreOf(i) {
   return { score: Math.round(keys.reduce((a, k) => a + v[k] * WEIGHTS[k], 0) / w), coverage: Math.round(w * 100) };
 }
 const score = i => scoreOf(i).score;
-const verdict = s => s === null ? { t: "Insufficient data", e: "❔", c: "gr" } : s >= 80 ? { t: "High score", e: "✅", c: "g" } : s >= 60 ? { t: "Moderate score", e: "⚠️", c: "y" } : { t: "Low score", e: "❌", c: "r" };
+const verdict = s => s === null ? { t: "Insufficient data", e: "", c: "gr" } : s >= 80 ? { t: "High score", e: "", c: "g" } : s >= 60 ? { t: "Moderate score", e: "", c: "y" } : { t: "Low score", e: "", c: "r" };
 const col = s => s === null ? "var(--bd)" : s >= 80 ? "var(--ok)" : s >= 60 ? "var(--warn)" : "var(--bad)";
 function reasons(i) {
   const { v, why } = factors(i), out = [];
-  for (const k of Object.keys(v)) out.push(`${v[k] >= 70 ? "✅" : v[k] >= 50 ? "➖" : "⚠️"} ${FACTOR_LABEL[k]}: ${why[k]}`);
+  for (const k of Object.keys(v)) out.push([v[k] >= 70 ? "good" : v[k] >= 50 ? "mid" : "low", `${FACTOR_LABEL[k]}: ${why[k]}`]);
   const m = Object.keys(WEIGHTS).filter(k => !(k in v)).map(k => FACTOR_LABEL[k]);
-  if (m.length) out.push(`ℹ️ Not scored (data unavailable): ${m.join(", ")}`);
+  if (m.length) out.push(["info", `Not scored (data unavailable): ${m.join(", ")}`]);
   return out;
 }
 
 // ---------- shared UI ----------
-const ring = (s, big) => `<div class="ring ${big ? "big" : ""} ${s === null || s === undefined ? "na" : ""}" ${s === null || s === undefined ? 'title="Score not available: the offer document has not been analysed yet"' : ""} style="background:conic-gradient(${col(s)} ${(s ?? 0) * 3.6}deg,var(--bd) 0)"><span>${s ?? "N/A"}</span></div>`;
+const ring = (s, big) => `<div class="ring ${big ? "big" : ""} ${s === null || s === undefined ? "na" : ""}" ${s === null || s === undefined ? 'title="Score not available: the offer document has not been analysed yet"' : ""} style="--rc:${col(s)};--rp:${(s ?? 0) * 3.6}deg"><span>${s ?? "N/A"}</span></div>`;
 const hue = s => [...s].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 const logoText = i => /^IG-/.test(i.symbol) ? i.name.split(/\s+/).map(w => w[0]).join("").slice(0, 3).toUpperCase() : i.symbol.slice(0, 3);   // IG-only entries have no exchange symbol
 const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 42%)"><span>${esc(logoText(i))}</span>${logoSrc(i.logo) ? `<img src="${esc(logoSrc(i.logo))}" alt="" referrerpolicy="no-referrer">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
@@ -126,15 +128,15 @@ function phase(i, now = Date.now()) {
   if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: "Closes in", sub: "by " + endLabel(i) };
   if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
   const ex = i.datesExpected ? " (exp.)" : "";
-  if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: "🔔 Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
-  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: "📈 Listing on " + fmtD(i.listing) + ex, end: i.listing ? new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime() : null, tl: "Listing in", sub: "10:00 AM" };
-  if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", label: "✅ Allotment day: check your status" };
-  return { k: "wait", label: "⏳ Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : ""), end: i.allotment ? new Date(i.allotment + "T00:00:00" + IST_OFFSET).getTime() : null, tl: "Allotment day starts in", sub: i.allotment ? fmtD(i.allotment) + ex : "" };
+  if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: ic("bell-ringing") + " Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
+  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: ic("trending-up") + " Listing on " + fmtD(i.listing) + ex, end: i.listing ? new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime() : null, tl: "Listing in", sub: "10:00 AM" };
+  if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", label: ic("circle-check") + " Allotment day: check your status" };
+  return { k: "wait", label: ic("hourglass") + " Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : ""), end: i.allotment ? new Date(i.allotment + "T00:00:00" + IST_OFFSET).getTime() : null, tl: "Allotment day starts in", sub: i.allotment ? fmtD(i.allotment) + ex : "" };
 }
 const pad2 = n => String(n).padStart(2, "0");
 const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d > 0 ? d + "d " + pad2(h) + "h " + pad2(m) + "m " : h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
 // the live countdown (numbers are updated every second by tick() at the end of this file)
-const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) return ""; return `<div class="cd${p.k === "apply" ? (p.end - Date.now() < 3600e3 ? " urgent" : "") : " soft"}" data-end="${p.end}" data-k="${p.k}">⏱ ${p.tl} <b data-cdtxt>${fmtCd(p.end - Date.now())}</b>${p.sub ? ` <span>(${p.sub})</span>` : ""}</div>`; };
+const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) return ""; return `<div class="cd${p.k === "apply" ? (p.end - Date.now() < 3600e3 ? " urgent" : "") : " soft"}" data-end="${p.end}" data-k="${p.k}">${ic("clock")} ${p.tl} <b data-cdtxt>${fmtCd(p.end - Date.now())}</b>${p.sub ? ` <span>(${p.sub})</span>` : ""}</div>`; };
 // the button (or the status that replaces it once bidding is over)
 function actionBtn(i, wide) {
   const p = phase(i), w = wide ? ' style="width:100%"' : "";
@@ -145,11 +147,11 @@ function actionBtn(i, wide) {
 }
 function stLabel(i) {
   if (i.status !== "listed" && !i.close && !i.open) return `<span class="st gray">Dates not announced</span>`;
-  if (i.status === "live" && !i.close) return `<span class="st red">● Open now</span>`;
+  if (i.status === "live" && !i.close) return `<span class="st red"><i class="dot"></i>Open now</span>`;
   if (i.status === "upcoming" && !i.open) return `<span class="st blue">Upcoming</span>`;
   if (notOpenYet(i)) return `<span class="st blue" data-end="${opensAt(i)}" data-k="open">Opens today · 10:00 AM</span>`;
   if (i.status === "live" && i.close && dayDiff(i.close) === 0 && endAt(i) && Date.now() >= endAt(i)) return `<span class="st gray">Bidding closed</span>`;
-  if (i.status === "live") { const d = dayDiff(i.close); return `<span class="st red">● ${d === 0 ? "Closes Today" : `Closes in ${d} day${d > 1 ? "s" : ""}`}</span>`; }
+  if (i.status === "live") { const d = dayDiff(i.close); return `<span class="st red"><i class="dot"></i>${d === 0 ? "Closes Today" : `Closes in ${d} day${d > 1 ? "s" : ""}`}</span>`; }
   if (i.status === "upcoming") { const o = dayDiff(i.open); return `<span class="st blue">Opens in ${o} day${o > 1 ? "s" : ""}</span>`; }
   return `<span class="st grn">Closed</span>`;
 }
@@ -161,7 +163,8 @@ const applyLabel = i => preApply(i) ? "Pre Apply" : "Apply";
 // Broker / platform IPO pages: an IPO bid is placed through a broker or a UPI app, there is no single official site to apply on
 const BROKERS = [["Zerodha", "https://zerodha.com/ipo"], ["Groww", "https://groww.in/ipo"], ["Upstox", "https://upstox.com/ipo/"], ["Angel One", "https://www.angelone.in/ipo"], ["5paisa", "https://www.5paisa.com/ipo"],
   ["ICICI Direct", "https://www.icicidirect.com/ipo"], ["HDFC Securities", "https://www.hdfcsec.com/ipo"], ["Kotak Neo", "https://www.kotakneo.com/ipo/"], ["Paytm Money", "https://www.paytmmoney.com/ipo"], ["Sharekhan", "https://www.sharekhan.com/ipo"]];
-const price = i => isNum(i.priceLow) ? `₹${i.priceLow} - ₹${i.priceHigh}` : isNum(i.priceHigh) ? `₹${i.priceHigh}` : "—";
+const px = n => n.toLocaleString("en-IN", { maximumFractionDigits: 2 });
+const price = i => isNum(i.priceLow) && isNum(i.priceHigh) ? `₹${px(i.priceLow)} – ₹${px(i.priceHigh)}` : isNum(i.priceHigh) ? `₹${px(i.priceHigh)}` : "—";
 // Registrar allotment-status pages (public), matched by the registrar name NSE gives us
 // [name part, address, kind]: "status" = the page where you enter your PAN / application number; "site" = the registrar's own website (find "IPO status" there)
 const REGISTRARS = [["kfin", "https://ipostatus.kfintech.com/", "status"], ["link intime", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html", "status"], ["mufg", "https://in.mpms.mufg.com/Initial_Offer/public-issues.html", "status"],
@@ -170,41 +173,61 @@ const REGISTRARS = [["kfin", "https://ipostatus.kfintech.com/", "status"], ["lin
 const BSE_STATUS = "https://www.bseindia.com/investors/appli_check.aspx";
 const registrarLink = i => { const n = (i.registrar?.name || "").toLowerCase(), r = REGISTRARS.find(([k]) => n.includes(k)); return r ? { url: r[1], kind: r[2] } : null; };
 const fmtGain = p => isNum(p) ? `<span class="${p >= 0 ? "grn-t" : "red-t"}">${p >= 0 ? "+" : ""}${p.toFixed(1)}%</span>` : "—";
+function subBar(i) {
+  const t = totalTimes(i);
+  if (!isNum(t)) return "";
+  return `<div class="sbar" title="Subscription ${f2(t)}x"><i style="width:${Math.max(3, Math.min(100, t / 10 * 100))}%"></i></div>`;
+}
 function listCard(i) {
   const sc = scoreOf(i), v = verdict(sc.score), t = totalTimes(i), g = gmpNow(i);
-  return `<div class="card ipoc" data-open="${i.symbol}"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
-  <div class="ipo-h">${logo(i)}<div style="flex:1"><h3>${esc(i.name)}</h3><div class="mut" style="margin-top:3px">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div>
-  <div style="text-align:center">${ring(sc.score)}<span class="badge ${v.c}" style="font-size:10px;margin-top:5px">${v.t}</span></div></div>
-  <div class="g3"><div>Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div>Offer Price<b>${price(i)}</b></div><div>Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div></div>
-  <div class="g3"><div>Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b></div><div>${i.listingPerf ? "Day-1 gain" : "Subs"}<b>${i.listingPerf ? fmtGain(i.listingPerf.dayOpenGainPct) : isNum(t) ? f2(t) + "x" : "—"}</b></div>
-  <div class="${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut"}">GMP (Rumors)<b>${gmpTxt(i)}</b></div></div>
-  ${cdFor(i)}<div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai">✨ Ai</button>
+  const gcls = isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut";
+  const tone = i.listingPerf && isNum(i.listingPerf.dayOpenGainPct) ? (i.listingPerf.dayOpenGainPct >= 0 ? " t-up" : " t-dn") : isNum(g) ? (g > 0 ? " t-up" : g < 0 ? " t-dn" : "") : "";
+  return `<div class="card ipoc${tone}" data-open="${i.symbol}"><div class="ipoc-top">${logo(i)}<div class="ipoc-id"><h3>${esc(i.name)}</h3><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div></div>
+  <div class="ipoc-score">${ring(sc.score)}<span class="badge ${v.c}">${v.t}</span></div></div>
+  <div class="kv3"><div><span>Price band</span><b>${price(i)}</b></div><div><span>Lot size</span><b>${isNum(i.lot) ? i.lot + " sh" : "—"}</b></div><div><span>Issue size</span><b>${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</b></div></div>
+  <div class="ipoc-sub"><div><div class="row sm"><span class="mut">${i.listingPerf ? "Day-1 gain" : "Subscribed"}</span><b>${i.listingPerf ? fmtGain(i.listingPerf.dayOpenGainPct) : isNum(t) ? f2(t) + "x" : "—"}</b></div>${i.listingPerf ? "" : subBar(i)}</div>
+  <div class="ipoc-gmp"><span class="mut sm">GMP (rumour)</span><b class="${gcls}">${gmpTxt(i)}</b></div></div>
+  <div class="mut sm ipoc-dates">${fmtS(i.open)} to ${fmtD(i.close)} · Listing ${fmtD(i.listing)}${i.datesExpected ? " (exp.)" : ""}</div>
+  ${cdFor(i)}<div class="acts"><button class="btn ghost" data-open="${i.symbol}">View</button><button class="btn ghost ai" data-open="${i.symbol}" data-jump="ai" aria-label="Open score">${ic("sparkles")} Score</button>
   ${actionBtn(i)}</div></div>`;
 }
-const brand = () => `<div class="brand"><button class="menubtn" data-menu aria-label="Open menu">☰ Menu</button><img src="icons/logo.svg" alt="" width="28" height="28"><span>Trendy <b>IPO</b></span><button class="ib brefresh${state.refreshing ? " spin" : ""}" data-refresh aria-label="Refresh data" title="Refresh data">🔄</button></div>`;
-const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? `<button class="ib" data-back aria-label="Back"><span>←</span> Back</button>` : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
+const bellDot = () => unreadCount() ? '<i class="bdot"></i>' : "";
+const brand = () => `<header class="brand"><div class="brand-row"><span class="logomark"><img src="icons/logo.svg" alt="" width="34" height="34"></span><span class="wm">Trendy <b>IPO</b></span><span class="sp"></span><button class="ib sq" data-bell aria-label="Notifications">${ic("bell")}${bellDot()}</button><button class="ib sq menubtn" data-menu aria-label="Open menu">${ic("menu-2")}</button></div>
+<button class="gsearch" data-gsearch aria-label="Search IPOs, stocks and funds">${ic("search")}<span>Search IPOs, stocks, funds</span></button></header>`;
+const backBtn = () => "";
+const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? backBtn() : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
   const prev = k > 0 ? arr[k - 1].gmp : null, d = prev === null ? null : p.gmp - prev;
   const when = p.date === istDay() ? "Today" : fmtD(p.date), wd = pd(p.date).toLocaleDateString("en-IN", { weekday: "short" });
-  const chg = d === null ? "first record" : d === 0 ? "no change from the day before" : `<span class="${d > 0 ? "grn-t" : "red-t"}">${d > 0 ? "▲ up" : "▼ down"} ₹${Math.abs(d % 1 ? +d.toFixed(1) : d)}</span> from the day before`;
+  const chg = d === null ? "first record" : d === 0 ? "no change from the day before" : `<span class="${d > 0 ? "grn-t" : "red-t"}">${d > 0 ? "up" : "down"} ₹${Math.abs(d % 1 ? +d.toFixed(1) : d)}</span> from the day before`;
   return `<b>${when}</b> <span class="mut">(${wd}${p.date === istDay() ? ", " + fmtD(p.date) : ""})</span><br>GMP <b class="${p.gmp >= 0 ? "grn-t" : "red-t"}">₹${p.gmp}</b> · ${chg}`;
+}
+function smoothPath(p) {
+  if (p.length < 2) return "";
+  let d = "M" + p[0][0].toFixed(1) + "," + p[0][1].toFixed(1);
+  for (let k = 0; k < p.length - 1; k++) {
+    const p0 = p[k - 1] || p[k], p1 = p[k], p2 = p[k + 1], p3 = p[k + 2] || p2, t = 0.18;
+    d += "C" + (p1[0] + (p2[0] - p0[0]) * t).toFixed(1) + "," + (p1[1] + (p2[1] - p0[1]) * t).toFixed(1) + " " + (p2[0] - (p3[0] - p1[0]) * t).toFixed(1) + "," + (p2[1] - (p3[1] - p1[1]) * t).toFixed(1) + " " + p2[0].toFixed(1) + "," + p2[1].toFixed(1);
+  }
+  return d;
 }
 function gmpChart(hist) {
   const h = (hist || []).filter(x => x && isNum(x.gmp) && x.date).sort((a, b) => a.date < b.date ? -1 : 1);
   if (h.length < 2) return "";
   GCH = h;
-  const W = 320, H = 150, L = 40, R = 12, T = 12, B = 26, v = h.map(x => x.gmp), mn = Math.min(...v), mx = Math.max(...v), pad = (mx - mn || Math.abs(mx) || 1) * .15;
+  const W = 320, H = 160, L = 40, R = 12, T = 12, B = 26, v = h.map(x => x.gmp), mn = Math.min(...v), mx = Math.max(...v), pad = (mx - mn || Math.abs(mx) || 1) * .15;
   const lo = mn - pad, hi = mx + pad, X = k => L + k * (W - L - R) / (h.length - 1), Y = g => T + (hi - g) / (hi - lo) * (H - T - B);
-  const up = last(v) >= v[0], c = up ? "var(--ok)" : "var(--bad)", pts = h.map((x, k) => `${X(k).toFixed(1)},${Y(x.gmp).toFixed(1)}`).join(" ");
-  const ticks = [mx, (mx + mn) / 2, mn].filter((t, k, a) => a.indexOf(t) === k).map(t => `<line x1="${L}" x2="${W - R}" y1="${Y(t)}" y2="${Y(t)}" stroke="var(--bd)" stroke-dasharray="3 4"/><text x="${L - 5}" y="${Y(t) + 3.5}" text-anchor="end" class="gax">₹${Math.round(t)}</text>`).join("");
+  const up = last(v) >= v[0], c = up ? "var(--ok)" : "var(--bad)", P = h.map((x, k) => [X(k), Y(x.gmp)]), line = smoothPath(P);
+  const area = line + "L" + X(h.length - 1).toFixed(1) + "," + (H - B) + "L" + X(0).toFixed(1) + "," + (H - B) + "Z";
+  const ticks = [mx, (mx + mn) / 2, mn].filter((t, k, a) => a.indexOf(t) === k).map(t => `<line x1="${L}" x2="${W - R}" y1="${Y(t)}" y2="${Y(t)}" class="ggrid"/><text x="${L - 5}" y="${Y(t) + 3.5}" text-anchor="end" class="gax">₹${Math.round(t)}</text>`).join("");
   const dl = k => pd(h[k].date).toLocaleDateString("en-IN", { day: "numeric", month: "short" });
   const idx = [...new Set([0, Math.floor((h.length - 1) / 2), h.length - 1])];
   const xl = idx.map(k => `<text x="${X(k)}" y="${H - 7}" text-anchor="${k === 0 ? "start" : k === h.length - 1 ? "end" : "middle"}" class="gax">${k === h.length - 1 && h[k].date === istDay() ? "Today" : dl(k)}</text>`).join("");
-  const dots = h.map((x, k) => `<circle class="gdot${k === h.length - 1 ? " on" : ""}" data-k="${k}" cx="${X(k)}" cy="${Y(x.gmp)}" r="${k === h.length - 1 ? 5 : 3.5}" fill="${c}"/>`).join("");
-  return `<div class="gch" data-n="${h.length}" data-l="${L}" data-r="${R}" data-w="${W}"><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="GMP trend by day">${ticks}<polyline fill="none" stroke="${c}" stroke-width="2.5" stroke-linejoin="round" points="${pts}"/><line class="gcur" x1="${X(h.length - 1)}" x2="${X(h.length - 1)}" y1="${T}" y2="${H - B}"/>${dots}${xl}</svg>
-  <div class="gread" aria-live="polite">${gmpDay(h[h.length - 1], h.length - 1, h)}</div><div class="mut sm">${h.length} days recorded · move your cursor or finger over the line to see any day</div></div>`;
+  const dots = h.map((x, k) => `<circle class="gdot${k === h.length - 1 ? " on" : ""}" data-k="${k}" cx="${X(k)}" cy="${Y(x.gmp)}" r="${k === h.length - 1 ? 5 : 3.2}" fill="${c}"/>`).join("");
+  return `<div class="gch" data-n="${h.length}" data-l="${L}" data-r="${R}" data-w="${W}"><svg viewBox="0 0 ${W} ${H}" width="100%" role="img" aria-label="GMP trend by day"><defs><linearGradient id="gfill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:${c};stop-opacity:.38"/><stop offset="1" style="stop-color:${c};stop-opacity:0"/></linearGradient></defs>${ticks}<path d="${area}" fill="url(#gfill)" class="garea"/><path d="${line}" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" class="gline"/><line class="gcur" x1="${X(h.length - 1)}" x2="${X(h.length - 1)}" y1="${T}" y2="${H - B}"/>${dots}${xl}</svg>
+  <div class="gread" aria-live="polite">${gmpDay(h[h.length - 1], h.length - 1, h)}</div><div class="mut sm">${h.length} days recorded · move your cursor or finger over the chart to see any day</div></div>`;
 }
 function gmpPick(e) {
   const box = e.target.closest?.(".gch"); if (!box) return;
@@ -228,10 +251,10 @@ function insights() {
   const g = best(open, gmpPct), s = best(open.filter(i => i.status === "live"), totalTimes), sc = best(open, score), closingNow = open.filter(isClosingToday);
   const card = (icon, label, value, sub, cls, sym) => `<div class="ins${sym ? " ipoc" : ""}" ${sym ? `data-open="${sym}"` : ""}><div class="insl"><i>${icon}</i>${label}</div><b class="${cls}">${value}</b><div class="mut sm insn">${sub}</div></div>`;
   const cards = [
-    g && card("🚀", "Highest GMP", "₹" + gmpNow(g), `${esc(shortName(g.name))} · ${gmpPct(g).toFixed(0)}%`, gmpNow(g) >= 0 ? "grn-t" : "red-t", g.symbol),
-    s && card("🔥", "Most subscribed", f2(totalTimes(s)) + "x", esc(shortName(s.name)), "", s.symbol),
-    sc && card("⭐", "Top score", score(sc) + "/100", esc(shortName(sc.name)), "", sc.symbol),
-    card("⏰", "Closing today", String(closingNow.length), closingNow.length ? ["Mainboard", "SME"].map(b => { const g = closingNow.filter(i => (i.board === "SME" ? "SME" : "Mainboard") === b); return g.length ? `<div class="bdline"><span class="bd ${b === "SME" ? "sme" : "main"}">${b} · ${g.length}</span> ${g.map(i => esc(shortName(i.name))).join(", ")}</div>` : ""; }).join("") : "No IPO closes today", closingNow.length ? "red-t" : "")
+    g && card(ic("rocket"), "Highest GMP", "₹" + gmpNow(g), `${esc(shortName(g.name))} · ${gmpPct(g).toFixed(0)}%`, gmpNow(g) >= 0 ? "grn-t" : "red-t", g.symbol),
+    s && card(ic("flame"), "Most subscribed", f2(totalTimes(s)) + "x", esc(shortName(s.name)), "", s.symbol),
+    sc && card(ic("trophy"), "Top score", score(sc) + "/100", esc(shortName(sc.name)), "", sc.symbol),
+    card(ic("clock"), "Closing today", String(closingNow.length), closingNow.length ? ["Mainboard", "SME"].map(b => { const g = closingNow.filter(i => (i.board === "SME" ? "SME" : "Mainboard") === b); return g.length ? `<div class="bdline"><span class="bd ${b === "SME" ? "sme" : "main"}">${b} · ${g.length}</span> ${g.map(i => esc(shortName(i.name))).join(", ")}</div>` : ""; }).join("") : "No IPO closes today", closingNow.length ? "red-t" : "")
   ].filter(Boolean);
   return `<div class="insights">${cards.join("")}</div>`;
 }
@@ -251,7 +274,7 @@ function calendarCard(status, days) {
     return `<div class="calrow ipoc" data-open="${e.i.symbol}"><div class="calday"><b>${dt.getDate()}</b><span>${dt.toLocaleString("en-IN", { month: "short" })}</span></div>
       ${logo(e.i)}<div class="calmain"><div class="calname">${esc(shortName(e.i.name))}</div><div class="mut sm">${e.n === 0 ? "Today" : e.n === 1 ? "Tomorrow" : dt.toLocaleDateString("en-IN", { weekday: "long" })}</div></div><span class="calchip ${e.cls}">${e.label}${e.est ? " (exp.)" : ""}</span></div>`;
   }).join("");
-  return `<div class="card dcard"><h2>📅 ${status === "live" ? "Live IPOs" : "Upcoming IPOs"} · next ${days} days</h2>${rows || `<p class="mut sm">No events in the next ${days} days.</p>`}</div>`;
+  return `<div class="card dcard"><h2>${ic("calendar-event")} ${status === "live" ? "Live IPOs" : "Upcoming IPOs"} · next ${days} days</h2>${rows || `<p class="mut sm">No events in the next ${days} days.</p>`}</div>`;
 }
 // day-1 gain of the latest listings, drawn to one scale
 function recentCard() {
@@ -260,7 +283,7 @@ function recentCard() {
   const rows = all.slice().sort((x, y) => (y.listing || "").localeCompare(x.listing || "")).slice(0, 8);
   if (!rows.length) return "";
   const mx = Math.max(...rows.map(i => Math.abs(gain(i))), 1), up = all.filter(i => gain(i) >= 0).length, avg = all.reduce((s, i) => s + gain(i), 0) / all.length;
-  return `<div class="card dcard"><h2>📊 Recent listings · Day-1</h2><p class="mut sm" style="margin:-4px 0 10px">${up} of ${all.length} listed in gain · average ${avg >= 0 ? "+" : ""}${avg.toFixed(1)}%</p>
+  return `<div class="card dcard"><h2>${ic("chart-bar")} Recent listings · Day-1</h2><p class="mut sm" style="margin:-4px 0 10px">${up} of ${all.length} listed in gain · average ${avg >= 0 ? "+" : ""}${avg.toFixed(1)}%</p>
     ${rows.map(i => { const v = gain(i); return `<div class="brow ipoc" data-open="${i.symbol}"><span class="bn">${esc(shortName(i.name))}</span><span class="btrack"><i class="${v >= 0 ? "up" : "dn"}" style="width:${Math.max(3, Math.abs(v) / mx * 100)}%"></i></span><b class="${v >= 0 ? "grn-t" : "red-t"}">${v >= 0 ? "+" : ""}${v.toFixed(1)}%</b></div>`; }).join("")}
     <p class="mut sm" style="margin:10px 0 0">Gain at the first trade vs issue price (Yahoo Finance).</p></div>`;
 }
@@ -281,18 +304,18 @@ function ipoTab() {
   if (closingToday.length) list = list.filter(i => !isClosingToday(i));   // shown in their own block above
   const cand = state.ipos.filter(i => i.status === state.seg && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
   const shown = state.seg === "listed" && !state.showAll && !state.q ? list.slice(0, 12) : list;
-  const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c}">${cnt[k]}</b></button>`;
-  return `${head('Live Subscription <sup style="color:var(--bad);font-size:11px">New</sup>', `<button class="ib" data-search>🔍</button><button class="ib" data-tab="settings">🔔</button>`)}
-  ${state.search ? `<input id="q" placeholder="Search IPO" value="${esc(state.q)}">` : ""}
-  <div class="stats">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
-  <div class="opts"><label><input type="checkbox" data-board="main" ${state.main ? "checked" : ""}> MainBoard</label><label><input type="checkbox" data-board="sme" ${state.sme ? "checked" : ""}> SME</label><span class="sp"></span>
-  <select id="sort" style="width:auto;margin:0;padding:6px"><option value="score" ${state.sort === "score" ? "selected" : ""}>Sort: Score</option><option value="gmp" ${state.sort === "gmp" ? "selected" : ""}>Sort: GMP %</option><option value="subs" ${state.sort === "subs" ? "selected" : ""}>Sort: Subscription</option><option value="date" ${state.sort === "date" ? "selected" : ""}>Sort: Open date</option></select></div>
-  ${top && state.seg !== "listed" && !state.q ? `<div class="note" style="margin:0 0 12px">🏆 <b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</div>` : ""}
+  const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c} cu" data-cu="stat-${k}" data-to="${cnt[k]}">${cnt[k]}</b></button>`;
+  return `${head('Live Subscription')}
+  ${state.q ? `<input id="q" placeholder="Filter IPOs" value="${esc(state.q)}">` : ""}
+  <div class="stats" role="group" aria-label="IPO lists">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
+  <div class="opts"><label class="chk"><input type="checkbox" data-board="main" ${state.main ? "checked" : ""}> MainBoard</label><label class="chk"><input type="checkbox" data-board="sme" ${state.sme ? "checked" : ""}> SME</label><span class="sp"></span>
+  <select id="sort" aria-label="Sort" class="sortsel"><option value="score" ${state.sort === "score" ? "selected" : ""}>Sort: Score</option><option value="gmp" ${state.sort === "gmp" ? "selected" : ""}>Sort: GMP %</option><option value="subs" ${state.sort === "subs" ? "selected" : ""}>Sort: Subscription</option><option value="date" ${state.sort === "date" ? "selected" : ""}>Sort: Open date</option></select></div>
+  ${top && state.seg !== "listed" && !state.q ? `<div class="note topnote">${ic("trophy")}<span><b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</span></div>` : ""}
   ${state.seg === "live" && !state.q ? insights() : ""}
   ${state.seg === "listed" && !state.q ? `<div class="two">${recentCard()}</div>` : ""}
   ${state.seg === "listed" ? outcomes() : ""}
   ${closingBlock(closingToday)}
-  ${state.seg === "upcoming" ? upDashboard() : (shown.length ? `<div class="cards">${shown.map(listCard).join("")}</div>` : (closingToday.length ? "" : '<p class="mut" style="text-align:center;margin-top:40px">No IPOs in this category.</p>'))}
+  ${state.seg === "upcoming" ? upDashboard() : (shown.length ? `<div class="cards">${shown.map(listCard).join("")}</div>` : (closingToday.length ? "" : '<p class="mut empty">No IPOs in this category.</p>'))}
   ${shown.length < list.length ? `<button class="btn ghost morebtn" data-more>Show all ${list.length}</button>` : ""}
   ${state.seg === "upcoming" && !state.q ? `<div class="two">${calendarCard("upcoming", 14)}</div>` : ""}
   ${state.seg === "upcoming" ? gmpNote() + filingsBlock() : ""}
@@ -311,9 +334,9 @@ function listingMatch(i) {
   const s = score(i);
   return { actual, gmp: g, gmpP, err, gmpHit: a === null ? null : a <= 5 ? "close" : a <= 10 ? "near" : "miss", score: s, scoreHit: s === null ? null : (s >= 60) === (actual >= 0) };
 }
-const GMP_HIT = { close: `<span class="grn-t">✅ Close</span>`, near: `<span style="color:var(--warn)">⚠️ Near</span>`, miss: `<span class="red-t">❌ Missed</span>` };
+const GMP_HIT = { close: `<span class="grn-t">${ic("circle-check")} Close</span>`, near: `<span class="warn-t">${ic("alert-triangle")} Near</span>`, miss: `<span class="red-t">${ic("x")} Missed</span>` };
 const fmtPts = e => isNum(e) ? `<span class="${Math.abs(e) <= 5 ? "grn-t" : Math.abs(e) <= 10 ? "" : "red-t"}">${e >= 0 ? "+" : ""}${e.toFixed(1)} pts</span>` : "—";
-const SCORE_HIT = h => h === null ? "—" : h ? `<span class="grn-t">✅ Matched</span>` : `<span class="red-t">❌ Not matched</span>`;
+const SCORE_HIT = h => h === null ? "—" : h ? `<span class="grn-t">${ic("circle-check")} Matched</span>` : `<span class="red-t">${ic("x")} Not matched</span>`;
 // Closed tab: how did our GMP and score compare with what actually happened on listing?
 function outcomes() {
   const rows = state.ipos.map(i => ({ i, m: listingMatch(i) })).filter(r => r.m && (r.m.gmpP !== null || r.m.score !== null)).sort((a, b) => (b.i.listing || "").localeCompare(a.i.listing || ""));
@@ -322,8 +345,8 @@ function outcomes() {
   const close = g.filter(r => r.m.gmpHit === "close").length, near = g.filter(r => r.m.gmpHit === "near").length;
   const avg = g.length ? g.reduce((a, r) => a + Math.abs(r.m.err), 0) / g.length : null, hit = s.filter(r => r.m.scoreHit).length;
   const sum = `<div class="stats" style="margin:0 0 10px">${g.length ? `<div class="stat" style="cursor:default"><b>${close}/${g.length}</b><span>GMP close (within 5 pts)</span></div><div class="stat" style="cursor:default"><b>${close + near}/${g.length}</b><span>GMP within 10 pts</span></div><div class="stat" style="cursor:default"><b>${avg.toFixed(1)} pts</b><span>Average GMP miss</span></div>` : ""}${s.length ? `<div class="stat" style="cursor:default"><b>${hit}/${s.length}</b><span>Score matched the outcome</span></div>` : ""}</div>`;
-  return card("📊 GMP & score vs actual listing", sum + tbl(["IPO", "Score", "GMP at listing", "Actual day-1 open", "GMP vs actual", "Score"], rows.map(({ i, m }) => [esc(i.name), m.score ?? "—", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`, fmtGain(m.actual), m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—", SCORE_HIT(m.scoreHit)])) +
-    `<p class="mut sm"><b>GMP</b> = last grey-market reading on or before listing day, as % of the issue price. "GMP vs actual" = actual day-1 gain minus the GMP % (✅ within 5 points, ⚠️ within 10). <b>Score</b> 60+ expects no loss (day-1 open at or above the issue price), below 60 expects a loss; "Matched" means the real day-1 open agreed. Day-1 open is from Yahoo Finance and can differ slightly from the exchange's discovered listing price. GMP is rumour data; this is information, not investment advice.</p>`);
+  return card(ic("chart-bar") + " GMP & score vs actual listing", sum + tbl(["IPO", "Score", "GMP at listing", "Actual day-1 open", "GMP vs actual", "Score"], rows.map(({ i, m }) => [esc(i.name), m.score ?? "—", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`, fmtGain(m.actual), m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—", SCORE_HIT(m.scoreHit)])) +
+    `<p class="mut sm"><b>GMP</b> = last grey-market reading on or before listing day, as % of the issue price. "GMP vs actual" = actual day-1 gain minus the GMP % (green = within 5 points, amber = within 10). <b>Score</b> 60+ expects no loss (day-1 open at or above the issue price), below 60 expects a loss; "Matched" means the real day-1 open agreed. Day-1 open is from Yahoo Finance and can differ slightly from the exchange's discovered listing price. GMP is rumour data; this is information, not investment advice.</p>`);
 }
 // SEBI DRHP / RHP filings = companies that have filed but not announced a price band yet
 // Dashboard: every IPO that has not opened yet, soonest first, with its current GMP
@@ -346,12 +369,12 @@ function closeRow(i) {
     ${logo(i)}<div class="upmain"><div class="upname">${esc(i.name)}</div>
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${isNum(i.priceHigh) && i.priceHigh > 0 ? price(i) : "Price —"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${isNum(i.lot) && i.priceHigh ? " · ₹" + inr(i.lot * i.priceHigh) : ""}</div>
       <div class="mut sm">${N !== null && isNum(i.bids?.retail?.times) ? "Retail " + f2(i.bids.retail.times) + "x (≈1 in " + N + ")" : "Retail subscription —"}${sc.score !== null ? " · Score " + sc.score : ""}</div>
-      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">⏱ Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> (by ${endLabel(i)})</span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
+      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">${ic("clock")} Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> (by ${endLabel(i)})</span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
     <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="mut sm">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div></div>`;
 }
 function closingBlock(list) {
   if (!list.length) return "";
-  return `<div class="closebox"><h2 style="margin:0 0 4px;color:var(--bad)">🔥 Closing today (${list.length})</h2><p class="mut sm" style="margin:0 0 10px">Last day to apply. Bidding usually ends at 5:00 PM for MainBoard (SME may end earlier): apply through your broker/UPI app well before the cut-off.</p><div class="cards">${list.map(closeRow).join("")}</div></div>`;
+  return `<div class="closebox"><h2 class="closeh">${ic("flame")} Closing today (${list.length})</h2><p class="mut sm closep">Last day to apply. Bidding usually ends at 5:00 PM for MainBoard (SME may end earlier): apply through your broker/UPI app well before the cut-off.</p><div class="cards">${list.map(closeRow).join("")}</div></div>`;
 }
 // compact row: date box | name, price, dates | GMP. Tap opens the details.
 function upRow(i) {
@@ -366,7 +389,7 @@ function upRow(i) {
     ${logo(i)}<div class="upmain"><div class="upname">${esc(i.name)}</div>
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${hasPrice ? price(i) : "Price band awaited"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${minInv ? " · ₹" + inr(minInv) : ""}</div>
       <div class="mut sm">Closes ${i.close ? fmtS(i.close) : "—"} · Listing ${i.listing ? fmtS(i.listing) + (i.datesExpected ? "*" : "") : "—"}${isNum(i.issueSizeCr) ? " · ₹" + cr(i.issueSizeCr) + " Cr" : ""}</div>
-      <div class="dots sm"><span class="${hasPrice ? "ok" : "wait"}">● Price band</span><span class="${docOk ? "ok" : "wait"}">● Offer doc</span>${preApply(i) ? `<span class="prea">✔ Pre-apply open</span>` : ""}${sc.score !== null ? `<span class="ok">● Score ${sc.score}</span>` : ""}</div></div>
+      <div class="dots sm"><span class="${hasPrice ? "ok" : "wait"}"><i class="dot"></i>Price band</span><span class="${docOk ? "ok" : "wait"}"><i class="dot"></i>Offer doc</span>${preApply(i) ? `<span class="prea">${ic("check")} Pre-apply open</span>` : ""}${sc.score !== null ? `<span class="ok"><i class="dot"></i>Score ${sc.score}</span>` : ""}</div></div>
     <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="mut sm">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div>
   </div>`;
 }
@@ -377,7 +400,7 @@ function upDashboard() {
   const wk = ups.filter(i => { const n = dayDiff(i.open); return n !== null && n <= 7; }).length;
   const top = ups.filter(i => isNum(gmpNow(i))).sort((a, b) => gmpNow(b) - gmpNow(a))[0];
   const groups = [["This week", i => { const n = dayDiff(i.open); return n !== null && n <= 7; }], ["Next week", i => { const n = dayDiff(i.open); return n !== null && n > 7 && n <= 14; }], ["Later", i => { const n = dayDiff(i.open); return n !== null && n > 14; }], ["Dates not announced", i => dayDiff(i.open) === null]];
-  return `<div class="tiles" style="margin-bottom:12px"><div class="tile ut ut1"><i>📅</i>Upcoming<b>${ups.length}</b></div><div class="tile ut ut2"><i>⏰</i>Opening in 7 days<b>${wk}</b></div><div class="tile ut ut3"><i>🚀</i>Highest GMP<b>${top ? "₹" + gmpNow(top) : "—"}</b><span class="mut sm">${top ? esc(top.name.split(" ").slice(0, 2).join(" ")) : ""}</span></div></div>` +
+  return `<div class="tiles ut-tiles"><div class="tile ut ut1"><i>${ic("calendar")}</i>Upcoming<b>${ups.length}</b></div><div class="tile ut ut2"><i>${ic("clock")}</i>Opening in 7 days<b>${wk}</b></div><div class="tile ut ut3"><i>${ic("rocket")}</i>Highest GMP<b>${top ? "₹" + gmpNow(top) : "—"}</b><span class="mut sm">${top ? esc(top.name.split(" ").slice(0, 2).join(" ")) : ""}</span></div></div>` +
     groups.map(([t, f], gi) => { const l = ups.filter(f); return l.length ? `<h2 class="grp gp${gi}">${t} (${l.length})</h2><div class="cards">${l.map(upRow).join("")}</div>` : ""; }).join("") +
     `<p class="mut sm">* Allotment/listing dates are estimates until the issuer confirms them.</p>`;
 }
@@ -402,24 +425,24 @@ function filingRow(f) {
     ${logo({ symbol: "IG-" + f.company, name: niceName(f.company), logo: f.logo })}<div class="upmain"><div class="upname">${esc(niceName(f.company))}</div>
       <div class="mut sm"><span class="pill sm">${esc(TYPE_LABEL[f.type] || f.type)}</span> ${ago <= 0 ? "today" : ago === 1 ? "yesterday" : ago + " days ago"}</div>
       <div class="mut sm">${f.open ? "Opens " + fmtS(f.open) + (f.close ? " – " + fmtS(f.close) : "") : "Dates, price band & size not announced"}</div>
-      <div class="dots sm"><span class="wait">● Price band</span><span class="wait">● Dates</span><span class="ok">● SEBI document</span></div></div>
-    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${g >= 0 ? "grn-t" : "red-t"}">₹${g}</div><div class="mut sm">GMP</div>` : `<div class="mut sm">No GMP<br>yet</div>`}<div class="sm" style="color:var(--pri);margin-top:4px">SEBI ↗</div></div></a>`;
+      <div class="dots sm"><span class="wait"><i class="dot"></i>Price band</span><span class="wait"><i class="dot"></i>Dates</span><span class="ok"><i class="dot"></i>SEBI document</span></div></div>
+    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${g >= 0 ? "grn-t" : "red-t"}">₹${g}</div><div class="mut sm">GMP</div>` : `<div class="mut sm">No GMP<br>yet</div>`}<div class="sm" style="color:var(--pri);margin-top:4px">SEBI ${ic("external-link")}</div></div></a>`;
 }
 function filingsBlock() {
   const all = (state.meta?.filings || []).slice().sort((x, y) => y.date.localeCompare(x.date));
   if (!all.length) return "";
   const week = all.filter(f => -dayDiff(f.date) <= 7), earlier = all.filter(f => -dayDiff(f.date) > 7), withGmp = all.filter(f => isNum(f.gmp)).length;
-  return `<h2 style="margin:26px 0 4px">📋 To be announced <span class="mut sm">(filed with SEBI)</span></h2>
+  return `<h2 class="secth">${ic("clipboard-list")} To be announced <span class="mut sm">(filed with SEBI)</span></h2>
   <p class="mut sm" style="margin:0 0 10px">These companies have filed for an IPO but have not announced dates or a price band yet. Filing does not mean the IPO will happen soon.</p>
-  <div class="tiles" style="margin-bottom:10px"><div class="tile ut ut1"><i>📋</i>Total<b>${all.length}</b></div><div class="tile ut ut2"><i>🆕</i>Filed last 7 days<b>${week.length}</b></div><div class="tile ut ut3"><i>📈</i>With GMP<b>${withGmp}</b></div></div>
-  ${week.length ? `<h3 style="margin:12px 0 8px;font-size:13px" class="mut">Filed in the last 7 days</h3><div class="cards">${week.map(filingRow).join("")}</div>` : ""}
-  ${earlier.length ? `<h3 style="margin:12px 0 8px;font-size:13px" class="mut">Earlier filings</h3><div class="cards">${earlier.map(filingRow).join("")}</div>` : ""}`;
+  <div class="tiles ut-tiles"><div class="tile ut ut1"><i>${ic("clipboard-list")}</i>Total<b>${all.length}</b></div><div class="tile ut ut2"><i>${ic("sparkles")}</i>Filed last 7 days<b>${week.length}</b></div><div class="tile ut ut3"><i>${ic("trending-up")}</i>With GMP<b>${withGmp}</b></div></div>
+  ${week.length ? `<h3 class="subh mut">Filed in the last 7 days</h3><div class="cards">${week.map(filingRow).join("")}</div>` : ""}
+  ${earlier.length ? `<h3 class="subh mut">Earlier filings</h3><div class="cards">${earlier.map(filingRow).join("")}</div>` : ""}`;
 }
 const tlRow = (label, d, est) => [label, d ? `${fmtD(d)}${est ? " (exp.)" : ""}` : "—"];
 
 // ---------- documents + full report ----------
-const reportCard = i => `<div class="card"><button class="btn" data-report="${i.symbol}" style="width:100%">📄 Full company report</button><p class="mut sm" style="margin:8px 0 0">All documents (read or download) and the complete data for this company.</p></div>`;
-const docIcon = d => d.kind === "pdf" || d.kind === "pdf-link" ? "📕" : d.kind === "link" ? "🔗" : d.kind === "zip" ? "🗜️" : "📄";
+const reportCard = i => `<div class="card"><button class="btn wide" data-report="${i.symbol}">${ic("file-text")} Full company report</button><p class="mut sm" style="margin:8px 0 0">All documents (read or download) and the complete data for this company.</p></div>`;
+const docIcon = d => ic(d.kind === "pdf" || d.kind === "pdf-link" ? "file-text" : d.kind === "link" ? "link" : d.kind === "zip" ? "file-zip" : "file-text");
 function docRow(d) {
   if (!safeUrl(d.url)) return "";                                  // a link that is not a normal web address is not shown
   const url = esc(safeUrl(d.url)), meta = [d.source, d.kind === "pdf" || d.kind === "pdf-link" ? "PDF" : d.kind === "zip" ? "ZIP" : null, d.sizeMB ? d.sizeMB + " MB" : null].filter(Boolean).join(" · ");
@@ -427,7 +450,7 @@ function docRow(d) {
     ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener noreferrer">Read</a><a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Download</a>`
     : d.hosted && d.kind === "pdf"
     ? `<a class="btn sm" href="${url}" target="_blank" rel="noopener noreferrer">Read</a><a class="btn sm ghost" href="${url}" download>Download</a>`
-    : d.kind === "link" ? `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Open ↗</a>`
+    : d.kind === "link" ? `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer">Open ${ic("external-link")}</a>`
     : `<a class="btn sm ghost" href="${url}" target="_blank" rel="noopener noreferrer" download>Download</a>`;
   return `<div class="docrow"><div class="docinfo"><b>${docIcon(d)} ${esc(d.label)}</b><div class="mut sm">${esc(meta)}</div></div><div class="docbtns">${btns}</div></div>`;
 }
@@ -436,7 +459,7 @@ function docsPanel(i) {
   const groups = {};
   for (const d of i.documents || []) (groups[d.group || "Other"] ||= []).push(d);
   const html = Object.entries(groups).map(([g, list]) => card(esc(g), list.map(docRow).join(""))).join("");
-  return (html || card("📁 Documents", `<p class="mut sm">No documents published for this IPO yet.</p>`)) +
+  return (html || card("Documents", `<p class="mut sm">No documents published for this IPO yet.</p>`)) +
     `<p class="mut sm">Every file opens on the official NSE, BSE or SEBI website (nothing is stored in this app). Some NSE files come as a ZIP that your device unzips.</p>`;
 }
 // every field we hold for this IPO, for the full report
@@ -448,7 +471,7 @@ function rawRows(i) {
   add("Max retail application (₹)", i.maxRetailAmount); add("Issue size details (NSE)", i.issueDetail); add("UPI cut-off (NSE)", i.upiCutoff);
   for (const [k, l] of [["open", "Opens"], ["close", "Closes"], ["allotment", "Allotment"], ["refund", "Refund"], ["demat", "Demat credit"], ["listing", "Listing"]]) add(l, t[k] ? fmtD(t[k]) + (i.datesExpected && k !== "open" && k !== "close" ? " (exp.)" : "") : null);
   for (const [k, l] of [["qib", "QIB"], ["nii", "NII"], ["bnii", "bNII"], ["snii", "sNII"], ["retail", "Retail"], ["employee", "Employees"], ["shareholders", "Shareholders"], ["total", "Total"]]) if (b[k]) add(`Subscription — ${l}`, `${inr(b[k].offered)} offered · ${inr(b[k].bid)} bid · ${f2(b[k].times)}x`);
-  if (i.gmp) { add("GMP (average)", `₹${i.gmp.value}`); add("GMP sources", i.gmp.sources.map(s => `${s.source} ₹${s.gmp}`).join(" · ")); add("GMP rating", i.gmp.rating ? "🔥".repeat(i.gmp.rating) : null); }
+  if (i.gmp) { add("GMP (average)", `₹${i.gmp.value}`); add("GMP sources", i.gmp.sources.map(s => `${s.source} ₹${s.gmp}`).join(" · ")); add("GMP rating", i.gmp.rating ? i.gmp.rating + " / 5" : null); }
   add("Anchor book", i.anchor === true ? "Yes" : i.anchor === false ? "No" : null);
   add("Registrar", i.registrar?.name); add("Registrar address", i.registrar?.address); add("Registrar contact", i.registrar?.contact); add("Lead managers", i.leadManagers); add("Sponsor bank", i.sponsorBank);
   if (i.listingPerf) { add("Day-1 open", `₹${f2(i.listingPerf.dayOpen)} (${i.listingPerf.dayOpenGainPct}%)`); add("Last price", `₹${f2(i.listingPerf.ltp)} (${i.listingPerf.ltpGainPct}%)`); }
@@ -460,18 +483,76 @@ function rawRows(i) {
 }
 function reportView() {
   const i = byId(state.report), tab = state.reportTab;
-  const head = `<div class="noprint row" style="margin-bottom:10px"><button class="ib" data-report-close aria-label="Back"><span>←</span> Back</button><b>${esc(i.name)}</b><span></span></div>
-  <div class="seg noprint"><button data-rtab="docs" class="${tab === "docs" ? "on" : ""}">📁 Documents</button><button data-rtab="data" class="${tab === "data" ? "on" : ""}">📊 Company data</button></div>`;
+  const head = `<div class="noprint row repbar">${backBtn("data-report-close")}<b>${esc(i.name)}</b><span></span></div>
+  <div class="seg noprint"><button data-rtab="docs" class="${tab === "docs" ? "on" : ""}">${ic("file-text")} Documents</button><button data-rtab="data" class="${tab === "data" ? "on" : ""}">${ic("chart-bar")} Company data</button></div>`;
   if (tab === "docs") return `<div class="report">${head}${docsPanel(i)}</div>`;
   const saved = state.detail; state.detail = i.symbol; const body = detail(true); state.detail = saved;
   return `<div class="report">${head}
-  <div class="noprint row" style="margin-bottom:12px"><button class="btn" data-print>🖨 Print / Save as PDF</button></div>
+  <div class="noprint row" style="margin-bottom:12px"><button class="btn" data-print>${ic("printer")} Print / Save as PDF</button></div>
   <div class="rep-head"><h1>${esc(i.name)}</h1><div class="mut sm">${i.board} · ${esc(i.symbol)} · Report generated ${new Date().toLocaleString("en-IN")} · Data as of ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</div></div>
   ${body}
   ${card("All data fields", tbl(["Field", "Value"], rawRows(i)))}
   ${card("Disclaimer / अस्वीकरण", `<p class="sm">${TEXT.disclaimer.en}</p><hr><p class="sm">${TEXT.disclaimer.hi}</p>`)}</div>`;
 }
 
+
+// ---------- IPO detail building blocks (new data fields: applyAs, anchorSummary, contacts, bids.*) ----------
+const rupee = n => isNum(n) ? "₹" + inr(n) : "—";
+const subsAsOnTxt = i => {
+  if (!i.subsAsOn) return "";
+  const d = new Date(i.subsAsOn); if (isNaN(d)) return "";
+  const t = d.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "numeric", minute: "2-digit", hour12: true }) + " IST";
+  return `As of ${esc(t)}${i.subsAsOnSource ? " (" + esc(i.subsAsOnSource) + ")" : ""}`;
+};
+function subscriptionCard(i, anyBid) {
+  const b = i.bids || {};
+  const defs = [["QIB", "qib", 0], ["NII (total)", "nii", 0], ["bNII (above ₹10L)", "bnii", 1], ["sNII (₹2L to ₹10L)", "snii", 1], ["Retail", "retail", 0], ["Employees", "employee", 0], ["Shareholders", "shareholders", 0], ["Market maker", "marketMaker", 0], ["Anchor", "anchor", 0]];
+  const rows = defs.filter(([, k]) => b[k] && (isNum(b[k].offered) && b[k].offered > 0 || isNum(b[k].bid) && b[k].bid > 0));
+  if (!anyBid || (!rows.length && !(b.total?.bid > 0))) return `<p class="mut">Subscription data appears once the issue opens (${fmtD(i.open)}).</p>`;
+  const mx = Math.max(1, ...rows.filter(([, k]) => k !== "marketMaker" && k !== "anchor").map(([, k]) => isNum(b[k].times) ? b[k].times : 0), isNum(b.total?.times) ? b.total.times : 0);
+  const one = (label, x, sub, strong) => {
+    const t = x.times, w = isNum(t) ? Math.max(2, Math.min(100, t / mx * 100)) : 0;
+    const meta = [isNum(x.bid) ? `Bid ${inr(x.bid)} sh` : null, isNum(x.offered) ? `Offered ${inr(x.offered)} sh` : null, isNum(x.applications) ? `${inr(x.applications)} applications` : null].filter(Boolean).join(" · ");
+    return `<div class="sr${sub ? " subr" : ""}${strong ? " strong" : ""}"><div class="sr-h"><span>${label}</span><b class="num">${isNum(t) ? f2(t) + "x" : "—"}</b></div><div class="bar"><i style="width:${w}%"></i></div>${meta ? `<div class="sr-m">${meta}</div>` : ""}</div>`;
+  };
+  const html = rows.map(([l, k, s]) => one(l, b[k], s, false)).join("") + (b.total ? one("Total", b.total, 0, true) : "");
+  const mm = b.marketMaker ? `<p class="mut sm">Market maker portion is excluded from NII and Total.</p>` : "";
+  const asOn = subsAsOnTxt(i) || (i.demand?.asOn ? esc((/^as on/i.test(i.demand.asOn) ? "" : "As on ") + i.demand.asOn) + " (NSE)" : i.fetchedAt ? "Data fetched " + esc(new Date(i.fetchedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })) + " IST (NSE)" : "");
+  const noSplit = rows.length ? "" : '<p class="mut sm">NSE no longer publishes the category-wise split for this finished issue. The total bids and times subscribed are NSE\'s final figures.</p>';
+  return `<div class="srs">${html}</div>${mm}${noSplit}${asOn ? `<p class="mut sm asof">${asOn}</p>` : ""}`;
+}
+function applyAsCard(i, minInv, minLots) {
+  const A = (i.applyAs || []).filter(a => a && a.category);
+  if (!A.length && !isNum(minInv)) return "";
+  const pb = a => isNum(a.priceLow) && isNum(a.priceHigh) ? `₹${px(a.priceLow)} – ₹${px(a.priceHigh)}` : isNum(a.priceHigh) ? `₹${px(a.priceHigh)}` : "—";
+  const kv = (l, v) => `<div><span>${l}</span><b class="num">${v}</b></div>`;
+  const t = A.length ? `<div class="aas">${A.map(a => `<div class="aa"><div class="aa-h"><b>${esc(a.category)}</b>${a.note ? `<span class="mut sm">${esc(a.note)}</span>` : ""}</div><div class="aa-g">${kv("Price band", pb(a))}${kv("Lot", isNum(a.lot) ? inr(a.lot) + " sh" : "—")}${kv("Min amount", rupee(a.minAmount))}${kv("Max amount", rupee(a.maxAmount))}</div></div>`).join("")}</div>` : "";
+  return card(ic("coins") + " Apply as", (isNum(minInv) ? `<div class="mininv"><span>Minimum investment</span><b class="num">${rupee(minInv)}</b><em>${minLots} lot${minLots > 1 ? "s" : ""}${isNum(i.lot) ? " · " + inr(i.lot * minLots) + " shares" : ""}</em></div>` : "") + t);
+}
+function anchorCard(i) {
+  const a = i.anchorSummary; if (!a) return "";
+  const parts = [isNum(a.totalAmountCr) ? bentoT("Amount raised", "₹" + cr(a.totalAmountCr) + " Cr") : "", isNum(a.totalShares) ? bentoT("Shares allotted", inr(a.totalShares)) : "", isNum(a.price) ? bentoT("Anchor price", "₹" + cr(a.price)) : "", a.bidDate ? bentoT("Bid date", fmtD(a.bidDate)) : ""].join("");
+  if (!parts) return "";
+  return card(ic("building-bank") + " Anchor investors", `<div class="bento">${parts}</div><p class="mut sm">Anchor investors bid a day before the issue opens; their shares have a lock-in period.</p>`);
+}
+const bentoT = (l, v) => `<div class="bt"><span>${l}</span><b>${v}</b></div>`;
+// strict formats: anything else is shown as plain text, never as a link
+const EMAIL_RE = /^[A-Za-z0-9._%+-]{1,64}@[A-Za-z0-9-]{1,63}(\.[A-Za-z0-9-]{1,63}){1,4}$/;
+const PHONE_RE = /^\+?[0-9][0-9 ()-]{5,18}[0-9]$/;
+const mailTo = e => typeof e === "string" && EMAIL_RE.test(e.trim()) ? `<a href="mailto:${esc(e.trim())}">${esc(e.trim())}</a>` : e ? esc(e) : "";
+const telLinks = p => typeof p !== "string" ? "" : p.split(/[\/;,]/).map(x => x.trim()).filter(Boolean).map(x => PHONE_RE.test(x) ? `<a href="tel:${esc(x.replace(/[^0-9+]/g, ""))}">${esc(x)}</a>` : esc(x)).join(" · ");
+const siteLink = u => { const s = safeUrl(u); if (!s || !/^https?:\/\//.test(s)) return ""; let h = s; try { h = new URL(s).hostname.replace(/^www\./, ""); } catch {} return `<a href="${esc(s)}" target="_blank" rel="noopener noreferrer">${esc(h)} ${ic("external-link")}</a>`; };
+function contactsCard(i) {
+  const c = i.contacts?.company || {}, r = i.contacts?.registrar || {};
+  const line = (ico, v) => v ? `<div class="ct-l">${ic(ico)}<span>${v}</span></div>` : "";
+  const blk = (title, name, x) => {
+    const inner = line("building", name ? `<b>${esc(name)}</b>` : "") + line("map-pin", x.address ? esc(x.address) : "") + line("user-check", x.contactPerson ? esc(x.contactPerson) : "") + line("phone", telLinks(x.phone)) + line("mail", mailTo(x.email)) + line("world", siteLink(x.website));
+    return inner ? `<div class="ct"><h3>${title}</h3>${inner}</div>` : "";
+  };
+  const html = blk("Company", "", c) + blk("Registrar", r.name || i.registrar?.name, r);
+  if (!html) return card("Registrar", `<b>${esc(i.registrar?.name || "—")}</b><div class="sm" style="margin-top:6px">${esc(i.registrar?.address || "")}<br>${esc(i.registrar?.contact || "")}</div>`);
+  return card(ic("phone") + " Contacts", `<div class="ctgrid">${html}</div>${i.contacts?.source ? `<p class="mut sm">Source: ${esc(i.contacts.source)}</p>` : ""}`);
+}
 
 function detail(forReport = false) {
   const i = byId(state.detail), sc = scoreOf(i), v = verdict(sc.score), f = FU(i), b = i.bids || {}, g = gmpNow(i), L = isNum(i.lot) && isNum(i.priceHigh) && i.lot > 0 && i.priceHigh > 0 ? lotsFor(i) : null;
@@ -485,56 +566,65 @@ function detail(forReport = false) {
   const gh = (i.gmp?.history || []).map(x => x.gmp);
   const pa = peerAvg(i, "pe"), p = pe(i), iss = f?.issue || {};
   const tot = (iss.fresh_issue_cr || 0) + (iss.ofs_cr || 0);
-  return `<div class="top"><button class="ib" data-back aria-label="Back"><span>←</span> Back</button><h1>${esc(i.name)}</h1><button class="ib" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${onWebsite() ? "<span>⧉</span> Copy link" : "<span>⤴</span> Share"}</button></div>
-  <div class="dgrid"><div class="card"><div class="row"><span class="pill">${i.board}</span>${stLabel(i)}</div>
-  <div class="ipo-h">${logo(i)}<div><h3>${esc(i.name)}</h3><div class="mut">Offer Date : ${fmtS(i.open)} to ${fmtD(i.close)}</div><div class="mut">Issue Size : ${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</div></div></div>
-  <div class="tiles"><div class="tile">Offer Price<b>${price(i)}</b></div><div class="tile">Lot size<b>${isNum(i.lot) ? i.lot + " Shares" : "—"}</b>${isNum(i.lot) && i.lot > 0 && isNum(i.priceHigh) && i.priceHigh > 0 ? `<span class="mut sm" style="display:block;font-size:11.5px">Min ₹${inr(i.lot * i.priceHigh)}</span>` : ""}</div><div class="tile">Subscription<b>${subNow(i)}</b></div>
-  <div class="tile">Allotment ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.allotment)}</b></div><div class="tile">Listing ${i.datesExpected ? "(exp.)" : ""}<b>${fmtD(i.listing)}</b></div><div class="tile">${cdFor(i)}${actionBtn(i, true)}</div></div>
-  <div class="row"><button class="btn ghost" data-watch="${i.symbol}">${inW ? "★ Watching" : "☆ Watchlist"}</button><button class="btn" data-cmp="${i.symbol}">${state.cmp.includes(i.symbol) ? "✓ In compare" : "+ Compare"}</button></div></div>
+  const minInv = isNum(i.minInvestment) ? i.minInvestment : (isNum(i.lot) && i.lot > 0 && isNum(pr) && pr > 0 ? i.lot * pr : null);
+  const minLots = isNum(i.minInvestmentLots) ? i.minInvestmentLots : 1;
+  const bt = (l, v, s = "", cls = "") => `<div class="bt ${cls}"><span>${l}</span><b>${v}</b>${s ? `<em>${s}</em>` : ""}</div>`;
+  const tlItems = [["Opens", i.timeline?.open, false], ["Closes", i.timeline?.close, false], ["Allotment finalised", i.timeline?.allotment, i.datesExpected], ["Refund initiated", i.timeline?.refund, i.datesExpected], ["Shares credited to demat", i.timeline?.demat, i.datesExpected], ["Listing", i.timeline?.listing, i.datesExpected]];
+  const tl = `<ol class="tl">${tlItems.map(([l, d, est]) => { const n = d ? dayDiff(d) : null; return `<li class="${n === null ? "" : n < 0 ? "done" : n === 0 ? "now" : ""}"><i></i><div><b>${l}</b><span>${d ? fmtD(d) + (est ? " (exp.)" : "") : "—"}</span></div></li>`; }).join("")}</ol>`;
+  return `<div class="top">${backBtn()}<h1>${esc(i.name)}</h1><button class="ib pillb" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${ic(onWebsite() ? "copy" : "share-3")}<span>${onWebsite() ? "Copy link" : "Share"}</span></button></div>
+  <div class="dgrid"><section class="card hero"><div class="hero-top">${logo(i)}<div class="hero-id"><h3>${esc(i.name)}</h3><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div><div class="mut sm">${fmtS(i.open)} to ${fmtD(i.close)}</div></div></div>
+  ${cdFor(i)}
+  <div class="bento">${bt("Price band", price(i))}${bt("Lot / Min invest", isNum(i.lot) ? `${i.lot} sh${minInv ? " · ₹" + inr(minInv) : ""}` : "—")}${bt("Issue size", isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—")}${bt("Listing" + (i.datesExpected ? " (exp.)" : ""), fmtD(i.listing))}</div>
+  <div class="cta">${actionBtn(i, true)}</div>
+  <div class="cta2"><button class="btn ghost" data-watch="${i.symbol}">${ic("star", inW ? "fill" : "")} ${inW ? "Watching" : "Watchlist"}</button><button class="btn ghost" data-cmp="${i.symbol}">${ic(state.cmp.includes(i.symbol) ? "check" : "scale")} ${state.cmp.includes(i.symbol) ? "In compare" : "Compare"}</button></div></section>
 
-  <div class="card"><div class="tiles"><button class="tile k" data-jump="fin"><div class="v" style="font-size:26px">📒</div>Company Financials</button>
-  <button class="tile k" data-jump="gmp"><div class="v ${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? (isNum(gmpPct(i)) ? `₹${g}<br>(${gmpPct(i).toFixed(2)}%)` : `₹${g}`) : "NA"}</div>GMP (Rumors)</button>
-  <button class="tile k" data-jump="subs"><div class="v" style="font-size:${isNum(t) ? 18 : 14}px">${subNow(i)}</div>Subscription</button></div>
+  <div class="card"><div class="tiles keyt"><button class="tile k" data-jump="fin"><div class="v">${ic("report-money")}</div>Financials</button>
+  <button class="tile k" data-jump="gmp"><div class="v num ${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? "₹" + g : "NA"}</div>${isNum(g) && isNum(gmpPct(i)) ? `<small class="${g >= 0 ? "grn-t" : "red-t"}">${gmpPct(i).toFixed(2)}%</small>` : ""}GMP (rumour)</button>
+  <button class="tile k" data-jump="subs"><div class="v num">${subNow(i)}</div>Subscription</button></div>
   ${isNum(g) && L ? `<div class="gl"><div class="row"><span>GMP x Lots (RETAIL)*</span><b>₹ ${inr(g * i.lot)}</b></div><div class="row"><span>GMP x Lots (sHNI)*</span><b>₹ ${inr(g * i.lot * L.s)}</b></div><div class="row"><span>GMP x Lots (bHNI)*</span><b>₹ ${inr(g * i.lot * L.b)}</b></div></div>` : ""}</div>
 
-  <div class="card" id="ai"><h2>⭐ Trendy IPO Score</h2><div class="row"><div style="text-align:center">${ring(sc.score, true)}<div style="margin-top:8px"><span class="badge ${v.c}">${v.t} ${v.e}</span></div></div>
-  <div style="flex:1">${Object.keys(WEIGHTS).map(n => `<div style="margin:5px 0"><div class="row mut sm"><span>${FACTOR_LABEL[n]} (${WEIGHTS[n] * 100}%)</span><b>${fv[n] ?? "N/A"}</b></div><div class="bar"><i style="width:${fv[n] ?? 0}%;background:${col(fv[n] ?? null)}"></i></div></div>`).join("")}</div></div>
-  <div class="note"><b>🧠 Analysis (${sc.coverage}% of score weight had data)</b><ul style="margin:6px 0 0;padding-left:18px">${reasons(i).map(r => `<li>${esc(r)}</li>`).join("")}</ul></div>
-  <p class="mut sm" style="margin-bottom:0">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p></div>
+  <div class="card" id="subs"><h2>${ic("chart-bar")} Subscription</h2>${subscriptionCard(i, anyBid)}</div>
 
-  <div class="card" id="gmp"><h2>GMP Trend</h2>${gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`}
-  ${i.gmp ? `<div class="row sm"><span class="mut">Average of ${i.gmp.sources.length} source${i.gmp.sources.length > 1 ? "s" : ""}${i.gmp.rating ? " · rating " + "🔥".repeat(i.gmp.rating) : ""}</span><b>${isNum(pr) ? "Est. listing ₹" + f2(pr + g) : ""}</b></div>
-  <div class="sm" style="margin-top:6px">${i.gmp.sources.map(s => `${esc(s.source)}: <b>₹${s.gmp}</b>`).join(" · ")}${i.gmp.sources.length > 1 && i.gmp.min !== i.gmp.max ? ` <span class="mut">(range ₹${i.gmp.min}–₹${i.gmp.max})</span>` : ""}</div>
+  <div class="card" id="ai"><h2>${ic("trophy")} Trendy IPO Score</h2><div class="scorebox"><div class="scorering">${ring(sc.score, true)}<span class="badge ${v.c}">${v.t}</span></div>
+  <div class="factors">${Object.keys(WEIGHTS).map(n => `<div class="factor"><div class="row"><span>${FACTOR_LABEL[n]} <small class="mut">${WEIGHTS[n] * 100}%</small></span><b class="num">${fv[n] ?? "N/A"}</b></div><div class="bar"><i style="width:${fv[n] ?? 0}%;background:${col(fv[n] ?? null)}"></i></div></div>`).join("")}</div></div>
+  <div class="note"><b>${ic("sparkles")} Analysis (${sc.coverage}% of score weight had data)</b><ul class="reasons">${reasons(i).map(([k, r]) => `<li class="${k}">${ic(k === "good" ? "circle-check" : k === "mid" ? "minus" : k === "low" ? "alert-triangle" : "info-circle")}<span>${esc(r)}</span></li>`).join("")}</ul></div>
+  <p class="mut sm">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p></div>
+
+  <div class="card" id="gmp"><h2>${ic("trending-up")} GMP Trend</h2>${gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`}
+  ${i.gmp ? `<div class="row sm gmpmeta"><span class="mut">Average of ${i.gmp.sources.length} source${i.gmp.sources.length > 1 ? "s" : ""}${i.gmp.rating ? " · rating " + i.gmp.rating + "/5" : ""}</span><b>${isNum(pr) ? "Est. listing ₹" + f2(pr + g) : ""}</b></div>
+  <div class="sm gmpsrc">${i.gmp.sources.map(s => `${esc(s.source)}: <b>₹${s.gmp}</b>`).join(" · ")}${i.gmp.sources.length > 1 && i.gmp.min !== i.gmp.max ? ` <span class="mut">(range ₹${i.gmp.min}–₹${i.gmp.max})</span>` : ""}</div>
   <div class="mut sm">Updated ${esc(i.gmp.updated || "—")}</div>` : `<p class="mut sm">No GMP published for this IPO yet.</p>`}
   <div class="note gr">Exp. Premium is derived from market rumors and internet sources. It does not reflect the actual IPO listing price or value. Review the RHP and consult a financial advisor.</div></div>
 
-  ${i.listingPerf ? card("📈 Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + i.listingPerf.exchange + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : ""}
+  ${applyAsCard(i, minInv, minLots)}
+  ${anchorCard(i)}
 
-  ${card("IPO Timeline", tbl(["", ""], [tlRow("Opens", i.timeline?.open), tlRow("Closes", i.timeline?.close), tlRow("Allotment finalised", i.timeline?.allotment, i.datesExpected), tlRow("Refund initiated", i.timeline?.refund, i.datesExpected), tlRow("Shares credited to demat", i.timeline?.demat, i.datesExpected), tlRow("Listing", i.timeline?.listing, i.datesExpected)]).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`)}
+  ${i.listingPerf ? card(ic("trending-up") + " Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + esc(i.listingPerf.exchange) + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : ""}
 
-  ${(i.checks || []).length ? card("", (i.checks.some(c => !c.ok) ? `<div class="note" style="margin:0">⚠️ <b>Sources disagree:</b> ${i.checks.filter(c => !c.ok).map(c => `${esc(c.field)}: NSE ${esc(c.nse)} vs InvestorGain ${esc(c.other)}`).join("; ")}</div>` : `<span class="mut sm">✔ NSE and InvestorGain agree on ${i.checks.length} checks (issue size, lot, cap price, dates).</span>`)) : ""}
+  ${card(ic("calendar-event") + " IPO Timeline", tl + `<p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`)}
 
-  ${N !== null && anyBid ? card("", `<div class="alot">👥 ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">ⓘ The final allotment is decided by the registrar's computerised lottery.</div>`) : ""}
+  ${(i.checks || []).length ? card("", (i.checks.some(c => !c.ok) ? `<div class="note warnb">${ic("alert-triangle")}<span><b>Sources disagree:</b> ${i.checks.filter(c => !c.ok).map(c => `${esc(c.field)}: NSE ${esc(c.nse)} vs InvestorGain ${esc(c.other)}`).join("; ")}</span></div>` : `<span class="mut sm okline">${ic("check")} NSE and InvestorGain agree on ${i.checks.length} checks (issue size, lot, cap price, dates).</span>`)) : ""}
 
-  ${card("Subscription Detail (No. of Shares)", anyBid && (rows.length || b.total?.bid > 0) ? tbl(["Category", "Offered", "Bid for", "Times"], [...rows.map(r => [r[0], inr(r[1].offered), inr(r[1].bid), f2(r[1].times)]), ...(b.total ? [["<b>Total</b>", inr(b.total.offered), inr(b.total.bid), `<b>${f2(b.total.times)}</b>`]] : [])]) + `<p class="mut sm">${i.demand?.asOn ? (/^as on/i.test(i.demand.asOn) ? "" : "As on ") + esc(i.demand.asOn) : i.fetchedAt ? "Data fetched " + esc(new Date(i.fetchedAt).toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })) + " IST" : "As on —"} (NSE).</p>${rows.length ? "" : '<p class="mut sm">NSE no longer publishes the category-wise split for this finished issue. The total bids and times subscribed are NSE\'s final figures.</p>'}` : `<p class="mut">Subscription data appears once the issue opens (${fmtD(i.open)}).</p>`, "subs")}
+  ${N !== null && anyBid ? card("", `<div class="alot">${ic("users")} ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">${ic("info-circle")} The final allotment is decided by the registrar's computerised lottery.</div>`) : ""}
+
   ${dwRows.length ? card("Day Wise Subscription (snapshots)", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows)) : ""}
   ${i.demand?.byPrice ? card("Cumulative Demand by Price (NSE)", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)]))) : ""}
   ${L ? card("Lot(s) Distribution", tbl(["Category", "Lot(s)", "Qty", "Amount"], [["RETAIL", 1, inr(i.lot), inr(i.lot * pr)], ["sHNI (from ₹2L)", L.s, inr(L.s * i.lot), inr(L.s * i.lot * pr)], ["bHNI (from ₹10L)", L.b, inr(L.b * i.lot), inr(L.b * i.lot * pr)]])) : ""}
 
   ${f ? `
   ${card("Key Performance Indicator", tbl(["KPI", ...rv(per)], [fr("ROCE (%)", K.roce), fr("RoNW (%)", K.ronw), fr("ROE (%)", K.roe), fr("EPS basic (₹)", K.eps_basic), fr("EPS diluted (₹)", K.eps_diluted), fr("PAT margin (%)", K.pat_margin), fr("EBITDA margin (%)", K.ebitda_margin), fr("Debt/Equity", K.debt_equity), ...(K.other || []).map(o => [`${esc(o.name)} (${esc(o.unit)})`, ...rv(o.values)])].map(r => r.map((c, k) => k ? (c === "—" ? c : c) : c))) + `<p class="mut sm">NAV/share: ${isNum(K.nav_per_share) ? "₹" + K.nav_per_share : "—"} · P/E post-IPO: ${isNum(p) ? p.toFixed(2) : "—"} · Pre-IPO P/E: ${isNum(K.pe_pre_ipo) ? K.pe_pre_ipo : "—"}</p>`, "fin")}
-  ${card("Company Financials", tbl(["Period Ended", ...rv(per)], [fr("Total assets", F.total_assets), fr("Revenue", F.revenue), fr("EBITDA", F.ebitda), fr("Profit before tax", F.pbt), fr("Profit after tax", F.pat), fr("Net worth", F.net_worth), fr("Reserves", F.reserves), fr("Total borrowing", F.borrowings), fr("Cash & bank", F.cash_and_bank), fr("Operating cash flow", F.operating_cash_flow)]) + `<div class="mut sm" style="text-align:right;margin-top:6px">₹ crore · ${esc(f.basis || "")} · restated, per RHP</div>`)}
+  ${card(ic("report-money") + " Company Financials", tbl(["Period Ended", ...rv(per)], [fr("Total assets", F.total_assets), fr("Revenue", F.revenue), fr("EBITDA", F.ebitda), fr("Profit before tax", F.pbt), fr("Profit after tax", F.pat), fr("Net worth", F.net_worth), fr("Reserves", F.reserves), fr("Total borrowing", F.borrowings), fr("Cash & bank", F.cash_and_bank), fr("Operating cash flow", F.operating_cash_flow)]) + `<div class="mut sm" style="text-align:right;margin-top:6px">₹ crore · ${esc(f.basis || "")} · restated, per RHP</div>`)}
   ${(f.peers || []).length ? card("Peer Comparison", tbl(["Company", "P/E", "CMP (₹)", "EPS (₹)", "NAV (₹)", "RoNW %"], [[`<b>${esc(i.name)}</b>`, isNum(p) ? p.toFixed(2) : "—", pr, last(K.eps_diluted) ?? "—", K.nav_per_share ?? "—", last(K.ronw) ?? "—"], ...f.peers.map(x => [esc(x.name), x.pe ?? "—", x.cmp ?? "—", x.eps_diluted ?? x.eps_basic ?? "—", x.nav ?? "—", x.ronw ?? "—"])]) + (pa && p ? `<p class="mut sm">Peer avg P/E ${pa.toFixed(1)} → IPO at ${p < pa ? "a discount" : "a premium"} of ${Math.abs((p / pa - 1) * 100).toFixed(0)}%.</p>` : "")) : ""}
   ${card("Issue Details", tbl(["", ""], [["Issue size", isNum(i.issueSizeCr) ? `₹${cr(i.issueSizeCr)} Cr (${inr(i.issueShares)} shares)` : "—"], ["Fresh issue", isNum(iss.fresh_issue_cr) ? `₹${cr(iss.fresh_issue_cr)} Cr` : "—"], ["Offer for sale", isNum(iss.ofs_cr) ? `₹${cr(iss.ofs_cr)} Cr` : iss.ofs_shares === 0 ? "-" : "—"], ["Face value", isNum(i.faceValue) ? `₹${i.faceValue}` : "—"], ["Issue type", esc(i.issueType || "—")], ["Shares pre-issue", inr(iss.pre_issue_shares)], ["Shares post-issue", inr(iss.post_issue_shares)], ["Reservation", iss.reservation_pct ? Object.entries(iss.reservation_pct).filter(([, x]) => isNum(x)).map(([k, x]) => `${esc(k)} ${x}%`).join(" · ") : "—"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, ""))}
   ${(iss.objects || []).length ? card("Objects of the Issue", tbl(["Purpose", "₹ Cr"], iss.objects.map(o => [esc(o.purpose), o.amount_cr ?? "—"]))) : ""}
   ${card("About Company", `<p class="sub">${esc(f.about)}</p><div class="mut sm">${[f.headquarters && "HQ: " + esc(f.headquarters), f.founded_year && "Founded: " + f.founded_year, isNum(f.order_book_cr) && "Order book: ₹" + cr(f.order_book_cr) + " Cr"].filter(Boolean).join(" · ")}</div>`)}
   ${f.promoters?.names?.length ? card("Promoters", `<p class="sm">${f.promoters.names.map(esc).join(", ")}</p><div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? `<p class="sm">${esc(f.promoters.background)}</p>` : ""}`) : ""}
-  ${(f.strengths || []).length ? card("Strength Factor", `<ul class="lst">${f.strengths.map(x => `<li>• ${esc(x)}</li>`).join("")}</ul>`) : ""}
-  ${(f.risks || []).length ? card("Risk Factor", `<ul class="lst">${f.risks.map(x => `<li>${x.severity === "high" ? "🔴" : x.severity === "medium" ? "🟠" : "🟡"} <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`).join("")}</ul>`) : ""}
-  ${f.notes ? `<p class="mut sm">ℹ️ A few figures could not be read clearly from the offer document and are left blank (—).</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
+  ${(f.strengths || []).length ? card("Strength Factor", `<ul class="lst">${f.strengths.map(x => `<li class="str">${ic("check")} <span>${esc(x)}</span></li>`).join("")}</ul>`) : ""}
+  ${(f.risks || []).length ? card("Risk Factor", `<ul class="lst">${f.risks.map(x => `<li><i class="sev ${x.severity === "high" ? "h" : x.severity === "medium" ? "m" : "l"}"></i> <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`).join("")}</ul>`) : ""}
+  ${f.notes ? `<p class="mut sm">${ic("info-circle")} A few figures could not be read clearly from the offer document and are left blank (—).</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
 
   ${forReport ? "" : reportCard(i)}
-  ${card("Registrar", `<b>${esc(i.registrar.name || "—")}</b><div class="sm" style="margin-top:6px">${esc(i.registrar.address || "")}<br>${esc(i.registrar.contact || "")}</div>`)}
+  ${contactsCard(i)}
   ${i.leadManagers ? card("Lead Manager(s)", `<span class="sm">${esc(i.leadManagers)}</span><div class="mut sm" style="margin-top:6px">Sponsor bank: ${esc(i.sponsorBank || "—")}</div>`) : ""}
   </div><p class="disc">Source: NSE India + RHP. Dates marked (exp.) are estimated from the closing date (T+1 allotment, T+3 listing) and may shift for holidays. Score is indicative, not investment advice.</p>`;
 }
@@ -543,23 +633,23 @@ function compare() {
   state.cmp = state.cmp.filter(byId);                                  // forget IPOs that are no longer in the data
   const sel = state.cmp.map(byId).filter(Boolean);
   const picker = state.cmp.length < 3 ? `<select id="pick"><option value="">+ Add IPO to compare (max 3)</option>${state.ipos.filter(i => !state.cmp.includes(i.symbol) && i.status !== "listed").map(i => `<option value="${i.symbol}">${esc(i.name)}</option>`).join("")}</select>` : "";
-  if (sel.length < 2) return `${head("Compare")}<div class="note" style="margin:0 0 12px">⚖️ Pick 2–3 IPOs to compare side by side. Green = best value, red = weakest.</div>${sel.map(listCard).join("")}${picker}`;
+  if (sel.length < 2) return `${head("Compare")}<div class="note topnote">${ic("scale")}<span>Pick 2–3 IPOs to compare side by side. Green = best value, red = weakest.</span></div>${sel.map(listCard).join("")}${picker}`;
   const pat = i => last(FU(i)?.financials?.pat);
   // [group, label, number-or-null, formatter, which direction is better]
   const M = [
-    ["⭐ Score", "Trendy IPO score", i => score(i), v => v + "/100", "high"],
-    ["📈 Market", "GMP today", i => gmpNow(i), (v, i) => "₹" + v + (isNum(gmpPct(i)) ? " (" + gmpPct(i).toFixed(0) + "%)" : ""), "high"],
-    ["📈 Market", "Subscription", i => totalTimes(i), v => f2(v) + "x", "high"],
-    ["📈 Market", "Retail allotment", i => retailN(i), v => "1 in " + v, "low"],
-    ["📒 Financials", "Revenue growth (CAGR)", i => cagr(FU(i)?.financials?.revenue), v => v.toFixed(0) + "%", "high"],
-    ["📒 Financials", "Profit (₹ Cr)", pat, v => cr(v), "high"],
-    ["📒 Financials", "Return on net worth", i => last(FU(i)?.kpi?.ronw), v => v + "%", "high"],
-    ["📒 Financials", "P/E (lower = cheaper)", i => pe(i), v => v.toFixed(1), "low"],
-    ["💰 Entry", "Issue size", i => i.issueSizeCr, v => "₹" + cr(v) + " Cr", null],
-    ["💰 Entry", "Minimum investment", i => isNum(i.lot) && i.priceHigh > 0 ? i.lot * i.priceHigh : null, v => "₹" + inr(v), "low"],
+    ["Score", "Trendy IPO score", i => score(i), v => v + "/100", "high"],
+    ["Market", "GMP today", i => gmpNow(i), (v, i) => "₹" + v + (isNum(gmpPct(i)) ? " (" + gmpPct(i).toFixed(0) + "%)" : ""), "high"],
+    ["Market", "Subscription", i => totalTimes(i), v => f2(v) + "x", "high"],
+    ["Market", "Retail allotment", i => retailN(i), v => "1 in " + v, "low"],
+    ["Financials", "Revenue growth (CAGR)", i => cagr(FU(i)?.financials?.revenue), v => v.toFixed(0) + "%", "high"],
+    ["Financials", "Profit (₹ Cr)", pat, v => cr(v), "high"],
+    ["Financials", "Return on net worth", i => last(FU(i)?.kpi?.ronw), v => v + "%", "high"],
+    ["Financials", "P/E (lower = cheaper)", i => pe(i), v => v.toFixed(1), "low"],
+    ["Entry", "Issue size", i => i.issueSizeCr, v => "₹" + cr(v) + " Cr", null],
+    ["Entry", "Minimum investment", i => isNum(i.lot) && i.priceHigh > 0 ? i.lot * i.priceHigh : null, v => "₹" + inr(v), "low"],
   ];
   const cols = "grid-template-columns:96px repeat(" + sel.length + ",minmax(0,1fr))";
-  const head1 = `<div class="cmprow" style="${cols}"><div></div>${sel.map(i => { const sc = scoreOf(i), v = verdict(sc.score); return `<div class="cmphead" style="border-top-color:hsl(${hue(i.symbol)} 60% 45%)"><button class="cmpx" data-cmp="${i.symbol}" title="Remove">✕</button>${logo(i)}<div class="cmpname">${esc(i.name.replace(/ Limited$/, ""))}</div><span class="pill sm">${i.board}</span>${ring(sc.score)}<span class="badge ${v.c}" style="font-size:10px">${v.t}</span></div>`; }).join("")}</div>`;
+  const head1 = `<div class="cmprow" style="${cols}"><div></div>${sel.map(i => { const sc = scoreOf(i), v = verdict(sc.score); return `<div class="cmphead" style="border-top-color:hsl(${hue(i.symbol)} 60% 45%)"><button class="cmpx" data-cmp="${i.symbol}" title="Remove" aria-label="Remove">${ic("x")}</button>${logo(i)}<div class="cmpname">${esc(i.name.replace(/ Limited$/, ""))}</div><span class="pill sm">${i.board}</span>${ring(sc.score)}<span class="badge ${v.c}" style="font-size:10px">${v.t}</span></div>`; }).join("")}</div>`;
   let lastGroup = "", body = "";
   for (const [grp, label, get, fmt, dir] of M) {
     const vals = sel.map(i => { const v = get(i); return isNum(v) ? v : null; }), nums = vals.filter(v => v !== null);
@@ -569,15 +659,15 @@ function compare() {
       const v = vals[k]; if (v === null) return `<div class="cmpcell mut">—</div>`;
       const best = differ && dir && v === (dir === "high" ? hi : lo), worst = differ && dir && v === (dir === "high" ? lo : hi);
       const w = dir === "high" && hi > 0 ? Math.max(6, Math.round(v / hi * 100)) : 0;
-      return `<div class="cmpcell ${best ? "best" : worst ? "worst" : ""}">${fmt(v, i)}${best ? " ✔" : ""}${w ? `<i class="cmpbar" style="width:${w}%"></i>` : ""}</div>`;
+      return `<div class="cmpcell ${best ? "best" : worst ? "worst" : ""}">${fmt(v, i)}${best ? ic("check", "bestic") : ""}${w ? `<i class="cmpbar" style="width:${w}%"></i>` : ""}</div>`;
     }).join("")}</div>`;
   }
   // who wins what
-  const win = (label, get, dir) => { const c = sel.map(i => [i, get(i)]).filter(x => isNum(x[1])); if (c.length < 2) return ""; const v = dir === "high" ? Math.max(...c.map(x => x[1])) : Math.min(...c.map(x => x[1])); const w = c.find(x => x[1] === v)[0]; return `<span class="winchip" style="background:hsl(${hue(w.symbol)} 60% 94%);border-color:hsl(${hue(w.symbol)} 55% 70%)">${label}: <b>${esc(w.name.split(" ").slice(0, 2).join(" "))}</b></span>`; };
-  const wins = [win("🏆 Highest score", i => score(i), "high"), win("📈 Highest GMP", i => gmpNow(i), "high"), win("🔥 Most subscribed", i => totalTimes(i), "high"), win("💸 Cheapest P/E", i => pe(i), "low"), win("🧾 Lowest entry", i => isNum(i.lot) && i.priceHigh > 0 ? i.lot * i.priceHigh : null, "low")].filter(Boolean);
+  const win = (label, get, dir) => { const c = sel.map(i => [i, get(i)]).filter(x => isNum(x[1])); if (c.length < 2) return ""; const v = dir === "high" ? Math.max(...c.map(x => x[1])) : Math.min(...c.map(x => x[1])); const w = c.find(x => x[1] === v)[0]; return `<span class="winchip" style="--wh:${hue(w.symbol)}">${label}: <b>${esc(w.name.split(" ").slice(0, 2).join(" "))}</b></span>`; };
+  const wins = [win("Highest score", i => score(i), "high"), win("Highest GMP", i => gmpNow(i), "high"), win("Most subscribed", i => totalTimes(i), "high"), win("Cheapest P/E", i => pe(i), "low"), win("Lowest entry", i => isNum(i.lot) && i.priceHigh > 0 ? i.lot * i.priceHigh : null, "low")].filter(Boolean);
   return `${head("Compare")}<div class="cmp tw">${head1}${body}</div>
-  ${wins.length ? `<div class="chips" style="margin:12px 0">${wins.join("")}</div>` : ""}${picker}
-  <p class="mut sm">Green ✔ = best of the selected IPOs on that row, red = weakest. A highlight is only a comparison of these IPOs, not advice.</p>`;
+  ${wins.length ? `<div class="chips">${wins.join("")}</div>` : ""}${picker}
+  <p class="mut sm">Green tick = best of the selected IPOs on that row, red = weakest. A highlight is only a comparison of these IPOs, not advice.</p>`;
 }
 function allotment() {
   const list = state.ipos.filter(i => i.status === "listed" || (i.status === "live" && i.close && dayDiff(i.close) <= 0));
@@ -585,14 +675,14 @@ function allotment() {
   return `${head("Allotment Status")}<div class="card"><p class="mut">Select the IPO, then check on the registrar's official page using your PAN or application number.</p>
   <select id="allotSel">${list.map(i => `<option value="${i.symbol}" ${sel && sel.symbol === i.symbol ? "selected" : ""}>${esc(i.name)} (${fmtS(i.allotment)})</option>`).join("")}</select>
   ${sel ? `<div class="note"><b>Registrar:</b> ${esc(sel.registrar.name || "—")}<br>Allotment date: ${fmtD(sel.allotment)} ${sel.datesExpected ? "(expected)" : ""}<br>${esc(sel.registrar.contact || "")}</div>
-  ${(r => r ? `<a class="btn" style="display:block;text-align:center;text-decoration:none;margin-top:10px" href="${r.url}" target="_blank" rel="noopener noreferrer">${r.kind === "status" ? "Check allotment status ↗" : "Open the registrar's website ↗"}</a>${r.kind === "status" ? "" : '<p class="mut sm">Look for "IPO status" or "allotment" on their site.</p>'}` : `<p class="mut sm">The registrar's status page is not known for this IPO. If it is listed on BSE you can check here:</p><a class="btn ghost" style="display:block;text-align:center;text-decoration:none" href="${BSE_STATUS}" target="_blank" rel="noopener noreferrer">BSE: application status ↗</a>`)(registrarLink(sel))}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
+  ${(r => r ? `<a class="btn wide" href="${r.url}" target="_blank" rel="noopener noreferrer">${r.kind === "status" ? "Check allotment status" : "Open the registrar's website"} ${ic("external-link")}</a>${r.kind === "status" ? "" : '<p class="mut sm">Look for "IPO status" or "allotment" on their site.</p>'}` : `<p class="mut sm">The registrar's status page is not known for this IPO. If it is listed on BSE you can check here:</p><a class="btn ghost wide" href="${BSE_STATUS}" target="_blank" rel="noopener noreferrer">BSE: application status ${ic("external-link")}</a>`)(registrarLink(sel))}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
   <div class="note">Allotment is decided by the registrar's computerised lottery. Use the registrar's official website or the NSE/BSE allotment pages.</div>`;
 }
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
 function settings() {
   const A = state.alerts, w = state.watch.map(byId).filter(Boolean);
-  return `${head("Settings")}<div class="card"><h2>🔔 Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
-  <div class="card"><h2>⭐ Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
+  return `${head("Settings")}<div class="card"><h2>${ic("bell")} Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
+  <div class="card"><h2>${ic("star")} Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
 
@@ -624,7 +714,7 @@ const TEXT = {
     en: "GMP (Grey Market Premium) is the unofficial extra amount people are willing to pay for an IPO share in the grey market before it lists. It is rumour-based, is not guaranteed, can change every day, and says nothing certain about the listing price.",
     hi: "GMP (ग्रे मार्केट प्रीमियम) वह अनौपचारिक अतिरिक्त रकम है जो लोग लिस्टिंग से पहले ग्रे मार्केट में IPO के शेयर के लिए देने को तैयार होते हैं। यह अफ़वाह पर आधारित है, इसकी कोई गारंटी नहीं, यह रोज़ बदल सकता है और लिस्टिंग भाव के बारे में पक्का कुछ नहीं बताता।",
   },
-  disclaimerTitle: { en: "⚠️ Disclaimer", hi: "⚠️ अस्वीकरण" },
+  disclaimerTitle: { en: "Disclaimer", hi: "अस्वीकरण" },
   disclaimer: {
     en: `This app is for <b>information only</b> and is <b>not investment advice</b>. We are not a SEBI-registered adviser or research analyst.
 The score is a formula output, <b>not a recommendation to buy, sell or apply</b>. GMP is <b>unofficial rumour data</b>.
@@ -644,7 +734,7 @@ Data may be delayed, incomplete or wrong. Investing in IPOs involves <b>risk of 
   },
 };
 const lang = () => store.get("lang", "en") === "hi" ? "hi" : "en";
-const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">🌐 Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">🌐 Show in English / अंग्रेज़ी में पढ़ें</button>`;
+const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`;
 const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.disclaimer[lang()]}<br>${langBtn()}`;
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
 const credit = () => `<div class="credit">Developed by <b>Zynora Technology</b> (Noor)<span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
@@ -654,16 +744,16 @@ const staleBar = () => {
   const h = state.meta?.generatedAt ? (Date.now() - new Date(state.meta.generatedAt).getTime()) / 3600e3 : 0;
   if (!(h > STALE_HOURS)) return "";
   const age = h >= 48 ? Math.floor(h / 24) + " days" : Math.floor(h) + " hours", ageHi = h >= 48 ? Math.floor(h / 24) + " दिन" : Math.floor(h) + " घंटे";
-  return `<div class="stale" data-refresh style="cursor:pointer">⚠️ Data is ${age} old: live updates may have stopped. Tap to refresh. <span>डेटा ${ageHi} पुराना है।</span></div>`;
+  return `<div class="stale" data-refresh style="cursor:pointer">${ic("alert-triangle")} Data is ${age} old: live updates may have stopped. Tap to refresh. <span>डेटा ${ageHi} पुराना है।</span></div>`;
 };
 const acked = () => state.ack;   // shown on every app open, gone after the user taps "I understand" (not remembered)
 
 // ---------- left side bar (About, Compare, Settings) + About page ----------
 // Laptop: always visible on the left. Phone: opens from the "☰ About" button at the top and closes again after a choice.
-const SIDE = [["about", "ℹ️", "About"], ["general", "🧰", "General"], ["share", "🔗", "Share"], ["help", "🛟", "Help & Support"], ["compare", "⚖️", "Compare"], ["settings", "⚙️", "Settings"]];
+const SIDE = [["about", "info-circle", "About"], ["general", "tools", "General"], ["share", "link", "Share"], ["help", "lifebuoy", "Help & Support"], ["compare", "scale", "Compare"], ["settings", "settings", "Settings"]];
 const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="drawer" aria-label="Menu">
-  <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">✕</button></div>
-  <div class="dnav">${SIDE.map(([k, ic, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}"><b>${ic}</b>${l}</button>`).join("")}</div>
+  <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">${ic("x")}</button></div>
+  <div class="dnav">${SIDE.map(([k, icn, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}">${ic(icn)}<span>${l}</span></button>`).join("")}</div>
   <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology</div></aside>`;
 // ---------- About page: menu of General / Share / Help & Support, each row opens its own page ----------
 state.sub = null;
@@ -677,7 +767,7 @@ const onWebsite = () => matchMedia("(min-width: 960px)").matches;
 matchMedia("(min-width: 960px)").addEventListener?.("change", () => { if (state.loaded) render(); });
 const APP_URL = () => location.origin + location.pathname.replace(/index\.html$/, "");
 
-const mrow = (ic, label, sub, extra = "") => `<button class="mrow" data-sub="${sub}"><span class="mic">${ic}</span><span class="mlb">${label}${extra}</span><span class="mgo">›</span></button>`;
+const mrow = (icn, label, sub, extra = "") => `<button class="mrow" data-sub="${sub}"><span class="mic">${ic(icn)}</span><span class="mlb">${label}${extra}</span><span class="mgo">${ic("chevron-right")}</span></button>`;
 const msec = (title, rows) => `<div class="msec"><h3>${title}</h3>${rows}</div>`;
 const subPage = (title, inner) => `${head(title)}<div class="subpg">${inner}</div>`;
 
@@ -688,10 +778,10 @@ function notifList() {
   const out = [], when = n => n === 0 ? "today" : n === 1 ? "tomorrow" : n > 0 ? `in ${n} days` : n === -1 ? "yesterday" : `${-n} days ago`;
   for (const i of state.ipos) {
     const nm = esc(shortName(i.name)), o = dayDiff(i.open), c = dayDiff(i.close), a = dayDiff(i.allotment), l = dayDiff(i.listing);
-    if (o !== null && o >= 0 && o <= 3) out.push([o, "🟢", `<b>${nm}</b> opens ${when(o)}`, i.symbol, i.symbol + "|open|" + i.open]);
-    if (c !== null && c >= 0 && c <= 1 && (o === null || o <= 0)) out.push([c, "⏰", `<b>${nm}</b> closes ${when(c)}`, i.symbol, i.symbol + "|close|" + i.close]);
-    if (a !== null && a >= -1 && a <= 1) out.push([a, "📋", `<b>${nm}</b> allotment ${a === 0 ? "is today" : a < 0 ? "was " + when(a) : "is " + when(a)}`, i.symbol, i.symbol + "|allot|" + i.allotment]);
-    if (l !== null && l >= -1 && l <= 1) out.push([l, "🔔", `<b>${nm}</b> ${l < 0 ? "listed " + when(l) : "lists " + when(l)}`, i.symbol, i.symbol + "|list|" + i.listing]);
+    if (o !== null && o >= 0 && o <= 3) out.push([o, "player-play", `<b>${nm}</b> opens ${when(o)}`, i.symbol, i.symbol + "|open|" + i.open]);
+    if (c !== null && c >= 0 && c <= 1 && (o === null || o <= 0)) out.push([c, "clock", `<b>${nm}</b> closes ${when(c)}`, i.symbol, i.symbol + "|close|" + i.close]);
+    if (a !== null && a >= -1 && a <= 1) out.push([a, "clipboard-list", `<b>${nm}</b> allotment ${a === 0 ? "is today" : a < 0 ? "was " + when(a) : "is " + when(a)}`, i.symbol, i.symbol + "|allot|" + i.allotment]);
+    if (l !== null && l >= -1 && l <= 1) out.push([l, "bell-ringing", `<b>${nm}</b> ${l < 0 ? "listed " + when(l) : "lists " + when(l)}`, i.symbol, i.symbol + "|list|" + i.listing]);
   }
   return out.sort((x, y) => Math.abs(x[0]) - Math.abs(y[0]));
 }
@@ -724,12 +814,12 @@ function subContent(k) {
     const forms = i => (i.documents || []).filter(d => d.group === "Application forms & centres" && safeUrl(d.url));
     const pick = (i, re) => forms(i).find(d => re.test(d.label));
     const list = state.ipos.filter(i => ["live", "upcoming"].includes(i.status) && forms(i).length).sort((a, b) => (a.status === "live" ? 0 : 1) - (b.status === "live" ? 0 : 1) || String(a.open).localeCompare(String(b.open)));
-    const btn = (d, ic, txt, hint) => d ? `<a class="asbtn" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer" data-track="link/asba"><span class="asic">${ic}</span><span><b>${txt}</b><small>${hint}</small></span><span class="mgo">↓</span></a>` : "";
-    const tile = (ic, t, d) => `<div class="astile"><span>${ic}</span><b>${t}</b><small>${d}</small></div>`;
-    const hero = `<div class="ashero"><div class="ashi">📄</div><div><h2>ASBA</h2><p>Application Supported by Blocked Amount. Your money stays in <b>your own bank account</b> and is only blocked while the IPO application is open. If you do not get shares, it is released automatically.</p></div></div>`;
-    const ways = card("Three ways to apply", `<div class="astiles">${tile("📱", "UPI", "Broker app → IPO → enter UPI ID → approve the request. Fastest.")}${tile("🏦", "Net banking", "Your bank's IPO / ASBA section. Money is blocked in your account.")}${tile("🧾", "Physical form", "Fill the ASBA form and give it to your bank branch or a bidding centre.")}</div>`);
+    const btn = (d, icn, txt, hint) => d ? `<a class="asbtn" href="${esc(d.url)}" target="_blank" rel="noopener noreferrer" data-track="link/asba"><span class="asic">${ic(icn)}</span><span><b>${txt}</b><small>${hint}</small></span><span class="mgo">${ic("file-download")}</span></a>` : "";
+    const tile = (icn, t, d) => `<div class="astile"><span>${ic(icn)}</span><b>${t}</b><small>${d}</small></div>`;
+    const hero = `<div class="ashero"><div class="ashi">${ic("file-text")}</div><div><h2>ASBA</h2><p>Application Supported by Blocked Amount. Your money stays in <b>your own bank account</b> and is only blocked while the IPO application is open. If you do not get shares, it is released automatically.</p></div></div>`;
+    const ways = card("Three ways to apply", `<div class="astiles">${tile("device-mobile", "UPI", "Broker app → IPO → enter UPI ID → approve the request. Fastest.")}${tile("building-bank", "Net banking", "Your bank's IPO / ASBA section. Money is blocked in your account.")}${tile("receipt-2", "Physical form", "Fill the ASBA form and give it to your bank branch or a bidding centre.")}</div>`);
     const steps = card("How to apply (UPI)", `<ol class="assteps"><li>Keep the full amount in your bank account (lot price × lots).</li><li>Open your broker or UPI app and go to <b>IPO</b>.</li><li>Choose the issue, the category (Retail / SME) and the number of lots.</li><li>Enter your UPI ID and submit.</li><li>Open your UPI app and <b>approve the mandate</b> before the closing time. Without this the application is not placed.</li></ol>`);
-    const per = card("Application forms by IPO", `<p class="mut sm" style="margin-top:0">Official files published on the exchange for each current and upcoming IPO. They are ZIP files: open them after download.</p>` + (list.map(i => `<div class="asipo"><div class="ashead">${logo(i)}<div style="min-width:0"><b>${esc(shortName(i.name))}</b><div class="mut sm">${stLabel(i).replace(/<[^>]+>/g, "")}${i.close ? " · closes " + fmtD(i.close) : ""}</div></div></div><div class="asbtns">${btn(pick(i, /application form/i), "📄", "Application form", "ASBA form · ZIP")}${btn(pick(i, /bidding centres/i), "📍", "Bidding centres", "list of centres · ZIP")}</div></div>`).join("") || `<p class="mut sm" style="margin:0">No forms are published yet for current IPOs. They appear here automatically as soon as the exchange publishes them.</p>`));
+    const per = card("Application forms by IPO", `<p class="mut sm" style="margin-top:0">Official files published on the exchange for each current and upcoming IPO. They are ZIP files: open them after download.</p>` + (list.map(i => `<div class="asipo"><div class="ashead">${logo(i)}<div style="min-width:0"><b>${esc(shortName(i.name))}</b><div class="mut sm">${stLabel(i).replace(/<[^>]+>/g, "")}${i.close ? " · closes " + fmtD(i.close) : ""}</div></div></div><div class="asbtns">${btn(pick(i, /application form/i), "file-text", "Application form", "ASBA form · ZIP")}${btn(pick(i, /bidding centres/i), "map-pin", "Bidding centres", "list of centres · ZIP")}</div></div>`).join("") || `<p class="mut sm" style="margin:0">No forms are published yet for current IPOs. They appear here automatically as soon as the exchange publishes them.</p>`));
     const tips = card("Good to know", `<ul class="alist"><li>Only one application per PAN per IPO.</li><li>Do not apply on the last day in the last hour — UPI approvals can fail.</li><li>The blocked amount is released after allotment, for shares you did not get.</li></ul>`);
     return subPage("Download ASBA Form", hero + ways + steps + per + tips);
   }
@@ -741,15 +831,15 @@ function subContent(k) {
   }
   if (k === "notif") {
     const n = notifList(), rd = nRead(), left = n.filter(x => !rd.includes(x[4])).length;
-    return subPage("Notifications", card(`Latest updates${left ? ` <span class="nbadge">${left} new</span>` : ""}`, (n.length ? `<button class="btn ${left ? "" : "ghost"} nall" data-nreadall ${left ? "" : "disabled"}>${left ? "✓ Mark all as read" : "✓ All read"}</button>` : "") + n.map(([, ic, t, s, key]) => `<button class="nrow${rd.includes(key) ? " read" : ""}" data-open="${esc(s)}" data-nkey="${esc(key)}"><span>${ic}</span><span>${t}</span>${rd.includes(key) ? "" : `<i class="ndot"></i>`}<span class="mgo">›</span></button>`).join("") || `<p class="mut sm" style="margin:0">Nothing new right now. You will see IPOs opening, closing, allotment and listing here.</p>`) +
+    return subPage("Notifications", card(`Latest updates${left ? ` <span class="nbadge">${left} new</span>` : ""}`, (n.length ? `<button class="btn ${left ? "" : "ghost"} nall" data-nreadall ${left ? "" : "disabled"}>${ic("check")} ${left ? "Mark all as read" : "All read"}</button>` : "") + n.map(([, icn, t, s, key]) => `<button class="nrow${rd.includes(key) ? " read" : ""}" data-open="${esc(s)}" data-nkey="${esc(key)}"><span class="nic">${ic(icn)}</span><span>${t}</span>${rd.includes(key) ? "" : `<i class="ndot"></i>`}<span class="mgo">${ic("chevron-right")}</span></button>`).join("") || `<p class="mut sm" style="margin:0">Nothing new right now. You will see IPOs opening, closing, allotment and listing here.</p>`) +
       `<p class="mut sm">This list is made from the live data each time you open the app.</p>`);
   }
   if (k === "nsettings") {
-    return subPage("Notification Settings", card("🔔 Alerts", [["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([x, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${x}" ${A[x] ? "checked" : ""}></div>`).join("") + `<p class="mut sm">Saved on this device. The Notifications page shows these events from the live data.</p>`));
+    return subPage("Notification Settings", card(ic("bell") + " Alerts", [["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([x, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${x}" ${A[x] ? "checked" : ""}></div>`).join("") + `<p class="mut sm">Saved on this device. The Notifications page shows these events from the live data.</p>`));
   }
   if (k === "rate") {
     const r = state.rate = store.get("rate", 0);
-    return subPage("Rate App", card("How do you like Trendy IPO?", `<div class="stars" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(n => `<button class="starb${n <= r ? " on" : ""}" data-rate="${n}" aria-label="${n} star">★</button>`).join("")}</div><p class="mut sm" style="text-align:center;margin:8px 0 0">${r ? `Thank you! You rated ${r} / 5.` : "Tap a star."}</p>`) +
+    return subPage("Rate App", card("How do you like Trendy IPO?", `<div class="stars" role="radiogroup" aria-label="Rating">${[1, 2, 3, 4, 5].map(n => `<button class="starb${n <= r ? " on" : ""}" data-rate="${n}" aria-label="${n} star">${ic("star")}</button>`).join("")}</div><p class="mut sm" style="text-align:center;margin:8px 0 0">${r ? `Thank you! You rated ${r} / 5.` : "Tap a star."}</p>`) +
       card("Tell us more", `<p class="sm" style="margin:0">Found a problem or have an idea? <a class="linkbtn" href="https://github.com/Noor1204/IPO/issues/new" target="_blank" rel="noopener noreferrer">Write to us here</a>.</p>`));
   }
   if (k === "support") {
@@ -772,12 +862,12 @@ function sectionPage(tab) {
   state.sub = null;
   if (tab === "general") {
     const unread = unreadCount();
-    return `${head("General")}<div class="aboutmenu">${msec("General", mrow("✅", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("📄", "Download ASBA Form", "asba") + mrow("🪪", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("🔔", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("⚙️", "Notification Settings", "nsettings") +
-      `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">📰</span><span class="mlb">News</span><span class="mgo">↗</span></a>` +
-      `<label class="mrow"><span class="mic">🌓</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}</div>`;
+    return `${head("General")}<div class="aboutmenu">${msec("General", mrow("circle-check", "Applied IPO", "applied", state.applied.length ? `<small>${state.applied.length}</small>` : "") + mrow("file-download", "Download ASBA Form", "asba") + mrow("id", "Add PAN Number", "pan", state.pan ? `<small>saved</small>` : "") + mrow("bell", "Notifications", "notif", unread ? `<small>${unread}</small>` : "") + mrow("settings", "Notification Settings", "nsettings") +
+      `<a class="mrow" href="https://news.google.com/search?q=IPO%20India&hl=en-IN&gl=IN&ceid=IN:en" target="_blank" rel="noopener noreferrer" data-track="link/news"><span class="mic">${ic("news")}</span><span class="mlb">News</span><span class="mgo">${ic("external-link")}</span></a>` +
+      `<label class="mrow"><span class="mic">${ic("sun-moon")}</span><span class="mlb">Enable Dark Mode</span><input type="checkbox" class="switch" data-theme-toggle ${isDark() ? "checked" : ""} aria-label="Dark mode"></label>`)}</div>`;
   }
-  if (tab === "share") return `${head("Share")}<div class="aboutmenu">${msec("Share", `<button class="mrow" data-appshare><span class="mic">🔗</span><span class="mlb">${onWebsite() ? "Copy App Link" : "Share App"}</span><span class="mgo">›</span></button>` + mrow("⭐", "Rate App", "rate"))}</div>`;
-  return `${head("Help & Support")}<div class="aboutmenu">${msec("Help & Support", mrow("💬", "Support", "support") + mrow("📋", "Terms & Condition", "terms") + mrow("🔒", "Privacy Policy", "privacy") + mrow("❓", "FAQs", "faq"))}</div>`;
+  if (tab === "share") return `${head("Share")}<div class="aboutmenu">${msec("Share", `<button class="mrow" data-appshare><span class="mic">${ic("link")}</span><span class="mlb">${onWebsite() ? "Copy App Link" : "Share App"}</span><span class="mgo">${ic("chevron-right")}</span></button>` + mrow("star", "Rate App", "rate"))}</div>`;
+  return `${head("Help & Support")}<div class="aboutmenu">${msec("Help & Support", mrow("message", "Support", "support") + mrow("clipboard-list", "Terms & Condition", "terms") + mrow("lock", "Privacy Policy", "privacy") + mrow("help-circle", "FAQs", "faq"))}</div>`;
 }
 // copies text; falls back to a hidden textarea where the Clipboard API is blocked (older browsers, http pages)
 async function copyText(t) {
@@ -834,7 +924,7 @@ function goTab(m, k) {
   render(); scrollTo(0, 0);
 }
 function hostApi() {
-  return { state, esc, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay,
+  return { state, esc, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay, ic,
     setSub(k) { state.sub = k || null; render(); scrollTo(0, 0); }, back: goBack, go: goTab,
     get sub() { return state.sub; }, get tab() { return String(state.tab).split(":")[1] || ""; } };
 }
@@ -855,38 +945,180 @@ for (const ev of ["input", "change"]) document.addEventListener(ev, e => {
   const el = e.target.closest?.("[data-m]"); if (!el) return;
   const mod = window.TrendyModules[el.dataset.m]; try { mod && mod[ev] && mod[ev](el, hostApi()); } catch (err) { console.error(err); }
 });
+// ---------- global search (IPOs + stocks + mutual funds) ----------
+const SR = { q: "", stocks: null, sSt: "idle", mf: null, mSt: "idle" };
+const SYM_RE = /^[A-Z0-9&_.$-]{1,20}$/;
+const srRecent = () => { const r = store.get("recentSearches", []); return Array.isArray(r) ? r.filter(x => typeof x === "string").slice(0, 6) : []; };
+const srSave = q => { q = q.trim(); if (q.length < 2) return; store.set("recentSearches", [q, ...srRecent().filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 6)); };
+async function srLoadStocks() {
+  if (SR.sSt !== "idle") return; SR.sSt = "loading";
+  try {
+    const r = await fetch("data/stocks/list.json", { cache: "no-cache" }); if (!r.ok) throw new Error(r.status);
+    const j = await r.json(); if (!Array.isArray(j.rows)) throw new Error("bad");
+    SR.stocks = j.rows.filter(x => Array.isArray(x) && typeof x[0] === "string" && SYM_RE.test(x[0])).map(x => ({ s: x[0], n: String(x[1] || ""), ln: String(x[1] || "").toLowerCase(), ls: x[0].toLowerCase(), close: x[3], chg: x[4], v: x[6] || 0 }));
+    SR.sSt = "ok";
+  } catch (e) { SR.sSt = "fail"; }
+  srUpdate();
+}
+async function srLoadMf() {
+  if (SR.mSt !== "idle") return; SR.mSt = "loading";
+  try {
+    const j = async u => { const r = await fetch(u, { cache: "no-cache" }); if (!r.ok) throw new Error(u); return r.json(); };
+    const idx = await j("data/mf/index.json");
+    const parts = await Promise.all((idx.files || []).filter(f => /^rows-[a-z]+\.json$/.test(f)).map(f => j("data/mf/" + f)));
+    const rows = [];
+    for (const p of parts) for (const r of (p && p.rows) || []) { if (!Array.isArray(r) || !Number.isInteger(r[0]) || typeof r[1] !== "string") continue; rows.push({ c: r[0], n: r[1], amc: idx.amcs?.[r[2]] || "", p: r[3] === 1 ? 1 : 0, cat: idx.cats?.[r[4]]?.[0] || "", s: (r[1] + " " + (idx.amcs?.[r[2]] || "")).toLowerCase() }); }
+    SR.mf = rows; SR.mSt = "ok";
+  } catch (e) { SR.mSt = "fail"; }
+  srUpdate();
+}
+function srMatches(q) {
+  const t = q.trim().toLowerCase(), out = { ipo: [], stock: [], fund: [], n: { ipo: 0, stock: 0, fund: 0 } };
+  if (!t) return out;
+  const ip = state.ipos.filter(i => (i.name + " " + i.symbol).toLowerCase().includes(t)).sort((a, b) => (b.status === "live") - (a.status === "live") || (b.open || "").localeCompare(a.open || ""));
+  out.ipo = ip.slice(0, 5); out.n.ipo = ip.length;
+  if (SR.stocks) {
+    const m = [];
+    for (const r of SR.stocks) { const rank = r.ls === t ? 0 : r.ls.startsWith(t) ? 1 : r.ln.startsWith(t) ? 2 : r.ls.includes(t) ? 3 : (" " + r.ln).includes(" " + t) ? 4 : r.ln.includes(t) ? 5 : -1; if (rank >= 0) m.push([rank, r]); }
+    m.sort((a, b) => a[0] - b[0] || b[1].v - a[1].v); out.stock = m.slice(0, 5).map(x => x[1]); out.n.stock = m.length;
+  }
+  if (SR.mf) {
+    const toks = t.split(/\s+/).filter(Boolean), m = SR.mf.filter(f => toks.every(k => f.s.includes(k)));
+    m.sort((a, b) => a.p - b.p || (a.n.toLowerCase().startsWith(t) ? 0 : 1) - (b.n.toLowerCase().startsWith(t) ? 0 : 1) || a.n.length - b.n.length);
+    out.fund = m.slice(0, 5); out.n.fund = m.length;
+  }
+  return out;
+}
+function srResults() {
+  const q = SR.q.trim();
+  if (!q) {
+    const rec = srRecent();
+    return `<div class="sr-empty">${ic("search")}<p>Search IPOs, NSE stocks and mutual funds in one place.</p></div>` + (rec.length ? `<div class="sr-recent"><div class="row"><h3>Recent</h3><button class="linkbtn" data-sclear>Clear</button></div><div class="chips">${rec.map(r => `<button class="chipb" data-srecent="${esc(r)}">${ic("history")} ${esc(r)}</button>`).join("")}</div></div>` : "");
+  }
+  const m = srMatches(q);
+  const grp = (title, key, items, rowFn, seeAll, loading, failed) => {
+    if (!items.length && !loading && !failed) return "";
+    return `<section class="sr-grp"><div class="row"><h3>${title}</h3>${m.n[key] > 5 ? `<button class="linkbtn" data-sall="${seeAll}">See all ${m.n[key]} in ${title}</button>` : ""}</div>${items.length ? items.map(rowFn).join("") : failed ? `<p class="mut sm">Could not load this list. Check your connection.</p>` : `<div class="skel-row"></div><div class="skel-row"></div>`}</section>`;
+  };
+  const ipoRow = i => `<button class="sres" data-sres="ipo" data-id="${esc(i.symbol)}">${logo(i)}<span class="sres-m"><b>${esc(i.name)}</b><small>${esc(i.board)} · ${i.status === "live" ? "Open now" : i.status === "upcoming" ? "Upcoming" : "Closed"}${isNum(i.priceHigh) ? " · " + price(i) : ""}</small></span>${ic("chevron-right")}</button>`;
+  const stRow = s => `<button class="sres" data-sres="stock" data-id="${esc(s.s)}"><span class="sres-ic">${esc(s.s.slice(0, 2))}</span><span class="sres-m"><b>${esc(s.s)}</b><small>${esc(s.n)}</small></span><span class="sres-r num"><b>${isNum(s.close) ? "₹" + s.close.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</b><small class="${isNum(s.chg) ? (s.chg >= 0 ? "grn-t" : "red-t") : ""}">${isNum(s.chg) ? (s.chg > 0 ? "+" : "") + s.chg.toFixed(2) + "%" : "—"}</small></span></button>`;
+  const fRow = f => `<button class="sres" data-sres="fund" data-id="${f.c}"><span class="sres-ic">${ic("wallet")}</span><span class="sres-m"><b>${esc(f.n)}</b><small>${esc(f.amc)} · ${esc(f.cat)} · ${f.p ? "Regular" : "Direct"}</small></span>${ic("chevron-right")}</button>`;
+  const html = grp("IPOs", "ipo", m.ipo, ipoRow, "ipo", false, false) + grp("Stocks", "stock", m.stock, stRow, "stocks", SR.sSt === "loading" || SR.sSt === "idle", SR.sSt === "fail") + grp("Mutual funds", "fund", m.fund, fRow, "mf", SR.mSt === "loading" || SR.mSt === "idle", SR.mSt === "fail");
+  return html || `<div class="sr-empty">${ic("search")}<p>No results for “${esc(q)}”.</p></div>`;
+}
+function srUpdate() { const el = document.getElementById("gres"); if (el && state.tab === "search") el.innerHTML = srResults(); }
+function searchScreen() {
+  return `<div class="gs-bar"><label class="gs-in">${ic("search")}<input id="gq" type="search" placeholder="Search IPOs, stocks, funds" value="${esc(SR.q)}" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" aria-label="Search IPOs, stocks and mutual funds"></label><button class="ib sq" data-back aria-label="Close search">${ic("x")}</button></div><div id="gres" aria-live="polite">${srResults()}</div>`;
+}
+function openSearch() {
+  if (state.tab !== "search") { state.tab = "search"; state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false; SR.q = ""; render(); scrollTo(0, 0); }
+  srLoadStocks(); srLoadMf();
+  const q = document.getElementById("gq"); if (q) q.focus();
+}
+function prefill(id, q, tries = 12) {
+  const el = document.getElementById(id);
+  if (el) { el.value = q; el.dispatchEvent(new Event("input", { bubbles: true })); return; }
+  if (tries > 0) setTimeout(() => prefill(id, q, tries - 1), 150);
+}
+function searchClick(t) {
+  const d = t.dataset;
+  if (t.hasAttribute("data-sclear")) { store.set("recentSearches", []); srUpdate(); return true; }
+  if (d.srecent) { SR.q = d.srecent; const q = document.getElementById("gq"); if (q) q.value = SR.q; srUpdate(); return true; }
+  if (d.sall) {
+    srSave(SR.q); const q = SR.q;
+    if (d.sall === "ipo") { const first = state.ipos.find(i => (i.name + " " + i.symbol).toLowerCase().includes(q.trim().toLowerCase())); state.q = q.trim(); goTab("ipo", first ? first.status : "live"); }
+    else if (d.sall === "stocks") { goTab("stocks", "search"); prefill("st-q", q); }
+    else { goTab("mf", "funds"); prefill("mf-q", q); }
+    return true;
+  }
+  if (d.sres) {
+    srSave(SR.q);
+    if (d.sres === "ipo" && byId(d.id)) { state.detail = d.id; }
+    else if (d.sres === "stock" && SYM_RE.test(d.id || "")) { state.tab = "stocks:search"; state.mod = "stocks"; state.sub = "stock:" + d.id; state.detail = null; }
+    else if (d.sres === "fund" && /^\d+$/.test(d.id || "")) { state.tab = "mf:funds"; state.mod = "mf"; state.sub = "fund:" + d.id; state.detail = null; }
+    else return true;
+    render(); scrollTo(0, 0); return true;
+  }
+  return false;
+}
+document.addEventListener("input", e => { if (e.target.id === "gq") { SR.q = e.target.value.slice(0, 40); srUpdate(); } });
+document.addEventListener("keydown", e => {
+  if (e.target.id !== "gq") return;
+  if (e.key === "Enter") { const b = document.querySelector("#gres .sres"); if (b) b.click(); }
+  else if (e.key === "Escape") goBack();
+});
+
+// ---------- motion helpers ----------
+const REDUCED = () => matchMedia("(prefers-reduced-motion:reduce)").matches;
+const cuSeen = new Set();
+function countUps() {
+  document.querySelectorAll("#app .cu").forEach(el => {
+    const k = el.dataset.cu; if (cuSeen.has(k)) return; cuSeen.add(k);
+    if (REDUCED()) return;
+    const to = +el.dataset.to, dec = +(el.dataset.dec || 0), suf = el.dataset.suf || "", fin = el.textContent, t0 = performance.now();
+    if (!isFinite(to)) return;
+    const step = now => { const p = Math.min(1, (now - t0) / 650), e = 1 - Math.pow(1 - p, 3); if (p < 1 && el.isConnected) { el.textContent = (to * e).toLocaleString("en-IN", { minimumFractionDigits: dec, maximumFractionDigits: dec }) + suf; requestAnimationFrame(step); } else el.textContent = fin; };
+    requestAnimationFrame(step);
+  });
+}
+const skelCards = n => Array.from({ length: n }, () => `<div class="card skel-card"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-block"></div><div class="skel-line w80"></div></div>`).join("");
+const SKEL = `<div class="skel" role="status" aria-label="Loading"><div class="skel-line w50"></div><div class="skel-row"></div><div class="skel-row"></div><div class="skel-row"></div></div>`;
+let lastScreen = "", enterFlip = 0;
+const screenKey = () => [state.tab, state.tab === "ipo" ? state.seg : "", state.sub || "", state.detail || "", state.report || ""].join("|");
+
 // ---------- render & events ----------
 function render() {
-  if (!state.loaded) { $("#app").innerHTML = `<p class="mut" style="margin-top:40px;text-align:center">${state.error ? esc(state.error) : "Loading IPO data…"}</p>`; return; }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help") };
+  if (!state.loaded) {
+    $("#app").dataset.view = "ipo";
+    $("#app").innerHTML = state.error ? `<div class="card errc">${ic("alert-triangle")}<p>${esc(state.error)}</p><button class="btn" data-refresh>Try again</button></div>` : `${brand()}<div class="skel-top"></div><div class="cards">${skelCards(3)}</div>`;
+    return;
+  }
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
   const ae = document.activeElement, keep = ae && ae.id && ae !== document.body ? { id: ae.id, s: ae.selectionStart, e: ae.selectionEnd } : null;
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : modOf(state.tab) && modOf(state.tab) !== "ipo" ? "mod" : state.tab;
   const mo = modOf(state.tab); if (mo) { state.mod = mo; if (!modLoaded[mo]) { modLoaded[mo] = true; try { TrendyModules[mo]?.load?.(hostApi()); } catch (e) { console.warn(e); } } }
+  const sk = screenKey(), newScreen = sk !== lastScreen; lastScreen = sk;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : (screens[state.tab] || modScreen)()) + credit() +
-    (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn" data-ack style="width:100%;margin-top:12px">${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
-    (state.modal ? (() => { const i = byId(state.modal); return `<div class="modal" data-close><div class="card"><h3>${preApply(i) ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app → IPO section → choose <b>${esc(i.name)}</b>.</p>${preApply(i) ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn ${preApply(i) ? "pre" : ""}" style="display:block;margin:12px 0 10px;text-decoration:none;text-align:center" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${preApply(i) ? "Pre Apply" : "Apply"} on Groww ↗</a><div class="sm" style="margin:0 0 6px"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ↗</a>`).join("")}</div><p class="mut sm" style="margin:8px 0 12px">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn" data-close style="width:100%">Got it</button></div></div>`; })() : "") +
-    (state.toast ? `<div class="toast">${state.toast}</div>` : "");
+    (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn wide" data-ack>${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
+    (state.modal ? (() => { const i = byId(state.modal), pre = preApply(i); return `<div class="modal" data-close><div class="card sheet"><button class="ib sq sheetx" data-close aria-label="Close">${ic("x")}</button><h3>${pre ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app, go to the IPO section and choose <b>${esc(i.name)}</b>.</p>${pre ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm applyl"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn wide ${pre ? "pre" : ""}" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${pre ? "Pre Apply" : "Apply"} on Groww ${ic("external-link")}</a><div class="sm otherb"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ${ic("external-link")}</a>`).join("")}</div><p class="mut sm">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn wide ghost" data-close>Got it</button></div></div>`; })() : "");
+  // shimmer skeletons instead of "Loading…" text (module screens print plain loading lines while their data downloads)
+  document.querySelectorAll("#app p.mut").forEach(p => { if (/^Loading/i.test(p.textContent.trim())) { const w = document.createElement("div"); w.innerHTML = SKEL; p.replaceWith(w.firstChild); } });
+  const app = $("#app");
+  if (newScreen && !REDUCED()) { enterFlip ^= 1; app.classList.remove("enter0", "enter1"); app.classList.add("enter" + enterFlip); }
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
+  if (newScreen && state.tab === "search") { const g = document.getElementById("gq"); if (g) { g.focus({ preventScroll: true }); srLoadStocks(); srLoadMf(); } }
   const side = $("#side"); side.innerHTML = sideMenu(); side.classList.toggle("open", !!state.drawer);
-  document.querySelectorAll("nav button[data-mod]").forEach(b => b.classList.toggle("on", b.dataset.mod === state.mod));
+  document.querySelectorAll("nav button[data-mod]").forEach(b => { b.classList.toggle("on", b.dataset.mod === state.mod); b.setAttribute("aria-current", b.dataset.mod === state.mod ? "page" : "false"); });
+  document.querySelectorAll("nav .navref").forEach(b => b.classList.toggle("spin", !!state.refreshing));
+  document.querySelectorAll("nav .navbell i").forEach(x => x.remove()); if (unreadCount()) document.querySelectorAll("nav .navbell").forEach(b => b.insertAdjacentHTML("beforeend", '<i class="bdot"></i>'));
   const q = $("#q"); if (q) { q.focus(); q.setSelectionRange(q.value.length, q.value.length); q.oninput = e => { state.q = e.target.value; render(); }; }
   const sel = (id, fn) => { const e = $(id); if (e) e.onchange = ev => fn(ev.target.value); };
   sel("#pick", v => { if (v) { state.cmp.push(v); store.set("cmp", state.cmp); render(); } });
   sel("#sort", v => { state.sort = v; render(); });
   sel("#allotSel", v => { state.allotIpo = v; render(); });
+  countUps();
   pushView();
 }
 let toastTimer = null;
-function toast(m) { state.toast = m; render(); clearTimeout(toastTimer); toastTimer = setTimeout(() => { state.toast = ""; render(); }, 1800); }
+function toast(m) {
+  render();   // some callers rely on this to redraw after a state change
+  let el = document.getElementById("toast");
+  if (!el) { el = document.createElement("div"); el.id = "toast"; el.className = "toast"; el.setAttribute("role", "status"); document.body.appendChild(el); }
+  el.textContent = String(m); void el.offsetWidth; el.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.classList.remove("show"); toastTimer = setTimeout(() => el.remove(), 300); }, 1900);
+}
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-sres],[data-sall],[data-srecent],[data-sclear]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
   if (t.hasAttribute("data-drawer-close")) { goBack(); return; }
+  if (t.hasAttribute("data-gsearch")) { openSearch(); return; }
+  if (t.hasAttribute("data-bell")) { state.tab = "general"; state.sub = "notif"; state.detail = null; state.report = null; state.drawer = false; state.modal = null; render(); scrollTo(0, 0); return; }
+  if (searchClick(t)) return;
   if (aboutClick(t)) return;
   if (modClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
