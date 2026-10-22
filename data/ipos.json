@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-22T12:25:47.143Z",
+ "generatedAt": "2026-10-22T12:35:30.410Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-22T12:21:41.403Z"
+   "fetchedAt": "2026-10-22T12:34:24.855Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-22T12:21:52.379Z"
+   "fetchedAt": "2026-10-22T12:34:34.783Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-22T12:21:42.951Z"
+   "fetchedAt": "2026-10-22T12:34:26.345Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-22T12:21:42.899Z",
+   "subsAsOn": "2026-10-22T12:34:26.331Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -87,7 +87,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-22T12:21:42.899Z",
+   "fetchedAt": "2026-10-22T12:34:26.331Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -122,7 +122,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-22T12:21:42.899Z",
+   "subsAsOn": "2026-10-22T12:34:26.331Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -154,7 +154,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-22T12:21:42.899Z",
+   "fetchedAt": "2026-10-22T12:34:26.331Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -201,7 +201,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:07.463Z",
+   "subsAsOn": "2026-10-22T12:33:46.020Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -226,16 +226,22 @@
    "minInvestment": 15000,
    "minInvestmentLots": 1,
    "contacts": {
-    "company": null,
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://blspolymers.com",
+     "contactPerson": null
+    },
     "registrar": {
      "name": "KFin Technologies Limited",
      "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
      "phone": "+91 406 716 2222",
      "email": "blsploymers.ipo@kfintech.com",
      "contactPerson": "Williams R",
-     "website": null
+     "website": "https://www.kfintech.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document (company website from offer document cover)"
    },
    "anchorSummary": null,
    "anchorInvestors": null,
@@ -257,7 +263,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
     "anchor": null
    },
-   "logo": null,
+   "logo": "data/logos/BLSPOLY.png",
    "documents": [
     {
      "label": "Price band ad / basis for issue price (zip from NSE)",
@@ -373,9 +379,313 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-10-22T12:21:07.463Z"
+   "fundamentals": {
+    "company": "BLS Polymers Limited",
+    "basis": "Standalone",
+    "about": "BLS Polymers Limited manufactures multiple grades of custom formulated polymer compounds used for wire and cable insulation and 3LPE pipeline coatings. The company serves critical infrastructure industries including telecommunications, power, railways, water, and oil and gas distribution. It operates from a single manufacturing facility located in Goa and is part of the BLS Group.",
+    "sector": "Specialty Chemicals / Polymer Compounding",
+    "headquarters": null,
+    "founded_year": null,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      168.49,
+      179.14,
+      206.13
+     ],
+     "revenue": [
+      296.36,
+      328.44,
+      349.43
+     ],
+     "other_income": [
+      5.15,
+      8.26,
+      4.98
+     ],
+     "ebitda": [
+      21.05,
+      39.66,
+      46.6
+     ],
+     "pbt": [
+      9.69,
+      28.27,
+      35.99
+     ],
+     "pat": [
+      7.52,
+      21.14,
+      27.01
+     ],
+     "net_worth": [
+      46.83,
+      67.94,
+      94.93
+     ],
+     "reserves": [
+      37.23,
+      58.34,
+      49.9
+     ],
+     "borrowings": [
+      93.77,
+      73.92,
+      51.72
+     ],
+     "cash_and_bank": [
+      2.55,
+      1.72,
+      2.43
+     ],
+     "operating_cash_flow": [
+      2.65,
+      25.13,
+      38.06
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.84,
+      25.46,
+      29.51
+     ],
+     "ronw": [
+      16.06,
+      31.11,
+      28.45
+     ],
+     "roe": [
+      17.48,
+      36.83,
+      33.17
+     ],
+     "eps_basic": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "eps_diluted": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "pat_margin": [
+      2.54,
+      6.44,
+      7.73
+     ],
+     "ebitda_margin": [
+      7.1,
+      12.08,
+      13.33
+     ],
+     "debt_equity": [
+      2.05,
+      1.11,
+      0.56
+     ],
+     "current_ratio": [
+      1.26,
+      1.44,
+      1.66
+     ],
+     "nav_per_share": 21.08,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 4.84,
+     "other": [
+      {
+       "name": "Cost per Metric Tonne",
+       "unit": "₹",
+       "values": [
+        89284.79,
+        85529.64,
+        84958.5
+       ]
+      },
+      {
+       "name": "Total Purchase Quantity",
+       "unit": "MT",
+       "values": [
+        28416.66,
+        30712.3,
+        34499.03
+       ]
+      },
+      {
+       "name": "Revenue per Customer",
+       "unit": "₹ lakh",
+       "values": [
+        169.35,
+        197.85,
+        183.91
+       ]
+      },
+      {
+       "name": "Return on Total Assets",
+       "unit": "%",
+       "values": [
+        4.46,
+        11.8,
+        13.1
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Kingfa Science & Technology (India) Limited",
+      "revenue_cr": 1995.55,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 144.1,
+      "eps_diluted": 144.1,
+      "nav": 1155.4,
+      "pe": 46.25,
+      "ronw": 13.24
+     },
+     {
+      "name": "DDev Plastiks Industries Limited",
+      "revenue_cr": 2947.87,
+      "face_value": 1,
+      "cmp": null,
+      "eps_basic": 19.5,
+      "eps_diluted": 19.5,
+      "nav": 97.93,
+      "pe": 12.97,
+      "ronw": 19.92
+     },
+     {
+      "name": "Plastiblends India Limited",
+      "revenue_cr": 788.66,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 14.12,
+      "eps_diluted": 14.12,
+      "nav": 172.78,
+      "pe": 14.53,
+      "ronw": 8.17
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Financing capital expenditure requirement towards expansion of Goa Manufacturing Facility",
+       "amount_cr": 77.56
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 89.5
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Vinod Aggarwal",
+      "Sushil Aggarwal",
+      "Madhukar Aggarwal",
+      "Diwakar Aggarwal",
+      "Karan Aggarwal"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "Part of the BLS Group with over 3 decades of operating history across polymers, education, and digital/visa government outsourcing services."
+    },
+    "concentration": {
+     "top_customers_pct": 66.81,
+     "govt_share_pct": 0.3,
+     "note": "Top 10 customers accounted for 66.81% of Fiscal 2026 revenue, and top 5 customers accounted for 53.45%. Wire and cable segment contributed 80.93% of sales in Fiscal 2026."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026, including ₹8.00 crore bank guarantee to IOCL and tax appeal demands. Summons were previously issued by SEBI to group company BLS International Services Ltd.",
+    "strengths": [
+     "Enlisted with prominent government agencies and CPSEs, creating significant entry barriers for competitors.",
+     "Diversified portfolio offering 6 products in 127 grades across telecommunication, power, and infrastructure sectors.",
+     "Long-standing relationships with customers, with 90.84% repeat orders over the last three fiscal years.",
+     "Pan-India market presence across 23 states and union territories, with direct sales contributing over 98% of revenue.",
+     "Strategically located manufacturing facility in Goa near Mormugao port, providing logistical efficiencies.",
+     "Part of the BLS Group with access to brand recognition and group synergies.",
+     "Dedicated in-house product development and quality testing infrastructure with ISO 9001:2015 certification."
+    ],
+    "risks": [
+     {
+      "title": "Segment concentration in wire and cable polymer compounds",
+      "detail": "Derived 80.93%, 81.59%, and 80.49% of revenue from wire and cable polymer compounds in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer concentration risk",
+      "detail": "Top 10 customers accounted for 66.81%, 64.44%, and 50.52% of revenue in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Outstanding indebtedness",
+      "detail": "Total fund-based borrowings stood at ₹82.36 crore as on August 31, 2026, and promoter personal guarantees have been extended.",
+      "severity": "medium"
+     },
+     {
+      "title": "Single manufacturing facility operations",
+      "detail": "Entire manufacturing operations are conducted from a single facility at Goa, exposing business to localized disruptions or shutdowns.",
+      "severity": "high"
+     },
+     {
+      "title": "Related-party procurement and transactions",
+      "detail": "Purchased raw materials worth ₹32.35 crore from group entity Vinsul Makardi Limited in Fiscal 2026 (9.26% of revenue).",
+      "severity": "medium"
+     },
+     {
+      "title": "Capacity expansion execution risks",
+      "detail": "Proposed capex of ₹77.56 crore for expansion of Goa facility has not been appraised by any financial institution.",
+      "severity": "medium"
+     },
+     {
+      "title": "Negative operating cash flows in recent stub period",
+      "detail": "Generated negative operating cash flow of ₹6.64 crore for the three months ended June 30, 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "Contingent liabilities risk",
+      "detail": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026 (10.24% of net worth), including ₹8.00 crore bank guarantee to IOCL.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Financial data is standalone and covers FY24, FY25, and FY26. Three-month period ended June 30, 2026 stub data is excluded from the financial arrays."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 72,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-22T12:33:46.020Z"
   },
   {
    "symbol": "SFCTECH",
@@ -421,7 +731,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:12.922Z",
+   "subsAsOn": "2026-10-22T12:33:51.608Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -453,9 +763,9 @@
      "phone": "+91 8108114949",
      "email": "sfcenvironmental.ipo@in.mpms.mufg.com",
      "contactPerson": "Shanti Gopalkrishnan",
-     "website": null
+     "website": "https://www.in.mpms.mufg.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "anchorInvestors": null,
@@ -585,9 +895,315 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-10-22T12:21:12.922Z"
+   "fundamentals": {
+    "company": "SFC Environmental Technologies Limited",
+    "basis": "Consolidated",
+    "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
+    "sector": "Environmental Engineering & Waste Management",
+    "headquarters": "Navi Mumbai, Maharashtra",
+    "founded_year": 2005,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      904.94,
+      999.47,
+      1323.43
+     ],
+     "revenue": [
+      657.5,
+      697.86,
+      803.63
+     ],
+     "other_income": [
+      19.07,
+      29.11,
+      17.64
+     ],
+     "ebitda": [
+      193.25,
+      207.48,
+      235.81
+     ],
+     "pbt": [
+      193.45,
+      205.24,
+      211.49
+     ],
+     "pat": [
+      144.17,
+      152.01,
+      160.21
+     ],
+     "net_worth": [
+      534.3,
+      648.68,
+      804.17
+     ],
+     "reserves": [
+      528.07,
+      630,
+      785.49
+     ],
+     "borrowings": [
+      139.16,
+      83.71,
+      195.64
+     ],
+     "cash_and_bank": [
+      188.61,
+      136.05,
+      156.82
+     ],
+     "operating_cash_flow": [
+      -11.69,
+      65.51,
+      -25.8
+     ]
+    },
+    "kpi": {
+     "roce": [
+      28.56,
+      29.29,
+      22.21
+     ],
+     "ronw": [
+      30.46,
+      24.36,
+      21.25
+     ],
+     "roe": [
+      29.8,
+      24.84,
+      21.55
+     ],
+     "eps_basic": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "eps_diluted": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "pat_margin": [
+      21.93,
+      21.78,
+      19.94
+     ],
+     "ebitda_margin": [
+      29.39,
+      29.73,
+      29.34
+     ],
+     "debt_equity": [
+      -0.09,
+      -0.08,
+      0.05
+     ],
+     "current_ratio": null,
+     "nav_per_share": 86.09,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 15.93,
+     "other": [
+      {
+       "name": "Total Order Book",
+       "unit": "₹ crore",
+       "values": [
+        785.23,
+        560.39,
+        1574.52
+       ]
+      },
+      {
+       "name": "Cash Conversion Cycle",
+       "unit": "Days",
+       "values": [
+        156,
+        232,
+        242
+       ]
+      },
+      {
+       "name": "Fixed Asset Turnover",
+       "unit": "X",
+       "values": [
+        13.25,
+        10.85,
+        12.07
+       ]
+      },
+      {
+       "name": "Treatment capacity facilitated",
+       "unit": "MLD",
+       "values": [
+        13906.98,
+        15209.45,
+        17144.01
+       ]
+      },
+      {
+       "name": "Number of treatment installations",
+       "unit": "Number",
+       "values": [
+        577,
+        639,
+        705
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Thermax Limited",
+      "revenue_cr": 10694.15,
+      "face_value": 2,
+      "cmp": 3325.75,
+      "eps_basic": 63.95,
+      "eps_diluted": 63.94,
+      "nav": 492.55,
+      "pe": 52.01,
+      "ronw": 13.74
+     },
+     {
+      "name": "Praj Industries Limited",
+      "revenue_cr": 3167.88,
+      "face_value": 2,
+      "cmp": 287,
+      "eps_basic": 1.3,
+      "eps_diluted": 1.3,
+      "nav": 71.22,
+      "pe": 220.77,
+      "ronw": 1.77
+     },
+     {
+      "name": "Ion Exchange (India) Limited",
+      "revenue_cr": 2914.84,
+      "face_value": 1,
+      "cmp": 377.2,
+      "eps_basic": 12.03,
+      "eps_diluted": 12.03,
+      "nav": 91.3,
+      "pe": 31.34,
+      "ronw": 11.2
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 150,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": 15682750,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
+       "amount_cr": 42.23
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 74.92
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Sandeep Sudhakar Asolkar"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": null
+    },
+    "concentration": {
+     "top_customers_pct": 64.44,
+     "govt_share_pct": 92.35,
+     "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
+    },
+    "order_book_cr": 1570.07,
+    "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
+    "strengths": [
+     "Market leader in sequencing batch reactor technology in India with over 80% market share.",
+     "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
+     "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
+     "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
+     "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
+     "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
+    ],
+    "risks": [
+     {
+      "title": "Government Entity Dependence",
+      "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Negative Operating Cash Flows",
+      "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer Concentration",
+      "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
+      "severity": "high"
+     },
+     {
+      "title": "Segment Concentration",
+      "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
+      "severity": "medium"
+     },
+     {
+      "title": "Working Capital and Receivable Days",
+      "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
+      "severity": "medium"
+     },
+     {
+      "title": "Technology Obsolescence Risk",
+      "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
+      "severity": "medium"
+     },
+     {
+      "title": "Loans to Subsidiaries",
+      "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
+      "severity": "medium"
+     },
+     {
+      "title": "Pending Legal Proceedings",
+      "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 75,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
+    ],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-22T12:33:51.608Z"
   },
   {
    "symbol": "IG-2356",
@@ -621,7 +1237,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-22T12:21:42.950Z",
+   "subsAsOn": "2026-10-22T12:34:26.345Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -653,7 +1269,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-22T12:21:42.950Z",
+   "fetchedAt": "2026-10-22T12:34:26.345Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -700,7 +1316,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:18.393Z",
+   "subsAsOn": "2026-10-22T12:33:56.980Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -732,9 +1348,9 @@
      "phone": "+91 810 811 4949",
      "email": "eaaaindia.ipo@in.mpms.mufg.com",
      "contactPerson": "Shanti Gopalkrishnan",
-     "website": null
+     "website": "https://in.mpms.mufg.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "anchorInvestors": null,
@@ -831,9 +1447,378 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-10-22T12:21:18.393Z"
+   "fundamentals": {
+    "company": "EAAA India Alternatives Limited",
+    "basis": "Consolidated",
+    "about": "EAAA India Alternatives Limited is one of the leading alternatives asset management platforms in India with over 17 years of experience. The company manages long-term capital across two primary verticals: Real Assets (infrastructure and commercial real estate) and Private Credit (performing credit, special situations, and real estate credit). As of June 30, 2026, it had an AUM of ₹95,344.88 crore and fee-paying AUM (FPAUM) of ₹48,623.18 crore across onshore and offshore institutional and private wealth clients.",
+    "sector": "Alternative Asset Management / Financial Services",
+    "headquarters": "Mumbai, Maharashtra",
+    "founded_year": null,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      1769.66,
+      2085.07,
+      2170.28
+     ],
+     "revenue": [
+      492.58,
+      670.26,
+      869.54
+     ],
+     "other_income": [
+      91.67,
+      116.28,
+      94.22
+     ],
+     "ebitda": [
+      254.53,
+      344.66,
+      417.49
+     ],
+     "pbt": [
+      212.69,
+      284.31,
+      338.64
+     ],
+     "pat": [
+      175.16,
+      229.78,
+      265.2
+     ],
+     "net_worth": [
+      729.48,
+      966.45,
+      1075.54
+     ],
+     "reserves": [
+      480.64,
+      934.31,
+      1043.4
+     ],
+     "borrowings": [
+      444.83,
+      507.49,
+      441.03
+     ],
+     "cash_and_bank": [
+      188.34,
+      174.37,
+      188.09
+     ],
+     "operating_cash_flow": [
+      -13.27,
+      -120.17,
+      235.24
+     ]
+    },
+    "kpi": {
+     "roce": null,
+     "ronw": [
+      27.3,
+      27.1,
+      25.97
+     ],
+     "roe": [
+      27.3,
+      27.1,
+      25.97
+     ],
+     "eps_basic": [
+      27.25,
+      35.75,
+      41.26
+     ],
+     "eps_diluted": [
+      27.25,
+      35.75,
+      40.36
+     ],
+     "pat_margin": [
+      29.98,
+      29.21,
+      27.52
+     ],
+     "ebitda_margin": null,
+     "debt_equity": [
+      0.61,
+      0.53,
+      0.41
+     ],
+     "current_ratio": null,
+     "nav_per_share": 163.69,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 37.09,
+     "other": [
+      {
+       "name": "FPAUM",
+       "unit": "₹ crore",
+       "values": [
+        30398.01,
+        33833.28,
+        44710.44
+       ]
+      },
+      {
+       "name": "AUM",
+       "unit": "₹ crore",
+       "values": [
+        54678.94,
+        59628.92,
+        72706.33
+       ]
+      },
+      {
+       "name": "Cost to Income Ratio",
+       "unit": "%",
+       "values": [
+        63.6,
+        63.85,
+        63.84
+       ]
+      },
+      {
+       "name": "Management and Advisory Fees",
+       "unit": "₹ crore",
+       "values": [
+        398.01,
+        479.53,
+        579.07
+       ]
+      },
+      {
+       "name": "Variable Additional Return",
+       "unit": "₹ crore",
+       "values": [
+        94.57,
+        190.73,
+        290.47
+       ]
+      },
+      {
+       "name": "GP Income",
+       "unit": "₹ crore",
+       "values": [
+        78.68,
+        102.14,
+        79.95
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "360 One WAM Limited",
+      "revenue_cr": 4361.62,
+      "face_value": 1,
+      "cmp": 1041.1,
+      "eps_basic": 30.16,
+      "eps_diluted": 29.19,
+      "nav": 242.17,
+      "pe": 35.67,
+      "ronw": 14.39
+     },
+     {
+      "name": "Aditya Birla Sun Life AMC Limited",
+      "revenue_cr": 1845.03,
+      "face_value": 5,
+      "cmp": 1004.9,
+      "eps_basic": 33.76,
+      "eps_diluted": 33.68,
+      "nav": 139.94,
+      "pe": 29.84,
+      "ronw": 25.1
+     },
+     {
+      "name": "Anand Rathi Wealth Limited",
+      "revenue_cr": 1148.83,
+      "face_value": 5,
+      "cmp": 2138.9,
+      "eps_basic": 47.87,
+      "eps_diluted": 47.17,
+      "nav": 120.23,
+      "pe": 90.69,
+      "ronw": 47.54
+     },
+     {
+      "name": "HDFC Asset Management Company Limited",
+      "revenue_cr": 4122.16,
+      "face_value": 5,
+      "cmp": 2245,
+      "eps_basic": 66.77,
+      "eps_diluted": 66.5,
+      "nav": 215.42,
+      "pe": 33.76,
+      "ronw": 32.93
+     },
+     {
+      "name": "Gaja Alternative Asset Management Limited",
+      "revenue_cr": 135.53,
+      "face_value": 5,
+      "cmp": 145.1,
+      "eps_basic": 7.17,
+      "eps_diluted": 7.17,
+      "nav": 53.73,
+      "pe": 16.47,
+      "ronw": 16.47
+     },
+     {
+      "name": "Nippon Life India Asset Management Limited",
+      "revenue_cr": 2708.74,
+      "face_value": 10,
+      "cmp": 1039.4,
+      "eps_basic": 24.05,
+      "eps_diluted": 23.63,
+      "nav": 73.01,
+      "pe": 43.99,
+      "ronw": 34.48
+     },
+     {
+      "name": "Nuvama Wealth Management Limited",
+      "revenue_cr": 4630.69,
+      "face_value": 2,
+      "cmp": 1737.4,
+      "eps_basic": 57.59,
+      "eps_diluted": 56.06,
+      "nav": 226.37,
+      "pe": 30.99,
+      "ronw": 27.34
+     },
+     {
+      "name": "UTI Asset Management Company Limited",
+      "revenue_cr": 1698.05,
+      "face_value": 10,
+      "cmp": 877.2,
+      "eps_basic": 31.51,
+      "eps_diluted": 31.41,
+      "nav": 350.5,
+      "pe": 27.93,
+      "ronw": 10.38
+     },
+     {
+      "name": "ICICI Prudential Asset Management Company Limited",
+      "revenue_cr": 5764.63,
+      "face_value": 1,
+      "cmp": 3066.4,
+      "eps_basic": 66.73,
+      "eps_diluted": 66.73,
+      "nav": 84.39,
+      "pe": 45.95,
+      "ronw": 85.8
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": 1200,
+     "fresh_issue_cr": 0,
+     "ofs_cr": 1200,
+     "fresh_issue_shares": 0,
+     "ofs_shares": null,
+     "pre_issue_shares": 64280246,
+     "post_issue_shares": 64280246,
+     "face_value": 5,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by Promoter Selling Shareholder",
+       "amount_cr": 1200
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Edel Finance Company Limited",
+      "Edelweiss Financial Services Limited"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": null
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Foreign clients accounted for ₹32,228.52 crore or 33.80% of total AUM as of June 30, 2026. Repeat clients contributed 77% of total commitments across funds as of June 30, 2026."
+    },
+    "order_book_cr": null,
+    "litigation_note": "As of June 30, 2026, contingent liabilities totaled ₹37.70 crore, comprising disputed income tax demands of ₹37.48 crore and civil litigation pending against the holding company of ₹0.23 crore.",
+    "strengths": [
+     "Leading Indian alternatives asset management platform with over 17 years of operating experience.",
+     "Substantial scale with AUM of ₹95,344.88 crore and fee-paying AUM of ₹48,623.18 crore as of June 30, 2026.",
+     "Diversified multi-strategy offerings spanning high-growth Real Assets and Private Credit markets.",
+     "Strong capital raising and deployment track record, having raised ₹47,526.25 crore across FY24-FY26 and Q1 FY27.",
+     "High client loyalty with repeat clients contributing 77% of commitments as of June 30, 2026.",
+     "Dedicated operational asset management capabilities through wholly owned subsidiary Sekura India Management.",
+     "Comprehensive institutional-grade risk management framework and ESG compliance standards."
+    ],
+    "risks": [
+     {
+      "title": "Variable Additional Return Volatility",
+      "detail": "Variable Additional Return accounted for 30.14%, 24.25%, and 16.19% of Total Income in FY26, FY25, and FY24; its timing and receipt are unpredictable and volatile.",
+      "severity": "high"
+     },
+     {
+      "title": "Historical Negative Operating Cash Flows",
+      "detail": "The company reported negative cash flows from operations of ₹120.17 crore in FY25 and ₹13.27 crore in FY24 due to GP fund commitments and distributor payouts.",
+      "severity": "high"
+     },
+     {
+      "title": "Regulatory Actions on Promoters and Group Entities",
+      "detail": "Promoter and Group companies face regulatory oversight; in May 2024, RBI issued a cease-and-desist order on ECL Finance Limited regarding structured wholesale exposures.",
+      "severity": "high"
+     },
+     {
+      "title": "Exposure to Foreign Client Commitments",
+      "detail": "Foreign clients contributed ₹32,228.52 crore or 33.80% of total AUM as of June 30, 2026, creating exposure to global regulatory shifts and currency volatility.",
+      "severity": "medium"
+     },
+     {
+      "title": "Large Interim Dividend Outflow",
+      "detail": "In Fiscal 2026, the company declared and paid a significant interim dividend of ₹32.00 per share aggregating ₹205.70 crore, impacting cash reserves.",
+      "severity": "medium"
+     },
+     {
+      "title": "Indebtedness and Financing Covenants",
+      "detail": "Consolidated borrowings stood at ₹441.03 crore as of March 31, 2026 and ₹399.20 crore as of June 30, 2026, exposing the business to covenant and interest rate risks.",
+      "severity": "medium"
+     },
+     {
+      "title": "Entire Offer is an Offer for Sale",
+      "detail": "The public offer consists entirely of an OFS of up to ₹1,200 crore by the Promoter Selling Shareholder; the company receives no proceeds.",
+      "severity": "medium"
+     },
+     {
+      "title": "Contingent Liabilities and Tax Demands",
+      "detail": "The company has contingent liabilities of ₹37.70 crore as of June 30, 2026, including ₹37.48 crore in disputed income tax appellate matters.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Financial figures are consolidated and converted to ₹ crore from ₹ million. Periods Mar-24, Mar-25, and Mar-26 reflect fiscal years ended March 31; stub period for three months ended June 30, 2026 is ignored in period arrays as per instructions."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 104,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported PAT margin 29.98% vs PAT/revenue 35.56% (possible swapped years, or margin quoted on total income)",
+     "Mar-25: reported PAT margin 29.21% vs PAT/revenue 34.28% (possible swapped years, or margin quoted on total income)",
+     "Mar-26: reported PAT margin 27.52% vs PAT/revenue 30.50% (possible swapped years, or margin quoted on total income)"
+    ],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-22T12:33:56.980Z"
   },
   {
    "symbol": "CORE4",
@@ -875,7 +1860,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:27.049Z",
+   "subsAsOn": "2026-10-22T12:34:08.914Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -973,7 +1958,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-22T12:21:27.049Z"
+   "fetchedAt": "2026-10-22T12:34:08.914Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -1260,7 +2245,7 @@
      "total": 0.14719757325194519
     },
     {
-     "at": "2026-10-22T12:25:47.111Z",
+     "at": "2026-10-22T12:35:30.376Z",
      "date": "2026-10-22",
      "qib": 0.06487118315109239,
      "bnii": 0.2215974728831072,
@@ -1699,7 +2684,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:05.736Z"
+   "fetchedAt": "2026-10-22T12:33:39.477Z"
   },
   {
    "symbol": "JPL",
@@ -1732,48 +2717,48 @@
    "bids": {
     "qib": {
      "offered": 49007827,
-     "bid": 630546096,
-     "times": 12.866232489761279
+     "bid": 630596940,
+     "times": 12.867269956694876
     },
     "nii": {
      "offered": 36444569,
-     "bid": 205635048,
-     "times": 5.642405813606961
+     "bid": 207178260,
+     "times": 5.684749900595614
     },
     "bnii": {
      "offered": 24296380,
-     "bid": 154338228,
-     "times": 6.352313719163102
+     "bid": 155548044,
+     "times": 6.402107803713969
     },
     "snii": {
      "offered": 12148189,
-     "bid": 51296820,
-     "times": 4.222589885619988
+     "bid": 51630216,
+     "times": 4.250033976257695
     },
     "retail": {
      "offered": 85037327,
-     "bid": 127871304,
-     "times": 1.503707942278101
+     "bid": 128524884,
+     "times": 1.511393743596856
     },
     "employee": {
      "offered": 4694835,
-     "bid": 9615180,
-     "times": 2.0480336369648775
+     "bid": 9660792,
+     "times": 2.057748994373604
     },
     "shareholders": {
      "offered": 22341376,
-     "bid": 87282420,
-     "times": 3.9067611592052343
+     "bid": 87795648,
+     "times": 3.9297332447204685
     },
     "other": null,
     "total": {
      "offered": 197525934,
-     "bid": 1060950048,
-     "times": 5.371193678294416
+     "bid": 1063756524,
+     "times": 5.385401817667143
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T17:45:00+05:30",
+   "subsAsOn": "2026-10-22T18:00:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -1830,66 +2815,66 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 22-Oct-2026 17:45:00 IST",
-    "totalBids": 1062023952,
-    "timesSubscribed": 5.38,
+    "asOn": "As on 22-Oct-2026 18:00:00 IST",
+    "totalBids": 1064788872,
+    "timesSubscribed": 5.39,
     "byPrice": {
-     "1065": "1,06,20,23,952",
-     "1066": "1,06,13,12,508",
-     "1067": "1,06,12,71,504",
-     "1068": "1,06,12,62,036",
-     "1069": "1,06,12,52,580",
-     "1070": "1,06,12,39,980",
-     "1071": "1,06,11,36,600",
-     "1072": "1,06,11,27,540",
-     "1073": "1,06,11,22,116",
-     "1074": "1,06,11,20,964",
-     "1075": "1,06,11,17,760",
-     "1076": "1,06,10,76,972",
-     "1077": "1,06,10,75,328",
-     "1078": "1,06,10,71,860",
-     "1079": "1,06,10,69,400",
-     "1080": "1,06,10,66,304",
-     "1081": "1,06,09,77,036",
-     "1082": "1,06,09,73,460",
-     "1083": "1,06,09,72,152",
-     "1084": "1,06,09,69,044",
-     "1085": "1,06,09,64,880",
-     "1086": "1,06,09,41,288",
-     "1087": "1,06,09,39,824",
-     "1088": "1,06,09,38,228",
-     "1089": "1,06,09,36,440",
-     "1090": "1,06,09,31,748",
-     "1091": "1,06,08,77,844",
-     "1092": "1,06,08,74,496",
-     "1093": "1,06,08,65,088",
-     "1094": "1,06,08,62,988",
-     "1095": "1,06,08,61,284",
-     "1096": "1,06,08,42,588",
-     "1097": "1,06,08,39,804",
-     "1098": "1,06,08,38,376",
-     "1099": "1,06,08,35,412",
-     "1100": "1,06,08,21,228",
-     "1101": "1,06,05,42,768",
-     "1102": "1,06,05,27,240",
-     "1103": "1,06,05,25,404",
-     "1104": "1,06,05,23,904",
-     "1105": "1,06,05,19,236",
-     "1106": "1,06,05,10,428",
-     "1107": "1,06,05,08,676",
-     "1108": "1,06,05,06,012",
-     "1109": "1,06,05,03,108",
-     "1110": "1,06,04,97,144",
-     "1111": "1,06,04,07,348",
-     "1112": "1,06,03,26,912",
-     "1113": "1,06,03,17,396",
-     "1114": "1,06,03,09,032",
-     "1115": "1,06,03,02,348",
-     "1116": "1,06,02,66,696",
-     "1117": "1,06,02,46,020",
-     "1118": "1,06,02,09,120",
-     "1119": "1,06,00,83,960",
-     "Cut-Off": "19,58,12,148"
+     "1065": "1,06,47,88,872",
+     "1066": "1,06,40,74,836",
+     "1067": "1,06,40,33,688",
+     "1068": "1,06,40,24,172",
+     "1069": "1,06,40,14,692",
+     "1070": "1,06,40,01,876",
+     "1071": "1,06,38,98,004",
+     "1072": "1,06,38,88,968",
+     "1073": "1,06,38,83,532",
+     "1074": "1,06,38,82,380",
+     "1075": "1,06,38,79,176",
+     "1076": "1,06,38,38,268",
+     "1077": "1,06,38,36,624",
+     "1078": "1,06,38,33,132",
+     "1079": "1,06,38,30,672",
+     "1080": "1,06,38,27,576",
+     "1081": "1,06,37,37,900",
+     "1082": "1,06,37,34,324",
+     "1083": "1,06,37,32,992",
+     "1084": "1,06,37,29,872",
+     "1085": "1,06,37,25,684",
+     "1086": "1,06,37,02,032",
+     "1087": "1,06,37,00,568",
+     "1088": "1,06,36,98,960",
+     "1089": "1,06,36,97,148",
+     "1090": "1,06,36,92,456",
+     "1091": "1,06,36,38,264",
+     "1092": "1,06,36,34,892",
+     "1093": "1,06,36,25,424",
+     "1094": "1,06,36,23,324",
+     "1095": "1,06,36,21,620",
+     "1096": "1,06,36,02,864",
+     "1097": "1,06,36,00,080",
+     "1098": "1,06,35,98,652",
+     "1099": "1,06,35,95,688",
+     "1100": "1,06,35,81,264",
+     "1101": "1,06,33,01,436",
+     "1102": "1,06,32,85,848",
+     "1103": "1,06,32,84,012",
+     "1104": "1,06,32,82,488",
+     "1105": "1,06,32,77,808",
+     "1106": "1,06,32,69,000",
+     "1107": "1,06,32,67,224",
+     "1108": "1,06,32,64,560",
+     "1109": "1,06,32,61,656",
+     "1110": "1,06,32,56,880",
+     "1111": "1,06,31,66,640",
+     "1112": "1,06,30,85,844",
+     "1113": "1,06,30,75,836",
+     "1114": "1,06,30,67,424",
+     "1115": "1,06,30,60,500",
+     "1116": "1,06,30,24,668",
+     "1117": "1,06,30,03,992",
+     "1118": "1,06,29,66,864",
+     "1119": "1,06,28,41,440",
+     "Cut-Off": "19,68,66,780"
     }
    },
    "registrar": {
@@ -2033,14 +3018,14 @@
      "total": 3.156277048663392
     },
     {
-     "at": "2026-10-22T12:25:47.113Z",
+     "at": "2026-10-22T12:35:30.378Z",
      "date": "2026-10-22",
-     "qib": 12.866232489761279,
-     "bnii": 6.352313719163102,
-     "snii": 4.222589885619988,
-     "nii": 5.642405813606961,
-     "retail": 1.503707942278101,
-     "total": 5.371193678294416
+     "qib": 12.867269956694876,
+     "bnii": 6.402107803713969,
+     "snii": 4.250033976257695,
+     "nii": 5.684749900595614,
+     "retail": 1.511393743596856,
+     "total": 5.385401817667143
     }
    ],
    "listingPerf": null,
@@ -2376,7 +3361,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:06.587Z"
+   "fetchedAt": "2026-10-22T12:33:40.396Z"
   },
   {
    "symbol": "ZETWERK",
@@ -3058,11 +4043,11 @@
    "minInvestmentLots": 1,
    "contacts": {
     "company": {
-     "address": null,
-     "phone": null,
-     "email": null,
-     "website": "https://tonboimaging.com",
-     "contactPerson": null
+     "address": "1st C Main, Sarjapur Main Road, Jakkasandra Extension, Chikkayellappa Industrial Layout, Bengaluru 560 034, Karnataka, India",
+     "phone": "+91 63 64 926 273",
+     "email": "compliance@tonboimaging.com",
+     "website": "https://www.tonboimaging.com",
+     "contactPerson": "Ankita Agarwalla"
     },
     "registrar": {
      "name": "KFin Technologies Limited",
@@ -3070,9 +4055,9 @@
      "phone": "+91 40 6716 2222",
      "email": "tonbo.ipo@kfintech.com",
      "contactPerson": "Williams R",
-     "website": null
+     "website": "https://www.kfintech.com"
     },
-    "source": "NSE issue info (company website from offer document cover)"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "anchorInvestors": null,
@@ -3295,8 +4280,8 @@
    "fundamentals": {
     "company": "Tonbo Imaging India Limited",
     "basis": "Consolidated",
-    "about": "Tonbo is a Bengaluru-based global defence electronics OEM that designs sensing, processing, communication and guidance systems such as thermal weapon sights, thermal binoculars, targeting and fire-control systems and missile seekers. It owns its IP and outsources manufacturing to EMS partners (asset-light). Over 28,000 systems have been deployed across 24 countries as of June 30, 2026.",
-    "sector": "Defence Electronics (EO/IR systems)",
+    "about": "Tonbo Imaging India Limited is a Bengaluru-based defence electronics original equipment manufacturer that designs and manufactures advanced electro-optics, thermal imaging, and autonomous targeting solutions. Operating an asset-light model with full in-house intellectual property ownership, the company has deployed over 28,000 systems across 24 countries worldwide.",
+    "sector": "Defence Electronics",
     "headquarters": "Bengaluru, Karnataka",
     "founded_year": 2003,
     "periods": [
@@ -3397,41 +4382,15 @@
       29.65,
       28.85
      ],
-     "debt_equity": [
-      0.42,
-      0.16,
-      0.21
-     ],
-     "current_ratio": [
-      1.26,
-      2.4,
-      2.64
-     ],
+     "debt_equity": null,
+     "current_ratio": null,
      "nav_per_share": 96.57,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 19.49,
+     "pe_pre_ipo": 78.83,
+     "pe_post_ipo": 78.83,
+     "weighted_avg_eps": 10.95,
      "other": [
       {
-       "name": "Export share of revenue",
-       "unit": "%",
-       "values": [
-        48.61,
-        65.52,
-        5.57
-       ]
-      },
-      {
-       "name": "Confirmed order book",
-       "unit": "Rs crore",
-       "values": [
-        563.14,
-        218.61,
-        279.02
-       ]
-      },
-      {
-       "name": "Gross profit margin",
+       "name": "Gross Profit Margin",
        "unit": "%",
        "values": [
         48.64,
@@ -3440,8 +4399,8 @@
        ]
       },
       {
-       "name": "Working capital days",
-       "unit": "days",
+       "name": "Working Capital Days",
+       "unit": "Days",
        "values": [
         152,
         280,
@@ -3449,21 +4408,30 @@
        ]
       },
       {
-       "name": "Tactical systems revenue",
-       "unit": "Rs crore",
+       "name": "Export Share in Revenue",
+       "unit": "%",
        "values": [
-        359.27,
-        362.3,
-        211.68
+        48.61,
+        65.52,
+        5.57
        ]
       },
       {
-       "name": "Platform systems revenue",
-       "unit": "Rs crore",
+       "name": "Net Tangible Fixed Asset Turnover",
+       "unit": "Times",
        "values": [
-        12.7,
-        101.05,
-        144.81
+        89.45,
+        19.16,
+        14.62
+       ]
+      },
+      {
+       "name": "Confirmed Order Book",
+       "unit": "₹ crore",
+       "values": [
+        563.14,
+        218.61,
+        279.02
        ]
       }
      ]
@@ -3526,27 +4494,27 @@
      }
     ],
     "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
+     "price_low": 665,
+     "price_high": 700,
+     "total_issue_cr": 852.09,
      "fresh_issue_cr": 0,
-     "ofs_cr": null,
+     "ofs_cr": 852.09,
      "fresh_issue_shares": 0,
      "ofs_shares": 12174046,
-     "pre_issue_shares": 57282100,
-     "post_issue_shares": 57282100,
+     "pre_issue_shares": 57280000,
+     "post_issue_shares": 57280000,
      "face_value": 2,
      "objects": [
       {
-       "purpose": "Offer for Sale by Selling Shareholders (no proceeds to the Company; listing benefits only)",
-       "amount_cr": null
+       "purpose": "Offer for Sale by Selling Shareholders and listing benefits",
+       "amount_cr": 852.09
       }
      ],
      "reservation_pct": {
       "anchor": null,
-      "qib": 50,
-      "nii": 15,
-      "retail": 35,
+      "qib": null,
+      "nii": null,
+      "retail": null,
       "employee": null
      }
     },
@@ -3556,78 +4524,76 @@
       "Ankit Kumar",
       "Cecilia D'Souza"
      ],
-     "holding_pre_pct": 17.43,
-     "holding_post_pct": 14.01,
-     "background": "Founder-technologists with over 21 years of working together; previously with the US Department of Defense and Sarnoff Corporation. Promoters' shares are not pledged."
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "The Promoters have worked together for over 21 years across global defence programs, led by Arvind Kondangi Lakshmikumar (MD & CEO), Ankit Kumar (optics & computer vision), and Cecilia D'Souza (finance & operations)."
     },
     "concentration": {
-     "top_customers_pct": 53.03,
-     "govt_share_pct": 71.19,
-     "note": "FY26: top 5 customers 53.03% and top 10 77.83% of revenue; largest customer 13.78% (was 57.07% in FY25, 44.11% in FY24). Indian Government 71.19% of FY26 revenue (foreign government a further 3.34%)."
+     "top_customers_pct": null,
+     "govt_share_pct": 74.53,
+     "note": "Indian Government accounted for 71.19% and foreign governments 3.34% of FY26 revenue; top ten suppliers accounted for 68.77% of FY26 total expenses."
     },
     "order_book_cr": 314.24,
-    "litigation_note": "Company, MD Arvind Kondangi Lakshmikumar and a nominee director are named in a suit filed in the Singapore High Court by a minority shareholder of CEAQ Singapore. Anonymous complaints were made to SEBI, the Ministry of Defence and others after the earlier DRHP. Bank guarantees of Rs 78.93 crore are listed under contingent liabilities.",
+    "litigation_note": "Bank guarantees outstanding of ₹78.93 crore and contingent liability of ₹0.58 crore disputed under Goods and Services Tax Act pending before the High Court of Jammu & Kashmir.",
     "strengths": [
-     "Largest manufacturer of thermal imaging systems for Indian government and defence agencies (Apr 2024 to Mar 2026) and 94% share of India's thermal imaging exports by units, per the F&S report.",
-     "Owns 100% of its intellectual property since Fiscal 2024, so it has no dependence on external technology partners.",
-     "ITAR-free EO/IR products let it sell to export-sensitive markets; over 28,000 systems deployed across 24 countries.",
-     "Asset-light model with outsourced manufacturing to EMS partners such as Kaynes keeps capital spending low.",
-     "Confirmed order book of Rs 314.24 crore at June 30, 2026, plus Rs 118.15 crore of new orders received from July to September 2026.",
-     "In-house R&D team of 130 engineers (about 38% of staff), with R&D spend rising to Rs 25.86 crore in FY26 from Rs 4.24 crore in FY24.",
-     "Healthy EBITDA margins of 26% to 30% across FY24 to FY26 and a low debt-to-equity ratio of 0.21 in FY26.",
-     "Platform systems (integrated autonomous solutions) grew from Rs 12.70 crore in FY24 to Rs 144.81 crore in FY26."
+     "Leading defence technology OEM with 100% proprietary intellectual property ownership across optics, embedded software, and electronics.",
+     "Capital-efficient asset-light model focusing on in-house R&D while outsourcing manufacturing to certified EMS partners.",
+     "Largest Indian manufacturer and exporter of thermal imaging systems, capturing 94% of India's thermal imaging export units.",
+     "Diversified portfolio of ITAR-free electro-optical systems deployed in over 24 countries across 28,000 installations.",
+     "Comprehensive product range spanning tactical weapon sights, platform systems, missile seekers, and autonomous battlefield fire control.",
+     "Robust in-house R&D infrastructure with 130 dedicated engineers comprising approximately 38% of the total workforce."
     ],
     "risks": [
      {
-      "title": "Revenue fell and Q1FY27 swung to a loss",
-      "detail": "Revenue fell 22.69% to Rs 362.65 crore in FY26 and PAT fell to Rs 50.88 crore from Rs 72.76 crore. The June 2026 quarter showed a loss of Rs 17.74 crore on revenue of Rs 36.01 crore, as orders are lumpy and back-ended.",
+      "title": "Persistent negative operating cash flows",
+      "detail": "Reported negative cash flows from operations of ₹63.22 crore in FY26, ₹136.12 crore in FY25, and ₹14.68 crore in Q1 FY27.",
       "severity": "high"
      },
      {
-      "title": "Negative operating cash flow and stretched working capital",
-      "detail": "Operating cash flow was negative Rs 136.12 crore in FY25 and negative Rs 63.22 crore in FY26. Working capital days rose from 152 in FY24 to 280 in FY25 and 517 in FY26.",
+      "title": "Lengthening working capital cycle",
+      "detail": "Working capital days increased substantially from 152 days in FY24 to 280 days in FY25 and 517 days in FY26.",
       "severity": "high"
      },
      {
-      "title": "Government and tender dependence with poor revenue visibility",
-      "detail": "Business is cyclical, tied to government budgets and short, non-recurring tender contracts. Indian Government was 71.19% of FY26 revenue and revenue was 57.07% from a single customer in FY25.",
+      "title": "High supplier concentration",
+      "detail": "Top ten suppliers accounted for 68.77% of total expenses in FY26 and 164.00% in Q1 FY27, without long-term supply contracts.",
       "severity": "high"
      },
      {
-      "title": "Customer concentration",
-      "detail": "Top 5 customers made up 53.03% and top 10 made up 77.83% of FY26 revenue. In FY25 the top 10 were 95.49% of revenue.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy dependence on limited suppliers and contract manufacturers",
-      "detail": "Critical components (IR focal plane arrays, OLED micro displays) come from a narrow global supplier base. Top ten suppliers were 68.77% of total expenses in FY26. Large-scale manufacturing is fully outsourced.",
+      "title": "Heavy reliance on tactical systems revenue",
+      "detail": "Tactical systems contributed 58.37%, 77.24%, and 83.90% of revenue from operations in FY26, FY25, and FY24, respectively.",
       "severity": "medium"
      },
      {
-      "title": "Export revenue is volatile",
-      "detail": "Exports were 48.61% of revenue in FY24 and 65.52% in FY25 but only 5.57% in FY26 and 0.25% in the June 2026 quarter, making geographic exposure swing sharply.",
+      "title": "Sharp decline in export revenues",
+      "detail": "Export share dropped sharply from 65.52% of revenue in FY25 to 5.57% in FY26 due to changes in international procurement.",
       "severity": "medium"
      },
      {
-      "title": "Product concentration in tactical systems",
-      "detail": "Tactical systems were 83.90% of revenue in FY24, 77.24% in FY25 and 58.37% in FY26, so demand for these sights remains a key driver.",
+      "title": "Cyclical government tender-based procurement",
+      "detail": "Business is highly dependent on governmental budgetary allocations and extended, multi-tiered tender cycles resulting in volatile revenue.",
       "severity": "medium"
      },
      {
-      "title": "Pending legal matters and regulatory filing delays",
-      "detail": "A Singapore High Court suit names the company, its MD and a nominee director. Anonymous complaints were filed with SEBI and the Ministry of Defence. There were also delays in RoC filings in FY24, FY25 and FY26.",
+      "title": "Dependence on contract manufacturers",
+      "detail": "Relies entirely on non-exclusive contract manufacturers such as Kaynes and Avalon for commercial-scale product assembly.",
       "severity": "medium"
+     },
+     {
+      "title": "Bank guarantee exposure and tax disputes",
+      "detail": "Outstanding performance bank guarantees of ₹78.93 crore and contingent liabilities of ₹0.58 crore in disputed GST dues.",
+      "severity": "low"
      }
     ],
-    "source_doc": "RHP",
-    "notes": "RHP: price band, issue size in Rs, P/E and Offer size are blank (null). Offer is 100% Offer for Sale of up to 12,174,046 shares, no fresh issue, no proceeds to the Company. FY24 is STANDALONE (no subsidiaries before FY25); FY25 and FY26 are consolidated. Source figures are in Rs million, converted to Rs crore. The June 2026 quarter stub is ignored in arrays (revenue Rs 36.01 crore, PAT -Rs 17.74 crore, EPS -3.20). PAT margin is the reported PAT / total income. Net worth, borrowings and cash match the RHP; cash_and_bank is cash plus other bank balances (excluding term deposits). debt_equity and current_ratio are computed from borrowings / net worth and current assets / current liabilities because they are not reported. FY24 basic EPS 62.61 versus diluted 13.63 is as reported. Operating cash flow derived as net cash change minus investing and financing, matching the RHP risk factor for FY25 and FY26. Promoter post-offer holding 14.01% is computed: 9,982,600 minus 1,960,000 promoter shares offered, over 57,282,100."
+    "source_doc": "Prospectus",
+    "notes": "FY24 financials are standalone as subsidiaries were incorporated in FY25; FY25 and FY26 are consolidated. Q1 FY27 stub period (ended June 30, 2026) is excluded from financial arrays."
    },
    "verification": {
     "status": "ok",
-    "checked": 81,
+    "checked": 80,
     "notFound": 0,
     "issues": [],
-    "sourceDoc": "RHP"
+    "sourceDoc": "Prospectus"
    },
    "fetchedAt": "2026-10-20T18:21:44.724Z"
   },
@@ -4990,7 +5956,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:31.494Z",
+   "subsAsOn": "2026-10-22T12:34:14.448Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -5511,7 +6477,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:31.494Z"
+   "fetchedAt": "2026-10-22T12:34:14.448Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -7090,12 +8056,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 297.8999938964844,
+    "dayOpen": 335,
     "ltp": 276.7,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-21",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": 9.93,
+    "dayOpenGainPct": 23.62,
     "ltpGainPct": 2.1
    },
    "checks": [
@@ -8979,12 +9945,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 73.91999816894531,
+    "dayOpen": 80,
     "ltp": 74.74,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": -1.44,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": -0.35
    },
    "checks": [
@@ -9615,12 +10581,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 128.77000427246094,
+    "dayOpen": 215,
     "ltp": 128.77,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": -41.47,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -41.47
    },
    "checks": [
@@ -10504,7 +11470,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:36.303Z",
+   "subsAsOn": "2026-10-22T12:34:19.012Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11020,7 +11986,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:36.303Z"
+   "fetchedAt": "2026-10-22T12:34:19.012Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -11066,7 +12032,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:36.969Z",
+   "subsAsOn": "2026-10-22T12:34:19.842Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11499,7 +12465,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:36.969Z"
+   "fetchedAt": "2026-10-22T12:34:19.842Z"
   },
   {
    "symbol": "TNA",
@@ -11545,7 +12511,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:37.790Z",
+   "subsAsOn": "2026-10-22T12:34:20.726Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -11999,7 +12965,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:37.790Z"
+   "fetchedAt": "2026-10-22T12:34:20.726Z"
   },
   {
    "symbol": "DSL",
@@ -12045,7 +13011,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:38.510Z",
+   "subsAsOn": "2026-10-22T12:34:21.565Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12446,7 +13412,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:38.510Z"
+   "fetchedAt": "2026-10-22T12:34:21.565Z"
   },
   {
    "symbol": "OMARA",
@@ -12492,7 +13458,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:40.672Z",
+   "subsAsOn": "2026-10-22T12:34:24.034Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12943,7 +13909,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:40.672Z"
+   "fetchedAt": "2026-10-22T12:34:24.034Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -13459,7 +14425,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:39.200Z",
+   "subsAsOn": "2026-10-22T12:34:22.345Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13690,7 +14656,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-22T12:21:39.200Z"
+   "fetchedAt": "2026-10-22T12:34:22.345Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -14821,7 +15787,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:41.403Z",
+   "subsAsOn": "2026-10-22T12:34:24.855Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15362,7 +16328,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-22T12:21:41.403Z"
+   "fetchedAt": "2026-10-22T12:34:24.855Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -15552,12 +16518,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 370,
+    "dayOpen": 450,
     "ltp": 361.8,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": 36.03,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 33.01
    },
    "checks": [],
@@ -16727,12 +17693,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 104.5999984741211,
+    "dayOpen": 142,
     "ltp": 102.88,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": -24.75,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -25.99
    },
    "checks": [],
@@ -17271,12 +18237,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 22.5,
+    "dayOpen": 28.31999969482422,
     "ltp": 21.63,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": -29.69,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -32.41
    },
    "checks": [],
@@ -19279,12 +20245,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 405.45001220703125,
+    "dayOpen": 455,
     "ltp": 386.35,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-01",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": 0.11,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": -4.6
    },
    "checks": [],
@@ -20872,12 +21838,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 301,
+    "dayOpen": 355.1000061035156,
     "ltp": 300,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": -16.85,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -17.13
    },
    "checks": [],
@@ -21896,12 +22862,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 239,
+    "dayOpen": 200,
     "ltp": 208.22,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-22",
-    "dayOpenGainPct": 29.19,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 12.55
    },
    "checks": [],
@@ -22697,7 +23663,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-22T12:21:23.533Z",
+   "subsAsOn": "2026-10-22T12:34:01.941Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -22777,7 +23743,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-22T12:21:23.533Z"
+   "fetchedAt": "2026-10-22T12:34:01.941Z"
   }
  ],
  "filings": [
