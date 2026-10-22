@@ -251,7 +251,7 @@ async function run() {
     const prevN = pc?.expiries?.[0]?.e === first.e ? pc.expiries[0].n : null;
     const minStrikes = prevN ? Math.ceil(prevN * 0.7) : 20;
     for (const k of c.kept) {
-      bad(k.n >= (k === first ? minStrikes : 20), `${sym} ${k.e}: ${k.n} strikes < required ${k === first ? minStrikes : 20}`);
+      bad(k.n >= (k === first ? minStrikes : 5), `${sym} ${k.e}: ${k.n} strikes < required ${k === first ? minStrikes : 5}`);   // later expiries (e.g. a far monthly) have few strikes
       bad(k.coi > 0 && k.poi > 0 && finite(k.pcr) && k.pcr > 0.05 && k.pcr < 20, `${sym} ${k.e}: OI totals/PCR implausible (call ${k.coi}, put ${k.poi})`);
       bad(finite(k.mp), `${sym} ${k.e}: max pain missing`);
       let b = 0; for (const r of k.strikes) { if (!finite(r[0]) || r[0] <= 0 || [1, 3, 6, 8].some(i => r[i] !== null && !(finite(r[i]) && r[i] >= 0)) || [5, 10].some(i => r[i] !== null && !(finite(r[i]) && r[i] >= 0)) || [4, 9].some(i => r[i] !== null && !(finite(r[i]) && r[i] < 500))) b++; }
