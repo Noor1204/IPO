@@ -1253,3 +1253,18 @@ function tick() {
 setInterval(tick, 1000);
 
 document.addEventListener("keydown", e => { if (e.key === "Escape" && state.drawer) goBack(); });
+
+// ---------- near-live market snapshot (live.js, docs/LIVE.md) ----------
+// Started once at boot. It polls only while the page is visible and the market window is open. When a snapshot really changed (or the status changed) the
+// current module's livePatch(H) is called: it swaps the HTML of its own [data-lvr] regions and updates its charts through update(), so nothing is re-mounted,
+// inputs keep focus and the IPO screens (which have no livePatch) are never touched. The pill / line texts age by themselves (live.js, every 30 s).
+(function () {
+  const L = window.TrendyLive; if (!L) return;
+  const patch = () => {
+    const m = modOf(state.tab); if (!m || m === "ipo" || !state.loaded) return;
+    const mod = window.TrendyModules[m]; if (!mod || typeof mod.livePatch !== "function") return;
+    try { mod.livePatch(hostApi()); } catch (e) { console.warn("live patch", e); }
+  };
+  L.subscribe(patch, { status: true });
+  try { L.start(); } catch (e) { console.warn("live start", e); }
+})();

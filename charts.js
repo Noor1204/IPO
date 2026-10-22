@@ -77,6 +77,14 @@
     return (d > 0 ? "+" : "") + fmtNum(d, 2, 2) + " (" + (p > 0 ? "+" : "") + fmtNum(p, 2, 2) + "%)";
   }
 
+  // ticks that cover [lo, hi] completely (first tick <= lo, last tick >= hi); used by the bar chart, which can go below zero
+  function barTicks(lo, hi, n) {
+    if (!(hi > lo)) hi = lo + 1;
+    var nt = niceTicks(lo, hi, n), st = nt.step, bot = Math.floor(lo / st + 1e-9) * st, top = Math.ceil(hi / st - 1e-9) * st, out = [];
+    for (var v = bot, i = 0; v <= top + st * 1e-9 && i < 100; v += st, i++) out.push(+v.toPrecision(12) + 0);
+    return { ticks: out, step: st, bot: out[0], top: out[out.length - 1] };
+  }
+  function axLab(v, signed) { var a = fmtUnits(Math.abs(v)); return v < 0 ? "\u2212" + a : (signed && v > 0 ? "+" + a : a); }
   function niceTicks(lo, hi, n) {
     if (!(hi > lo)) { var d = Math.abs(lo) * 0.01 || 1; lo -= d; hi += d; }
     var raw = (hi - lo) / Math.max(1, n), p = Math.pow(10, Math.floor(Math.log10(raw))), f = raw / p;
@@ -87,6 +95,19 @@
   function decFor(step) { return clamp(Math.ceil(-Math.log10(step) - 1e-9), 0, 4); }
   function axisFmt(step) { var d = decFor(step); return function (v) { return Math.abs(v) >= 1e5 ? fmtUnits(v) : fmtNum(v, d, d); }; }
 
+  // category-style axis for projections: ticks at whole years counted from an origin date ("Start", "Year 5") instead of calendar dates
+  function monthsFrom(org, t) { var o = new Date(org), d = new Date(t); return (d.getUTCFullYear() - o.getUTCFullYear()) * 12 + d.getUTCMonth() - o.getUTCMonth(); }
+  function yearTicks(t0, t1, px, org) {
+    var o0 = new Date(org), out = [], max = Math.max(2, Math.floor(px / 74)), spanY = (monthsFrom(org, t1) - monthsFrom(org, t0)) / 12, steps = [1, 2, 5, 10, 20], st = 50, i;
+    for (i = 0; i < steps.length; i++) if (spanY / steps[i] <= max) { st = steps[i]; break; }
+    for (var k = Math.ceil(monthsFrom(org, t0) / 12 / st) * st, g = 0; g < 200; k += st, g++) {
+      var t = Date.UTC(o0.getUTCFullYear(), o0.getUTCMonth() + k * 12, 1);
+      if (t > t1) break; if (t < t0) continue;
+      out.push({ t: t, label: k === 0 ? "Start" : "Year " + k });
+    }
+    return out;
+  }
+  function yearLabel(org, t) { var m = monthsFrom(org, t); return m === 0 ? "Start" : m % 12 === 0 ? "Year " + m / 12 : "Month " + m + " (year " + (m / 12).toFixed(1) + ")"; }
   function timeTicks(t0, t1, px, intraday) {
     var out = [], span = t1 - t0;
     if (!(span > 0)) return out;
@@ -634,7 +655,8 @@
   /* ============================================================ */
   function mkLine(container, opts) {
     injectStyle();
-    var o = assign({}, opts), self = {}, ser = [], allT = [], intraday = false, geo = null, hideT = 0, avail = [], availSig = "";
+    var o = assign({}, opts), self = {}, ser = [], allT = [], intraday = false, geo = null, hideT = 0, avail = [], availSig = "", yo = null;
+    function xLabel(t, wt) { return yo !== null ? yearLabel(yo, t) : fmtDate(t, wt); }
     var st = { range: o.range || "All", a: 0, b: 0, hover: -1 };
     clear(container);
     var root = h("div", "tcx tcx-line"); container.appendChild(root);
@@ -647,6 +669,7 @@
     add(root, head, body, msg);
 
     function prepare() {
+      yo = o.yearAxis ? parseT(o.yearAxis) : null;
       ser = []; var inp = Array.isArray(o.series) ? o.series : [];
       inp.forEach(function (s, idx) {
         if (!s || !Array.isArray(s.data)) return;
@@ -695,7 +718,7 @@
     void valAt;
     function setRO(i) {
       clear(ro); if (i < 0 || i >= allT.length) return;
-      var t = allT[i], s0 = h("span", "tcx-dt", fmtDate(t, true)); ro.appendChild(s0);
+      var t = allT[i], s0 = h("span", "tcx-dt", xLabel(t, true)); ro.appendChild(s0);
       ser.forEach(function (s) {
         var v = lookup(s, t), e = h("span"), d = h("span", "tcx-dot"); d.style.background = s.color;
         e.appendChild(d); e.appendChild(h("b", "", s.name)); e.appendChild(document.createTextNode(v === null ? "—" : String(safeFmt(s.format, v)))); ro.appendChild(e);
@@ -757,7 +780,7 @@
         });
       });
       ctx.textAlign = "center"; ctx.textBaseline = "alphabetic"; var tl = -1e9;
-      timeTicks(tA, tB, pw, intraday).forEach(function (tk) {
+      (yo !== null ? yearTicks(tA, tB, pw, yo) : timeTicks(tA, tB, pw, intraday)).forEach(function (tk) {
         var x = xT(tk.t), w = ctx.measureText(tk.label).width, cx = clamp(x, L + w / 2, L + pw - w / 2);
         if (cx - w / 2 < tl + 8) return; tl = cx + w / 2;
         ctx.strokeStyle = T.bd; ctx.globalAlpha = 0.35; ctx.beginPath(); ctx.moveTo(crisp(x), py0); ctx.lineTo(crisp(x), py1); ctx.stroke(); ctx.globalAlpha = 1;
@@ -802,7 +825,7 @@
           var v = lookup(s, th); if (v === null || !axes[s.axis]) return;
           ctx.beginPath(); ctx.arc(hx, yA(s.axis, v), 4, 0, 6.283); ctx.fillStyle = T.card; ctx.fill(); ctx.lineWidth = 2; ctx.strokeStyle = s.color; ctx.stroke();
         });
-        tag(ctx, fmtDate(th, intraday), hx, H - XH + 12, T.tx, T.card, true, L, L + pw);
+        tag(ctx, xLabel(th, intraday), hx, H - XH + 12, T.tx, T.card, true, L, L + pw);
       }
     }
     function idxAt(cx) {
@@ -841,7 +864,7 @@
   /* ============================================================ */
   function mkBars(container, opts) {
     injectStyle();
-    var o = assign({}, opts), self = {}, cats = [], ser = [], horiz = false, sel = -1, markerPos = -1, hideT = 0, firstScroll = true;
+    var o = assign({}, opts), self = {}, cats = [], ser = [], horiz = false, sel = -1, markerPos = -1, hideT = 0, firstScroll = true, anyNeg = false;
     clear(container);
     var root = h("div", "tcx tcx-bars"); container.appendChild(root);
     var head = h("div", "tcx-head"), tt = h("div", "tcx-tt"), ttl = h("div", "tcx-title"), sub = h("div", "tcx-sub");
@@ -855,10 +878,10 @@
     function prepare() {
       horiz = o.orientation === "h" || o.horizontal === true;
       cats = Array.isArray(o.categories) ? o.categories.filter(function (c) { return c !== null && c !== undefined; }) : [];
-      var n = cats.length; ser = [];
+      var n = cats.length; ser = []; anyNeg = o.signed === true;
       (Array.isArray(o.series) ? o.series : []).forEach(function (s, idx) {
         if (!s) return; var vals = [];
-        for (var i = 0; i < n; i++) { var v = num(s.values && s.values[i]); vals.push(v === null ? null : Math.max(0, v)); }
+        for (var i = 0; i < n; i++) { var v = num(s.values && s.values[i]); vals.push(v); if (v !== null && v < 0) anyNeg = true; }
         var def = idx === 0 ? "#f43f5e" : idx === 1 ? "#10b981" : PALETTE[idx % PALETTE.length];
         ser.push({ name: s.name ? String(s.name) : "Series " + (idx + 1), color: typeof s.color === "string" && /^#[0-9a-f]{3,8}$|^rgb|^hsl/i.test(s.color) ? s.color : def, values: vals });
       });
@@ -881,7 +904,8 @@
       ro.appendChild(h("span", "tcx-dt", (o.categoryLabel === undefined ? "Strike " : o.categoryLabel) + catLabel(i)));
       ser.forEach(function (s) {
         var v = s.values[i], e = h("span"), d = h("span", "tcx-dot"); d.style.background = s.color;
-        add(e, d, h("b", "", s.name)); e.appendChild(document.createTextNode(v === null ? "—" : fmtNum(v, 0, 0) + (v >= 1e4 ? " (" + fmtUnits(v) + ")" : "")));
+        add(e, d, h("b", "", s.name)); var av = v === null ? 0 : Math.abs(v), txt = v === null ? "—" : fmtNum(av, 0, 0) + (av >= 1e4 ? " (" + fmtUnits(av) + ")" : ""); if (v !== null) txt = v < 0 ? "\u2212" + txt : (anyNeg && v > 0 ? "+" + txt : txt);
+        e.appendChild(document.createTextNode(txt));
         ro.appendChild(e);
       });
     }
@@ -904,10 +928,10 @@
     }
     function drawInner() {
       var avail = root.clientWidth; if (avail < 80) return;
-      var n = cats.length, ns = ser.length, T = theme(), vmax = 0, i, j;
-      ser.forEach(function (s) { s.values.forEach(function (v) { if (v !== null && v > vmax) vmax = v; }); });
-      var nt = niceTicks(0, vmax || 1, 5), top = nt.ticks[nt.ticks.length - 1]; if (top < vmax) top = vmax; if (nt.ticks.length > 1 && nt.ticks[nt.ticks.length - 1] < vmax) top = nt.ticks[nt.ticks.length - 1] + nt.step;
-      var tlabels = nt.ticks.map(fmtUnits), selI = sel >= 0 ? sel : -1;
+      var n = cats.length, ns = ser.length, T = theme(), vmax = 0, vmin = 0, i, j;
+      ser.forEach(function (s) { s.values.forEach(function (v) { if (v !== null) { if (v > vmax) vmax = v; if (v < vmin) vmin = v; } }); });
+      var nt = barTicks(vmin, vmax, 5), top = nt.top, bot = nt.bot, span = top - bot || 1;
+      var tlabels = nt.ticks.map(function (v) { return axLab(v, anyNeg); }), selI = sel >= 0 ? sel : -1;
       var mCenter = markerPos >= 0 ? markerPos : -1, mText = (o.markerLabel === undefined ? "Spot" : o.markerLabel) + (num(o.marker) !== null ? " " + fmtNum(num(o.marker), 2, 0) : (typeof o.marker === "string" ? " " + o.marker : ""));
       if (!horiz) {
         var H = isNum(num(o.height)) ? +o.height : 280, XH = 26, py0 = mCenter >= 0 ? 30 : 12, py1 = H - XH;
@@ -915,11 +939,11 @@
         var scroll = n > 25, minSlot = Math.max(34, ns * 10 + 14), inner = avail - aw - 2, W = scroll ? Math.max(inner, n * minSlot) : inner;
         var actx = fit(axisC, aw, H, true), ctx = fit(canvas, W, H, true), slot = W / n; if (W < 60) return;
         sc.style.overflowX = scroll ? "auto" : "hidden";
-        function yV(v) { return py1 - v / top * (py1 - py0); }
+        function yV(v) { return py1 - (v - bot) / span * (py1 - py0); }
         geo = { slot: slot, W: W, n: n, H: H };
         actx.font = "600 12px " + FONT; actx.fillStyle = T.mut; actx.textAlign = "right"; actx.textBaseline = "middle";
         nt.ticks.forEach(function (v, k) {
-          var y = yV(v); ctx.strokeStyle = T.bd; ctx.globalAlpha = k === 0 ? 1 : 0.7; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, crisp(y)); ctx.lineTo(W, crisp(y)); ctx.stroke(); ctx.globalAlpha = 1;
+          var y = yV(v); ctx.strokeStyle = v === 0 ? T.mut : T.bd; ctx.globalAlpha = v === 0 ? 0.9 : 0.7; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(0, crisp(y)); ctx.lineTo(W, crisp(y)); ctx.stroke(); ctx.globalAlpha = 1;
           actx.fillText(tlabels[k], aw - 6, Math.round(y) + 0.5);
         });
         if (selI >= 0) { ctx.fillStyle = T.tx; ctx.globalAlpha = 0.07; ctx.fillRect(selI * slot, py0 - 6, slot, py1 - py0 + 6); ctx.globalAlpha = 1; }
@@ -929,10 +953,10 @@
         for (i = 0; i < n; i++) {
           var gx = i * slot + (slot - tot) / 2;
           for (j = 0; j < ns; j++) {
-            var v = ser[j].values[i]; if (v === null || v <= 0) continue;
-            var y0 = Math.round(yV(v)), bx = Math.round(gx + j * (bwid + 1));
+            var v = ser[j].values[i]; if (v === null || v === 0) continue;
+            var y0 = Math.round(yV(v)), yz = Math.round(yV(0)), bx = Math.round(gx + j * (bwid + 1));
             ctx.fillStyle = ser[j].color; ctx.globalAlpha = selI >= 0 && selI !== i ? 0.75 : 1;
-            ctx.fillRect(bx, y0, bwid, Math.round(py1) - y0);
+            ctx.fillRect(bx, Math.min(y0, yz), bwid, Math.max(1, Math.abs(yz - y0)));
           }
         }
         ctx.globalAlpha = 1;
@@ -958,11 +982,11 @@
         var labW = maxLabelW(ctx2, cats.map(function (c, k) { return catLabel(k); })) + 14, Wc = avail - 2;
         ctx = fit(canvas, Wc, Hh, true); axisC.width = 0;
         var px0 = labW, px1 = Wc - 14, XB = 24, pyT = mCenter >= 0 ? 4 : 4;
-        function xV(v) { return px0 + v / top * (px1 - px0); }
+        function xV(v) { return px0 + (v - bot) / span * (px1 - px0); }
         geo = { slot: rowH, W: Wc, n: n, H: Hh, px0: px0 };
         ctx.font = "600 12px " + FONT; ctx.textBaseline = "middle"; ctx.textAlign = "center";
         nt.ticks.forEach(function (v, k) {
-          var x = xV(v); ctx.strokeStyle = T.bd; ctx.globalAlpha = k === 0 ? 1 : 0.7; ctx.beginPath(); ctx.moveTo(crisp(x), pyT); ctx.lineTo(crisp(x), Hh - XB); ctx.stroke(); ctx.globalAlpha = 1;
+          var x = xV(v); ctx.strokeStyle = v === 0 ? T.mut : T.bd; ctx.globalAlpha = v === 0 ? 0.9 : 0.7; ctx.beginPath(); ctx.moveTo(crisp(x), pyT); ctx.lineTo(crisp(x), Hh - XB); ctx.stroke(); ctx.globalAlpha = 1;
           var w = ctx.measureText(tlabels[k]).width; ctx.fillStyle = T.mut; ctx.fillText(tlabels[k], clamp(x, w / 2, Wc - w / 2), Hh - 10);
         });
         if (selI >= 0) { ctx.fillStyle = T.tx; ctx.globalAlpha = 0.07; ctx.fillRect(0, pyT + selI * rowH, Wc, rowH); ctx.globalAlpha = 1; }
@@ -971,9 +995,10 @@
         for (i = 0; i < n; i++) {
           var gy = pyT + i * rowH + (rowH - bh2 * ns) / 2;
           for (j = 0; j < ns; j++) {
-            var vv = ser[j].values[i]; if (vv === null || vv <= 0) continue;
+            var vv = ser[j].values[i]; if (vv === null || vv === 0) continue;
             ctx.fillStyle = ser[j].color; ctx.globalAlpha = selI >= 0 && selI !== i ? 0.75 : 1;
-            ctx.fillRect(px0, Math.round(gy + j * bh2), Math.max(1, Math.round(xV(vv) - px0)), bh2 - 1);
+            var xa = Math.round(xV(0)), xb = Math.round(xV(vv));
+            ctx.fillRect(Math.min(xa, xb), Math.round(gy + j * bh2), Math.max(1, Math.abs(xb - xa)), bh2 - 1);
           }
           ctx.globalAlpha = 1; var strong2 = i === selI || (mCenter >= 0 && i === Math.round(mCenter));
           ctx.fillStyle = strong2 ? T.tx : T.mut; ctx.font = (strong2 ? "800" : "600") + " 12px " + FONT; ctx.fillText(catLabel(i), labW - 8, pyT + i * rowH + rowH / 2 + 0.5);

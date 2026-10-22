@@ -92,26 +92,62 @@
   function status() {
     try {
       var t = now(), m = S.market;
-      if (!m) return { state: "unavailable", asOn: null, ageMin: null, text: "Live data unavailable" };
+      if (!m) return { state: "unavailable", asOn: null, ageMin: null, text: "Live data unavailable · showing end-of-day data" };
       var asOn = m.meta.asOn, asMs = Date.parse(asOn), age = Math.max(0, (t - asMs) / 60000), meta = S.meta;
       var open = meta ? meta.marketOpen : true;
       var state, text;
-      if (!inWindow(t) || !open) { state = "closed"; text = "Market closed · end-of-day data"; }
-      else if (age > STALE_MIN) { state = "stale"; text = "Delayed · " + hhmm(asMs) + " IST"; }
+      if (!inWindow(t) || !open) { state = "closed"; text = "Market closed · showing the last session"; }
+      else if (age > STALE_MIN) { state = "stale"; text = "Delayed · " + hhmm(asMs) + " IST · " + (age >= 120 ? Math.round(age / 60) + " h" : Math.round(age) + " min") + " old"; }
       else { state = "live"; text = "Live snapshot · " + hhmm(asMs) + " IST · ~" + Math.max(1, Math.round(age)) + " min delay"; }
       return { state: state, asOn: asOn, ageMin: Math.round(age * 10) / 10, text: text };
-    } catch (e) { return { state: "unavailable", asOn: null, ageMin: null, text: "Live data unavailable" }; }
+    } catch (e) { return { state: "unavailable", asOn: null, ageMin: null, text: "Live data unavailable · showing end-of-day data" }; }
+  }
+  // IST calendar day (YYYY-MM-DD) of the snapshot, taken from NSE's own asOn string ("2026-10-21T15:40:31+05:30")
+  function asOnDay() { var m = S.market && /^(\d{4}-\d{2}-\d{2})T/.exec(S.market.meta.asOn); return m ? m[1] : null; }
+  // true when a snapshot exists and is from the same day as, or later than, the end-of-day data it would replace
+  function usable(eodDate) { var d = asOnDay(); return !!d && (typeof eodDate !== "string" || !eodDate || d >= eodDate); }
+  var MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function dayLabel() { var d = asOnDay(); return d ? +d.slice(8, 10) + " " + MON[+d.slice(5, 7) - 1] : ""; }
+  // the sentence under the pill; what = "Index values and movers", eod = "19 Oct 2026" (label of the end-of-day fallback), fresh=false when the screen fell back to end-of-day numbers
+  function lineText(st, what, eod, fresh) {
+    what = what || "This screen"; var e = eod ? " (" + eod + ")" : "";
+    if (st.state === "unavailable") return what + ": live data is not available right now, showing end-of-day data" + e + ".";
+    var asMs = Date.parse(st.asOn), at = dayLabel() + ", " + hhmm(asMs) + " IST";
+    if (fresh === false) return what + ": the live snapshot (" + at + ") is older than the end-of-day data" + e + ", so end-of-day numbers are shown.";
+    if (st.state === "live") return what + ": snapshot of NSE's website data, a few minutes behind the exchange. Not real-time.";
+    if (st.state === "stale") return what + ": the live feed is behind (last snapshot " + at + "). Numbers may be out of date.";
+    return what + ": market closed, showing the last session (" + at + ").";
   }
 
   function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
   function badge(st) {
     var s = st && typeof st === "object" ? st : status();
     var state = ["live", "stale", "closed", "unavailable"].indexOf(s.state) >= 0 ? s.state : "unavailable";
-    var text = typeof s.text === "string" && s.text ? s.text : "Live data unavailable";
-    return '<span class="tl-pill tl-' + state + '" data-live-state="' + state + '" role="status"><span class="tl-dot" aria-hidden="true"></span>' + esc(text) + "</span>";
+    var text = typeof s.text === "string" && s.text ? s.text : "Live data unavailable · showing end-of-day data";
+    return '<span class="tl-pill tl-' + state + '" data-live-state="' + state + '" role="status" aria-live="off"><span class="tl-dot" aria-hidden="true"></span>' + esc(text) + "</span>";
   }
 
+  // pill + one-line explanation for a screen: bar({what, eod, fresh}); both texts are kept current by paint()
+  function lineHtml(o, st) {
+    return '<p class="tl-line" data-tl-line="' + (o.fresh === false ? "0" : "1") + '" data-tl-what="' + esc(o.what || "") + '" data-tl-eod="' + esc(o.eod || "") + '">' + esc(lineText(st, o.what, o.eod, o.fresh !== false)) + "</p>";
+  }
+  function line(o) { return lineHtml(o || {}, status()); }
+  function bar(o) { o = o || {}; var st = status(); return '<div class="tl-bar">' + badge(st) + lineHtml(o, st) + "</div>"; }
+  // re-evaluates every pill and line in the page (cheap text updates, no re-render); runs every 30 s and after each snapshot
+  function paint() {
+    try {
+      var st = status(), i, p = document.querySelectorAll(".tl-pill"), l = document.querySelectorAll("[data-tl-line]");
+      for (i = 0; i < p.length; i++) {
+        var el = p[i], tx = el.lastChild;
+        if (el.hasAttribute("data-tl-static")) continue;   // a fixed note such as "End of day, 19 Oct", not the live status
+        if (el.getAttribute("data-live-state") !== st.state) { el.setAttribute("data-live-state", st.state); el.className = "tl-pill tl-" + st.state; }
+        if (tx && tx.nodeType === 3) { if (tx.nodeValue !== st.text) tx.nodeValue = st.text; } else el.appendChild(document.createTextNode(st.text));
+      }
+      for (i = 0; i < l.length; i++) { var q = l[i], t = lineText(st, q.getAttribute("data-tl-what"), q.getAttribute("data-tl-eod"), q.getAttribute("data-tl-line") !== "0"); if (q.textContent !== t) q.textContent = t; }
+    } catch (e) {}
+  }
   function notify(reason) {
+    paint();
     var st = status();
     var subs = S.subs.slice();
     for (var i = 0; i < subs.length; i++) {
@@ -178,11 +214,12 @@
   function start() {
     if (S.started) return; S.started = true;
     try { document.addEventListener("visibilitychange", onVis); } catch (e) {}
+    clearInterval(S.ager); S.ager = setInterval(paint, 30000);
     if (!hidden()) refresh().then(schedule, schedule);
   }
-  function stop() { S.started = false; clearTimeout(S.timer); S.timer = null; try { document.removeEventListener("visibilitychange", onVis); } catch (e) {} }
+  function stop() { S.started = false; clearTimeout(S.timer); S.timer = null; clearInterval(S.ager); S.ager = null; try { document.removeEventListener("visibilitychange", onVis); } catch (e) {} }
 
   L.get = get; L.chain = chain; L.status = status; L.quote = quote; L.index = index; L.subscribe = subscribe; L.start = start; L.stop = stop; L.badge = badge;
-  L.refresh = get; L.version = SCHEMA;
+  L.peek = function () { return S.market; }; L.asOnDay = asOnDay; L.usable = usable; L.bar = bar; L.line = line; L.paint = paint; L.refresh = get; L.version = SCHEMA;
   window.TrendyLive = L;
 })();

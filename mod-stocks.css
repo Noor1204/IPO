@@ -128,6 +128,22 @@
 .st-b4{margin-top:14px}
 .st-hero .bt{background:var(--tint);border-color:var(--bd);padding:9px 12px}
 .st-hero .bt b{font-size:15px}
+.st-det .bt{background:var(--tint);border-color:var(--bd);padding:9px 12px}
+.st-det .bt b{font-size:15px}
+.st-det .st-chips{margin-top:2px}
+/* compact header (phones: name, price, change, status -> chart comes next) */
+.st-compact{padding:14px 16px}
+.st-compact .st-hh{align-items:center}
+.st-compact .st-hid h2{margin:0 0 2px;font-size:17px}
+.st-sym{display:block;font-size:12px;font-weight:700}
+.st-compact .st-hp{margin:10px 0 10px}
+.st-hs{display:flex;flex-wrap:wrap;gap:6px}
+.st-hl{font-size:12px;font-weight:700;color:var(--mut);margin-left:8px;letter-spacing:0}
+/* advances / declines */
+.st-ad{margin:0 0 14px}
+.st-adh{display:flex;justify-content:space-between;gap:4px 12px;flex-wrap:wrap;font-size:13px;margin-bottom:7px}
+.st-adb{display:flex;height:10px;border-radius:99px;overflow:hidden;background:var(--tint)}
+.st-adb i{background:var(--ok)}.st-adb u{background:var(--bad);text-decoration:none}
 .st-52{margin-top:16px}
 .st-52h{display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-size:13px}
 .st-bar{position:relative;height:10px;border-radius:99px;margin:14px 0 10px;background:linear-gradient(90deg,var(--bad),var(--warn),var(--ok))}
@@ -164,15 +180,23 @@
 }
 @media (min-width:1100px){
   .st-split{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
-  .st-split>.st-hero,.st-split>.st-perf-c,.st-split>.card:not(.st-chart){grid-column:1}
-  .st-split>.st-chart{grid-column:2;grid-row:1 / span 4}
-  .st-split.st-ix>.st-chart{grid-row:1 / span 2}
+  .st-split>.st-hero,.st-split>.st-perf-c,.st-split>.card:not(.st-chart),.st-split>[data-lvr]>.card{grid-column:1}
+  .st-split>.st-chart{grid-column:2;grid-row:1 / span 5}
+  .st-split.st-ix>.st-chart{grid-row:1 / span 3}
   .st-split .st-b4{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .st-split>.st-g2,.st-split>.st-sechd{grid-column:1 / -1}
+  .st-split>.st-g2,.st-split>.st-sechd,.st-split>[data-lvr="ix-mov"]>*{grid-column:1 / -1}
 }
 @media (min-width:1280px){
   .st-ixg{grid-template-columns:repeat(3,minmax(0,1fr))}
   .st-grid,.st-page{gap:16px}
+}
+@media (max-width:640px){
+  /* chart first: the page title repeats the header card, so it goes; range / SMA chips move under the plot */
+  #app>.top:has(~ .st-page){display:none}
+  .st-chart .tcx-body{display:flex;flex-direction:column}
+  .st-chart .tcx-ro{order:1}.st-chart .tcx-plot{order:2}.st-chart .tcx-bar{order:3;margin-top:10px}.st-chart .tcx-note{order:4}
+  .st-compact .st-hp b{font-size:30px}
+  .st-compact{padding:12px 14px}
 }
 @media (max-width:420px){
   .st-hp b{font-size:30px}
@@ -193,4 +217,10 @@
   .st-pv b{font-size:14px}
   .st-pill{font-size:12px;padding:3px 7px}
   .st-hp b{font-size:27px}
+}
+@media (max-width:640px){
+  .st-compact{padding:10px 14px}
+  .st-compact .st-hp{margin:6px 0 8px}
+  .st-chart .st-ch-h{margin-bottom:4px}
+  .st-chart .tcx-head{margin-bottom:4px}
 }

@@ -114,3 +114,22 @@
 #fo-search,#fo-lsearch{margin-bottom:0;width:100%}
 .fo-lotr{grid-template-columns:minmax(0,1fr) auto}
 .fo-flip{transform:rotate(180deg)}
+
+/* ---------- live snapshot (live.js) ---------- */
+.fo-cn{margin-top:8px;font-size:12px;font-weight:600;line-height:1.35}
+.fo-hs{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;position:relative}
+.fo-hl{font-size:12px;font-weight:700;color:var(--mut);margin-left:8px;letter-spacing:0}
+.fo-lxs{align-items:center;margin:0 0 12px}
+.fo-lx{min-height:36px;padding:0 14px;border-radius:var(--r-pill);font-weight:700}
+.fo-lx.on{background:var(--grad);color:#fff;border-color:transparent}
+.fo-lc .tl-line{margin:0 0 12px}
+@media (max-width:640px){
+  /* chart first: header card -> chart; the page title repeats the header card and the risk note moves under the chart */
+  #app>.top:has(~ .fo-und){display:none}
+  .fo-hero{padding:12px 14px;margin-bottom:12px}
+  .fo-hn{font-size:20px}
+  .fo-hp{margin-top:6px}
+  .fo-hpx{font-size:28px}
+  .fo-chartsec .tcx-body{display:flex;flex-direction:column}
+  .fo-chartsec .tcx-ro{order:1}.fo-chartsec .tcx-plot{order:2}.fo-chartsec .tcx-bar{order:3;margin-top:10px}.fo-chartsec .tcx-note{order:4}
+}

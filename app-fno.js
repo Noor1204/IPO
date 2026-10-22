@@ -1,8 +1,8 @@
 // F&O module: end-of-day NSE derivatives data (descriptive only). Data: data/fno/*.json written by pipeline/fno.mjs. See docs/MODULES.md.
 (function () {
-  const RISK = "Futures and options carry a high risk of loss; most individual traders lose money (SEBI studies). End-of-day data, information only, not investment advice.";
+  const RISK = "Futures and options carry a high risk of loss; most individual traders lose money (SEBI studies). Data is end-of-day or a delayed snapshot, not real-time; information only, not investment advice.";
   const MIN_OIV = 100;                                  // Rs crore of futures open interest: below this, OI % moves are mostly noise
-  const S = { sum: null, lots: null, err: false, u: {}, ul: {}, h: {}, hl: {}, q: "", lq: "", all: false, sym: null, exp: null, ready: false, mode: "fut", oim: "oi", gl: false };
+  const S = { sum: null, lots: null, err: false, u: {}, ul: {}, h: {}, hl: {}, q: "", lq: "", all: false, sym: null, exp: null, ready: false, mode: "fut", oim: "oi", gl: false, lc: {}, lf: {}, lfail: {}, lexp: null, lbSig: {}, cr: null };
   const fname = s => s.replace(/[^A-Za-z0-9-]/g, c => "_" + c.charCodeAt(0).toString(16));   // same rule as pipeline/fno.mjs
   const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const IDX_ORDER = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY", "NIFTYNXT50"];
@@ -88,6 +88,98 @@
     return (xs.find(x => x.e === S.exp) || xs.find(x => x.e > u.d) || xs[0]).e;
   };
 
+  // ---------- live snapshot (live.js, docs/LIVE.md): option chains of the four index underlyings ----------
+  // Regions (<div data-lvr="name">) hold everything that depends on the snapshot; livePatch() swaps only those whose HTML changed and updates the strike
+  // bars through the chart library's update path, so a new snapshot never re-mounts a chart or touches an input.
+  const LIVE_SYMS = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY"];
+  const LIDX = { NIFTY: "NIFTY 50", BANKNIFTY: "NIFTY BANK", FINNIFTY: "NIFTY FINANCIAL SERVICES", MIDCPNIFTY: "NIFTY MIDCAP SELECT" };
+  const TL = () => window.TrendyLive || null;
+  const eodDate = () => (S.sum && S.sum.meta && S.sum.meta.tradeDate) || "";
+  const chainDay = c => c && c.meta && typeof c.meta.asOn === "string" ? c.meta.asOn.slice(0, 10) : "";
+  const lcOf = sym => { const c = S.lc[sym]; return c && isN(c.meta.underlying) && chainDay(c) >= eodDate() ? c : null; };   // a live chain that is not older than the end-of-day data
+  const anyLive = () => LIVE_SYMS.some(s => lcOf(s));
+  const freshAll = () => anyLive() || !LIVE_SYMS.some(s => S.lc[s]);
+  const pickLx = c => c.expiries.find(e => e.e === S.lexp) || c.expiries[0];
+  const liveIdxPct = sym => { const t = TL(), m = t && t.peek && t.peek(); if (!m || !t.usable(eodDate())) return null; const q = t.index(LIDX[sym]); return q && isN(q.pct) ? q.pct : null; };
+  const barH = (H, what) => { const t = TL(); return t ? t.bar({ what, eod: H.fmtD(eodDate()), fresh: freshAll() }) : ""; };
+  const lineH = (H, what) => { const t = TL(); return t ? t.line({ what, eod: H.fmtD(eodDate()), fresh: freshAll() }) : ""; };
+  const barSig = () => { const t = TL(); return t ? t.status().state + "|" + freshAll() : ""; };
+  const eodPill = (H, msg) => `<span class="tl-pill tl-closed" data-tl-static="1"><span class="tl-dot" aria-hidden="true"></span>${H.esc(msg)}</span>`;
+  const RG = {};
+  const reg = (name, build, sigFn) => { const html = build(); RG[name] = sigFn ? sigFn() : html; return `<div data-lvr="${name}">${html}</div>`; };
+  function setReg(name, build, sigFn) {
+    const el = document.querySelector('#app [data-lvr="' + name + '"]'); if (!el) return;
+    let sig, html;
+    if (sigFn) { sig = sigFn(); if (RG[name] === sig) return; html = build(); } else { html = build(); sig = html; if (RG[name] === sig) return; }
+    RG[name] = sig; el.innerHTML = html;
+  }
+  const renderIfIdle = H => { const a = document.activeElement; if (a && a !== document.body && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && a.closest && a.closest("#app")) return; H.render(); };
+  // loads (or refreshes) the live chain of one index; the first arrival re-renders the screen once, later ones only patch regions
+  function loadLive(H, sym) {
+    const t = TL(); if (!t || LIVE_SYMS.indexOf(sym) < 0) return null;
+    if (!S.lf[sym] && !(S.lfail[sym] && Date.now() - S.lfail[sym] < 60000)) {      // after a failure, retry at most once a minute
+      S.lf[sym] = 1;
+      t.chain(sym).then(c => {
+        S.lf[sym] = 0;
+        if (!c) { const was = S.lfail[sym]; S.lfail[sym] = Date.now(); if (!was && !S.lc[sym]) renderIfIdle(H); return; }
+        S.lfail[sym] = 0; const first = !S.lc[sym]; S.lc[sym] = c; if (first) renderIfIdle(H); else patchRegions(H);
+      }, () => { S.lf[sym] = 0; });
+    }
+    return S.lc[sym] || null;
+  }
+  const hhmmOf = c => (typeof c.meta.asOn === "string" ? c.meta.asOn.slice(11, 16) + " IST" : "—");
+  const whenOf = (H, c) => (chainDay(c) && chainDay(c) !== H.istDay() ? H.fmtD(chainDay(c)) + ", " : "") + hhmmOf(c);   // date is shown unless the snapshot is from today
+  const ltp = v => isN(v) && v > 0 ? px(v) : dash;
+  const iv = v => isN(v) && v > 0 ? v.toFixed(2) : dash;
+  const atmLive = (ex, spot) => { let best = Infinity, a = null; for (const r of ex.strikes) { const d = Math.abs(r[0] - spot); if (d < best) { best = d; a = r[0]; } } return a; };
+  function sliceLive(ex, spot) {
+    const atm = atmLive(ex, spot); let rows = ex.strikes;
+    if (!S.all && atm !== null) { const i = rows.findIndex(r => r[0] === atm); if (i >= 0) rows = rows.slice(Math.max(0, i - 12), i + 13); }
+    return { rows, atm };
+  }
+  function lcHead(H, sym) {
+    const c = lcOf(sym); if (!c) return "";
+    const ex = pickLx(c);
+    const chips = c.expiries.map(e => `<button class="chipb fo-lx${e.e === ex.e ? " on" : ""}" data-m="fno" data-act="lexp" data-v="${H.esc(e.e)}" aria-pressed="${e.e === ex.e}">${H.esc(H.fmtD(e.e))}</button>`).join("");
+    return lineH(H, "Option chain") + `<div class="chips fo-lxs" role="group" aria-label="Expiry"><span class="mut sm">Expiry</span>${chips}</div>` +
+      `<div class="bento fo-bento">${tile("PCR (put ÷ call OI)", isN(ex.pcr) ? ex.pcr.toFixed(2) : dash)}${tile("Max pain strike", isN(ex.mp) ? strike(ex.mp) : dash)}${tile("Total call OI", cn(ex.coi))}${tile("Total put OI", cn(ex.poi))}${tile("Underlying", px(c.meta.underlying), "snapshot " + H.esc(whenOf(H, c)))}${tile("Expiry", H.esc(H.fmtD(ex.e)))}</div>`;
+  }
+  function lcTbl(H, sym) {
+    const c = lcOf(sym); if (!c) return "";
+    const ex = pickLx(c), spot = c.meta.underlying, { rows, atm } = sliceLive(ex, spot);
+    let mx = 0; for (const r of rows) mx = Math.max(mx, r[1] || 0, r[6] || 0);
+    const bar = (v, side, extra) => `<td class="fo-oi ${side}${extra}">${isN(v) && v > 0 && mx ? `<i style="width:${Math.max(1, Math.round(v / mx * 100))}%"></i>` : ""}<span>${cn(v)}</span></td>`;
+    const body = rows.map(r => {
+      const k = r[0], ceC = k < spot ? " fo-itm" : "", peC = k > spot ? " fo-itm" : "";
+      return `<tr class="${k === atm ? "fo-atm" : ""}">` + bar(r[1], "ce", ceC) + `<td class="${ceC}">${sp(r[2], sgn(r[2]))}</td><td class="${ceC}">${iv(r[4])}</td><td class="${ceC}">${ltp(r[5])}</td>` +
+        `<td class="fo-k">${strike(k)}</td><td class="${peC}">${ltp(r[10])}</td><td class="${peC}">${iv(r[9])}</td><td class="${peC}">${sp(r[7], sgn(r[7]))}</td>` + bar(r[6], "pe", peC) + "</tr>";
+    }).join("");
+    return `<h3 class="fo-h3">Strikes</h3><div class="tw fo-chw"><table class="fo-t fo-chain"><tr><th colspan="4" class="fo-hce">CALLS (CE)</th><th></th><th colspan="4" class="fo-hpe">PUTS (PE)</th></tr>
+      <tr><th>OI</th><th>OI chg</th><th>IV %</th><th>LTP</th><th>Strike</th><th>LTP</th><th>IV %</th><th>OI chg</th><th>OI</th></tr>${body}</table></div>
+      <p class="mut sm">IV as published by NSE (Trendy does not calculate it); "—" when NSE shows none. OI and change in OI (OI chg) are in contracts as published by NSE. LTP is the last traded price, "—" when the contract has not traded. Shaded cells are in the money; the highlighted row is the strike nearest the underlying (${px(spot)}) at the snapshot time (${H.esc(whenOf(H, c))}). Bars compare OI within the rows shown.</p>
+      ${ex.strikes.length > rows.length || S.all ? `<button class="btn ghost fo-all" data-m="fno" data-act="all">${S.all ? "Show only strikes near the price" : "Show all " + ex.strikes.length + " strikes"}</button>` : ""}`;
+  }
+  function liveBarsOpts(H, sym) {
+    const c = lcOf(sym); if (!c) return null;
+    const ex = pickLx(c), { rows, atm } = sliceLive(ex, c.meta.underlying), chg = S.oim === "chg";
+    return { title: (chg ? "Change in OI by strike" : "OI by strike") + " · " + H.fmtD(ex.e), subtitle: "Snapshot " + whenOf(H, c) + (chg ? " · above zero = OI added, below = OI reduced" : ""), categories: rows.map(r => r[0]),
+      series: chg ? [{ name: "Call OI change", values: rows.map(r => r[2]) }, { name: "Put OI change", values: rows.map(r => r[7]) }] : [{ name: "Call OI", values: rows.map(r => r[1]) }, { name: "Put OI", values: rows.map(r => r[6]) }],
+      marker: atm != null ? atm : undefined, markerLabel: "ATM", categoryLabel: "Strike ", height: window.innerWidth <= 640 ? 240 : 280, signed: chg };
+  }
+  // head regions + bars mount + table region (the bars are never inside a region)
+  function liveChainBlock(H, sym, key) {
+    const T = TC(), o = liveBarsOpts(H, sym);
+    if (T && o) { T.configure(key, o); S.lbSig[key] = JSON.stringify(o); }
+    return reg("lc-head", () => lcHead(H, sym)) + `<div class="fo-ctl"><span class="mut sm">Bars</span>${oimSeg()}</div>` + (T ? `<div data-tc="bars" data-tc-key="${H.esc(key)}" class="fo-mount"></div>` : "") +
+      `<p class="mut sm">Dashed line = ATM, the strike nearest the underlying price.</p>` + reg("lc-tbl", () => lcTbl(H, sym));
+  }
+  function lcPatch(H, sym, key) {
+    if (!lcOf(sym)) return;
+    setReg("lc-head", () => lcHead(H, sym)); setReg("lc-tbl", () => lcTbl(H, sym));
+    const T = TC(), o = liveBarsOpts(H, sym);
+    if (T && o) { const sig = JSON.stringify(o); if (S.lbSig[key] !== sig) { S.lbSig[key] = sig; T.configure(key, o); try { T.auto(document); } catch (e) {} } }
+  }
+
   // ---------- small visuals ----------
   const last = a => { for (let i = a.length - 1; i >= 0; i--) if (isN(a[i])) return a[i]; return null; };
   function spark(vals) {
@@ -102,6 +194,19 @@
   const tile = (a, b, c) => `<div class="bt fo-tl"><span>${a}</span><b>${b}</b>${c ? `<em>${c}</em>` : ""}</div>`;
 
   // ---------- Overview ----------
+  function liveCard(H, r, c) {
+    const x = c.expiries[0], h = S.h[r.s], pc = liveIdxPct(r.s), sp30 = h ? h.spot.slice(-30) : null;
+    return `<button class="card fo-ic" data-m="fno" data-act="und" data-s="${H.esc(r.s)}" aria-label="Open ${H.esc(r.s)}">
+      <div class="row"><b class="fo-nm">${H.esc(r.s)}</b>${ico(H, "chevron-right")}</div>
+      <div class="fo-px">${px(c.meta.underlying)}</div>
+      <div class="fo-ch ${cls(pc)}">${isN(pc) ? pctS(pc) + ' <span class="mut">day</span>' : '<span class="mut">day change ' + dash + "</span>"}</div>
+      <div class="fo-sprow">${h ? spark(sp30) : '<span class="skel-line fo-spsk"></span>'}</div>
+      <div class="fo-kvs">
+        <div><span>PCR</span><b>${isN(x.pcr) ? x.pcr.toFixed(2) : dash}</b></div>
+        <div><span>Max pain</span><b>${isN(x.mp) ? strike(x.mp) : dash}</b></div>
+        <div><span>Total OI</span><b>${cn((x.coi || 0) + (x.poi || 0))}</b></div>
+      </div><div class="fo-cn mut">Snapshot ${H.esc(whenOf(H, c))} · nearest expiry ${H.esc(H.fmtD(x.e))}</div></button>`;
+  }
   function indexCard(H, r) {
     const h = S.h[r.s], chg = dayChg(h);
     const sp30 = h ? h.spot.slice(-30) : null;
@@ -114,8 +219,9 @@
         <div><span>PCR</span><b>${isN(r.pcr) ? r.pcr.toFixed(2) : dash}</b></div>
         <div><span>Max pain</span><b>${isN(r.mp) ? strike(r.mp) : dash}</b></div>
         <div><span>Futures OI chg</span><b>${sp(r.oip, pctS(r.oip))}</b></div>
-      </div></button>`;
+      </div><div class="fo-cn mut">End of day, ${H.esc(H.fmtD(eodDate()))}</div></button>`;
   }
+  const ovIdx = H => { const idx = S.idx.filter(r => IDX_ORDER.includes(r.s)).sort((a, b) => IDX_ORDER.indexOf(a.s) - IDX_ORDER.indexOf(b.s)); return `<div class="fo-grid">${idx.map(r => { const c = lcOf(r.s); return c ? liveCard(H, r, c) : indexCard(H, r); }).join("")}</div>`; };
   function rankRow(H, r, main, mainCls, w, tone) {
     return `<button class="fo-lr" data-m="fno" data-act="und" data-s="${H.esc(r.s)}" aria-label="Open ${H.esc(r.s)}">
       <span class="fo-l1"><b>${H.esc(r.s)}</b><span class="mut">${px(r.fut)}${isN(r.pcp) ? " · " + sp(r.pcp, pctS(r.pcp)) : ""}</span></span>
@@ -124,14 +230,14 @@
   }
   function overview(H) {
     const idx = S.idx.filter(r => IDX_ORDER.includes(r.s)).sort((a, b) => IDX_ORDER.indexOf(a.s) - IDX_ORDER.indexOf(b.s));
-    for (const r of idx) getH(H, r.s);
+    for (const r of idx) { getH(H, r.s); loadLive(H, r.s); }
     const liquid = S.stk.filter(r => isN(r.oiv) && r.oiv >= MIN_OIV);
     const byOi = [...S.stk].filter(r => isN(r.oiv)).sort((a, b) => b.oiv - a.oiv).slice(0, 15);
     const byChg = [...liquid].filter(r => isN(r.oip)).sort((a, b) => Math.abs(b.oip) - Math.abs(a.oip)).slice(0, 15);
     const mo = byOi.length ? byOi[0].oiv : 1, mc = byChg.length ? Math.abs(byChg[0].oip) : 1;
     const tot = S.stk.reduce((a, r) => a + (isN(r.oiv) ? r.oiv : 0), 0);
-    return H.head("F&O") + risk(H) +
-      `<h2 class="fo-h2">${ico(H, "chart-line")} Indices</h2><div class="fo-grid">${idx.map(r => indexCard(H, r)).join("")}</div>` +
+    return H.head("F&O") + risk(H) + reg("ov-bar", () => barH(H, "Index cards (level, PCR, max pain, OI)"), barSig) +
+      `<h2 class="fo-h2">${ico(H, "chart-line")} Indices</h2>` + reg("ov-idx", () => ovIdx(H)) +
       H.card(ico(H, "building-bank") + " Largest stock futures by OI value", `<p class="mut sm">Ranked by futures OI × price, all expiries. Bar = share of the largest in this list${tot ? "; the 15 shown hold " + (byOi.reduce((a, r) => a + r.oiv, 0) / tot * 100).toFixed(0) + "% of all stock-futures OI value" : ""}. Tap a row for charts and the option chain.</p><div class="fo-list">${byOi.map(r => rankRow(H, r, crore(r.oiv), "", r.oiv / mo * 100)).join("")}</div>`) +
       H.card(ico(H, "arrows-exchange") + " Largest changes in futures OI", `<p class="mut sm">Stocks with futures OI of at least ₹${MIN_OIV} crore, ranked by the size of the OI change (increase or decrease) as a % of the previous day's OI.</p><div class="fo-list">${byChg.map(r => rankRow(H, r, pctS(r.oip), cls(r.oip), Math.abs(r.oip) / mc * 100, r.oip < 0 ? "dn" : "up")).join("")}</div>`) +
       glossary(H) + foot(H);
@@ -183,10 +289,10 @@
     const cats = ch.map(r => r[0]);
     let cv, pv, title, sub;
     if (S.oim === "chg" && Array.isArray(x.oic)) {
-      const m = new Map(x.oic.map(r => [r[0], r])); cv = cats.map(k => Math.max(0, (m.get(k) || [])[1] || 0)); pv = cats.map(k => Math.max(0, (m.get(k) || [])[2] || 0));
-      title = "OI added by strike"; sub = "Increases only; decreases are in the table";
+      const m = new Map(x.oic.map(r => [r[0], r])); cv = cats.map(k => (m.get(k) || [])[1] || 0); pv = cats.map(k => (m.get(k) || [])[2] || 0);
+      title = "Change in OI by strike"; sub = "Above zero = OI added, below zero = OI reduced";
     } else { cv = ch.map(r => r[1] || 0); pv = ch.map(r => r[5] || 0); title = "OI by strike"; sub = "Open interest, units"; }
-    T.configure(key, { title: title + " · " + H.fmtD(ex), categories: cats, series: [{ name: S.oim === "chg" ? "Call OI added" : "Call OI", values: cv }, { name: S.oim === "chg" ? "Put OI added" : "Put OI", values: pv }], marker: atm != null ? atm : undefined, markerLabel: "ATM", categoryLabel: "Strike ", height: 280 });
+    T.configure(key, { title: title + " · " + H.fmtD(ex), categories: cats, series: [{ name: S.oim === "chg" ? "Call OI change" : "Call OI", values: cv }, { name: S.oim === "chg" ? "Put OI change" : "Put OI", values: pv }], marker: atm != null ? atm : undefined, markerLabel: "ATM", categoryLabel: "Strike ", height: window.innerWidth <= 640 ? 240 : 280, signed: S.oim === "chg" });
     return `<div data-tc="bars" data-tc-key="${H.esc(key)}" class="fo-mount"></div><p class="mut sm">${sub}. Dashed line = strike nearest the underlying price${isN(u.spot) ? " (" + px(u.spot) + ")" : ""}.</p>`;
   }
   const oimSeg = () => `<div class="seg fo-seg" role="group" aria-label="Bar chart data"><button data-m="fno" data-act="oim" data-v="oi" class="${S.oim === "oi" ? "on" : ""}">OI</button><button data-m="fno" data-act="oim" data-v="chg" class="${S.oim === "chg" ? "on" : ""}">Change in OI</button></div>`;
@@ -208,7 +314,7 @@
     if (!T) body = '<div class="card"><p class="mut">The chart library could not be loaded.</p></div>';
     else if (S.mode === "live") {
       const sy = T.tvSymbol(kind, sym), emb = sy ? T.liveEmbed(sy, { title: sym + " live chart" }) : "";
-      body = `<div class="card fo-livec"><div class="fo-live" data-sym="${H.esc(sy || "")}">${emb || '<p class="mut">A live chart is not available for this symbol.</p>'}</div><p class="mut sm">Live chart by TradingView (third-party, may be delayed). It is not part of the end-of-day data below.</p></div>`;
+      body = `<div class="card fo-livec"><div class="fo-live" data-sym="${H.esc(sy || "")}">${emb || '<p class="mut">A live chart is not available for this symbol.</p>'}</div><p class="mut sm">Third-party intraday chart; it is separate from the data in the sections below.</p></div>`;
     } else if (!h) body = S.hl[sym] === 2 ? errBox(H, "Price history for this underlying could not be loaded.", "retryh", sym) : SKEL_CHART;
     else {
       const n = h.days.length, rows = [];
@@ -218,7 +324,7 @@
       }
       const rolls = (h.roll || []).filter(d => d > h.days[0]).map(dm);
       const sub = S.mode === "fut" ? "Near-month futures, end of day" + (rolls.length ? " · contract rolls: " + rolls.join(", ") : "") : "Underlying price, end of day";
-      T.configure("fo-und-" + sym, { data: rows, type: S.mode === "fut" ? "candles" : "line", ranges: ["1M", "3M", "All"], range: "3M", volume: S.mode === "fut", ma: false, currency: "₹", title: sym, subtitle: sub, height: 300 });
+      T.configure("fo-und-" + sym, { data: rows, type: S.mode === "fut" ? "candles" : "line", ranges: ["1M", "3M", "All"], range: S.cr || "3M", volume: S.mode === "fut", ma: false, currency: "₹", title: sym, subtitle: sub, height: window.innerWidth <= 640 ? 240 : 300 });
       body = `<div data-tc="price" data-tc-key="fo-und-${H.esc(sym)}" class="fo-mount"></div><p class="mut sm">Futures candles follow the near-month contract; it rolls to the next expiry on the expiry day, so a small gap can appear at a roll.</p>`;
     }
     return `<div class="fo-chartsec">${seg}${body}</div>`;
@@ -232,47 +338,88 @@
       series: [{ name: "PCR all expiries", data: ser(h.pcr), axis: "left", color: "#818cf8", format: v => v.toFixed(2) }, { name: "PCR nearest expiry", data: ser(h.pcrn), axis: "left", color: "#f59e0b", format: v => v.toFixed(2) }] });
     return `<div class="fo-two"><div data-tc="line" data-tc-key="fo-oi-${H.esc(sym)}" class="fo-mount"></div><div data-tc="line" data-tc-key="fo-pcr-${H.esc(sym)}" class="fo-mount"></div></div>`;
   }
-  function undPage(H, sym) {
-    const head = H.head(H.esc(sym)) + risk(H);
-    const u = getU(H, sym), h = getH(H, sym);
-    if (!u) return head + (S.ul[sym] === 2 ? errBox(H, "Data for this underlying could not be loaded.", "retryu", sym) : SKEL + SKEL_CHART) + foot(H);
-    const ex = pickExp(u), r = S.byS[sym] || {}, isIdx = r.t === "I" || u.t === "I";
-    const futs = u.x.filter(v => v.fut), nf = futs[0] && futs[0].fut;
-    const chg = dayChg(h), spot = isN(u.spot) ? u.spot : (h ? last(h.spot) : null);
-    const ft = futs.length ? tb(["Expiry", "Price", "Price chg", "vs underlying", "OI", "OI chg", "OI chg %", "Volume"], futs.map(v => [H.esc(H.fmtD(v.e)), px(v.fut.c), sp(v.fut.pcp, pctS(v.fut.pcp)), sp(v.fut.prem, pctS(v.fut.prem)), cn(v.fut.oi), sp(v.fut.doi, sgn(v.fut.doi)), sp(v.fut.oip, pctS(v.fut.oip)), cn(v.fut.v)])) : '<p class="mut">No futures contracts for this underlying.</p>';
-    const hero = `<div class="card hero fo-hero ${isN(chg) ? (chg < 0 ? "dn" : "up") : ""}">
-      <div class="row"><div><div class="fo-hn">${H.esc(sym)}</div><div class="mut sm">${isIdx ? "Index" : "Stock"} · F&amp;O underlying · data as on ${H.esc(H.fmtD(u.d))}</div></div><span class="pill fo-tag">${isIdx ? "Index" : "Stock"}</span></div>
+  function undHero(H, sym, u, h) {
+    const r = S.byS[sym] || {}, isIdx = r.t === "I" || u.t === "I", c = lcOf(sym), live = !!c;
+    const chg = live ? liveIdxPct(sym) : dayChg(h), spot = live ? c.meta.underlying : (isN(u.spot) ? u.spot : (h ? last(h.spot) : null));
+    const t = TL();
+    const pill = live ? t.badge() : LIVE_SYMS.indexOf(sym) >= 0 && t && !t.peek() ? t.badge()
+      : eodPill(H, "End of day, " + H.fmtD(u.d) + (LIVE_SYMS.indexOf(sym) >= 0 ? " · live option chain not available" : " · stocks have no live option chain here"));
+    return `<div class="card hero fo-hero ${isN(chg) ? (chg < 0 ? "dn" : "up") : ""}">
+      <div class="fo-hn">${H.esc(sym)}</div><div class="mut sm">${isIdx ? "Index" : "Stock"} · F&amp;O underlying${live ? "" : " · end of day, " + H.esc(H.fmtD(u.d))}</div>
       <div class="fo-hp"><b class="fo-hpx">${px(spot)}</b><span class="fo-hc ${cls(chg)}">${isN(chg) ? pctS(chg) : dash}</span><span class="mut sm">${isIdx ? "index level" : "price"} · day change</span></div>
-      <div class="bento fo-bento"><div class="bt"><span>Near-month futures</span><b>${nf ? px(nf.c) : dash}</b><em>${nf ? sp(nf.pcp, pctS(nf.pcp)) + " day" : ""}</em></div>
+      <div class="fo-hs">${pill}</div></div>`;
+  }
+  function undPage(H, sym) {
+    const head = H.head(H.esc(sym));
+    const u = getU(H, sym), h = getH(H, sym);
+    if (!u) return head + risk(H) + (S.ul[sym] === 2 ? errBox(H, "Data for this underlying could not be loaded.", "retryu", sym) : SKEL + SKEL_CHART) + foot(H);
+    const ex = pickExp(u), r = S.byS[sym] || {}, isIdx = r.t === "I" || u.t === "I", isLive = LIVE_SYMS.indexOf(sym) >= 0;
+    if (isLive) loadLive(H, sym);
+    const futs = u.x.filter(v => v.fut), nf = futs[0] && futs[0].fut;
+    const ft = futs.length ? tb(["Expiry", "Price", "Price chg", "vs underlying", "OI", "OI chg", "OI chg %", "Volume"], futs.map(v => [H.esc(H.fmtD(v.e)), px(v.fut.c), sp(v.fut.pcp, pctS(v.fut.pcp)), sp(v.fut.prem, pctS(v.fut.prem)), cn(v.fut.oi), sp(v.fut.doi, sgn(v.fut.doi)), sp(v.fut.oip, pctS(v.fut.oip)), cn(v.fut.v)])) : '<p class="mut">No futures contracts for this underlying.</p>';
+    const kind = isIdx ? "index" : "stock", eod = `<span class="fo-hl">end of day, ${H.esc(H.fmtD(u.d))}</span>`;
+    const det = H.card(ico(H, "list-details") + " Futures and lot size " + eod, `<div class="bento fo-bento"><div class="bt"><span>Near-month futures</span><b>${nf ? px(nf.c) : dash}</b><em>${nf ? sp(nf.pcp, pctS(nf.pcp)) + " day" : ""}</em></div>
         <div class="bt"><span>Lot size</span><b>${isN(u.lot) ? u.lot : dash}</b></div>
         <div class="bt"><span>Contract value</span><b>${isN(u.lot) && nf ? "₹" + cn(u.lot * nf.c) : dash}</b><em>lot × futures price</em></div>
         <div class="bt"><span>Futures OI value</span><b>${crore(r.oiv)}</b><em>${pvo(r.pcp, r.oip)}</em></div></div>
-      ${futs.length ? `<div class="chips fo-exps" aria-label="Futures expiries"><span class="mut sm">Expiries</span>${futs.map(v => `<span class="chipb fo-ex">${H.esc(H.fmtD(v.e))}</span>`).join("")}</div>` : ""}</div>`;
-    const kind = isIdx ? "index" : "stock";
-    const html = head + hero + priceSection(H, sym, h, kind) + trendSection(H, sym, h) +
-      H.card(ico(H, "chart-bar") + " Option chain", ex ? chainBlock(H, u, ex, "fo-bars-" + sym, r) : '<p class="mut">No option contracts for this underlying.</p>') +
-      H.card(ico(H, "list-details") + " Futures", ft) +
-      H.card(ico(H, "notes") + " How these are calculated", `<p class="mut sm">PCR = total put OI ÷ total call OI for the expiry. Max pain = the strike with the smallest total payout if the underlying settled there: Σ call OI × max(0, strike − K) + Σ put OI × max(0, K − strike) (lowest strike wins a tie). OI chg % = change ÷ (OI − change).</p>`) + foot(H);
-    return html;
+      ${futs.length ? `<div class="chips fo-exps" aria-label="Futures expiries"><span class="mut sm">Expiries</span>${futs.map(v => `<span class="chipb fo-ex">${H.esc(H.fmtD(v.e))}</span>`).join("")}</div>` : ""}`);
+    let lp = "";
+    if (isLive) {
+      const lc = lcOf(sym);
+      lp = lc ? `<div class="card fo-lc"><h2>${ico(H, "chart-bar")} Live option chain</h2>${liveChainBlock(H, sym, "fo-lbars-" + sym)}</div>`
+        : H.card(ico(H, "chart-bar") + " Live option chain", S.lf[sym] === 1 && !S.lfail[sym] ? SKEL : '<p class="mut">The live option chain is not available right now. The end-of-day chain below is still shown.</p>');
+    }
+    return head + `<div class="fo-und">` + reg("un-hero", () => undHero(H, sym, u, h)) + priceSection(H, sym, h, kind) + risk(H) + lp + det + trendSection(H, sym, h) +
+      H.card(ico(H, "chart-bar") + " Option chain" + (isLive ? " (end of day)" : "") + " " + eod, ex ? chainBlock(H, u, ex, "fo-bars-" + sym, r) : '<p class="mut">No option contracts for this underlying.</p>') +
+      H.card(ico(H, "list-details") + " Futures " + eod, ft) +
+      H.card(ico(H, "notes") + " How these are calculated", `<p class="mut sm">PCR = total put OI ÷ total call OI for the expiry. Max pain = the strike with the smallest total payout if the underlying settled there: Σ call OI × max(0, strike − K) + Σ put OI × max(0, K − strike) (lowest strike wins a tie). OI chg % = change ÷ (OI − change).${isLive ? " In the live option chain these two are computed by Trendy from NSE's OI; IV is as published by NSE." : ""}</p>`) + "</div>" + foot(H);
   }
 
   // ---------- Chain tab ----------
   function chainTab(H) {
     const q = S.q.trim().toUpperCase();
     const hits = q ? S.rows.filter(r => r.s.includes(q)).sort((a, b) => (a.s.startsWith(q) ? 0 : 1) - (b.s.startsWith(q) ? 0 : 1) || a.s.localeCompare(b.s)).slice(0, 8) : [];
-    const sym = S.byS[S.sym] ? S.sym : "NIFTY";
-    const base = ["NIFTY", "BANKNIFTY", "FINNIFTY"]; if (!base.includes(sym)) base.push(sym);
+    const sym = S.byS[S.sym] ? S.sym : "NIFTY", isLive = LIVE_SYMS.indexOf(sym) >= 0;
+    const base = LIVE_SYMS.slice(); if (!base.includes(sym)) base.push(sym);
     const quick = base.map(s => `<button class="fo-q ${s === sym ? "on" : ""}" data-m="fno" data-act="pick" data-s="${H.esc(s)}">${H.esc(s)}</button>`).join("");
-    let body = "";
+    let body = "", lc = null;
     const u = getU(H, sym);
-    if (!u) body = S.ul[sym] === 2 ? errBox(H, "Data for this underlying could not be loaded.", "retryu", sym) : SKEL + SKEL_CHART;
-    else { const ex = pickExp(u); body = ex ? chainBlock(H, u, ex, "fo-cbars", S.byS[sym]) : '<p class="mut">No option contracts for this underlying.</p>'; }
-    return H.head("Option chain") + risk(H) +
+    if (isLive) { loadLive(H, sym); lc = lcOf(sym); }
+    if (lc) body = liveChainBlock(H, sym, "fo-lcbars");
+    else if (!u) body = S.ul[sym] === 2 ? errBox(H, "Data for this underlying could not be loaded.", "retryu", sym) : SKEL + SKEL_CHART;
+    else {
+      const ex = pickExp(u);
+      body = `<p class="mut sm">${isLive ? "Live option chain not available right now: " : "Stock option chains are end-of-day only: "}end of day, ${H.esc(H.fmtD(u.d))}.</p>` + (ex ? chainBlock(H, u, ex, "fo-cbars", S.byS[sym]) : '<p class="mut">No option contracts for this underlying.</p>');
+    }
+    const under = lc ? ` <span class="mut sm">Underlying ${px(lc.meta.underlying)} (live snapshot)${u && isN(u.lot) ? " · lot " + u.lot : ""}</span>` : u && isN(u.spot) ? ` <span class="mut sm">Underlying ${px(u.spot)} (end of day)${isN(u.lot) ? " · lot " + u.lot : ""}</span>` : "";
+    return H.head("Option chain") + risk(H) + (isLive ? reg("ch-bar", () => barH(H, "Index option chains (NIFTY, BANKNIFTY, FINNIFTY, MIDCPNIFTY)"), barSig) : "") +
       H.card("", `<input id="fo-search" type="search" placeholder="Search a symbol, e.g. RELIANCE" autocomplete="off" value="${H.esc(S.q)}" data-m="fno" data-f="q" aria-label="Search underlying">
         <div class="fo-quick">${quick}</div>
         ${hits.length ? `<div class="fo-quick fo-hits">${hits.map(r => `<button class="fo-q" data-m="fno" data-act="pick" data-s="${H.esc(r.s)}">${H.esc(r.s)}</button>`).join("")}</div>` : q ? '<p class="mut sm">No F&amp;O underlying matches.</p>' : ""}`) +
-      H.card(H.esc(sym) + (u && isN(u.spot) ? ` <span class="mut sm">Underlying ${px(u.spot)}${isN(u.lot) ? " · lot " + u.lot : ""}</span>` : ""), body +
+      H.card(H.esc(sym) + under, body +
         `<button class="btn ghost fo-open" data-m="fno" data-act="und" data-s="${H.esc(sym)}">Open ${H.esc(sym)} page with charts and futures ${ico(H, "chevron-right")}</button>`) + foot(H);
+  }
+  // swaps the snapshot-dependent regions of the current screen (never the charts' mount points, never inputs)
+  function patchRegions(H) {
+    if (!S.sum) return;
+    const sub = H.sub, tab = H.tab;
+    if (typeof sub === "string" && sub.indexOf("und:") === 0) {
+      const sym = sub.slice(4), u = S.u[sym]; if (!u || LIVE_SYMS.indexOf(sym) < 0) return;
+      setReg("un-hero", () => undHero(H, sym, u, S.h[sym])); lcPatch(H, sym, "fo-lbars-" + sym);
+    } else if (tab === "overview") {
+      setReg("ov-bar", () => barH(H, "Index cards (level, PCR, max pain, OI)"), barSig); setReg("ov-idx", () => ovIdx(H));
+    } else if (tab === "chain") {
+      const sym = S.byS[S.sym] ? S.sym : "NIFTY"; if (LIVE_SYMS.indexOf(sym) < 0) return;
+      setReg("ch-bar", () => barH(H, "Index option chains (NIFTY, BANKNIFTY, FINNIFTY, MIDCPNIFTY)"), barSig); lcPatch(H, sym, "fo-lcbars");
+    }
+  }
+  function livePatch(H) {
+    if (!S.sum) return;
+    const sub = H.sub, tab = H.tab;
+    if (typeof sub === "string" && sub.indexOf("und:") === 0) { const s = sub.slice(4); if (LIVE_SYMS.indexOf(s) >= 0) loadLive(H, s); }
+    else if (tab === "overview") LIVE_SYMS.forEach(s => loadLive(H, s));
+    else if (tab === "chain") { const s = S.byS[S.sym] ? S.sym : "NIFTY"; if (LIVE_SYMS.indexOf(s) >= 0) loadLive(H, s); }
+    patchRegions(H);
   }
 
   // ---------- OI tab ----------
@@ -320,10 +467,18 @@
       (S.lots ? "" : '<p class="mut sm">The lot-size file is not available; lot sizes shown come from the bhavcopy.</p>') + foot(H);
   }
 
+  // remember the chosen range of the price chart across the app's re-renders
+  document.addEventListener("click", e => {
+    const b = e.target && e.target.closest && e.target.closest("[data-tc-key^='fo-und-'] .tcx-chip[data-r]"); if (!b) return;
+    const box = b.closest("[data-tc-key]");
+    setTimeout(() => { const p = box && box.querySelector('[data-r][aria-pressed="true"]'); if (p) S.cr = p.getAttribute("data-r"); }, 0);
+  });
+
   window.TrendyModules = window.TrendyModules || {};
   window.TrendyModules.fno = {
     id: "fno", label: "F&O", icon: "⚖️",
     tabs: [["overview", "Overview"], ["chain", "Chain"], ["oi", "OI"], ["lots", "Lots"]],
+    livePatch,
     load(H) { init(H); loadAll(H); },
     render(tab, sub, H) {
       init(H);
@@ -344,6 +499,7 @@
       if (a === "pick" && s) { S.sym = s; S.q = ""; S.all = false; H.store.set("fo_sym", s); H.render(); return true; }
       if (a === "all") { S.all = !S.all; H.render(); return true; }
       if (a === "gl") { S.gl = !S.gl; H.render(); return true; }
+      if (a === "lexp" && v) { S.lexp = v; H.render(); return true; }
       if (a === "mode" && v) { S.mode = v; H.store.set("fo_mode", v); H.render(); return true; }
       if (a === "oim" && v) { S.oim = v === "chg" ? "chg" : "oi"; H.store.set("fo_oim", S.oim); H.render(); return true; }
       return false;

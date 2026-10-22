@@ -8,7 +8,7 @@ const out = path.resolve(ROOT, process.argv[2] || "_site");
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(path.join(out, "data", "logos"), { recursive: true });
 await fs.mkdir(path.join(out, "icons"), { recursive: true });
-for (const f of ["index.html", "style.css", "theme.css", "mod-stocks.css", "mod-fno.css", "mod-mf.css", "app.js", "charts.js", "app-stocks.js", "app-fno.js", "app-mf.js", "boot.js", "analytics.js", "sw.js", "manifest.webmanifest"]) await fs.copyFile(path.join(ROOT, f), path.join(out, f));
+for (const f of ["index.html", "style.css", "theme.css", "mod-stocks.css", "mod-fno.css", "mod-mf.css", "app.js", "charts.js", "live.js", "app-stocks.js", "app-fno.js", "app-mf.js", "boot.js", "analytics.js", "sw.js", "manifest.webmanifest"]) await fs.copyFile(path.join(ROOT, f), path.join(out, f));
 for (const f of await fs.readdir(path.join(ROOT, "icons"))) await fs.copyFile(path.join(ROOT, "icons", f), path.join(out, "icons", f));
 await fs.mkdir(path.join(out, "fonts"), { recursive: true });
 for (const f of await fs.readdir(path.join(ROOT, "fonts"))) await fs.copyFile(path.join(ROOT, "fonts", f), path.join(out, "fonts", f));

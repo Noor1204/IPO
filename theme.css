@@ -579,3 +579,18 @@ td .tnote{font-weight:500;margin-top:2px}
 .dim{z-index:40}.drawer{z-index:41}
 .stat[data-stat],.stat[data-stat=upcoming],.stat[data-stat=listed],.stat[data-stat=gain],.stat[data-stat=loss]{border-top-color:var(--bd)}
 .stat.on[data-stat]{border-top-color:transparent}
+
+/* ---------- live snapshot status (live.js: TrendyLive.badge / bar) ---------- */
+[data-lvr]{display:contents}                       /* regions that a live snapshot patches in place: no box of their own */
+.tl-bar{display:flex;flex-direction:column;align-items:flex-start;gap:6px;margin:0 0 14px;min-width:0}
+.tl-pill{display:inline-flex;align-items:center;gap:8px;max-width:100%;min-width:0;padding:5px 12px 5px 10px;border-radius:var(--r-pill);font-size:12px;font-weight:800;line-height:1.3;letter-spacing:0;color:var(--mut);background:var(--tint);border:1px solid var(--bd);overflow-wrap:anywhere}
+.tl-dot{flex:none;width:8px;height:8px;border-radius:50%;background:var(--mut);opacity:.75}
+.tl-live{color:var(--ok);background:var(--ok-bg);border-color:transparent}
+.tl-live .tl-dot{background:var(--ok);opacity:1;animation:tl-pulse 1.9s ease-out infinite}
+.tl-stale{color:var(--warn);background:var(--warn-bg);border-color:transparent}
+.tl-stale .tl-dot{background:var(--warn);opacity:1}
+.tl-closed,.tl-unavailable{color:var(--mut)}
+.tl-line{margin:0;font-size:12px;line-height:1.45;font-weight:600;color:var(--mut)}
+.tl-sec{font-size:12px;font-weight:700;color:var(--mut);margin:0 2px 8px;overflow-wrap:anywhere}
+@keyframes tl-pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}80%,100%{box-shadow:0 0 0 7px rgba(16,185,129,0)}}
+@media (prefers-reduced-motion:reduce){.tl-live .tl-dot{animation:none}}

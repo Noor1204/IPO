@@ -120,7 +120,9 @@
     for (const k of ["r6", "r1", "r3", "r5"]) {
       const v = ps.map(x => x[k]).filter(num);
       out.cnt[k] = v.length; out.avg[k] = v.length >= 5 ? v.reduce((s, x) => s + x, 0) / v.length : null;
-      if (k !== "r6" && v.length >= 10 && num(f[k])) { const rank = 1 + v.filter(x => x > f[k]).length; out.rank[k] = { rank, n: v.length, top: Math.max(1, Math.ceil(rank / v.length * 100)) }; }
+      if (k !== "r6" && v.length >= 10 && num(f[k])) { // rank 1 = best. top = smallest X so that the fund is within the top X% (rank / N); bottom = smallest Y so that it is within the bottom Y% (funds at or below it / N)
+        const rank = 1 + v.filter(x => x > f[k]).length, below = v.filter(x => x <= f[k]).length;
+        out.rank[k] = { rank, n: v.length, top: Math.max(1, Math.ceil(rank / v.length * 100)), bottom: Math.max(1, Math.ceil(below / v.length * 100)), below }; }
     }
     return out;
   }
@@ -213,7 +215,7 @@
       const a = s.avg[k], v = f[k], d = num(v) && num(a) ? v - a : null;
       return '<div class="mf-cmprow"><span class="mf-pl">' + PL[k] + '<em>' + (s.cnt[k] >= 5 ? s.cnt[k] + " funds" : "too few") + '</em></span><b class="' + rc(v) + '">' + pct(v) + '</b><b class="mut">' + (num(a) ? pct(a) : "—") + '</b><b class="' + rc(d) + '">' + (num(d) ? (d > 0 ? "+" : "") + d.toFixed(2) + " pts" : "—") + "</b></div>";
     }).join("");
-    const rk = ["r1", "r3", "r5"].filter(k => s.rank[k]).map(k => { const r = s.rank[k]; return '<div class="mf-rank"><div class="mf-rk-t"><b>Top ' + r.top + "%</b><span> of " + r.n + " funds over " + PL[k] + '</span></div><i class="mf-rkb"><u style="width:' + Math.max(4, 100 - r.top + 1) + '%"></u></i><em>Rank ' + r.rank + " of " + r.n + "</em></div>"; }).join("");
+    const rk = ["r1", "r3", "r5"].filter(k => s.rank[k]).map(k => { const r = s.rank[k]; return '<div class="mf-rank"><div class="mf-rk-t"><b>' + (r.top <= 50 ? "Top " + r.top : "Bottom " + r.bottom) + "%</b><span> of " + r.n + " funds over " + PL[k] + '</span></div><i class="mf-rkb"><u style="width:' + Math.max(4, Math.round(r.below / r.n * 100)) + '%"></u></i><em>Rank ' + r.rank + " of " + r.n + "</em></div>"; }).join("");
     return '<div class="card"><h2>Versus its category</h2><p class="mut sm mf-n">Average of all ' + s.n + " " + planName(f.p).toLowerCase() + " plan funds in <b>" + H.esc(f.cat) + '</b> in the AMFI data (' + H.esc(navDate(H)) + ").</p>" +
       '<div class="mf-cmphd"><span></span><span>This fund</span><span>Category avg</span><span>Difference</span></div>' + rows +
       (rk ? '<h3 class="mf-h3">Rank in category</h3><div class="mf-ranks">' + rk + '</div><p class="mut sm mf-n">Rank by return among funds with that return. Past ranking can change.</p>' : '<p class="mut sm mf-n">Ranking is shown when at least 10 funds in the category have that return.</p>') + "</div>";
@@ -313,7 +315,7 @@
     if (!c) return { title: "Growth", series: [] };
     const t = (H || M.H).istDay(), y = +t.slice(0, 4), mo = +t.slice(5, 7) - 1, day = i => new Date(Date.UTC(y, mo + i, 1)).toISOString().slice(0, 10);
     const step = Math.max(1, Math.ceil(c.n / 240)), idx = []; for (let m = 0; m <= c.n; m += step) idx.push(m); if (idx[idx.length - 1] !== c.n) idx.push(c.n);
-    return { title: "Growth over time", subtitle: "Month by month from today. Illustrative, not guaranteed.", height: 260, series: [
+    return { title: "Growth over time", subtitle: "Month by month from today (axis: years from the start). Illustrative, not guaranteed.", height: 260, yearAxis: day(0), series: [
       { name: "Estimated value", data: idx.map(m => [day(m), c.vv[m]]), color: "#6366f1", fill: true, format: v => short(v) },
       { name: "Invested", data: idx.map(m => [day(m), c.iv[m]]), color: "#f59e0b", format: v => short(v) }] };
   }
