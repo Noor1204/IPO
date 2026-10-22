@@ -67,13 +67,18 @@ jobs:
           rm -rf _live
           prev=""; [ -f _prev/meta.json ] && prev="_prev"
           set +e
-          LIVE_OUT=_live LIVE_PREV="$prev" node pipeline/live.mjs
-          code=$?
+          LIVE_OUT=_live LIVE_PREV="$prev" node pipeline/live.mjs 2>&1 | tee live.log
+          code=${PIPESTATUS[0]}
           set -e
           echo "live.mjs exit code: $code"
           if [ "$code" -ne 0 ] || [ ! -f _live/meta.json ]; then
             echo "::warning::No new snapshot this time (exit code $code); keeping the previous one."
             rm -rf _live
+            # leave a readable reason on the branch live-status (the Actions log needs a login to read)
+            rm -rf _diag; mkdir -p _diag
+            tail -c 8000 live.log > _diag/log.txt || true
+            echo "{\"ok\":false,\"exit\":$code,\"at\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\"}" > _diag/status.json
+            ( cd _diag && git init --quiet -b live-status && git config user.name "trendy-ipo-bot" && git config user.email "trendy-ipo-bot@users.noreply.github.com" && git add -A && git commit --quiet -m "live fetch failed" && git push --force --quiet "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" HEAD:refs/heads/live-status ) || echo "could not write the diagnostic"
           fi
 
       - name: Publish to the branch live
