@@ -44,6 +44,14 @@
   "sourceDoc": "RHP",
   "stale": false
  },
+ "BLSPOLY": {
+  "status": "ok",
+  "checked": 72,
+  "ungrounded": [],
+  "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
  "BMISL": {
   "status": "ok",
   "checked": 74,
@@ -73,6 +81,18 @@
   "checked": 66,
   "ungrounded": [],
   "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
+ "EDELALTS": {
+  "status": "warn",
+  "checked": 104,
+  "ungrounded": [],
+  "issues": [
+   "Mar-24: reported PAT margin 29.98% vs PAT/revenue 35.56% (possible swapped years, or margin quoted on total income)",
+   "Mar-25: reported PAT margin 29.21% vs PAT/revenue 34.28% (possible swapped years, or margin quoted on total income)",
+   "Mar-26: reported PAT margin 27.52% vs PAT/revenue 30.50% (possible swapped years, or margin quoted on total income)"
+  ],
   "sourceDoc": "RHP",
   "stale": false
  },
@@ -347,6 +367,16 @@
   "sourceDoc": "RHP",
   "stale": false
  },
+ "SFCTECH": {
+  "status": "warn",
+  "checked": 75,
+  "ungrounded": [],
+  "issues": [
+   "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
+  ],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
  "SHAHINVEST": {
   "status": "warn",
   "checked": 74,
@@ -444,10 +474,10 @@
  },
  "TONBO": {
   "status": "ok",
-  "checked": 81,
+  "checked": 80,
   "ungrounded": [],
   "issues": [],
-  "sourceDoc": "RHP",
+  "sourceDoc": "Prospectus",
   "stale": false
  },
  "VAMAWOVEN": {
