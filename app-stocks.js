@@ -7,14 +7,15 @@
   const BASE = "data/stocks/";
   const S = { meta: null, movers: null, index: null, idxList: null, idxBy: null, list: null, listBy: null, lc: null, status: "idle", listStatus: "idle",
     chunks: {}, chunkStatus: {}, hist: {}, idxH: {}, cfg: {}, cv: null, ivLoad: "", ivSig: 0, ct: { range: "6M", type: "candles", sma20: false, sma50: false },
-    k: "gain", shown: 20, q: "", allIdx: false, idxSt: "idle" };
+    k: "gain", shown: 20, q: "", caps: null, fii: null, dcap: { gain: "L", loss: "L", vol: "L" }, mcap: "A" };
   let HH = null;                                         // host api (kept for async renders)
   const DISC = "Prices are end-of-day or a delayed snapshot, not real-time. Information only, not investment advice.";
-  const LISTS = [["gain", "Gainers"], ["loss", "Losers"], ["active", "Most active"], ["deliv", "Delivery %"], ["hi", "52W high"], ["lo", "52W low"]];
+  const LISTS = [["gain", "Gainers"], ["loss", "Losers"], ["active", "Most active"], ["vol", "By volume"], ["deliv", "Delivery %"], ["hi", "52W high"], ["lo", "52W low"]];
   const NOTE = {
     gain: "Biggest one-day rise among stocks that traded at least ₹2 crore.",
     loss: "Biggest one-day fall among stocks that traded at least ₹2 crore.",
     active: "Highest traded value (price × quantity) of the day.",
+    vol: "Highest traded quantity (number of shares) of the day.",
     deliv: "Share of traded quantity taken for delivery (not squared off the same day), stocks with ₹2 crore+ traded.",
     hi: "Stocks closing within 3% of their 52-week high (adjusted for splits and bonus), closest first, ₹2 crore+ traded.",
     lo: "Stocks closing within 3% of their 52-week low (adjusted for splits and bonus), closest first, ₹2 crore+ traded.",
@@ -23,10 +24,10 @@
     gain: "Biggest rise against the previous close so far, among NIFTY 500 and F&O stocks that traded at least ₹2 crore.",
     loss: "Biggest fall against the previous close so far, among NIFTY 500 and F&O stocks that traded at least ₹2 crore.",
     active: "Highest traded value (price × quantity) so far, among NIFTY 500 and F&O stocks.",
+    vol: "Highest traded quantity (number of shares) so far, among NIFTY 500 and F&O stocks.",
     hi: "Stocks trading within 3% of their 52-week high as published by NSE, closest first, ₹2 crore+ traded.",
     lo: "Stocks trading within 3% of their 52-week low as published by NSE, closest first, ₹2 crore+ traded.",
   };
-  const FEATURED = ["nifty-50", "nifty-bank", "india-vix", "nifty-it", "nifty-next-50", "nifty-midcap-100", "nifty-smallcap-100", "nifty-financial-services"];
   const isNum = x => typeof x === "number" && isFinite(x);
   const nf = (x, d) => isNum(x) ? x.toLocaleString("en-IN", { minimumFractionDigits: d, maximumFractionDigits: d }) : "—";
   const px = x => nf(x, 2);
@@ -80,6 +81,9 @@
       if (!movers || !movers.gain) throw new Error("bad movers");
       Object.assign(S, { meta, movers, index, status: "ok" });
       if (il && Array.isArray(il.rows)) { S.idxList = il; S.idxBy = new Map(il.rows.map(r => [r[0], r])); }
+      const [caps, fii] = await Promise.all([getJson("caps.json", v).catch(() => null), getJson("fiidii.json", v).catch(() => null)]);
+      if (caps && ["L", "M", "S"].every(k => Array.isArray(caps[k]) && caps[k].length > 20 && caps[k].every(symOk))) S.caps = { u: typeof caps.u === "string" ? caps.u : "", L: new Set(caps.L), M: new Set(caps.M), S: new Set(caps.S) };
+      if (fii && Array.isArray(fii.rows)) { const rows = fii.rows.filter(r => r && /^\d{4}-\d{2}-\d{2}$/.test(r.d) && ["fb", "fs", "fn", "db", "ds", "dn"].every(k => isNum(r[k]))); if (rows.length) S.fii = { u: fii.u, rows }; }
     } catch (e) { console.warn("stocks data", e); S.status = "fail"; }
     H.render();
   }
@@ -142,35 +146,17 @@
   const avatar = (sym, big) => `<span class="st-av${big ? " lg" : ""}" style="--h:${hue(sym)}" aria-hidden="true">${ini(sym)}</span>`;
   const retryBox = (msg, act, attrs) => `<div class="st-msg"><p><b>${msg}</b></p><p class="mut sm">Check your connection and try again.</p><button class="btn sm" data-m="stocks" data-act="${act}"${attrs || ""}>${ic("refresh")} Retry</button></div>`;
 
-  // sparkline from an array of numbers (already trimmed); no fetching here
-  function spark(a, w, h, flat) {
-    a = (a || []).filter(isNum); if (a.length < 3) return "";
-    w = w || 84; h = h || 30;
-    const mn = Math.min(...a), mx = Math.max(...a), rg = mx - mn || 1, n = a.length;
-    const pts = a.map((v, i) => (i * (w - 2) / (n - 1) + 1).toFixed(1) + "," + (h - 3 - (v - mn) / rg * (h - 6)).toFixed(1));
-    const up = a[n - 1] >= a[0];
-    return `<svg class="st-sp ${flat ? "flat" : up ? "up" : "dn"}" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><polygon points="1,${h} ${pts.join(" ")} ${w - 1},${h}"/><polyline points="${pts.join(" ")}"/></svg>`;
-  }
-  // last N closes for a stock, only from data already in memory
-  function cachedCloses(sym, n) {
-    const h = S.hist[sym]; if (h && h.st === "ok") return h.rows.slice(-n).map(r => r[4]);
-    const ck = S.chunks[chunkKey(sym)], d = ck && ck.s && ck.s[sym];
-    if (d && Array.isArray(d[19])) return d[19].slice(-n);
-    return null;
-  }
-
   // one rich stock row (symbol, name, price, change pill, sub line, star)
   function stockRow(H, o) {
-    const sp = spark(o.spark, o.sp2 ? 110 : 64, 28), on = o.on === undefined ? watched(H).includes(o.sym) : o.on;
+    const on = o.on === undefined ? watched(H).includes(o.sym) : o.on;
     return `<div class="st-r"><button class="st-rm" data-m="stocks" data-act="open" data-sym="${H.esc(o.sym)}" aria-label="Open ${H.esc(o.sym)}">${avatar(o.sym)}
       <span class="st-id"><b>${H.esc(o.sym)}${o.tag && o.tag !== "EQ" ? ` <i class="st-tag">${H.esc(o.tag)}</i>` : ""}</b><small>${H.esc(o.name || "")}</small></span>
-      ${sp && !o.sp2 ? `<span class="st-spw">${sp}</span>` : ""}
       <span class="st-pv"><b>${px(o.price)}</b>${pill(o.chg)}</span>
-      ${o.sub ? `<span class="st-sub">${o.sub}</span>` : ""}${sp && o.sp2 ? `<span class="st-spw r2">${sp}</span>` : ""}</button>${o.remove ? `<button class="st-x" data-m="stocks" data-act="unstar" data-sym="${H.esc(o.sym)}" aria-label="Remove ${H.esc(o.sym)} from watchlist">${ic("x")}</button>` : star(H, o.sym, on)}</div>`;
+      ${o.sub ? `<span class="st-sub">${o.sub}</span>` : ""}</button>${o.remove ? `<button class="st-x" data-m="stocks" data-act="unstar" data-sym="${H.esc(o.sym)}" aria-label="Remove ${H.esc(o.sym)} from watchlist">${ic("x")}</button>` : star(H, o.sym, on)}</div>`;
   }
-  const moverRows = (H, rows, n, sub, withSpark) => rows.slice(0, n).map(r => {
+  const moverRows = (H, rows, n, sub) => rows.slice(0, n).map(r => {
     const l = S.listBy && S.listBy.get(r[0]);
-    return stockRow(H, { sym: r[0], name: r[1], price: r[2], chg: r[3], sub: sub ? sub(r, l) : "", spark: withSpark ? cachedCloses(r[0], 20) : null });
+    return stockRow(H, { sym: r[0], name: r[1], price: r[2], chg: r[3], sub: sub ? sub(r, l) : "" });
   }).join("");
   const subValue = (r, l) => { const v = isNum(r[7]) ? r[7] : l && isNum(l[5]) ? l[5] : null; return `Value ${croreC(r[4])}${isNum(v) ? " · Vol " + units(v) : ""}`; };
 
@@ -329,62 +315,142 @@
   const moverSrc = H => liveOn() ? liveLists() : null;
   const srcLabel = (H, L) => L ? `${snapTag(HH)} · ${L.n} stocks of NIFTY 500 and the F&O list that traded at least ₹${MINV} crore` : `End of day, ${H.esc(H.fmtD((S.movers && S.movers.tradeDate) || eodDay()))} · all NSE stocks that traded at least ₹${MINV} crore`;
 
-  // ---------- Market ----------
+  // ---------- caps + lists (dashboard and Movers) ----------
+  // Rows of every list use the same array shape: [symbol, name, price, chg %, traded value (Rs crore), delivery % (or null), distance % (or null), volume, chg in rupees]
+  const CAPN = { L: "Large", M: "Mid", S: "Small", A: "All" };
+  const CAPD = { L: "NIFTY 100", M: "NIFTY MIDCAP 150", S: "NIFTY SMALLCAP 250" };
+  const CAPK = ["gain", "loss", "active", "vol"];
+  const TITLES = { gain: "Top gainers", loss: "Top losers", active: "Most active (traded value)", vol: "Most traded by volume", deliv: "Delivery %", hi: "52-week high", lo: "52-week low" };
+  const r2 = x => Math.round(x * 100) / 100;
+  const shortName = n => String(n || "").replace(/\s+(limited|ltd\.?)$/i, "");
+  function listFor(kind, cap) {
+    const set = cap !== "A" && S.caps ? S.caps[cap] : null;
+    if (cap !== "A" && !set) return { rows: [], fail: true };
+    const m = liveOn() ? snap() : null, tvOf = x => isNum(x) ? x : 0;
+    if (m) {
+      const ci = {}; m.cols.forEach((c, i) => { ci[c] = i; });
+      const nm = s => { const l = S.listBy && S.listBy.get(s); return l ? l[1] : ""; };
+      const base = m.stocks.filter(r => isNum(r[ci.c]) && isNum(r[ci.p]) && (set ? set.has(r[ci.s]) : isNum(r[ci.tv]) && r[ci.tv] >= MINV));
+      const byTv = (a, b) => tvOf(b[ci.tv]) - tvOf(a[ci.tv]);
+      const arr = kind === "gain" ? base.filter(r => r[ci.p] > 0).sort((a, b) => b[ci.p] - a[ci.p] || byTv(a, b))
+        : kind === "loss" ? base.filter(r => r[ci.p] < 0).sort((a, b) => a[ci.p] - b[ci.p] || byTv(a, b))
+        : kind === "vol" ? base.filter(r => isNum(r[ci.v])).sort((a, b) => b[ci.v] - a[ci.v] || byTv(a, b))
+        : base.filter(r => isNum(r[ci.tv])).sort(byTv);
+      return { live: true, n: base.length, rows: arr.slice(0, 100).map(r => [r[ci.s], nm(r[ci.s]), r[ci.c], r[ci.p], isNum(r[ci.tv]) ? r[ci.tv] : null, null, null, isNum(r[ci.v]) ? r[ci.v] : null,
+        isNum(r[ci.ch]) ? r[ci.ch] : isNum(r[ci.pc]) ? r2(r[ci.c] - r[ci.pc]) : null]) };
+    }
+    if (cap === "A" && kind !== "vol") {
+      return { rows: ((S.movers && S.movers[kind]) || []).map(r => { const l = S.listBy && S.listBy.get(r[0]); return [r[0], r[1], r[2], r[3], r[4], r[5], null, l ? l[5] : null, l && isNum(l[7]) ? r2(r[2] - l[7]) : null]; }) };
+    }
+    if (S.listStatus === "fail") return { rows: [], fail: true };
+    if (!S.list) return { rows: [], pend: true };
+    const base = S.list.rows.filter(r => r[2] === "EQ" && isNum(r[3]) && isNum(r[4]) && (set ? set.has(r[0]) : isNum(r[6]) && r[6] >= MINV));
+    const byTv = (a, b) => tvOf(b[6]) - tvOf(a[6]);
+    const arr = kind === "gain" ? base.filter(r => r[4] > 0).sort((a, b) => b[4] - a[4] || byTv(a, b))
+      : kind === "loss" ? base.filter(r => r[4] < 0).sort((a, b) => a[4] - b[4] || byTv(a, b))
+      : kind === "vol" ? base.filter(r => isNum(r[5])).sort((a, b) => b[5] - a[5] || byTv(a, b))
+      : base.filter(r => isNum(r[6])).sort(byTv);
+    return { n: base.length, rows: arr.slice(0, 100).map(r => [r[0], r[1], r[3], r[4], isNum(r[6]) ? r[6] : null, null, null, isNum(r[5]) ? r[5] : null, isNum(r[7]) ? r2(r[3] - r[7]) : null]) };
+  }
+  const capLine = (H, res, cap) => (res.live ? snapTag(H) : "End of day, " + H.esc(H.fmtD((S.movers && S.movers.tradeDate) || eodDay()))) + " · " +
+    (cap !== "A" ? H.esc(CAPN[cap]) + " cap: constituents of " + CAPD[cap]
+      : res.live ? res.n + " stocks of NIFTY 500 and the F&O list that traded at least ₹" + MINV + " crore" : "all NSE stocks that traded at least ₹" + MINV + " crore");
+
+  // ---------- Market (dashboard: plain cards and lists, no charts) ----------
+  const IDX_ORDER = ["nifty-50", "nifty-bank", "nifty-financial-services", "nifty-midcap-select", "india-vix", "nifty-it", "nifty-next-50", "nifty-500"];
+  const IDX_SHORT = { "nifty-financial-services": "Fin Nifty", "nifty-midcap-select": "Midcap Select" };
+  const idxName = r => IDX_SHORT[r[0]] || r[1].replace(/^NIFTY/i, "Nifty");
+  const chgTxt = (chg, p) => `${isNum(chg) ? sgn(chg) + " " : ""}(${pct(p)})`;
   const idxCardsHtml = H => {
     const lv = liveOn();
-    const cards = FEATURED.map(s => S.idxBy && S.idxBy.get(s)).filter(Boolean).map(r => {
-      const h = S.idxH[r[0]], vix = r[0] === "india-vix", closes = h && h.st === "ok" ? h.rows.slice(-30).map(x => x[4]) : null;
-      const L = lix(r[1]), live = !!(L && isNum(L.last)), v = live ? L.last : r[2], pts = live ? L.chg : r[3], pc = live ? L.pct : r[4];
-      return `<button class="st-ixc ${vix ? "flat" : dir(pc)}" data-m="stocks" data-act="openidx" data-slug="${H.esc(r[0])}" aria-label="Open ${H.esc(r[1])}">
-        <span class="st-ixn">${H.esc(r[1].replace(/^NIFTY/i, "Nifty"))}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(v)}</b><span class="st-ixv ${vix ? "" : cls(pc)}">${arrow(pc)} ${sgn(pts)} · ${pct(pc)}</span>
-        ${closes ? spark(closes, 120, 34, vix) : '<span class="st-spph"></span>'}</button>`;
+    const cards = IDX_ORDER.map(s => S.idxBy && S.idxBy.get(s)).filter(Boolean).map(r => {
+      const vix = r[0] === "india-vix", L = lix(r[1]), live = !!(L && isNum(L.last)), v = live ? L.last : r[2], pts = live ? L.chg : r[3], pc = live ? L.pct : r[4];
+      return `<button class="st-ixc" data-m="stocks" data-act="openidx" data-slug="${H.esc(r[0])}" aria-label="Open ${H.esc(r[1])}">
+        <span class="st-ixn">${H.esc(idxName(r))}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(v)}</b><span class="st-ixv ${vix ? "" : cls(pc)}">${chgTxt(pts, pc)}</span></button>`;
     }).join("");
     if (S.idxList && cards) {
-      const all = S.idxList.rows;
-      const list = all.map(r => { const L = lix(r[1]), live = !!(L && isNum(L.last)); return `<button class="st-ixr" data-m="stocks" data-act="openidx" data-slug="${H.esc(r[0])}"><span class="st-ixrn">${H.esc(r[1])}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(live ? L.last : r[2])}</b>${pill(live ? L.pct : r[4])}</button>`; }).join("");
-      return `<div class="card"><div class="st-ch-h"><h2>${ic("chart-bar")} Indices</h2><span class="mut sm">${lv ? snapTag(H) : "End of day, " + H.esc(H.fmtD(S.idxList.date))}</span></div>
-        <div class="st-ixg">${cards}</div>
-        <button class="linkbtn st-lk" data-m="stocks" data-act="allidx" aria-expanded="${S.allIdx}">${S.allIdx ? "Hide all indices" : "Show all " + all.length + " indices"} ${ic(S.allIdx ? "minus" : "plus")}</button>
-        ${S.allIdx ? `<div class="st-ixl">${list}</div>` : ""}
-        <p class="mut sm st-foot">${lv ? "Index levels from the live snapshot of NSE's public website data; an index missing from it shows its end-of-day level, marked EOD." : "Closing levels from NSE India."} BSE Sensex is not available.</p></div>`;
+      return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic("chart-bar")} Indices</h2><button class="linkbtn st-lk" data-m="stocks" data-act="allidx">All indices ${ic("chevron-right")}</button></div>
+        <div class="st-hr">${cards}</div>
+        <p class="mut sm st-foot">${lv ? snapTag(H) + ". An index missing from the snapshot shows its end-of-day level, marked EOD." : "Closing levels from NSE India, " + H.esc(H.fmtD(S.idxList.date)) + "."} BSE Sensex is not available.</p></div>`;
     }
     if (S.idxList === null && S.status === "ok") return `<div class="card">${S.index && Array.isArray(S.index.rows) ? "<h2>Indices</h2>" + H.tbl(["Index", "Close", "Change %"], S.index.rows.slice(0, 12).map(r => [H.esc(r[0]), px(r[1]), `<span class="${cls(r[3])}">${pct(r[3])}</span>`])) : '<p class="mut">Index data is not available right now.</p>'}</div>`;
     return "";
   };
-  const adHtml = H => {
-    if (!liveOn()) return "";
-    const rows = ["NIFTY 50", "NIFTY 500"].map(n => {
-      const L = lix(n); if (!L || !isNum(L.adv) || !isNum(L.dec) || L.adv + L.dec <= 0) return "";
-      const t = L.adv + L.dec, a = L.adv / t * 100;
-      return `<div class="st-ad"><div class="st-adh"><b>${H.esc(n.replace("NIFTY", "Nifty"))}</b><span><b class="grn-t">${nf(L.adv, 0)}</b> advancing · <b class="red-t">${nf(L.dec, 0)}</b> declining</span></div>
-        <div class="st-adb" role="img" aria-label="${nf(L.adv, 0)} advancing and ${nf(L.dec, 0)} declining"><i style="width:${a.toFixed(1)}%"></i><u style="width:${(100 - a).toFixed(1)}%"></u></div></div>`;
-    }).join("");
-    return rows ? `<div class="card"><div class="st-ch-h"><h2>${ic("arrows-exchange")} Advances / Declines</h2><span class="mut sm">${snapTag(H)}</span></div>${rows}<p class="mut sm st-foot">Stocks of the index that are up or down against the previous close; unchanged stocks are not counted.</p></div>` : "";
+  const fiiDate = d => /^\d{4}-\d{2}-\d{2}$/.test(d) ? new Date(d + "T00:00:00Z").toLocaleDateString("en-IN", { day: "2-digit", month: "short", timeZone: "UTC" }) : "—";
+  const cr2 = x => isNum(x) ? (x > 0 ? "+" : x < 0 ? "-" : "") + "₹" + nf(Math.abs(x), 2) + " Cr" : "—";
+  const fiiHtml = H => {
+    const rows = S.fii && S.fii.rows; if (!rows || !rows.length) return "";
+    return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic("building-bank")} Net FII &amp; DII</h2><button class="linkbtn st-lk" data-m="stocks" data-act="fiidii">View more ${ic("chevron-right")}</button></div>
+      <div class="st-hr st-hr-fii">${rows.slice(0, 4).map(r => `<div class="st-fc"><span class="st-fd">${H.esc(fiiDate(r.d))}</span>
+        <span class="st-fl">Net FII</span><b class="${cls(r.fn)}">${cr2(r.fn)}</b><span class="st-fl">Net DII</span><b class="${cls(r.dn)}">${cr2(r.dn)}</b></div>`).join("")}</div>
+      <p class="mut sm st-foot">Cash market, provisional data published by NSE after market hours.</p></div>`;
   };
-  const miniCard = (H, title, icon, rows, key, sub) => `<div class="card st-mini"><div class="st-ch-h"><h2>${ic(icon)} ${title}</h2><button class="linkbtn" data-m="stocks" data-act="seeall" data-k="${key}">See all ${ic("chevron-right")}</button></div>${rows.length ? `<div class="st-list">${moverRows(H, rows, 5, sub, true)}</div>` : '<p class="mut">—</p>'}</div>`;
-  const marketMovers = H => {
-    const L = moverSrc(H), m = L || S.movers, dist = word => r => isNum(r[6]) ? nf(r[6], 1) + "% " + word : "—";
-    return `<p class="tl-sec">${srcLabel(H, L)}</p><div class="st-g3">${miniCard(H, "Top gainers", "trending-up", m.gain, "gain", subValue)}${miniCard(H, "Top losers", "trending-down", m.loss, "loss", subValue)}${miniCard(H, "Most active", "flame", m.active, "active", subValue)}</div>
-      <div class="st-g2">${miniCard(H, "Near 52-week high", "trophy", m.hi, "hi", dist("below high"))}${miniCard(H, "Near 52-week low", "target", m.lo, "lo", dist("above low"))}</div>`;
-  };
+  const stockCard = (H, r, kind) => `<button class="st-scd" data-m="stocks" data-act="open" data-sym="${H.esc(r[0])}" aria-label="Open ${H.esc(r[0])}">${avatar(r[0])}
+    <span class="st-scn">${H.esc(shortName(r[1]) || r[0])}</span><b>${rs(r[2])}</b><span class="st-scv ${cls(r[3])}">${isNum(r[8]) ? sgn(r[8]) + " " : ""}(${pct(r[3])})</span>${kind === "vol" ? `<small class="mut">Vol ${units(r[7])}</small>` : ""}</button>`;
+  const skelRow = () => `<div class="st-hr" aria-hidden="true">${Array.from({ length: 5 }, () => '<div class="st-scd st-scsk"><div class="skel-block" style="height:38px;width:38px;border-radius:12px"></div><div class="skel-line w80"></div><div class="skel-line w50"></div></div>').join("")}</div>`;
+  const capChips = (kind, cap) => `<div class="st-cp" role="group" aria-label="Market cap">${["L", "M", "S"].map(c => `<button class="${c === cap ? "on" : ""}" data-m="stocks" data-act="dcap" data-k="${kind}" data-c="${c}" aria-pressed="${c === cap}">${CAPN[c]}</button>`).join("")}</div>`;
+  const DICON = { gain: "trending-up", loss: "trending-down", vol: "flame" };
+  function dashSec(H, kind) {
+    const cap = S.caps ? (S.dcap[kind] || "L") : "A", res = listFor(kind, cap);
+    const body = res.fail ? retryBox("This list could not be loaded.", "retrylist") : res.pend ? skelRow()
+      : res.rows.length ? `<div class="st-hr">${res.rows.slice(0, 5).map(r => stockCard(H, r, kind)).join("")}</div>` : '<div class="st-msg"><p><b>No stocks in this list right now.</b></p></div>';
+    return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic(DICON[kind])} ${TITLES[kind]}</h2><button class="linkbtn st-lk" data-m="stocks" data-act="seemore" data-k="${kind}" data-c="${cap}">See more ${ic("chevron-right")}</button></div>
+      ${S.caps ? capChips(kind, cap) : ""}${body}</div>`;
+  }
+  function plainSec(H, kind) {
+    const L = moverSrc(H), m = L || S.movers, rows = Array.isArray(m[kind]) ? m[kind] : [];
+    const sub = r => isNum(r[6]) ? nf(r[6], 1) + "% " + (kind === "hi" ? "below high" : "above low") : "";
+    return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic(kind === "hi" ? "trophy" : "target")} Near 52-week ${kind === "hi" ? "high" : "low"}</h2><button class="linkbtn st-lk" data-m="stocks" data-act="seemore" data-k="${kind}" data-c="A">See more ${ic("chevron-right")}</button></div>
+      ${rows.length ? `<div class="st-list">${moverRows(H, rows, 5, sub)}</div>` : '<p class="mut">—</p>'}</div>`;
+  }
   function market(H) {
     ensureList(H);
-    if (!S.idxLoadedKick) { S.idxLoadedKick = true; Promise.all(FEATURED.map(s => ensureIdxH(s, H, true))).then(() => H.render()); }
     return H.head("Stocks") + stale() + reg("mk-bar", () => barHtml("Index values and movers"), barSig) +
-      `<div class="st-grid">${reg("mk-idx", () => idxCardsHtml(H))}${reg("mk-ad", () => adHtml(H))}${reg("mk-mov", () => marketMovers(H))}</div>` + foot(H);
+      `<div class="st-grid">${reg("mk-idx", () => idxCardsHtml(H))}${reg("mk-fii", () => fiiHtml(H))}${reg("mk-gain", () => dashSec(H, "gain"))}${reg("mk-loss", () => dashSec(H, "loss"))}${reg("mk-vol", () => dashSec(H, "vol"))}
+      <div class="st-g2">${reg("mk-hi", () => plainSec(H, "hi"))}${reg("mk-lo", () => plainSec(H, "lo"))}</div></div>` +
+      foot(H, S.caps ? ` Large, Mid and Small are the constituents of ${CAPD.L}, ${CAPD.M} and ${CAPD.S} (NSE, as of ${H.esc(H.fmtD(S.caps.u))}); stocks outside these three lists are not shown in these rows (see "See more" for all stocks).` : "");
+  }
+
+  // ---------- sub pages: all indices, FII / DII history ----------
+  const allIdxCard = H => {
+    const lv = liveOn(), all = S.idxList ? S.idxList.rows : [];
+    if (!all.length) return `<div class="card"><p class="mut">Index data is not available right now.</p></div>`;
+    const list = all.map(r => { const L = lix(r[1]), live = !!(L && isNum(L.last)); return `<button class="st-ixr" data-m="stocks" data-act="openidx" data-slug="${H.esc(r[0])}"><span class="st-ixrn">${H.esc(r[1])}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(live ? L.last : r[2])}</b>${pill(live ? L.pct : r[4])}</button>`; }).join("");
+    return `<div class="card"><div class="st-ch-h"><h2>${ic("chart-bar")} All indices</h2><span class="mut sm">${all.length} indices · ${lv ? snapTag(H) : "End of day, " + H.esc(H.fmtD(S.idxList.date))}</span></div><div class="st-ixl">${list}</div></div>`;
+  };
+  function indicesPage(H) {
+    return H.head("All indices") + stale() + reg("ix-bar", () => barHtml("Index values"), barSig) + reg("ix-all", () => allIdxCard(H)) +
+      `<p class="mut sm st-foot">${lv0() ? "Levels from the live snapshot of NSE's public website data; an index missing from it shows its end-of-day level, marked EOD." : "Closing levels from NSE India."} BSE Sensex and Bankex are not available. ${H.esc(DISC)}</p>`;
+  }
+  const lv0 = () => liveOn();
+  function fiiPage(H) {
+    const rows = S.fii && S.fii.rows ? S.fii.rows.slice(0, 30) : [];
+    const n = x => isNum(x) ? nf(x, 2) : "—", c = x => `<span class="${cls(x)}">${isNum(x) ? (x > 0 ? "+" : "") + nf(x, 2) : "—"}</span>`;
+    const body = rows.length ? H.tbl(["Date", "FII buy", "FII sell", "FII net", "DII buy", "DII sell", "DII net"], rows.map(r => [H.esc(H.fmtD(r.d)), n(r.fb), n(r.fs), c(r.fn), n(r.db), n(r.ds), c(r.dn)]))
+      : '<div class="st-msg"><p><b>No FII / DII data yet.</b></p></div>';
+    return H.head("FII &amp; DII") + stale() + `<div class="card"><div class="st-ch-h"><h2>${ic("building-bank")} Net FII &amp; DII</h2><span class="mut sm">${rows.length} day${rows.length === 1 ? "" : "s"} · ₹ crore</span></div>${body}</div>
+      <p class="mut sm st-foot">Provisional data published by NSE after market hours; cash market, ₹ crore. FII = foreign institutional / portfolio investors, DII = domestic institutional investors. Net = buy value minus sell value. The list grows by one day each trading day (NSE publishes only the latest day). ${H.esc(DISC)}</p>`;
   }
 
   // ---------- Movers ----------
   const moversCard = (H, k) => {
-    const L = k === "deliv" ? null : moverSrc(H), m = L || S.movers, rows = Array.isArray(m[k]) ? m[k] : [];
+    const cap = S.caps && CAPK.includes(k) ? S.mcap : "A";
+    let res;
+    if (CAPK.includes(k)) res = listFor(k, cap);
+    else { const L = k === "deliv" ? null : moverSrc(H), m = L || S.movers; res = { rows: Array.isArray(m[k]) ? m[k] : [], live: !!L, n: L && L.n }; }
+    const rows = res.rows, live = !!res.live;
     const sub = (r, l) => k === "deliv" ? `Delivery ${isNum(r[5]) ? nf(r[5], 1) + "%" : "—"} · ${subValue(r, l)}`
       : k === "hi" ? `${isNum(r[6]) ? nf(r[6], 1) + "% below 52W high" : "—"} · ${subValue(r, l)}`
       : k === "lo" ? `${isNum(r[6]) ? nf(r[6], 1) + "% above 52W low" : "—"} · ${subValue(r, l)}`
       : subValue(r, l);
     const shown = Math.min(S.shown, rows.length);
-    const body = rows.length ? `<div class="st-list">${moverRows(H, rows, shown, sub, true)}</div>${rows.length > shown ? `<button class="btn ghost st-more" data-m="stocks" data-act="more">Show more (${rows.length - shown} more)</button>` : ""}` : `<div class="st-msg"><p><b>No stocks in this list.</b></p><p class="mut sm">Nothing matched for the latest ${L ? "snapshot" : "trade date"}.</p></div>`;
-    const note = L ? NOTE_LIVE[k] : NOTE[k];
-    return `<div class="card"><div class="st-ch-h"><h2>${H.esc(LISTS.find(l => l[0] === k)[1])}</h2><span class="mut sm">${rows.length} stocks</span></div><p class="tl-sec">${srcLabel(H, L)}</p><p class="mut sm st-note2">${H.esc(note)}</p>${body}</div>`;
+    const body = res.fail ? retryBox("The stock list could not be loaded.", "retrylist") : res.pend ? skelRows(6)
+      : rows.length ? `<div class="st-list">${moverRows(H, rows, shown, sub)}</div>${rows.length > shown ? `<button class="btn ghost st-more" data-m="stocks" data-act="more">Show more (${rows.length - shown} more)</button>` : ""}` : `<div class="st-msg"><p><b>No stocks in this list.</b></p><p class="mut sm">Nothing matched for the latest ${live ? "snapshot" : "trade date"}.</p></div>`;
+    const note = (live ? NOTE_LIVE : NOTE)[k] || NOTE[k];
+    const chips = S.caps && CAPK.includes(k) ? `<div class="st-cp st-cp-m" role="group" aria-label="Market cap">${["A", "L", "M", "S"].map(c => `<button class="${c === cap ? "on" : ""}" data-m="stocks" data-act="mcap" data-c="${c}" aria-pressed="${c === cap}">${CAPN[c]}</button>`).join("")}</div>` : "";
+    const lineTxt = CAPK.includes(k) ? capLine(H, res, cap) : srcLabel(H, live ? { n: res.n } : null);
+    const capNote = CAPK.includes(k) && S.caps ? ` Large, Mid and Small are the constituents of ${CAPD.L}, ${CAPD.M} and ${CAPD.S} (NSE, as of ${H.esc(H.fmtD(S.caps.u))}); stocks outside these lists appear only under All.` : "";
+    return `<div class="card"><div class="st-ch-h"><h2>${H.esc(TITLES[k])}</h2><span class="mut sm">${res.pend || res.fail ? "" : rows.length + " stocks"}</span></div>${chips}<p class="tl-sec">${lineTxt}</p><p class="mut sm st-note2">${H.esc(note)}${capNote}</p>${body}</div>`;
   };
   function movers(H) {
     ensureList(H);
@@ -422,7 +488,7 @@
     } else {
       const all = match(S.q), res = all.slice(0, 50);
       body = res.length ? `<p class="mut sm st-cnt">${all.length} match${all.length === 1 ? "" : "es"}${all.length > 50 ? ", showing the first 50. Type more letters to narrow down." : ""}</p><div class="st-list">${res.map(([, r]) =>
-        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}`, spark: cachedCloses(r[0], 20) })).join("")}</div>`
+        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}` })).join("")}</div>`
         : `<div class="st-msg"><p><b>No stock matches that search.</b></p><p class="mut sm">Try the stock symbol or fewer letters.</p></div>`;
     }
     return H.head("Stocks") + stale() + `<div class="card st-sc"><label class="st-sin">${ic("search")}<input id="st-q" type="search" data-m="stocks" placeholder="Search symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search stocks" value="${H.esc(S.q)}" maxlength="40"></label>${body}</div>` + foot(H);
@@ -441,7 +507,7 @@
       if (need.length) Promise.all(need.map(s => ensureHist(s, H, true))).then(() => H.render());
       body = `<div class="st-list">${w.map(sym => {
         const r = S.listBy.get(sym);
-        return r ? stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}`, spark: cachedCloses(sym, 30), sp2: true, remove: true })
+        return r ? stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}`, remove: true })
           : stockRow(H, { sym, name: "Not in the latest data", price: null, chg: null, remove: true });
       }).join("")}</div>`;
     }
@@ -643,11 +709,14 @@
       setReg("ix-hero", () => indexHero(H, c)); setReg("ix-det", () => indexDet(H, c)); setReg("ix-mov", () => indexMovers(H));
       const cp = indexChartP(H, c, slug); if (cp.st === "ok" && window.TrendyCharts) { ensureCfg("st-idx-" + slug, cp); mount(); }
       ivPatch(H, cp);
+    } else if (sub === "indices") {
+      setReg("ix-bar", () => barHtml("Index values"), barSig); setReg("ix-all", () => allIdxCard(H));
     } else if (tab === "movers") {
       const k = LISTS.some(l => l[0] === S.k) ? S.k : "gain";
       setReg("mv-bar", () => barHtml("Gainers, losers, most active and 52-week lists"), barSig); setReg("mv-list", () => moversCard(H, k));
     } else if (tab === "market" || !tab) {
-      setReg("mk-bar", () => barHtml("Index values and movers"), barSig); setReg("mk-idx", () => idxCardsHtml(H)); setReg("mk-ad", () => adHtml(H)); setReg("mk-mov", () => marketMovers(H));
+      setReg("mk-bar", () => barHtml("Index values and movers"), barSig); setReg("mk-idx", () => idxCardsHtml(H));
+      ["gain", "loss", "vol"].forEach(k => setReg("mk-" + k, () => dashSec(H, k))); ["hi", "lo"].forEach(k => setReg("mk-" + k, () => plainSec(H, k)));
     }
   }
 
@@ -679,6 +748,8 @@
         if (S.status !== "ok") return state(H);
         if (typeof sub === "string" && sub.startsWith("stock:")) return stockPage(sub.slice(6), H);
         if (typeof sub === "string" && sub.startsWith("idx:")) return indexPage(sub.slice(4), H);
+        if (sub === "indices") return indicesPage(H);
+        if (sub === "fiidii") return fiiPage(H);
         if (tab === "movers") return movers(H);
         if (tab === "watch") return watch(H);
         if (tab === "search") return search(H);
@@ -701,11 +772,15 @@
       if (a === "list" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; H.render(); return true; }
       if (a === "more") { S.shown = 100; H.render(); return true; }
       if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; H.go("stocks", "movers"); return true; }
-      if (a === "allidx") { S.allIdx = !S.allIdx; H.render(); return true; }
+      if (a === "allidx") { H.setSub("indices"); return true; }
+      if (a === "fiidii") { H.setSub("fiidii"); return true; }
+      if (a === "dcap" && ["gain", "loss", "vol"].includes(el.dataset.k) && ["L", "M", "S"].includes(el.dataset.c)) { const k = el.dataset.k; S.dcap[k] = el.dataset.c; setReg("mk-" + k, () => dashSec(H, k)); return true; }
+      if (a === "mcap" && ["A", "L", "M", "S"].includes(el.dataset.c)) { S.mcap = el.dataset.c; S.shown = 20; H.render(); return true; }
+      if (a === "seemore" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; if (CAPK.includes(S.k)) S.mcap = ["L", "M", "S"].includes(el.dataset.c) ? el.dataset.c : "A"; H.go("stocks", "movers"); return true; }
       if (a === "view") { S.cv = el.dataset.v === "intraday" ? "intraday" : "daily"; H.render(); return true; }
       if (a === "gosearch") { H.go("stocks", "search"); return true; }
       if (a === "recentclear") { H.store.set("st_recent", []); H.render(); return true; }
-      if (a === "retry") { S.idxLoadedKick = false; loadCore(H); return true; }
+      if (a === "retry") { loadCore(H); return true; }
       if (a === "retrylist") { S.listStatus = "idle"; ensureList(H); H.render(); return true; }
       if (a === "retrychunk" && symOk(sym)) { S.chunkStatus[chunkKey(sym)] = "idle"; ensureChunk(sym, H); H.render(); return true; }
       if (a === "retryhist" && symOk(sym)) { delete S.hist[sym]; ensureHist(sym, H); H.render(); return true; }

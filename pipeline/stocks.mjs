@@ -6,13 +6,16 @@
 //   content/equities/EQUITY_L.csv                     company names, ISIN, listing date, face value
 // Output:
 //   meta.json    source, tradeDate, generatedAt, counts, known non-trading days
-//   list.json    compact all-stocks array for Search
+//   list.json    compact all-stocks array for Search and the dashboard (symbol,name,series,close,chgPct,volume,valueCr,prevClose)
 //   movers.json  precomputed top lists (gainers, losers, most active, delivery, 52w high / low)
 //   index.json   index table (latest day)
 //   d/<K>.json   per first-letter chunks: details of every stock + rolling close history + stats of the most traded stocks
 //   h/<SYMBOL>.json   OHLCV history (260 trading days, split/bonus adjusted) of the tracked stocks, compact columns (schema below)
 //   h/README.txt      the same schema documentation as text
 //   idx/<slug>.json   OHLC(+volume) history of NSE indices from ind_close_all (same compact schema)
+//   caps.json    {u, L:[symbols], M:[...], S:[...]} NIFTY 100 / MIDCAP 150 / SMALLCAP 250 constituents (content/indices/ind_*list.csv), refreshed weekly
+//   fiidii.json  {u, rows:[{d, fb, fs, fn, db, ds, dn}]} FII/FPI and DII cash-market buy / sell / net (Rs crore) per day, newest first, 60 days; NSE api/fiidiiTradeReact
+//                gives only the latest day, so the file accumulates one row per run that sees a new date (no history source exists)
 //   idx/index.json    list of the history indices: slug, name, last close, change, change %
 //
 // ===== Compact history schema (h/<SYMBOL>.json and idx/<slug>.json) =====
@@ -251,6 +254,68 @@ function splitFactor(r) {
   return best;
 }
 
+// ---------- caps classification (NIFTY 100 / MIDCAP 150 / SMALLCAP 250 constituents) -> caps.json, refreshed at most weekly ----------
+async function capsStep() {
+  const f = path.join(OUT, "caps.json"), old = await readJson(f), todayIso = istToday();
+  if (old?.u && dayDiff(old.u, todayIso) < 7 && !process.env.STOCKS_CAPS_FORCE && ["L", "M", "S"].every(k => Array.isArray(old[k]))) { console.log(`Caps: ${old.u} is recent (L ${old.L.length}, M ${old.M.length}, S ${old.S.length}), not refreshed.`); return; }
+  const files = { L: ["ind_nifty100list.csv", 90, 110], M: ["ind_niftymidcap150list.csv", 140, 160], S: ["ind_niftysmallcap250list.csv", 235, 260] };
+  const out = { u: todayIso };
+  for (const [k, [fn, lo, hi]] of Object.entries(files)) {
+    const r = await getRetry(BASE + "content/indices/" + fn);
+    if (r.status !== 200) { console.log(`Caps: ${fn} not available (${r.status}${r.err ? " " + r.err : ""}), keeping the old file.`); return; }
+    const lines = r.text.split(/\r?\n/).filter(Boolean), head = csvLine(lines[0] || "").map(h => h.toLowerCase()), si = head.indexOf("symbol"), se = head.indexOf("series");
+    if (si < 0) { console.log(`Caps: ${fn} has an unexpected header, keeping the old file.`); return; }
+    const syms = [];
+    for (const line of lines.slice(1)) { const c = csvLine(line), s = c[si]; if (/^[A-Z0-9&_.$-]{1,20}$/.test(s) && (se < 0 || !c[se] || c[se] === "EQ") && !syms.includes(s)) syms.push(s); }
+    if (syms.length < lo || syms.length > hi) { console.log(`Caps: ${fn} has ${syms.length} symbols (expected ${lo}-${hi}), keeping the old file.`); return; }
+    out[k] = syms.sort();
+  }
+  const seen = new Map();
+  for (const k of ["L", "M", "S"]) for (const s of out[k]) { if (seen.has(s)) { console.log(`Caps: ${s} is in two lists (${seen.get(s)} and ${k}), keeping the old file.`); return; } seen.set(s, k); }
+  await writeJson(f, out);
+  console.log(`Caps: L ${out.L.length}, M ${out.M.length}, S ${out.S.length} (${out.u})`);
+}
+// ---------- FII / DII cash-market flows (NSE fiidiiTradeReact: latest day only) -> fiidii.json, newest first, 60 days ----------
+async function fiidiiStep() {
+  const f = path.join(OUT, "fiidii.json"), old = await readJson(f);
+  const hasOld = old && Array.isArray(old.rows);
+  const rows = hasOld ? old.rows.filter(r => r && /^\d{4}-\d{2}-\d{2}$/.test(r.d) && ["fb", "fs", "fn", "db", "ds", "dn"].every(k => Number.isFinite(r[k]))) : [];
+  let j = null;
+  try {
+    const H = { "user-agent": UA, "accept-language": "en-US,en;q=0.9" }, jar = new Map();
+    const keep = r => { for (const c of r.headers.getSetCookie?.() || []) { const kv = c.split(";")[0], i = kv.indexOf("="); if (i > 0) jar.set(kv.slice(0, i).trim(), kv.slice(i + 1)); } };
+    const ck = () => [...jar].map(([k, v]) => `${k}=${v}`).join("; ");
+    for (let k = 0; k < 3 && !j; k++) {
+      jar.clear();
+      const r0 = await fetch("https://www.nseindia.com/reports/fii-dii", { headers: { ...H, accept: "text/html,application/xhtml+xml" }, signal: AbortSignal.timeout(20000) });
+      keep(r0); await r0.arrayBuffer().catch(() => {});
+      const r = await fetch("https://www.nseindia.com/api/fiidiiTradeReact", { headers: { ...H, accept: "application/json, text/plain, */*", cookie: ck(), referer: "https://www.nseindia.com/reports/fii-dii" }, signal: AbortSignal.timeout(20000) });
+      if (r.ok) { try { j = await r.json(); } catch {} }
+      if (!j) await sleep(1500 * (k + 1));
+    }
+  } catch (e) { console.log("FII/DII: request failed (" + String(e.message || e).slice(0, 80) + ")"); }
+  if (!Array.isArray(j)) { console.log("FII/DII: no data from NSE, keeping the old file."); return; }
+  const pick = re => j.find(x => x && re.test(String(x.category)));
+  const fii = pick(/^FII/i), dii = pick(/^DII/i);
+  if (!fii || !dii) { console.log("FII/DII: unexpected answer, keeping the old file."); return; }
+  const d = parseDate(fii.date), d2 = parseDate(dii.date);
+  const v = x => { const n = Number(x); return Number.isFinite(n) && Math.abs(n) < 1e6 ? n : null; };
+  const [fb, fs_, fn, db, ds, dn] = [v(fii.buyValue), v(fii.sellValue), v(fii.netValue), v(dii.buyValue), v(dii.sellValue), v(dii.netValue)];
+  if (!d || d !== d2 || [fb, fs_, fn, db, ds, dn].some(x => x === null) || fb < 0 || fs_ < 0 || db < 0 || ds < 0 || Math.abs(fb - fs_ - fn) > 0.1 || Math.abs(db - ds - dn) > 0.1) { console.log("FII/DII: failed validation, keeping the old file."); return; }
+  const today = istToday();
+  if (d > today || dayDiff(d, today) > 10) { console.log(`FII/DII: date ${d} is not plausible, keeping the old file.`); return; }
+  const row = { d, fb: r2(fb), fs: r2(fs_), fn: r2(fn), db: r2(db), ds: r2(ds), dn: r2(dn) };
+  const at = rows.findIndex(r => r.d === d);
+  if (at >= 0) { if (JSON.stringify(rows[at]) === JSON.stringify(row)) { console.log(`FII/DII: ${d} already stored (${rows.length} days).`); return; } rows[at] = row; }
+  else if (rows.length && d < rows[0].d) { console.log(`FII/DII: ${d} is older than the stored ${rows[0].d}, ignored.`); return; }
+  else rows.unshift(row);
+  rows.sort((a, b) => a.d < b.d ? 1 : -1);
+  await writeJson(f, { u: rows[0].d, src: "NSE fiidiiTradeReact (provisional, cash market, Rs crore)", rows: rows.slice(0, 60) });
+  console.log(`FII/DII: ${d} FII net ${row.fn}, DII net ${row.dn} (${Math.min(rows.length, 60)} days stored)`);
+}
+try { await capsStep(); } catch (e) { console.log("Caps: error " + (e.message || e)); }
+try { await fiidiiStep(); } catch (e) { console.log("FII/DII: error " + (e.message || e)); }
+
 // ---------- load stored state (the h/ files are the stored OHLCV history) ----------
 const meta = await readJson(path.join(OUT, "meta.json"));
 const chunkKeys = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ0"];
@@ -360,7 +425,7 @@ for (let d = today, n = 0; n < (lastStored ? 400 : 12); d = addDays(d, -1), n++)
 if (!lastStored) {                                                 // find the latest published day first
   for (const d of newer) { const r = await fetchDay(d); if (r.p) { days.set(d, r.p); break; } if (r.none) newNoData.add(d); }
 } else await fetchMany(newer);
-if (!days.size && lastStored && stored.dates.length < TARGET_DAYS) { const r = await fetchDay(lastStored); if (r.p) days.set(lastStored, r.p); }   // history still short: keep back-filling
+if (!days.size && lastStored && (stored.dates.length < TARGET_DAYS || process.env.STOCKS_FORCE)) { const r = await fetchDay(lastStored); if (r.p) days.set(lastStored, r.p); }   // history still short: keep back-filling
 if (!days.size) {
   if (lastStored) {
     console.log(`Stocks: no newer day than ${lastStored} published yet. Nothing to do for the stock history.`);
@@ -556,7 +621,7 @@ for (const [sym, r] of latestDay.rows) {
   const h = hist ? finalDates.map(d => hist.get(d)?.[3] ?? null) : null;
   (chunks[key] ||= {})[sym] = [info?.name || sym, info?.isin || null, r.ser, r.open, r.high, r.low, r.prev, r.close, r.qty, r.turn, r.trades, r.dq, r.dp,
     w ? w.hi : null, w ? w.hid : null, w ? w.lo : null, w ? w.lod : null, info?.listed || null, info?.fv ?? null, h && h.some(x => x != null) ? h : null, statsOf(sym)];
-  listRows.push([sym, info?.name || sym, r.ser, r.close, chg, r.qty, valueCr]);
+  listRows.push([sym, info?.name || sym, r.ser, r.close, chg, r.qty, valueCr, r.prev]);
 }
 const liquid = L.filter(x => x.ser === "EQ" && x.valueCr >= MIN_VALUE_CR);
 const top = (arr, n, cmp) => arr.slice().sort(cmp).slice(0, n);
@@ -573,7 +638,7 @@ const movers = {
   hi: hiList, lo: loList,
 };
 const counts = { rows: latestDay.rows.size, eq: eqRows.length, dropped: latestDay.dropped, tracked: tracked.size, days: finalDates.length, indices: idx?.rows.length || 0, with52w: L.filter(x => x.w).length, liquid: liquid.length };
-if (meta && latest === meta.tradeDate && !older.length && days.size <= 1) {
+if (meta && latest === meta.tradeDate && !older.length && days.size <= 1 && !process.env.STOCKS_FORCE) {
   console.log("Stocks: already up to date (" + latest + ").");
   await indexPhase(finalDates, today); process.exit(0);
 }
@@ -625,7 +690,7 @@ for (const k of chunkKeys) {
   if (chunks[k]) await writeJson(f, { tradeDate: latest, d: finalDates, f: "name,isin,series,open,high,low,prev,close,volume,valueLacs,trades,delivQty,delivPct,w52High,w52HighDate,w52Low,w52LowDate,listed,faceValue,hist,stats[ret1w,ret1m,ret3m,ret6m,ret1y,ret3y,avgVol20,turnoverRank]", s: chunks[k] });
   else await fs.rm(f, { force: true });
 }
-await writeJson(path.join(OUT, "list.json"), { tradeDate: latest, cols: "symbol,name,series,close,chgPct,volume,valueCr", rows: listRows.sort((a, b) => a[0] < b[0] ? -1 : 1) });
+await writeJson(path.join(OUT, "list.json"), { tradeDate: latest, cols: "symbol,name,series,close,chgPct,volume,valueCr,prevClose", rows: listRows.sort((a, b) => a[0] < b[0] ? -1 : 1) });
 await writeJson(path.join(OUT, "movers.json"), movers);
 if (idx && (!meta || idx.date >= (meta.indexDate || ""))) await writeJson(path.join(OUT, "index.json"), { date: idx.date, cols: "name,close,points,chgPct,open,high,low,pe", rows: idx.rows });
 await indexPhase(finalDates, today);
