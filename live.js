@@ -37,8 +37,9 @@
   function hhmm(ms) { var p = istParts(ms); return (p.h < 10 ? "0" : "") + p.h + ":" + (p.m < 10 ? "0" : "") + p.m; }
 
   // ---------------------------------------------------------------- fetching
-  function getJson(file, validate) {
-    var list = bases(), q = "?t=" + Math.floor(now() / 30000);
+  function getJson(file, validate, ver) {
+    // meta.json is polled with a 30 s cache-buster; the big files are asked by the snapshot's own version (?v=<fetchedAt>): the CDN edge keeps ONE copy per snapshot for everybody (fast), and a new snapshot is a new URL (never stale)
+    var list = bases(), q = ver ? "?v=" + encodeURIComponent(ver) : "?t=" + Math.floor(now() / 30000);
     var i = 0, off = S.baseIdx % list.length;
     function next(lastErr) {
       if (i >= list.length) return Promise.reject(lastErr || new Error("no source"));
@@ -164,7 +165,7 @@
     S.inflight = getJson("meta.json", okMeta).then(function (meta) {
       S.meta = meta; S.err = null;
       if (S.market && S.metaFetched === meta.fetchedAt) return S.market;
-      return getJson("market.json", okMarket).then(function (m) {
+      return getJson("market.json", okMarket, meta.fetchedAt).then(function (m) {
         var changed = !S.market || S.market.meta.fetchedAt !== m.meta.fetchedAt;
         S.metaFetched = meta.fetchedAt; ingest(m);
         if (changed) { S.lastState = status().state; notify("data"); }
@@ -185,7 +186,7 @@
         var stamp = S.meta ? S.meta.fetchedAt : null;
         if (S.chains[sym] && S.chainFetched[sym] === stamp) return S.chains[sym];
         if (S.chainFlight[sym]) return S.chainFlight[sym];
-        var p = getJson("oc-" + encodeURIComponent(sym) + ".json", okChain).then(function (c) { S.chains[sym] = c; S.chainFetched[sym] = stamp; return c; })
+        var p = getJson("oc-" + encodeURIComponent(sym) + ".json", okChain, stamp).then(function (c) { S.chains[sym] = c; S.chainFetched[sym] = stamp; return c; })
           .catch(function () { return S.chains[sym] || null; })
           .then(function (r) { delete S.chainFlight[sym]; return r; });
         S.chainFlight[sym] = p; return p;
