@@ -1,6 +1,6 @@
 name: Live market snapshot
 
-# Near-live NSE snapshot (indices, ~500 stocks, index option chains) about every 100 seconds during Indian market hours. NOT real-time ticks.
+# Near-live NSE snapshot (indices, ~500 stocks) about every 100 seconds during Indian market hours. NOT real-time ticks.
 # A run: fetch -> validate -> publish the files as ONE orphan commit force-pushed to the branch "live" (so the repo never grows)
 #        -> purge jsDelivr -> wait until ~100 s after the run started -> start the next run itself (self-restarting chain, like refresh.yml).
 # GitHub's own cron is only a kick-off in case the chain stopped (a failed run, a GitHub hiccup). Details: docs/LIVE.md
@@ -117,7 +117,7 @@ jobs:
         continue-on-error: true
         run: |
           [ -f _live/meta.json ] || { echo "Nothing was published."; exit 0; }
-          for f in meta.json market.json intraday.json oc-NIFTY.json oc-BANKNIFTY.json oc-FINNIFTY.json oc-MIDCPNIFTY.json; do
+          for f in meta.json market.json intraday.json; do
             curl -s -m 15 -o /dev/null -w "purge $f: HTTP %{http_code}\n" "https://purge.jsdelivr.net/gh/${{ github.repository }}@live/$f" || true
           done
 

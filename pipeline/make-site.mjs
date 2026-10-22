@@ -8,15 +8,15 @@ const out = path.resolve(ROOT, process.argv[2] || "_site");
 await fs.rm(out, { recursive: true, force: true });
 await fs.mkdir(path.join(out, "data", "logos"), { recursive: true });
 await fs.mkdir(path.join(out, "icons"), { recursive: true });
-for (const f of ["index.html", "style.css", "theme.css", "mod-stocks.css", "mod-fno.css", "mod-mf.css", "app.js", "charts.js", "live.js", "app-stocks.js", "app-fno.js", "app-mf.js", "boot.js", "analytics.js", "sw.js", "manifest.webmanifest"]) await fs.copyFile(path.join(ROOT, f), path.join(out, f));
+for (const f of ["index.html", "style.css", "theme.css", "mod-stocks.css", "mod-mf.css", "app.js", "charts.js", "live.js", "app-stocks.js", "app-mf.js", "boot.js", "analytics.js", "sw.js", "manifest.webmanifest"]) await fs.copyFile(path.join(ROOT, f), path.join(out, f));
 for (const f of await fs.readdir(path.join(ROOT, "icons"))) await fs.copyFile(path.join(ROOT, "icons", f), path.join(out, "icons", f));
 await fs.mkdir(path.join(out, "fonts"), { recursive: true });
 for (const f of await fs.readdir(path.join(ROOT, "fonts"))) await fs.copyFile(path.join(ROOT, "fonts", f), path.join(out, "fonts", f));
 for (const f of await fs.readdir(path.join(ROOT, "data", "logos")).catch(() => [])) await fs.copyFile(path.join(ROOT, "data", "logos", f), path.join(out, "data", "logos", f));
 await fs.copyFile(path.join(ROOT, "data", "ipos.json"), path.join(out, "data", "ipos.json"));
-// data of the other modules (Stocks, F&O, Mutual Fund): whole folders, if they exist
+// data of the other modules (Stocks, Mutual Fund): whole folders, if they exist
 async function copyTree(a, b) { await fs.mkdir(b, { recursive: true }); for (const e of await fs.readdir(a, { withFileTypes: true })) e.isDirectory() ? await copyTree(path.join(a, e.name), path.join(b, e.name)) : await fs.copyFile(path.join(a, e.name), path.join(b, e.name)); }
-for (const d of ["stocks", "fno", "mf"]) await copyTree(path.join(ROOT, "data", d), path.join(out, "data", d)).catch(() => {});
+for (const d of ["stocks", "mf"]) await copyTree(path.join(ROOT, "data", d), path.join(out, "data", d)).catch(() => {});
 // clickjacking guard: GitHub Pages cannot send frame-ancestors, so the page refuses to run inside someone else's frame
 const GUARD = [
   'if (window.top !== window.self) {',

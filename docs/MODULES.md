@@ -1,4 +1,4 @@
-# Module API (Stocks, F&O, Mutual Fund)
+# Module API (Stocks, Mutual Fund)
 
 Trendy is a static vanilla-JS app (no build step, no framework). `app.js` is the shell; each extra module is one file `app-<id>.js` that registers itself, and a Node script `pipeline/<id>.mjs` that fetches its data from official free sources into `data/<id>/` (JSON files, committed by a GitHub workflow). The app only reads those JSON files with `fetch("data/<id>/...")`.
 
@@ -28,7 +28,7 @@ Trendy is a static vanilla-JS app (no build step, no framework). `app.js` is the
   };
 })();
 ```
-Tab ids are fixed (the shell and the bottom bar know them): stocks: market, movers, watch, search; fno: overview, chain, oi, lots; mf: funds, compare, sip, watch.
+Tab ids are fixed (the shell and the bottom bar know them): stocks: market, movers, watch, search; mf: funds, compare, sip, watch.
 `render` runs on every re-render (typing in a search box re-renders; keep input focus by giving the input an `id` — the shell restores focus and caret for inputs with an id). Keep UI state (selected fund, query, filters) in a module-local object, not in the DOM.
 
 ## Host API `H`
@@ -39,3 +39,5 @@ Plain Node 22 ESM, no npm packages (use built-in `fetch`; for NSE archive files 
 
 ## Local testing
 Serve the repo folder with any static server (for example `node -e` with `http`, port of your choice, **not 8740**) and open it with the Playwright browser tools (`file:` URLs are blocked, use `http://127.0.0.1:<port>/`). Test: opens without console errors, every tab, every detail page, the Back arrow and `history.back()` from each detail page, the tab strip, 320 px and 1366 px widths, dark mode (`document.documentElement.dataset.theme = "dark"`), search/filter inputs, and "no data / fetch failed" states (rename the data file temporarily).
+
+The F&O module (app-fno.js, mod-fno.css, pipeline/fno.mjs, data/fno/) was removed in Oct 2026. The shell treats a saved `modLast` key or a history step of an unknown module (e.g. `fno:overview`) as the IPO home (`MODS` / `fixTab` in app.js), so old installs keep working.

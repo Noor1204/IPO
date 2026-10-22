@@ -25,12 +25,12 @@ Interaction: hover / touch-drag crosshair (page still scrolls vertically; tap sh
 ## `TrendyCharts.line(container, opts)`
 ```js
 TrendyCharts.line(el, {
-  title: "PCR trend", subtitle: "Nifty", height: 280,
+  title: "NAV vs benchmark", subtitle: "Example fund", height: 280,
   ranges: ["1M","3M","All"],      // optional chips (omit for none); range: "All"
-  baseline: 1,                    // optional dashed line
+  baseline: 100,                  // optional dashed line
   series: [
-    {name: "PCR", data: [["2026-09-01", 0.92], ...], axis: "left",  fill: true, format: v => v.toFixed(2), color: "#6366f1"},
-    {name: "Total OI", data: [...], axis: "right", color: "#f59e0b"}   // different axis => dual axis
+    {name: "NAV", data: [["2026-09-01", 98.2], ...], axis: "left",  fill: true, format: v => v.toFixed(2), color: "#6366f1"},
+    {name: "Benchmark", data: [...], axis: "right", color: "#f59e0b"}   // different axis => dual axis
   ]
 });
 ```

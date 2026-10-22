@@ -4,11 +4,9 @@
 //   /api/allIndices                                      all indices (levels, change, P/E ...)
 //   /api/NextApi/apiClient/marketWatchApi?functionName=getIndicesData&symbol=NIFTY 500 | SECURITIES IN F&O   live stock quotes
 //        (the old /api/equity-stockIndices answers 404 "Resource not found" now; this is what nseindia.com/market-data/live-equity-market calls)
-//   /api/option-chain-contract-info?symbol=X             expiry list (only when the stored list is stale)
-//   /api/option-chain-v3?type=Indices&symbol=X&expiry=D  option chain of one expiry (the old /api/option-chain-indices answers 404 now)
-// Output (env LIVE_OUT, default _live/): meta.json (tiny, polled first), market.json, oc-<SYMBOL>.json, intraday.json (today's price per snapshot, see below)
-// Env: LIVE_PREV = directory with the previous snapshot (row-count guard, expiry cache); LIVE_BUDGET_MS (default 100000);
-//      LIVE_FAULT = fault injection for tests: stocks-short | bad-number | future | chain-short | nse-down | closed (intraday step sees state Closed)
+// Output (env LIVE_OUT, default _live/): meta.json (tiny, polled first), market.json, intraday.json (today's price per snapshot, see below)
+// Env: LIVE_PREV = directory with the previous snapshot (row-count guard, intraday history); LIVE_BUDGET_MS (default 100000);
+//      LIVE_FAULT = fault injection for tests: stocks-short | bad-number | future | nse-down | closed (intraday step sees state Closed)
 //      LIVE_TEST_ASON / LIVE_TEST_TODAY = intraday step sees this asOn / IST date instead (tests of the append rules only)
 // Exit codes: 0 written, 3 refused (fetch/validation failed: NOTHING is written, keep the previous snapshot), 1 crash.
 import fs from "node:fs";
@@ -23,7 +21,6 @@ const SCHEMA = 1;
 const UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
 const BASE = "https://www.nseindia.com";
 const PAGE = BASE + "/market-data/live-equity-market";
-const CHAIN_SYMBOLS = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY"];
 const sleep = ms => new Promise(r => setTimeout(r, ms));
 const log = (...a) => console.log(`[live +${((Date.now() - T0) / 1000).toFixed(1)}s]`, ...a);
 
@@ -70,7 +67,6 @@ async function api(p, { tries = 3, pace = 350 } = {}) {
 // ---------------------------------------------------------------- helpers
 const num = x => (x === null || x === undefined || x === "" || x === "-" ? null : Number.isFinite(+x) ? +x : null);
 const rnd = (x, d = 2) => (x === null ? null : Math.round(x * 10 ** d) / 10 ** d);
-const r3 = x => Math.round(x * 1000) / 1000;
 const MON = { jan: 0, feb: 1, mar: 2, apr: 3, may: 4, jun: 5, jul: 6, aug: 7, sep: 8, oct: 9, nov: 10, dec: 11 };
 const p2 = n => String(n).padStart(2, "0");
 // "21-Oct-2026 15:40:00" | "2026-10-21 15:40:31" | "21-Oct-2026" -> "2026-10-21T15:40:00+05:30" (NSE times are IST)
@@ -81,30 +77,11 @@ function istIso(s) {
   return null;
 }
 const istNow = () => new Date(Date.now() + 5.5 * 36e5).toISOString().slice(0, 10);          // today's date in IST
-function expiryIso(s) { const m = String(s).match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})$/); return m && MON[m[2].toLowerCase()] !== undefined ? `${m[3]}-${p2(MON[m[2].toLowerCase()] + 1)}-${p2(m[1])}` : null; }
 function weekdaysBetween(isoDay, nowDay) {                                                 // weekdays in (isoDay, nowDay]
   let n = 0; for (let d = new Date(isoDay + "T00:00:00Z"); ;) { d = new Date(d.getTime() + 864e5); if (d.toISOString().slice(0, 10) > nowDay) break; const w = d.getUTCDay(); if (w !== 0 && w !== 6) n++; } return n;
 }
 const readPrevRaw = f => { if (!PREV) return null; try { return fs.readFileSync(path.join(PREV, f), "utf8"); } catch { return null; } };
 const readPrev = f => { if (!PREV) return null; try { return JSON.parse(fs.readFileSync(path.join(PREV, f), "utf8")); } catch { return null; } };
-
-// ---------------------------------------------------------------- max pain / totals (same definitions as pipeline/fno.mjs)
-// maxPain: strike at which the total payout by option writers (OI x intrinsic value, calls and puts) is lowest; a tie goes to the lowest strike.
-function maxPain(opts) {
-  const ks = [...opts.keys()].sort((a, b) => a - b);
-  let best = null, bestV = Infinity;
-  for (const K of ks) {
-    let v = 0;
-    for (const [k, o] of opts) { if (o.ce) v += o.ce.oi * Math.max(0, K - k); if (o.pe) v += o.pe.oi * Math.max(0, k - K); }
-    if (v < bestV) { bestV = v; best = K; }
-  }
-  return best;
-}
-function stats(opts) {
-  let coi = 0, poi = 0;
-  for (const o of opts.values()) { if (o.ce) coi += o.ce.oi; if (o.pe) poi += o.pe.oi; }
-  return { coi, poi, pcr: coi > 0 ? r3(poi / coi) : null, mp: opts.size ? maxPain(opts) : null };
-}
 
 // ---------------------------------------------------------------- parsers
 function parseStatus(j) {
@@ -142,26 +119,6 @@ function parseStocks(j500, jfo) {
   take(j500, false); take(jfo, true);
   return [...m.values()];
 }
-function parseChain(j, sym) {
-  const rec = j?.records;
-  if (!rec || !Array.isArray(rec.data)) return null;
-  const opts = new Map();
-  for (const r of rec.data) {
-    const k = num(r.strikePrice); if (k === null) continue;
-    const side = o => {
-      if (!o) return null;
-      const oi = num(o.openInterest), ltp = num(o.lastPrice);
-      if (oi === null || oi < 0) return null;
-      const iv = num(o.impliedVolatility);
-      return { oi, doi: num(o.changeinOpenInterest) ?? 0, vol: num(o.totalTradedVolume) ?? 0, iv: iv && iv > 0 ? rnd(iv) : null, ltp: ltp === null ? null : rnd(ltp) };
-    };
-    opts.set(k, { ce: side(r.CE), pe: side(r.PE) });
-  }
-  return { opts, und: num(rec.underlyingValue), ts: istIso(rec.timestamp), totCE: num(j.filtered?.CE?.totOI), totPE: num(j.filtered?.PE?.totOI) };
-}
-const OC_COLS = ["k", "coi", "cdoi", "cvol", "civ", "cltp", "poi", "pdoi", "pvol", "piv", "pltp"];
-const ocRow = (k, o) => [k, o.ce?.oi ?? null, o.ce?.doi ?? null, o.ce?.vol ?? null, o.ce?.iv ?? null, o.ce?.ltp ?? null, o.pe?.oi ?? null, o.pe?.doi ?? null, o.pe?.vol ?? null, o.pe?.iv ?? null, o.pe?.ltp ?? null];
-
 // ---------------------------------------------------------------- intraday.json (today's price per accepted snapshot, IST trading day only)
 // {"v":1,"day":"YYYY-MM-DD","t":[HHMM ints, strictly increasing],"s":{"<SYMBOL or index name>":[price per t | null]}}
 // Stocks: last traded price (c). Indices: last, only the groups the app shows an intraday chart for (the full list would not fit the size cap).
@@ -235,39 +192,10 @@ async function run() {
   const stockTimes = (j500?.data?.data || []).map(x => istIso(x?.lastUpdateTime)).filter(Boolean).sort();
   let asOn = asOnStr;
 
-  // option chains
-  const prevExp = {};
-  const chains = {};
-  for (const sym of CHAIN_SYMBOLS) {
-    const pc = readPrev(`oc-${sym}.json`);
-    let exps = pc?.expsAt === today && Array.isArray(pc.exps) ? pc.exps.filter(e => e >= today) : [];
-    if (exps.length < 2) {
-      const ci = await api("option-chain-contract-info?symbol=" + sym);
-      exps = (ci?.expiryDates || []).map(expiryIso).filter(Boolean).sort().filter(e => e >= today).slice(0, 6);
-      if (!exps.length) refuse(`${sym}: no expiry dates from NSE`);
-    }
-    const want = exps.slice(0, 2), kept = [];
-    let ts = null, und = null;
-    for (const e of want) {
-      const dd = new Date(e + "T00:00:00Z");
-      const label = `${p2(dd.getUTCDate())}-${Object.keys(MON)[dd.getUTCMonth()].replace(/^./, c => c.toUpperCase())}-${dd.getUTCFullYear()}`;
-      const c = parseChain(await api(`option-chain-v3?type=Indices&symbol=${sym}&expiry=${label}`), sym);
-      if (!c || c.opts.size === 0) { log(sym, e, "no strikes returned (expired or not started), skipped"); continue; }
-      const st = stats(c.opts);
-      if (c.totCE !== null && st.coi > 0 && Math.abs(st.coi - c.totCE) / st.coi > 0.05) refuse(`${sym} ${e}: call OI ${st.coi} differs from NSE's own total ${c.totCE}`);
-      if (c.totPE !== null && st.poi > 0 && Math.abs(st.poi - c.totPE) / st.poi > 0.05) refuse(`${sym} ${e}: put OI ${st.poi} differs from NSE's own total ${c.totPE}`);
-      const strikes = [...c.opts.keys()].sort((a, b) => a - b).map(k => ocRow(k, c.opts.get(k)));
-      kept.push({ e, coi: st.coi, poi: st.poi, pcr: st.pcr, mp: st.mp, n: strikes.length, strikes });
-      ts = ts || c.ts; und = und ?? c.und;
-    }
-    chains[sym] = { kept, ts, und, exps, today };
-  }
-
   // fault injection (tests): the validators below must catch each of these
   if (FAULT === "stocks-short") stocks = stocks.slice(0, 120);
   if (FAULT === "bad-number") for (let i = 0; i < 10; i++) stocks[i * 7][1] = i % 2 ? NaN : -5;
   if (FAULT === "future") asOn = new Date(Date.now() + 36e5 + 5.5 * 36e5).toISOString().replace(/\.\d+Z$/, "+05:30").replace("Z", "+05:30");
-  if (FAULT === "chain-short") chains.NIFTY.kept.forEach(k => { k.strikes = k.strikes.slice(0, 5); k.n = 5; });
 
   // ---------------------------------------------------------------- validation: nothing is written unless everything passes
   const prevMarket = readPrev("market.json");
@@ -300,24 +228,6 @@ async function run() {
     const pm = prevMarket?.meta?.asOn ? Date.parse(prevMarket.meta.asOn) : NaN;
     bad(!(Number.isFinite(pm) && asMs < pm), `asOn ${asOn} is older than the previous snapshot ${prevMarket?.meta?.asOn}`);
   }
-  for (const sym of CHAIN_SYMBOLS) {
-    const c = chains[sym], pc = readPrev(`oc-${sym}.json`);
-    bad(c.kept.length >= 1, `${sym}: no expiry with strikes`);
-    const first = c.kept[0];
-    if (!first) continue;
-    const prevN = pc?.expiries?.[0]?.e === first.e ? pc.expiries[0].n : null;
-    const minStrikes = prevN ? Math.ceil(prevN * 0.7) : 20;
-    for (const k of c.kept) {
-      bad(k.n >= (k === first ? minStrikes : 5), `${sym} ${k.e}: ${k.n} strikes < required ${k === first ? minStrikes : 5}`);   // later expiries (e.g. a far monthly) have few strikes
-      bad(k.coi > 0 && k.poi > 0 && finite(k.pcr) && k.pcr > 0.05 && k.pcr < 20, `${sym} ${k.e}: OI totals/PCR implausible (call ${k.coi}, put ${k.poi})`);
-      bad(finite(k.mp), `${sym} ${k.e}: max pain missing`);
-      let b = 0; for (const r of k.strikes) { if (!finite(r[0]) || r[0] <= 0 || [1, 3, 6, 8].some(i => r[i] !== null && !(finite(r[i]) && r[i] >= 0)) || [5, 10].some(i => r[i] !== null && !(finite(r[i]) && r[i] >= 0)) || [4, 9].some(i => r[i] !== null && !(finite(r[i]) && r[i] < 500))) b++; }
-      bad(b === 0, `${sym} ${k.e}: ${b} strike rows with bad numbers`);
-    }
-    bad(finite(c.und) && c.und > 100, `${sym}: underlying value missing`);
-    const t = c.ts ? Date.parse(c.ts) : NaN;
-    bad(Number.isFinite(t) && t <= nowMs + 5 * 60e3, `${sym}: chain timestamp missing or in the future (${c.ts})`);
-  }
   if (fails.length) { for (const f of fails) log("VALIDATION FAILED:", f); refuse(`${fails.length} validation problem(s); nothing written`); }
 
   // ---------------------------------------------------------------- build files
@@ -330,29 +240,17 @@ async function run() {
     low52: byPct((a, b) => (a[1] / a[11]) - (b[1] / b[11])).filter(s => { const r = stocks.find(x => x[0] === s); return r[11] && r[1] <= r[11] * 1.01; }),
   };
   const meta = { asOn, fetchedAt, marketStatus: { state: status.state, text: status.text }, quotesUpTo: stockTimes.at(-1) || null,
-    source: "NSE India public website data (unofficial). Delayed snapshot, not real-time ticks. Information only.", ivNote: "Implied volatility is as published by NSE" };
+    source: "NSE India public website data (unofficial). Delayed snapshot, not real-time ticks. Information only." };
   const market = { meta, idxCols: IDX_COLS, indices, cols: STK_COLS, colNotes: { tv: "traded value, Rs crore", y1: "1-year change %", m1: "30-day change %", fo: "1 = in F&O list", t: "quote time HH:MM IST" }, stocks, top };
   const files = { "market.json": JSON.stringify(market) };
-  const ocCounts = {};
-  for (const sym of CHAIN_SYMBOLS) {
-    const c = chains[sym];
-    const tot = c.kept.reduce((a, k) => ({ coi: a.coi + k.coi, poi: a.poi + k.poi }), { coi: 0, poi: 0 });
-    ocCounts[sym] = c.kept.reduce((a, k) => a + k.n, 0);
-    files[`oc-${sym}.json`] = JSON.stringify({
-      meta: { symbol: sym, asOn: c.ts, fetchedAt, underlying: rnd(c.und), ivNote: "IV as published by NSE (0 / missing shown as null)", pcrNote: "PCR = put OI / call OI; max pain = strike with the lowest total option-writer payout (computed by Trendy from NSE's OI)" },
-      exps: c.exps, expsAt: today, cols: OC_COLS,
-      tot: { coi: tot.coi, poi: tot.poi, pcr: tot.coi > 0 ? r3(tot.poi / tot.coi) : null },
-      expiries: c.kept,
-    });
-  }
   // LIVE_TEST_ASON / LIVE_TEST_TODAY / LIVE_FAULT=closed only change what the intraday step sees (local tests of the append rules)
   const idr = buildIntraday({ today: process.env.LIVE_TEST_TODAY || today, asOn: process.env.LIVE_TEST_ASON || asOn, state: FAULT === "closed" ? "Closed" : status.state, stocks, indices });
   log("intraday:", idr.note);
   if (idr.text) files["intraday.json"] = idr.text;
-  const metaSmall = { v: SCHEMA, asOn, fetchedAt, marketOpen: /^open$/i.test(status.state), marketState: status.state, counts: { stocks: stocks.length, indices: indices.length, chains: ocCounts } };
+  const metaSmall = { v: SCHEMA, asOn, fetchedAt, marketOpen: /^open$/i.test(status.state), marketState: status.state, counts: { stocks: stocks.length, indices: indices.length } };
   files["meta.json"] = JSON.stringify(metaSmall);
   for (const [f, s] of Object.entries(files)) {
-    const cap = f === "market.json" ? 350e3 : f === "meta.json" ? 2e3 : f === "intraday.json" ? ID_MAX_BYTES : 60e3;
+    const cap = f === "market.json" ? 350e3 : f === "meta.json" ? 2e3 : ID_MAX_BYTES;
     if (s.length > cap) refuse(`${f} is ${s.length} bytes (> ${cap}); nothing written`);
   }
 
@@ -360,7 +258,7 @@ async function run() {
   const order = Object.keys(files).filter(f => f !== "meta.json").concat("meta.json");           // meta.json last: the client sees a complete set
   for (const f of order) { const tmp = path.join(OUT, f + ".tmp"); fs.writeFileSync(tmp, files[f]); fs.renameSync(tmp, path.join(OUT, f)); }
   log(`written ${order.map(f => f + " " + (files[f].length / 1024).toFixed(1) + " KB").join(", ")}`);
-  log(`asOn ${asOn}, ${stocks.length} stocks, ${indices.length} indices, chains ${JSON.stringify(ocCounts)}, ${requests} requests, ${((Date.now() - T0) / 1000).toFixed(1)} s`);
+  log(`asOn ${asOn}, ${stocks.length} stocks, ${indices.length} indices, ${requests} requests, ${((Date.now() - T0) / 1000).toFixed(1)} s`);
 }
 
 try { await run(); }

@@ -1,11 +1,10 @@
 /* Trendy near-live market snapshot client (classic script, no dependencies) -> window.TrendyLive
  * Reads the snapshot files that pipeline/live.mjs + .github/workflows/live.yml publish on the branch "live":
- *   meta.json (tiny, polled first), market.json (indices + stocks), oc-<SYMBOL>.json (option chains).
+ *   meta.json (tiny, polled first), market.json (indices + stocks), intraday.json (today's price points).
  * This is a delayed snapshot taken every ~2 minutes during market hours, NOT real-time ticks. See docs/LIVE.md.
  * Never throws: every fetch error ends up in status(). Strings that reach the DOM through badge() are escaped.
  *
  *   TrendyLive.get()            Promise<market|null>   latest market.json ({meta, idxCols, indices, cols, stocks, top})
- *   TrendyLive.chain("NIFTY")   Promise<chain|null>    oc-NIFTY.json ({meta, exps, cols, tot, expiries:[{e, coi, poi, pcr, mp, n, strikes}]})
  *   TrendyLive.intraday()       Promise<intraday|null> today's price points per snapshot ({v, day, t:[HHMM], s:{SYMBOL|index name: [price|null]}}); the first call turns on
  *                               downloading intraday.json (only pages that ask for it ever download it); refreshed when the snapshot changed
  *   TrendyLive.series("TCS")    sync: {day, t:["YYYY-MM-DD HH:MM", ...], p:[price, ...]} (nulls dropped) for a stock symbol or index name, or null (absent, < 2 valid points,
@@ -25,7 +24,7 @@
   var STALE_MIN = 12, POLL_OPEN = 60e3, POLL_IDLE = 300e3, SCHEMA = 1;
   var L = { _now: null };
 
-  var S = { intraday: null, intradayStamp: null, intradayFlight: null, intradayWanted: false, baseIdx: 0, metaFetched: null, meta: null, market: null, qmap: null, imap: null, chains: {}, chainFetched: {}, err: null, inflight: null, chainFlight: {}, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
+  var S = { intraday: null, intradayStamp: null, intradayFlight: null, intradayWanted: false, baseIdx: 0, metaFetched: null, meta: null, market: null, qmap: null, imap: null, err: null, inflight: null, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
 
   function now() { try { var n = typeof L._now === "function" ? L._now() : L._now; if (typeof n === "number" && isFinite(n)) return n; } catch (e) {} return Date.now(); }
   function bases() {
@@ -72,18 +71,6 @@
     var indices = j.indices.filter(function (r) { return Array.isArray(r) && r.length === il && typeof r[0] === "string" && isNum(r[2]); });
     if (stocks.length < 1 || stocks.length < j.stocks.length * 0.9) return null;
     return { meta: j.meta, cols: j.cols, idxCols: j.idxCols, stocks: stocks, indices: indices, top: j.top && typeof j.top === "object" ? j.top : {}, colNotes: j.colNotes || {} };
-  }
-  function okChain(j) {
-    if (!j || typeof j !== "object" || !j.meta || !Array.isArray(j.cols) || !Array.isArray(j.expiries) || !j.expiries.length) return null;
-    var cl = j.cols.length, ex = [];
-    for (var i = 0; i < j.expiries.length; i++) {
-      var e = j.expiries[i];
-      if (!e || typeof e.e !== "string" || !Array.isArray(e.strikes)) return null;
-      var st = e.strikes.filter(function (r) { return Array.isArray(r) && r.length === cl && isNum(r[0]); });
-      if (!st.length) return null;
-      ex.push({ e: e.e, coi: e.coi, poi: e.poi, pcr: isNum(e.pcr) ? e.pcr : null, mp: isNum(e.mp) ? e.mp : null, n: st.length, strikes: st });
-    }
-    return { meta: j.meta, exps: Array.isArray(j.exps) ? j.exps : [], cols: j.cols, tot: j.tot || null, expiries: ex };
   }
 
   // intraday.json: {v:1, day, t:[HHMM ints, strictly increasing], s:{name:[price|null per t]}}. A series of the wrong length or with a bad value is dropped (never exposed).
@@ -229,23 +216,6 @@
   }
   function get() { try { return refresh().then(function (r) { return r || null; }, function () { return null; }); } catch (e) { return Promise.resolve(null); } }
 
-  function chain(sym) {
-    try {
-      sym = String(sym || "").toUpperCase();
-      if (!/^[A-Z0-9&_.-]{1,20}$/.test(sym)) return Promise.resolve(null);
-      var fresh = now() - S.lastRun < 20000 && S.meta ? Promise.resolve() : refresh();
-      return fresh.then(function () {
-        var stamp = S.meta ? S.meta.fetchedAt : null;
-        if (S.chains[sym] && S.chainFetched[sym] === stamp) return S.chains[sym];
-        if (S.chainFlight[sym]) return S.chainFlight[sym];
-        var p = getJson("oc-" + encodeURIComponent(sym) + ".json", okChain, stamp).then(function (c) { S.chains[sym] = c; S.chainFetched[sym] = stamp; return c; })
-          .catch(function () { return S.chains[sym] || null; })
-          .then(function (r) { delete S.chainFlight[sym]; return r; });
-        S.chainFlight[sym] = p; return p;
-      }).catch(function () { return null; });
-    } catch (e) { return Promise.resolve(null); }
-  }
-
   function quote(sym) { var r = S.qmap && S.qmap[String(sym || "").toUpperCase()]; return r && Object.prototype.hasOwnProperty.call(S.qmap, String(sym).toUpperCase()) ? toObj(S.market.cols, r) : null; }
   function index(name) { var r = S.imap && S.imap[String(name || "").toLowerCase()]; return r && Object.prototype.hasOwnProperty.call(S.imap, String(name).toLowerCase()) ? toObj(S.market.idxCols, r) : null; }
 
@@ -272,7 +242,7 @@
   }
   function stop() { S.started = false; clearTimeout(S.timer); S.timer = null; clearInterval(S.ager); S.ager = null; try { document.removeEventListener("visibilitychange", onVis); } catch (e) {} }
 
-  L.intraday = intraday; L.series = series; L.get = get; L.chain = chain; L.status = status; L.quote = quote; L.index = index; L.subscribe = subscribe; L.start = start; L.stop = stop; L.badge = badge;
+  L.intraday = intraday; L.series = series; L.get = get; L.status = status; L.quote = quote; L.index = index; L.subscribe = subscribe; L.start = start; L.stop = stop; L.badge = badge;
   L.peek = function () { return S.market; }; L.asOnDay = asOnDay; L.usable = usable; L.bar = bar; L.line = line; L.paint = paint; L.refresh = get; L.version = SCHEMA;
   window.TrendyLive = L;
 })();

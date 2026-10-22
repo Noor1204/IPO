@@ -899,15 +899,18 @@ function aboutClick(t) {
   return false;
 }
 document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });
-// ---------- modules: IPO (built in), Stocks, F&O, Mutual Fund (each in its own app-<name>.js, see docs/MODULES.md) ----------
+// ---------- modules: IPO (built in), Stocks, Mutual Fund (each in its own app-<name>.js, see docs/MODULES.md) ----------
 // The bottom bar picks the module, the tab strip under the title picks the screen inside it. Module screens use state.tab = "<module>:<tab>";
 // a module's detail pages use state.sub, so the phone's Back button and the Back arrow work in every module.
 window.TrendyModules = window.TrendyModules || {};
 state.mod = "ipo";
 const modLoaded = {};
 const MOD_LAST = store.get("modLast", {});
+const MODS = ["ipo", "stocks", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
+for (const k of Object.keys(MOD_LAST)) if (!MODS.includes(k)) delete MOD_LAST[k];
+const fixTab = t => typeof t === "string" && t.includes(":") && !MODS.includes(t.split(":")[0]) ? "ipo" : t;
 const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"]];
-function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" ? "ipo" : typeof tab === "string" && tab.includes(":") ? tab.split(":")[0] : null; }
+function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
 function modTabs(m) { return m === "ipo" ? IPO_TABS : (window.TrendyModules[m]?.tabs || []); }
 function modStrip() {
   const m = modOf(state.tab); if (!m || state.sub || state.detail || state.report) return "";
@@ -915,6 +918,7 @@ function modStrip() {
   return '<div class="mtabs" role="tablist">' + modTabs(m).map(([k, l]) => '<button role="tab" data-mtab="' + m + ":" + k + '" class="' + (k === on ? "on" : "") + '">' + l + "</button>").join("") + "</div>";
 }
 function goTab(m, k) {
+  if (!MODS.includes(m)) { m = "ipo"; k = null; }
   const tabs = modTabs(m); if (!tabs.length) return;
   if (!k || !tabs.some(t => t[0] === k)) k = tabs.some(t => t[0] === MOD_LAST[m]) ? MOD_LAST[m] : tabs[0][0];
   if (m === "ipo") { if (k === "allot" || k === "unlisted") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
@@ -1068,6 +1072,7 @@ const screenKey = () => [state.tab, state.tab === "ipo" ? state.seg : "", state.
 
 // ---------- render & events ----------
 function render() {
+  state.tab = fixTab(state.tab);
   if (!state.loaded) {
     $("#app").dataset.view = "ipo";
     $("#app").innerHTML = state.error ? `<div class="card errc">${ic("alert-triangle")}<p>${esc(state.error)}</p><button class="btn" data-refresh>Try again</button></div>` : `${brand()}<div class="skel-top"></div><div class="cards">${skelCards(3)}</div>`;
@@ -1175,7 +1180,8 @@ window.addEventListener("popstate", e => {
   const s = e.state; if (!s || typeof s.level !== "string") return;
   const [tab0, sub, detail, report, modal, drawer] = s.level.split("|"); if (drawer === undefined) return;
   const [tab, segv] = String(tab0).split("~"); if (segv) state.seg = segv;
-  navLevel = s.level; state.tab = tab || "ipo"; state.mod = modOf(state.tab) || state.mod; state.sub = sub || null; state.detail = detail || null; state.report = report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
+  const ft = fixTab(tab || "ipo"), gone = ft !== (tab || "ipo");   // a step of a removed module opens the IPO home
+  navLevel = s.level; state.tab = ft; state.mod = modOf(state.tab) || state.mod; state.sub = gone ? null : sub || null; state.detail = gone ? null : detail || null; state.report = gone ? null : report || null; state.modal = modal || null; state.drawer = drawer === "d"; if (s.rtab) state.reportTab = s.rtab;
   render(); window.scrollTo(0, 0);
 });
 // the on-screen back arrows use the same history, so the phone's Back button and the arrow always agree

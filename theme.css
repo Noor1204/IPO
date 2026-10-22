@@ -83,7 +83,7 @@ a{color:var(--pri)}
 @keyframes dotp{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ---------- surfaces ---------- */
-.card,.stat,.ins,.uprow,.dcard,.msec,.cmp,.closebox,.astile,.st-ix,.fo-st,.mf-row,.mf-stat,.st-stat,.sres,.asbtn,.tile.k,.gl,.stale,.disc-box{background:var(--surf);border:1px solid var(--bd);box-shadow:var(--shadow);border-radius:var(--r-lg)}
+.card,.stat,.ins,.uprow,.dcard,.msec,.cmp,.closebox,.astile,.st-ix,.mf-row,.mf-stat,.st-stat,.sres,.asbtn,.tile.k,.gl,.stale,.disc-box{background:var(--surf);border:1px solid var(--bd);box-shadow:var(--shadow);border-radius:var(--r-lg)}
 .card{padding:16px;margin-bottom:14px}
 .card.hero,.hero{background:var(--hero);border-color:var(--bd2);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
 .card.hero::before{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,.5),transparent 70%);pointer-events:none}
@@ -350,7 +350,7 @@ td .tnote{font-weight:500;margin-top:2px}
 .gdot{opacity:0;stroke:var(--card);stroke-width:2.5;transition:opacity .15s}.gdot.on{opacity:1;r:5;stroke:var(--card);stroke-width:2.5}
 .gread{background:var(--tint);border-radius:var(--r-sm);padding:10px 12px;font-size:13.5px;margin:10px 0 8px}
 
-/* chart panel (shared by Stocks / F&O charts) */
+/* chart panel (shared by Stocks charts) */
 .tc-panel{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:14px;margin-bottom:14px;overflow:hidden}
 .tc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:12px}
 .tc-head .tc-sym{font-weight:800;font-size:16px}.tc-head .tc-px{font-weight:800;font-size:26px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.tc-head .tc-chg{font-weight:800;font-size:14px}
@@ -449,10 +449,10 @@ td .tnote{font-weight:500;margin-top:2px}
 @keyframes enterB{from{opacity:0;transform:translateY(8px)}}
 
 /* ---------- press feedback + hover lift ---------- */
-.btn,.ib,.stat,.ipoc,.uprow,.tile.k,.mrow,.mtabs button,nav button,.chk,.chipb,.sres,.nrow,.dnav button,.gsearch,.asbtn,.calrow,.brow,.st-row,.st-sw button,.mf-chip,.mf-row,.fo-ic,.tc-chips button,.cmpcell,.starb,.pl{-webkit-tap-highlight-color:transparent;transition:transform .14s var(--ease),background-color .2s,border-color .2s,box-shadow .2s,filter .2s,color .2s}
-.btn:active,.ib:active,.stat:active,.ipoc:active,.uprow:active,.tile.k:active,.mrow:active,.mtabs button:active,nav button:active,.chk:active,.chipb:active,.sres:active,.nrow:active,.dnav button:active,.gsearch:active,.asbtn:active,.st-row:active,.st-sw button:active,.mf-chip:active,.fo-ic:active,.tc-chips button:active,.starb:active{transform:scale(.97)}
+.btn,.ib,.stat,.ipoc,.uprow,.tile.k,.mrow,.mtabs button,nav button,.chk,.chipb,.sres,.nrow,.dnav button,.gsearch,.asbtn,.calrow,.brow,.st-row,.st-sw button,.mf-chip,.mf-row,.tc-chips button,.cmpcell,.starb,.pl{-webkit-tap-highlight-color:transparent;transition:transform .14s var(--ease),background-color .2s,border-color .2s,box-shadow .2s,filter .2s,color .2s}
+.btn:active,.ib:active,.stat:active,.ipoc:active,.uprow:active,.tile.k:active,.mrow:active,.mtabs button:active,nav button:active,.chk:active,.chipb:active,.sres:active,.nrow:active,.dnav button:active,.gsearch:active,.asbtn:active,.st-row:active,.st-sw button:active,.mf-chip:active:active,.tc-chips button:active,.starb:active{transform:scale(.97)}
 @media(hover:hover) and (pointer:fine) and (min-width:960px){
-  .ipoc:hover,.uprow:hover,.stat:hover,.ins.ipoc:hover,.tile.k:hover,.sres:hover,.fo-ic:hover,.mf-row:hover,.asbtn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--bd2)}
+  .ipoc:hover,.uprow:hover,.stat:hover,.ins.ipoc:hover,.tile.k:hover,.sres:hover:hover,.mf-row:hover,.asbtn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--bd2)}
   .ipoc:active,.uprow:active,.stat:active{transform:scale(.985)}
   .btn:hover{transform:translateY(-1px);filter:brightness(1.08)}
   .cards>.card:hover,.tile:hover,.cmphead:hover,.cmpcell:hover,.winchip:hover,.datebox:hover,.logo:hover,.ring:hover,.mrow:hover,.stat.on:hover{transform:none}
@@ -508,16 +508,13 @@ td .tnote{font-weight:500;margin-top:2px}
   .ipoc{padding:14px}
 }
 
-/* ---------- module screens (Stocks / F&O / Mutual Fund) inherit the system ---------- */
-.st-ix,.fo-st,.mf-stat,.st-stat,.st-read,.mf-read,.fo-quick,.mf-rets i{background:var(--tint);border-color:var(--bd);box-shadow:none}
+/* ---------- module screens (Stocks / Mutual Fund) inherit the system ---------- */
+.st-ix,.mf-stat,.st-stat,.st-read,.mf-read,.mf-rets i{background:var(--tint);border-color:var(--bd);box-shadow:none}
 .st-row:hover{background:var(--tint)}
-.st-sw button,.st-rg button,.mf-chip,.mf-rng button,.fo-q.btn.ghost{background:var(--tint);border:1px solid var(--bd);color:var(--mut);border-radius:var(--r-pill);min-height:38px}
+.st-sw button,.st-rg button,.mf-chip,.mf-rng button{background:var(--tint);border:1px solid var(--bd);color:var(--mut);border-radius:var(--r-pill);min-height:38px}
 .st-sw button.on,.st-rg button.on,.mf-chip.on,.mf-rng button.on,.mf-seg button.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--glow)}
 .mf-seg{border:1px solid var(--bd);border-radius:var(--r-pill);padding:4px;gap:4px;overflow:visible}.mf-seg button{background:transparent;color:var(--mut);border-radius:var(--r-pill);min-height:40px}
-.mf-row,.fo-ic{padding:12px}.fo-ic{display:block;width:100%;cursor:pointer;border-radius:var(--r-lg)}
-.fo-risk{background:var(--bad-bg);border:1px solid rgba(244,63,94,.35);color:var(--tx);border-radius:var(--r-md)}
-.fo-itm{background:var(--pri-bg)}
-.fo-chain .fo-k{background:var(--tint)}
+.mf-row{padding:12px}
 .mf-cmpbar{background:var(--tint);border-radius:var(--r-md)}
 .mf-star,.st-star{background:var(--tint);border-color:var(--bd);border-radius:12px;min-width:40px;min-height:40px}
 .mf-cb,.mf-rm{background:var(--tint);border:1px solid var(--bd2);color:var(--pri2);border-radius:12px;min-height:36px}.mf-cb.on{background:var(--grad);color:#fff;border-color:transparent}
@@ -534,7 +531,7 @@ td .tnote{font-weight:500;margin-top:2px}
 .st-grid>.card,.st-page>.card{box-shadow:var(--shadow)}
 
 /* ---------- small-text floor (nothing under 12px) ---------- */
-.pill.sm,.dots,.datebox em,.datebox span,.disc,.credit span,.calday span,.calchip,.bd,.badge,.st,.tile .sm,.gax,.fo-tag,.st-tag{font-size:max(12px,1em)}
+.pill.sm,.dots,.datebox em,.datebox span,.disc,.credit span,.calday span,.calchip,.bd,.badge,.st,.tile .sm,.gax,.st-tag{font-size:max(12px,1em)}
 .datebox em{font-size:12px}
 
 /* ---------- print + reduced motion ---------- */
