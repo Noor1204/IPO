@@ -34,6 +34,7 @@ TrendyCharts.line(el, {
   ]
 });
 ```
+One-day (intraday) options: `session: true` fixes the x axis to the NSE session 09:15-15:30 of the data's day (grows only if data lies outside; the right side stays empty until the day completes; hour labels HH:MM at 1/2/3 h steps by width), `timeOnly: true` (readout and crosshair tag show "HH:MM IST"), `baseline` + `baselineLabel: "Prev close"` (dashed line, label "Prev close 1,209"; already included in the y range), `keepHover: true` (an `update()` keeps the crosshair index), per-series `readout: v => text` (readout text only; axis and baseline label keep `format`), `fill: true`. Times are `"YYYY-MM-DD HH:MM"` IST strings.
 Readout shows one item per series at the hovered date (value at or before that date). Returns the same controller shape (`update(opts)`, `setRange`, `destroy`).
 
 ## `TrendyCharts.bars(container, opts)`
@@ -50,7 +51,8 @@ TrendyCharts.bars(el, {
 ```
 Vertical chart scrolls horizontally inside its own box only when there are more than 25 categories (y-axis stays fixed, scrolled to the marker). Hover/tap shows exact values (`3,39,242 (3.39 L)`); ←/→ when focused. Controller: `update(opts)`, `destroy()`.
 
-## Live TradingView embed
+## Live TradingView embed (DEPRECATED, unused)
+**Deprecated:** TradingView's free widgets do not serve NSE/BSE symbols (they show "This symbol is only available on TradingView"). The app no longer calls these; use the intraday line chart below. The functions stay for now and may be removed.
 ```js
 el.innerHTML = TrendyCharts.liveEmbed(TrendyCharts.tvSymbol("stock", "RELIANCE"));  // "" when the symbol is invalid
 TrendyCharts.liveEmbedInit(el);   // wires the 8 s "Live chart could not load" fallback (also done by auto())

@@ -53,16 +53,33 @@ jobs:
         with:
           node-version: 22
 
-      # the previous snapshot (branch "live") is only used for the row-count / time checks; it may not exist yet
+      # the previous snapshot (branch "live") is used for the row-count / time checks, the expiry cache AND intraday.json (today's price points, which the run
+      # appends to). It may not exist yet (first run ever). If the branch exists but cannot be cloned (network hiccup), this run is skipped (skip=yes):
+      # building without it would publish a one-point intraday.json and wipe the points collected so far; the next run, ~100 s later, tries again.
       - name: Fetch the previous snapshot
+        id: prev
         if: steps.gate.outputs.go == 'yes'
         run: |
+          url="https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git"
           rm -rf _prev
-          git clone --quiet --depth 1 --branch live "https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}.git" _prev || echo "no previous snapshot (first run?)"
+          for i in 1 2 3; do
+            if git clone --quiet --depth 1 --branch live "$url" _prev; then break; fi
+            rm -rf _prev; sleep $((i * 3))
+          done
+          if [ -d _prev ]; then
+            echo "previous snapshot cloned: $(ls _prev | xargs)"
+            echo "skip=no" >> "$GITHUB_OUTPUT"
+          elif git ls-remote --exit-code --heads "$url" live >/dev/null 2>&1; then
+            echo "::warning::Branch live exists but could not be cloned; skipping this run so intraday.json is not reset."
+            echo "skip=yes" >> "$GITHUB_OUTPUT"
+          else
+            echo "no previous snapshot (first run ever)"
+            echo "skip=no" >> "$GITHUB_OUTPUT"
+          fi
 
       # exit code 3 = the fetch or the validation refused: nothing was written, the previous snapshot stays. Never fails the job.
       - name: Fetch NSE and build the snapshot
-        if: steps.gate.outputs.go == 'yes'
+        if: steps.gate.outputs.go == 'yes' && steps.prev.outputs.skip != 'yes'
         run: |
           rm -rf _live
           prev=""; [ -f _prev/meta.json ] && prev="_prev"
@@ -100,7 +117,7 @@ jobs:
         continue-on-error: true
         run: |
           [ -f _live/meta.json ] || { echo "Nothing was published."; exit 0; }
-          for f in meta.json market.json oc-NIFTY.json oc-BANKNIFTY.json oc-FINNIFTY.json oc-MIDCPNIFTY.json; do
+          for f in meta.json market.json intraday.json oc-NIFTY.json oc-BANKNIFTY.json oc-FINNIFTY.json oc-MIDCPNIFTY.json; do
             curl -s -m 15 -o /dev/null -w "purge $f: HTTP %{http_code}\n" "https://purge.jsdelivr.net/gh/${{ github.repository }}@live/$f" || true
           done
 

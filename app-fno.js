@@ -2,7 +2,7 @@
 (function () {
   const RISK = "Futures and options carry a high risk of loss; most individual traders lose money (SEBI studies). Data is end-of-day or a delayed snapshot, not real-time; information only, not investment advice.";
   const MIN_OIV = 100;                                  // Rs crore of futures open interest: below this, OI % moves are mostly noise
-  const S = { sum: null, lots: null, err: false, u: {}, ul: {}, h: {}, hl: {}, q: "", lq: "", all: false, sym: null, exp: null, ready: false, mode: "fut", oim: "oi", gl: false, lc: {}, lf: {}, lfail: {}, lexp: null, lbSig: {}, cr: null };
+  const S = { sum: null, lots: null, err: false, u: {}, ul: {}, h: {}, hl: {}, q: "", lq: "", all: false, sym: null, exp: null, ready: false, mode: "fut", oim: "oi", gl: false, lc: {}, lf: {}, lfail: {}, lexp: null, lbSig: {}, cr: null, ivc: {}, ivLoad: "" };
   const fname = s => s.replace(/[^A-Za-z0-9-]/g, c => "_" + c.charCodeAt(0).toString(16));   // same rule as pipeline/fno.mjs
   const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
   const IDX_ORDER = ["NIFTY", "BANKNIFTY", "FINNIFTY", "MIDCPNIFTY", "NIFTYNXT50"];
@@ -80,7 +80,7 @@
   function init(H) {
     if (S.ready) return; S.ready = true;
     S.sym = String(H.store.get("fo_sym", "NIFTY")); S.exp = H.store.get("fo_exp", null);
-    const m = H.store.get("fo_mode", "fut"); S.mode = m === "spot" || m === "live" ? m : "fut";
+    const m = H.store.get("fo_mode", "fut"); S.mode = m === "spot" ? "spot" : m === "intraday" || m === "live" ? "intraday" : "fut";
     S.oim = H.store.get("fo_oim", "oi") === "chg" ? "chg" : "oi";
   }
   const pickExp = u => {
@@ -306,15 +306,57 @@
   }
   const chainBlock = (H, u, ex, key, r) => expSelect(H, u, key + "-sel") + expTiles(H, u, ex, r) + `<div class="fo-ctl"><span class="mut sm">Bars</span>${oimSeg()}</div>` + strikeBars(H, u, ex, key) + `<h3 class="fo-h3">Option chain</h3>` + chainHtml(H, u, ex);
 
+  // ---------- intraday chart of the underlying's spot (our own snapshots, docs/LIVE.md; TradingView's free widgets do not serve NSE/BSE) ----------
+  const IV_MIN = 3, IV_UP = "#10b981", IV_DN = "#f43f5e", IV_FLAT = "#6366f1";
+  const IV_IDX = { NIFTY: "NIFTY 50", BANKNIFTY: "NIFTY BANK", FINNIFTY: "NIFTY FINANCIAL SERVICES", MIDCPNIFTY: "NIFTY MIDCAP SELECT", NIFTYNXT50: "NIFTY NEXT 50" };
+  const IV_EMPTY = "Intraday data builds up during market hours; check back in a few minutes.";
+  // sync -> {s, n, pc, ref, last, at, day, cur, name} or null (no live row, no series, < 2 points, or the file is not from the snapshot's day)
+  function ivInfo(sym, kind) {
+    const t = TL(); if (!t || !t.series || !t.peek || !t.peek() || !t.usable(eodDate())) return null;
+    const row = kind === "index" ? (IV_IDX[sym] ? t.index(IV_IDX[sym]) : null) : t.quote(sym);
+    const name = kind === "index" ? (row && row.name) : sym; if (!row || !name) return null;
+    const s = t.series(name); if (!s) return null;
+    const pc = kind === "index" ? row.pc : row.pc, ok = isN(pc) && pc > 0;
+    return { s, n: s.p.length, pc: ok ? pc : null, ref: ok ? pc : s.p[0], last: s.p[s.p.length - 1], at: s.t[s.t.length - 1].slice(11), day: s.day, cur: kind === "index" ? "" : "₹", name };
+  }
+  function ivCfg(H, sym, d) {
+    const T = TC(), key = "fo-iv-" + sym, sig = [key, d.n, d.at, d.last, d.pc, d.day].join("|");
+    let c = S.ivc[key];
+    if (!c || c.sig !== sig) {
+      const col = d.last > d.ref ? IV_UP : d.last < d.ref ? IV_DN : IV_FLAT, when = d.day !== H.istDay() ? H.fmtD(d.day) + " · " : "";
+      c = S.ivc[key] = { sig, title: sym, subtitle: "Intraday · " + when + d.n + " snapshots, about every 2 minutes · last " + d.at + " IST · NSE website data, delayed", height: window.innerWidth <= 640 ? 240 : 300,
+        session: true, timeOnly: true, keepHover: true, baseline: d.pc === null ? undefined : d.pc, baselineLabel: "Prev close",
+        series: [{ name: "Spot", data: d.s.t.map((t, i) => [t, d.s.p[i]]), fill: true, color: col,
+          readout: v => d.cur + px(v) + (d.pc ? " (" + pctS((v / d.pc - 1) * 100) + " vs prev close)" : "") }] };
+    }
+    T.configure(key, c); return c;
+  }
+  // one request of the intraday file per page visit (live.js keeps it fresh afterwards); one re-render when it arrives
+  function ivEnsure(H) {
+    const t = TL(); if (!t || !t.intraday || S.ivLoad) return;
+    S.ivLoad = "loading";
+    t.intraday().then(() => { S.ivLoad = "done"; if (S.mode === "intraday" && typeof H.sub === "string" && H.sub.indexOf("und:") === 0) renderIfIdle(H); });
+  }
+  function ivRegion(H, sym, kind) {
+    const T = TC(); if (!T) return '<p class="mut">The chart library could not be loaded.</p>';
+    const t = TL(), usable = !!(t && t.peek && t.peek() && t.usable(eodDate()));
+    if (!usable) return '<div class="fo-err"><p><b>Intraday data is not available right now.</b></p><p class="mut sm">It needs the live snapshots, which could not be loaded. The Futures and Spot line charts still work.</p></div>';
+    if (S.ivLoad === "loading") return SKEL_CHART;
+    const d = ivInfo(sym, kind);
+    if (!d || d.n < IV_MIN) return '<div class="fo-err"><p><b>' + IV_EMPTY + '</b></p><p class="mut sm">The Futures and Spot line charts stay available.</p></div>';
+    ivCfg(H, sym, d);
+    return '<div data-tc="line" data-tc-key="fo-iv-' + H.esc(sym) + '" class="fo-mount"></div>';
+  }
+
   // ---------- underlying page ----------
   function priceSection(H, sym, h, kind) {
     const T = TC();
-    const seg = `<div class="seg fo-seg fo-modeseg" role="group" aria-label="Chart source">${[["fut", "Futures"], ["spot", "Spot line"], ["live", "Live"]].map(m => `<button data-m="fno" data-act="mode" data-v="${m[0]}" class="${S.mode === m[0] ? "on" : ""}">${m[1]}</button>`).join("")}</div>`;
+    const seg = `<div class="seg fo-seg fo-modeseg" role="group" aria-label="Chart source">${[["fut", "Futures"], ["spot", "Spot line"], ["intraday", "Intraday"]].map(m => `<button data-m="fno" data-act="mode" data-v="${m[0]}" class="${S.mode === m[0] ? "on" : ""}">${m[1]}</button>`).join("")}</div>`;
     let body = "";
     if (!T) body = '<div class="card"><p class="mut">The chart library could not be loaded.</p></div>';
-    else if (S.mode === "live") {
-      const sy = T.tvSymbol(kind, sym), emb = sy ? T.liveEmbed(sy, { title: sym + " live chart" }) : "";
-      body = `<div class="card fo-livec"><div class="fo-live" data-sym="${H.esc(sy || "")}">${emb || '<p class="mut">A live chart is not available for this symbol.</p>'}</div><p class="mut sm">Third-party intraday chart; it is separate from the data in the sections below.</p></div>`;
+    else if (S.mode === "intraday") {
+      ivEnsure(H);
+      body = '<div class="card fo-ivc">' + reg("un-iv", () => ivRegion(H, sym, kind)) + '<p class="mut sm">Not a tick chart: points are our snapshots, about every 2 minutes. The dashed line is the previous close.</p></div>';
     } else if (!h) body = S.hl[sym] === 2 ? errBox(H, "Price history for this underlying could not be loaded.", "retryh", sym) : SKEL_CHART;
     else {
       const n = h.days.length, rows = [];
@@ -416,7 +458,13 @@
   function livePatch(H) {
     if (!S.sum) return;
     const sub = H.sub, tab = H.tab;
-    if (typeof sub === "string" && sub.indexOf("und:") === 0) { const s = sub.slice(4); if (LIVE_SYMS.indexOf(s) >= 0) loadLive(H, s); }
+    if (typeof sub === "string" && sub.indexOf("und:") === 0) {
+      const s = sub.slice(4); if (LIVE_SYMS.indexOf(s) >= 0) loadLive(H, s);
+      if (S.mode === "intraday" && document.querySelector('#app [data-lvr="un-iv"]')) {       // the intraday chart is updated in place (identical HTML = untouched DOM)
+        const r = S.byS[s] || {}, u = S.u[s], kind = (r.t === "I" || (u && u.t === "I")) ? "index" : "stock";
+        setReg("un-iv", () => ivRegion(H, s, kind)); if (window.TrendyCharts) setTimeout(() => { try { TrendyCharts.auto(document); } catch (e) {} }, 0);
+      }
+    }
     else if (tab === "overview") LIVE_SYMS.forEach(s => loadLive(H, s));
     else if (tab === "chain") { const s = S.byS[S.sym] ? S.sym : "NIFTY"; if (LIVE_SYMS.indexOf(s) >= 0) loadLive(H, s); }
     patchRegions(H);
@@ -487,7 +535,6 @@
       if (sub && sub.startsWith("und:")) html = undPage(H, sub.slice(4));
       else html = ({ overview, chain: chainTab, oi: oiTab, lots: lotsTab }[tab] || overview)(H);
       if (window.TrendyCharts && html.indexOf("data-tc=") >= 0) { const go = () => { try { TrendyCharts.auto(document); } catch (e) { console.warn(e); } }; requestAnimationFrame(go); setTimeout(go, 120); }
-      if (window.TrendyCharts && html.indexOf("fo-live") >= 0) setTimeout(() => { try { document.querySelectorAll(".fo-live").forEach(e => TrendyCharts.liveEmbedInit(e)); } catch (e) {} }, 150);
       return html;
     },
     click(el, H) {
@@ -500,7 +547,7 @@
       if (a === "all") { S.all = !S.all; H.render(); return true; }
       if (a === "gl") { S.gl = !S.gl; H.render(); return true; }
       if (a === "lexp" && v) { S.lexp = v; H.render(); return true; }
-      if (a === "mode" && v) { S.mode = v; H.store.set("fo_mode", v); H.render(); return true; }
+      if (a === "mode" && v) { S.mode = v === "spot" || v === "intraday" ? v : "fut"; H.store.set("fo_mode", v); H.render(); return true; }
       if (a === "oim" && v) { S.oim = v === "chg" ? "chg" : "oi"; H.store.set("fo_oim", S.oim); H.render(); return true; }
       return false;
     },

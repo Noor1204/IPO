@@ -6,7 +6,7 @@
 (function () {
   const BASE = "data/stocks/";
   const S = { meta: null, movers: null, index: null, idxList: null, idxBy: null, list: null, listBy: null, lc: null, status: "idle", listStatus: "idle",
-    chunks: {}, chunkStatus: {}, hist: {}, idxH: {}, cfg: {}, view: "chart", ct: { range: "6M", type: "candles", sma20: false, sma50: false },
+    chunks: {}, chunkStatus: {}, hist: {}, idxH: {}, cfg: {}, cv: null, ivLoad: "", ivSig: 0, ct: { range: "6M", type: "candles", sma20: false, sma50: false },
     k: "gain", shown: 20, q: "", allIdx: false, idxSt: "idle" };
   let HH = null;                                         // host api (kept for async renders)
   const DISC = "Prices are end-of-day or a delayed snapshot, not real-time. Information only, not investment advice.";
@@ -27,7 +27,6 @@
     lo: "Stocks trading within 3% of their 52-week low as published by NSE, closest first, ₹2 crore+ traded.",
   };
   const FEATURED = ["nifty-50", "nifty-bank", "india-vix", "nifty-it", "nifty-next-50", "nifty-midcap-100", "nifty-smallcap-100", "nifty-financial-services"];
-  const TV_IDX = { "nifty-50": "NIFTY 50", "nifty-bank": "NIFTY BANK" };        // indices with a known TradingView symbol
   const isNum = x => typeof x === "number" && isFinite(x);
   const nf = (x, d) => isNum(x) ? x.toLocaleString("en-IN", { minimumFractionDigits: d, maximumFractionDigits: d }) : "—";
   const px = x => nf(x, 2);
@@ -186,23 +185,71 @@
     }
     TC.configure(key, c); return c;
   }
+  // ---------- intraday chart (our own snapshots, docs/LIVE.md; TradingView's free widgets do not serve NSE/BSE) ----------
+  const IV_MIN = 3, IV_UP = "#10b981", IV_DN = "#f43f5e", IV_FLAT = "#6366f1";
+  const IV_EMPTY = "Intraday data builds up during market hours; check back in a few minutes.";
+  // sync: today's series of one stock symbol / index name from live.js (null when absent, < 2 points or not from the snapshot's day) -> {s, n, pc, ref, last, at, day, cur}
+  function ivData(name, pc, cur) {
+    const t = TL(), s = t && t.series ? t.series(name) : null; if (!s) return null;
+    const ok = isNum(pc) && pc > 0;
+    return { s, n: s.p.length, pc: ok ? pc : null, ref: ok ? pc : s.p[0], last: s.p[s.p.length - 1], at: s.t[s.t.length - 1].slice(11), day: s.day, cur };
+  }
+  function ensureIvCfg(H, key, title, d) {
+    const TC = window.TrendyCharts, sig = [key, d.n, d.at, d.last, d.pc, d.day].join("|");
+    let c = S.cfg[key];
+    if (!c || c.sig !== sig) {
+      const col = d.last > d.ref ? IV_UP : d.last < d.ref ? IV_DN : IV_FLAT, when = d.day !== H.istDay() ? H.fmtD(d.day) + " · " : "";
+      c = S.cfg[key] = { sig, title, subtitle: "Intraday · " + when + d.n + " snapshots, about every 2 minutes · last " + d.at + " IST · NSE website data, delayed", height: window.innerWidth <= 640 ? 240 : 300,
+        session: true, timeOnly: true, keepHover: true, baseline: d.pc === null ? undefined : d.pc, baselineLabel: "Prev close",
+        series: [{ name: "Price", data: d.s.t.map((t, i) => [t, d.s.p[i]]), fill: true, color: col,
+          readout: v => d.cur + px(v) + (d.pc ? " (" + pct((v / d.pc - 1) * 100) + " vs prev close)" : "") }] };
+    }
+    TC.configure(key, c); return c;
+  }
+  // first request of the intraday file for this page (live.js then keeps it fresh and notifies); one re-render when it arrives
+  function ensureIv(H) {
+    const t = TL(); if (!t || !t.intraday || S.ivLoad) return;
+    S.ivLoad = "loading";
+    t.intraday().then(() => {
+      S.ivLoad = "done";
+      const a = document.activeElement, sub = HH && HH.sub;
+      if (a && a !== document.body && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && a.closest && a.closest("#app")) return;
+      if (HH && typeof sub === "string" && (sub.startsWith("stock:") || sub.startsWith("idx:"))) HH.render();
+    });
+  }
+  // the body under the Intraday view: a region, so a snapshot only swaps it when it flips between the message and the chart (the chart itself is updated in place)
+  function ivBody(H, p) {
+    const d = ivData(p.iv.name, p.iv.pc, p.iv.cur);
+    if (!window.TrendyCharts) return '<p class="mut">The chart could not be loaded.</p>';
+    if (!d || d.n < IV_MIN) return `<div class="st-msg"><p><b>${IV_EMPTY}</b></p><p class="mut sm">The Daily chart stays available.</p></div>`;
+    ensureIvCfg(H, p.iv.key, p.iv.name, d);
+    return `<div data-tc="line" data-tc-key="${H.esc(p.iv.key)}"></div>`;
+  }
+  const liveSt = () => { const t = TL(), s = t && t.status ? t.status().state : ""; return s === "live" || s === "stale"; };
   function chartCard(H, key, p) {
-    // p: {st, rows, prev, h52, l52, title, sub, live, liveTitle, note, closeOnly, retry:{act,attrs}}
-    const TC = window.TrendyCharts;
-    const live = p.live && TC ? TC.liveEmbed(p.live, { title: p.liveTitle, height: 440 }) : "";
-    const view = S.view === "live" && live ? "live" : "chart";
-    const seg = live ? `<div class="st-seg" role="group" aria-label="Chart view"><button class="${view === "chart" ? "on" : ""}" data-m="stocks" data-act="view" data-v="chart" aria-pressed="${view === "chart"}">${ic("chart-line")} Chart</button><button class="${view === "live" ? "on" : ""}" data-m="stocks" data-act="view" data-v="live" aria-pressed="${view === "live"}">${ic("bolt")} Live</button></div>` : "";
+    // p: {st, rows, prev, h52, l52, title, sub, note, closeOnly, retry:{act,attrs}, iv:{name, pc, cur, key} | undefined}
+    const TC = window.TrendyCharts, iv = p.iv && TC && TL() && liveOn() ? p.iv : null;
+    let view = "daily";
+    if (iv) {
+      ensureIv(H);
+      const d = ivData(iv.name, iv.pc, iv.cur);
+      view = S.cv || (S.ivLoad === "loading" && liveSt() ? "wait" : d && d.n >= IV_MIN && liveSt() ? "intraday" : "daily");
+    }
+    S.ivSig = iv ? 1 : 0;
+    const btn = (v, label) => `<button class="${view === v ? "on" : ""}" data-m="stocks" data-act="view" data-v="${v}" aria-pressed="${view === v}">${ic(v === "daily" ? "chart-line" : "bolt")} ${label}</button>`;
+    const seg = iv ? `<div class="st-seg" role="group" aria-label="Chart view">${btn("daily", "Daily")}${btn("intraday", "Intraday")}</div>` : "";
     let body;
-    if (view === "live") body = `<div class="st-live">${live}</div><p class="mut sm st-cn">Intraday chart by TradingView, delayed. It is not part of the end-of-day data below.</p>`;
+    if (view === "wait") body = '<div class="skel-block st-chsk"></div><div class="skel-line w60"></div>';
+    else if (view === "intraday") body = `<div class="st-iv">${reg("iv-body", () => ivBody(H, p))}</div><p class="mut sm st-cn">Not a tick chart: points are our snapshots. The dashed line is the previous close.</p>`;
     else if (!TC) body = '<p class="mut">The chart could not be loaded.</p>';
     else if (p.st === "loading") body = '<div class="skel-block st-chsk"></div><div class="skel-line w60"></div>';
     else if (p.st === "fail") body = retryBox("The price history could not be loaded.", p.retry.act, p.retry.attrs);
-    else if (p.st !== "ok" || !p.rows || p.rows.length < 2) body = `<div class="st-msg"><p><b>Price chart is not available for this stock yet.</b></p><p class="mut sm">End-of-day history is kept for the most traded stocks only.${live ? " Use Live to see the TradingView chart." : ""}</p>${live ? `<button class="btn sm" data-m="stocks" data-act="view" data-v="live">${ic("bolt")} Show live chart</button>` : ""}</div>`;
+    else if (p.st !== "ok" || !p.rows || p.rows.length < 2) body = `<div class="st-msg"><p><b>Price chart is not available for this stock yet.</b></p><p class="mut sm">End-of-day history is kept for the most traded stocks only.</p></div>`;
     else {
       ensureCfg(key, p);
       body = `<div data-tc="price" data-tc-key="${H.esc(key)}"></div><p class="mut sm st-cn">${p.note ? H.esc(p.note) + " " : ""}Drag or touch the chart for a crosshair. Ctrl + scroll zooms.</p>`;
     }
-    return `<div class="card st-chart"><div class="st-ch-h"><h2>${ic("chart-bar")} Price chart</h2>${seg}</div>${body}</div>`;
+    return `<div class="card st-chart"><div class="st-ch-h"><h2>${ic("chart-bar")} ${view === "intraday" ? "Intraday chart" : "Price chart"}</h2>${seg}</div>${body}</div>`;
   }
   // remember the user's range / type / SMA choice so the chart keeps it across the app's re-renders
   document.addEventListener("click", e => {
@@ -292,15 +339,14 @@
         <span class="st-ixn">${H.esc(r[1].replace(/^NIFTY/i, "Nifty"))}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(v)}</b><span class="st-ixv ${vix ? "" : cls(pc)}">${arrow(pc)} ${sgn(pts)} · ${pct(pc)}</span>
         ${closes ? spark(closes, 120, 34, vix) : '<span class="st-spph"></span>'}</button>`;
     }).join("");
-    const sensex = `<button class="st-ixc flat st-live-t" data-m="stocks" data-act="openidx" data-slug="sensex"><span class="st-ixn">BSE Sensex</span><b>Live chart</b><span class="st-ixv mut">${ic("bolt")} TradingView only</span><span class="st-spph"></span></button>`;
     if (S.idxList && cards) {
       const all = S.idxList.rows;
       const list = all.map(r => { const L = lix(r[1]), live = !!(L && isNum(L.last)); return `<button class="st-ixr" data-m="stocks" data-act="openidx" data-slug="${H.esc(r[0])}"><span class="st-ixrn">${H.esc(r[1])}${lv && !live ? ' <i class="st-tag">EOD</i>' : ""}</span><b>${px(live ? L.last : r[2])}</b>${pill(live ? L.pct : r[4])}</button>`; }).join("");
       return `<div class="card"><div class="st-ch-h"><h2>${ic("chart-bar")} Indices</h2><span class="mut sm">${lv ? snapTag(H) : "End of day, " + H.esc(H.fmtD(S.idxList.date))}</span></div>
-        <div class="st-ixg">${cards}${sensex}</div>
+        <div class="st-ixg">${cards}</div>
         <button class="linkbtn st-lk" data-m="stocks" data-act="allidx" aria-expanded="${S.allIdx}">${S.allIdx ? "Hide all indices" : "Show all " + all.length + " indices"} ${ic(S.allIdx ? "minus" : "plus")}</button>
         ${S.allIdx ? `<div class="st-ixl">${list}</div>` : ""}
-        <p class="mut sm st-foot">${lv ? "Index levels from the live snapshot of NSE's public website data; an index missing from it shows its end-of-day level, marked EOD." : "Closing levels from NSE India."} BSE Sensex data is not available here; use its live chart.</p></div>`;
+        <p class="mut sm st-foot">${lv ? "Index levels from the live snapshot of NSE's public website data; an index missing from it shows its end-of-day level, marked EOD." : "Closing levels from NSE India."} BSE Sensex is not available.</p></div>`;
     }
     if (S.idxList === null && S.status === "ok") return `<div class="card">${S.index && Array.isArray(S.index.rows) ? "<h2>Indices</h2>" + H.tbl(["Index", "Close", "Change %"], S.index.rows.slice(0, 12).map(r => [H.esc(r[0]), px(r[1]), `<span class="${cls(r[3])}">${pct(r[3])}</span>`])) : '<p class="mut">Index data is not available right now.</p>'}</div>`;
     return "";
@@ -470,14 +516,14 @@
   function stockChartP(H, c) {
     const { sym, hs, closes, ck } = c;
     let cp;
-    const tv = window.TrendyCharts ? window.TrendyCharts.tvSymbol("stock", sym) : "";
     if (hs.st === "ok") cp = { st: "ok", rows: hs.rows, note: "Adjusted for splits and bonus issues." };
     else if (hs.st === "none" && Array.isArray(closes) && closes.length >= 5) {
       const ds = ck.d.slice(-closes.length), rows = [];
       closes.forEach((v, i) => { if (isNum(v) && v > 0 && ds[i]) rows.push([ds[i], null, null, null, v, null]); });
       cp = { st: rows.length >= 5 ? "ok" : "none", rows, closeOnly: true, note: "Closing prices only (open, high, low and volume are not kept for this stock)." };
     } else cp = { st: hs.st === "loading" ? "loading" : hs.st === "fail" ? "fail" : "none" };
-    Object.assign(cp, { prev: c.prev, h52: c.w52h, l52: c.w52l, title: sym, sub: "NSE · end of day", live: tv, liveTitle: "Live chart for " + sym, retry: { act: "retryhist", attrs: ` data-sym="${H.esc(sym)}"` } });
+    Object.assign(cp, { prev: c.prev, h52: c.w52h, l52: c.w52l, title: sym, sub: "NSE · end of day", retry: { act: "retryhist", attrs: ` data-sym="${H.esc(sym)}"` } });
+    const q0 = lq(sym); if (q0 && isNum(q0.c)) cp.iv = { name: sym, pc: q0.pc, cur: "₹", key: "st-iv-" + sym };
     if (cp.st === "ok" && !cp.closeOnly) {
       const lr = liveRows(H, cp.rows, lq(sym), TL() && TL().asOnDay(), ["wh", "wl"]);
       if (lr) { cp.rows = lr.rows; cp.sub = lr.sub; if (lr.pc) cp.prev = lr.pc; if (isNum(lr.h52)) cp.h52 = lr.h52; if (isNum(lr.l52)) cp.l52 = lr.l52; cp.note = "Adjusted for splits and bonus issues. The last bar is built from the live snapshot (open, high, low and last price so far)."; }
@@ -541,9 +587,9 @@
   }
   function indexChartP(H, c, slug) {
     const { hs, rows, prevR, name } = c;
-    const tvName = TV_IDX[slug], tv = tvName && window.TrendyCharts ? window.TrendyCharts.tvSymbol("index", tvName) : "";
-    const cp = { st: hs.st === "ok" && c.n >= 2 ? "ok" : hs.st, rows, prev: prevR ? prevR[4] : null, h52: c.h52, l52: c.l52, title: name, sub: "NSE index · end of day", currency: "", live: tv, liveTitle: "Live chart for " + name,
+    const cp = { st: hs.st === "ok" && c.n >= 2 ? "ok" : hs.st, rows, prev: prevR ? prevR[4] : null, h52: c.h52, l52: c.l52, title: name, sub: "NSE index · end of day", currency: "",
       retry: { act: "retryidx", attrs: ` data-slug="${H.esc(slug)}"` }, note: hs.st === "ok" && !hs.hasVol ? "Index volume is not published by NSE for this index." : "" };
+    const L0 = lix(name); if (L0 && isNum(L0.last)) cp.iv = { name: L0.name, pc: L0.pc, cur: "", key: "st-iv-idx-" + slug };
     if (cp.st === "ok") {
       const L = lix(name), t = TL(), lr = L && t ? liveRows(H, rows, { o: L.o, h: L.h, l: L.l, c: L.last, pc: L.pc, v: null, wh: L.yh, wl: L.yl }, t.asOnDay(), ["wh", "wl"]) : null;
       if (lr) { cp.rows = lr.rows; cp.sub = lr.sub.replace("NSE · end of day", "NSE index · end of day"); if (lr.pc) cp.prev = lr.pc; if (isNum(lr.h52)) cp.h52 = lr.h52; if (isNum(lr.l52)) cp.l52 = lr.l52; cp.note = (cp.note ? cp.note + " " : "") + "The last bar is built from the live snapshot."; }
@@ -556,13 +602,6 @@
       <div class="st-g2">${mini("Near 52-week high", "trophy", m.hi, r => isNum(r[6]) ? nf(r[6], 1) + "% below high" : "—")}${mini("Near 52-week low", "target", m.lo, r => isNum(r[6]) ? nf(r[6], 1) + "% above low" : "—")}</div>`;
   }
   function indexPage(slug, H) {
-    if (slug === "sensex") {
-      const TC = window.TrendyCharts, tv = TC ? TC.liveEmbed("BSE:SENSEX", { title: "Live chart for BSE Sensex", height: 460 }) : "";
-      mount();
-      return H.head("BSE Sensex") + `<div class="st-page"><div class="card st-hero"><div class="st-hh">${avatar("BSE", true)}<div class="st-hid"><h2>BSE Sensex</h2><div class="st-chips"><span class="st-chip">${ic("bolt")} Live chart only</span></div></div></div>
-        <p class="mut sm">End-of-day Sensex data is not part of this app. The chart below is a delayed intraday chart by TradingView.</p></div>
-        <div class="card st-chart"><div class="st-ch-h"><h2>${ic("chart-bar")} Live chart</h2></div>${tv ? `<div class="st-live">${tv}</div>` : '<p class="mut">The live chart is not available.</p>'}</div></div>` + foot(H);
-    }
     if (!slugOk(slug)) return H.head("Index") + `<div class="card"><div class="st-msg"><p><b>This index could not be found.</b></p></div></div>`;
     ensureIdxH(slug, H);
     const row = S.idxBy && S.idxBy.get(slug), hs = S.idxH[slug] || { st: "loading" };
@@ -578,6 +617,17 @@
   }
 
   // ---------- live patch (called by the shell when a snapshot changed or the status changed) ----------
+  // intraday chart on the open page: the Daily/Intraday control appears or disappears with the snapshot (one re-render); otherwise only the region body is
+  // re-evaluated (identical HTML = untouched DOM) and the chart is updated in place through configure() + auto()
+  function ivPatch(H, cp) {
+    const want = cp.iv && window.TrendyCharts && liveOn() ? 1 : 0;
+    if (want !== S.ivSig) {
+      const a = document.activeElement;
+      if (!(a && a !== document.body && /^(INPUT|SELECT|TEXTAREA)$/.test(a.tagName) && a.closest && a.closest("#app"))) H.render();
+      return;
+    }
+    if (want && document.querySelector('#app [data-lvr="iv-body"]')) { setReg("iv-body", () => ivBody(H, cp)); mount(); }
+  }
   function livePatch(H) {
     HH = H;
     if (S.status !== "ok") return;
@@ -586,11 +636,13 @@
       const sym = sub.slice(6), c = symOk(sym) && stockCtx(sym); if (!c) return;
       setReg("sp-hero", () => stockHero(H, c)); setReg("sp-det", () => stockDet(H, c)); setReg("sp-stats", () => stockStats(H, c));
       const cp = stockChartP(H, c); if (cp.st === "ok" && window.TrendyCharts) { ensureCfg("st-" + sym, cp); mount(); }
+      ivPatch(H, cp);
     } else if (typeof sub === "string" && sub.startsWith("idx:")) {
-      const slug = sub.slice(4); if (slug === "sensex" || !slugOk(slug)) return;
+      const slug = sub.slice(4); if (!slugOk(slug)) return;
       const c = indexCtx(slug); if (!c.row && c.hs.st !== "ok") return;
       setReg("ix-hero", () => indexHero(H, c)); setReg("ix-det", () => indexDet(H, c)); setReg("ix-mov", () => indexMovers(H));
       const cp = indexChartP(H, c, slug); if (cp.st === "ok" && window.TrendyCharts) { ensureCfg("st-idx-" + slug, cp); mount(); }
+      ivPatch(H, cp);
     } else if (tab === "movers") {
       const k = LISTS.some(l => l[0] === S.k) ? S.k : "gain";
       setReg("mv-bar", () => barHtml("Gainers, losers, most active and 52-week lists"), barSig); setReg("mv-list", () => moversCard(H, k));
@@ -607,7 +659,7 @@
   }
   function openStock(H, sym) {
     const r = recents(H).filter(s => s !== sym); r.unshift(sym); H.store.set("st_recent", r.slice(0, 8));
-    S.view = "chart"; H.setSub("stock:" + sym);
+    S.cv = null; H.setSub("stock:" + sym);
   }
   document.addEventListener("keydown", e => {
     if (e.key !== "Enter" || !e.target || e.target.id !== "st-q") return;
@@ -637,7 +689,7 @@
       HH = H;
       const a = el.dataset.act, sym = el.dataset.sym;
       if (a === "open" && symOk(sym)) { openStock(H, sym); return true; }
-      if (a === "openidx" && (slugOk(el.dataset.slug))) { S.view = "chart"; H.setSub("idx:" + el.dataset.slug); return true; }
+      if (a === "openidx" && (slugOk(el.dataset.slug))) { S.cv = null; H.setSub("idx:" + el.dataset.slug); return true; }
       if (a === "star" && symOk(sym)) {
         const w = watched(H), i = w.indexOf(sym);
         if (i >= 0) { w.splice(i, 1); H.store.set("st_watch", w); H.toast("Removed from watchlist"); setStars(sym, false); }
@@ -650,7 +702,7 @@
       if (a === "more") { S.shown = 100; H.render(); return true; }
       if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; H.go("stocks", "movers"); return true; }
       if (a === "allidx") { S.allIdx = !S.allIdx; H.render(); return true; }
-      if (a === "view") { S.view = el.dataset.v === "live" ? "live" : "chart"; H.render(); return true; }
+      if (a === "view") { S.cv = el.dataset.v === "intraday" ? "intraday" : "daily"; H.render(); return true; }
       if (a === "gosearch") { H.go("stocks", "search"); return true; }
       if (a === "recentclear") { H.store.set("st_recent", []); H.render(); return true; }
       if (a === "retry") { S.idxLoadedKick = false; loadCore(H); return true; }

@@ -655,8 +655,10 @@
   /* ============================================================ */
   function mkLine(container, opts) {
     injectStyle();
-    var o = assign({}, opts), self = {}, ser = [], allT = [], intraday = false, geo = null, hideT = 0, avail = [], availSig = "", yo = null;
-    function xLabel(t, wt) { return yo !== null ? yearLabel(yo, t) : fmtDate(t, wt); }
+    var o = assign({}, opts), self = {}, ser = [], allT = [], intraday = false, geo = null, hideT = 0, avail = [], availSig = "", yo = null, sess = null;
+    // o.timeOnly: readout/crosshair show "HH:MM IST" only (one-day charts); o.session: fixed NSE session domain 09:15-15:30 of the data's day (right side stays empty until the day completes)
+    function xLabel(t, wt) { if (o.timeOnly && t % DAY !== 0) { var q = new Date(t); return pad2(q.getUTCHours()) + ":" + pad2(q.getUTCMinutes()) + " IST"; } return yo !== null ? yearLabel(yo, t) : fmtDate(t, wt); }
+    function dom() { return sess ? sess : [allT[st.a], allT[st.b]]; }
     var st = { range: o.range || "All", a: 0, b: 0, hover: -1 };
     clear(container);
     var root = h("div", "tcx tcx-line"); container.appendChild(root);
@@ -678,12 +680,16 @@
         pts.sort(function (a, b) { return a[0] - b[0]; });
         var d = []; pts.forEach(function (p) { if (d.length && d[d.length - 1][0] === p[0]) d[d.length - 1] = p; else d.push(p); });
         if (d.length < 2) return;
-        ser.push({ name: s.name ? String(s.name) : "Series " + (ser.length + 1), color: typeof s.color === "string" && /^#[0-9a-f]{3,8}$|^rgb|^hsl/i.test(s.color) ? s.color : PALETTE[idx % PALETTE.length], data: d, axis: s.axis === "right" ? "right" : "left", fill: s.fill === true, format: typeof s.format === "function" ? s.format : fmtAuto });
+        ser.push({ name: s.name ? String(s.name) : "Series " + (ser.length + 1), color: typeof s.color === "string" && /^#[0-9a-f]{3,8}$|^rgb|^hsl/i.test(s.color) ? s.color : PALETTE[idx % PALETTE.length], data: d, axis: s.axis === "right" ? "right" : "left", fill: s.fill === true, format: typeof s.format === "function" ? s.format : fmtAuto, readout: typeof s.readout === "function" ? s.readout : null });
       });
       var set = {}; allT = [];
       ser.forEach(function (s) { s.data.forEach(function (p) { if (!set[p[0]]) { set[p[0]] = 1; allT.push(p[0]); } }); });
       allT.sort(function (a, b) { return a - b; });
       intraday = allT.some(function (t) { return t % DAY !== 0; });
+      sess = null;
+      if (o.session && intraday && allT.length && Math.floor(allT[0] / DAY) === Math.floor(allT[allT.length - 1] / DAY)) {
+        var d0 = Math.floor(allT[0] / DAY) * DAY; sess = [Math.min(d0 + 555 * 60000, allT[0]), Math.max(d0 + 930 * 60000, allT[allT.length - 1])];
+      }
       avail = [];
       if (ser.length && Array.isArray(o.ranges) && o.ranges.length) {
         var last = allT[allT.length - 1];
@@ -721,7 +727,7 @@
       var t = allT[i], s0 = h("span", "tcx-dt", xLabel(t, true)); ro.appendChild(s0);
       ser.forEach(function (s) {
         var v = lookup(s, t), e = h("span"), d = h("span", "tcx-dot"); d.style.background = s.color;
-        e.appendChild(d); e.appendChild(h("b", "", s.name)); e.appendChild(document.createTextNode(v === null ? "—" : String(safeFmt(s.format, v)))); ro.appendChild(e);
+        e.appendChild(d); e.appendChild(h("b", "", s.name)); e.appendChild(document.createTextNode(v === null ? "—" : String(safeFmt(s.readout || s.format, v)))); ro.appendChild(e);
       });
     }
     function safeFmt(f, v) { try { var r = f(v); return r === undefined || r === null || r === "NaN" ? "—" : r; } catch (e) { return "—"; } }
@@ -734,7 +740,8 @@
         if (ser.length > 1) ser.forEach(function (s) { var e = h("span"), d = h("span", "tcx-dot"); d.style.background = s.color; add(e, d, document.createTextNode(s.name)); leg.appendChild(e); });
         leg.hidden = ser.length < 2;
         wrap.setAttribute("aria-label", (o.title ? o.title + ": " : "") + "trend chart of " + ser.map(function (s) { return s.name; }).join(", ") + ". Use left and right arrow keys to read values.");
-        st.hover = -1; setRO(allT.length - 1);
+        var kh = o.keepHover && st.hover >= st.a && st.hover < allT.length ? st.hover : -1;     // a live chart keeps the crosshair while new points arrive
+        st.hover = kh; setRO(kh >= 0 ? kh : allT.length - 1);
       }
       draw();
     }
@@ -746,7 +753,7 @@
       var W = wrap.clientWidth; if (W < 60) return;
       var H = (isNum(num(o.height)) ? +o.height : (W < 420 ? 240 : 280)) + 24, XH = 24, py0 = 10, py1 = H - XH;
       var ctx = fit(canvas, W, H), T = theme();
-      var tA = allT[st.a], tB = allT[st.b], axes = { left: null, right: null };
+      var dm = dom(), tA = dm[0], tB = dm[1], axes = { left: null, right: null };
       ["left", "right"].forEach(function (ax) {
         var ss = ser.filter(function (s) { return s.axis === ax; }); if (!ss.length) return;
         var lo = Infinity, hi = -Infinity;
@@ -810,7 +817,7 @@
       ctx.restore();
       if (bl !== null) {
         var by2 = yA(blax, bl);
-        if (by2 > py0 && by2 < py1) { var txt = String(safeFmt(ser[0].format, bl)); ctx.font = "700 12px " + FONT; ctx.textAlign = "left"; ctx.textBaseline = "middle"; var w2 = ctx.measureText(txt).width + 8; ctx.fillStyle = T.card; ctx.globalAlpha = .85; ctx.fillRect(L + 2, Math.round(by2) - 17, w2, 16); ctx.globalAlpha = 1; ctx.fillStyle = T.mut; ctx.fillText(txt, L + 6, Math.round(by2) - 9); }
+        if (by2 > py0 && by2 < py1) { var txt = (o.baselineLabel ? String(o.baselineLabel) + " " : "") + String(safeFmt(ser[0].format, bl)); ctx.font = "700 12px " + FONT; ctx.textAlign = "left"; ctx.textBaseline = "middle"; var w2 = ctx.measureText(txt).width + 8; ctx.fillStyle = T.card; ctx.globalAlpha = .85; ctx.fillRect(L + 2, Math.round(by2) - 17, w2, 16); ctx.globalAlpha = 1; ctx.fillStyle = T.mut; ctx.fillText(txt, L + 6, Math.round(by2) - 9); }
       }
       /* end dots */
       ser.forEach(function (s) {
@@ -829,7 +836,7 @@
       }
     }
     function idxAt(cx) {
-      if (!geo) return -1; var rc = canvas.getBoundingClientRect(), t = allT[st.a] + clamp((cx - rc.left - geo.L) / geo.pw, 0, 1) * (allT[st.b] - allT[st.a]);
+      if (!geo) return -1; var rc = canvas.getBoundingClientRect(), dm = dom(), t = dm[0] + clamp((cx - rc.left - geo.L) / geo.pw, 0, 1) * (dm[1] - dm[0]);
       var i = lowerBound(allT, t); // small arrays; fine
       if (i > 0 && (i >= allT.length || t - allT[i - 1] < allT[i] - t)) i--;
       return clamp(i, st.a, st.b);

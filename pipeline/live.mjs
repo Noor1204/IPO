@@ -6,9 +6,10 @@
 //        (the old /api/equity-stockIndices answers 404 "Resource not found" now; this is what nseindia.com/market-data/live-equity-market calls)
 //   /api/option-chain-contract-info?symbol=X             expiry list (only when the stored list is stale)
 //   /api/option-chain-v3?type=Indices&symbol=X&expiry=D  option chain of one expiry (the old /api/option-chain-indices answers 404 now)
-// Output (env LIVE_OUT, default _live/): meta.json (tiny, polled first), market.json, oc-<SYMBOL>.json
+// Output (env LIVE_OUT, default _live/): meta.json (tiny, polled first), market.json, oc-<SYMBOL>.json, intraday.json (today's price per snapshot, see below)
 // Env: LIVE_PREV = directory with the previous snapshot (row-count guard, expiry cache); LIVE_BUDGET_MS (default 100000);
-//      LIVE_FAULT = fault injection for tests: stocks-short | bad-number | future | chain-short | nse-down
+//      LIVE_FAULT = fault injection for tests: stocks-short | bad-number | future | chain-short | nse-down | closed (intraday step sees state Closed)
+//      LIVE_TEST_ASON / LIVE_TEST_TODAY = intraday step sees this asOn / IST date instead (tests of the append rules only)
 // Exit codes: 0 written, 3 refused (fetch/validation failed: NOTHING is written, keep the previous snapshot), 1 crash.
 import fs from "node:fs";
 import path from "node:path";
@@ -84,6 +85,7 @@ function expiryIso(s) { const m = String(s).match(/^(\d{1,2})-([A-Za-z]{3})-(\d{
 function weekdaysBetween(isoDay, nowDay) {                                                 // weekdays in (isoDay, nowDay]
   let n = 0; for (let d = new Date(isoDay + "T00:00:00Z"); ;) { d = new Date(d.getTime() + 864e5); if (d.toISOString().slice(0, 10) > nowDay) break; const w = d.getUTCDay(); if (w !== 0 && w !== 6) n++; } return n;
 }
+const readPrevRaw = f => { if (!PREV) return null; try { return fs.readFileSync(path.join(PREV, f), "utf8"); } catch { return null; } };
 const readPrev = f => { if (!PREV) return null; try { return JSON.parse(fs.readFileSync(path.join(PREV, f), "utf8")); } catch { return null; } };
 
 // ---------------------------------------------------------------- max pain / totals (same definitions as pipeline/fno.mjs)
@@ -159,6 +161,61 @@ function parseChain(j, sym) {
 }
 const OC_COLS = ["k", "coi", "cdoi", "cvol", "civ", "cltp", "poi", "pdoi", "pvol", "piv", "pltp"];
 const ocRow = (k, o) => [k, o.ce?.oi ?? null, o.ce?.doi ?? null, o.ce?.vol ?? null, o.ce?.iv ?? null, o.ce?.ltp ?? null, o.pe?.oi ?? null, o.pe?.doi ?? null, o.pe?.vol ?? null, o.pe?.iv ?? null, o.pe?.ltp ?? null];
+
+// ---------------------------------------------------------------- intraday.json (today's price per accepted snapshot, IST trading day only)
+// {"v":1,"day":"YYYY-MM-DD","t":[HHMM ints, strictly increasing],"s":{"<SYMBOL or index name>":[price per t | null]}}
+// Stocks: last traded price (c). Indices: last, only the groups the app shows an intraday chart for (the full list would not fit the size cap).
+const ID_MAX_BYTES = 1229 * 1024, ID_MIN_SYMBOLS = 400, ID_OPEN = 915, ID_CLOSE = 1530;
+const ID_INDEX_GROUPS = new Set(["derivatives", "broad market", "sectoral"]);
+const hhmmOk = n => Number.isInteger(n) && n >= 0 && n <= 2359 && n % 100 < 60;
+function validIntraday(o, day) {                       // -> error string, or "" when fine
+  if (!o || typeof o !== "object" || o.v !== 1 || typeof o.day !== "string" || !/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(o.day)) return "bad header";
+  if (day && o.day !== day) return "day " + o.day + " is not " + day;
+  if (!Array.isArray(o.t) || !o.t.length || !o.t.every(hhmmOk)) return "bad t";
+  for (let i = 1; i < o.t.length; i++) if (!(o.t[i] > o.t[i - 1])) return "t not strictly increasing at " + i;
+  if (!o.s || typeof o.s !== "object" || Array.isArray(o.s)) return "bad s";
+  const keys = Object.keys(o.s);
+  if (keys.length < ID_MIN_SYMBOLS) return "only " + keys.length + " series (< " + ID_MIN_SYMBOLS + ")";
+  for (const k of keys) {
+    const a = o.s[k];
+    if (!Array.isArray(a) || a.length !== o.t.length) return "series " + k + " has length " + (a && a.length) + " != " + o.t.length;
+    for (const v of a) if (v !== null && !(typeof v === "number" && Number.isFinite(v) && v > 0)) return "series " + k + " has a bad value";
+  }
+  return "";
+}
+// -> {text, note}: text = the JSON to write (null = write nothing). Never throws; a problem keeps the previous file (when it is still valid and from today).
+function buildIntraday({ today, asOn, state, stocks, indices }) {
+  const prevText = readPrevRaw("intraday.json");
+  let prev = null;
+  if (prevText) { try { prev = JSON.parse(prevText); } catch { prev = null; } }
+  const prevErr = prev ? validIntraday(prev, today) : "none";
+  const prevOk = prev && !prevErr && prevText.length < ID_MAX_BYTES;                       // the previous file counts only when valid and from today (a file from another day starts a new day)
+  const keep = why => prevOk ? { text: prevText, note: why + "; previous intraday.json kept (" + prev.t.length + " points)" } : { text: null, note: why + "; no intraday.json for today" };
+  try {
+    const hm = asOn ? +(asOn.slice(11, 13) + asOn.slice(14, 16)) : NaN, asDay = asOn ? asOn.slice(0, 10) : "";
+    const open = /^open$/i.test(state);
+    if (asDay !== today || !hhmmOk(hm) || hm < ID_OPEN || hm > ID_CLOSE) return keep("asOn " + asOn + " is outside today's session");
+    // a closed market adds nothing, except the very last session minutes (15:25-15:30): NSE flips the state to Closed at the bell, and the run that sees
+    // the 15:30 closing prices must still be able to add the closing point (later stamps such as NSE's 15:40 post-close time are rejected above)
+    if (!open && hm < 1525) return keep("market state " + state);
+    const base = prevOk ? prev : { v: 1, day: today, t: [], s: {} };
+    if (base.t.length && hm <= base.t[base.t.length - 1]) return keep("asOn " + hm + " is not newer than the last point " + base.t[base.t.length - 1]);
+    const n0 = base.t.length, next = { v: 1, day: today, t: base.t.concat(hm), s: {} };
+    const cur = new Map();
+    for (const r of stocks) cur.set(r[0], r[1]);
+    for (const r of indices) if (ID_INDEX_GROUPS.has(r[1]) && !cur.has(r[0])) cur.set(r[0], r[2]);
+    const put = (k, v) => (v !== null && typeof v === "number" && Number.isFinite(v) && v > 0 ? rnd(v) : null);
+    for (const k of new Set([...Object.keys(base.s), ...cur.keys()])) {
+      const a = base.s[k] ? base.s[k].slice() : new Array(n0).fill(null);      // a symbol that appears later in the day is padded with null
+      a.push(cur.has(k) ? put(k, cur.get(k)) : null);
+      next.s[k] = a;
+    }
+    const text = JSON.stringify(next), err = validIntraday(next, today);
+    if (err) return keep("validation failed: " + err);
+    if (text.length >= ID_MAX_BYTES) return keep("size " + text.length + " bytes >= " + ID_MAX_BYTES);
+    return { text, note: "appended point " + hm + " (" + next.t.length + " points, " + Object.keys(next.s).length + " series, " + (text.length / 1024).toFixed(1) + " KB)" };
+  } catch (e) { return keep("intraday error " + (e && e.message)); }
+}
 
 // ---------------------------------------------------------------- main
 async function run() {
@@ -288,10 +345,14 @@ async function run() {
       expiries: c.kept,
     });
   }
+  // LIVE_TEST_ASON / LIVE_TEST_TODAY / LIVE_FAULT=closed only change what the intraday step sees (local tests of the append rules)
+  const idr = buildIntraday({ today: process.env.LIVE_TEST_TODAY || today, asOn: process.env.LIVE_TEST_ASON || asOn, state: FAULT === "closed" ? "Closed" : status.state, stocks, indices });
+  log("intraday:", idr.note);
+  if (idr.text) files["intraday.json"] = idr.text;
   const metaSmall = { v: SCHEMA, asOn, fetchedAt, marketOpen: /^open$/i.test(status.state), marketState: status.state, counts: { stocks: stocks.length, indices: indices.length, chains: ocCounts } };
   files["meta.json"] = JSON.stringify(metaSmall);
   for (const [f, s] of Object.entries(files)) {
-    const cap = f === "market.json" ? 350e3 : f === "meta.json" ? 2e3 : 60e3;
+    const cap = f === "market.json" ? 350e3 : f === "meta.json" ? 2e3 : f === "intraday.json" ? ID_MAX_BYTES : 60e3;
     if (s.length > cap) refuse(`${f} is ${s.length} bytes (> ${cap}); nothing written`);
   }
 

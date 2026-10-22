@@ -6,6 +6,10 @@
  *
  *   TrendyLive.get()            Promise<market|null>   latest market.json ({meta, idxCols, indices, cols, stocks, top})
  *   TrendyLive.chain("NIFTY")   Promise<chain|null>    oc-NIFTY.json ({meta, exps, cols, tot, expiries:[{e, coi, poi, pcr, mp, n, strikes}]})
+ *   TrendyLive.intraday()       Promise<intraday|null> today's price points per snapshot ({v, day, t:[HHMM], s:{SYMBOL|index name: [price|null]}}); the first call turns on
+ *                               downloading intraday.json (only pages that ask for it ever download it); refreshed when the snapshot changed
+ *   TrendyLive.series("TCS")    sync: {day, t:["YYYY-MM-DD HH:MM", ...], p:[price, ...]} (nulls dropped) for a stock symbol or index name, or null (absent, < 2 valid points,
+ *                               or the file is not from the snapshot's trading day)
  *   TrendyLive.status()         {state: "live"|"stale"|"closed"|"unavailable", asOn, ageMin, text}
  *   TrendyLive.quote("TCS")     object keyed by market.cols (s, c, ch, p, o, h, l, pc, v, tv, wh, wl, y1, m1, fo, t) or null
  *   TrendyLive.index("NIFTY 50") object keyed by market.idxCols (name, grp, last, chg, pct, ...) or null
@@ -21,7 +25,7 @@
   var STALE_MIN = 12, POLL_OPEN = 60e3, POLL_IDLE = 300e3, SCHEMA = 1;
   var L = { _now: null };
 
-  var S = { baseIdx: 0, metaFetched: null, meta: null, market: null, qmap: null, imap: null, chains: {}, chainFetched: {}, err: null, inflight: null, chainFlight: {}, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
+  var S = { intraday: null, intradayStamp: null, intradayFlight: null, intradayWanted: false, baseIdx: 0, metaFetched: null, meta: null, market: null, qmap: null, imap: null, chains: {}, chainFetched: {}, err: null, inflight: null, chainFlight: {}, lastRun: 0, subs: [], lastState: null, timer: null, started: false };
 
   function now() { try { var n = typeof L._now === "function" ? L._now() : L._now; if (typeof n === "number" && isFinite(n)) return n; } catch (e) {} return Date.now(); }
   function bases() {
@@ -80,6 +84,51 @@
       ex.push({ e: e.e, coi: e.coi, poi: e.poi, pcr: isNum(e.pcr) ? e.pcr : null, mp: isNum(e.mp) ? e.mp : null, n: st.length, strikes: st });
     }
     return { meta: j.meta, exps: Array.isArray(j.exps) ? j.exps : [], cols: j.cols, tot: j.tot || null, expiries: ex };
+  }
+
+  // intraday.json: {v:1, day, t:[HHMM ints, strictly increasing], s:{name:[price|null per t]}}. A series of the wrong length or with a bad value is dropped (never exposed).
+  function okIntraday(j) {
+    if (!j || typeof j !== "object" || j.v !== 1 || typeof j.day !== "string" || !/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/.test(j.day) || !Array.isArray(j.t) || !j.t.length || j.t.length > 600 || !j.s || typeof j.s !== "object" || Array.isArray(j.s)) return null;
+    var n = j.t.length, i;
+    for (i = 0; i < n; i++) { var x = j.t[i]; if (!(typeof x === "number" && x % 1 === 0 && x >= 0 && x <= 2359 && x % 100 < 60) || (i && !(x > j.t[i - 1]))) return null; }
+    var out = Object.create(null), cnt = 0, keys = Object.keys(j.s);
+    if (keys.length > 3000) return null;
+    keys.forEach(function (k) {
+      var a = j.s[k], ok = Array.isArray(a) && a.length === n;
+      for (var q = 0; ok && q < n; q++) if (a[q] !== null && !(isNum(a[q]) && a[q] > 0)) ok = false;
+      if (ok) { out[k] = a; cnt++; }
+    });
+    return cnt ? { v: 1, day: j.day, t: j.t.slice(), s: out } : null;
+  }
+  // downloads intraday.json for the snapshot stamp (meta.fetchedAt) unless that version is already held; resolves with the held object (or null), never rejects
+  function loadIntraday(stamp) {
+    if (S.intraday && S.intradayStamp === stamp) return Promise.resolve(S.intraday);
+    if (S.intradayFlight && S.intradayFlight.stamp === stamp) return S.intradayFlight.p;
+    var f = { stamp: stamp };
+    f.p = getJson("intraday.json", okIntraday, stamp).then(function (d) { S.intraday = d; S.intradayStamp = stamp; return d; })
+      .catch(function () { return S.intraday; })
+      .then(function (r) { if (S.intradayFlight === f) S.intradayFlight = null; return r; });
+    S.intradayFlight = f; return f.p;
+  }
+  function intraday() {
+    try {
+      S.intradayWanted = true;
+      var fresh = now() - S.lastRun < 20000 && S.meta ? Promise.resolve() : refresh();
+      return fresh.then(function () {
+        if (!S.meta) return S.intraday;
+        return loadIntraday(S.meta.fetchedAt).then(function (d) { return d || null; });
+      }).catch(function () { return S.intraday || null; });
+    } catch (e) { return Promise.resolve(null); }
+  }
+  function series(name) {
+    try {
+      var d = S.intraday; name = String(name || "");
+      if (!d || !Object.prototype.hasOwnProperty.call(d.s, name)) return null;
+      var day = asOnDay(); if (day && day !== d.day) return null;            // a file from another trading day is never shown as today's chart
+      var a = d.s[name], t = [], p = [];
+      for (var i = 0; i < a.length; i++) if (a[i] !== null) { var h = d.t[i]; t.push(d.day + " " + (h < 1000 ? "0" : "") + Math.floor(h / 100) + ":" + (h % 100 < 10 ? "0" : "") + (h % 100)); p.push(a[i]); }
+      return p.length >= 2 ? { day: d.day, t: t, p: p } : null;
+    } catch (e) { return null; }
   }
 
   // ---------------------------------------------------------------- state
@@ -168,7 +217,10 @@
       return getJson("market.json", okMarket, meta.fetchedAt).then(function (m) {
         var changed = !S.market || S.market.meta.fetchedAt !== m.meta.fetchedAt;
         S.metaFetched = meta.fetchedAt; ingest(m);
-        if (changed) { S.lastState = status().state; notify("data"); }
+        if (changed) {
+          S.lastState = status().state; notify("data");
+          if (S.intradayWanted) loadIntraday(meta.fetchedAt).then(function (d) { if (d && S.metaFetched === meta.fetchedAt) notify("data"); });   // second notification when the new points arrived
+        }
         return m;
       });
     }).catch(function (e) { S.err = e; return S.market || null; })
@@ -220,7 +272,7 @@
   }
   function stop() { S.started = false; clearTimeout(S.timer); S.timer = null; clearInterval(S.ager); S.ager = null; try { document.removeEventListener("visibilitychange", onVis); } catch (e) {} }
 
-  L.get = get; L.chain = chain; L.status = status; L.quote = quote; L.index = index; L.subscribe = subscribe; L.start = start; L.stop = stop; L.badge = badge;
+  L.intraday = intraday; L.series = series; L.get = get; L.chain = chain; L.status = status; L.quote = quote; L.index = index; L.subscribe = subscribe; L.start = start; L.stop = stop; L.badge = badge;
   L.peek = function () { return S.market; }; L.asOnDay = asOnDay; L.usable = usable; L.bar = bar; L.line = line; L.paint = paint; L.refresh = get; L.version = SCHEMA;
   window.TrendyLive = L;
 })();
