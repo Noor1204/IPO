@@ -26,6 +26,12 @@ const GUARD = [
 await fs.writeFile(path.join(out, "guard.js"), GUARD);
 const idx = path.join(out, "index.html");
 await fs.writeFile(idx, (await fs.readFile(idx, "utf8")).replace('<script src="boot.js"></script>', ['<script src="guard.js"></script>', '<script src="boot.js"></script>'].join("\n")));
+// cache-bust: every deploy gets new script / style URLs (?v=<commit>) so a phone or browser never keeps running a stale copy for up to 10 minutes (GitHub Pages sends max-age=600)
+{
+  const v = String(process.env.GITHUB_SHA || Date.now()).slice(0, 10);
+  const html = await fs.readFile(idx, "utf8");
+  await fs.writeFile(idx, html.replace(/(<script src="|<link rel="stylesheet" href=")((?!https?:)[^"?]+.(?:js|css))"/g, (m, p, f) => `${p}${f}?v=${v}"`));
+}
 await fs.writeFile(path.join(out, ".nojekyll"), "");
 const j = JSON.parse(await fs.readFile(path.join(out, "data", "ipos.json"), "utf8"));
 console.log(`site: ${j.ipos.length} IPOs, ${j.filings.length} filings -> ${out}`);
