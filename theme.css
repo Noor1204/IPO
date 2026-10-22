@@ -591,3 +591,13 @@ td .tnote{font-weight:500;margin-top:2px}
 .tl-sec{font-size:12px;font-weight:700;color:var(--mut);margin:0 2px 8px;overflow-wrap:anywhere}
 @keyframes tl-pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}80%,100%{box-shadow:0 0 0 7px rgba(16,185,129,0)}}
 @media (prefers-reduced-motion:reduce){.tl-live .tl-dot{animation:none}}
+
+/* ---- bottom bar on phones: every item shows its icon AND its name (IPO | Stocks | Mutual Fund); the active one is the gradient pill ---- */
+@media(max-width:959px){
+  nav{padding:5px}
+  nav button{flex:1 1 0;flex-direction:column;gap:3px;height:58px;padding:5px 2px 4px;border-radius:20px}
+  nav button.on{flex-grow:1}
+  nav button .ic{font-size:23px}
+  nav button span{max-width:none!important;opacity:1!important;margin:0!important;overflow:visible;font-size:12px;line-height:1.1;font-weight:800;letter-spacing:.1px}
+  #app{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
+}
