@@ -20,7 +20,8 @@
  */
 (function () {
   "use strict";
-  var DEFAULT_BASES = ["https://cdn.jsdelivr.net/gh/Noor1204/IPO@live/", "https://raw.githubusercontent.com/Noor1204/IPO/live/"];
+  // raw.githubusercontent.com first: it always serves the newest commit of the branch (a changed ?query is a new URL). jsDelivr caches a branch for up to 12 hours and ignores purges at times (it showed yesterday's snapshot), so it is only the fallback
+  var DEFAULT_BASES = ["https://raw.githubusercontent.com/Noor1204/IPO/live/", "https://cdn.jsdelivr.net/gh/Noor1204/IPO@live/"];
   var STALE_MIN = 12, POLL_OPEN = 60e3, POLL_IDLE = 300e3, SCHEMA = 1;
   var L = { _now: null };
 
