@@ -1517,6 +1517,50 @@ function render() {
 // Both languages are stacked in the same grid cell, so the dialog keeps one fixed height when the language is switched.
 // The dialog ALWAYS opens in English. Its Hindi / English switch only changes ackLang (this opening of the dialog): nothing is stored and the app language
 // (localStorage "lang", used by About / Privacy / the footer note) is not touched.
+// ---------- first-run welcome screens (shown once per device; the disclaimer dialog still appears after them) ----------
+const ONB = [
+  { ic: "rocket", tone: "t1", t: "Every IPO in one place", hi: "सारे IPO एक ही जगह", p: "Open, upcoming and closed IPOs with price band, lot size, dates and the minimum you need to invest, taken from NSE and the offer documents.", chips: ["Live", "Upcoming", "Closed", "SME"] },
+  { ic: "chart-bar", tone: "t2", t: "Subscription and GMP, as they move", hi: "सब्सक्रिप्शन और GMP, लगातार", p: "Category-wise and day-wise subscription, who is bidding, and the GMP trend. GMP is unofficial and we say so on every screen.", chips: ["QIB · NII · Retail", "Day-wise", "GMP trend"] },
+  { ic: "trophy", tone: "t3", t: "Check before you apply", hi: "अप्लाई करने से पहले जाँचें", p: "Company figures and risks from the offer document, a data-based score, listing history, a calculator and reports. Information only, never advice.", chips: ["Score", "Financials", "Reports", "Calculator"] },
+  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "स्टॉक्स और म्यूचुअल फंड भी", p: "Switch from the bottom bar. Free, no sign-up, and your watchlist stays on your own device.", chips: ["Free", "No login", "Private"] },
+];
+let onbEl = null, onbI = 0;
+function onbShow() {
+  if (onbEl || store.get("onb", false)) return;
+  onbEl = document.createElement("div"); onbEl.className = "onb"; onbEl.setAttribute("role", "dialog"); onbEl.setAttribute("aria-modal", "true"); onbEl.setAttribute("aria-label", "Welcome to Trendy IPO");
+  onbEl.innerHTML = `<button type="button" class="onb-skip" data-onb="skip">Skip</button>
+    <div class="onb-track" id="onb-track">${ONB.map((s, k) => `<section class="onb-s" aria-hidden="${k ? "true" : "false"}"><div class="onb-art ${s.tone}"><i class="onb-ring"></i><span class="onb-ic">${ic(s.ic)}</span></div><h2>${esc(s.t)}</h2><p class="onb-hi" lang="hi">${esc(s.hi)}</p><p class="onb-p">${esc(s.p)}</p><div class="onb-chips">${s.chips.map(c => `<span>${esc(c)}</span>`).join("")}</div></section>`).join("")}</div>
+    <div class="onb-foot"><div class="onb-dots" aria-hidden="true">${ONB.map((_, k) => `<i${k ? "" : ' class="on"'}></i>`).join("")}</div><div class="onb-btns"><button type="button" class="btn ghost" data-onb="back" hidden>Back</button><button type="button" class="btn" data-onb="next">Next</button></div></div>`;
+  document.body.appendChild(onbEl); onbI = 0; onbGo(0);
+  setTimeout(() => { const b = onbEl && onbEl.querySelector('[data-onb="next"]'); if (b) b.focus({ preventScroll: true }); }, 60);
+  let x0 = null;
+  onbEl.addEventListener("touchstart", e => { x0 = e.touches[0].clientX; }, { passive: true });
+  onbEl.addEventListener("touchend", e => { if (x0 === null) return; const dx = e.changedTouches[0].clientX - x0; x0 = null; if (Math.abs(dx) > 50) onbGo(onbI + (dx < 0 ? 1 : -1)); }, { passive: true });
+}
+function onbGo(n) {
+  if (!onbEl) return;
+  if (n >= ONB.length) return onbDone();
+  onbI = Math.max(0, n);
+  onbEl.querySelector("#onb-track").style.transform = `translateX(${-onbI * 100}%)`;
+  onbEl.querySelectorAll(".onb-s").forEach((s, k) => { s.setAttribute("aria-hidden", k === onbI ? "false" : "true"); if (k === onbI) s.removeAttribute("inert"); else s.setAttribute("inert", ""); });
+  onbEl.querySelectorAll(".onb-dots i").forEach((d, k) => d.classList.toggle("on", k === onbI));
+  const last = onbI === ONB.length - 1;
+  onbEl.querySelector('[data-onb="back"]').hidden = onbI === 0;
+  onbEl.querySelector('[data-onb="next"]').textContent = last ? "Get started" : "Next";
+  onbEl.querySelector(".onb-skip").hidden = last;
+}
+function onbDone() { store.set("onb", true); if (onbEl) { onbEl.remove(); onbEl = null; } }
+document.addEventListener("click", e => {
+  const b = onbEl && e.target.closest("[data-onb]"); if (!b) return;
+  const v = b.dataset.onb; if (v === "next") onbGo(onbI + 1); else if (v === "back") onbGo(onbI - 1); else if (v === "skip") onbDone();
+});
+document.addEventListener("keydown", e => {
+  if (!onbEl) return;
+  if (e.key === "ArrowRight") onbGo(onbI + 1); else if (e.key === "ArrowLeft") onbGo(onbI - 1); else if (e.key === "Escape") onbDone();
+  else if (e.key === "Tab") { const f = [...onbEl.querySelectorAll("button")].filter(x => !x.hidden && !x.closest("[inert]")); if (!f.length) return; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && (i === f.length - 1 || i < 0)) { e.preventDefault(); f[0].focus(); } }
+});
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onbShow); else onbShow();
+
 let ackEl = null, ackPrevFocus = null, ackLang = "en";
 const ackPane = l => '<div class="ackpane" lang="' + l + '" data-l="' + l + '"><b>' + TEXT.disclaimerTitle[l] + "</b><br>" + TEXT.disclaimer[l] + "<br>" +
   (l === "en" ? `<button class="linkbtn" data-ack-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-ack-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`) + "</div>";
@@ -1531,8 +1575,8 @@ function syncAck() {
     ackEl =document.createElement("div"); ackEl.className = "modal ackm"; ackEl.setAttribute("role", "dialog"); ackEl.setAttribute("aria-modal", "true"); ackEl.setAttribute("aria-label", "Disclaimer");
     ackEl.innerHTML = '<div class="card"><div class="ackbody">' + ackPane("en") + ackPane("hi") + '</div><button class="btn wide ackok" data-ack></button></div>';
     document.body.appendChild(ackEl);
-    [...document.body.children].forEach(n => { if (n !== ackEl && n.id !== "splash" && n.tagName !== "SCRIPT" && n.tagName !== "STYLE") n.setAttribute("inert", ""); });
-    setTimeout(() => { const b = ackEl && ackEl.querySelector("[data-ack]"); if (b) b.focus({ preventScroll: true }); }, 60);
+    [...document.body.children].forEach(n => { if (n !== ackEl && !n.classList.contains("onb") && n.id !== "splash" && n.tagName !== "SCRIPT" && n.tagName !== "STYLE") n.setAttribute("inert", ""); });
+    setTimeout(() => { const b = !onbEl && ackEl && ackEl.querySelector("[data-ack]"); if (b) b.focus({ preventScroll: true }); }, 60);
   }
   const l = ackLang, hi = l === "hi";
   ackEl.querySelectorAll(".ackpane").forEach(p => { const on = p.dataset.l === l; p.classList.toggle("off", !on); if (on) p.removeAttribute("inert"); else p.setAttribute("inert", ""); p.setAttribute("aria-hidden", on ? "false" : "true"); });
@@ -1540,7 +1584,7 @@ function syncAck() {
   setLock();
 }
 document.addEventListener("keydown", e => {
-  if (e.key === "Tab" && ackEl) {   // focus trap
+  if (e.key === "Tab" && ackEl && !onbEl) {   // focus trap
     const f = [...ackEl.querySelectorAll("button,a[href]")].filter(x => !x.closest("[inert]"));
     if (!f.length) return; const first = f[0], last = f[f.length - 1];
     if (!ackEl.contains(document.activeElement)) { e.preventDefault(); first.focus(); }

@@ -66,3 +66,6 @@ Update: the Movers tab root is now a compact overview (status pill, Live | Last 
 
 ## Tests
 `npm test` (Node's built-in runner, no packages) runs `tests/run.test.mjs` and then `pipeline/validate.mjs`: every script parses, no regex has lost a backslash (the heredoc bug), no inline handlers (CSP), score weights add up to 1 and match the labels, page / service-worker files exist, every `ic("name")` icon exists in the sprite, `ipos.json` and `data/market` shapes, CSV formula safety. `.github/workflows/tests.yml` runs it on code pushes only. The score maths itself runs inside app.js (browser); it is covered by the checks above, not by unit tests.
+
+## First-run welcome screens
+`ONB` / `onbShow` in app.js: four swipeable screens (IPOs, subscription and GMP, check before you apply, stocks and funds) shown once per device (flag `onb` in localStorage, a per-device convenience only). Skip / Back / Next / Get started, swipe, arrow keys, Escape, focus trap. They are a separate element above the disclaimer dialog (z-index 300), so the disclaimer still appears right after them and neither rebuilds on `render()`. To show them again: `localStorage.removeItem("onb")`.
