@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-23T11:17:06.318Z",
+ "generatedAt": "2026-10-23T11:28:00.875Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-23T11:14:52.537Z"
+   "fetchedAt": "2026-10-23T11:27:03.717Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-23T11:15:03.557Z"
+   "fetchedAt": "2026-10-23T11:27:14.577Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-23T11:14:54.024Z"
+   "fetchedAt": "2026-10-23T11:27:05.442Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-23T11:14:53.901Z",
+   "subsAsOn": "2026-10-23T11:27:05.288Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -83,12 +83,34 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 8,
+    "min": 8,
+    "max": 8,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 8,
+      "pct": 9.76,
+      "updated": "23-Oct 16:37",
+      "seenLow": 8,
+      "seenHigh": 8
+     }
+    ],
+    "rating": 2,
+    "updated": "23-Oct 16:37",
+    "history": [
+     {
+      "date": "2026-10-23",
+      "gmp": 8
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-23T11:14:53.901Z",
+   "fetchedAt": "2026-10-23T11:27:05.288Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -135,7 +157,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:22.426Z",
+   "subsAsOn": "2026-10-23T11:25:52.579Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -247,8 +269,8 @@
     {
      "field": "Issue size (Cr)",
      "nse": 275.4,
-     "other": 330.48,
-     "ok": false
+     "other": 275.4,
+     "ok": true
     },
     {
      "field": "Lot size",
@@ -271,7 +293,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T11:14:22.426Z"
+   "fetchedAt": "2026-10-23T11:25:52.579Z"
   },
   {
    "symbol": "IG-2393",
@@ -305,7 +327,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-23T11:14:53.901Z",
+   "subsAsOn": "2026-10-23T11:27:05.288Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -338,7 +360,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-23T11:14:53.901Z",
+   "fetchedAt": "2026-10-23T11:27:05.288Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -385,7 +407,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:28.697Z",
+   "subsAsOn": "2026-10-23T11:25:53.455Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -508,13 +530,13 @@
       "source": "investorgain.com",
       "gmp": 21,
       "pct": 6.36,
-      "updated": "23-Oct 14:37",
+      "updated": "23-Oct 16:37",
       "seenLow": 21,
       "seenHigh": 31
      }
     ],
     "rating": 2,
-    "updated": "23-Oct 14:37",
+    "updated": "23-Oct 16:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -866,7 +888,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:28.697Z"
+   "fetchedAt": "2026-10-23T11:25:53.455Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -912,7 +934,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:29.621Z",
+   "subsAsOn": "2026-10-23T11:25:59.229Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1039,13 +1061,13 @@
       "source": "investorgain.com",
       "gmp": 38,
       "pct": 25.33,
-      "updated": "23-Oct 14:37",
+      "updated": "23-Oct 16:37",
       "seenLow": 18,
       "seenHigh": 38
      }
     ],
     "rating": 4,
-    "updated": "23-Oct 14:37",
+    "updated": "23-Oct 16:37",
     "history": [
      {
       "date": "2026-10-19",
@@ -1403,7 +1425,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:29.621Z"
+   "fetchedAt": "2026-10-23T11:25:59.229Z"
   },
   {
    "symbol": "WISCON",
@@ -1445,7 +1467,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:39.514Z",
+   "subsAsOn": "2026-10-23T11:26:57.347Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1539,7 +1561,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T11:14:39.514Z"
+   "fetchedAt": "2026-10-23T11:26:57.347Z"
   },
   {
    "symbol": "EDELALTS",
@@ -1585,7 +1607,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:30.531Z",
+   "subsAsOn": "2026-10-23T11:26:05.259Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2093,7 +2115,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:30.531Z"
+   "fetchedAt": "2026-10-23T11:26:05.259Z"
   },
   {
    "symbol": "CORE4",
@@ -2135,11 +2157,11 @@
     "total": {
      "offered": null,
      "bid": null,
-     "times": 0.07
+     "times": 0.08
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:37.136Z",
+   "subsAsOn": "2026-10-23T11:26:35.209Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2169,7 +2191,7 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Friday, October 23 ,  2026  4:42:34 PM",
+    "asOn": "Friday, October 23 ,  2026  4:55:07 PM",
     "totalBids": 295200,
     "timesSubscribed": null,
     "byPrice": {
@@ -2235,14 +2257,14 @@
    "gmp": null,
    "subHistory": [
     {
-     "at": "2026-10-23T11:17:06.301Z",
+     "at": "2026-10-23T11:28:00.859Z",
      "date": "2026-10-23",
      "qib": null,
      "bnii": null,
      "snii": null,
      "nii": null,
      "retail": null,
-     "total": 0.07
+     "total": 0.08
     }
    ],
    "listingPerf": null,
@@ -2268,7 +2290,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T11:14:37.136Z"
+   "fetchedAt": "2026-10-23T11:26:35.209Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -2306,8 +2328,8 @@
     },
     "nii": {
      "offered": 3295454,
-     "bid": 2123226,
-     "times": 0.6442893756065173
+     "bid": 2150505,
+     "times": 0.6525671424938718
     },
     "bnii": {
      "offered": 2196970,
@@ -2316,25 +2338,25 @@
     },
     "snii": {
      "offered": 1098484,
-     "bid": 833343,
-     "times": 0.7586300756315066
+     "bid": 860622,
+     "times": 0.7834633913648265
     },
     "retail": {
      "offered": 2196969,
-     "bid": 4295340,
-     "times": 1.9551208961073188
+     "bid": 4354413,
+     "times": 1.9820093046374345
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 12083331,
-     "bid": 26800158,
-     "times": 2.2179445386375662
+     "bid": 26886510,
+     "times": 2.2250909124313485
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T16:39:00+05:30",
+   "subsAsOn": "2026-10-23T16:51:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -2379,45 +2401,45 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Oct-2026 16:39:00 IST",
-    "totalBids": 26824035,
-    "timesSubscribed": 2.22,
+    "asOn": "As on 23-Oct-2026 16:51:00 IST",
+    "totalBids": 26910492,
+    "timesSubscribed": 2.23,
     "byPrice": {
-     "660": "2,68,24,035",
-     "661": "2,67,61,602",
-     "662": "2,67,57,423",
-     "663": "2,67,56,772",
-     "664": "2,67,55,239",
-     "665": "2,67,54,966",
-     "666": "2,67,51,291",
-     "667": "2,67,48,897",
-     "668": "2,67,48,561",
-     "669": "2,67,48,288",
-     "670": "2,67,47,763",
-     "671": "2,67,39,909",
-     "672": "2,67,39,510",
-     "673": "2,67,39,384",
-     "674": "2,67,38,586",
-     "675": "2,67,38,544",
-     "676": "2,67,34,701",
-     "677": "2,67,34,638",
-     "678": "2,67,34,449",
-     "679": "2,67,34,050",
-     "680": "2,67,33,777",
-     "681": "2,67,28,548",
-     "682": "2,67,28,128",
-     "683": "2,67,28,023",
-     "684": "2,67,27,540",
-     "685": "2,67,27,225",
-     "686": "2,67,25,839",
-     "687": "2,67,25,818",
-     "688": "2,67,25,440",
-     "689": "2,67,25,167",
-     "690": "2,67,25,062",
-     "691": "2,67,21,786",
-     "692": "2,67,21,282",
-     "693": "2,67,20,022",
-     "Cut-Off": "38,64,042"
+     "660": "2,69,10,492",
+     "661": "2,68,46,673",
+     "662": "2,68,42,431",
+     "663": "2,68,41,780",
+     "664": "2,68,40,247",
+     "665": "2,68,39,974",
+     "666": "2,68,36,278",
+     "667": "2,68,33,884",
+     "668": "2,68,33,548",
+     "669": "2,68,33,275",
+     "670": "2,68,32,750",
+     "671": "2,68,24,875",
+     "672": "2,68,24,455",
+     "673": "2,68,24,308",
+     "674": "2,68,23,510",
+     "675": "2,68,23,468",
+     "676": "2,68,19,625",
+     "677": "2,68,19,562",
+     "678": "2,68,19,373",
+     "679": "2,68,18,974",
+     "680": "2,68,18,701",
+     "681": "2,68,13,262",
+     "682": "2,68,12,842",
+     "683": "2,68,12,737",
+     "684": "2,68,12,254",
+     "685": "2,68,11,939",
+     "686": "2,68,10,532",
+     "687": "2,68,10,511",
+     "688": "2,68,10,133",
+     "689": "2,68,09,860",
+     "690": "2,68,09,755",
+     "691": "2,68,06,479",
+     "692": "2,68,05,975",
+     "693": "2,68,04,694",
+     "Cut-Off": "39,09,990"
     }
    },
    "registrar": {
@@ -2504,21 +2526,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 1,
-    "min": 1,
-    "max": 1,
+    "value": 15,
+    "min": 15,
+    "max": 15,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 1,
-      "pct": 0.14,
-      "updated": "23-Oct 14:37",
-      "seenLow": 1,
+      "gmp": 15,
+      "pct": 2.16,
+      "updated": "23-Oct 16:37",
+      "seenLow": 13,
       "seenHigh": 96
      }
     ],
     "rating": 1,
-    "updated": "23-Oct 14:37",
+    "updated": "23-Oct 16:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -2554,7 +2576,7 @@
      },
      {
       "date": "2026-10-23",
-      "gmp": 1
+      "gmp": 15
      }
     ]
    },
@@ -2580,14 +2602,14 @@
      "total": 0.34126715555503695
     },
     {
-     "at": "2026-10-23T11:17:06.269Z",
+     "at": "2026-10-23T11:28:00.831Z",
      "date": "2026-10-23",
      "qib": 3.0923799877042737,
      "bnii": 0.5871190776387479,
-     "snii": 0.7586300756315066,
-     "nii": 0.6442893756065173,
-     "retail": 1.9551208961073188,
-     "total": 2.2179445386375662
+     "snii": 0.7834633913648265,
+     "nii": 0.6525671424938718,
+     "retail": 1.9820093046374345,
+     "total": 2.2250909124313485
     }
    ],
    "listingPerf": null,
@@ -3019,7 +3041,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:15.856Z"
+   "fetchedAt": "2026-10-23T11:25:41.463Z"
   },
   {
    "symbol": "JPL",
@@ -3052,48 +3074,48 @@
    "bids": {
     "qib": {
      "offered": 49007827,
-     "bid": 2605676976,
-     "times": 53.168588274685185
+     "bid": 2723501988,
+     "times": 55.57279632088156
     },
     "nii": {
      "offered": 36444569,
-     "bid": 503579556,
-     "times": 13.817684495047809
+     "bid": 504566760,
+     "times": 13.844772317104367
     },
     "bnii": {
      "offered": 24296380,
-     "bid": 382133340,
-     "times": 15.727994870017673
+     "bid": 382646844,
+     "times": 15.749129870375752
     },
     "snii": {
      "offered": 12148189,
-     "bid": 121446216,
-     "times": 9.997063430606817
+     "bid": 121919916,
+     "times": 10.036056897040373
     },
     "retail": {
      "offered": 85037327,
-     "bid": 223333908,
-     "times": 2.6263044227624888
+     "bid": 224515056,
+     "times": 2.6401941820207964
     },
     "employee": {
      "offered": 4694835,
-     "bid": 13385304,
-     "times": 2.851070165405174
+     "bid": 13422336,
+     "times": 2.8589579825489073
     },
     "shareholders": {
      "offered": 22341376,
-     "bid": 166700616,
-     "times": 7.461519648565961
+     "bid": 167231292,
+     "times": 7.485272706569193
     },
     "other": null,
     "total": {
      "offered": 197525934,
-     "bid": 3512676360,
-     "times": 17.78336792980308
+     "bid": 3633237432,
+     "times": 18.393723590746315
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T16:39:00+05:30",
+   "subsAsOn": "2026-10-23T16:51:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3156,66 +3178,66 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Oct-2026 16:39:00 IST",
-    "totalBids": 3514408284,
-    "timesSubscribed": 17.79,
+    "asOn": "As on 23-Oct-2026 16:51:00 IST",
+    "totalBids": 3634980840,
+    "timesSubscribed": 18.4,
     "byPrice": {
-     "1065": "3,51,44,08,284",
-     "1066": "3,51,33,27,876",
-     "1067": "3,51,32,72,196",
-     "1068": "3,51,32,58,696",
-     "1069": "3,51,32,45,724",
-     "1070": "3,51,32,28,576",
-     "1071": "3,51,30,90,252",
-     "1072": "3,51,30,78,720",
-     "1073": "3,51,30,71,856",
-     "1074": "3,51,30,69,792",
-     "1075": "3,51,30,65,328",
-     "1076": "3,51,30,12,708",
-     "1077": "3,51,30,10,092",
-     "1078": "3,51,30,04,980",
-     "1079": "3,51,30,01,800",
-     "1080": "3,51,29,97,348",
-     "1081": "3,51,28,82,580",
-     "1082": "3,51,28,77,996",
-     "1083": "3,51,28,76,148",
-     "1084": "3,51,28,71,744",
-     "1085": "3,51,28,65,504",
-     "1086": "3,51,28,35,360",
-     "1087": "3,51,28,33,572",
-     "1088": "3,51,28,31,100",
-     "1089": "3,51,28,28,196",
-     "1090": "3,51,28,21,068",
-     "1091": "3,51,27,46,320",
-     "1092": "3,51,27,42,336",
-     "1093": "3,51,27,26,256",
-     "1094": "3,51,27,23,844",
-     "1095": "3,51,27,21,936",
-     "1096": "3,51,26,97,600",
-     "1097": "3,51,26,93,364",
-     "1098": "3,51,26,91,540",
-     "1099": "3,51,26,87,724",
-     "1100": "3,51,26,67,072",
-     "1101": "3,51,22,84,764",
-     "1102": "3,51,22,63,320",
-     "1103": "3,51,22,60,212",
-     "1104": "3,51,22,57,572",
-     "1105": "3,51,22,51,128",
-     "1106": "3,51,22,37,772",
-     "1107": "3,51,22,35,444",
-     "1108": "3,51,22,31,820",
-     "1109": "3,51,22,27,428",
-     "1110": "3,51,22,19,748",
-     "1111": "3,51,20,94,432",
-     "1112": "3,51,19,76,916",
-     "1113": "3,51,19,60,572",
-     "1114": "3,51,19,48,704",
-     "1115": "3,51,19,38,432",
-     "1116": "3,51,18,46,644",
-     "1117": "3,51,18,08,820",
-     "1118": "3,51,17,46,864",
-     "1119": "3,51,15,43,668",
-     "Cut-Off": "34,70,42,988"
+     "1065": "3,63,49,80,840",
+     "1066": "3,63,38,95,656",
+     "1067": "3,63,38,39,856",
+     "1068": "3,63,38,26,344",
+     "1069": "3,63,38,13,372",
+     "1070": "3,63,37,96,380",
+     "1071": "3,63,36,57,672",
+     "1072": "3,63,36,46,152",
+     "1073": "3,63,36,39,288",
+     "1074": "3,63,36,37,224",
+     "1075": "3,63,36,32,748",
+     "1076": "3,63,35,80,032",
+     "1077": "3,63,35,77,416",
+     "1078": "3,63,35,72,268",
+     "1079": "3,63,35,69,028",
+     "1080": "3,63,35,64,564",
+     "1081": "3,63,34,49,388",
+     "1082": "3,63,34,44,804",
+     "1083": "3,63,34,42,956",
+     "1084": "3,63,34,38,552",
+     "1085": "3,63,34,32,300",
+     "1086": "3,63,34,02,036",
+     "1087": "3,63,34,00,248",
+     "1088": "3,63,33,97,584",
+     "1089": "3,63,33,94,680",
+     "1090": "3,63,33,87,540",
+     "1091": "3,63,33,12,480",
+     "1092": "3,63,33,08,496",
+     "1093": "3,63,32,92,404",
+     "1094": "3,63,32,89,992",
+     "1095": "3,63,32,88,084",
+     "1096": "3,63,32,63,736",
+     "1097": "3,63,32,59,500",
+     "1098": "3,63,32,57,616",
+     "1099": "3,63,32,53,788",
+     "1100": "3,63,32,33,124",
+     "1101": "3,63,28,49,532",
+     "1102": "3,63,28,27,692",
+     "1103": "3,63,28,24,584",
+     "1104": "3,63,28,21,740",
+     "1105": "3,63,28,15,284",
+     "1106": "3,63,28,01,916",
+     "1107": "3,63,27,99,588",
+     "1108": "3,63,27,95,964",
+     "1109": "3,63,27,91,560",
+     "1110": "3,63,27,83,880",
+     "1111": "3,63,26,57,688",
+     "1112": "3,63,25,39,908",
+     "1113": "3,63,25,23,564",
+     "1114": "3,63,25,11,684",
+     "1115": "3,63,25,01,412",
+     "1116": "3,63,24,09,540",
+     "1117": "3,63,23,71,632",
+     "1118": "3,63,23,09,016",
+     "1119": "3,63,21,04,920",
+     "Cut-Off": "34,86,13,740"
     }
    },
    "registrar": {
@@ -3318,21 +3340,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 250,
-    "min": 250,
-    "max": 250,
+    "value": 250.5,
+    "min": 250.5,
+    "max": 250.5,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 250,
-      "pct": 22.34,
-      "updated": "23-Oct 14:37",
+      "gmp": 250.5,
+      "pct": 22.39,
+      "updated": "23-Oct 16:37",
       "seenLow": 148,
       "seenHigh": 273
      }
     ],
     "rating": 4,
-    "updated": "23-Oct 14:37",
+    "updated": "23-Oct 16:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -3368,7 +3390,7 @@
      },
      {
       "date": "2026-10-23",
-      "gmp": 250
+      "gmp": 250.5
      }
     ]
    },
@@ -3394,14 +3416,14 @@
      "total": 5.568893449707723
     },
     {
-     "at": "2026-10-23T11:17:06.272Z",
+     "at": "2026-10-23T11:28:00.834Z",
      "date": "2026-10-23",
-     "qib": 53.168588274685185,
-     "bnii": 15.727994870017673,
-     "snii": 9.997063430606817,
-     "nii": 13.817684495047809,
-     "retail": 2.6263044227624888,
-     "total": 17.78336792980308
+     "qib": 55.57279632088156,
+     "bnii": 15.749129870375752,
+     "snii": 10.036056897040373,
+     "nii": 13.844772317104367,
+     "retail": 2.6401941820207964,
+     "total": 18.393723590746315
     }
    ],
    "listingPerf": null,
@@ -3737,7 +3759,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:16.836Z"
+   "fetchedAt": "2026-10-23T11:25:46.938Z"
   },
   {
    "symbol": "ZETWERK",
@@ -6422,580 +6444,6 @@
     "sourceDoc": "RHP"
    },
    "fetchedAt": "2026-10-20T18:21:52.639Z"
-  },
-  {
-   "symbol": "SHELLZ",
-   "name": "Shellz India Limited",
-   "board": "SME",
-   "status": "listed",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 170,
-   "priceHigh": 179,
-   "lot": 800,
-   "faceValue": 10,
-   "issueShares": 2445600,
-   "issueSizeCr": 43.78,
-   "issueType": "Book Building",
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": null,
-     "bid": null,
-     "times": 58.54
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:42.215Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 170,
-     "priceHigh": 179,
-     "maxAmount": null,
-     "minAmount": null,
-     "lot": 800,
-     "note": "Retail individual investors"
-    }
-   ],
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": {
-    "company": {
-     "address": "Delhi - 110 026, India.",
-     "phone": "011 - 4850 4850",
-     "email": "investor@shellz.in",
-     "website": "https://www.shellz.in",
-     "contactPerson": "Sumit Kumar"
-    },
-    "registrar": {
-     "name": "BIGSHARE SERVICES PRIVATE LIMITED",
-     "address": "S6-2, 6TH FLOOR, PINNACLE BUSINESS PARK, NEXT TO AHURA CENTRE, MAHAKALI CAVES ROAD, ANDHERI EAST, MUMBAI 400093, MAHARASTHRA INDIA",
-     "phone": "022 - 6263 8200",
-     "email": "ipo@bigshareonline.com",
-     "contactPerson": "ipo@bigshareonline.com",
-     "website": "https://www.bigshareonline.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "",
-    "totalBids": 124202400,
-    "timesSubscribed": null,
-    "byPrice": {
-     "170": 124202400,
-     "171": 124117600,
-     "172": 124111200,
-     "173": 124108000,
-     "175": 124104800,
-     "176": 124092000,
-     "177": 124090400,
-     "178": 124079200,
-     "179": 124065600
-    }
-   },
-   "registrar": {
-    "name": "BIGSHARE SERVICES PRIVATE LIMITED",
-    "address": "S6-2, 6TH FLOOR, PINNACLE BUSINESS PARK, NEXT TO AHURA CENTRE, MAHAKALI CAVES ROAD, ANDHERI EAST, MUMBAI 400093, MAHARASTHRA INDIA",
-    "contact": "ipo@bigshareonline.com"
-   },
-   "leadManagers": "SOCRADAMUS CAPITAL PRIVATE LIMITED",
-   "leadManagersList": [
-    "Socradamus Capital Private Limited"
-   ],
-   "sponsorBank": "KOTAK BANK",
-   "docs": {
-    "rhp": null,
-    "anchor": null
-   },
-   "logo": "data/logos/SHELLZ.png",
-   "documents": [
-    {
-     "label": "Prospectus / RHP with GID (zip from BSE)",
-     "url": "https://www.bseindia.com/downloads/ipo/RHP%20&GIDShellz_151020260934.zip",
-     "source": "BSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Price band advertisement",
-     "url": "https://www.bseindia.com/downloads/ipo/Price%20Band%20Advertisment_151020260934.pdf",
-     "source": "BSE",
-     "kind": "pdf-link",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Addendum",
-     "url": "https://listing.bseindia.com/Download/E:/inetpub/LISTING/RTA/DocumentsSMEiPO/284581/Addendum_Addendum_Shellz_Final.pdf",
-     "source": "BSE",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "Corrigendum",
-     "url": "https://www.bseindia.com/downloads/ipo/Corrigendum%20to%20RHP%20Shellz_151020260934.zip",
-     "source": "BSE",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "Anchor allocation notice",
-     "url": "https://www.bseindia.com/downloads/UploadDocs/Notices/20261014-40/20261014-40.pdf",
-     "source": "BSE",
-     "kind": "pdf-link",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/shellz-india-ipo/2228/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 7,
-    "min": 7,
-    "max": 7,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 7,
-      "pct": 3.91,
-      "updated": "23-Oct 9:37",
-      "seenLow": 7,
-      "seenHigh": 46
-     }
-    ],
-    "rating": 1,
-    "updated": "23-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-15",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 25
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 12.5
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 46
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 35
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 25
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 7
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 7
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.303Z",
-     "date": "2026-10-15",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 0.76
-    },
-    {
-     "at": "2026-10-16T22:05:10.362Z",
-     "date": "2026-10-16",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 0.8
-    },
-    {
-     "at": "2026-10-18T23:04:07.653Z",
-     "date": "2026-10-18",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 0.89
-    },
-    {
-     "at": "2026-10-19T23:49:50.224Z",
-     "date": "2026-10-19",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 58.54
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Lot size",
-     "nse": 800,
-     "other": 800,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 179,
-     "other": 179,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Shellz India Limited",
-    "basis": "Consolidated",
-    "about": "Shellz India manufactures and markets mass-market confectionery (baked treats, choco delights, jellies, panned and sugar candies) under the Hugs and Tosca brands, plus food and bakery ingredients and private label supply. Products are made in-house at Delhi and Sonipat (Haryana) and sold through super stockists to kirana stores across about 24 states, with small exports. FY26 revenue was about Rs 192.6 crore.",
-    "sector": "Packaged Food - Confectionery",
-    "headquarters": "Delhi",
-    "founded_year": 2012,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      147.04,
-      167.36,
-      213.72
-     ],
-     "revenue": [
-      162.41,
-      186.97,
-      192.62
-     ],
-     "other_income": [
-      0.39,
-      0.42,
-      0.57
-     ],
-     "ebitda": [
-      18.94,
-      22.79,
-      30.15
-     ],
-     "pbt": [
-      7.97,
-      12.62,
-      19.29
-     ],
-     "pat": [
-      5.25,
-      8.3,
-      13.37
-     ],
-     "net_worth": [
-      26.99,
-      40.58,
-      58.95
-     ],
-     "reserves": [
-      26.35,
-      39.89,
-      50.24
-     ],
-     "borrowings": [
-      70.93,
-      57.01,
-      54.85
-     ],
-     "cash_and_bank": [
-      1.71,
-      0.02,
-      1.14
-     ],
-     "operating_cash_flow": [
-      8.37,
-      22.11,
-      -11.31
-     ]
-    },
-    "kpi": {
-     "roce": [
-      15.89,
-      17.5,
-      19.11
-     ],
-     "ronw": [
-      19.47,
-      20.46,
-      22.68
-     ],
-     "roe": [
-      21.56,
-      24.57,
-      26.87
-     ],
-     "eps_basic": [
-      6.09,
-      9.59,
-      15.37
-     ],
-     "eps_diluted": [
-      6.09,
-      9.59,
-      15.37
-     ],
-     "pat_margin": [
-      3.24,
-      4.44,
-      6.94
-     ],
-     "ebitda_margin": [
-      11.66,
-      12.19,
-      15.65
-     ],
-     "debt_equity": [
-      2.63,
-      1.93,
-      1.71
-     ],
-     "current_ratio": [
-      1.33,
-      1.08,
-      1.44
-     ],
-     "nav_per_share": 67.63,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 11.9,
-     "other": [
-      {
-       "name": "Inventory days",
-       "unit": "days",
-       "values": [
-        126,
-        149,
-        175
-       ]
-      },
-      {
-       "name": "Trade receivable days",
-       "unit": "days",
-       "values": [
-        122,
-        89,
-        80
-       ]
-      },
-      {
-       "name": "Trade payable days",
-       "unit": "days",
-       "values": [
-        94,
-        87,
-        84
-       ]
-      },
-      {
-       "name": "Working capital cycle",
-       "unit": "days",
-       "values": [
-        154,
-        151,
-        171
-       ]
-      },
-      {
-       "name": "Fulfilled orders",
-       "unit": "orders",
-       "values": [
-        4682,
-        5268,
-        5744
-       ]
-      },
-      {
-       "name": "Total SKUs",
-       "unit": "count",
-       "values": [
-        361,
-        356,
-        398
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Annapurna Swadisht Limited",
-      "revenue_cr": 520.08,
-      "face_value": 10,
-      "cmp": 124.5,
-      "eps_basic": 14.38,
-      "eps_diluted": null,
-      "nav": null,
-      "pe": 8.66,
-      "ronw": null
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 3350400,
-     "ofs_shares": 0,
-     "pre_issue_shares": 8716704,
-     "post_issue_shares": null,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Repayment or prepayment of certain outstanding borrowings",
-       "amount_cr": 22
-      },
-      {
-       "purpose": "Funding incremental working capital requirements",
-       "amount_cr": 23
-      },
-      {
-       "purpose": "General corporate purposes (capped at lower of 15% of gross proceeds or Rs 10 crore)",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": 15,
-      "retail": 35,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Kapil Garg",
-      "Shalini Garg"
-     ],
-     "holding_pre_pct": 88.11,
-     "holding_post_pct": null,
-     "background": "Kapil Garg has over two decades of experience in consumer packaged foods and has been with the business since inception (incorporated 2012 as Tifosi Foods Pvt Ltd). No promoter shares are pledged."
-    },
-    "concentration": {
-     "top_customers_pct": 62.93,
-     "govt_share_pct": null,
-     "note": "Top 10 customers were 62.93% of FY26 revenue (44.96% in FY24, 69.18% in Q1FY27); top 5 were 45.88% in FY26. North India gave 75.34% of FY26 revenue."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Past IBC petitions (since withdrawn) and Section 138 NI Act cheque-dishonour complaints by suppliers against the company and promoters; ongoing execution proceedings raised in a complaint by Chawla Printers. Claims not acknowledged as debt were Rs 3.17 crore at Mar-26.",
-    "strengths": [
-     "Mass-market portfolio with most SKUs priced at Rs 10 or below, aimed at repeat impulse purchases.",
-     "Revenue grew from Rs 162.4 crore (FY24) to Rs 192.6 crore (FY26); PAT rose from Rs 5.25 crore to Rs 13.37 crore.",
-     "EBITDA margin improved from 11.66% to 15.65% and RoNW reached 22.68% in FY26.",
-     "Super stockist network reaching kirana stores across about 24 states without a direct salesforce.",
-     "All consumer products made in-house at Delhi and Sonipat, with Sonipat expanding capacity.",
-     "Debt-equity ratio fell from 2.63x (FY24) to 1.71x (FY26); IPO proceeds earmarked to cut borrowings.",
-     "Two brands: mass-market Hugs (about 90% of FY26 revenue) and mass-premium Tosca aimed at e-commerce and quick commerce.",
-     "Experienced promoter with over two decades in packaged food."
-    ],
-    "risks": [
-     {
-      "title": "Heavy and rising customer concentration",
-      "detail": "Top 10 customers contributed 62.93% of FY26 revenue versus 44.96% in FY24, and 69.18% in Q1FY27. There are no long-term agreements; sales rely on purchase orders.",
-      "severity": "high"
-     },
-     {
-      "title": "High debt and past repayment delays",
-      "detail": "Outstanding indebtedness was Rs 109.49 crore at June 30, 2026 (sanctioned Rs 112.83 crore); debt-equity 1.71x. Some repayment delays appear in credit history records.",
-      "severity": "high"
-     },
-     {
-      "title": "Negative operating cash flow in FY26",
-      "detail": "Operating cash flow was about Rs -11.31 crore in FY26 against Rs 22.11 crore in FY25 and Rs 8.37 crore in FY24, despite Rs 13.37 crore PAT, as inventory and receivables grew.",
-      "severity": "high"
-     },
-     {
-      "title": "Long working capital cycle",
-      "detail": "Working capital cycle rose to 171 days in FY26 (from 154 in FY24); inventory days were 175 and Q1FY27 was 197, tying up funds and driving borrowing.",
-      "severity": "medium"
-     },
-     {
-      "title": "Past insolvency and cheque-bounce proceedings",
-      "detail": "The company faced IBC petitions (withdrawn) and NI Act Section 138 complaints by suppliers against it and promoters; pending suits and an execution matter remain.",
-      "severity": "high"
-     },
-     {
-      "title": "Regional concentration in North India",
-      "detail": "North India gave 75.34% of FY26 revenue (79.66% in Q1FY27); Delhi NCR alone was 39.68%.",
-      "severity": "medium"
-     },
-     {
-      "title": "Promoters dominate shareholding",
-      "detail": "Promoters hold 88.11% pre-issue and will retain control. Shares were bonus-issued 11:1 in October 2025, and the latest preferential issue was at Rs 124.17 per share (bonus adjusted).",
-      "severity": "low"
-     },
-     {
-      "title": "Consumer-preference and supplier risks",
-      "detail": "Confectionery tastes shift fast and the company has no long-term supply agreements with most suppliers; past disputes with vendors and supplier-related litigation are disclosed.",
-      "severity": "medium"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Mar-26 is restated consolidated; Mar-24 and Mar-25 are restated standalone. June 2026 quarter (revenue Rs 47.24 crore, PAT Rs 4.08 crore) ignored in arrays. Figures converted from lakhs. Price band, issue size, P/E and post-issue shares are blank in the RHP. Total issue amount not stated; fresh issue is 33,50,400 shares on BSE SME (the market maker portion is 3,29,600 shares). Reservation percentages are the statutory minimums stated for NII and retail. Current ratio computed from balance sheet (current assets / current liabilities). Peer revenue is FY26 consolidated."
-   },
-   "verification": {
-    "status": "warn",
-    "checked": 60,
-    "notFound": 0,
-    "issues": [
-     "Mar-25: reported debt/equity 1.93 vs borrowings/net worth 1.40 (RHP debt may include leases)",
-     "Mar-26: reported debt/equity 1.71 vs borrowings/net worth 0.93 (RHP debt may include leases)"
-    ],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-23T11:14:42.215Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -12044,7 +11492,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:46.292Z",
+   "subsAsOn": "2026-10-23T11:26:58.088Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12567,7 +12015,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:46.292Z"
+   "fetchedAt": "2026-10-23T11:26:58.088Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -12613,7 +12061,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:47.027Z",
+   "subsAsOn": "2026-10-23T11:26:58.755Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13049,7 +12497,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:47.027Z"
+   "fetchedAt": "2026-10-23T11:26:58.755Z"
   },
   {
    "symbol": "TNA",
@@ -13095,7 +12543,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:47.811Z",
+   "subsAsOn": "2026-10-23T11:26:59.538Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13552,7 +13000,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:47.811Z"
+   "fetchedAt": "2026-10-23T11:26:59.538Z"
   },
   {
    "symbol": "DSL",
@@ -13598,7 +13046,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:48.649Z",
+   "subsAsOn": "2026-10-23T11:27:00.340Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14002,7 +13450,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:48.649Z"
+   "fetchedAt": "2026-10-23T11:27:00.340Z"
   },
   {
    "symbol": "OMARA",
@@ -14047,8 +13495,8 @@
      "times": 1.06
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-23T11:14:51.189Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-23T11:27:02.916Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14476,7 +13924,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:51.189Z"
+   "fetchedAt": "2026-10-23T11:27:02.916Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -14994,8 +14442,8 @@
      "times": 294.22
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-23T11:14:49.454Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-23T11:27:01.391Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15109,7 +14557,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T11:14:49.454Z"
+   "fetchedAt": "2026-10-23T11:27:01.391Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -16246,7 +15694,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:52.537Z",
+   "subsAsOn": "2026-10-23T11:27:03.717Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16794,7 +16242,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T11:14:52.537Z"
+   "fetchedAt": "2026-10-23T11:27:03.717Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -24185,7 +23633,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T11:14:30.983Z",
+   "subsAsOn": "2026-10-23T11:26:10.371Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -24266,7 +23714,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T11:14:30.983Z"
+   "fetchedAt": "2026-10-23T11:26:10.371Z"
   }
  ],
  "filings": [
