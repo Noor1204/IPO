@@ -142,7 +142,7 @@
   const retsBar = (v, cap) => '<i class="mf-rb"><u class="' + (num(v) && v < 0 ? "neg" : "pos") + '" style="width:' + (num(v) ? Math.max(3, Math.min(100, Math.abs(v) / cap * 100)).toFixed(0) : 0) + '%"></u></i>';
   function p90(list, k) { const v = list.map(f => f[k]).filter(num).map(Math.abs).sort((a, b) => a - b); return v.length ? Math.max(5, v[Math.floor(v.length * 0.9)]) : 10; }
 
-  const qToks = q => String(q || "").toLowerCase().split(/s+/).filter(Boolean);       // the search matches every word, so every word is marked
+  const qToks = q => String(q || "").toLowerCase().split(/\s+/).filter(Boolean);       // the search matches every word, so every word is marked
   function row(f, H, mode, caps, hq) {
     const star = isWatch(f.c), cm = isCmp(f.c), hh = (t) => hq && hq.length && H.hl ? H.hl(t, hq) : H.esc(t);
     caps = caps || { r1: 30, r3: 30, r5: 30 };

@@ -146,10 +146,23 @@ const cutoffHM = i => {
 };
 const endAt = i => i.close ? new Date(i.close + "T" + cutoffHM(i) + ":00" + IST_OFFSET).getTime() : null;   // last moment to apply, in absolute time
 const endLabel = i => { const [h, m] = cutoffHM(i).split(":").map(Number); return ((h + 11) % 12 + 1) + ":" + String(m).padStart(2, "0") + " " + (h >= 12 ? "PM" : "AM"); };
+// The closing time. NSE states a UPI mandate cut-off per issue ("The new cut-off time for UPI mandate acceptance is 07:00 PM on last day of IPO bidding"). That is the last moment a UPI
+// approval is accepted, NOT a statement that bidding itself closes then, so when it is not the usual 5:00 PM the app says "UPI approval cut-off 7:00 PM", never "closes 7 PM".
+const cutStated = i => /up ?to ([0-9]{1,2})[:.]([0-9]{2}) *([ap])/i.test(String(i.upiCutoff || ""));      // NSE gave a cut-off time for this issue
+const cutIs5 = i => cutoffHM(i) === "17:00";
+const cutLabel = i => !cutStated(i) ? "" : cutIs5(i) ? "Closes " + endLabel(i) : "UPI approval cut-off " + endLabel(i);
+const cutNote = i => cutStated(i) && !cutIs5(i) ? `NSE has set the UPI mandate acceptance cut-off for this IPO to ${endLabel(i)} on the last day (the usual cut-off is 5:00 PM).` : "";
+const cutNse = i => (String(i.upiCutoff || "").match(/The (?:new )?cut-?off time for UPI mandate acceptance[^.]*\./i) || [""])[0];   // NSE's own sentence, word for word
+const closesIn = i => cutIs5(i) ? "Closes in" : "UPI approval closes in";
+// static line for the IPO page and the Apply sheet (the live countdown has its own text)
+const cutBlock = (i, note = true) => {
+  if (i.status === "listed" || !cutStated(i)) return "";
+  return `<div class="cutline${cutIs5(i) ? "" : " late"}">${ic("clock")}<span><b>${esc(cutLabel(i))}</b>${i.close ? ` <span class="mut">on ${fmtS(i.close)}</span>` : ""}${note && cutNote(i) ? `<span class="cutnote">${esc(cutNote(i))}</span>` : ""}</span></div>`;
+};
 function phase(i, now = Date.now()) {
   if (i.status === "upcoming") return { k: "apply" };
   const end = endAt(i);
-  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: "Closes in", sub: endLabel(i) };
+  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: closesIn(i), sub: endLabel(i) };
   if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
   const ex = i.datesExpected ? " (exp.)" : "";
   if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: ic("bell-ringing") + " Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
@@ -329,7 +342,7 @@ function ipoTab() {
   const cand = state.ipos.filter(i => i.status === state.seg && score(i) !== null && boardOk(i)), top = cand.sort((a, b) => score(b) - score(a))[0];
   const shown = state.seg === "listed" && !state.showAll && !state.q ? list.slice(0, 12) : list;
   const stat = ([k, l, c]) => `<button class="stat ${active === k ? "on" : ""}" data-stat="${k}"><span>${l}</span><b class="${c} cu" data-cu="stat-${k}" data-to="${cnt[k]}">${cnt[k]}</b></button>`;
-  return `${head('Live Subscription')}
+  return `${head('Live Subscription')}${state.seg === "live" ? marketBanner() : ""}
   ${state.q ? `<input id="q" placeholder="Filter IPOs" value="${esc(state.q)}">` : ""}
   <div class="stats" role="group" aria-label="IPO lists">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
   <div class="opts"><label class="chk"><input type="checkbox" data-board="main" ${state.main ? "checked" : ""}> MainBoard</label><label class="chk"><input type="checkbox" data-board="sme" ${state.sme ? "checked" : ""}> SME</label><span class="sp"></span>
@@ -393,12 +406,12 @@ function closeRow(i) {
     ${logo(i)}<div class="upmain"><div class="upname">${esc(i.name)}</div>
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${isNum(i.priceHigh) && i.priceHigh > 0 ? price(i) : "Price —"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${isNum(i.lot) && i.priceHigh ? " · ₹" + inr(i.lot * i.priceHigh) : ""}</div>
       <div class="mut sm">${N !== null && isNum(i.bids?.retail?.times) ? "Retail " + f2(i.bids.retail.times) + "x (≈1 in " + N + ")" : "Retail subscription —"}${sc.score !== null ? " · Score " + sc.score : ""}</div>
-      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">${ic("clock")} Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> <span class="cdsub">· ${endLabel(i)}</span></span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
+      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">${ic("clock")} ${closesIn(i)} <b data-cdtxt>${fmtCd(e - Date.now())}</b> <span class="cdsub">· ${endLabel(i)}</span></span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
     <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="gmplbl ${gcls}">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div></div>`;
 }
 function closingBlock(list) {
   if (!list.length) return "";
-  return `<div class="closebox"><h2 class="closeh">${ic("flame")} Closing today (${list.length})</h2><p class="mut sm closep">Last day to apply. Bidding usually ends at 5:00 PM for MainBoard (SME may end earlier): apply through your broker/UPI app well before the cut-off.</p><div class="cards">${list.map(closeRow).join("")}</div></div>`;
+  return `<div class="closebox"><h2 class="closeh">${ic("flame")} Closing today (${list.length})</h2><p class="mut sm closep">Last day to apply. Bidding usually ends at 5:00 PM for MainBoard (SME may end earlier); where NSE has set a different UPI approval cut-off, the card says so. Apply through your broker/UPI app well before the cut-off.</p><div class="cards">${list.map(closeRow).join("")}</div></div>`;
 }
 // compact row: date box | name, price, dates | GMP. Tap opens the details.
 function upRow(i) {
@@ -486,18 +499,20 @@ function docsPanel(i) {
   return (html || card("Documents", `<p class="mut sm">No documents published for this IPO yet.</p>`)) +
     `<p class="mut sm">Every file opens on the official NSE, BSE or SEBI website (nothing is stored in this app). Some NSE files come as a ZIP that your device unzips.</p>`;
 }
+// lead managers: the full list from the offer document when we have it (leadManagersList), else NSE's text split into names
+const lmList = i => Array.isArray(i.leadManagersList) && i.leadManagersList.length ? i.leadManagersList.filter(x => typeof x === "string" && x) : String(i.leadManagers || "").split(/\s*[,;]\s*/).filter(Boolean);
 // every field we hold for this IPO, for the full report
 function rawRows(i) {
   const b = i.bids || {}, t = i.timeline || {}, R = [];
   const add = (k, v) => { if (v !== null && v !== undefined && v !== "" && !(typeof v === "number" && !isFinite(v))) R.push([k, typeof v === "string" ? esc(v) : v]); };
   add("NSE symbol", i.symbol); add("Board", i.board); add("Status", i.status); add("Issue type", i.issueType);
   add("Price band", price(i)); add("Lot size", i.lot); add("Face value", i.faceValue); add("Issue size (₹ Cr)", i.issueSizeCr); add("Issue size (shares)", isNum(i.issueShares) ? inr(i.issueShares) : null);
-  add("Max retail application (₹)", i.maxRetailAmount); add("Issue size details (NSE)", i.issueDetail); add("UPI cut-off (NSE)", i.upiCutoff);
+  add("Max retail application (₹)", i.maxRetailAmount); add("Issue size details (NSE)", i.issueDetail); add("UPI cut-off (NSE)", i.upiCutoff); add("Closing time (as shown in the app)", cutLabel(i) || null);
   for (const [k, l] of [["open", "Opens"], ["close", "Closes"], ["allotment", "Allotment"], ["refund", "Refund"], ["demat", "Demat credit"], ["listing", "Listing"]]) add(l, t[k] ? fmtD(t[k]) + (i.datesExpected && k !== "open" && k !== "close" ? " (exp.)" : "") : null);
   for (const [k, l] of [["qib", "QIB"], ["nii", "NII"], ["bnii", "bNII"], ["snii", "sNII"], ["retail", "Retail"], ["employee", "Employees"], ["shareholders", "Shareholders"], ["total", "Total"]]) if (b[k]) add(`Subscription — ${l}`, `${inr(b[k].offered)} offered · ${inr(b[k].bid)} bid · ${f2(b[k].times)}x`);
   if (i.gmp) { add("GMP (average)", `₹${i.gmp.value}`); add("GMP sources", i.gmp.sources.map(s => `${s.source} ₹${s.gmp}`).join(" · ")); add("GMP rating", i.gmp.rating ? i.gmp.rating + " / 5" : null); }
   add("Anchor book", i.anchor === true ? "Yes" : i.anchor === false ? "No" : null);
-  add("Registrar", i.registrar?.name); add("Registrar address", i.registrar?.address); add("Registrar contact", i.registrar?.contact); add("Lead managers", i.leadManagers); add("Sponsor bank", i.sponsorBank);
+  add("Registrar", i.registrar?.name); add("Registrar address", i.registrar?.address); add("Registrar contact", i.registrar?.contact); add(`Lead managers (${lmList(i).length})`, lmList(i).length ? lmList(i).join(", ") : null); add("Sponsor bank", i.sponsorBank);
   if (i.listingPerf) { add("Day-1 open", `₹${f2(i.listingPerf.dayOpen)} (${i.listingPerf.dayOpenGainPct}%)`); add("Last price", `₹${f2(i.listingPerf.ltp)} (${i.listingPerf.ltpGainPct}%)`); }
   if (i.verification) add("Data verification", `${i.verification.status.toUpperCase()}: ${i.verification.checked - i.verification.notFound} of ${i.verification.checked} extracted figures found in the ${i.verification.sourceDoc || "offer document"}${i.verification.issues?.length ? "; notes: " + i.verification.issues.join(" | ") : ""}`);
   const fz = FU(i); if (fz?.notes) add("Extraction notes (technical)", fz.notes);
@@ -710,7 +725,8 @@ function progressCard(i) {
   const li = S.map(([l, d, est], k) => `<li class="${done[k] ? "done" : k === cur ? "now" : ""}"><i>${done[k] ? ic("check") : ""}</i><b>${l}</b><span>${d ? fmtS(d) + (est ? " (exp.)" : "") : "—"}</span></li>`).join("");
   const tlItems = [["Opens", t.open, false], ["Closes", t.close, false], ["Allotment finalised", t.allotment, i.datesExpected], ["Refund initiated", t.refund, i.datesExpected], ["Shares credited to demat", t.demat, i.datesExpected], ["Listing", t.listing, i.datesExpected]];
   const tl = `<ol class="tl">${tlItems.map(([l, d, est]) => { const n = d ? dayDiff(d) : null; return `<li class="${n === null ? "" : n < 0 ? "done" : n === 0 ? "now" : ""}"><i></i><div><b>${l}</b><span>${d ? fmtD(d) + (est ? " (exp.)" : "") : "—"}</span></div></li>`; }).join("")}</ol>
-    <p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`;
+    <p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>
+    ${cutNse(i) ? `<p class="sm cutnse"><b>NSE on the closing time:</b> “${esc(cutNse(i))}”</p>` : ""}`;
   return card(ic("calendar-event") + " IPO Progress", `<ol class="prog" aria-label="IPO progress">${li}</ol>` + mx("tl", tl, { n: 0, more: "All dates (6)", less: "Hide dates" }));
 }
 
@@ -734,7 +750,7 @@ function detail(forReport = false) {
 
   const hero = `<section class="card hero"><div class="hero-top">${logo(i)}<div class="hero-id"><${H} class="hname">${esc(i.name)}</${H}><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div></div>${forReport ? "" : `<button class="ib sq" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}" title="${onWebsite() ? "Copy link" : "Share"}">${ic(onWebsite() ? "copy" : "share-3")}</button>`}</div>
   <div class="facts">${bt("Issue size", isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—")}${bt("Price band", price(i))}${bt("Lot size", isNum(i.lot) ? inr(i.lot) + " sh" : "—")}${bt("IPO dates", i.open || i.close ? fmtS(i.open) + " – " + fmtS(i.close) : "—")}${bt("Min. investment", minInv ? "₹" + inr(minInv) + `<small> · ${minLots} lot${minLots > 1 ? "s" : ""}</small>` : "—")}${bt("Listing" + (i.datesExpected ? " (exp.)" : ""), fmtD(i.listing))}</div>
-  ${cdFor(i)}
+  ${cdFor(i)}${cutBlock(i)}
   <div class="kv3"><div><span>GMP</span><b class="${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? "₹" + g + (isNum(gmpPct(i)) ? " · " + gmpPct(i).toFixed(0) + "%" : "") : "—"}</b></div><div><span>Subscribed</span><b>${subNow(i)}</b></div><div><span>Score</span><b>${sc.score ?? "—"}</b></div></div>
   <div class="cta">${actionBtn(i, true)}</div>
   <div class="cta2"><button class="btn ghost" data-watch="${i.symbol}">${ic("star", inW ? "fill" : "")} ${inW ? "Watching" : "Watchlist"}</button><button class="btn ghost" data-cmp="${i.symbol}">${ic(state.cmp.includes(i.symbol) ? "check" : "scale")} ${state.cmp.includes(i.symbol) ? "In compare" : "Compare"}</button></div></section>`;
@@ -783,13 +799,13 @@ function detail(forReport = false) {
     (f?.notes ? `<p class="mut sm">${ic("info-circle")} A few figures could not be read clearly from the offer document and are left blank (—).</p>` : "");
 
   // ----- Company
-  const mgrs = String(i.leadManagers || "").split(/\s*[,;]\s*/).filter(Boolean), ul = h => `<ul class="lst">${h}</ul>`;
+  const mgrs = lmList(i), ul = h => `<ul class="lst">${h}</ul>`;
   const co = (f ? card("About Company", mx("about", `<p class="sub">${esc(f.about)}</p>`, { lines: 4, more: "Show more", less: "Show less" }) + `<div class="mut sm" style="margin-top:8px">${[f.headquarters && "HQ: " + esc(f.headquarters), f.founded_year && "Founded: " + f.founded_year, isNum(f.order_book_cr) && "Order book: ₹" + cr(f.order_book_cr) + " Cr"].filter(Boolean).join(" · ")}</div>`) +
     (f.promoters?.names?.length ? card("Promoters", moreList("prom", f.promoters.names.map(n => `<li class="pro">${ic("user")} <span>${esc(n)}</span></li>`), 3, ul) + `<div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? mx("probg", `<p class="sm" style="margin:8px 0 0">${esc(f.promoters.background)}</p>`, { lines: 3, more: "Show more", less: "Show less" }) : ""}`) : "") +
     ((f.strengths || []).length ? card("Strength Factor", moreList("str", f.strengths.map(x => `<li class="str">${ic("check")} <span>${esc(x)}</span></li>`), 3, ul)) : "") +
     ((f.risks || []).length ? card("Risk Factor", moreList("risk", f.risks.map(x => `<li><i class="sev ${x.severity === "high" ? "h" : x.severity === "medium" ? "m" : "l"}"></i> <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`), 3, ul)) : "")
     : card("About Company", `<p class="mut">The company profile, promoters, strengths and risks appear once the offer document has been analysed.</p>`)) +
-    (i.leadManagers ? card("Lead Manager(s)", moreList("lm", mgrs.map(m => `<li class="pro">${ic("building-bank")} <span>${esc(m)}</span></li>`), 3, ul) + `<div class="mut sm">Sponsor bank: ${esc(i.sponsorBank || "—")}</div>`) : "") +
+    (mgrs.length ? card(`Lead Manager(s) (${mgrs.length})`, moreList("lm", mgrs.map(m => `<li class="pro">${ic("building-bank")} <span>${esc(m)}</span></li>`), 3, ul) + `<div class="mut sm">Sponsor bank: ${esc(i.sponsorBank || "—")}</div>`) : "") +
     contactsCard(i);
 
   // ----- Documents
@@ -855,6 +871,83 @@ function allotment() {
   ${sel ? `<div class="note"><b>Registrar:</b> ${esc(sel.registrar.name || "—")}<br>Allotment date: ${fmtD(sel.allotment)} ${sel.datesExpected ? "(expected)" : ""}<br>${esc(sel.registrar.contact || "")}</div>
   ${(r => r ? `<a class="btn wide" href="${r.url}" target="_blank" rel="noopener noreferrer">${r.kind === "status" ? "Check allotment status" : "Open the registrar's website"} ${ic("external-link")}</a>${r.kind === "status" ? "" : '<p class="mut sm">Look for "IPO status" or "allotment" on their site.</p>'}` : `<p class="mut sm">The registrar's status page is not known for this IPO. If it is listed on BSE you can check here:</p><a class="btn ghost wide" href="${BSE_STATUS}" target="_blank" rel="noopener noreferrer">BSE: application status ${ic("external-link")}</a>`)(registrarLink(sel))}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
   <div class="note">Allotment is decided by the registrar's computerised lottery. Use the registrar's official website or the NSE/BSE allotment pages.</div>`;
+}
+// ---------- market holidays (data/market/holidays.json, NSE's trading-holiday list, pipeline/holidays.mjs) ----------
+const HOL = { rows: [], map: new Map(), st: "idle", u: "" };
+async function loadHolidays() {
+  if (HOL.st !== "idle") return; HOL.st = "loading";
+  try {
+    const r = await fetch("data/market/holidays.json", { cache: "no-cache" }); if (!r.ok) throw new Error(r.status);
+    const j = await r.json(), rows = (Array.isArray(j.rows) ? j.rows : []).filter(x => x && /^\d{4}-\d{2}-\d{2}$/.test(x.d) && typeof x.name === "string" && x.name && x.name.length <= 80).map(x => ({ d: x.d, name: cleanStr(x.name), special: x.special === true, session: typeof x.session === "string" ? cleanStr(x.session) : "" }));
+    HOL.rows = rows; HOL.map = new Map(rows.map(x => [x.d, x])); HOL.u = /^\d{4}-\d{2}-\d{2}$/.test(j.u) ? j.u : ""; HOL.st = "ok";
+  } catch { HOL.st = "fail"; }
+  if (state.loaded && (state.tab === "calendar" || (state.tab === "ipo" && state.seg === "live") || String(state.tab).startsWith("stocks:"))) render();
+}
+const holOn = d => HOL.map.get(d) || null;
+// "Market closed today" strip (Stocks module, IPO Live tab). A weekend is closed anyway, so the strip is for weekday holidays and special sessions only.
+function marketBanner() {
+  const h = holOn(istDay()); if (!h) return "";
+  const wd = pd(h.d).getDay();
+  if (h.special) return `<div class="note topnote mclosed">${ic("calendar-event")}<span><b>Special session today: ${esc(h.name)}.</b> NSE holds Muhurat (special) trading today; normal hours do not apply, check NSE for the timings.</span></div>`;
+  if (wd === 0 || wd === 6) return "";
+  return `<div class="note topnote mclosed">${ic("calendar-event")}<span><b>Market closed today:</b> ${esc(h.name)}</span></div>`;
+}
+// ---------- IPO Calendar: month grid or agenda of opens / closes / allotment / listing (state.ipos) and market holidays ----------
+const CAL_KINDS = [["open", "Opens", "open"], ["close", "Closes", "close"], ["allotment", "Allotment", "allot"], ["listing", "Listing", "list"]];
+const CAL_MON = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const calState = { y: null, m: null, mode: store.get("calMode", "month") === "agenda" ? "agenda" : "month", day: null };
+function calInit() { if (calState.y === null) { const t = istDay(); calState.y = +t.slice(0, 4); calState.m = +t.slice(5, 7) - 1; calState.day = t; } }
+const isoOf = (y, m, d) => y + "-" + pad2(m + 1) + "-" + pad2(d);
+function calEvents() {
+  const ev = new Map(), add = (d, e) => { if (typeof d === "string" && /^\d{4}-\d{2}-\d{2}$/.test(d)) { if (!ev.has(d)) ev.set(d, []); ev.get(d).push(e); } };
+  for (const i of state.ipos) for (const [k, label, cls] of CAL_KINDS) { const d = i[k]; if (d) add(d, { t: "ipo", k: cls, label, i, est: !!i.datesExpected && (k === "allotment" || k === "listing") }); }
+  for (const f of state.meta?.filings || []) for (const [k, label, cls] of CAL_KINDS.slice(0, 2)) if (f[k]) add(f[k], { t: "filing", k: cls, label, name: f.company });
+  return ev;
+}
+const calHolFlag = (iso, kind) => { const h = holOn(iso); return h && !h.special && kind !== "hol" ? h : null; };   // an IPO date on a day NSE lists as a holiday: the data contradicts itself
+function calRow(e, iso) {
+  if (e.t === "hol") return `<div class="calrow nohov"><div class="calday gry">${ic("calendar-event")}</div><div class="calmain"><div class="calname">${e.special ? "Special session" : "Market holiday"}: ${esc(e.name)}</div><div class="mut sm">${e.special ? "NSE: Muhurat (special) trading is held on this day; the timings are notified by NSE" + (e.session ? " · " + esc(e.session) : "") : "NSE: no trading on the equity market" + (e.session ? " · " + esc(e.session) : "")}</div></div><span class="calchip chol">${e.special ? "Special" : "Holiday"}</span></div>`;
+  const hf = calHolFlag(iso, e.k), warn = hf ? `<div class="calwarn">${ic("alert-triangle")} NSE lists this date as a market holiday (${esc(hf.name)}): check the date with the exchange.</div>` : "";
+  if (e.t === "filing") return `<div class="calrow nohov"><div class="calday gry">${ic("file-text")}</div><div class="calmain"><div class="calname">${esc(e.name)}</div><div class="mut sm">Filed with SEBI, dated by the filing</div>${warn}</div><span class="calchip c-${e.k}">${e.label}</span></div>`;
+  const i = e.i, dt = pd(iso);
+  return `<div class="calrow ipoc" data-open="${esc(i.symbol)}">${logo(i)}<div class="calmain"><div class="calname">${esc(shortName(i.name))}</div><div class="mut sm">${esc(i.board)} · ${dt.toLocaleDateString("en-IN", { weekday: "short" })}${e.est ? " · estimated" : ""}${e.k === "close" && cutLabel(i) && !cutIs5(i) ? " · " + esc(cutLabel(i)) : ""}</div>${warn}</div><span class="calchip c-${e.k}">${e.label}${e.est ? " (exp.)" : ""}</span></div>`;
+}
+const calDayEvents = (ev, iso) => { const h = holOn(iso), out = (ev.get(iso) || []).slice(); if (h) out.unshift({ t: "hol", k: "hol", name: h.name, special: h.special, session: h.session }); return out; };
+function calendarScreen() {
+  calInit(); const { y, m, mode } = calState, ev = calEvents(), tday = istDay();
+  const first = new Date(y, m, 1), lead = (first.getDay() + 6) % 7, nd = new Date(y, m + 1, 0).getDate(), rows = Math.ceil((lead + nd) / 7);
+  const seg = `<div class="seg calseg" role="group" aria-label="Calendar view"><button data-cal="mode:month" class="${mode === "month" ? "on" : ""}" aria-pressed="${mode === "month"}">Month</button><button data-cal="mode:agenda" class="${mode === "agenda" ? "on" : ""}" aria-pressed="${mode === "agenda"}">Agenda</button></div>`;
+  const nav = `<div class="calnav"><button class="ib sq" data-cal="prev" aria-label="Previous month">${ic("chevron-right", "flip")}</button><h2>${CAL_MON[m]} ${y}</h2><button class="ib sq" data-cal="next" aria-label="Next month">${ic("chevron-right")}</button><button class="btn ghost calnow" data-cal="today">Today</button></div>`;
+  const legend = `<div class="callegend">${[["open", "Opens"], ["close", "Closes"], ["allot", "Allotment"], ["list", "Listing"], ["hol", "Market holiday"]].map(([k, l]) => `<span><i class="cdot k-${k}"></i>${l}</span>`).join("")}</div>`;
+  let body = "";
+  if (mode === "month") {
+    let cells = "";
+    for (let c = 0; c < rows * 7; c++) {
+      const dn = c - lead + 1; if (dn < 1 || dn > nd) { cells += `<div class="calcell off" aria-hidden="true"></div>`; continue; }
+      const iso = isoOf(y, m, dn), es = calDayEvents(ev, iso), wk = (c % 7) >= 5, kinds = [...new Set(es.map(e => e.k))];
+      const chips = es.filter(e => e.t !== "hol").slice(0, 2).map(e => `<span class="cchip c-${e.k}">${esc(e.t === "ipo" ? shortName(e.i.name).split(/\s+/)[0] : (e.name || "").split(/\s+/)[0])}</span>`).join("") + (es.length > 2 ? `<span class="cmore">+${es.length - 2}</span>` : "");
+      const label = `${dn} ${CAL_MON[m]}${es.length ? ", " + es.length + " event" + (es.length > 1 ? "s" : "") : ""}`;
+      cells += `<button type="button" class="calcell${wk ? " wk" : ""}${iso === tday ? " today" : ""}${iso === calState.day ? " sel" : ""}${holOn(iso) ? " hol" : ""}" data-cal="day:${iso}" aria-label="${esc(label)}" aria-pressed="${iso === calState.day}"><b>${dn}</b><span class="cdots">${kinds.map(k => `<i class="cdot k-${k}"></i>`).join("")}</span><span class="cchips">${chips}</span></button>`;
+    }
+    const sel = calState.day && calState.day.startsWith(y + "-" + pad2(m + 1)) ? calState.day : null;
+    const list = sel ? calDayEvents(ev, sel) : [];
+    body = `<div class="calgrid" role="group" aria-label="${CAL_MON[m]} ${y}">${["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(w => `<div class="calwd">${w}</div>`).join("")}${cells}</div>` +
+      card(sel ? `${pd(sel).toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}${sel === tday ? " (today)" : ""}` : "Events", sel ? (list.length ? list.map(e => calRow(e, sel)).join("") : `<p class="mut sm">No IPO events or market holidays on this day.</p>`) : `<p class="mut sm">Tap a day to see its events.</p>`);
+  } else {
+    const pre = y + "-" + pad2(m + 1), days = [...new Set([...ev.keys(), ...HOL.map.keys()])].filter(d => d.startsWith(pre)).sort();
+    body = days.length ? days.map(d => `<div class="card dcard calag"><h3>${pd(d).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })}${d === tday ? ' <span class="calchip c-open">Today</span>' : ""}</h3>${calDayEvents(ev, d).map(e => calRow(e, d)).join("")}</div>`).join("") : card("", `<p class="mut sm">No IPO events or market holidays in ${CAL_MON[m]} ${y}.</p>`);
+  }
+  const ups = HOL.rows.filter(h => h.d >= tday && !(!h.special && [0, 6].includes(pd(h.d).getDay()))).slice(0, 5);
+  const upc = card(ic("calendar-event") + " Upcoming market holidays", HOL.st === "fail" ? `<p class="mut sm">The holiday list could not be loaded.</p>` : HOL.st !== "ok" ? `<p class="mut sm">Loading…</p>` : ups.length ? ups.map(h => { const n = dayDiff(h.d); return `<div class="row sm"><span><b>${esc(h.name)}${h.special ? "*" : ""}</b><br><span class="mut">${pd(h.d).toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "short", year: "numeric" })}</span></span><span class="mut">${n === 0 ? "Today" : n === 1 ? "Tomorrow" : "in " + n + " days"}</span></div>`; }).join("") : `<p class="mut sm">No more holidays in NSE's current list.</p>`);
+  return `${head("IPO Calendar")}${marketBanner()}${seg}${nav}${legend}${body}${upc}<p class="disc">IPO dates: NSE and InvestorGain via our data file; allotment and listing marked (exp.) are estimated from the closing date. Holidays: NSE trading-holiday list (equity segment)${HOL.u ? ", fetched " + fmtD(HOL.u) : ""}. Weekends are not listed. Information only.</p>`;
+}
+function calClick(t) {
+  calInit(); const v = t.dataset.cal;
+  if (v === "prev" || v === "next") { const d = new Date(calState.y, calState.m + (v === "next" ? 1 : -1), 1); calState.y = d.getFullYear(); calState.m = d.getMonth(); calState.day = null; }
+  else if (v === "today") { const t0 = istDay(); calState.y = +t0.slice(0, 4); calState.m = +t0.slice(5, 7) - 1; calState.day = t0; }
+  else if (v.startsWith("mode:")) { calState.mode = v === "mode:agenda" ? "agenda" : "month"; store.set("calMode", calState.mode); }
+  else if (v.startsWith("day:") && /^\d{4}-\d{2}-\d{2}$/.test(v.slice(4))) calState.day = v.slice(4);
+  render();
 }
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
 function settings() {
@@ -1088,8 +1181,8 @@ const MOD_LAST = store.get("modLast", {});
 const MODS = ["ipo", "stocks", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
 for (const k of Object.keys(MOD_LAST)) if (!MODS.includes(k)) delete MOD_LAST[k];
 const fixTab = t => typeof t === "string" && t.includes(":") && !MODS.includes(t.split(":")[0]) ? "ipo" : t;
-const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"]];
-function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
+const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"], ["calendar", "Calendar"]];
+function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" || tab === "calendar" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
 function modTabs(m) { return m === "ipo" ? IPO_TABS : (window.TrendyModules[m]?.tabs || []); }
 function modStrip() {
   const m = modOf(state.tab); if (!m || state.sub || state.detail || state.report) return "";
@@ -1100,7 +1193,7 @@ function goTab(m, k) {
   if (!MODS.includes(m)) { m = "ipo"; k = null; }
   const tabs = modTabs(m); if (!tabs.length) return;
   if (!k || !tabs.some(t => t[0] === k)) k = tabs.some(t => t[0] === MOD_LAST[m]) ? MOD_LAST[m] : tabs[0][0];
-  if (m === "ipo") { if (k === "allot" || k === "unlisted") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
+  if (m === "ipo") { if (k === "allot" || k === "unlisted" || k === "calendar") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
   else state.tab = m + ":" + k;
   state.mod = m; MOD_LAST[m] = k; store.set("modLast", MOD_LAST);
   state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false;
@@ -1115,6 +1208,7 @@ function modScreen() {
   const m = modOf(state.tab), mod = m && window.TrendyModules[m];
   if (!mod) return head("Coming soon") + card("", '<p class="mut">This section is not available yet.</p>');
   let html; try { html = mod.render(String(state.tab).split(":")[1], state.sub, hostApi()); } catch (e) { console.error(e); html = head(mod.label) + card("", '<p class="mut">This screen could not be shown. Please try again.</p>'); }
+  if (m === "stocks") { const b = marketBanner(); if (b && /class="mtabs"/.test(html)) html = html.replace(/(<div class="mtabs"[\s\S]*?<\/div>)/, x => x + b); }   // "Market closed today" under the tab strip
   return html;
 }
 function modClick(t) {
@@ -1178,7 +1272,7 @@ function srResults() {
     const rec = srRecent();
     return `<div class="sr-empty">${ic("search")}<p>Search IPOs, NSE stocks and mutual funds in one place.</p></div>` + (rec.length ? `<div class="sr-recent"><div class="row"><h3>Recent</h3><button class="linkbtn" data-sclear>Clear</button></div><div class="chips">${rec.map(r => `<button class="chipb" data-srecent="${esc(r)}">${ic("history")} ${esc(r)}</button>`).join("")}</div></div>` : "");
   }
-  const m = srMatches(q), fq = q.toLowerCase().split(/s+/).filter(Boolean);       // funds match on every word, so every word is marked
+  const m = srMatches(q), fq = q.toLowerCase().split(/\s+/).filter(Boolean);       // funds match on every word, so every word is marked
   const grp = (title, key, items, rowFn, seeAll, loading, failed) => {
     if (!items.length && !loading && !failed) return "";
     return `<section class="sr-grp"><div class="row"><h3>${title}</h3>${m.n[key] > 5 ? `<button class="linkbtn" data-sall="${seeAll}">See all ${m.n[key]} in ${title}</button>` : ""}</div>${items.length ? items.map(rowFn).join("") : failed ? `<p class="mut sm">Could not load this list. Check your connection.</p>` : `<div class="skel-row"></div><div class="skel-row"></div>`}</section>`;
@@ -1257,7 +1351,7 @@ function render() {
     $("#app").innerHTML = state.error ? `<div class="card errc">${ic("alert-triangle")}<p>${esc(state.error)}</p><button class="btn" data-refresh>Try again</button></div>` : `${brand()}<div class="skel-top"></div><div class="cards">${skelCards(3)}</div>`;
     return;
   }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, calendar: calendarScreen, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (!state.detail && !state.report) state.dtabFor = null;   // leaving the IPO resets its tab and open blocks
@@ -1268,7 +1362,7 @@ function render() {
   const mo = modOf(state.tab); if (mo) { state.mod = mo; if (!modLoaded[mo]) { modLoaded[mo] = true; try { TrendyModules[mo]?.load?.(hostApi()); } catch (e) { console.warn(e); } } }
   const sk = screenKey(), newScreen = sk !== lastScreen; lastScreen = sk;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : (screens[state.tab] || modScreen)()) + credit() +
-    (state.modal ? (() => { const i = byId(state.modal), pre = preApply(i), still = shownModal === state.modal ? " still" : ""; return `<div class="modal${still}" data-close><div class="card sheet${still}"><button class="ib sq sheetx" data-close aria-label="Close">${ic("x")}</button><h3>${pre ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app, go to the IPO section and choose <b>${esc(i.name)}</b>.</p>${pre ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm applyl"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn wide ${pre ? "pre" : ""}" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${pre ? "Pre Apply" : "Apply"} on Groww ${ic("external-link")}</a><div class="sm otherb"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ${ic("external-link")}</a>`).join("")}</div><p class="mut sm">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn wide ghost" data-close>Got it</button></div></div>`; })() : "");
+    (state.modal ? (() => { const i = byId(state.modal), pre = preApply(i), still = shownModal === state.modal ? " still" : ""; return `<div class="modal${still}" data-close><div class="card sheet${still}"><button class="ib sq sheetx" data-close aria-label="Close">${ic("x")}</button><h3>${pre ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app, go to the IPO section and choose <b>${esc(i.name)}</b>.</p>${pre ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm applyl"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>${cutLabel(i) ? "Last day" : "Closes"}: ${fmtD(i.close)}${cutLabel(i) ? " · " + esc(cutLabel(i)) : ""}</li></ul>${cutNote(i) ? `<p class="sm cutnote">${ic("clock")} ${esc(cutNote(i))}</p>` : ""}<a class="btn wide ${pre ? "pre" : ""}" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${pre ? "Pre Apply" : "Apply"} on Groww ${ic("external-link")}</a><div class="sm otherb"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ${ic("external-link")}</a>`).join("")}</div><p class="mut sm">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn wide ghost" data-close>Got it</button></div></div>`; })() : "");
   { const sh = document.querySelector("#app .modal .card.sheet"); if (sh && shownModal === state.modal) sh.scrollTop = sheetTop; shownModal = state.modal || null; if (!state.modal) sheetTop = 0; }
   syncAck();
   // shimmer skeletons instead of "Loading…" text (module screens print plain loading lines while their data downloads)
@@ -1292,9 +1386,11 @@ function render() {
 }
 // ---- first-run disclaimer: ONE persistent dialog on <body> (outside #app, so render() never rebuilds, re-animates or scrolls it).
 // Both languages are stacked in the same grid cell, so the dialog keeps one fixed height when the language is switched.
-let ackEl = null, ackPrevFocus = null;
+// The dialog ALWAYS opens in English. Its Hindi / English switch only changes ackLang (this opening of the dialog): nothing is stored and the app language
+// (localStorage "lang", used by About / Privacy / the footer note) is not touched.
+let ackEl = null, ackPrevFocus = null, ackLang = "en";
 const ackPane = l => '<div class="ackpane" lang="' + l + '" data-l="' + l + '"><b>' + TEXT.disclaimerTitle[l] + "</b><br>" + TEXT.disclaimer[l] + "<br>" +
-  (l === "en" ? `<button class="linkbtn" data-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`) + "</div>";
+  (l === "en" ? `<button class="linkbtn" data-ack-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-ack-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`) + "</div>";
 function setLock() { document.documentElement.classList.toggle("locked", !acked() || !!state.modal); }
 function syncAck() {
   if (acked()) {
@@ -1302,14 +1398,14 @@ function syncAck() {
     setLock(); return;
   }
   if (!ackEl) {
-    ackPrevFocus = document.activeElement;
-    ackEl = document.createElement("div"); ackEl.className = "modal ackm"; ackEl.setAttribute("role", "dialog"); ackEl.setAttribute("aria-modal", "true"); ackEl.setAttribute("aria-label", "Disclaimer");
+    ackPrevFocus = document.activeElement; ackLang = "en";
+    ackEl =document.createElement("div"); ackEl.className = "modal ackm"; ackEl.setAttribute("role", "dialog"); ackEl.setAttribute("aria-modal", "true"); ackEl.setAttribute("aria-label", "Disclaimer");
     ackEl.innerHTML = '<div class="card"><div class="ackbody">' + ackPane("en") + ackPane("hi") + '</div><button class="btn wide ackok" data-ack></button></div>';
     document.body.appendChild(ackEl);
     [...document.body.children].forEach(n => { if (n !== ackEl && n.id !== "splash" && n.tagName !== "SCRIPT" && n.tagName !== "STYLE") n.setAttribute("inert", ""); });
     setTimeout(() => { const b = ackEl && ackEl.querySelector("[data-ack]"); if (b) b.focus({ preventScroll: true }); }, 60);
   }
-  const l = lang(), hi = l === "hi";
+  const l = ackLang, hi = l === "hi";
   ackEl.querySelectorAll(".ackpane").forEach(p => { const on = p.dataset.l === l; p.classList.toggle("off", !on); if (on) p.removeAttribute("inert"); else p.setAttribute("inert", ""); p.setAttribute("aria-hidden", on ? "false" : "true"); });
   const ok = ackEl.querySelector("[data-ack]"); if (ok.dataset.l !== l) { ok.dataset.l = l; ok.textContent = hi ? "मैं समझ गया" : "I understand"; ok.lang = l; }
   setLock();
@@ -1332,7 +1428,7 @@ function toast(m) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.classList.remove("show"); toastTimer = setTimeout(() => el.remove(), 300); }, 1900);
 }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear],[data-ack-lang],[data-cal]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
@@ -1341,6 +1437,7 @@ document.addEventListener("click", e => {
   if (t.hasAttribute("data-bell")) { state.tab = "general"; state.sub = "notif"; state.detail = null; state.report = null; state.drawer = false; state.modal = null; render(); scrollTo(0, 0); return; }
   if (searchClick(t)) return;
   if (aboutClick(t)) return;
+  if (t.dataset.cal) return calClick(t);
   if (modClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
@@ -1348,6 +1445,7 @@ document.addEventListener("click", e => {
   if (t.dataset.rtab) { state.reportTab = t.dataset.rtab; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-report-close")) { goBack(); return; }
   if (t.hasAttribute("data-print")) { window.print(); return; }
+  if (t.hasAttribute("data-ack-lang")) { ackLang = t.dataset.ackLang === "hi" ? "hi" : "en"; syncAck(); return; }   // the disclaimer dialog only: temporary, not stored
   if (t.hasAttribute("data-lang")) { store.set("lang", t.dataset.lang); return render(); }
   if (t.hasAttribute("data-ack")) { state.ack = true; return render(); }
   if (t.hasAttribute("data-close") && e.target.closest(".card") && !t.matches("button")) return;
@@ -1440,6 +1538,7 @@ async function loadData(manual) {
 }
 render();
 loadData(false);
+loadHolidays();
 setInterval(() => { if (document.visibilityState === "visible") loadData(false); }, 5 * 60 * 1000);
 document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && Date.now() - lastLoad > 5 * 60 * 1000) loadData(false); });
 

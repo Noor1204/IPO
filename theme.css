@@ -769,3 +769,41 @@ table.lot td:first-child{white-space:normal;min-width:78px}table.lot small{displ
 table.lot th{text-transform:none;letter-spacing:0;font-size:12px;padding:8px 3px}
 table.lot th,table.lot td{padding-left:3px;padding-right:3px}
 table.lot td:first-child{min-width:0;padding-left:6px}
+
+/* ---- closing-time label, market-closed strip, IPO calendar ---- */
+.cutline{display:flex;gap:8px;align-items:flex-start;margin:10px 0 0;padding:10px 12px;border-radius:var(--r-sm);background:var(--tint);font-size:var(--fs-sm);font-weight:700;overflow-wrap:anywhere}
+.cutline.late{background:var(--warn-bg)}.cutline .ic{flex:none;margin-top:2px}
+.cutnote{display:block;margin-top:4px;font-weight:600;color:var(--mut);font-size:var(--fs-sm)}
+.sheet .cutnote{display:flex;gap:6px;align-items:flex-start;color:var(--warn);font-weight:700}
+.cutnse{margin:8px 0 0;overflow-wrap:anywhere}
+.mclosed{background:var(--warn-bg);border-color:var(--warn)}
+.ic.flip{transform:scaleX(-1)}
+.calseg{margin:0 0 12px}.calseg button{flex:1}
+.calnav{display:flex;align-items:center;gap:8px;margin:0 0 10px}.calnav h2{flex:1;margin:0;text-align:center;font-size:var(--fs-lg)}
+.calnow{min-height:40px;padding:0 14px}
+.callegend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0 0 12px;font-size:12px;font-weight:700;color:var(--mut)}.callegend span{display:inline-flex;align-items:center;gap:6px}
+.cdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--mut)}
+.k-open{background:var(--info)}.k-close{background:var(--bad)}.k-allot{background:var(--vio)}.k-list{background:var(--ok)}.k-hol{background:var(--mut);opacity:.7}
+.calgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;margin:0 0 14px}
+.calwd{text-align:center;font-size:12px;font-weight:800;color:var(--mut);padding:4px 0}
+.calcell{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:52px;padding:6px 2px;border:1px solid var(--bd);border-radius:var(--r-xs);background:var(--surf);color:var(--tx);font:inherit;cursor:pointer;min-width:0;overflow:hidden}
+.calcell.off{border:0;background:none;cursor:default}
+.calcell b{font-size:14px;font-weight:800}
+.calcell.wk{background:var(--tint)}
+.calcell.hol{background:var(--track)}
+.calcell.today b{background:var(--grad);color:#fff;border-radius:50%;min-width:24px;height:24px;line-height:24px;text-align:center}
+.calcell.sel{border-color:var(--pri);box-shadow:inset 0 0 0 2px var(--pri)}
+.cdots{display:flex;flex-wrap:wrap;gap:3px;justify-content:center;min-height:8px}
+.cchips{display:none}
+.calrow.nohov{cursor:default}
+.calday.gry{background:var(--track);display:flex;align-items:center;justify-content:center}.calday.gry .ic{width:20px;height:20px;color:var(--mut)}
+.chol{background:var(--track);color:var(--mut)}
+.calwarn{margin-top:4px;font-size:12px;font-weight:700;color:var(--warn);display:flex;gap:6px;align-items:flex-start}
+.calag h3{margin:0 0 6px;font-size:var(--fs-md)}
+@media(min-width:720px){
+  .calcell{min-height:92px;align-items:stretch;padding:6px}.calcell b{align-self:flex-start}
+  .cdots{display:none}.cchips{display:flex;flex-direction:column;gap:3px;min-width:0}
+  .cchip{display:block;padding:2px 6px;border-radius:6px;font-size:12px;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-align:left}
+  .cmore{font-size:12px;font-weight:700;color:var(--mut)}
+}
+.calnav h2{font-size:15px;white-space:nowrap}.calnow{padding:0 10px}

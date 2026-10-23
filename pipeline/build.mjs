@@ -197,6 +197,23 @@ function contactsFor(r, info, domain) {
   const company = ["address", "phone", "email", "website", "contactPerson"].some(k => co[k]) ? { address: co.address || null, phone: co.phone || null, email: co.email || null, website: co.website || null, contactPerson: co.contactPerson || null } : null;
   return company || reg2 ? { company, registrar: reg2, source: "NSE issue info" + (f.company || f.registrar ? " + offer document" : "") + (company?.website && !f.company?.website ? " (company website from offer document cover)" : "") } : null;
 }
+// ---- lead managers as a list: the offer document's full list (contacts.json, parsed by contacts.mjs) when it has at least as many names as NSE's text, else NSE's text split into names
+// (split at commas / semicolons, and at " and " only when the part before it ends in a company suffix, so "HSBC Securities and Capital Markets (India) Private Limited" stays one name)
+const SUFFIX = /(?:Limited|Ltd\.?|LLP|Paribas)$/i;
+function splitManagers(s) {
+  const out = [];
+  for (const p of String(s || "").split(/\s*[,;]\s*/)) {
+    let rest = p.trim();
+    for (const m of [...rest.matchAll(/\s+and\s+/gi)]) { const l = rest.slice(0, m.index).trim(), rr = rest.slice(m.index + m[0].length).trim(); if (SUFFIX.test(l) && /^[A-Z0-9]/.test(rr)) { out.push(l); rest = rr; break; } }
+    if (rest) out.push(rest.replace(/\s+/g, " "));
+  }
+  return [...new Set(out)].filter(x => x.length >= 3 && x.length <= 90);
+}
+function leadManagersList(symbol, nseText) {
+  const nse = splitManagers(nseText), rhp = contactsFile[symbol]?.leadManagers;
+  const list = Array.isArray(rhp) && rhp.length && rhp.length >= nse.length ? rhp : nse;
+  return list.length ? list : null;
+}
 // ---- "Apply as": what each investor category pays and may bid, only from what NSE states
 function applyAsFor(info, priceLow, priceHigh, lot, board) {
   if (!priceHigh || !lot) return { applyAs: null, minInvestment: null, minInvestmentLots: null };
@@ -285,7 +302,7 @@ for (const r of nse) {
     anchorInvestors: null,        // the NSE anchor letters are free-form (some scanned images): the list of investors cannot be read reliably, so it is not shown
     demand: r.demand ? { asOn: r.demand.timestamp, totalBids: num(r.demand.totalBidRecieved), timesSubscribed: num(r.demand.noOfTimesIssueSubscribed), byPrice: r.demand.plotData || null } : null,
     registrar: { name: info["Name of the Registrar"] || null, address: info["Address of the Registrar"] || null, contact: info["Contact person name number and Email id"] || null },
-    leadManagers: info["Book Running Lead Managers"] || null, sponsorBank: info["Sponsor Bank"] || null,
+    leadManagers: info["Book Running Lead Managers"] || null, leadManagersList: leadManagersList(r.symbol, info["Book Running Lead Managers"]), sponsorBank: info["Sponsor Bank"] || null,
     docs: { rhp: info["Red Herring Prospectus"] || null, anchor: info["Anchor Allocation Report"] || null },
     logo: logos[r.symbol]?.file || null,
     documents: await docsFor(r.symbol, r.name, info, ig, r.bse),
@@ -309,7 +326,7 @@ for (const [k, g] of Object.entries(gmp.current)) {
     issueType: null, maxRetailAmount: null, issueDetail: null, upiCutoff: null,
     bids: { total: g.igSub != null ? { offered: null, bid: null, times: g.igSub } : null }, bidsSource: "InvestorGain (unofficial)", subsAsOn: g.igUpdated && istIso(g.igUpdated) || g.scrapedAt || null, subsAsOnSource: "fetched",
     applyAs: null, minInvestment: null, minInvestmentLots: null, contacts: null, anchorSummary: null, anchorInvestors: null, demand: null,
-    registrar: { name: null, address: null, contact: null }, leadManagers: null, sponsorBank: null, docs: {}, documents: await docsFor("IG", g.name, {}, g), anchor: g.anchor ?? null,
+    registrar: { name: null, address: null, contact: null }, leadManagers: null, leadManagersList: null, sponsorBank: null, docs: {}, documents: await docsFor("IG", g.name, {}, g), anchor: g.anchor ?? null,
     gmp: gmpBlock(k), subHistory: [], listingPerf: null, checks: [], fundamentals: null, fetchedAt: g.scrapedAt, sourceNote: "Schedule from InvestorGain only (not in NSE's public API)",
   });
 }

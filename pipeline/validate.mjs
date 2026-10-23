@@ -120,6 +120,15 @@ function checkNew(i) {
       if (p.phone && !/^[\d+ ()\-\/.]{8,25}$/.test(p.phone)) bad(`${s}: contacts.${who}.phone looks wrong (${p.phone})`);
     }
   }
+  // lead managers as a list (offer document or NSE text): short plain names, no markup
+  if (i.leadManagersList != null) {
+    const L = i.leadManagersList;
+    if (!Array.isArray(L) || L.length < 1 || L.length > 25) bad(`${s}: leadManagersList must be 1-25 names`);
+    else {
+      for (const n of L) if (typeof n !== "string" || n.length < 3 || n.length > 90 || /[<>]|&lt;|&gt;|javascript:|https?:|@/i.test(n) || /^\s|\s$/.test(n)) bad(`${s}: leadManagersList name looks wrong (${String(n).slice(0, 40)})`);
+      if (new Set(L.map(n => String(n).toLowerCase())).size !== L.length) bad(`${s}: leadManagersList has duplicates`);
+    }
+  }
   // anchors
   const an = i.anchorSummary;
   if (an != null) {

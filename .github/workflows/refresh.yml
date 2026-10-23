@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "charts.js", "live.js", "theme.css", "mod-*.css", "fonts/**", "app-stocks.js", "app-mf.js", "data/mf/**", "data/stocks/**", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "charts.js", "live.js", "theme.css", "mod-*.css", "fonts/**", "app-stocks.js", "app-mf.js", "data/mf/**", "data/stocks/**", "data/market/**", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
 
 # no permissions by default; each job asks only for what it needs
 permissions: {}

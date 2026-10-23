@@ -1,6 +1,7 @@
 name: Market data (Stocks, Mutual Fund)
 
-# Official end-of-day data for the Stocks and Mutual Fund sections: NSE daily files (prices, 52-week range) and AMFI (NAV and returns).
+# Official end-of-day data for the Stocks and Mutual Fund sections: NSE daily files (prices, 52-week range) and AMFI (NAV and returns),
+# plus NSE's trading-holiday list (data/market/holidays.json: calendar, "market closed today" banner).
 # Each script keeps the last good files when a source is down or not published yet, and only writes new files when the date moves forward.
 # A commit here makes the "Refresh data and publish site" workflow rebuild and publish the site.
 on:
@@ -9,7 +10,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: [".github/workflows/markets.yml", "pipeline/mf.mjs", "pipeline/stocks.mjs"]
+    paths: [".github/workflows/markets.yml", "pipeline/mf.mjs", "pipeline/stocks.mjs", "pipeline/holidays.mjs"]
 
 permissions: {}
 
@@ -36,11 +37,15 @@ jobs:
         continue-on-error: true
         timeout-minutes: 15
         run: node pipeline/stocks.mjs
+      - name: Market holidays (NSE trading-holiday list)
+        continue-on-error: true
+        timeout-minutes: 3
+        run: node pipeline/holidays.mjs
       - name: Commit
         run: |
           git config user.name "trendy-ipo-bot"
           git config user.email "trendy-ipo-bot@users.noreply.github.com"
-          git add data/mf data/stocks
+          git add data/mf data/stocks data/market
           if ! git diff --cached --quiet; then
             git commit -m "markets: new data $(date -u +'%Y-%m-%d %H:%M') UTC"
             git checkout -- .
