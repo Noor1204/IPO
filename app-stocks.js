@@ -8,7 +8,7 @@
   const S = { meta: null, movers: null, index: null, idxList: null, idxBy: null, list: null, listBy: null, lc: null, status: "idle", listStatus: "idle",
     chunks: {}, chunkStatus: {}, hist: {}, idxH: {}, cfg: {}, cv: null, ivLoad: "", ivSig: 0, ct: { range: "6M", type: "candles", sma20: false, sma50: false },
     k: "gain", shown: 50, q: "", caps: null, fii: null, dcap: { gain: "L", loss: "L", vol: "L" }, mcap: "A",
-    mmode: null, mq: "", hideLow: false, arrive: false, cur: null, vc: null };
+    sn: 10, mmode: null, mq: "", hideLow: false, arrive: false, cur: null, vc: null };
   let HH = null;                                         // host api (kept for async renders)
   const DISC = "Prices are end-of-day or a delayed snapshot, not real-time. Information only, not investment advice.";
   const LISTS = [["gain", "Gainers"], ["loss", "Losers"], ["active", "Most active"], ["vol", "By volume"], ["deliv", "Delivery %"], ["hi", "52W high"], ["lo", "52W low"]];
@@ -547,13 +547,40 @@
   }
   const mvBar = (H, v) => v.mode === "eod" && liveOn() ? eodPill("Last close, " + eodTxt()) : barHtml("Gainers, losers, most active and 52-week lists");
   const mvBarSig = v => barSig() + "|" + v.mode;
-  function movers(H) {
+  // full-list page (sub page "list:<kind>"): title, coverage text, search, mode, cap chips, toggle, the paged list
+  function listPage(H) {
     ensureList(H);
     const v = mvView(), k = v.k;
-    const sw = LISTS.map(([id, l]) => `<button class="${id === k ? "on" : ""}" data-m="stocks" data-act="list" data-k="${id}" aria-pressed="${id === k}">${l}</button>`).join("");
-    return H.head("Stocks") + stale() + reg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)) + `<div class="st-sw" role="group" aria-label="List">${sw}</div>` +
+    return H.head(TITLES[k]) + stale() + reg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)) +
       `<div class="card st-mvc"><label class="st-sin">${ic("search")}<input id="st-mq" type="search" data-m="stocks" placeholder="Search in this list: symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search in this list" value="${H.esc(S.mq)}" maxlength="40"></label>` +
       reg("mv-ctl", () => mvCtl(H, v), () => mvCtlSig(v)) + reg("mv-info", () => mvInfo(H, v)) + reg("mv-list", () => mvListHtml(H, v), () => mvSig(v)) + `</div>` + foot(H);
+  }
+  // Movers root: a compact overview, 5 rows per list and a "See more" that opens the full list
+  const RSECS = [["gain", "trending-up", "Top gainers", "Biggest rise, in %"], ["loss", "trending-down", "Top losers", "Biggest fall, in %"], ["vol", "flame", "Most traded (volume)", "Most shares traded"],
+    ["active", "coins", "Most active (traded value)", "Highest value traded"], ["hi", "trophy", "52-week high", "Trading within 3% of the 52-week high"], ["lo", "target", "52-week low", "Trading within 3% of the 52-week low"],
+    ["deliv", "building-bank", "Delivery %", "Highest delivery share · last close only"]];
+  const rtMode = () => S.mmode === "eod" ? "eod" : liveOn() ? "live" : "eod";
+  function rtSec(H, k) {
+    const [, icon, title, subt] = RSECS.find(x => x[0] === k);
+    const mode = effMode(k), cap = S.caps && CAPK.includes(k) ? S.mcap : "A", minTv = CAPK.includes(k) && S.hideLow ? LOWTV : 0;
+    const res = listOf(k, mode, cap, minTv);
+    const body = res.fail ? retryBox("This list could not be loaded.", "retrylist") : res.pend ? skelRows(5)
+      : res.rows.length ? `<div class="st-list">${(() => { const wl = new Set(watched(H)); return res.rows.slice(0, 5).map(r => mvRow(H, r, k, "", wl)).join(""); })()}</div>` : '<div class="st-msg"><p><b>No stocks in this list right now.</b></p></div>';
+    return `<div class="card st-dsec st-rsec"><div class="st-ch-h"><h2>${ic(icon)} ${title}</h2></div><p class="mut sm st-rsub">${subt}</p>${body}<button class="btn ghost st-more" data-m="stocks" data-act="seemore" data-k="${k}" data-c="${cap}">See more ${ic("chevron-right")}</button></div>`;
+  }
+  function rtCtl(H) {
+    const mode = rtMode(), lv = liveOn(), sb = (id, label, icon, off) => `<button class="${mode === id ? "on" : ""}" data-m="stocks" data-act="mmode" data-v="${id}" aria-pressed="${mode === id}"${off ? " disabled" : ""}>${ic(icon)} ${label}</button>`;
+    const chips = S.caps ? `<div class="st-cp st-cp-m" role="group" aria-label="Market cap">${["A", "L", "M", "S"].map(c => `<button class="${c === S.mcap ? "on" : ""}" data-m="stocks" data-act="mcap" data-c="${c}" aria-pressed="${c === S.mcap}">${CAPN[c]}</button>`).join("")}</div>` : "";
+    return `<div class="st-mrow"><div class="st-seg st-mode" role="group" aria-label="Data source">${sb("live", "Live", "bolt", !lv)}${sb("eod", "Last close", "clock", false)}</div></div>${chips}`;
+  }
+  const rtCtlSig = () => [rtMode(), liveOn() ? 1 : 0, S.mcap, S.caps ? 1 : 0].join("|");
+  const rtBar = H => { const t = TL(); return rtMode() === "live" && t ? t.badge() : eodPill("Last close, " + eodTxt()); };
+  const rtBarSig = () => barSig() + "|" + rtMode();
+  function moversRoot(H) {
+    ensureList(H);
+    return H.head("Stocks") + stale() + `<div class="st-rbar">${reg("rt-bar", () => rtBar(H), rtBarSig)}</div>` + `<div class="card st-rctl">${reg("rt-ctl", () => rtCtl(H), rtCtlSig)}</div>` +
+      `<div class="st-rcol">${RSECS.filter(x => x[0] !== "deliv").map(x => reg("rt-" + x[0], () => rtSec(H, x[0]))).join("")}</div><button class="btn ghost st-dl" data-m="stocks" data-act="seemore" data-k="deliv" data-c="A">${ic("building-bank")} Delivery % list (last close) ${ic("chevron-right")}</button>` +
+      `<p class="mut sm st-ii">${ic("info-circle")} Tap See more for every stock, search and filters. Stocks with under ₹10 lakh traded are tagged illiquid.</p>` + foot(H);
   }
   // typing in the Movers search box: only the info and list regions change (focus, caret and scroll stay)
   function mvTyped(H) {
@@ -583,14 +610,14 @@
     if (S.listStatus === "fail") body = retryBox("The stock list could not be loaded.", "retrylist");
     else if (!S.list) body = skelRows(4);
     else if (!S.q.trim()) {
-      const pop = popular(), chip = s => `<button class="st-chip btn-chip" data-m="stocks" data-act="open" data-sym="${H.esc(s)}">${avatar(s)}<span>${H.esc(s)}</span></button>`;
-      body = (rec.length ? `<div class="st-sec"><div class="st-ch-h"><h3>Recent</h3><button class="linkbtn" data-m="stocks" data-act="recentclear">Clear</button></div><div class="st-chips">${rec.map(chip).join("")}</div></div>` : "") +
+      const rec4 = rec.slice(0, 4), pop = popular().filter(s => !rec4.includes(s)).slice(0, 8 - rec4.length), chip = s => `<button class="st-chip btn-chip" data-m="stocks" data-act="open" data-sym="${H.esc(s)}">${avatar(s)}<span>${H.esc(s)}</span></button>`;
+      body = (rec4.length ? `<div class="st-sec"><div class="st-ch-h"><h3>Recent</h3><button class="linkbtn" data-m="stocks" data-act="recentclear">Clear</button></div><div class="st-chips">${rec4.map(chip).join("")}</div></div>` : "") +
         `<div class="st-sec"><h3>Popular today</h3><div class="st-chips">${pop.map(chip).join("")}</div></div><p class="mut sm">Type a stock symbol or company name (for example RELIANCE, Tata, bank). ${S.list.rows.length} NSE stocks are listed.</p>`;
     } else {
-      const all = match(S.q), res = all.slice(0, 50);
+      const all = match(S.q), res = all.slice(0, S.sn);
       if (S.arrive && res.length) { S.arrive = false; setTimeout(() => HH && HH.flash && HH.flash(".st-sc .st-r"), 80); }
-      body = res.length ? `<p class="mut sm st-cnt">${all.length} match${all.length === 1 ? "" : "es"}${all.length > 50 ? ", showing the first 50. Type more letters to narrow down." : ""}</p><div class="st-list">${res.map(([, r]) =>
-        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], q: S.q.trim(), sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}` })).join("")}</div>`
+      body = res.length ? `<p class="mut sm st-cnt">${all.length} match${all.length === 1 ? "" : "es"}${all.length > res.length ? ", showing the first " + res.length + "." : ""}</p><div class="st-list">${res.map(([, r]) =>
+        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], q: S.q.trim(), sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}` })).join("")}</div>${all.length > res.length ? `<button class="btn ghost st-more" data-m="stocks" data-act="moreres">Show more results (${all.length - res.length} more)</button>` : ""}`
         : `<div class="st-msg"><p><b>No stock matches that search.</b></p><p class="mut sm">Try the stock symbol or fewer letters.</p></div>`;
     }
     return H.head("Stocks") + stale() + `<div class="card st-sc"><label class="st-sin">${ic("search")}<input id="st-q" type="search" data-m="stocks" placeholder="Search symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search stocks" value="${H.esc(S.q)}" maxlength="40"></label>${body}</div>` + foot(H);
@@ -813,10 +840,14 @@
       ivPatch(H, cp);
     } else if (sub === "indices") {
       setReg("ix-bar", () => barHtml("Index values"), barSig); setReg("ix-all", () => allIdxCard(H));
-    } else if (tab === "movers") {
+    } else if (typeof sub === "string" && sub.startsWith("list:")) {
       const y = window.scrollY, v = mvView();
       setReg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)); setReg("mv-ctl", () => mvCtl(H, v), () => mvCtlSig(v)); setReg("mv-info", () => mvInfo(H, v)); setReg("mv-list", () => mvListHtml(H, v), () => mvSig(v));
       if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);                 // a swapped list keeps the reader's place
+    } else if (tab === "movers") {
+      const y = window.scrollY;
+      setReg("rt-bar", () => rtBar(H), rtBarSig); setReg("rt-ctl", () => rtCtl(H), rtCtlSig); RSECS.filter(x => x[0] !== "deliv").forEach(x => setReg("rt-" + x[0], () => rtSec(H, x[0])));
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);
     } else if (tab === "market" || !tab) {
       setReg("mk-bar", () => barHtml("Index values and movers"), barSig); setReg("mk-idx", () => idxCardsHtml(H));
       ["gain", "loss", "vol"].forEach(k => setReg("mk-" + k, () => dashSec(H, k))); ["hi", "lo"].forEach(k => setReg("mk-" + k, () => plainSec(H, k)));
@@ -853,7 +884,8 @@
         if (typeof sub === "string" && sub.startsWith("idx:")) return indexPage(sub.slice(4), H);
         if (sub === "indices") return indicesPage(H);
         if (sub === "fiidii") return fiiPage(H);
-        if (tab === "movers") return movers(H);
+        if (typeof sub === "string" && sub.startsWith("list:") && LISTS.some(l => l[0] === sub.slice(5))) { S.k = sub.slice(5); return listPage(H); }
+        if (tab === "movers") return moversRoot(H);
         if (tab === "watch") return watch(H);
         if (tab === "search") return search(H);
         return market(H);
@@ -874,14 +906,15 @@
       if (a === "unstar" && symOk(sym)) { H.store.set("st_watch", watched(H).filter(s => s !== sym)); H.render(); return true; }
       if (a === "list" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; H.render(); return true; }
       if (a === "more") { appendMore(); return true; }
+      if (a === "moreres") { S.sn += 40; H.render(); return true; }
       if (a === "mmode" && (el.dataset.v === "live" || el.dataset.v === "eod")) { S.mmode = el.dataset.v; S.shown = PAGE0; H.render(); return true; }
       if (a === "hidelow") { S.hideLow = !S.hideLow; S.shown = PAGE0; H.render(); return true; }
-      if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; S.mq = ""; S.mmode = null; H.go("stocks", "movers"); return true; }
+      if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; S.mq = ""; H.setSub("list:" + el.dataset.k); return true; }
       if (a === "allidx") { H.setSub("indices"); return true; }
       if (a === "fiidii") { H.setSub("fiidii"); return true; }
       if (a === "dcap" && ["gain", "loss", "vol"].includes(el.dataset.k) && ["L", "M", "S"].includes(el.dataset.c)) { const k = el.dataset.k; S.dcap[k] = el.dataset.c; setReg("mk-" + k, () => dashSec(H, k)); return true; }
       if (a === "mcap" && ["A", "L", "M", "S"].includes(el.dataset.c)) { S.mcap = el.dataset.c; S.shown = PAGE0; H.render(); return true; }
-      if (a === "seemore" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; S.mq = ""; S.mmode = null; if (CAPK.includes(S.k)) S.mcap = ["L", "M", "S"].includes(el.dataset.c) ? el.dataset.c : "A"; H.go("stocks", "movers"); return true; }
+      if (a === "seemore" && LISTS.some(l => l[0] === el.dataset.k)) { const k = el.dataset.k; S.k = k; S.shown = PAGE0; S.mq = ""; if (CAPK.includes(k)) S.mcap = ["A", "L", "M", "S"].includes(el.dataset.c) ? el.dataset.c : "A"; if (H.tab === "market" && k !== "deliv") S.mmode = dashMode(); H.setSub("list:" + k); return true; }
       if (a === "view") { S.cv = el.dataset.v === "intraday" ? "intraday" : "daily"; H.render(); return true; }
       if (a === "gosearch") { H.go("stocks", "search"); return true; }
       if (a === "recentclear") { H.store.set("st_recent", []); H.render(); return true; }
@@ -895,7 +928,7 @@
     input(el, H) {
       HH = H;
       if (el.dataset.arrive === "1") { S.arrive = true; delete el.dataset.arrive; }           // filled in from the global search ("See all in Stocks")
-      if (el.id === "st-q") { S.q = el.value.slice(0, 40); H.render(); }
+      if (el.id === "st-q") { S.q = el.value.slice(0, 40); S.sn = 10; H.render(); }
       else if (el.id === "st-mq") { S.mq = el.value.slice(0, 40); mvTyped(H); }
     },
   };
