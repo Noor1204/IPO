@@ -1519,17 +1519,17 @@ function render() {
 // (localStorage "lang", used by About / Privacy / the footer note) is not touched.
 // ---------- first-run welcome screens (shown once per device; the disclaimer dialog still appears after them) ----------
 const ONB = [
-  { ic: "rocket", tone: "t1", t: "Every IPO in one place", hi: "सारे IPO एक ही जगह", p: "Open, upcoming and closed IPOs with price band, lot size, dates and the minimum you need to invest, taken from NSE and the offer documents.", chips: ["Live", "Upcoming", "Closed", "SME"] },
-  { ic: "chart-bar", tone: "t2", t: "Subscription and GMP, as they move", hi: "सब्सक्रिप्शन और GMP, लगातार", p: "Category-wise and day-wise subscription, who is bidding, and the GMP trend. GMP is unofficial and we say so on every screen.", chips: ["QIB · NII · Retail", "Day-wise", "GMP trend"] },
-  { ic: "trophy", tone: "t3", t: "Check before you apply", hi: "अप्लाई करने से पहले जाँचें", p: "Company figures and risks from the offer document, a data-based score, listing history, a calculator and reports. Information only, never advice.", chips: ["Score", "Financials", "Reports", "Calculator"] },
-  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "स्टॉक्स और म्यूचुअल फंड भी", p: "Switch from the bottom bar. Free, no sign-up, and your watchlist stays on your own device.", chips: ["Free", "No login", "Private"] },
+  { ic: "rocket", tone: "t1", t: "Every IPO in one place", hi: "No more hopping between apps", p: "Open, upcoming and closed IPOs with price band, lot size, dates and the minimum you need to invest, taken from NSE and the offer documents.", chips: ["Live", "Upcoming", "Closed", "SME"] },
+  { ic: "chart-bar", tone: "t2", t: "Subscription and GMP, as they move", hi: "Know the demand before you bid", p: "Category-wise and day-wise subscription, who is bidding, and the GMP trend. GMP is unofficial and we say so on every screen.", chips: ["QIB · NII · Retail", "Day-wise", "GMP trend"] },
+  { ic: "trophy", tone: "t3", t: "Check before you apply", hi: "Facts first, never tips", p: "Company figures and risks from the offer document, a data-based score, listing history, a calculator and reports. Information only, never advice.", chips: ["Score", "Financials", "Reports", "Calculator"] },
+  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "Your whole market view in one app", p: "Switch from the bottom bar. Free, no sign-up, and your watchlist stays on your own device.", chips: ["Free", "No login", "Private"] },
 ];
 let onbEl = null, onbI = 0;
 function onbShow() {
   if (onbEl || store.get("onb", false)) return;
   onbEl = document.createElement("div"); onbEl.className = "onb"; onbEl.setAttribute("role", "dialog"); onbEl.setAttribute("aria-modal", "true"); onbEl.setAttribute("aria-label", "Welcome to Trendy IPO");
   onbEl.innerHTML = `<button type="button" class="onb-skip" data-onb="skip">Skip</button>
-    <div class="onb-track" id="onb-track">${ONB.map((s, k) => `<section class="onb-s" aria-hidden="${k ? "true" : "false"}"><div class="onb-art ${s.tone}"><i class="onb-ring"></i><span class="onb-ic">${ic(s.ic)}</span></div><h2>${esc(s.t)}</h2><p class="onb-hi" lang="hi">${esc(s.hi)}</p><p class="onb-p">${esc(s.p)}</p><div class="onb-chips">${s.chips.map(c => `<span>${esc(c)}</span>`).join("")}</div></section>`).join("")}</div>
+    <div class="onb-track" id="onb-track">${ONB.map((s, k) => `<section class="onb-s" aria-hidden="${k ? "true" : "false"}"><div class="onb-art ${s.tone}"><i class="onb-ring"></i><span class="onb-ic">${ic(s.ic)}</span></div><h2>${esc(s.t)}</h2><p class="onb-hi"><mark>${esc(s.hi)}</mark></p><p class="onb-p">${esc(s.p)}</p><div class="onb-chips">${s.chips.map(c => `<span>${esc(c)}</span>`).join("")}</div></section>`).join("")}</div>
     <div class="onb-foot"><div class="onb-dots" aria-hidden="true">${ONB.map((_, k) => `<i${k ? "" : ' class="on"'}></i>`).join("")}</div><div class="onb-btns"><button type="button" class="btn ghost" data-onb="back" hidden>Back</button><button type="button" class="btn" data-onb="next">Next</button></div></div>`;
   document.body.appendChild(onbEl); onbI = 0; onbGo(0);
   setTimeout(() => { const b = onbEl && onbEl.querySelector('[data-onb="next"]'); if (b) b.focus({ preventScroll: true }); }, 60);
