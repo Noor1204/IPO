@@ -142,12 +142,13 @@
   const retsBar = (v, cap) => '<i class="mf-rb"><u class="' + (num(v) && v < 0 ? "neg" : "pos") + '" style="width:' + (num(v) ? Math.max(3, Math.min(100, Math.abs(v) / cap * 100)).toFixed(0) : 0) + '%"></u></i>';
   function p90(list, k) { const v = list.map(f => f[k]).filter(num).map(Math.abs).sort((a, b) => a - b); return v.length ? Math.max(5, v[Math.floor(v.length * 0.9)]) : 10; }
 
-  function row(f, H, mode, caps) {
-    const star = isWatch(f.c), cm = isCmp(f.c);
+  const qToks = q => String(q || "").toLowerCase().split(/s+/).filter(Boolean);       // the search matches every word, so every word is marked
+  function row(f, H, mode, caps, hq) {
+    const star = isWatch(f.c), cm = isCmp(f.c), hh = (t) => hq && hq.length && H.hl ? H.hl(t, hq) : H.esc(t);
     caps = caps || { r1: 30, r3: 30, r5: 30 };
     return '<div class="mf-row"><button class="mf-main" data-m="mf" data-act="open" data-c="' + f.c + '" aria-label="Open ' + H.esc(f.n) + '">' +
-      '<b class="mf-nm">' + H.esc(f.n) + "</b>" +
-      '<span class="mf-sub">' + H.esc(f.amc) + '</span><span class="mf-tags"><span class="mf-cat">' + H.esc(f.cat) + '</span><span class="mf-plan">' + planName(f.p) + "</span></span>" +
+      '<b class="mf-nm">' + hh(f.n) + "</b>" +
+      '<span class="mf-sub">' + hh(f.amc) + '</span><span class="mf-tags"><span class="mf-cat">' + hh(f.cat) + '</span><span class="mf-plan">' + planName(f.p) + "</span></span>" +
       '<span class="mf-nav">NAV <b>₹' + fmtNav(f.nav) + "</b> · " + H.esc(H.fmtD(f.d)) + "</span>" +
       '<span class="mf-rets">' + [["1Y", "r1"], ["3Y", "r3"], ["5Y", "r5"]].map(([l, k]) => '<span class="mf-r"><em>' + l + '</em><b class="' + rc(f[k]) + '">' + pct(f[k]) + "</b>" + retsBar(f[k], caps[k]) + "</span>").join("") + "</span></button>" +
       '<div class="mf-acts"><button class="mf-ib mf-star' + (star ? " on" : "") + '" data-m="mf" data-act="star" data-c="' + f.c + '" aria-pressed="' + star + '" aria-label="' + (star ? "Remove from watchlist" : "Add to watchlist") + '" title="Watchlist">' + ic("star") + "</button>" +
@@ -176,7 +177,7 @@
     h += '<p class="mf-count">' + list.length.toLocaleString("en-IN") + " " + planName(M.f.plan).toLowerCase() + " plan fund" + (list.length === 1 ? "" : "s") + (M.q ? " matching “" + H.esc(M.q) + "”" : "") + (k !== "name" ? " · best " + PL[k] + " first" : "") + "</p>";
     if (hidden > 0) h += '<div class="note mf-note-hid">' + ic("info-circle") + "<span>" + hidden.toLocaleString("en-IN") + " newer fund" + (hidden === 1 ? "" : "s") + " with less than " + PL[k].replace("Y", " year") + (PL[k] === "1Y" ? "" : "s") + " of history " + (hidden === 1 ? "is" : "are") + " not ranked here. Sort by Name (A-Z) to see every fund.</span></div>";
     if (!list.length) h += '<div class="card mf-empty">' + ic("search") + "<b>No funds match</b><p class=\"mut\">Try a shorter search, another category, or the other plan" + (hidden ? ", or sort by Name to include new funds" : "") + '.</p><button class="btn ghost" data-m="mf" data-act="reset">Clear search and filters</button></div>';
-    else { const caps = { r1: p90(list, "r1"), r3: p90(list, "r3"), r5: p90(list, "r5") }; h += shown.map(f => row(f, H, null, caps)).join(""); }
+    else { const caps = { r1: p90(list, "r1"), r3: p90(list, "r3"), r5: p90(list, "r5") }; h += shown.map(f => row(f, H, null, caps, qToks(M.q))).join(""); }
     if (list.length > shown.length) h += '<button class="btn ghost mf-more" data-m="mf" data-act="more">Show more (' + (list.length - shown.length).toLocaleString("en-IN") + " left)</button>";
     return wrap(h + foot(H));
   }
@@ -251,7 +252,7 @@
       (sel.length >= MAXCMP ? '<p class="mut">You have 3 funds. Remove one to add another.</p>' :
         '<input id="mf-cq" type="search" data-m="mf" data-f="cq" placeholder="Search fund or AMC" value="' + H.esc(M.cq) + '" autocomplete="off" aria-label="Search funds to compare">' +
         (toks.length ? (() => { const r = M.data.rows.filter(f => !isCmp(f.c) && toks.every(t => f.s.includes(t))).sort((a, b) => a.p - b.p || a.n.localeCompare(b.n)).slice(0, 8);
-          return r.length ? r.map(f => '<div class="mf-pick"><span><b>' + H.esc(f.n) + '</b><span class="mut sm mf-pk">' + H.esc(f.amc) + " · " + H.esc(f.cat) + " · " + planName(f.p) + '</span></span><button class="btn sm" data-m="mf" data-act="cmpadd" data-c="' + f.c + '">Add</button></div>').join("") : '<p class="mut sm">No funds match.</p>'; })() : '<p class="mut sm">Type a name to find funds, or tap the compare icon on any fund in the Funds tab.</p>')) + "</div>";
+          return r.length ? r.map(f => '<div class="mf-pick"><span><b>' + H.hl(f.n, toks) + '</b><span class="mut sm mf-pk">' + H.hl(f.amc, toks) + " · " + H.hl(f.cat, toks) + " · " + planName(f.p) + '</span></span><button class="btn sm" data-m="mf" data-act="cmpadd" data-c="' + f.c + '">Add</button></div>').join("") : '<p class="mut sm">No funds match.</p>'; })() : '<p class="mut sm">Type a name to find funds, or tap the compare icon on any fund in the Funds tab.</p>')) + "</div>";
     if (!sel.length) return wrap(h + '<div class="card mf-empty">' + ic("arrows-exchange") + "<b>Nothing to compare yet</b><p class=\"mut\">Add up to 3 funds to see NAV, category, returns and a performance chart side by side.</p><button class=\"btn\" data-m=\"mf\" data-act=\"gofunds\">Browse funds</button></div>" + foot(H));
     const best = k => { const v = sel.map(f => f[k]).filter(num); return v.length > 1 ? Math.max(...v) : null; };
     const bs = { r6: best("r6"), r1: best("r1"), r3: best("r3"), r5: best("r5") };
@@ -410,7 +411,8 @@
       const f = el.dataset.f;
       if (f === "q" || f === "cq") {
         if (f === "q") { M.q = el.value; M.n = PAGE; } else M.cq = el.value;
-        clearTimeout(tq); tq = setTimeout(() => H.render(), 160); return;
+        const arrive = el.dataset.arrive === "1"; delete el.dataset.arrive;        // set by the shell when the text was filled in from the global search ("See all")
+        clearTimeout(tq); tq = setTimeout(() => { H.render(); if (arrive && f === "q" && H.flash) setTimeout(() => H.flash(".mf-row"), 60); }, 160); return;
       }
       const s = el.dataset.sip; if (!s) return;
       M.sip[s] = el.value.slice(0, 13); saveSip();

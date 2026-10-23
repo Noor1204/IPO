@@ -30,6 +30,29 @@ const dayDiff = s => s ? Math.round((pd(s) - today) / 864e5) : null;
 const fmtD = s => s ? pd(s).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—";
 const fmtS = s => s ? pd(s).toLocaleDateString("en-IN", { day: "numeric", month: "short" }) : "—";
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+// hl(text, query): escaped HTML of text with every case-insensitive match of the query wrapped in <mark class="hl">. The query may also be an array of terms
+// (all of them are marked). No RegExp is built from user input: matches are found with indexOf on a length-preserving lower-case copy, text is escaped piece by piece.
+const lowSame = t => { let o = ""; for (let k = 0; k < t.length; k++) { const c = t[k], l = c.toLowerCase(); o += l.length === 1 ? l : c; } return o; };   // same length as t, so indexes carry over
+function hl(text, query) {
+  text = String(text ?? "");
+  const terms = (Array.isArray(query) ? query : [query]).map(x => String(x ?? "").trim()).filter(Boolean).slice(0, 6);
+  if (!terms.length || !text) return esc(text);
+  const lt = lowSame(text), spans = [];
+  for (const t of terms) { const lq = lowSame(t); let i = 0, p; while ((p = lt.indexOf(lq, i)) >= 0) { spans.push([p, p + lq.length]); i = p + lq.length; } }
+  if (!spans.length) return esc(text);
+  spans.sort((a, b) => a[0] - b[0] || b[1] - a[1]);
+  let out = "", at = 0;
+  for (const [a, b] of spans) { if (b <= at) continue; const from = Math.max(a, at); out += esc(text.slice(at, from)) + '<mark class="hl">' + esc(text.slice(from, b)) + "</mark>"; at = b; }
+  return out + esc(text.slice(at));
+}
+// scroll the first element matching sel (inside #app) to the middle of the screen and flash it once (no flash when the user prefers reduced motion)
+function flashFirst(sel) {
+  const el = document.querySelector("#app " + sel); if (!el) return false;
+  const reduced = matchMedia("(prefers-reduced-motion:reduce)").matches;
+  el.scrollIntoView({ block: "center", behavior: reduced ? "auto" : "smooth" });
+  if (!reduced) { el.classList.remove("hl-flash"); void el.offsetWidth; el.classList.add("hl-flash"); el.addEventListener("animationend", () => el.classList.remove("hl-flash"), { once: true }); }
+  return true;
+}
 // ---------- security: nothing from the data file may become markup or a script ----------
 // Every string in the loaded data loses the characters that make tags and break out of attributes, and any javascript:/data: value is emptied.
 // esc() is still used wherever text is placed in HTML; this is the second layer.
@@ -182,7 +205,7 @@ function listCard(i) {
   const sc = scoreOf(i), v = verdict(sc.score), t = totalTimes(i), g = gmpNow(i);
   const gcls = isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut";
   const tone = i.listingPerf && isNum(i.listingPerf.dayOpenGainPct) ? (i.listingPerf.dayOpenGainPct >= 0 ? " t-up" : " t-dn") : isNum(g) ? (g > 0 ? " t-up" : g < 0 ? " t-dn" : "") : "";
-  return `<div class="card ipoc${tone}" data-open="${i.symbol}"><div class="ipoc-top">${logo(i)}<div class="ipoc-id"><h3>${esc(i.name)}</h3><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div></div>
+  return `<div class="card ipoc${tone}" data-open="${i.symbol}"><div class="ipoc-top">${logo(i)}<div class="ipoc-id"><h3>${state.q ? hl(i.name, state.q) : esc(i.name)}</h3><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div></div>
   <div class="ipoc-score">${ring(sc.score)}<span class="badge ${v.c}">${v.t}</span></div></div>
   <div class="kv3"><div><span>Price band</span><b>${price(i)}</b></div><div><span>Lot size</span><b>${isNum(i.lot) ? i.lot + " sh" : "—"}</b></div><div><span>Issue size</span><b>${isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—"}</b></div></div>
   <div class="ipoc-sub"><div><div class="row sm"><span class="mut">${i.listingPerf ? "Day-1 gain" : "Subscribed"}</span><b>${i.listingPerf ? fmtGain(i.listingPerf.dayOpenGainPct) : isNum(t) ? f2(t) + "x" : "—"}</b></div>${i.listingPerf ? "" : subBar(i)}</div>
@@ -296,7 +319,7 @@ function ipoTab() {
   const active = state.seg === "listed" && state.perf ? state.perf : state.seg;
   let list = pool.filter(i => i.status === state.seg);
   if (state.seg === "listed" && state.perf) list = list.filter(state.perf === "gain" ? isGain : isLoss);
-  if (state.q) list = list.filter(i => i.name.toLowerCase().includes(state.q.toLowerCase()));
+  if (state.q) list = list.filter(i => (i.name + " " + i.symbol).toLowerCase().includes(state.q.trim().toLowerCase()));
   const nn = (a, b) => (b ?? -1e9) - (a ?? -1e9);
   const sorters = { score: (a, b) => nn(score(a), score(b)), gmp: (a, b) => nn(gmpPct(a), gmpPct(b)), subs: (a, b) => nn(totalTimes(a), totalTimes(b)), date: (a, b) => (a.open || "").localeCompare(b.open || "") };
   list.sort(sorters[state.sort]);
@@ -928,7 +951,7 @@ function goTab(m, k) {
   render(); scrollTo(0, 0);
 }
 function hostApi() {
-  return { state, esc, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay, ic,
+  return { state, esc, hl, flash: flashFirst, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay, ic,
     setSub(k) { state.sub = k || null; render(); scrollTo(0, 0); }, back: goBack, go: goTab,
     get sub() { return state.sub; }, get tab() { return String(state.tab).split(":")[1] || ""; } };
 }
@@ -999,14 +1022,14 @@ function srResults() {
     const rec = srRecent();
     return `<div class="sr-empty">${ic("search")}<p>Search IPOs, NSE stocks and mutual funds in one place.</p></div>` + (rec.length ? `<div class="sr-recent"><div class="row"><h3>Recent</h3><button class="linkbtn" data-sclear>Clear</button></div><div class="chips">${rec.map(r => `<button class="chipb" data-srecent="${esc(r)}">${ic("history")} ${esc(r)}</button>`).join("")}</div></div>` : "");
   }
-  const m = srMatches(q);
+  const m = srMatches(q), fq = q.toLowerCase().split(/s+/).filter(Boolean);       // funds match on every word, so every word is marked
   const grp = (title, key, items, rowFn, seeAll, loading, failed) => {
     if (!items.length && !loading && !failed) return "";
     return `<section class="sr-grp"><div class="row"><h3>${title}</h3>${m.n[key] > 5 ? `<button class="linkbtn" data-sall="${seeAll}">See all ${m.n[key]} in ${title}</button>` : ""}</div>${items.length ? items.map(rowFn).join("") : failed ? `<p class="mut sm">Could not load this list. Check your connection.</p>` : `<div class="skel-row"></div><div class="skel-row"></div>`}</section>`;
   };
-  const ipoRow = i => `<button class="sres" data-sres="ipo" data-id="${esc(i.symbol)}">${logo(i)}<span class="sres-m"><b>${esc(i.name)}</b><small>${esc(i.board)} · ${i.status === "live" ? "Open now" : i.status === "upcoming" ? "Upcoming" : "Closed"}${isNum(i.priceHigh) ? " · " + price(i) : ""}</small></span>${ic("chevron-right")}</button>`;
-  const stRow = s => `<button class="sres" data-sres="stock" data-id="${esc(s.s)}"><span class="sres-ic">${esc(s.s.slice(0, 2))}</span><span class="sres-m"><b>${esc(s.s)}</b><small>${esc(s.n)}</small></span><span class="sres-r num"><b>${isNum(s.close) ? "₹" + s.close.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</b><small class="${isNum(s.chg) ? (s.chg >= 0 ? "grn-t" : "red-t") : ""}">${isNum(s.chg) ? (s.chg > 0 ? "+" : "") + s.chg.toFixed(2) + "%" : "—"}</small></span></button>`;
-  const fRow = f => `<button class="sres" data-sres="fund" data-id="${f.c}"><span class="sres-ic">${ic("wallet")}</span><span class="sres-m"><b>${esc(f.n)}</b><small>${esc(f.amc)} · ${esc(f.cat)} · ${f.p ? "Regular" : "Direct"}</small></span>${ic("chevron-right")}</button>`;
+  const ipoRow = i => `<button class="sres" data-sres="ipo" data-id="${esc(i.symbol)}">${logo(i)}<span class="sres-m"><b>${hl(i.name, q)}</b><small>${esc(i.board)} · ${i.status === "live" ? "Open now" : i.status === "upcoming" ? "Upcoming" : "Closed"}${isNum(i.priceHigh) ? " · " + price(i) : ""}</small></span>${ic("chevron-right")}</button>`;
+  const stRow = s => `<button class="sres" data-sres="stock" data-id="${esc(s.s)}"><span class="sres-ic">${esc(s.s.slice(0, 2))}</span><span class="sres-m"><b>${hl(s.s, q)}</b><small>${hl(s.n, q)}</small></span><span class="sres-r num"><b>${isNum(s.close) ? "₹" + s.close.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</b><small class="${isNum(s.chg) ? (s.chg >= 0 ? "grn-t" : "red-t") : ""}">${isNum(s.chg) ? (s.chg > 0 ? "+" : "") + s.chg.toFixed(2) + "%" : "—"}</small></span></button>`;
+  const fRow = f => `<button class="sres" data-sres="fund" data-id="${f.c}"><span class="sres-ic">${ic("wallet")}</span><span class="sres-m"><b>${hl(f.n, fq)}</b><small>${hl(f.amc, fq)} · ${esc(f.cat)} · ${f.p ? "Regular" : "Direct"}</small></span>${ic("chevron-right")}</button>`;
   const html = grp("IPOs", "ipo", m.ipo, ipoRow, "ipo", false, false) + grp("Stocks", "stock", m.stock, stRow, "stocks", SR.sSt === "loading" || SR.sSt === "idle", SR.sSt === "fail") + grp("Mutual funds", "fund", m.fund, fRow, "mf", SR.mSt === "loading" || SR.mSt === "idle", SR.mSt === "fail");
   return html || `<div class="sr-empty">${ic("search")}<p>No results for “${esc(q)}”.</p></div>`;
 }
@@ -1021,7 +1044,7 @@ function openSearch() {
 }
 function prefill(id, q, tries = 12) {
   const el = document.getElementById(id);
-  if (el) { el.value = q; el.dispatchEvent(new Event("input", { bubbles: true })); return; }
+  if (el) { el.value = q; el.dataset.arrive = "1"; el.dispatchEvent(new Event("input", { bubbles: true })); return; }
   if (tries > 0) setTimeout(() => prefill(id, q, tries - 1), 150);
 }
 function searchClick(t) {
@@ -1030,7 +1053,7 @@ function searchClick(t) {
   if (d.srecent) { SR.q = d.srecent; const q = document.getElementById("gq"); if (q) q.value = SR.q; srUpdate(); return true; }
   if (d.sall) {
     srSave(SR.q); const q = SR.q;
-    if (d.sall === "ipo") { const first = state.ipos.find(i => (i.name + " " + i.symbol).toLowerCase().includes(q.trim().toLowerCase())); state.q = q.trim(); goTab("ipo", first ? first.status : "live"); }
+    if (d.sall === "ipo") { const first = state.ipos.find(i => (i.name + " " + i.symbol).toLowerCase().includes(q.trim().toLowerCase())); state.q = q.trim(); goTab("ipo", first ? first.status : "live"); setTimeout(() => flashFirst(".ipoc"), 120); }
     else if (d.sall === "stocks") { goTab("stocks", "search"); prefill("st-q", q); }
     else { goTab("mf", "funds"); prefill("mf-q", q); }
     return true;

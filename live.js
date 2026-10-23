@@ -70,7 +70,10 @@
     var stocks = j.stocks.filter(function (r) { return Array.isArray(r) && r.length === cl && typeof r[0] === "string" && isNum(r[1]); });
     var indices = j.indices.filter(function (r) { return Array.isArray(r) && r.length === il && typeof r[0] === "string" && isNum(r[2]); });
     if (stocks.length < 1 || stocks.length < j.stocks.length * 0.9) return null;
-    return { meta: j.meta, cols: j.cols, idxCols: j.idxCols, stocks: stocks, indices: indices, top: j.top && typeof j.top === "object" ? j.top : {}, colNotes: j.colNotes || {} };
+    // movers (optional, added Oct 2026): symbol lists of the whole market's top movers; anything but arrays of symbol strings is dropped
+    var mv = { gainers: [], losers: [], volume: [] };
+    if (j.movers && typeof j.movers === "object") Object.keys(mv).forEach(function (k) { var a = j.movers[k]; if (Array.isArray(a)) mv[k] = a.filter(function (x) { return typeof x === "string" && /^[A-Z0-9&_.$-]{1,20}$/.test(x); }).slice(0, 100); });
+    return { meta: j.meta, cols: j.cols, idxCols: j.idxCols, stocks: stocks, indices: indices, top: j.top && typeof j.top === "object" ? j.top : {}, movers: mv, colNotes: j.colNotes || {} };
   }
 
   // intraday.json: {v:1, day, t:[HHMM ints, strictly increasing], s:{name:[price|null per t]}}. A series of the wrong length or with a bad value is dropped (never exposed).

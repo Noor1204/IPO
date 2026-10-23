@@ -7,7 +7,8 @@
   const BASE = "data/stocks/";
   const S = { meta: null, movers: null, index: null, idxList: null, idxBy: null, list: null, listBy: null, lc: null, status: "idle", listStatus: "idle",
     chunks: {}, chunkStatus: {}, hist: {}, idxH: {}, cfg: {}, cv: null, ivLoad: "", ivSig: 0, ct: { range: "6M", type: "candles", sma20: false, sma50: false },
-    k: "gain", shown: 20, q: "", caps: null, fii: null, dcap: { gain: "L", loss: "L", vol: "L" }, mcap: "A" };
+    k: "gain", shown: 50, q: "", caps: null, fii: null, dcap: { gain: "L", loss: "L", vol: "L" }, mcap: "A",
+    mmode: null, mq: "", hideLow: false, arrive: false, cur: null, vc: null };
   let HH = null;                                         // host api (kept for async renders)
   const DISC = "Prices are end-of-day or a delayed snapshot, not real-time. Information only, not investment advice.";
   const LISTS = [["gain", "Gainers"], ["loss", "Losers"], ["active", "Most active"], ["vol", "By volume"], ["deliv", "Delivery %"], ["hi", "52W high"], ["lo", "52W low"]];
@@ -21,10 +22,10 @@
     lo: "Stocks closing within 3% of their 52-week low (adjusted for splits and bonus), closest first, ₹2 crore+ traded.",
   };
   const NOTE_LIVE = {
-    gain: "Biggest rise against the previous close so far, among NIFTY 500 and F&O stocks that traded at least ₹2 crore.",
-    loss: "Biggest fall against the previous close so far, among NIFTY 500 and F&O stocks that traded at least ₹2 crore.",
-    active: "Highest traded value (price × quantity) so far, among NIFTY 500 and F&O stocks.",
-    vol: "Highest traded quantity (number of shares) so far, among NIFTY 500 and F&O stocks.",
+    gain: "Biggest rise against the previous close so far, among the stocks in the live snapshot.",
+    loss: "Biggest fall against the previous close so far, among the stocks in the live snapshot.",
+    active: "Highest traded value (price × quantity) so far, among the stocks in the live snapshot.",
+    vol: "Highest traded quantity (number of shares) so far, among the stocks in the live snapshot.",
     hi: "Stocks trading within 3% of their 52-week high as published by NSE, closest first, ₹2 crore+ traded.",
     lo: "Stocks trading within 3% of their 52-week low as published by NSE, closest first, ₹2 crore+ traded.",
   };
@@ -149,8 +150,9 @@
   // one rich stock row (symbol, name, price, change pill, sub line, star)
   function stockRow(H, o) {
     const on = o.on === undefined ? watched(H).includes(o.sym) : o.on;
+    const hs = o.q ? H.hl(o.sym, o.q) : H.esc(o.sym), hn = o.q ? H.hl(o.name || "", o.q) : H.esc(o.name || "");
     return `<div class="st-r"><button class="st-rm" data-m="stocks" data-act="open" data-sym="${H.esc(o.sym)}" aria-label="Open ${H.esc(o.sym)}">${avatar(o.sym)}
-      <span class="st-id"><b>${H.esc(o.sym)}${o.tag && o.tag !== "EQ" ? ` <i class="st-tag">${H.esc(o.tag)}</i>` : ""}</b><small>${H.esc(o.name || "")}</small></span>
+      <span class="st-id"><b>${hs}${o.tag && o.tag !== "EQ" ? ` <i class="st-tag">${H.esc(o.tag)}</i>` : ""}</b><small>${hn}</small></span>
       <span class="st-pv"><b>${px(o.price)}</b>${pill(o.chg)}</span>
       ${o.sub ? `<span class="st-sub">${o.sub}</span>` : ""}</button>${o.remove ? `<button class="st-x" data-m="stocks" data-act="unstar" data-sym="${H.esc(o.sym)}" aria-label="Remove ${H.esc(o.sym)} from watchlist">${ic("x")}</button>` : star(H, o.sym, on)}</div>`;
   }
@@ -313,48 +315,63 @@
     LL = { at: m, v: out }; return out;
   }
   const moverSrc = H => liveOn() ? liveLists() : null;
-  const srcLabel = (H, L) => L ? `${snapTag(HH)} · ${L.n} stocks of NIFTY 500 and the F&O list that traded at least ₹${MINV} crore` : `End of day, ${H.esc(H.fmtD((S.movers && S.movers.tradeDate) || eodDay()))} · all NSE stocks that traded at least ₹${MINV} crore`;
+  const srcLabel = (H, L) => L ? `${snapTag(HH)} · ${L.n} stocks in the live snapshot that traded at least ₹${MINV} crore` : `End of day, ${H.esc(H.fmtD((S.movers && S.movers.tradeDate) || eodDay()))} · all NSE stocks that traded at least ₹${MINV} crore`;
 
   // ---------- caps + lists (dashboard and Movers) ----------
-  // Rows of every list use the same array shape: [symbol, name, price, chg %, traded value (Rs crore), delivery % (or null), distance % (or null), volume, chg in rupees]
+  // Every list uses one row shape: [0 symbol, 1 name, 2 price, 3 chg %, 4 traded value (Rs crore), 5 delivery % | null, 6 distance % | null, 7 volume, 8 chg in rupees, 9 series | null, 10 % below 52W high (live), 11 % above 52W low (live)]
   const CAPN = { L: "Large", M: "Mid", S: "Small", A: "All" };
   const CAPD = { L: "NIFTY 100", M: "NIFTY MIDCAP 150", S: "NIFTY SMALLCAP 250" };
   const CAPK = ["gain", "loss", "active", "vol"];
   const TITLES = { gain: "Top gainers", loss: "Top losers", active: "Most active (traded value)", vol: "Most traded by volume", deliv: "Delivery %", hi: "52-week high", lo: "52-week low" };
+  const PAGE0 = 50, PAGE1 = 100, LOWTV = 0.1;                      // rows shown first / added per step; traded value (Rs crore) under which a stock is tagged "illiquid" (Rs 10 lakh)
+  const MAINS = { EQ: 1, BE: 1, BZ: 1 };                           // main-board series of list.json (SME series SM / ST are not listed)
   const r2 = x => Math.round(x * 100) / 100;
   const shortName = n => String(n || "").replace(/\s+(limited|ltd\.?)$/i, "");
-  function listFor(kind, cap) {
+  const UC = { eodSrc: null, eod: null, liveSrc: null, liveNm: null, live: null, lists: { live: {}, eod: {} } };   // universes + sorted lists, rebuilt when their source changes
+  function uniEod() {
+    if (!S.list) return null;
+    if (UC.eodSrc !== S.list) {
+      UC.eodSrc = S.list; UC.lists.eod = {};
+      UC.eod = S.list.rows.filter(r => MAINS[r[2]] && !/-(RE|Wd|Nd)$/.test(String(r[0])) && isNum(r[3]) && isNum(r[4])).map(r => [r[0], r[1], r[3], r[4], isNum(r[6]) ? r[6] : null, null, null, isNum(r[5]) ? r[5] : null, isNum(r[7]) ? r2(r[3] - r[7]) : null, r[2], null, null]);
+    }
+    return UC.eod;
+  }
+  function uniLive() {
+    const m = snap(); if (!m) return null;
+    if (UC.liveSrc !== m || UC.liveNm !== S.listBy) {
+      const ci = {}; m.cols.forEach((c, i) => { ci[c] = i; });
+      UC.liveSrc = m; UC.liveNm = S.listBy; UC.lists.live = {};
+      UC.live = m.stocks.filter(r => isNum(r[ci.c]) && isNum(r[ci.p])).map(r => {
+        const c = r[ci.c], l = S.listBy && S.listBy.get(r[ci.s]), wh = r[ci.wh], wl = r[ci.wl];
+        return [r[ci.s], l ? l[1] : r[ci.s], c, r[ci.p], isNum(r[ci.tv]) ? r[ci.tv] : null, null, null, isNum(r[ci.v]) ? r[ci.v] : null, isNum(r[ci.ch]) ? r[ci.ch] : isNum(r[ci.pc]) ? r2(c - r[ci.pc]) : null, l ? l[2] : null,
+          isNum(wh) && wh > 0 ? Math.max(0, (wh - c) / wh * 100) : null, isNum(wl) && wl > 0 ? Math.max(0, (c - wl) / wl * 100) : null];
+      });
+    }
+    return UC.live;
+  }
+  // the full, sorted list of one kind: {rows, live, n (stocks in the universe)} | {pend:true} | {fail:true}. minTv (Rs crore) drops thinly traded stocks (0 = keep all). Cached per source.
+  function listOf(kind, mode, cap, minTv) {
+    const tvv = r => isNum(r[4]) ? r[4] : 0, tie = (x, y) => tvv(y) - tvv(x) || (x[0] < y[0] ? -1 : x[0] > y[0] ? 1 : 0);
+    if (mode === "eod" && (kind === "hi" || kind === "lo" || kind === "deliv")) {           // end-of-day lists that need 52-week / delivery data: the pipeline's own top lists
+      const rows = ((S.movers && S.movers[kind]) || []).map(r => { const l = S.listBy && S.listBy.get(r[0]); return [r[0], r[1], r[2], r[3], r[4], isNum(r[5]) ? r[5] : null, isNum(r[6]) ? r[6] : null, l && isNum(l[5]) ? l[5] : null, l && isNum(l[7]) ? r2(r[2] - l[7]) : null, l ? l[2] : null, null, null]; });
+      return { rows, n: rows.length };
+    }
+    let base;
+    if (mode === "live") { base = uniLive(); if (!base) return { rows: [], pend: true, live: true }; }
+    else { if (S.listStatus === "fail") return { rows: [], fail: true }; base = uniEod(); if (!base) return { rows: [], pend: true }; }
     const set = cap !== "A" && S.caps ? S.caps[cap] : null;
     if (cap !== "A" && !set) return { rows: [], fail: true };
-    const m = liveOn() ? snap() : null, tvOf = x => isNum(x) ? x : 0;
-    if (m) {
-      const ci = {}; m.cols.forEach((c, i) => { ci[c] = i; });
-      const nm = s => { const l = S.listBy && S.listBy.get(s); return l ? l[1] : ""; };
-      const base = m.stocks.filter(r => isNum(r[ci.c]) && isNum(r[ci.p]) && (set ? set.has(r[ci.s]) : isNum(r[ci.tv]) && r[ci.tv] >= MINV));
-      const byTv = (a, b) => tvOf(b[ci.tv]) - tvOf(a[ci.tv]);
-      const arr = kind === "gain" ? base.filter(r => r[ci.p] > 0).sort((a, b) => b[ci.p] - a[ci.p] || byTv(a, b))
-        : kind === "loss" ? base.filter(r => r[ci.p] < 0).sort((a, b) => a[ci.p] - b[ci.p] || byTv(a, b))
-        : kind === "vol" ? base.filter(r => isNum(r[ci.v])).sort((a, b) => b[ci.v] - a[ci.v] || byTv(a, b))
-        : base.filter(r => isNum(r[ci.tv])).sort(byTv);
-      return { live: true, n: base.length, rows: arr.slice(0, 100).map(r => [r[ci.s], nm(r[ci.s]), r[ci.c], r[ci.p], isNum(r[ci.tv]) ? r[ci.tv] : null, null, null, isNum(r[ci.v]) ? r[ci.v] : null,
-        isNum(r[ci.ch]) ? r[ci.ch] : isNum(r[ci.pc]) ? r2(r[ci.c] - r[ci.pc]) : null]) };
-    }
-    if (cap === "A" && kind !== "vol") {
-      return { rows: ((S.movers && S.movers[kind]) || []).map(r => { const l = S.listBy && S.listBy.get(r[0]); return [r[0], r[1], r[2], r[3], r[4], r[5], null, l ? l[5] : null, l && isNum(l[7]) ? r2(r[2] - l[7]) : null]; }) };
-    }
-    if (S.listStatus === "fail") return { rows: [], fail: true };
-    if (!S.list) return { rows: [], pend: true };
-    const base = S.list.rows.filter(r => r[2] === "EQ" && isNum(r[3]) && isNum(r[4]) && (set ? set.has(r[0]) : isNum(r[6]) && r[6] >= MINV));
-    const byTv = (a, b) => tvOf(b[6]) - tvOf(a[6]);
-    const arr = kind === "gain" ? base.filter(r => r[4] > 0).sort((a, b) => b[4] - a[4] || byTv(a, b))
-      : kind === "loss" ? base.filter(r => r[4] < 0).sort((a, b) => a[4] - b[4] || byTv(a, b))
-      : kind === "vol" ? base.filter(r => isNum(r[5])).sort((a, b) => b[5] - a[5] || byTv(a, b))
-      : base.filter(r => isNum(r[6])).sort(byTv);
-    return { n: base.length, rows: arr.slice(0, 100).map(r => [r[0], r[1], r[3], r[4], isNum(r[6]) ? r[6] : null, null, null, isNum(r[5]) ? r[5] : null, isNum(r[7]) ? r2(r[3] - r[7]) : null]) };
+    const key = kind + "|" + cap + "|" + minTv, cache = UC.lists[mode];
+    if (cache[key]) return cache[key];
+    let a = base.filter(r => (!set || set.has(r[0])) && (!minTv || (isNum(r[4]) && r[4] >= minTv)));
+    if (kind === "gain") a = a.filter(r => r[3] > 0).sort((x, y) => y[3] - x[3] || tie(x, y));
+    else if (kind === "loss") a = a.filter(r => r[3] < 0).sort((x, y) => x[3] - y[3] || tie(x, y));
+    else if (kind === "vol") a = a.filter(r => isNum(r[7])).sort((x, y) => y[7] - x[7] || tie(x, y));
+    else if (kind === "active") a = a.filter(r => isNum(r[4])).sort(tie);
+    else { const di = kind === "hi" ? 10 : 11; a = a.filter(r => isNum(r[di]) && r[di] <= 3 && isNum(r[4]) && r[4] >= MINV).map(r => { const c = r.slice(); c[6] = r[di]; return c; }).sort((x, y) => x[6] - y[6] || tie(x, y)); }
+    return (cache[key] = { rows: a, live: mode === "live", n: base.length });
   }
-  const capLine = (H, res, cap) => (res.live ? snapTag(H) : "End of day, " + H.esc(H.fmtD((S.movers && S.movers.tradeDate) || eodDay()))) + " · " +
-    (cap !== "A" ? H.esc(CAPN[cap]) + " cap: constituents of " + CAPD[cap]
-      : res.live ? res.n + " stocks of NIFTY 500 and the F&O list that traded at least ₹" + MINV + " crore" : "all NSE stocks that traded at least ₹" + MINV + " crore");
+  const dashMode = () => liveOn() ? "live" : "eod";
 
   // ---------- Market (dashboard: plain cards and lists, no charts) ----------
   const IDX_ORDER = ["nifty-50", "nifty-bank", "nifty-financial-services", "nifty-midcap-select", "india-vix", "nifty-it", "nifty-next-50", "nifty-500"];
@@ -391,7 +408,7 @@
   const capChips = (kind, cap) => `<div class="st-cp" role="group" aria-label="Market cap">${["L", "M", "S"].map(c => `<button class="${c === cap ? "on" : ""}" data-m="stocks" data-act="dcap" data-k="${kind}" data-c="${c}" aria-pressed="${c === cap}">${CAPN[c]}</button>`).join("")}</div>`;
   const DICON = { gain: "trending-up", loss: "trending-down", vol: "flame" };
   function dashSec(H, kind) {
-    const cap = S.caps ? (S.dcap[kind] || "L") : "A", res = listFor(kind, cap);
+    const cap = S.caps ? (S.dcap[kind] || "L") : "A", res = listOf(kind, dashMode(), cap, cap === "A" ? MINV : 0);
     const body = res.fail ? retryBox("This list could not be loaded.", "retrylist") : res.pend ? skelRow()
       : res.rows.length ? `<div class="st-hr">${res.rows.slice(0, 5).map(r => stockCard(H, r, kind)).join("")}</div>` : '<div class="st-msg"><p><b>No stocks in this list right now.</b></p></div>';
     return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic(DICON[kind])} ${TITLES[kind]}</h2><button class="linkbtn st-lk" data-m="stocks" data-act="seemore" data-k="${kind}" data-c="${cap}">See more ${ic("chevron-right")}</button></div>
@@ -433,31 +450,115 @@
   }
 
   // ---------- Movers ----------
-  const moversCard = (H, k) => {
-    const cap = S.caps && CAPK.includes(k) ? S.mcap : "A";
-    let res;
-    if (CAPK.includes(k)) res = listFor(k, cap);
-    else { const L = k === "deliv" ? null : moverSrc(H), m = L || S.movers; res = { rows: Array.isArray(m[k]) ? m[k] : [], live: !!L, n: L && L.n }; }
-    const rows = res.rows, live = !!res.live;
-    const sub = (r, l) => k === "deliv" ? `Delivery ${isNum(r[5]) ? nf(r[5], 1) + "%" : "—"} · ${subValue(r, l)}`
-      : k === "hi" ? `${isNum(r[6]) ? nf(r[6], 1) + "% below 52W high" : "—"} · ${subValue(r, l)}`
-      : k === "lo" ? `${isNum(r[6]) ? nf(r[6], 1) + "% above 52W low" : "—"} · ${subValue(r, l)}`
-      : subValue(r, l);
-    const shown = Math.min(S.shown, rows.length);
-    const body = res.fail ? retryBox("The stock list could not be loaded.", "retrylist") : res.pend ? skelRows(6)
-      : rows.length ? `<div class="st-list">${moverRows(H, rows, shown, sub)}</div>${rows.length > shown ? `<button class="btn ghost st-more" data-m="stocks" data-act="more">Show more (${rows.length - shown} more)</button>` : ""}` : `<div class="st-msg"><p><b>No stocks in this list.</b></p><p class="mut sm">Nothing matched for the latest ${live ? "snapshot" : "trade date"}.</p></div>`;
-    const note = (live ? NOTE_LIVE : NOTE)[k] || NOTE[k];
-    const chips = S.caps && CAPK.includes(k) ? `<div class="st-cp st-cp-m" role="group" aria-label="Market cap">${["A", "L", "M", "S"].map(c => `<button class="${c === cap ? "on" : ""}" data-m="stocks" data-act="mcap" data-c="${c}" aria-pressed="${c === cap}">${CAPN[c]}</button>`).join("")}</div>` : "";
-    const lineTxt = CAPK.includes(k) ? capLine(H, res, cap) : srcLabel(H, live ? { n: res.n } : null);
-    const capNote = CAPK.includes(k) && S.caps ? ` Large, Mid and Small are the constituents of ${CAPD.L}, ${CAPD.M} and ${CAPD.S} (NSE, as of ${H.esc(H.fmtD(S.caps.u))}); stocks outside these lists appear only under All.` : "";
-    return `<div class="card"><div class="st-ch-h"><h2>${H.esc(TITLES[k])}</h2><span class="mut sm">${res.pend || res.fail ? "" : rows.length + " stocks"}</span></div>${chips}<p class="tl-sec">${lineTxt}</p><p class="mut sm st-note2">${H.esc(note)}${capNote}</p>${body}</div>`;
+  // Layout: list switch (Gainers, Losers ...) -> one card: title, search box (kept outside every region so typing never loses focus), [mv-ctl] mode + cap chips + toggle,
+  // [mv-info] coverage line + count, [mv-list] best match + the first PAGE0 rows, more rows are appended to the DOM as the user scrolls (no full re-render).
+  // A snapshot only patches the regions (see livePatch), the search text and the scroll position stay.
+  const NOTE2 = { gain: "Every stock that rose, the biggest % rise first.", loss: "Every stock that fell, the biggest % fall first.", active: "Highest traded value (price × quantity) first.", vol: "Highest traded quantity (number of shares) first." };
+  const effMode = k => k === "deliv" ? "eod" : S.mmode === "eod" ? "eod" : liveOn() ? "live" : "eod";
+  const COVER = { "NIFTY 500": "Nifty 500", "SECURITIES IN F&O": "F&O", "NIFTY SMALLCAP 500": "Smallcap 500", "NIFTY IPO": "recent IPOs" };
+  const coverTxt = m => {
+    const c = m && m.meta && m.meta.cover, ls = c && Array.isArray(c.lists) ? c.lists.map(x => COVER[x] || String(x)) : ["Nifty 500", "F&O"];
+    return ls.join(" + ") + (c && c.movers ? " + the market's top movers" : "");
   };
+  const lc = x => String(x).toLowerCase();
+  function bestMatch(uni, t) {                                   // an exact symbol, else the most traded stock whose name starts with the text
+    let best = null;
+    for (const r of uni) if (lc(r[0]) === t) return r;
+    for (const r of uni) if (lc(r[1]).startsWith(t) && (!best || (isNum(r[4]) ? r[4] : 0) > (isNum(best[4]) ? best[4] : 0))) best = r;
+    return best;
+  }
+  function mvView() {
+    const k = LISTS.some(l => l[0] === S.k) ? S.k : "gain", mode = effMode(k), cap = S.caps && CAPK.includes(k) ? S.mcap : "A", minTv = CAPK.includes(k) && S.hideLow ? LOWTV : 0;
+    const res = listOf(k, mode, cap, minTv), q = S.mq.trim(), t = lc(q);
+    if (S.vc && S.vc.res === res && S.vc.t === t) return S.vc;
+    let rows = res.rows, best = null, bestIn = true;
+    if (t && !res.pend && !res.fail) {
+      rows = res.rows.filter(r => lc(r[0]).includes(t) || lc(r[1]).includes(t));
+      const uni = mode === "live" ? uniLive() : uniEod();
+      best = uni ? bestMatch(uni, t) : null;
+      if (best) { bestIn = res.rows.some(r => r[0] === best[0]); rows = rows.filter(r => r[0] !== best[0]); }
+    }
+    return (S.vc = { k, mode, cap, minTv, res, q, t, rows, best, bestIn });
+  }
+  const rsChg = x => isNum(x) ? (x > 0 ? "+" : x < 0 ? "-" : "") + "₹" + nf(Math.abs(x), 2) : "";
+  function mvRow(H, r, k, q, wl) {
+    const parts = [];
+    if (k === "deliv") parts.push("Delivery " + (isNum(r[5]) ? nf(r[5], 1) + "%" : "—"));
+    else if (k === "hi") parts.push(isNum(r[6]) ? nf(r[6], 1) + "% below 52W high" : "—");
+    else if (k === "lo") parts.push(isNum(r[6]) ? nf(r[6], 1) + "% above 52W low" : "—");
+    else if (isNum(r[8])) parts.push(`<b class="${cls(r[3])}">${rsChg(r[8])}</b>`);
+    parts.push("Vol " + units(r[7])); parts.push("Value " + croreC(r[4]));
+    const ill = isNum(r[4]) && r[4] < LOWTV ? ' <i class="st-tag st-ill" title="Less than ₹10 lakh traded: the % move can come from a few small trades">illiquid</i>' : "";
+    return stockRow(H, { sym: r[0], name: r[1], price: r[2], chg: r[3], tag: r[9], q, on: wl.has(r[0]), sub: parts.join(" · ") + ill });
+  }
+  function mvRows(H, v, from, to) {
+    const wl = new Set(watched(H)); let h = "";
+    for (let i = from; i < to; i++) h += mvRow(H, v.rows[i], v.k, v.q, wl);
+    return h;
+  }
+  const mvStamp = v => { const m = snap(); return (v.mode === "live" && m ? m.meta.fetchedAt : S.meta ? S.meta.generatedAt || S.meta.tradeDate : "") + "|" + (S.list ? 1 : 0); };
+  const mvSig = v => [v.k, v.mode, v.cap, v.minTv, v.t, S.shown, v.rows.length, v.best ? v.best[0] : "", v.res.pend ? 1 : 0, v.res.fail ? 1 : 0, mvStamp(v)].join("|");
+  const moreBtn = left => `<button class="btn ghost st-more" id="st-more" data-m="stocks" data-act="more">Show ${Math.min(PAGE1, left)} more <span class="mut">· ${nf(left, 0)} left</span></button><p class="mut sm st-auto">More rows also load by themselves as you scroll.</p>`;
+  function mvListHtml(H, v) {
+    if (v.res.fail) return retryBox("The stock list could not be loaded.", "retrylist");
+    if (v.res.pend) return skelRows(6);
+    S.cur = v;
+    const n = Math.min(S.shown, v.rows.length);
+    let h = "";
+    if (v.best) h += `<div class="st-best"><p class="st-bl">${ic("target")} Best match${v.bestIn ? "" : " · not in this list right now"}</p>${mvRow(H, v.best, v.k, v.q, new Set(watched(H)))}</div>`;
+    if (!v.rows.length && !v.best) return `<div class="st-msg"><p><b>${v.t ? "No stock matches “" + H.esc(v.q) + "” in this list." : "No stocks in this list."}</b></p><p class="mut sm">${v.t ? "Check the spelling, or look in all NSE stocks with the Search tab." : "Nothing matched for the latest " + (v.mode === "live" ? "snapshot" : "trade date") + "."}</p>${v.t ? `<button class="btn sm" data-m="stocks" data-act="gosearch">${ic("search")} Search all stocks</button>` : ""}</div>`;
+    h += `<div class="st-list st-mvl">${mvRows(H, v, 0, n)}</div>`;
+    return h + (v.rows.length > n ? moreBtn(v.rows.length - n) : "");
+  }
+  // appends the next rows to the list that is on screen (scroll near the end, or the button); the region signature is kept in step so a snapshot does not undo it
+  function appendMore() {
+    const v = S.cur, list = document.querySelector('#app [data-lvr="mv-list"] .st-mvl'), btn = document.getElementById("st-more");
+    if (!v || !list || !btn || !HH || S.shown >= v.rows.length) return;
+    const from = Math.min(S.shown, v.rows.length), to = Math.min(from + PAGE1, v.rows.length);
+    list.insertAdjacentHTML("beforeend", mvRows(HH, v, from, to));
+    S.shown = to;
+    if (to >= v.rows.length) { const a = btn.nextElementSibling; if (a && a.classList.contains("st-auto")) a.remove(); btn.remove(); }
+    else btn.innerHTML = `Show ${Math.min(PAGE1, v.rows.length - to)} more <span class="mut">· ${nf(v.rows.length - to, 0)} left</span>`;
+    RG["mv-list"] = mvSig(v);
+    autoMoreSoon();
+  }
+  let amT = 0;
+  function autoMoreSoon() { if (amT) return; amT = setTimeout(() => { amT = 0; const b = document.getElementById("st-more"); if (b && b.getBoundingClientRect().top < (window.innerHeight || document.documentElement.clientHeight) + 900) appendMore(); }, 40); }
+  window.addEventListener("scroll", () => { if (document.getElementById("st-more")) autoMoreSoon(); }, { passive: true });
+  function mvCtl(H, v) {
+    const liveOK = liveOn() && v.k !== "deliv", sb = (id, label, icon, off) => `<button class="${v.mode === id ? "on" : ""}" data-m="stocks" data-act="mmode" data-v="${id}" aria-pressed="${v.mode === id}"${off ? " disabled" : ""}>${ic(icon)} ${label}</button>`;
+    const seg = `<div class="st-seg st-mode" role="group" aria-label="Data source">${sb("live", "Live", "bolt", !liveOK)}${sb("eod", "Last close", "clock", false)}</div>`;
+    const hint = liveOK ? "" : `<p class="mut sm st-mh">${v.k === "deliv" ? "Delivery % exists only for the last close." : "The live snapshot is not available right now (market closed or data unavailable), so the last close is shown."}</p>`;
+    const chips = S.caps && CAPK.includes(v.k) ? `<div class="st-cp st-cp-m" role="group" aria-label="Market cap">${["A", "L", "M", "S"].map(c => `<button class="${c === v.cap ? "on" : ""}" data-m="stocks" data-act="mcap" data-c="${c}" aria-pressed="${c === v.cap}">${CAPN[c]}</button>`).join("")}</div>` : "";
+    const tg = CAPK.includes(v.k) ? `<button class="st-tg${S.hideLow ? " on" : ""}" data-m="stocks" data-act="hidelow" aria-pressed="${S.hideLow}">${ic(S.hideLow ? "check" : "plus")} Hide very low volume</button>` : "";
+    return `<div class="st-mrow">${seg}${tg}</div>${hint}${chips}`;
+  }
+  const mvCtlSig = v => [v.mode, v.k, liveOn() ? 1 : 0, v.cap, S.hideLow ? 1 : 0, S.caps ? 1 : 0].join("|");
+  function mvInfo(H, v) {
+    const L = v.mode === "live" ? snap() : null, ls = S.list && uniEod();
+    const cover = v.res.pend || v.res.fail ? "" : L ? `Live · ${nf(v.res.n, 0)} stocks: ${H.esc(coverTxt(L))} · ${snapTag(H)}`
+      : `Last close · ${H.esc(H.fmtD((S.meta && S.meta.tradeDate) || eodDay()))} · ` + (v.k === "hi" || v.k === "lo" || v.k === "deliv" ? `the ${v.res.n} stocks of NSE with the most ₹2 crore+ turnover that match` : `all ${ls ? nf(ls.length, 0) : ""} NSE main-board stocks (EQ, BE and BZ series; SME stocks are not included)`);
+    const total = v.rows.length + (v.best && v.bestIn ? 1 : 0), all = v.res.rows.length;
+    const count = v.res.pend || v.res.fail ? "" : v.t ? `${nf(total, 0)} of ${nf(all, 0)}` : `${nf(all, 0)} stocks`;
+    const note = NOTE2[v.k] || (L ? NOTE_LIVE[v.k] : null) || NOTE[v.k];
+    const capNote = CAPK.includes(v.k) && S.caps && v.cap !== "A" ? ` ${CAPN[v.cap]} cap: constituents of ${CAPD[v.cap]} (NSE, as of ${H.esc(H.fmtD(S.caps.u))}).` : "";
+    const ill = CAPK.includes(v.k) ? ` <i class="st-tag st-ill">illiquid</i> = under ₹10 lakh traded.` : "";
+    return `<div class="st-ch-h st-mh2"><h2>${H.esc(TITLES[v.k])}</h2><span class="mut sm">${count}</span></div>${cover ? `<p class="tl-sec">${cover}</p>` : ""}<p class="mut sm st-note2">${H.esc(note)}${capNote}${ill}</p>`;
+  }
+  const mvBar = (H, v) => v.mode === "eod" && liveOn() ? eodPill("Last close, " + eodTxt()) : barHtml("Gainers, losers, most active and 52-week lists");
+  const mvBarSig = v => barSig() + "|" + v.mode;
   function movers(H) {
     ensureList(H);
-    const k = LISTS.some(l => l[0] === S.k) ? S.k : "gain";
+    const v = mvView(), k = v.k;
     const sw = LISTS.map(([id, l]) => `<button class="${id === k ? "on" : ""}" data-m="stocks" data-act="list" data-k="${id}" aria-pressed="${id === k}">${l}</button>`).join("");
-    return H.head("Stocks") + stale() + reg("mv-bar", () => barHtml("Gainers, losers, most active and 52-week lists"), barSig) + `<div class="st-sw" role="group" aria-label="List">${sw}</div>` +
-      reg("mv-list", () => moversCard(H, k)) + foot(H);
+    return H.head("Stocks") + stale() + reg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)) + `<div class="st-sw" role="group" aria-label="List">${sw}</div>` +
+      `<div class="card st-mvc"><label class="st-sin">${ic("search")}<input id="st-mq" type="search" data-m="stocks" placeholder="Search in this list: symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search in this list" value="${H.esc(S.mq)}" maxlength="40"></label>` +
+      reg("mv-ctl", () => mvCtl(H, v), () => mvCtlSig(v)) + reg("mv-info", () => mvInfo(H, v)) + reg("mv-list", () => mvListHtml(H, v), () => mvSig(v)) + `</div>` + foot(H);
+  }
+  // typing in the Movers search box: only the info and list regions change (focus, caret and scroll stay)
+  function mvTyped(H) {
+    S.shown = PAGE0; const v = mvView();
+    setReg("mv-info", () => mvInfo(H, v)); setReg("mv-list", () => mvListHtml(H, v), () => mvSig(v));
   }
 
   // ---------- Search ----------
@@ -487,8 +588,9 @@
         `<div class="st-sec"><h3>Popular today</h3><div class="st-chips">${pop.map(chip).join("")}</div></div><p class="mut sm">Type a stock symbol or company name (for example RELIANCE, Tata, bank). ${S.list.rows.length} NSE stocks are listed.</p>`;
     } else {
       const all = match(S.q), res = all.slice(0, 50);
+      if (S.arrive && res.length) { S.arrive = false; setTimeout(() => HH && HH.flash && HH.flash(".st-sc .st-r"), 80); }
       body = res.length ? `<p class="mut sm st-cnt">${all.length} match${all.length === 1 ? "" : "es"}${all.length > 50 ? ", showing the first 50. Type more letters to narrow down." : ""}</p><div class="st-list">${res.map(([, r]) =>
-        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}` })).join("")}</div>`
+        stockRow(H, { sym: r[0], name: r[1], price: r[3], chg: r[4], tag: r[2], q: S.q.trim(), sub: `Value ${croreC(r[6])} · Vol ${units(r[5])}` })).join("")}</div>`
         : `<div class="st-msg"><p><b>No stock matches that search.</b></p><p class="mut sm">Try the stock symbol or fewer letters.</p></div>`;
     }
     return H.head("Stocks") + stale() + `<div class="card st-sc"><label class="st-sin">${ic("search")}<input id="st-q" type="search" data-m="stocks" placeholder="Search symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search stocks" value="${H.esc(S.q)}" maxlength="40"></label>${body}</div>` + foot(H);
@@ -712,8 +814,9 @@
     } else if (sub === "indices") {
       setReg("ix-bar", () => barHtml("Index values"), barSig); setReg("ix-all", () => allIdxCard(H));
     } else if (tab === "movers") {
-      const k = LISTS.some(l => l[0] === S.k) ? S.k : "gain";
-      setReg("mv-bar", () => barHtml("Gainers, losers, most active and 52-week lists"), barSig); setReg("mv-list", () => moversCard(H, k));
+      const y = window.scrollY, v = mvView();
+      setReg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)); setReg("mv-ctl", () => mvCtl(H, v), () => mvCtlSig(v)); setReg("mv-info", () => mvInfo(H, v)); setReg("mv-list", () => mvListHtml(H, v), () => mvSig(v));
+      if (Math.abs(window.scrollY - y) > 1) window.scrollTo(0, y);                 // a swapped list keeps the reader's place
     } else if (tab === "market" || !tab) {
       setReg("mk-bar", () => barHtml("Index values and movers"), barSig); setReg("mk-idx", () => idxCardsHtml(H));
       ["gain", "loss", "vol"].forEach(k => setReg("mk-" + k, () => dashSec(H, k))); ["hi", "lo"].forEach(k => setReg("mk-" + k, () => plainSec(H, k)));
@@ -731,8 +834,8 @@
     S.cv = null; H.setSub("stock:" + sym);
   }
   document.addEventListener("keydown", e => {
-    if (e.key !== "Enter" || !e.target || e.target.id !== "st-q") return;
-    const b = document.querySelector("#app .st-r .st-rm"); if (b) b.click();
+    if (e.key !== "Enter" || !e.target || (e.target.id !== "st-q" && e.target.id !== "st-mq")) return;
+    const b = document.querySelector("#app .st-best .st-rm") || document.querySelector("#app .st-r .st-rm"); if (b) b.click();
   });
 
   window.TrendyModules = window.TrendyModules || {};
@@ -769,14 +872,16 @@
         return true;
       }
       if (a === "unstar" && symOk(sym)) { H.store.set("st_watch", watched(H).filter(s => s !== sym)); H.render(); return true; }
-      if (a === "list" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; H.render(); return true; }
-      if (a === "more") { S.shown = 100; H.render(); return true; }
-      if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; H.go("stocks", "movers"); return true; }
+      if (a === "list" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; H.render(); return true; }
+      if (a === "more") { appendMore(); return true; }
+      if (a === "mmode" && (el.dataset.v === "live" || el.dataset.v === "eod")) { S.mmode = el.dataset.v; S.shown = PAGE0; H.render(); return true; }
+      if (a === "hidelow") { S.hideLow = !S.hideLow; S.shown = PAGE0; H.render(); return true; }
+      if (a === "seeall" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; S.mq = ""; S.mmode = null; H.go("stocks", "movers"); return true; }
       if (a === "allidx") { H.setSub("indices"); return true; }
       if (a === "fiidii") { H.setSub("fiidii"); return true; }
       if (a === "dcap" && ["gain", "loss", "vol"].includes(el.dataset.k) && ["L", "M", "S"].includes(el.dataset.c)) { const k = el.dataset.k; S.dcap[k] = el.dataset.c; setReg("mk-" + k, () => dashSec(H, k)); return true; }
-      if (a === "mcap" && ["A", "L", "M", "S"].includes(el.dataset.c)) { S.mcap = el.dataset.c; S.shown = 20; H.render(); return true; }
-      if (a === "seemore" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = 20; if (CAPK.includes(S.k)) S.mcap = ["L", "M", "S"].includes(el.dataset.c) ? el.dataset.c : "A"; H.go("stocks", "movers"); return true; }
+      if (a === "mcap" && ["A", "L", "M", "S"].includes(el.dataset.c)) { S.mcap = el.dataset.c; S.shown = PAGE0; H.render(); return true; }
+      if (a === "seemore" && LISTS.some(l => l[0] === el.dataset.k)) { S.k = el.dataset.k; S.shown = PAGE0; S.mq = ""; S.mmode = null; if (CAPK.includes(S.k)) S.mcap = ["L", "M", "S"].includes(el.dataset.c) ? el.dataset.c : "A"; H.go("stocks", "movers"); return true; }
       if (a === "view") { S.cv = el.dataset.v === "intraday" ? "intraday" : "daily"; H.render(); return true; }
       if (a === "gosearch") { H.go("stocks", "search"); return true; }
       if (a === "recentclear") { H.store.set("st_recent", []); H.render(); return true; }
@@ -787,6 +892,11 @@
       if (a === "retryidx" && slugOk(el.dataset.slug)) { delete S.idxH[el.dataset.slug]; ensureIdxH(el.dataset.slug, H); H.render(); return true; }
       return false;
     },
-    input(el, H) { if (el.id === "st-q") { S.q = el.value.slice(0, 40); H.render(); } },
+    input(el, H) {
+      HH = H;
+      if (el.dataset.arrive === "1") { S.arrive = true; delete el.dataset.arrive; }           // filled in from the global search ("See all in Stocks")
+      if (el.id === "st-q") { S.q = el.value.slice(0, 40); H.render(); }
+      else if (el.id === "st-mq") { S.mq = el.value.slice(0, 40); mvTyped(H); }
+    },
   };
 })();

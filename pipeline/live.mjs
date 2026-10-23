@@ -102,11 +102,13 @@ function parseIndices(j) {
 }
 const STK_COLS = ["s", "c", "ch", "p", "o", "h", "l", "pc", "v", "tv", "wh", "wl", "y1", "m1", "fo", "t"];
 // tv = traded value in rupees crore, y1 = 1-year change %, m1 = 30-day change %, fo = 1 if in the F&O list, t = HH:MM of the quote
-function parseStocks(j500, jfo) {
+const TAIL_SERIES = new Set(["EQ", "BE", "BZ"]);                  // rows that only come from the widening lists: main-board series only
+function parseStocks(j500, jfo, extras = []) {
   const m = new Map();
-  const take = (j, fo) => {
+  const take = (j, fo, only) => {
     for (const x of j?.data?.data || []) {
       if (!x || x.priority === 1 || !x.series || !x.symbol) continue;
+      if (only && (!TAIL_SERIES.has(x.series) || /-RE\d*$/.test(x.symbol) || m.has(x.symbol))) continue;
       const c = num(x.lastPrice);
       if (c === null) continue;
       const ts = istIso(x.lastUpdateTime), cur = m.get(x.symbol);
@@ -117,8 +119,37 @@ function parseStocks(j500, jfo) {
     }
   };
   take(j500, false); take(jfo, true);
-  return [...m.values()];
+  const core = new Set(m.keys());
+  for (const j of extras) take(j, false, true);
+  return { rows: [...m.values()], core };
 }
+// live-analysis rows -> the same columns as parseStocks.
+//  variations: ltp, prev_price, perChange, trade_quantity, turnover (Rs lakh), nearWKH / nearWKL = % distance of the last price to the 52-week high / low
+//              (wh = ltp / (1 - nearWKH/100); checked against a round year high)
+//  most-active: lastPrice, pChange, totalTradedVolume, totalTradedValue (Rs), yearHigh, yearLow, identifier = SYMBOL + series + "N"
+function parseAnalysis(j, kind) {
+  const out = [], ts = istIso(j?.timestamp), t0 = ts ? ts.slice(11, 16) : null;
+  for (const x of j?.data || []) {
+    if (!x || !x.symbol || /-RE\d*$/.test(x.symbol)) continue;
+    let series, c, p, o, h, l, pc, v, tv, wh = null, wl = null, tt = t0;
+    if (kind === "var") {
+      series = x.series; c = num(x.ltp); pc = num(x.prev_price); p = num(x.perChange) ?? num(x.net_price); o = num(x.open_price); h = num(x.high_price); l = num(x.low_price);
+      v = num(x.trade_quantity); tv = num(x.turnover) === null ? null : rnd(num(x.turnover) / 100);
+      const nh = num(x.nearWKH), nl = num(x.nearWKL);
+      if (c !== null && nh !== null && nh < 99) wh = rnd(c / (1 - nh / 100));
+      if (c !== null && nl !== null && nl < 99) wl = rnd(c / (1 - nl / 100));
+    } else {
+      series = String(x.identifier || "").slice(x.symbol.length, -1); c = num(x.lastPrice); pc = num(x.previousClose); p = num(x.pChange); o = num(x.open); h = num(x.dayHigh); l = num(x.dayLow);
+      v = num(x.totalTradedVolume); tv = num(x.totalTradedValue) === null ? null : rnd(num(x.totalTradedValue) / 1e7); wh = rnd(num(x.yearHigh)); wl = rnd(num(x.yearLow));
+      const u = istIso(x.lastUpdateTime); tt = u ? u.slice(11, 16) : t0;
+    }
+    if (!TAIL_SERIES.has(series) || c === null || c <= 0 || pc === null || pc <= 0 || p === null) continue;
+    out.push([String(x.symbol), rnd(c), rnd(c - pc), rnd(p), rnd(o), rnd(h), rnd(l), rnd(pc), v, tv, wh, wl, null, null, 0, tt]);
+  }
+  return out;
+}
+const VAR_GROUPS = ["allSec", "SecGtr20", "SecLwr20"];
+function parseVariations(j) { return VAR_GROUPS.flatMap(g => parseAnalysis({ data: j?.[g]?.data, timestamp: j?.[g]?.timestamp }, "var")); }
 // ---------------------------------------------------------------- intraday.json (today's price per accepted snapshot, IST trading day only)
 // {"v":1,"day":"YYYY-MM-DD","t":[HHMM ints, strictly increasing],"s":{"<SYMBOL or index name>":[price per t | null]}}
 // Stocks: last traded price (c). Indices: last, only the groups the app shows an intraday chart for (the full list would not fit the size cap).
@@ -184,8 +215,34 @@ async function run() {
   const j500 = await api("NextApi/apiClient/marketWatchApi?functionName=getIndicesData&symbol=" + encodeURIComponent("NIFTY 500"));
   const jfo = await api("NextApi/apiClient/marketWatchApi?functionName=getIndicesData&symbol=" + encodeURIComponent("SECURITIES IN F&O"));
   log(`status ${status.state}; fetched indices, NIFTY 500 and F&O lists (${requests} requests so far)`);
+  // optional widening of the universe: a failure only leaves that part out (the snapshot is then NIFTY 500 + F&O, as before)
+  const opt = async (label, p) => {
+    if (FAULT && FAULT !== "closed") return null;                              // fault injection tests the core path only
+    try { const j = await api(p, { tries: 2 }); log(`${label}: ok`); return j; }
+    catch (e) { if (e instanceof Refuse) throw e; log(`${label}: skipped (${e.message})`); return null; }
+  };
+  const mw = n => "NextApi/apiClient/marketWatchApi?functionName=getIndicesData&symbol=" + encodeURIComponent(n);
+  const jsc = await opt("NIFTY SMALLCAP 500", mw("NIFTY SMALLCAP 500"));
+  const jipo = await opt("NIFTY IPO", mw("NIFTY IPO"));
+  const jgain = await opt("variations gainers", "live-analysis-variations?index=gainers");
+  const jloss = await opt("variations losers", "live-analysis-variations?index=loosers");
+  const jvol = await opt("most active by volume", "live-analysis-most-active-securities?index=volume");
 
-  let indices = parseIndices(idxJson), stocks = parseStocks(j500, jfo);
+  let indices = parseIndices(idxJson);
+  const PS = parseStocks(j500, jfo, [jsc, jipo]);
+  let stocks = PS.rows;
+  const coreSyms = PS.core, nIndexTail = stocks.length - coreSyms.size;
+  // the market's top movers (whole market, not only our lists): rows for symbols we do not have yet are added, symbols that we have keep their richer row
+  const have = new Set(stocks.map(r => r[0])), moverRows = { gainers: [], losers: [], volume: [] };
+  const addTail = rows => { for (const r of rows) if (!have.has(r[0])) { have.add(r[0]); stocks.push(r); } };
+  const gRows = jgain ? parseVariations(jgain) : [], lRows = jloss ? parseVariations(jloss) : [], vRows = jvol ? parseAnalysis(jvol, "act") : [];
+  const nBeforeMov = stocks.length;
+  addTail(gRows); addTail(lRows); addTail(vRows);
+  const nMoverTail = stocks.length - nBeforeMov;
+  const uniq = rows => { const s = new Set(); return rows.filter(r => !s.has(r[0]) && s.add(r[0])); };
+  moverRows.gainers = uniq(gRows.filter(r => r[3] > 0).sort((a, b) => b[3] - a[3])).map(r => r[0]);
+  moverRows.losers = uniq(lRows.filter(r => r[3] < 0).sort((a, b) => a[3] - b[3])).map(r => r[0]);
+  moverRows.volume = uniq(vRows).map(r => r[0]);
   // asOn: NSE's own timestamp of the NIFTY 500 index row (falls back to the list's timestamp, then to the status timestamp)
   const idxRow = (j500?.data?.data || []).find(x => x?.priority === 1);
   const asOnStr = istIso(idxRow?.lastUpdateTime) || istIso(j500?.data?.timestamp) || status.tradeDate;
@@ -203,9 +260,12 @@ async function run() {
   const bad = (c, m) => { if (!c) fails.push(m); };
   const finite = x => typeof x === "number" && Number.isFinite(x);
   bad(["Open", "Closed", "Pre-Open", "Close", "Preopen"].some(s => s.toLowerCase() === status.state.toLowerCase()) || status.state.length > 0, "market state missing");
-  const minStocks = prevMarket?.stocks?.length ? Math.ceil(prevMarket.stocks.length * 0.7) : 400;
+  const prevCore = prevMarket?.meta?.cover?.core ?? prevMarket?.stocks?.length;                // the guard counts only the core lists (NIFTY 500 + F&O): the optional widening may legitimately be missing
+  const minStocks = prevCore ? Math.ceil(prevCore * 0.7) : 400;
   const minIdx = prevMarket?.indices?.length ? Math.ceil(prevMarket.indices.length * 0.7) : 50;
-  bad(stocks.length >= minStocks, `stocks: ${stocks.length} rows < required ${minStocks}`);
+  const nCoreNow = stocks.filter(r => coreSyms.has(r[0])).length;
+  bad(nCoreNow >= minStocks, `stocks: ${nCoreNow} core rows < required ${minStocks}`);
+  bad(stocks.length <= 1400, `stocks: ${stocks.length} rows is implausibly many`);
   bad(indices.length >= minIdx, `indices: ${indices.length} rows < required ${minIdx}`);
   let badStock = 0;
   const goodStock = r => {
@@ -214,6 +274,10 @@ async function run() {
   };
   const nAll = stocks.length; stocks = stocks.filter(goodStock); badStock = nAll - stocks.length;       // a few odd rows are dropped, many mean the feed is broken
   bad(badStock <= Math.max(5, nAll * 0.01), `stocks: ${badStock} rows with missing/implausible numbers`);
+  const gotSyms = new Set(stocks.map(r => r[0]));
+  const dupes = stocks.length - gotSyms.size; bad(dupes === 0, `stocks: ${dupes} duplicate symbols`);
+  const nExtra = stocks.filter(r => !coreSyms.has(r[0])).length;
+  for (const k of Object.keys(moverRows)) moverRows[k] = moverRows[k].filter(s => gotSyms.has(s));
   let badIdx = 0;
   for (const r of indices) { const [, , last, , pct] = r; if (!(finite(last) && last > 0 && last < 1e7) || (finite(pct) && Math.abs(pct) > 40)) badIdx++; }
   bad(badIdx <= 1, `indices: ${badIdx} rows with implausible numbers`);
@@ -232,25 +296,26 @@ async function run() {
 
   // ---------------------------------------------------------------- build files
   const fetchedAt = new Date().toISOString().replace(/\.\d+Z$/, "Z");
-  const byPct = (cmp, n = 15) => stocks.filter(r => r[14] === 1 || (r[9] !== null && r[9] >= 5)).filter(r => finite(r[3])).sort(cmp).slice(0, n).map(r => r[0]);
+  const byPct = (cmp, n = 15) => stocks.filter(r => coreSyms.has(r[0])).filter(r => r[14] === 1 || (r[9] !== null && r[9] >= 5)).filter(r => finite(r[3])).sort(cmp).slice(0, n).map(r => r[0]);
   const top = {
     note: "symbols only; liquid stocks (F&O list or traded value >= 5 crore)",
     gainers: byPct((a, b) => b[3] - a[3]), losers: byPct((a, b) => a[3] - b[3]), active: byPct((a, b) => (b[9] ?? 0) - (a[9] ?? 0)),
     high52: byPct((a, b) => (b[1] / b[10]) - (a[1] / a[10])).filter(s => { const r = stocks.find(x => x[0] === s); return r[10] && r[1] >= r[10] * 0.99; }),
     low52: byPct((a, b) => (a[1] / a[11]) - (b[1] / b[11])).filter(s => { const r = stocks.find(x => x[0] === s); return r[11] && r[1] <= r[11] * 1.01; }),
   };
-  const meta = { asOn, fetchedAt, marketStatus: { state: status.state, text: status.text }, quotesUpTo: stockTimes.at(-1) || null,
+  const cover = { core: nCoreNow, extra: nExtra, lists: ["NIFTY 500", "SECURITIES IN F&O"].concat(jsc ? ["NIFTY SMALLCAP 500"] : [], jipo ? ["NIFTY IPO"] : []), movers: jgain || jloss || jvol ? "whole-market top movers (live-analysis-variations, most-active)" : "" };
+  const meta = { asOn, fetchedAt, marketStatus: { state: status.state, text: status.text }, cover, quotesUpTo: stockTimes.at(-1) || null,
     source: "NSE India public website data (unofficial). Delayed snapshot, not real-time ticks. Information only." };
-  const market = { meta, idxCols: IDX_COLS, indices, cols: STK_COLS, colNotes: { tv: "traded value, Rs crore", y1: "1-year change %", m1: "30-day change %", fo: "1 = in F&O list", t: "quote time HH:MM IST" }, stocks, top };
+  const market = { meta, idxCols: IDX_COLS, indices, cols: STK_COLS, colNotes: { tv: "traded value, Rs crore", y1: "1-year change %", m1: "30-day change %", fo: "1 = in F&O list", t: "quote time HH:MM IST" }, stocks, top, movers: moverRows };
   const files = { "market.json": JSON.stringify(market) };
   // LIVE_TEST_ASON / LIVE_TEST_TODAY / LIVE_FAULT=closed only change what the intraday step sees (local tests of the append rules)
-  const idr = buildIntraday({ today: process.env.LIVE_TEST_TODAY || today, asOn: process.env.LIVE_TEST_ASON || asOn, state: FAULT === "closed" ? "Closed" : status.state, stocks, indices });
+  const idr = buildIntraday({ today: process.env.LIVE_TEST_TODAY || today, asOn: process.env.LIVE_TEST_ASON || asOn, state: FAULT === "closed" ? "Closed" : status.state, stocks: stocks.filter(r => coreSyms.has(r[0])), indices });
   log("intraday:", idr.note);
   if (idr.text) files["intraday.json"] = idr.text;
   const metaSmall = { v: SCHEMA, asOn, fetchedAt, marketOpen: /^open$/i.test(status.state), marketState: status.state, counts: { stocks: stocks.length, indices: indices.length } };
   files["meta.json"] = JSON.stringify(metaSmall);
   for (const [f, s] of Object.entries(files)) {
-    const cap = f === "market.json" ? 350e3 : f === "meta.json" ? 2e3 : ID_MAX_BYTES;
+    const cap = f === "market.json" ? 250e3 : f === "meta.json" ? 2e3 : ID_MAX_BYTES;
     if (s.length > cap) refuse(`${f} is ${s.length} bytes (> ${cap}); nothing written`);
   }
 
@@ -258,6 +323,7 @@ async function run() {
   const order = Object.keys(files).filter(f => f !== "meta.json").concat("meta.json");           // meta.json last: the client sees a complete set
   for (const f of order) { const tmp = path.join(OUT, f + ".tmp"); fs.writeFileSync(tmp, files[f]); fs.renameSync(tmp, path.join(OUT, f)); }
   log(`written ${order.map(f => f + " " + (files[f].length / 1024).toFixed(1) + " KB").join(", ")}`);
+  log(`universe: ${nCoreNow} core (NIFTY 500 + F&O) + ${nIndexTail} from the widening lists + ${nMoverTail} only from the top-mover lists = ${stocks.length}; movers gainers ${moverRows.gainers.length}, losers ${moverRows.losers.length}, volume ${moverRows.volume.length}`);
   log(`asOn ${asOn}, ${stocks.length} stocks, ${indices.length} indices, ${requests} requests, ${((Date.now() - T0) / 1000).toFixed(1)} s`);
 }
 

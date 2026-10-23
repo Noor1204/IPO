@@ -601,3 +601,12 @@ td .tnote{font-weight:500;margin-top:2px}
   nav button span{max-width:none!important;opacity:1!important;margin:0!important;overflow:visible;font-size:12px;line-height:1.1;font-weight:800;letter-spacing:.1px}
   #app{padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))}
 }
+
+/* ---------- search highlight (hl() in app.js) ---------- */
+mark.hl{background:rgba(99,102,241,.22);color:var(--tx);font-weight:800;border-radius:4px;padding:0;margin:0;box-shadow:0 0 0 1px rgba(99,102,241,.38) inset;-webkit-text-fill-color:currentColor}
+:root[data-theme=dark] mark.hl{background:rgba(139,140,248,.34);box-shadow:0 0 0 1px rgba(158,160,251,.5) inset}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) mark.hl{background:rgba(139,140,248,.34);box-shadow:0 0 0 1px rgba(158,160,251,.5) inset}}
+/* the first match is scrolled to and flashed once (box-shadow only, no layout shift) */
+.hl-flash{animation:hlflash 1.5s ease-out 1}
+@keyframes hlflash{0%{box-shadow:0 0 0 3px var(--pri),0 0 22px rgba(99,102,241,.55)}100%{box-shadow:0 0 0 0 transparent,0 0 0 transparent}}
+@media(prefers-reduced-motion:reduce){.hl-flash{animation:none}}
