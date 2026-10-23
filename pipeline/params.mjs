@@ -31,7 +31,7 @@ async function pdfTexts(url) {
   const dir = await fs.mkdtemp(path.join(os.tmpdir(), "trendy-params-"));
   try {
     const zip = path.join(dir, "d.zip"), out = path.join(dir, "x"); await fs.mkdir(out);
-    execFileSync("curl", ["-sS", "-L", "--http1.1", "--ssl-no-revoke", "--fail", "-m", "90", "-A", UA, "-e", "https://www.nseindia.com/", "-o", zip, url], { stdio: "pipe" });
+    execFileSync("curl", ["-sS", "-L", "--proto", "=https", "--proto-redir", "=https", "--max-filesize", "60000000", "--http1.1", "--ssl-no-revoke", "--fail", "-m", "90", "-A", UA, "-e", "https://www.nseindia.com/", "-o", zip, url], { stdio: "pipe" });
     unzip(zip, out);
     const texts = [];
     const walk = async d => { for (const e of await fs.readdir(d, { withFileTypes: true })) { const p = path.join(d, e.name); if (e.isDirectory()) await walk(p); else if (/\.pdf$/i.test(e.name)) { const t = path.join(dir, `t${texts.length}.txt`); try { execFileSync("pdftotext", ["-layout", p, t], { stdio: "pipe" }); texts.push(await fs.readFile(t, "utf8")); } catch {} } } };

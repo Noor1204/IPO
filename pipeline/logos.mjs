@@ -34,8 +34,10 @@ function domainsFrom(text, name) {
   const ranked = [...new Set(found)].map(d => { let s = lcs(label(d), n); if (initials.length >= 3 && label(d).startsWith(initials)) s = Math.max(s, 4 + initials.length); return { d, s }; });
   return ranked.filter(x => x.s >= 4).sort((a, b) => b.s - a.s);
 }
+// an SVG is only kept when it has no script, event handler, foreignObject, external reference or entity (it is served from our own origin)
+const UNSAFE_SVG = /<script|\son[a-z]+\s*=|javascript:|foreignObject|<!ENTITY|<iframe|<embed|<object|xlink:href\s*=\s*["']?(?!#)|href\s*=\s*["']?(?!#)|@import|url\(\s*["']?(?!#|data:image)/i;
 const kind = b => b.length < 4 ? null : b[0] === 0x89 && b[1] === 0x50 ? "png" : b[0] === 0xff && b[1] === 0xd8 ? "jpg" : b[0] === 0x47 && b[1] === 0x49 ? "gif" : b[0] === 0 && b[1] === 0 && b[2] === 1 && b[3] === 0 ? "ico"
-  : b.subarray(0, 4).toString() === "RIFF" ? "webp" : /<svg[\s>]/i.test(b.subarray(0, 600).toString("utf8")) ? "svg" : null;
+  : b.subarray(0, 4).toString() === "RIFF" ? "webp" : /<svg[\s>]/i.test(b.subarray(0, 600).toString("utf8")) && !UNSAFE_SVG.test(b.toString("utf8")) ? "svg" : null;
 const get = async (url, ms = 12000, headers = {}) => { for (let k = 0; k < 2; k++) { try { const r = await fetch(url, { headers: { "user-agent": UA, accept: "*/*", ...headers }, redirect: "follow", signal: AbortSignal.timeout(ms) }); return r.ok ? r : null; } catch { await new Promise(r => setTimeout(r, 800)); } } return null; };
 async function image(url) { const r = await get(url); if (!r) return null; const b = Buffer.from(await r.arrayBuffer()); const k = kind(b); return k && b.length >= 600 && b.length < 400000 ? { buf: b, ext: k } : null; }
 

@@ -72,6 +72,8 @@ jobs:
       - name: Put IPOs that still have nothing on hold
         if: steps.need.outputs.need == 'yes'
         run: node pipeline/need-fundamentals.mjs mark
+      - name: Validate before committing
+        run: node pipeline/validate.mjs
       - name: Commit
         if: steps.need.outputs.need == 'yes'
         run: |

@@ -1062,7 +1062,7 @@ function reportsScreen() {
 }
 // CSV of the listed-IPO table (cells starting with = + - @ are quoted with a leading apostrophe so a spreadsheet never runs them)
 function rpCsv() {
-  const q = v => { let x = v === null || v === undefined ? "" : String(v); if (/^[=+\-@]/.test(x) && !/^-?[0-9.]+$/.test(x)) x = "'" + x; return /[",\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; };
+  const q = v => { let x = v === null || v === undefined ? "" : String(v); if (/^[=+\-@\t\r]/.test(x) && !/^-?[0-9.]+$/.test(x)) x = "'" + x; return /[",\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; };
   const rows = [["IPO", "Board", "Listing date", "Issue price", "Day-1 open %", "Last price %", "Subscribed (x)", "Issue size (Rs Cr)"], ...rpRows().map(i => [i.name, i.board, i.listing, i.priceHigh, i.listingPerf.dayOpenGainPct, i.listingPerf.ltpGainPct, totalTimes(i), i.issueSizeCr])];
   const url = URL.createObjectURL(new Blob([rows.map(r => r.map(q).join(",")).join("\n")], { type: "text/csv" })), a = document.createElement("a");
   a.href = url; a.download = "trendy-ipo-performance.csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
@@ -1157,7 +1157,9 @@ const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="d
 // ---------- About page: menu of General / Share / Help & Support, each row opens its own page ----------
 state.sub = null;
 state.applied = store.get("applied", []);
-state.pan = store.get("pan", "");
+const panGet = () => { try { return sessionStorage.getItem("pan") || ""; } catch { return ""; } }, panSet = v => { try { if (v) sessionStorage.setItem("pan", v); else sessionStorage.removeItem("pan"); } catch {} };
+try { localStorage.removeItem("pan"); } catch {}   // older versions kept it in localStorage: remove that copy
+state.pan = /^[A-Z]{5}[0-9]{4}[A-Z]$/.test(panGet()) ? panGet() : "";
 state.theme = store.get("theme", null);                                   // "dark" | "light" | null = follow the phone
 const isDark = () => state.theme ? state.theme === "dark" : matchMedia("(prefers-color-scheme: dark)").matches;
 const applyTheme = () => { if (state.theme) document.documentElement.dataset.theme = state.theme; else delete document.documentElement.dataset.theme; };
@@ -1226,7 +1228,7 @@ function subContent(k) {
     const p = state.pan;
     return subPage("Add PAN Number", card("Your PAN", `<p class="sm" style="margin-top:0">Save your PAN here so it is kept ready for allotment checks. <b>It stays only on this phone/browser</b> and is never sent to us or anyone else.</p>
       ${p ? `<div class="row" style="padding:8px 0"><div><div class="mut sm">Saved PAN</div><b style="letter-spacing:1.5px">${esc(p.slice(0, 5) + "••••" + p.slice(9))}</b></div><div style="display:flex;gap:6px"><button class="btn ghost" style="width:auto;padding:6px 12px" data-pandel>Remove</button></div></div>` : ""}
-      <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><div class="note warnb" style="margin-top:10px">${ic("alert-triangle")}<span><b>Optional.</b> The PAN is kept as plain text in this browser only (never sent to any server) and is not encrypted. Anyone who can open this browser on this device could read it. Do not save it on a shared or public device.</span></div><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
+      <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><div class="note warnb" style="margin-top:10px">${ic("alert-triangle")}<span><b>Optional.</b> The PAN is kept only for this browser tab and disappears when you close it (never sent to any server, never written to permanent storage). Do not enter it on a shared or public device.</span></div><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
   }
   if (k === "notif") {
     const n = notifList(), rd = nRead(), left = n.filter(x => !rd.includes(x[4])).length;
@@ -1247,7 +1249,7 @@ function subContent(k) {
   if (k === "us") return subPage("About Us", usCards());
   if (k === "terms") return subPage("Terms & Condition", card("", `<ol class="alist" style="padding-left:20px">${TERMS.map(t => `<li>${esc(t)}</li>`).join("")}</ol>`));
   if (k === "privacy") {
-    return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, alerts, applied IPOs, language, theme and (if you add it) your PAN — in this browser only.</li><li>Nothing like that is sent to a server.</li></ul>`));
+    return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, reminders, applied IPOs, language and theme — in this browser only. A PAN you enter stays in the open tab only and is gone when you close it.</li><li>Nothing like that is sent to a server.</li></ul>`));
   }
   if (k === "faq") return subPage("FAQs", card("", FAQ.map(([q, a]) => `<details class="faq"><summary>${esc(q)}</summary><p class="sm">${esc(a)}</p></details>`).join("")));
   return null;
@@ -1293,8 +1295,8 @@ function aboutClick(t) {
   if ("sub" in a) { state.sub = a.sub || null; render(); scrollTo(0, 0); return true; }
   if (a.applied) { const k = state.applied.indexOf(a.applied); k < 0 ? state.applied.push(a.applied) : state.applied.splice(k, 1); store.set("applied", state.applied); render(); return true; }
   if (a.rate) { state.rate = +a.rate; store.set("rate", state.rate); if (window.trendyTrack) window.trendyTrack("rate/" + a.rate, "Rated " + a.rate); render(); return true; }
-  if (t.hasAttribute("data-pansave")) { const v = (document.getElementById("pan-in")?.value || "").trim().toUpperCase(); if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v)) { toast("PAN looks wrong. Format: ABCDE1234F"); return true; } state.pan = v; store.set("pan", v); toast("PAN saved on this device"); return true; }
-  if (t.hasAttribute("data-pandel")) { state.pan = ""; store.set("pan", ""); render(); return true; }
+  if (t.hasAttribute("data-pansave")) { const v = (document.getElementById("pan-in")?.value || "").trim().toUpperCase(); if (!/^[A-Z]{5}[0-9]{4}[A-Z]$/.test(v)) { toast("PAN looks wrong. Format: ABCDE1234F"); return true; } state.pan = v; panSet(v); toast("PAN kept until you close this tab"); return true; }
+  if (t.hasAttribute("data-pandel")) { state.pan = ""; panSet(""); render(); return true; }
   return false;
 }
 document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });

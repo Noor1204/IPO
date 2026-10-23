@@ -43,5 +43,5 @@ If you ever want names (for example a sign-up form), that is a different feature
 
 - The Privacy card in the app (Settings, English and Hindi) tells users what is counted.
 - GoatCounter's free plan is for **non-commercial** use. If Zynora Technology uses this commercially, take their paid plan, or switch to Cloudflare Web Analytics (also free).
-- The Content-Security-Policy allows only `gc.zgo.at` (the counter script) and `*.goatcounter.com` (where the counts are sent), nothing else.
+- The Content-Security-Policy allows scripts only from this site (the counter is the pinned copy `vendor/goatcounter-count.js`) and `*.goatcounter.com` as the place the counts are sent.
 - To switch counting off again, set `CODE` back to `""`.

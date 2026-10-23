@@ -12,7 +12,10 @@ for (const f of ["index.html", "style.css", "theme.css", "mod-stocks.css", "mod-
 for (const f of await fs.readdir(path.join(ROOT, "icons"))) await fs.copyFile(path.join(ROOT, "icons", f), path.join(out, "icons", f));
 await fs.mkdir(path.join(out, "fonts"), { recursive: true });
 for (const f of await fs.readdir(path.join(ROOT, "fonts"))) await fs.copyFile(path.join(ROOT, "fonts", f), path.join(out, "fonts", f));
-for (const f of await fs.readdir(path.join(ROOT, "data", "logos")).catch(() => [])) await fs.copyFile(path.join(ROOT, "data", "logos", f), path.join(out, "data", "logos", f));
+const UNSAFE_SVG = /<script|\son[a-z]+\s*=|javascript:|foreignObject|<!ENTITY|<iframe|<embed|<object|xlink:href\s*=\s*["']?(?!#)|href\s*=\s*["']?(?!#)|@import|url\(\s*["']?(?!#|data:image)/i;   // same rule as logos.mjs: an SVG with script never reaches the site
+await fs.mkdir(path.join(out, "vendor"), { recursive: true });
+for (const f of await fs.readdir(path.join(ROOT, "vendor")).catch(() => [])) await fs.copyFile(path.join(ROOT, "vendor", f), path.join(out, "vendor", f));
+for (const f of await fs.readdir(path.join(ROOT, "data", "logos")).catch(() => [])) if (!(f.endsWith(".svg") && UNSAFE_SVG.test(await fs.readFile(path.join(ROOT, "data", "logos", f), "utf8")))) await fs.copyFile(path.join(ROOT, "data", "logos", f), path.join(out, "data", "logos", f));
 await fs.copyFile(path.join(ROOT, "data", "ipos.json"), path.join(out, "data", "ipos.json"));
 // data of the other modules (Stocks, Mutual Fund, market holidays): whole folders, if they exist
 async function copyTree(a, b) { await fs.mkdir(b, { recursive: true }); for (const e of await fs.readdir(a, { withFileTypes: true })) e.isDirectory() ? await copyTree(path.join(a, e.name), path.join(b, e.name)) : await fs.copyFile(path.join(a, e.name), path.join(b, e.name)); }

@@ -102,3 +102,15 @@ test("CSV export protects against spreadsheet formulas", () => {
   assert.equal(q('a,"b"'), '"a,""b"""');
   assert.equal(q(null), "");
 });
+
+test("security: CSP allows no third-party script, PAN is not in localStorage, SVG logos are clean", () => {
+  const html = read("index.html"), csp = html.match(/Content-Security-Policy" content="([^"]*)"/)?.[1] || "";
+  assert.match(csp, /script-src 'self';/, "script-src must be 'self' only");
+  assert.ok(!/;;/.test(csp) && /default-src 'none'/.test(csp) && /object-src 'none'/.test(csp) && /base-uri 'none'/.test(csp));
+  assert.ok(exists("vendor/goatcounter-count.js"), "pinned analytics script missing");
+  assert.ok(!/gc\.zgo\.at\/count/.test(read("analytics.js").replace(/\/\/.*$/gm, "")) || /vendor\/goatcounter-count\.js/.test(read("analytics.js")));
+  assert.ok(!/store\.set\("pan"/.test(read("app.js")), "PAN must not be written with store.set (localStorage)");
+  const UNSAFE = /<script|\son[a-z]+\s*=|javascript:|foreignObject|<!ENTITY|<iframe|<embed|<object|xlink:href\s*=\s*["']?(?!#)|href\s*=\s*["']?(?!#)|@import|url\(\s*["']?(?!#|data:image)/i;
+  for (const f of fs.readdirSync(path.join(ROOT, "data/logos")).filter(x => x.endsWith(".svg"))) assert.ok(!UNSAFE.test(read("data/logos/" + f)), f + " is not a safe SVG");
+  for (const f of fs.readdirSync(path.join(ROOT, ".github/workflows"))) { const w = read(".github/workflows/" + f); assert.ok(!/pull_request/.test(w), f + " must not run on pull requests"); assert.match(w, /^permissions: \{\}/m, f + " must start with no permissions"); }
+});

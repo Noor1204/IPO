@@ -18,7 +18,7 @@
   if (!on) return;
   var s = document.createElement("script");
   s.async = true;
-  s.src = "https://gc.zgo.at/count.js";
+  s.src = "vendor/goatcounter-count.js";   // pinned copy of https://gc.zgo.at/count.js (ISC licence), so no third-party script runs on this page
   s.setAttribute("data-goatcounter", "https://" + CODE + ".goatcounter.com/count");
   s.onload = function () { queue.splice(0).forEach(function (q) { window.trendyTrack(q[0], q[1]); }); };
   document.head.appendChild(s);

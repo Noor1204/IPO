@@ -33,6 +33,9 @@ let scanned = 0;
   else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) { if (EVIL.test(k)) bad(`suspicious key at ${p}.${k}`); walk(x, `${p}.${k}`); }
 })(j, "$");
 
+// ---- logos are served from our own origin: an SVG may not contain script, handlers, external references or entities
+const UNSAFE_SVG = /<script|\son[a-z]+\s*=|javascript:|foreignObject|<!ENTITY|<iframe|<embed|<object|xlink:href\s*=\s*["']?(?!#)|href\s*=\s*["']?(?!#)|@import|url\(\s*["']?(?!#|data:image)/i;
+for (const f of (await fs.readdir(path.join(DATA, "logos")).catch(() => [])).filter(x => x.endsWith(".svg"))) if (UNSAFE_SVG.test(await fs.readFile(path.join(DATA, "logos", f), "utf8"))) bad(`logo ${f}: SVG contains script or an external reference`);
 // ---- every link must be https on a known official host (or our own logo folder)
 const HOSTS = ["nseindia.com", "bseindia.com", "sebi.gov.in", "investorgain.com", "ipowatch.in"];
 const okUrl = u => { if (typeof u !== "string" || !u) return true; if (/^data\/logos\/[A-Za-z0-9._-]+$/.test(u)) return true; try { const x = new URL(u); return x.protocol === "https:" && HOSTS.some(h => x.hostname === h || x.hostname.endsWith("." + h)); } catch { return false; } };

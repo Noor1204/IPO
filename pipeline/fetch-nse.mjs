@@ -26,7 +26,7 @@ async function api(u, tries = 3) {
 
 // nsearchives rejects Node's HTTP/2 client, curl over HTTP/1.1 works.
 function download(url, file) {
-  execFileSync("curl", ["-sS", "-L", "--http1.1", "--ssl-no-revoke", "--fail", "-m", "240", "-A", UA, "-e", "https://www.nseindia.com/", "-o", file, url], { stdio: "pipe" });
+  execFileSync("curl", ["-sS", "-L", "--proto", "=https", "--proto-redir", "=https", "--max-filesize", "150000000", "--http1.1", "--ssl-no-revoke", "--fail", "-m", "240", "-A", UA, "-e", "https://www.nseindia.com/", "-o", file, url], { stdio: "pipe" });
 }
 
 const current = (await api("ipo-current-issue")) || [];
@@ -48,6 +48,7 @@ let history = {};
 try { history = await readJson(histFile); }
 catch { try { history = Object.fromEntries((await readJson(path.join(DATA, "nse-history.seed.json"))).filter(r => Object.keys(r.info || {}).length).map(r => [r.symbol, r])); } catch {} }   // first run: seed from an older nse.json
 const toInfo = detail => { const info = {}; for (const r of detail?.issueInfo?.dataList || []) if (r.title) info[r.title.trim()] = String(r.value ?? "").replace(/^"|"$/g, "").replace(/\s+/g, " ").trim(); return info; };
+for (const k of [...symbols.keys()]) if (!/^[A-Z0-9&_.$-]{1,20}$/.test(String(k))) { console.log("skipping an unsafe symbol:", String(k).slice(0, 30)); symbols.delete(k); }   // symbols become file names
 for (const s of symbols.values()) {
   const rowOf = s.row || current.find(c => c.symbol === s.symbol) || upcoming.find(c => c.symbol === s.symbol) || null;
   // NSE Emerge (SME) issues only return their full detail (registrar, lead manager, prospectus, ...) with series=SME
