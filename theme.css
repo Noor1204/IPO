@@ -824,3 +824,7 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 .bsg-r{display:grid;grid-template-columns:minmax(90px,1.2fr) 2fr 52px;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:3px 0}
 .bsg-r i{display:block;height:8px;border-radius:6px;background:linear-gradient(90deg,var(--pri),var(--pri2))}
 .bsg-r b{text-align:right}
+.cl{display:block;margin:0 0 10px}.cl span{display:block;font-size:12px;font-weight:800;color:var(--mut);margin:0 0 4px}
+.cl input,.cl select{width:100%;min-height:44px;padding:8px 12px;border:1px solid var(--bd);border-radius:12px;background:var(--card);color:var(--tx);font:inherit;font-weight:700}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:0 10px}
+@media(max-width:380px){.cgrid{grid-template-columns:1fr}}

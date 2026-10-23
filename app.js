@@ -986,6 +986,32 @@ async function loadActions() {
   } catch { rpState.actSt = "fail"; }
   if (state.tab === "reports") render();
 }
+// IPO calculator: what a lot costs, the profit at a listing price you choose (default = issue price + GMP) and the cost of funding the application
+const calcSt = { sym: null, lots: null, list: null, rate: 9, days: 4 };
+const calcIpos = () => state.ipos.filter(i => ["live", "upcoming"].includes(i.status) && isNum(i.priceHigh) && i.priceHigh > 0 && isNum(i.lot) && i.lot > 0);
+function calcCur() {
+  const L = calcIpos(); let i = L.find(x => x.symbol === (calcSt.want || calcSt.sym)) || L[0]; if (!i) return null; calcSt.want = null;
+  if (calcSt.sym !== i.symbol) { calcSt.sym = i.symbol; calcSt.lots = isNum(i.minInvestmentLots) ? i.minInvestmentLots : 1; const g = gmpNow(i); calcSt.list = isNum(g) ? Math.round((i.priceHigh + g) * 100) / 100 : i.priceHigh; }
+  return i;
+}
+function calcResult() {
+  const i = calcCur(); if (!i) return "";
+  const lots = Math.max(1, Math.min(1000, Math.floor(+calcSt.lots) || 1)), lp = Math.max(0, +calcSt.list || 0), rate = Math.max(0, Math.min(60, +calcSt.rate || 0)), days = Math.max(0, Math.min(30, Math.floor(+calcSt.days) || 0));
+  const sh = lots * i.lot, amt = sh * i.priceHigh, pl = sh * (lp - i.priceHigh), pct = (lp / i.priceHigh - 1) * 100, fund = amt * rate / 100 * days / 365, net = pl - fund;
+  const sg = v => `<b class="${v >= 0 ? "grn-t" : "red-t"}">${v >= 0 ? "+" : "−"}₹${inr(Math.round(Math.abs(v)))}</b>`;
+  return `<div class="gl"><div class="row"><span>Shares</span><b>${inr(sh)}</b></div><div class="row"><span>Amount to apply (upper price ₹${px(i.priceHigh)})</span><b>₹${inr(Math.round(amt))}</b></div><div class="row"><span>Listing price vs issue price</span>${fmtGain(pct)}</div><div class="row"><span>Profit / loss on listing</span>${sg(pl)}</div><div class="row"><span>Funding cost (${rate}% a year, ${days} day${days === 1 ? "" : "s"})</span><b>₹${inr(Math.round(fund))}</b></div><div class="row"><span><b>After funding cost</b></span>${sg(net)}</div></div>`;
+}
+function calcBody() {
+  const L = calcIpos(), i = calcCur();
+  if (!i) return card("", `<p class="mut">No open or upcoming IPO with a price band right now.</p>`);
+  const g = gmpNow(i), inp = (k, l, v, st = "any") => `<label class="cl"><span>${l}</span><input type="number" inputmode="decimal" min="0" step="${st}" data-calc="${k}" value="${esc(String(v))}"></label>`;
+  return card(ic("calculator") + " IPO calculator", `<label class="cl"><span>IPO</span><select data-calc="sym">${L.map(x => `<option value="${esc(x.symbol)}"${x.symbol === i.symbol ? " selected" : ""}>${esc(x.name.replace(/ Limited$/i, ""))}</option>`).join("")}</select></label>
+    <div class="cgrid">${inp("lots", `Lots (1 lot = ${i.lot} shares)`, calcSt.lots, 1)}${inp("list", "Listing price you expect (₹)", calcSt.list, "0.01")}${inp("rate", "Funding rate (% a year)", calcSt.rate)}${inp("days", "Days the money is blocked", calcSt.days, 1)}</div>
+    <div id="calcres">${calcResult()}</div>
+    <p class="mut sm" style="margin:10px 0 0">Assumes you receive the full allotment; in a heavily subscribed IPO you may get nothing. ${isNum(g) ? `The listing price starts at the issue price plus today's GMP (₹${g}), which is unofficial.` : "No GMP is published for this IPO, so the listing price starts at the issue price."} Funding cost is what a lender would charge for the days your money is blocked (the HNI funding idea). A calculation, not advice.</p>`);
+}
+document.addEventListener("input", e => { const k = e.target.dataset?.calc; if (!k || k === "sym") return; calcSt[k] = e.target.value; const r = document.getElementById("calcres"); if (r) r.innerHTML = calcResult(); });
+document.addEventListener("change", e => { if (e.target.dataset?.calc === "sym") { calcSt.want = e.target.value; calcSt.sym = null; render(); } });
 // Corporate actions (NSE): upcoming ex-dates first, then the last 30 days
 function actionsBody() {
   loadActions();
@@ -1008,7 +1034,7 @@ function reportsScreen() {
   const M = all.map(listingMatch).filter(m => m && m.gmpHit), close = M.filter(m => m.gmpHit === "close").length;
   const tiles = `<div class="stats" role="group" aria-label="Listing scoreboard">${[["Listed (with prices)", all.length, ""], ["Opened in gain", gain, "grn-t"], ["Opened in loss", loss, "red-t"], ["GMP within 5 pts", M.length ? close + " of " + M.length : "—", ""]].map(([l, v, c]) => `<div class="stat"><b class="${c}">${v}</b><span>${l}</span></div>`).join("")}</div>`;
   const seg = (grp, cur, items) => `<div class="seg calseg" role="group">${items.map(([k, l]) => `<button data-rp="${grp}:${k}" class="${k === cur ? "on" : ""}" aria-pressed="${k === cur}">${l}</button>`).join("")}</div>`;
-  const views = seg("view", rpState.view, [["perf", "Performance"], ["gmp", "GMP accuracy"], ["top", "Top 10"], ["act", "Actions"]]);
+  const views = seg("view", rpState.view, [["perf", "Listings"], ["gmp", "GMP check"], ["top", "Top 10"], ["act", "Actions"], ["calc", "Calc"]]);
   const boards = seg("board", rpState.board, [["all", "All"], ["main", "Mainboard"], ["sme", "SME"]]);
   const nm = i => `<button type="button" class="linkb" data-open="${esc(i.symbol)}">${esc(i.name.replace(/ Limited$/i, ""))}</button>`;
   const sortBy = { name: i => i.name, list: i => i.listing || "", gain: i => i.listingPerf.dayOpenGainPct, last: i => i.listingPerf.ltpGainPct ?? -1e9, subs: i => totalTimes(i) ?? -1, size: i => i.issueSizeCr ?? -1 };
@@ -1016,14 +1042,14 @@ function reportsScreen() {
   let body = "";
   if (rpState.view === "perf") {
     const S = [...R].sort((a, b) => { const x = sortBy[rpState.sort](a), y = sortBy[rpState.sort](b); return (x > y ? 1 : x < y ? -1 : 0) * rpState.dir; });
-    body = card(ic("trending-up") + " Listed IPOs: how they performed", (S.length ? `<div class="tw"><table class="rp"><tr><th>${th("name", "IPO")}</th><th>${th("list", "Listed")}</th><th>Issue ₹</th><th>${th("gain", "Day-1 open")}</th><th>${th("last", "Last price")}</th><th>${th("subs", "Subscribed")}</th><th>${th("size", "Size ₹ Cr")}</th></tr>${S.map(i => `<tr><td>${nm(i)}</td><td>${fmtS(i.listing)}</td><td>${isNum(i.priceHigh) ? px(i.priceHigh) : "—"}</td><td>${fmtGain(i.listingPerf.dayOpenGainPct)}</td><td>${fmtGain(i.listingPerf.ltpGainPct)}</td><td>${isNum(totalTimes(i)) ? f2(totalTimes(i)) + "x" : "—"}</td><td>${isNum(i.issueSizeCr) ? cr(i.issueSizeCr) : "—"}</td></tr>`).join("")}</table></div>` : `<p class="mut">No listed IPO with prices in this group yet.</p>`) +
+    body = card(ic("trending-up") + " Listed IPOs: how they performed", (S.length ? `<div class="tw"><table class="rp"><tr><th>${th("name", "IPO")}</th><th>${th("list", "Listed")}</th><th>Issue ₹</th><th>${th("gain", "Day-1 open")}</th><th>${th("last", "Last price")}</th><th>${th("subs", "Subscribed")}</th><th>${th("size", "Size ₹ Cr")}</th></tr>${S.map(i => `<tr><td>${nm(i)}</td><td>${fmtS(i.listing)}</td><td>${isNum(i.priceHigh) ? px(i.priceHigh) : "—"}</td><td>${fmtGain(i.listingPerf.dayOpenGainPct)}</td><td>${fmtGain(i.listingPerf.ltpGainPct)}</td><td>${isNum(totalTimes(i)) ? f2(totalTimes(i)) + "x" : "—"}</td><td>${isNum(i.issueSizeCr) ? cr(i.issueSizeCr) : "—"}</td></tr>`).join("")}</table></div><button type="button" class="btn ghost" style="margin-top:10px" data-rp="csv">${ic("download")} Download CSV</button>` : `<p class="mut">No listed IPO with prices in this group yet.</p>`) +
       `<p class="mut sm" style="margin:8px 0 0">Day-1 open and last price are from Yahoo Finance and may differ slightly from the exchange's discovered price. Only IPOs whose prices could be fetched are listed.</p>`);
   } else if (rpState.view === "gmp") {
     const S = R.map(i => [i, listingMatch(i)]).filter(([, m]) => m && m.gmpP !== null).sort((a, b) => (b[0].listing || "").localeCompare(a[0].listing || ""));
     const hit = S.filter(([, m]) => m.gmpHit === "close").length, above = S.filter(([, m]) => m.err > 0).length;
     body = card(ic("target") + " GMP vs actual listing", (S.length ? `<p class="mut sm" style="margin:0 0 8px">GMP was within 5 points of the real day-1 open for <b>${hit} of ${S.length}</b> IPOs; the IPO opened above the GMP for ${above} and below it for ${S.length - above}.</p><div class="tw"><table class="rp"><tr><th>IPO</th><th>Listed</th><th>GMP</th><th>Day-1 open</th><th>Gap</th><th>Result</th></tr>${S.map(([i, m]) => `<tr><td>${nm(i)}</td><td>${fmtS(i.listing)}</td><td>${fmtGain(m.gmpP)}</td><td>${fmtGain(m.actual)}</td><td>${fmtPts(m.err)}</td><td>${GMP_HIT[m.gmpHit]}</td></tr>`).join("")}</table></div>` : `<p class="mut">No listed IPO with both a GMP record and a day-1 price in this group yet.</p>`) +
       `<p class="mut sm" style="margin:8px 0 0">GMP = the last reading on or before listing day, as % of the issue price. Close = within 5 points, Near = within 10. GMP is unofficial; this table only measures how it fared.</p>`);
-  } else if (rpState.view === "act") {
+  } else if (rpState.view === "calc") { body = calcBody(); } else if (rpState.view === "act") {
     body = actionsBody();
   } else {
     const top = (title, arr, fmt) => card(title, arr.length ? `<ol class="top10">${arr.slice(0, 10).map(([i, v]) => `<li>${nm(i)}<b class="num">${fmt(v, i)}</b></li>`).join("")}</ol>` : `<p class="mut">No data yet.</p>`);
@@ -1032,11 +1058,19 @@ function reportsScreen() {
     body = top("Most subscribed", by(totalTimes), v => f2(v) + "x") + top("Best day-1 open", by(i => i.listingPerf?.dayOpenGainPct), v => fmtGain(v)) + top("Worst day-1 open", by(i => i.listingPerf?.dayOpenGainPct).reverse(), v => fmtGain(v)) + top("Biggest issues (₹ Cr)", by(i => i.issueSizeCr), v => cr(v)) +
       `<p class="mut sm">Ranked from the IPOs stored in this app (open, closed and listed in the recent window), not from all IPOs since 2004.</p>`;
   }
-  return `${head("IPO Reports")}${tiles}${views}${rpState.view === "act" ? "" : boards}${body}`;
+  return `${head("IPO Reports")}${tiles}${views}${rpState.view === "act" || rpState.view === "calc" ? "" : boards}${body}`;
+}
+// CSV of the listed-IPO table (cells starting with = + - @ are quoted with a leading apostrophe so a spreadsheet never runs them)
+function rpCsv() {
+  const q = v => { let x = v === null || v === undefined ? "" : String(v); if (/^[=+\-@]/.test(x) && !/^-?[0-9.]+$/.test(x)) x = "'" + x; return /[",\n]/.test(x) ? '"' + x.replace(/"/g, '""') + '"' : x; };
+  const rows = [["IPO", "Board", "Listing date", "Issue price", "Day-1 open %", "Last price %", "Subscribed (x)", "Issue size (Rs Cr)"], ...rpRows().map(i => [i.name, i.board, i.listing, i.priceHigh, i.listingPerf.dayOpenGainPct, i.listingPerf.ltpGainPct, totalTimes(i), i.issueSizeCr])];
+  const url = URL.createObjectURL(new Blob([rows.map(r => r.map(q).join(",")).join("\n")], { type: "text/csv" })), a = document.createElement("a");
+  a.href = url; a.download = "trendy-ipo-performance.csv"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 function rpClick(t) {
+  if (t.dataset.rp === "csv") { rpCsv(); toast("CSV downloaded"); return; }
   const [k, v] = String(t.dataset.rp).split(":");
-  if (k === "view" && ["perf", "gmp", "top", "act"].includes(v)) rpState.view = v;
+  if (k === "view" && ["perf", "gmp", "top", "act", "calc"].includes(v)) rpState.view = v;
   else if (k === "kind" && ACT_KINDS.some(x => x[0] === v)) rpState.kind = v;
   else if (k === "board" && ["all", "main", "sme"].includes(v)) rpState.board = v;
   else if (k === "sort" && ["name", "list", "gain", "last", "subs", "size"].includes(v)) { if (rpState.sort === v) rpState.dir = -rpState.dir; else { rpState.sort = v; rpState.dir = v === "name" ? 1 : -1; } }
