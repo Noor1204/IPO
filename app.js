@@ -17,7 +17,7 @@ const state = {
 };
 // Factor weights (sum 100). Missing factors are dropped and the rest re-normalised.
 const WEIGHTS = { financial: .25, gmp: .15, subscription: .20, valuation: .20, quality: .10, peers: .10 };
-const FACTOR_LABEL = { financial: "Financials", gmp: "GMP", subscription: "Subscription", valuation: "Valuation", quality: "Business quality", peers: "Returns vs peers" };
+const FACTOR_LABEL = { financial: "Financials", gmp: "GMP", subscription: "Subscription", valuation: "Valuation", quality: "Business quality", peers: "RoNW vs peers" };
 
 // ---------- formatting ----------
 const isNum = v => typeof v === "number" && isFinite(v);
@@ -785,7 +785,7 @@ function detail(forReport = false) {
   const scoreC = card(ic("trophy") + " Trendy IPO Score", `<div class="scorec"><div class="scorering">${ring(sc.score, true)}</div><div class="scoret"><span class="badge ${v.c}">${v.t}</span><p class="mut sm">${sc.score === null ? "Not enough data to score this IPO yet." : `${Object.keys(fv).length} of ${Object.keys(WEIGHTS).length} factors scored · ${sc.coverage}% of the weight had data.`} Indicative only.</p></div></div>` +
     mx("why", `<div class="factors">${Object.keys(WEIGHTS).map(n => `<div class="factor"><div class="row"><span>${FACTOR_LABEL[n]} <small class="mut">${WEIGHTS[n] * 100}%</small></span><b class="num">${fv[n] ?? "N/A"}</b></div><div class="bar"><i style="width:${fv[n] ?? 0}%;background:${col(fv[n] ?? null)}"></i></div></div>`).join("")}</div>
     <div class="note"><b>${ic("sparkles")} Analysis (${sc.coverage}% of score weight had data)</b><ul class="reasons">${reasons(i).map(([k, r]) => `<li class="${k}">${ic(k === "good" ? "circle-check" : k === "mid" ? "minus" : k === "low" ? "alert-triangle" : "info-circle")}<span>${esc(r)}</span></li>`).join("")}</ul></div>
-    <p class="mut sm">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p>`, { n: 0, more: "Why this score", less: "Hide details" }), "ai");
+    <p class="mut sm">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. This is a summary ranking of the data, not a prediction: the formula has not been back-tested, and GMP and subscription (unofficial or still moving) carry part of the weight. Not investment advice.</p>`, { n: 0, more: "Why this score", less: "Hide details" }), "ai");
   const lp = i.listingPerf ? card(ic("trending-up") + " Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + esc(i.listingPerf.exchange) + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : "";
   const checks = (i.checks || []).length ? card("", (i.checks.some(c => !c.ok) ? `<div class="note warnb">${ic("alert-triangle")}<span><b>Sources disagree:</b> ${i.checks.filter(c => !c.ok).map(c => `${esc(c.field)}: NSE ${esc(c.nse)} vs InvestorGain ${esc(c.other)}`).join("; ")}</span></div>` : `<span class="mut sm okline">${ic("check")} NSE and InvestorGain agree on ${i.checks.length} checks (issue size, lot, cap price, dates).</span>`)) : "";
   const ov = lp + progressCard(i) + scoreC + offerCard(i) +
@@ -1079,7 +1079,7 @@ function rpClick(t) {
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
 function settings() {
   const A = state.alerts, w = state.watch.map(byId).filter(Boolean);
-  return `${head("Settings")}<div class="card"><h2>${ic("bell")} Alerts</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved locally. Push notifications need a backend.</p></div>
+  return `${head("Settings")}<div class="card"><h2>${ic("bell")} In-app reminders</h2>${[["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([k, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${k}" ${A[k] ? "checked" : ""}></div>`).join("")}<p class="mut sm">Saved on this device. These show inside the app (bell icon); they are not phone push notifications, so nothing arrives while the app is closed.</p></div>
   <div class="card"><h2>${ic("star")} Watchlist</h2>${w.map(i => `<div class="row" style="padding:8px 0"><div><b>${esc(i.name)}</b><div class="mut">${stLabel(i).replace(/<[^>]+>/g, "")}</div></div><button class="btn ghost" style="flex:none" data-open="${i.symbol}">View</button></div>`).join("") || '<p class="mut">Star an IPO from its detail page.</p>'}</div>
   <div class="card"><h2>Data sources</h2><ul class="lst sm">${(state.meta?.sources || []).map(s => `<li>${esc(s.name || s)}${s.fetchedAt ? `<div class="mut">updated ${new Date(s.fetchedAt).toLocaleString("en-IN")}</div>` : ""}</li>`).join("")}<li>Generated: ${state.meta ? new Date(state.meta.generatedAt).toLocaleString("en-IN") : "—"}</li></ul></div>`;
 }
@@ -1226,7 +1226,7 @@ function subContent(k) {
     const p = state.pan;
     return subPage("Add PAN Number", card("Your PAN", `<p class="sm" style="margin-top:0">Save your PAN here so it is kept ready for allotment checks. <b>It stays only on this phone/browser</b> and is never sent to us or anyone else.</p>
       ${p ? `<div class="row" style="padding:8px 0"><div><div class="mut sm">Saved PAN</div><b style="letter-spacing:1.5px">${esc(p.slice(0, 5) + "••••" + p.slice(9))}</b></div><div style="display:flex;gap:6px"><button class="btn ghost" style="width:auto;padding:6px 12px" data-pandel>Remove</button></div></div>` : ""}
-      <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
+      <label class="mut sm" for="pan-in" style="display:block;margin:10px 0 4px">${p ? "Change PAN" : "Enter PAN"}</label><input id="pan-in" maxlength="10" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="ABCDE1234F" style="text-transform:uppercase;letter-spacing:2px"><div class="note warnb" style="margin-top:10px">${ic("alert-triangle")}<span><b>Optional.</b> The PAN is kept as plain text in this browser only (never sent to any server) and is not encrypted. Anyone who can open this browser on this device could read it. Do not save it on a shared or public device.</span></div><button class="btn" data-pansave style="width:100%;margin-top:10px">Save PAN</button>`));
   }
   if (k === "notif") {
     const n = notifList(), rd = nRead(), left = n.filter(x => !rd.includes(x[4])).length;
@@ -1234,7 +1234,7 @@ function subContent(k) {
       `<p class="mut sm">This list is made from the live data each time you open the app.</p>`);
   }
   if (k === "nsettings") {
-    return subPage("Notification Settings", card(ic("bell") + " Alerts", [["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([x, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${x}" ${A[x] ? "checked" : ""}></div>`).join("") + `<p class="mut sm">Saved on this device. The Notifications page shows these events from the live data.</p>`));
+    return subPage("Notification Settings", card(ic("bell") + " In-app reminders", [["open", "IPO opening"], ["close", "Closing day reminder"], ["allot", "Allotment result"]].map(([x, l]) => `<div class="row" style="padding:8px 0"><span>${l}</span><input type="checkbox" data-alert="${x}" ${A[x] ? "checked" : ""}></div>`).join("") + `<p class="mut sm">Saved on this device. The bell icon shows these events from the live data when you open the app; they are not phone push notifications.</p>`));
   }
   if (k === "rate") {
     const r = state.rate = store.get("rate", 0);

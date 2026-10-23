@@ -42,7 +42,7 @@ They only run while the PC is on and you are logged in. `.github/workflows/refre
 ## Score
 Six factors, weights 25/15/20/20/10/10: financials, GMP, subscription, valuation vs peers,
 business quality (OFS share, customer/government concentration, high-severity risks, cash flow, promoter holding),
-returns vs peers. A factor with no data is dropped and the rest re-weighted; below 50% data coverage no score is shown.
+RoNW vs peers. A factor with no data is dropped and the rest re-weighted; below 50% data coverage no score is shown.
 Debt/equity uses the figure the offer document reports when present.
 
 ## Known limits
