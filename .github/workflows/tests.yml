@@ -1,0 +1,23 @@
+name: Tests
+
+# Runs `npm test` when code changes (not on the bot's data commits, so a data hiccup never blocks publishing).
+on:
+  push:
+    branches: [main]
+    paths: ["*.js", "*.css", "index.html", "sw.js", "pipeline/**", "tests/**", "package.json"]
+  workflow_dispatch: {}
+
+permissions: {}
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
