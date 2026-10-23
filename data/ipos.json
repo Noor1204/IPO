@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-23T10:36:39.974Z",
+ "generatedAt": "2026-10-23T10:46:32.347Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-23T10:34:29.514Z"
+   "fetchedAt": "2026-10-23T10:45:32.003Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-23T10:34:41.388Z"
+   "fetchedAt": "2026-10-23T10:45:46.131Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-23T10:34:30.928Z"
+   "fetchedAt": "2026-10-23T10:45:33.571Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-23T10:34:30.913Z",
+   "subsAsOn": "2026-10-23T10:45:33.551Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -88,8 +88,190 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-23T10:34:30.913Z",
+   "fetchedAt": "2026-10-23T10:45:33.551Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "MKSONS",
+   "name": "M. K. Sons Fine Jewels Limited",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-10-28",
+   "close": "2026-10-30",
+   "timeline": {
+    "open": "2026-10-28",
+    "close": "2026-10-30",
+    "allotment": "2026-11-02",
+    "refund": "2026-11-03",
+    "demat": "2026-11-03",
+    "listing": "2026-11-04"
+   },
+   "allotment": "2026-11-02",
+   "listing": "2026-11-04",
+   "datesExpected": false,
+   "priceLow": 153,
+   "priceHigh": 162,
+   "lot": 91,
+   "faceValue": 10,
+   "issueShares": 17000000,
+   "issueSizeCr": 275.4,
+   "issueType": "100% Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public offering comprising of Fresh issue up to 1,36,00,000 Equity Shares and offer for sale up to 34,00,000 Equity shares",
+   "upiCutoff": "30-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-23T10:44:36.245Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 153,
+     "priceHigh": 162,
+     "maxAmount": 200000,
+     "minAmount": 14742,
+     "lot": 91,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 153,
+     "priceHigh": 162,
+     "maxAmount": null,
+     "minAmount": 206388,
+     "lot": 91,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14742,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S-62, 6th floor, Pinnacle Business Park, next to Ahura Centre, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+     "phone": "+91 022 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Vinayak Morbale",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "Bigshare Services Private Limited",
+    "address": "Office No. S-62, 6th floor, Pinnacle Business Park, next to Ahura Centre, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+    "contact": "Vinayak Morbale, +91 022 6263 8200, ipo@bigshareonline.com"
+   },
+   "leadManagers": "Aryaman Financial Services Limited",
+   "leadManagersList": [
+    "Aryaman Financial Services Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MKSONS.zip",
+    "anchor": null
+   },
+   "logo": null,
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_MKSONS.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_MKSONS.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_MKSONS.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_MKSONS.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_MKSONS.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/mksons-fine-jewels-ipo/2288/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 275.4,
+     "other": 330.48,
+     "ok": false
+    },
+    {
+     "field": "Lot size",
+     "nse": 91,
+     "other": 91,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 162,
+     "other": 162,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-30",
+     "other": "2026-10-30",
+     "ok": true
+    }
+   ],
+   "fundamentals": null,
+   "verification": null,
+   "fetchedAt": "2026-10-23T10:44:36.245Z"
   },
   {
    "symbol": "IG-2393",
@@ -123,7 +305,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-23T10:34:30.913Z",
+   "subsAsOn": "2026-10-23T10:45:33.551Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -156,76 +338,535 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-23T10:34:30.913Z",
+   "fetchedAt": "2026-10-23T10:45:33.551Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
-   "symbol": "IG-2288",
-   "name": "M.K.Sons Fine Jewels",
+   "symbol": "SFCTECH",
+   "name": "SFC Environmental Technologies Limited",
    "board": "Mainboard",
    "status": "upcoming",
-   "open": "2026-10-28",
-   "close": "2026-10-30",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
    "timeline": {
-    "open": "2026-10-28",
-    "close": "2026-10-30",
-    "allotment": "2026-11-02",
-    "refund": "2026-11-03",
-    "demat": "2026-11-03",
-    "listing": "2026-11-04"
+    "open": "2026-10-27",
+    "close": "2026-10-29",
+    "allotment": "2026-10-30",
+    "refund": "2026-11-02",
+    "demat": "2026-11-02",
+    "listing": "2026-11-03"
    },
-   "allotment": "2026-11-02",
-   "listing": "2026-11-04",
+   "allotment": "2026-10-30",
+   "listing": "2026-11-03",
    "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 162,
-   "lot": 91,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 330.48,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "priceLow": 313,
+   "priceHigh": 330,
+   "lot": 45,
+   "faceValue": 2,
+   "issueShares": 20228182,
+   "issueSizeCr": 667.53,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public offering comprising Fresh issue of aggregating up to Rs. 1500 million and offer for sale up to 1,56,82,750 Equity Shares",
+   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-23T10:34:30.913Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-23T10:44:41.648Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 313,
+     "priceHigh": 330,
+     "maxAmount": 200000,
+     "minAmount": 14850,
+     "lot": 45,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 313,
+     "priceHigh": 330,
+     "maxAmount": null,
+     "minAmount": 207900,
+     "lot": 45,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14850,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 8108114949",
+     "email": "sfcenvironmental.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://www.in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
    "anchorSummary": null,
    "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
    },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, +91 8108114949, sfcenvironmental.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "IIFL Capital Services Limited, JM Financial Limited and Nuvama Wealth Management Limited",
+   "leadManagersList": [
+    "IIFL Capital Services Limited",
+    "JM Financial Limited",
+    "Nuvama Wealth Management Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
     {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792670149542.PDF",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
      "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/mksons-fine-jewels-ipo/2288/",
+     "url": "https://www.investorgain.com/gmp/sfc-environmental-technologies-ipo/1642/",
      "source": "InvestorGain",
      "kind": "link",
      "group": "Links"
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 21,
+    "min": 21,
+    "max": 21,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 21,
+      "pct": 6.36,
+      "updated": "23-Oct 11:37",
+      "seenLow": 21,
+      "seenHigh": 31
+     }
+    ],
+    "rating": 2,
+    "updated": "23-Oct 11:37",
+    "history": [
+     {
+      "date": "2026-10-21",
+      "gmp": 31
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 21
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 21
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-10-23T10:34:30.913Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 667.53,
+     "other": 667.53,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 45,
+     "other": 45,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 330,
+     "other": 330,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-29",
+     "other": "2026-10-29",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "SFC Environmental Technologies Limited",
+    "basis": "Consolidated",
+    "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
+    "sector": "Environmental Engineering & Waste Management",
+    "headquarters": "Navi Mumbai, Maharashtra",
+    "founded_year": 2005,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      904.94,
+      999.47,
+      1323.43
+     ],
+     "revenue": [
+      657.5,
+      697.86,
+      803.63
+     ],
+     "other_income": [
+      19.07,
+      29.11,
+      17.64
+     ],
+     "ebitda": [
+      193.25,
+      207.48,
+      235.81
+     ],
+     "pbt": [
+      193.45,
+      205.24,
+      211.49
+     ],
+     "pat": [
+      144.17,
+      152.01,
+      160.21
+     ],
+     "net_worth": [
+      534.3,
+      648.68,
+      804.17
+     ],
+     "reserves": [
+      528.07,
+      630,
+      785.49
+     ],
+     "borrowings": [
+      139.16,
+      83.71,
+      195.64
+     ],
+     "cash_and_bank": [
+      188.61,
+      136.05,
+      156.82
+     ],
+     "operating_cash_flow": [
+      -11.69,
+      65.51,
+      -25.8
+     ]
+    },
+    "kpi": {
+     "roce": [
+      28.56,
+      29.29,
+      22.21
+     ],
+     "ronw": [
+      30.46,
+      24.36,
+      21.25
+     ],
+     "roe": [
+      29.8,
+      24.84,
+      21.55
+     ],
+     "eps_basic": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "eps_diluted": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "pat_margin": [
+      21.93,
+      21.78,
+      19.94
+     ],
+     "ebitda_margin": [
+      29.39,
+      29.73,
+      29.34
+     ],
+     "debt_equity": [
+      -0.09,
+      -0.08,
+      0.05
+     ],
+     "current_ratio": null,
+     "nav_per_share": 86.09,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 15.93,
+     "other": [
+      {
+       "name": "Total Order Book",
+       "unit": "₹ crore",
+       "values": [
+        785.23,
+        560.39,
+        1574.52
+       ]
+      },
+      {
+       "name": "Cash Conversion Cycle",
+       "unit": "Days",
+       "values": [
+        156,
+        232,
+        242
+       ]
+      },
+      {
+       "name": "Fixed Asset Turnover",
+       "unit": "X",
+       "values": [
+        13.25,
+        10.85,
+        12.07
+       ]
+      },
+      {
+       "name": "Treatment capacity facilitated",
+       "unit": "MLD",
+       "values": [
+        13906.98,
+        15209.45,
+        17144.01
+       ]
+      },
+      {
+       "name": "Number of treatment installations",
+       "unit": "Number",
+       "values": [
+        577,
+        639,
+        705
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Thermax Limited",
+      "revenue_cr": 10694.15,
+      "face_value": 2,
+      "cmp": 3325.75,
+      "eps_basic": 63.95,
+      "eps_diluted": 63.94,
+      "nav": 492.55,
+      "pe": 52.01,
+      "ronw": 13.74
+     },
+     {
+      "name": "Praj Industries Limited",
+      "revenue_cr": 3167.88,
+      "face_value": 2,
+      "cmp": 287,
+      "eps_basic": 1.3,
+      "eps_diluted": 1.3,
+      "nav": 71.22,
+      "pe": 220.77,
+      "ronw": 1.77
+     },
+     {
+      "name": "Ion Exchange (India) Limited",
+      "revenue_cr": 2914.84,
+      "face_value": 1,
+      "cmp": 377.2,
+      "eps_basic": 12.03,
+      "eps_diluted": 12.03,
+      "nav": 91.3,
+      "pe": 31.34,
+      "ronw": 11.2
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 150,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": 15682750,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
+       "amount_cr": 42.23
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 74.92
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Sandeep Sudhakar Asolkar"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": null
+    },
+    "concentration": {
+     "top_customers_pct": 64.44,
+     "govt_share_pct": 92.35,
+     "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
+    },
+    "order_book_cr": 1570.07,
+    "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
+    "strengths": [
+     "Market leader in sequencing batch reactor technology in India with over 80% market share.",
+     "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
+     "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
+     "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
+     "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
+     "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
+    ],
+    "risks": [
+     {
+      "title": "Government Entity Dependence",
+      "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Negative Operating Cash Flows",
+      "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer Concentration",
+      "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
+      "severity": "high"
+     },
+     {
+      "title": "Segment Concentration",
+      "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
+      "severity": "medium"
+     },
+     {
+      "title": "Working Capital and Receivable Days",
+      "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
+      "severity": "medium"
+     },
+     {
+      "title": "Technology Obsolescence Risk",
+      "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
+      "severity": "medium"
+     },
+     {
+      "title": "Loans to Subsidiaries",
+      "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
+      "severity": "medium"
+     },
+     {
+      "title": "Pending Legal Proceedings",
+      "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 75,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
+    ],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-23T10:44:41.648Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -271,7 +912,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:01.058Z",
+   "subsAsOn": "2026-10-23T10:44:47.046Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -762,534 +1403,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:01.058Z"
-  },
-  {
-   "symbol": "SFCTECH",
-   "name": "SFC Environmental Technologies Limited",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "timeline": {
-    "open": "2026-10-27",
-    "close": "2026-10-29",
-    "allotment": "2026-10-30",
-    "refund": "2026-11-02",
-    "demat": "2026-11-02",
-    "listing": "2026-11-03"
-   },
-   "allotment": "2026-10-30",
-   "listing": "2026-11-03",
-   "datesExpected": false,
-   "priceLow": 313,
-   "priceHigh": 330,
-   "lot": 45,
-   "faceValue": 2,
-   "issueShares": 20228182,
-   "issueSizeCr": 667.53,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public offering comprising Fresh issue of aggregating up to Rs. 1500 million and offer for sale up to 1,56,82,750 Equity Shares",
-   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:06.689Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 313,
-     "priceHigh": 330,
-     "maxAmount": 200000,
-     "minAmount": 14850,
-     "lot": 45,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 313,
-     "priceHigh": 330,
-     "maxAmount": null,
-     "minAmount": 207900,
-     "lot": 45,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14850,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": null,
-    "registrar": {
-     "name": "MUFG Intime India Private Limited",
-     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-     "phone": "+91 8108114949",
-     "email": "sfcenvironmental.ipo@in.mpms.mufg.com",
-     "contactPerson": "Shanti Gopalkrishnan",
-     "website": "https://www.in.mpms.mufg.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
-    "byPrice": {
-     "-": "-"
-    }
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, +91 8108114949, sfcenvironmental.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "IIFL Capital Services Limited, JM Financial Limited and Nuvama Wealth Management Limited",
-   "leadManagersList": [
-    "IIFL Capital Services Limited",
-    "JM Financial Limited",
-    "Nuvama Wealth Management Limited"
-   ],
-   "sponsorBank": "Axis Bank Limited and ICICI Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
-    "anchor": null
-   },
-   "logo": null,
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792670149542.PDF",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/sfc-environmental-technologies-ipo/1642/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 21,
-    "min": 21,
-    "max": 21,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 21,
-      "pct": 6.36,
-      "updated": "23-Oct 11:37",
-      "seenLow": 21,
-      "seenHigh": 31
-     }
-    ],
-    "rating": 2,
-    "updated": "23-Oct 11:37",
-    "history": [
-     {
-      "date": "2026-10-21",
-      "gmp": 31
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 21
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 667.53,
-     "other": 667.53,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 45,
-     "other": 45,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 330,
-     "other": 330,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-29",
-     "other": "2026-10-29",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "SFC Environmental Technologies Limited",
-    "basis": "Consolidated",
-    "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
-    "sector": "Environmental Engineering & Waste Management",
-    "headquarters": "Navi Mumbai, Maharashtra",
-    "founded_year": 2005,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      904.94,
-      999.47,
-      1323.43
-     ],
-     "revenue": [
-      657.5,
-      697.86,
-      803.63
-     ],
-     "other_income": [
-      19.07,
-      29.11,
-      17.64
-     ],
-     "ebitda": [
-      193.25,
-      207.48,
-      235.81
-     ],
-     "pbt": [
-      193.45,
-      205.24,
-      211.49
-     ],
-     "pat": [
-      144.17,
-      152.01,
-      160.21
-     ],
-     "net_worth": [
-      534.3,
-      648.68,
-      804.17
-     ],
-     "reserves": [
-      528.07,
-      630,
-      785.49
-     ],
-     "borrowings": [
-      139.16,
-      83.71,
-      195.64
-     ],
-     "cash_and_bank": [
-      188.61,
-      136.05,
-      156.82
-     ],
-     "operating_cash_flow": [
-      -11.69,
-      65.51,
-      -25.8
-     ]
-    },
-    "kpi": {
-     "roce": [
-      28.56,
-      29.29,
-      22.21
-     ],
-     "ronw": [
-      30.46,
-      24.36,
-      21.25
-     ],
-     "roe": [
-      29.8,
-      24.84,
-      21.55
-     ],
-     "eps_basic": [
-      15.16,
-      15.42,
-      16.52
-     ],
-     "eps_diluted": [
-      15.16,
-      15.42,
-      16.52
-     ],
-     "pat_margin": [
-      21.93,
-      21.78,
-      19.94
-     ],
-     "ebitda_margin": [
-      29.39,
-      29.73,
-      29.34
-     ],
-     "debt_equity": [
-      -0.09,
-      -0.08,
-      0.05
-     ],
-     "current_ratio": null,
-     "nav_per_share": 86.09,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 15.93,
-     "other": [
-      {
-       "name": "Total Order Book",
-       "unit": "₹ crore",
-       "values": [
-        785.23,
-        560.39,
-        1574.52
-       ]
-      },
-      {
-       "name": "Cash Conversion Cycle",
-       "unit": "Days",
-       "values": [
-        156,
-        232,
-        242
-       ]
-      },
-      {
-       "name": "Fixed Asset Turnover",
-       "unit": "X",
-       "values": [
-        13.25,
-        10.85,
-        12.07
-       ]
-      },
-      {
-       "name": "Treatment capacity facilitated",
-       "unit": "MLD",
-       "values": [
-        13906.98,
-        15209.45,
-        17144.01
-       ]
-      },
-      {
-       "name": "Number of treatment installations",
-       "unit": "Number",
-       "values": [
-        577,
-        639,
-        705
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Thermax Limited",
-      "revenue_cr": 10694.15,
-      "face_value": 2,
-      "cmp": 3325.75,
-      "eps_basic": 63.95,
-      "eps_diluted": 63.94,
-      "nav": 492.55,
-      "pe": 52.01,
-      "ronw": 13.74
-     },
-     {
-      "name": "Praj Industries Limited",
-      "revenue_cr": 3167.88,
-      "face_value": 2,
-      "cmp": 287,
-      "eps_basic": 1.3,
-      "eps_diluted": 1.3,
-      "nav": 71.22,
-      "pe": 220.77,
-      "ronw": 1.77
-     },
-     {
-      "name": "Ion Exchange (India) Limited",
-      "revenue_cr": 2914.84,
-      "face_value": 1,
-      "cmp": 377.2,
-      "eps_basic": 12.03,
-      "eps_diluted": 12.03,
-      "nav": 91.3,
-      "pe": 31.34,
-      "ronw": 11.2
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": 150,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
-     "ofs_shares": 15682750,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 2,
-     "objects": [
-      {
-       "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
-       "amount_cr": 42.23
-      },
-      {
-       "purpose": "Funding working capital requirements",
-       "amount_cr": 74.92
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Sandeep Sudhakar Asolkar"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": null
-    },
-    "concentration": {
-     "top_customers_pct": 64.44,
-     "govt_share_pct": 92.35,
-     "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
-    },
-    "order_book_cr": 1570.07,
-    "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
-    "strengths": [
-     "Market leader in sequencing batch reactor technology in India with over 80% market share.",
-     "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
-     "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
-     "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
-     "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
-     "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
-    ],
-    "risks": [
-     {
-      "title": "Government Entity Dependence",
-      "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
-      "severity": "high"
-     },
-     {
-      "title": "Negative Operating Cash Flows",
-      "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
-      "severity": "high"
-     },
-     {
-      "title": "Customer Concentration",
-      "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
-      "severity": "high"
-     },
-     {
-      "title": "Segment Concentration",
-      "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
-      "severity": "medium"
-     },
-     {
-      "title": "Working Capital and Receivable Days",
-      "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
-      "severity": "medium"
-     },
-     {
-      "title": "Technology Obsolescence Risk",
-      "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
-      "severity": "medium"
-     },
-     {
-      "title": "Loans to Subsidiaries",
-      "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
-      "severity": "medium"
-     },
-     {
-      "title": "Pending Legal Proceedings",
-      "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
-   },
-   "verification": {
-    "status": "warn",
-    "checked": 75,
-    "notFound": 0,
-    "issues": [
-     "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
-    ],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-23T10:34:06.689Z"
+   "fetchedAt": "2026-10-23T10:44:47.046Z"
   },
   {
    "symbol": "WISCON",
@@ -1331,7 +1445,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:17.985Z",
+   "subsAsOn": "2026-10-23T10:45:08.212Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1425,7 +1539,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T10:34:17.985Z"
+   "fetchedAt": "2026-10-23T10:45:08.212Z"
   },
   {
    "symbol": "EDELALTS",
@@ -1471,7 +1585,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:07.587Z",
+   "subsAsOn": "2026-10-23T10:44:52.477Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1979,7 +2093,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:07.587Z"
+   "fetchedAt": "2026-10-23T10:44:52.477Z"
   },
   {
    "symbol": "CORE4",
@@ -2025,7 +2139,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:16.136Z",
+   "subsAsOn": "2026-10-23T10:45:04.983Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2055,7 +2169,7 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Friday, October 23 ,  2026  4:01:48 PM",
+    "asOn": "Friday, October 23 ,  2026  4:14:21 PM",
     "totalBids": 277200,
     "timesSubscribed": null,
     "byPrice": {
@@ -2121,7 +2235,7 @@
    "gmp": null,
    "subHistory": [
     {
-     "at": "2026-10-23T10:36:39.958Z",
+     "at": "2026-10-23T10:46:32.328Z",
      "date": "2026-10-23",
      "qib": null,
      "bnii": null,
@@ -2154,7 +2268,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T10:34:16.136Z"
+   "fetchedAt": "2026-10-23T10:45:04.983Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -2192,8 +2306,8 @@
     },
     "nii": {
      "offered": 3295454,
-     "bid": 2084397,
-     "times": 0.6325067805528465
+     "bid": 2091642,
+     "times": 0.634705263675354
     },
     "bnii": {
      "offered": 2196970,
@@ -2202,25 +2316,25 @@
     },
     "snii": {
      "offered": 1098484,
-     "bid": 794514,
-     "times": 0.7232822690180285
+     "bid": 801759,
+     "times": 0.7298777223883097
     },
     "retail": {
      "offered": 2196969,
-     "bid": 4151868,
-     "times": 1.8898163788382996
+     "bid": 4194729,
+     "times": 1.9093255298549956
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 12083331,
-     "bid": 26617857,
-     "times": 2.202857556413873
+     "bid": 26667963,
+     "times": 2.2070042606628917
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T16:00:00+05:30",
+   "subsAsOn": "2026-10-23T16:12:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -2265,43 +2379,45 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Oct-2026 15:57:00 IST",
-    "totalBids": 22892751,
-    "timesSubscribed": 1.89,
+    "asOn": "As on 23-Oct-2026 16:09:00 IST",
+    "totalBids": 26685183,
+    "timesSubscribed": 2.21,
     "byPrice": {
-     "660": "2,28,92,751",
-     "661": "2,28,50,583",
-     "662": "2,28,47,769",
-     "663": "2,28,47,349",
-     "664": "2,28,46,236",
-     "665": "2,28,46,068",
-     "666": "2,28,43,632",
-     "667": "2,28,41,973",
-     "668": "2,28,41,826",
-     "669": "2,28,41,595",
-     "670": "2,28,41,448",
-     "671": "2,28,36,408",
-     "672": "2,28,36,093",
-     "673": "2,28,35,988",
-     "674": "2,28,35,526",
-     "675": "2,28,35,484",
-     "676": "2,28,33,468",
-     "677": "2,28,33,426",
-     "678": "2,28,33,321",
-     "679": "2,28,33,279",
-     "680": "2,28,33,153",
-     "681": "2,28,30,570",
-     "682": "2,28,30,234",
-     "683": "2,28,30,150",
-     "685": "2,28,29,919",
-     "687": "2,28,29,163",
-     "688": "2,28,28,785",
-     "689": "2,28,28,638",
-     "690": "2,28,28,533",
-     "691": "2,28,26,412",
-     "692": "2,28,26,307",
-     "693": "2,28,25,740",
-     "Cut-Off": "23,24,574"
+     "660": "2,66,85,183",
+     "661": "2,66,23,968",
+     "662": "2,66,19,810",
+     "663": "2,66,19,159",
+     "664": "2,66,17,626",
+     "665": "2,66,17,353",
+     "666": "2,66,13,762",
+     "667": "2,66,11,368",
+     "668": "2,66,11,032",
+     "669": "2,66,10,759",
+     "670": "2,66,10,234",
+     "671": "2,66,02,506",
+     "672": "2,66,02,128",
+     "673": "2,66,02,002",
+     "674": "2,66,01,204",
+     "675": "2,66,01,162",
+     "676": "2,65,97,319",
+     "677": "2,65,97,256",
+     "678": "2,65,97,067",
+     "679": "2,65,96,668",
+     "680": "2,65,96,395",
+     "681": "2,65,91,187",
+     "682": "2,65,90,767",
+     "683": "2,65,90,662",
+     "684": "2,65,90,221",
+     "685": "2,65,89,906",
+     "686": "2,65,88,541",
+     "687": "2,65,88,520",
+     "688": "2,65,88,142",
+     "689": "2,65,87,869",
+     "690": "2,65,87,764",
+     "691": "2,65,84,488",
+     "692": "2,65,83,984",
+     "693": "2,65,82,724",
+     "Cut-Off": "37,73,805"
     }
    },
    "registrar": {
@@ -2464,14 +2580,14 @@
      "total": 0.34126715555503695
     },
     {
-     "at": "2026-10-23T10:36:39.933Z",
+     "at": "2026-10-23T10:46:32.297Z",
      "date": "2026-10-23",
      "qib": 3.0923799877042737,
      "bnii": 0.5871190776387479,
-     "snii": 0.7232822690180285,
-     "nii": 0.6325067805528465,
-     "retail": 1.8898163788382996,
-     "total": 2.202857556413873
+     "snii": 0.7298777223883097,
+     "nii": 0.634705263675354,
+     "retail": 1.9093255298549956,
+     "total": 2.2070042606628917
     }
    ],
    "listingPerf": null,
@@ -2903,7 +3019,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:33:54.500Z"
+   "fetchedAt": "2026-10-23T10:44:29.662Z"
   },
   {
    "symbol": "JPL",
@@ -2936,48 +3052,48 @@
    "bids": {
     "qib": {
      "offered": 49007827,
-     "bid": 2308000560,
-     "times": 47.09452961462666
+     "bid": 2309487192,
+     "times": 47.124864197712746
     },
     "nii": {
      "offered": 36444569,
-     "bid": 497901216,
-     "times": 13.661876917792608
+     "bid": 500304252,
+     "times": 13.727813655856377
     },
     "bnii": {
      "offered": 24296380,
-     "bid": 378723216,
-     "times": 15.587639640143923
+     "bid": 380196096,
+     "times": 15.648261016661742
     },
     "snii": {
      "offered": 12148189,
-     "bid": 119178000,
-     "times": 9.81035115604474
+     "bid": 120108156,
+     "times": 9.886918618075502
     },
     "retail": {
      "offered": 85037327,
-     "bid": 218166804,
-     "times": 2.5655416473756283
+     "bid": 220101636,
+     "times": 2.5882943851233704
     },
     "employee": {
      "offered": 4694835,
-     "bid": 13218444,
-     "times": 2.815528980251702
+     "bid": 13276656,
+     "times": 2.82792813804958
     },
     "shareholders": {
      "offered": 22341376,
-     "bid": 163901748,
-     "times": 7.336242315603121
+     "bid": 165152736,
+     "times": 7.392236539056502
     },
     "other": null,
     "total": {
      "offered": 197525934,
-     "bid": 3201188772,
-     "times": 16.206422656378884
+     "bid": 3208322472,
+     "times": 16.242537914034113
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T16:00:00+05:30",
+   "subsAsOn": "2026-10-23T16:12:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3040,66 +3156,66 @@
    "anchorSummary": null,
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Oct-2026 15:57:00 IST",
-    "totalBids": 1688773236,
-    "timesSubscribed": 8.55,
+    "asOn": "As on 23-Oct-2026 16:09:00 IST",
+    "totalBids": 3209582232,
+    "timesSubscribed": 16.25,
     "byPrice": {
-     "1065": "1,68,87,73,236",
-     "1066": "1,68,81,73,308",
-     "1067": "1,68,81,40,452",
-     "1068": "1,68,81,31,524",
-     "1069": "1,68,81,23,508",
-     "1070": "1,68,81,14,892",
-     "1071": "1,68,80,34,852",
-     "1072": "1,68,80,26,992",
-     "1073": "1,68,80,22,012",
-     "1074": "1,68,80,20,512",
-     "1075": "1,68,80,17,680",
-     "1076": "1,68,79,88,016",
-     "1077": "1,68,79,86,684",
-     "1078": "1,68,79,84,200",
-     "1079": "1,68,79,82,748",
-     "1080": "1,68,79,80,216",
-     "1081": "1,68,79,14,192",
-     "1082": "1,68,79,11,564",
-     "1083": "1,68,79,10,904",
-     "1084": "1,68,79,08,480",
-     "1085": "1,68,79,05,060",
-     "1086": "1,68,78,87,732",
-     "1087": "1,68,78,86,772",
-     "1088": "1,68,78,85,536",
-     "1089": "1,68,78,83,712",
-     "1090": "1,68,78,80,652",
-     "1091": "1,68,78,41,412",
-     "1092": "1,68,78,38,616",
-     "1093": "1,68,78,32,184",
-     "1094": "1,68,78,30,924",
-     "1095": "1,68,78,30,012",
-     "1096": "1,68,78,17,136",
-     "1097": "1,68,78,14,436",
-     "1098": "1,68,78,13,320",
-     "1099": "1,68,78,11,436",
-     "1100": "1,68,78,00,984",
-     "1101": "1,68,75,89,928",
-     "1102": "1,68,75,78,300",
-     "1103": "1,68,75,76,716",
-     "1104": "1,68,75,75,492",
-     "1105": "1,68,75,71,916",
-     "1106": "1,68,75,63,792",
-     "1107": "1,68,75,62,304",
-     "1108": "1,68,75,60,180",
-     "1109": "1,68,75,57,600",
-     "1110": "1,68,75,53,292",
-     "1111": "1,68,74,86,392",
-     "1112": "1,68,74,23,728",
-     "1113": "1,68,74,13,888",
-     "1114": "1,68,74,07,648",
-     "1115": "1,68,74,02,632",
-     "1116": "1,68,73,36,512",
-     "1117": "1,68,73,14,888",
-     "1118": "1,68,73,01,160",
-     "1119": "1,68,72,13,704",
-     "Cut-Off": "22,47,61,368"
+     "1065": "3,20,95,82,232",
+     "1066": "3,20,85,11,244",
+     "1067": "3,20,84,55,708",
+     "1068": "3,20,84,42,316",
+     "1069": "3,20,84,29,452",
+     "1070": "3,20,84,12,784",
+     "1071": "3,20,82,75,912",
+     "1072": "3,20,82,64,428",
+     "1073": "3,20,82,57,744",
+     "1074": "3,20,82,55,680",
+     "1075": "3,20,82,51,336",
+     "1076": "3,20,81,99,364",
+     "1077": "3,20,81,96,760",
+     "1078": "3,20,81,91,720",
+     "1079": "3,20,81,88,540",
+     "1080": "3,20,81,84,172",
+     "1081": "3,20,80,69,800",
+     "1082": "3,20,80,65,216",
+     "1083": "3,20,80,63,368",
+     "1084": "3,20,80,59,024",
+     "1085": "3,20,80,52,844",
+     "1086": "3,20,80,22,844",
+     "1087": "3,20,80,21,068",
+     "1088": "3,20,80,18,620",
+     "1089": "3,20,80,15,716",
+     "1090": "3,20,80,08,636",
+     "1091": "3,20,79,34,836",
+     "1092": "3,20,79,30,852",
+     "1093": "3,20,79,14,856",
+     "1094": "3,20,79,12,468",
+     "1095": "3,20,79,10,560",
+     "1096": "3,20,78,86,356",
+     "1097": "3,20,78,82,156",
+     "1098": "3,20,78,80,332",
+     "1099": "3,20,78,76,516",
+     "1100": "3,20,78,55,996",
+     "1101": "3,20,74,82,016",
+     "1102": "3,20,74,61,268",
+     "1103": "3,20,74,58,244",
+     "1104": "3,20,74,55,628",
+     "1105": "3,20,74,49,196",
+     "1106": "3,20,74,36,140",
+     "1107": "3,20,74,33,812",
+     "1108": "3,20,74,30,116",
+     "1109": "3,20,74,25,736",
+     "1110": "3,20,74,18,068",
+     "1111": "3,20,72,93,676",
+     "1112": "3,20,71,77,012",
+     "1113": "3,20,71,60,884",
+     "1114": "3,20,71,49,136",
+     "1115": "3,20,71,39,092",
+     "1116": "3,20,70,49,656",
+     "1117": "3,20,70,11,892",
+     "1118": "3,20,69,50,908",
+     "1119": "3,20,67,49,224",
+     "Cut-Off": "34,23,28,020"
     }
    },
    "registrar": {
@@ -3278,14 +3394,14 @@
      "total": 5.568893449707723
     },
     {
-     "at": "2026-10-23T10:36:39.935Z",
+     "at": "2026-10-23T10:46:32.300Z",
      "date": "2026-10-23",
-     "qib": 47.09452961462666,
-     "bnii": 15.587639640143923,
-     "snii": 9.81035115604474,
-     "nii": 13.661876917792608,
-     "retail": 2.5655416473756283,
-     "total": 16.206422656378884
+     "qib": 47.124864197712746,
+     "bnii": 15.648261016661742,
+     "snii": 9.886918618075502,
+     "nii": 13.727813655856377,
+     "retail": 2.5882943851233704,
+     "total": 16.242537914034113
     }
    ],
    "listingPerf": null,
@@ -3621,7 +3737,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:33:55.406Z"
+   "fetchedAt": "2026-10-23T10:44:30.524Z"
   },
   {
    "symbol": "ZETWERK",
@@ -6351,7 +6467,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:19.956Z",
+   "subsAsOn": "2026-10-23T10:45:18.949Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -6879,7 +6995,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:19.956Z"
+   "fetchedAt": "2026-10-23T10:45:18.949Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -7182,12 +7298,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 286.1499938964844,
+    "dayOpen": 305,
     "ltp": 280.4,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-22",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -0.99,
+    "dayOpenGainPct": 5.54,
     "ltpGainPct": -2.98
    },
    "checks": [
@@ -8483,12 +8599,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 273.70001220703125,
+    "dayOpen": 335,
     "ltp": 266.6,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-21",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": 1,
+    "dayOpenGainPct": 23.62,
     "ltpGainPct": -1.62
    },
    "checks": [
@@ -10393,12 +10509,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 76.33000183105469,
+    "dayOpen": 80,
     "ltp": 68.89,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": 1.77,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": -8.15
    },
    "checks": [
@@ -11036,12 +11152,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 115.9000015258789,
+    "dayOpen": 215,
     "ltp": 115.9,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-08",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -47.32,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -47.32
    },
    "checks": [
@@ -11928,7 +12044,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:23.485Z",
+   "subsAsOn": "2026-10-23T10:45:24.415Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12451,7 +12567,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:23.485Z"
+   "fetchedAt": "2026-10-23T10:45:24.415Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -12497,7 +12613,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:24.337Z",
+   "subsAsOn": "2026-10-23T10:45:25.496Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -12933,7 +13049,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:24.337Z"
+   "fetchedAt": "2026-10-23T10:45:25.496Z"
   },
   {
    "symbol": "TNA",
@@ -12979,7 +13095,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:25.153Z",
+   "subsAsOn": "2026-10-23T10:45:26.549Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13436,7 +13552,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:25.153Z"
+   "fetchedAt": "2026-10-23T10:45:26.549Z"
   },
   {
    "symbol": "DSL",
@@ -13482,7 +13598,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:26.306Z",
+   "subsAsOn": "2026-10-23T10:45:27.897Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -13886,7 +14002,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:26.306Z"
+   "fetchedAt": "2026-10-23T10:45:27.897Z"
   },
   {
    "symbol": "OMARA",
@@ -13931,8 +14047,8 @@
      "times": 1.06
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-23T10:34:28.619Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-23T10:45:31.154Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14360,7 +14476,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:28.619Z"
+   "fetchedAt": "2026-10-23T10:45:31.154Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -14878,8 +14994,8 @@
      "times": 294.22
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-23T10:34:27.057Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-23T10:45:29.234Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14993,7 +15109,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T10:34:27.057Z"
+   "fetchedAt": "2026-10-23T10:45:29.234Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -16130,7 +16246,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:29.514Z",
+   "subsAsOn": "2026-10-23T10:45:32.003Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16678,7 +16794,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-23T10:34:29.514Z"
+   "fetchedAt": "2026-10-23T10:45:32.003Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -16872,12 +16988,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 361.79998779296875,
+    "dayOpen": 450,
     "ltp": 341.3,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": 33.01,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 25.48
    },
    "checks": [],
@@ -18056,12 +18172,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 104.4000015258789,
+    "dayOpen": 142,
     "ltp": 100.89,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -24.89,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -27.42
    },
    "checks": [],
@@ -18605,12 +18721,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 21.719999313354492,
+    "dayOpen": 28.31999969482422,
     "ltp": 20.69,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-05",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -32.13,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -35.34
    },
    "checks": [],
@@ -20626,12 +20742,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 386,
+    "dayOpen": 455,
     "ltp": 369.4,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-01",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -4.69,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": -8.79
    },
    "checks": [],
@@ -22233,12 +22349,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 299.1000061035156,
+    "dayOpen": 355.1000061035156,
     "ltp": 284.1,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": -17.38,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -21.52
    },
    "checks": [],
@@ -23265,12 +23381,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 205.41000366210938,
+    "dayOpen": 200,
     "ltp": 193.86,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-09-30",
     "asOf": "2026-10-23",
-    "dayOpenGainPct": 11.03,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 4.79
    },
    "checks": [],
@@ -24069,7 +24185,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T10:34:12.771Z",
+   "subsAsOn": "2026-10-23T10:44:57.610Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -24150,7 +24266,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-23T10:34:12.771Z"
+   "fetchedAt": "2026-10-23T10:44:57.610Z"
   }
  ],
  "filings": [
