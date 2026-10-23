@@ -1152,7 +1152,7 @@ const acked = () => state.ack;   // shown on every app open, gone after the user
 const SIDE = [["about", "info-circle", "About"], ["general", "tools", "General"], ["share", "link", "Share"], ["help", "lifebuoy", "Help & Support"], ["compare", "scale", "Compare"], ["settings", "settings", "Settings"]];
 const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="drawer" aria-label="Menu">
   <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">${ic("x")}</button></div>
-  <div class="dnav">${SIDE.map(([k, icn, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}">${ic(icn)}<span>${l}</span></button>`).join("")}</div>
+  <div class="dnav">${accountRow()}${SIDE.map(([k, icn, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}">${ic(icn)}<span>${l}</span></button>`).join("")}</div>
   <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology</div></aside>`;
 // ---------- About page: menu of General / Share / Help & Support, each row opens its own page ----------
 state.sub = null;
@@ -1249,7 +1249,7 @@ function subContent(k) {
   if (k === "us") return subPage("About Us", usCards());
   if (k === "terms") return subPage("Terms & Condition", card("", `<ol class="alist" style="padding-left:20px">${TERMS.map(t => `<li>${esc(t)}</li>`).join("")}</ol>`));
   if (k === "privacy") {
-    return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, reminders, applied IPOs, language and theme — in this browser only. A PAN you enter stays in the open tab only and is gone when you close it.</li><li>Nothing like that is sent to a server.</li></ul>`));
+    return subPage("Privacy Policy", card("", `<p class="sm" style="margin-top:0">${TEXT.privacy[lang()]}</p>${langBtn()}`) + card("What is stored on your device", `<ul class="alist"><li>Watchlist, compare list, reminders, applied IPOs, language and theme — in this browser only. If you sign in with Google (optional), only your name and e-mail are kept here, and Google's own page handles the password. A PAN you enter stays in the open tab only and is gone when you close it.</li><li>Nothing like that is sent to a server.</li></ul>`));
   }
   if (k === "faq") return subPage("FAQs", card("", FAQ.map(([q, a]) => `<details class="faq"><summary>${esc(q)}</summary><p class="sm">${esc(a)}</p></details>`).join("")));
   return null;
@@ -1517,12 +1517,83 @@ function render() {
 // Both languages are stacked in the same grid cell, so the dialog keeps one fixed height when the language is switched.
 // The dialog ALWAYS opens in English. Its Hindi / English switch only changes ackLang (this opening of the dialog): nothing is stored and the app language
 // (localStorage "lang", used by About / Privacy / the footer note) is not touched.
+// ---------- optional Google sign-in: OAuth "id_token" flow in the browser, no server. Only the name and e-mail are kept (on this device); no token is stored ----------
+const AUTH = { clientId: "" };   // the public Google OAuth client ID. Empty = sign-in is off and no sign-in screen or button is shown (setup: ADMIN.md)
+const authOn = () => /^[0-9]+-[a-z0-9]+\.apps\.googleusercontent\.com$/.test(AUTH.clientId);
+const userGet = () => { const u = store.get("user", null); return u && typeof u.name === "string" && typeof u.email === "string" ? { name: cleanStr(u.name).slice(0, 60), email: cleanStr(u.email).slice(0, 100) } : null; };
+state.user = userGet();
+const b64u = s => Uint8Array.from(atob(String(s).replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(String(s).length / 4) * 4, "=")), c => c.charCodeAt(0));
+const rnd = () => [...crypto.getRandomValues(new Uint8Array(24))].map(b => b.toString(16).padStart(2, "0")).join("");
+// checks the token like a server would: issuer, audience (our client ID), expiry, nonce and Google's RS256 signature (public keys from Google)
+async function authVerify(jwt, nonce, fetchFn = fetch) {
+  const p = String(jwt).split("."); if (p.length !== 3) throw new Error("format");
+  const dec = new TextDecoder(), head = JSON.parse(dec.decode(b64u(p[0]))), body = JSON.parse(dec.decode(b64u(p[1])));
+  if (head.alg !== "RS256" || !head.kid) throw new Error("alg");
+  if (!["https://accounts.google.com", "accounts.google.com"].includes(body.iss) || body.aud !== AUTH.clientId || body.nonce !== nonce || !(body.exp * 1000 > Date.now()) || body.email_verified === false || typeof body.email !== "string") throw new Error("claims");
+  const certs = await (await fetchFn("https://www.googleapis.com/oauth2/v3/certs", { cache: "no-store" })).json(), jwk = (certs.keys || []).find(k => k.kid === head.kid && k.kty === "RSA");
+  if (!jwk) throw new Error("key");
+  const key = await crypto.subtle.importKey("jwk", jwk, { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" }, false, ["verify"]);
+  if (!(await crypto.subtle.verify("RSASSA-PKCS1-v1_5", key, b64u(p[2]), new TextEncoder().encode(p[0] + "." + p[1])))) throw new Error("signature");
+  return body;
+}
+function authStart() {
+  if (!authOn()) return;
+  const nonce = rnd(), st = rnd();
+  try { sessionStorage.setItem("authNonce", nonce); sessionStorage.setItem("authState", st); } catch { toast("Sign-in needs browser storage"); return; }
+  const q = new URLSearchParams({ client_id: AUTH.clientId, redirect_uri: location.origin + location.pathname, response_type: "id_token", scope: "openid email profile", nonce, state: st, prompt: "select_account" });
+  location.assign("https://accounts.google.com/o/oauth2/v2/auth?" + q);
+}
+async function authReturn() {
+  if (!/[#&](id_token|error)=/.test(location.hash)) return;
+  const P = new URLSearchParams(location.hash.slice(1)); history.replaceState(history.state, "", location.pathname + location.search);   // the token never stays in the address bar
+  let nonce = "", st = ""; try { nonce = sessionStorage.getItem("authNonce") || ""; st = sessionStorage.getItem("authState") || ""; sessionStorage.removeItem("authNonce"); sessionStorage.removeItem("authState"); } catch {}
+  if (P.get("error")) { toast("Sign-in was cancelled"); return; }
+  try {
+    if (!authOn() || !nonce || P.get("state") !== st) throw new Error("state");
+    const b = await authVerify(P.get("id_token"), nonce);
+    store.set("user", { name: cleanStr(String(b.name || b.email.split("@")[0])).slice(0, 60), email: cleanStr(String(b.email)).slice(0, 100) });
+    store.set("loginSeen", true); state.user = userGet(); toast("Signed in"); render();
+  } catch { toast("Sign-in could not be verified. Please try again."); }
+}
+const initials = n => String(n || "?").split(/\s+/).filter(Boolean).slice(0, 2).map(w => w[0].toUpperCase()).join("") || "?";
+let lgnEl = null;
+function loginShow(force) {
+  if (!authOn() || lgnEl || (!force && (store.get("loginSeen", false) || state.user))) return;
+  lgnEl = document.createElement("div"); lgnEl.className = "lgn"; lgnEl.setAttribute("role", "dialog"); lgnEl.setAttribute("aria-modal", "true"); lgnEl.setAttribute("aria-label", "Sign in");
+  lgnEl.innerHTML = `<div class="lgn-in"><img src="icons/logo.svg" alt="" width="64" height="64"><h2>Sign in to Trendy IPO</h2><p class="lgn-p">Optional. Every feature works without it. Signing in only saves your name on this device.</p>
+    <button type="button" class="btn lgn-g" data-lgn="go"><span class="lgn-gl" aria-hidden="true">G</span> Continue with Google</button>
+    <p class="lgn-t">By proceeding, you accept the <button type="button" class="linkb" data-lgn="terms">Terms &amp; Conditions</button> and <button type="button" class="linkb" data-lgn="privacy">Privacy Policy</button></p>
+    <button type="button" class="lgn-skip" data-lgn="skip">Skip for now</button></div>`;
+  document.body.appendChild(lgnEl);
+  setTimeout(() => { const b = lgnEl && lgnEl.querySelector('[data-lgn="go"]'); if (b) b.focus({ preventScroll: true }); }, 60);
+}
+// the account row at the top of the menu: only when sign-in is set up
+function accountRow() {
+  if (!authOn()) return "";
+  const u = state.user;
+  return u ? `<div class="duser"><span class="av" aria-hidden="true">${esc(initials(u.name))}</span><div><b>${esc(u.name)}</b><small>${esc(u.email)}</small></div><button type="button" class="linkb" data-lgn="out">Sign out</button></div>` : `<button type="button" data-lgn="open">${ic("user")}<span>Sign in</span></button>`;
+}
+function loginClose() { store.set("loginSeen", true); if (lgnEl) { lgnEl.remove(); lgnEl = null; } }
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-lgn]"); if (!b) return;
+  const v = b.dataset.lgn;
+  if (v === "go") authStart();
+  else if (v === "skip") loginClose();
+  else if (v === "open") { state.drawer = false; loginShow(true); }
+  else if (v === "out") { store.set("user", null); state.user = null; state.drawer = false; toast("Signed out"); render(); }
+  else if (v === "terms" || v === "privacy") { loginClose(); state.tab = "help"; state.sub = v; state.detail = null; state.report = null; state.drawer = false; render(); scrollTo(0, 0); }
+});
+document.addEventListener("keydown", e => {
+  if (!lgnEl || onbEl) return;
+  if (e.key === "Escape") loginClose();
+  else if (e.key === "Tab") { const f = [...lgnEl.querySelectorAll("button")]; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && (i === f.length - 1 || i < 0)) { e.preventDefault(); f[0].focus(); } }
+});
 // ---------- first-run welcome screens (shown once per device; the disclaimer dialog still appears after them) ----------
 const ONB = [
   { ic: "rocket", tone: "t1", t: "Every IPO in one place", hi: "No more hopping between apps", p: "Open, upcoming and closed IPOs with price band, lot size, dates and the minimum you need to invest, taken from NSE and the offer documents.", chips: ["Live", "Upcoming", "Closed", "SME"] },
   { ic: "chart-bar", tone: "t2", t: "Subscription and GMP, as they move", hi: "Know the demand before you bid", p: "Category-wise and day-wise subscription, who is bidding, and the GMP trend. GMP is unofficial and we say so on every screen.", chips: ["QIB · NII · Retail", "Day-wise", "GMP trend"] },
   { ic: "trophy", tone: "t3", t: "Check before you apply", hi: "Facts first, never tips", p: "Company figures and risks from the offer document, a data-based score, listing history, a calculator and reports. Information only, never advice.", chips: ["Score", "Financials", "Reports", "Calculator"] },
-  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "Your whole market view in one app", p: "Switch from the bottom bar. Free, no sign-up, and your watchlist stays on your own device.", chips: ["Free", "No login", "Private"] },
+  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "Your whole market view in one app", p: "Switch from the bottom bar. Free to use, signing in is optional, and your watchlist stays on your own device.", chips: ["Free", "Sign-in optional", "Private"] },
 ];
 let onbEl = null, onbI = 0;
 function onbShow() {
@@ -1549,7 +1620,7 @@ function onbGo(n) {
   onbEl.querySelector('[data-onb="next"]').textContent = last ? "Get started" : "Next";
   onbEl.querySelector(".onb-skip").hidden = last;
 }
-function onbDone() { store.set("onb", true); if (onbEl) { onbEl.remove(); onbEl = null; } }
+function onbDone() { store.set("onb", true); if (onbEl) { onbEl.remove(); onbEl = null; } loginShow(false); }
 document.addEventListener("click", e => {
   const b = onbEl && e.target.closest("[data-onb]"); if (!b) return;
   const v = b.dataset.onb; if (v === "next") onbGo(onbI + 1); else if (v === "back") onbGo(onbI - 1); else if (v === "skip") onbDone();
@@ -1559,7 +1630,8 @@ document.addEventListener("keydown", e => {
   if (e.key === "ArrowRight") onbGo(onbI + 1); else if (e.key === "ArrowLeft") onbGo(onbI - 1); else if (e.key === "Escape") onbDone();
   else if (e.key === "Tab") { const f = [...onbEl.querySelectorAll("button")].filter(x => !x.hidden && !x.closest("[inert]")); if (!f.length) return; const i = f.indexOf(document.activeElement); if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); } else if (!e.shiftKey && (i === f.length - 1 || i < 0)) { e.preventDefault(); f[0].focus(); } }
 });
-if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", onbShow); else onbShow();
+const startup = () => { onbShow(); if (!onbEl) loginShow(false); authReturn(); };
+if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", startup); else startup();
 
 let ackEl = null, ackPrevFocus = null, ackLang = "en";
 const ackPane = l => '<div class="ackpane" lang="' + l + '" data-l="' + l + '"><b>' + TEXT.disclaimerTitle[l] + "</b><br>" + TEXT.disclaimer[l] + "<br>" +

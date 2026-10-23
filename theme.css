@@ -848,3 +848,17 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 .onb-foot{padding:14px 20px 22px;display:grid;gap:16px;max-width:520px;width:100%;margin:0 auto}
 .onb-dots{display:flex;justify-content:center;gap:8px}.onb-dots i{width:8px;height:8px;border-radius:99px;background:var(--bd);transition:width .25s,background .25s}.onb-dots i.on{width:26px;background:var(--pri)}
 .onb-btns{display:flex;gap:10px}.onb-btns .btn{flex:1}
+
+/* optional sign-in screen and menu account row */
+.lgn{position:fixed;inset:0;z-index:290;display:grid;place-items:center;overflow-y:auto;background:var(--bg);color:var(--tx);padding:24px 20px;padding-top:max(24px,env(safe-area-inset-top,0px));padding-bottom:max(24px,env(safe-area-inset-bottom,0px));animation:fadein .25s both}
+.lgn::before{content:"";position:absolute;inset:-20% -20% auto -20%;height:55%;background:radial-gradient(60% 60% at 50% 40%,color-mix(in srgb,var(--pri) 30%,transparent),transparent 70%);pointer-events:none}
+.lgn-in{position:relative;width:100%;max-width:420px;display:grid;gap:14px;text-align:center;justify-items:center}
+.lgn-in img{border-radius:18px}.lgn-in h2{margin:6px 0 0;font-size:25px;font-weight:900}
+.lgn-p{margin:0;color:var(--mut);font-size:14px;line-height:1.5;font-weight:600}
+.lgn-g{width:100%;min-height:52px;font-size:16px}
+.lgn-gl{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:#fff;color:#4285f4;font-weight:900;font-size:15px}
+.lgn-t{margin:4px 0 0;color:var(--mut);font-size:13px;line-height:1.7;font-weight:600}.lgn-t .linkb{min-height:0;text-decoration:underline;color:var(--tx)}
+.lgn-skip{min-height:48px;padding:0 20px;border:0;background:none;color:var(--tx);font:inherit;font-weight:800;cursor:pointer}
+.duser{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:0 0 6px;border-radius:14px;background:var(--soft);border:1px solid var(--bd)}
+.duser .av{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;font-weight:900}
+.duser div{min-width:0;flex:1}.duser b,.duser small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.duser small{color:var(--mut);font-weight:600}

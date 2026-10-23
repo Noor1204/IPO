@@ -69,3 +69,6 @@ Update: the Movers tab root is now a compact overview (status pill, Live | Last 
 
 ## First-run welcome screens
 `ONB` / `onbShow` in app.js: four swipeable screens (IPOs, subscription and GMP, check before you apply, stocks and funds) shown once per device (flag `onb` in localStorage, a per-device convenience only). Skip / Back / Next / Get started, swipe, arrow keys, Escape, focus trap. They are a separate element above the disclaimer dialog (z-index 300), so the disclaimer still appears right after them and neither rebuilds on `render()`. To show them again: `localStorage.removeItem("onb")`.
+
+## Optional Google sign-in
+`AUTH`, `authVerify`, `authStart`, `authReturn`, `loginShow` in app.js. Off while `AUTH.clientId` is empty (no screen, no menu row). Browser-only OAuth `id_token` flow; the token is verified in the page and never stored, only name and e-mail are kept (`user` in localStorage). CSP `connect-src` allows `https://www.googleapis.com` for Google's signing keys. Setup in ADMIN.md.

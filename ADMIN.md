@@ -45,3 +45,11 @@ If you ever want names (for example a sign-up form), that is a different feature
 - GoatCounter's free plan is for **non-commercial** use. If Zynora Technology uses this commercially, take their paid plan, or switch to Cloudflare Web Analytics (also free).
 - The Content-Security-Policy allows scripts only from this site (the counter is the pinned copy `vendor/goatcounter-count.js`) and `*.goatcounter.com` as the place the counts are sent.
 - To switch counting off again, set `CODE` back to `""`.
+
+## Optional Google sign-in (off until you set a client ID)
+The sign-in screen (shown once after the welcome screens, with "Skip for now") and the "Sign in" row in the menu appear only when `AUTH.clientId` in `app.js` holds a Google OAuth client ID. Empty = no sign-in anywhere; nothing else changes.
+1. Open https://console.cloud.google.com/ with your own Google account, create (or pick) a project, and under *APIs & Services → OAuth consent screen* set it up (External, app name Trendy IPO, your support e-mail, scopes openid / email / profile).
+2. *Credentials → Create credentials → OAuth client ID → Web application*. Under **Authorised JavaScript origins** add `https://noor1204.github.io`. Under **Authorised redirect URIs** add exactly `https://noor1204.github.io/IPO/` (with the trailing slash).
+3. Copy the client ID (it ends in `.apps.googleusercontent.com`; it is public, not a secret) into `AUTH.clientId` in `app.js` and push. Never put a client *secret* anywhere: this flow does not use one.
+4. While the consent screen is in "Testing", only the test users you list can sign in; publish it to let everyone in.
+What it does: Google's own page handles the password and returns a signed ID token in the address bar; the app checks issuer, audience, expiry, nonce and Google's RS256 signature (public keys from `www.googleapis.com`), keeps only name and e-mail on this device, removes the token from the address bar and never stores it. There is no server, so signing in does not sync anything yet; syncing the watchlist across devices would need a backend (for example Firestore) and is not built.

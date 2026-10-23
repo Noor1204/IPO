@@ -121,3 +121,10 @@ test("workflow files: no unquoted ': ' inside a step name (it breaks the YAML an
     const v = m[1].trim(); assert.ok(/^["']/.test(v) || !/: /.test(v), `${f}:${k + 1} unquoted ': ' in a name: ${v}`);
   });
 });
+
+test("sign-in ships switched off (no client ID committed by accident) and never stores a token", () => {
+  const s = read("app.js");
+  assert.match(s, /const AUTH = \{ clientId: "" \};/, "AUTH.clientId must be empty unless you deliberately set a public client ID");
+  assert.ok(!/localStorage\.setItem\("(id_token|token|access_token)/.test(s) && !/store\.set\("(id_token|token)/.test(s));
+  assert.ok(!/client_secret/i.test(s), "no client secret in the app");
+});
