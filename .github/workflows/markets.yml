@@ -10,7 +10,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: [".github/workflows/markets.yml", "pipeline/mf.mjs", "pipeline/stocks.mjs", "pipeline/holidays.mjs"]
+    paths: [".github/workflows/markets.yml", "pipeline/mf.mjs", "pipeline/stocks.mjs", "pipeline/holidays.mjs", "pipeline/actions.mjs"]
 
 permissions: {}
 
@@ -41,6 +41,10 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: node pipeline/holidays.mjs
+      - name: Corporate actions (NSE: rights, buyback, bonus, split, dividend)
+        continue-on-error: true
+        timeout-minutes: 5
+        run: node pipeline/actions.mjs
       - name: Commit
         run: |
           git config user.name "trendy-ipo-bot"

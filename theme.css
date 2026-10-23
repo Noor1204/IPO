@@ -820,3 +820,7 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 .dem{display:grid;gap:6px;margin:0 0 10px}.dem-r{display:grid;grid-template-columns:64px 1fr auto;align-items:center;gap:8px;font-size:13px;font-weight:700}
 .dem-r i{display:block;height:10px;border-radius:6px;background:linear-gradient(90deg,var(--pri),var(--pri2))}
 .dem-r span,.dem-r b{white-space:nowrap}
+.bsg{margin:0 0 12px}.bsg-t{font-weight:800;margin:0 0 6px}
+.bsg-r{display:grid;grid-template-columns:minmax(90px,1.2fr) 2fr 52px;align-items:center;gap:8px;font-size:13px;font-weight:700;padding:3px 0}
+.bsg-r i{display:block;height:8px;border-radius:6px;background:linear-gradient(90deg,var(--pri),var(--pri2))}
+.bsg-r b{text-align:right}

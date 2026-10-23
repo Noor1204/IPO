@@ -183,6 +183,19 @@ function smeBids(r, b, cats) {
     total: { offered: c?.total ?? null, bid: T, times: dt > 0 ? dt : (c ? r2(T / c.total) : null) } };
   return { bids: out, withOffered: !!c };
 }
+// ---- who is bidding: the sub-rows of NSE's category table (QIB: FII / banks / mutual funds / others, NII: corporates / individuals / others), exactly as NSE shows them
+function bidSplitOf(r) {
+  const rows = (r.bids || []).filter(x => x && /^[0-9]+(\.[0-9]+)?\([a-z]\)$/.test(String(x.srNo ?? "")) && x.category);
+  const out = rows.map(x => ({ id: String(x.srNo), label: String(x.category).replace(/\s+/g, " ").trim().slice(0, 140), offered: num(x.noOfShareOffered), bid: num(x.noOfSharesBid), times: num(x.noOfTotalMeant) })).filter(x => x.bid != null && x.bid >= 0);
+  return out.length ? out : null;
+}
+// ---- issue facts NSE publishes (tick size, discount, bid limits, timings, UPI sub-categories); short text only, as NSE words it
+function nseInfoOf(info) {
+  const t = (k, n = 300) => { const v = String(info[k] ?? "").replace(/\s+/g, " ").trim(); return v && !/^(na|nil|-)$/i.test(v) ? v.slice(0, n) : null; };
+  const o = { tickSize: t("Tick Size", 80), discount: t("Discount"), faceValue: t("Face Value", 80), bidLot: t("Bid Lot", 120), maxBidQib: t("Maximum Bid Quantity for QIB Investors", 160), maxBidNib: t("Maximum Bid Quantity for NIB Investors", 160),
+    marketTimings: t("IPO Market Timings", 200), upiSubCategories: t("Sub-Categories applicable for UPI", 200), categories: t("Categories", 200), remark: t("Remark", 300) };
+  return Object.values(o).some(Boolean) ? o : null;
+}
 // ---- who to contact: registrar from NSE/BSE issue info, the rest from the offer document (contacts.json)
 const phoneOf = s => { const m = String(s || "").replace(/\s+/g, " ").match(/(\+?\d[\d ()-]{7,}\d)/); return m ? m[1].trim() : null; };
 const emailOf = s => (String(s || "").match(/[\w.+-]+@[\w-]+(?:\.[\w-]+)+/) || [])[0]?.toLowerCase() || null;
@@ -299,6 +312,7 @@ for (const r of nse) {
     applyAs: carry(aa.applyAs, prev?.applyAs), minInvestment: carry(aa.minInvestment, prev?.minInvestment), minInvestmentLots: carry(aa.minInvestmentLots, prev?.minInvestmentLots),
     contacts: carry(contactsFor(r, info, logos[r.symbol]?.domain), prev?.contacts),
     anchorSummary: anc ? { bidDate: anc.bidDate, price: anc.price, totalShares: anc.totalShares, totalAmountCr: anc.totalAmountCr } : (prev?.anchorSummary ?? null),
+    bidSplit: carry(bidSplitOf(r), prev?.bidSplit), nseInfo: carry(nseInfoOf(info), prev?.nseInfo),
     anchorInvestors: null,        // the NSE anchor letters are free-form (some scanned images): the list of investors cannot be read reliably, so it is not shown
     demand: r.demand ? { asOn: r.demand.timestamp, totalBids: num(r.demand.totalBidRecieved), timesSubscribed: num(r.demand.noOfTimesIssueSubscribed), byPrice: r.demand.plotData || null } : null,
     registrar: { name: info["Name of the Registrar"] || null, address: info["Address of the Registrar"] || null, contact: info["Contact person name number and Email id"] || null },
