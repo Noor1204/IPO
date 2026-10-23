@@ -723,13 +723,20 @@ function progressCard(i) {
   done = done.map((_, k) => done.slice(k).some(Boolean));
   const cur = done.indexOf(false);
   const li = S.map(([l, d, est], k) => `<li class="${done[k] ? "done" : k === cur ? "now" : ""}"><i>${done[k] ? ic("check") : ""}</i><b>${l}</b><span>${d ? fmtS(d) + (est ? " (exp.)" : "") : "—"}</span></li>`).join("");
-  const tlItems = [["Opens", t.open, false], ["Closes", t.close, false], ["Allotment finalised", t.allotment, i.datesExpected], ["Refund initiated", t.refund, i.datesExpected], ["Shares credited to demat", t.demat, i.datesExpected], ["Listing", t.listing, i.datesExpected]];
+  const tlItems = [["Opens", t.open, false], ["Closes", t.close, false], ["Allotment finalised", t.allotment, i.datesExpected], ["Refund initiated / unused funds unblocked", t.refund, i.datesExpected], ["Shares credited to demat", t.demat, i.datesExpected], ["Listing", t.listing, i.datesExpected]];
   const tl = `<ol class="tl">${tlItems.map(([l, d, est]) => { const n = d ? dayDiff(d) : null; return `<li class="${n === null ? "" : n < 0 ? "done" : n === 0 ? "now" : ""}"><i></i><div><b>${l}</b><span>${d ? fmtD(d) + (est ? " (exp.)" : "") : "—"}</span></div></li>`; }).join("")}</ol>
     <p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>
     ${cutNse(i) ? `<p class="sm cutnse"><b>NSE on the closing time:</b> “${esc(cutNse(i))}”</p>` : ""}`;
   return card(ic("calendar-event") + " IPO Progress", `<ol class="prog" aria-label="IPO progress">${li}</ol>` + mx("tl", tl, { n: 0, more: "All dates (6)", less: "Hide dates" }));
 }
 
+// NSE cumulative demand at each price point (bars scaled to the highest quantity)
+function demandChart(by) {
+  const E = Object.entries(by || {}).map(([k, v]) => [+k, +String(v).replace(/,/g, "")]).filter(([k, v]) => isNum(k) && isNum(v) && v >= 0).sort((a, b) => a[0] - b[0]); if (E.length < 2) return "";
+  const mxv = Math.max(...E.map(e => e[1]), 1);
+  if (E.length > 8) { const n = E.length, pick = new Set(Array.from({ length: 8 }, (_, k) => Math.round(k * (n - 1) / 7))); E.splice(0, n, ...E.filter((_, k) => pick.has(k))); }
+  return `<div class="dem" role="img" aria-label="Cumulative demand by price">${E.map(([k, v]) => `<div class="dem-r"><span>₹${px(k)}</span><i style="width:${Math.max(2, v / mxv * 100)}%"></i><b class="num">${inr(v)}</b></div>`).join("")}</div>`;
+}
 function detail(forReport = false) {
   const i = byId(state.detail), sc = scoreOf(i), v = verdict(sc.score), f = FU(i), b = i.bids || {}, g = gmpNow(i), L = isNum(i.lot) && isNum(i.priceHigh) && i.lot > 0 && i.priceHigh > 0 ? lotsFor(i) : null;
   if (!forReport && state.dtabFor !== i.symbol) { state.dtabFor = i.symbol; state.dtab = "ov"; state.dOpen = new Set(); }
@@ -777,7 +784,7 @@ function detail(forReport = false) {
     (N !== null && anyBid ? card("", `<div class="alot">${ic("users")} ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">${ic("info-circle")} The final allotment is decided by the registrar's computerised lottery.</div>`) : "") +
     appCard +
     (dwRows.length ? card("Day-wise subscription", `<p class="mut sm" style="margin:0 0 8px">${dwRows.length} snapshot${dwRows.length > 1 ? "s" : ""} · latest ${f2(last(i.subHistory).total)}x</p>` + mx("dw", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows), { n: 0, more: "See day-wise table", less: "Hide table" })) : "") +
-    (i.demand?.byPrice && Object.keys(i.demand.byPrice).length ? card("Cumulative demand by price (NSE)", `<p class="mut sm" style="margin:0 0 8px">${Object.keys(i.demand.byPrice).length} price points${i.demand.asOn ? " · " + esc(i.demand.asOn) : ""}</p>` + mx("dp", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)])), { n: 0, more: "See demand by price", less: "Hide table" })) : "");
+    (i.demand?.byPrice && Object.keys(i.demand.byPrice).length ? card("Cumulative demand by price (NSE)", `<p class="mut sm" style="margin:0 0 8px">${Object.keys(i.demand.byPrice).length} price points${i.demand.asOn ? " · " + esc(i.demand.asOn) : ""}</p>` + demandChart(i.demand.byPrice) + mx("dp", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)])), { n: 0, more: "See demand by price", less: "Hide table" })) : "");
 
   // ----- GMP
   const gmpTab = card(ic("trending-up") + " GMP Trend", (gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`) +
@@ -947,6 +954,48 @@ function calClick(t) {
   else if (v === "today") { const t0 = istDay(); calState.y = +t0.slice(0, 4); calState.m = +t0.slice(5, 7) - 1; calState.day = t0; }
   else if (v.startsWith("mode:")) { calState.mode = v === "mode:agenda" ? "agenda" : "month"; store.set("calMode", calState.mode); }
   else if (v.startsWith("day:") && /^\d{4}-\d{2}-\d{2}$/.test(v.slice(4))) calState.day = v.slice(4);
+  render();
+}
+// ---------- Reports: listed-IPO performance, GMP accuracy, Top 10 (all from stored data: NSE, Yahoo day-1 prices, GMP history) ----------
+const rpState = { view: "perf", board: "all", sort: "list", dir: -1 };
+function rpRows() {
+  return state.ipos.filter(i => i.status === "listed" && i.listingPerf && isNum(i.listingPerf.dayOpenGainPct)).filter(i => rpState.board === "all" || (rpState.board === "sme" ? /sme/i.test(i.board) : !/sme/i.test(i.board)));
+}
+function reportsScreen() {
+  const R = rpRows(), all = state.ipos.filter(i => i.status === "listed" && i.listingPerf && isNum(i.listingPerf.dayOpenGainPct));
+  const gain = all.filter(i => i.listingPerf.dayOpenGainPct > 0).length, loss = all.filter(i => i.listingPerf.dayOpenGainPct < 0).length;
+  const M = all.map(listingMatch).filter(m => m && m.gmpHit), close = M.filter(m => m.gmpHit === "close").length;
+  const tiles = `<div class="stats" role="group" aria-label="Listing scoreboard">${[["Listed (with prices)", all.length, ""], ["Opened in gain", gain, "grn-t"], ["Opened in loss", loss, "red-t"], ["GMP within 5 pts", M.length ? close + " of " + M.length : "—", ""]].map(([l, v, c]) => `<div class="stat"><b class="${c}">${v}</b><span>${l}</span></div>`).join("")}</div>`;
+  const seg = (grp, cur, items) => `<div class="seg calseg" role="group">${items.map(([k, l]) => `<button data-rp="${grp}:${k}" class="${k === cur ? "on" : ""}" aria-pressed="${k === cur}">${l}</button>`).join("")}</div>`;
+  const views = seg("view", rpState.view, [["perf", "Performance"], ["gmp", "GMP accuracy"], ["top", "Top 10"]]);
+  const boards = seg("board", rpState.board, [["all", "All"], ["main", "Mainboard"], ["sme", "SME"]]);
+  const nm = i => `<button type="button" class="linkb" data-open="${esc(i.symbol)}">${esc(i.name.replace(/ Limited$/i, ""))}</button>`;
+  const sortBy = { name: i => i.name, list: i => i.listing || "", gain: i => i.listingPerf.dayOpenGainPct, last: i => i.listingPerf.ltpGainPct ?? -1e9, subs: i => totalTimes(i) ?? -1, size: i => i.issueSizeCr ?? -1 };
+  const th = (k, l) => `<button type="button" class="thb${rpState.sort === k ? " on" : ""}" data-rp="sort:${k}">${l}${rpState.sort === k ? (rpState.dir > 0 ? " ▲" : " ▼") : ""}</button>`;
+  let body = "";
+  if (rpState.view === "perf") {
+    const S = [...R].sort((a, b) => { const x = sortBy[rpState.sort](a), y = sortBy[rpState.sort](b); return (x > y ? 1 : x < y ? -1 : 0) * rpState.dir; });
+    body = card(ic("trending-up") + " Listed IPOs: how they performed", (S.length ? `<div class="tw"><table class="rp"><tr><th>${th("name", "IPO")}</th><th>${th("list", "Listed")}</th><th>Issue ₹</th><th>${th("gain", "Day-1 open")}</th><th>${th("last", "Last price")}</th><th>${th("subs", "Subscribed")}</th><th>${th("size", "Size ₹ Cr")}</th></tr>${S.map(i => `<tr><td>${nm(i)}</td><td>${fmtS(i.listing)}</td><td>${isNum(i.priceHigh) ? px(i.priceHigh) : "—"}</td><td>${fmtGain(i.listingPerf.dayOpenGainPct)}</td><td>${fmtGain(i.listingPerf.ltpGainPct)}</td><td>${isNum(totalTimes(i)) ? f2(totalTimes(i)) + "x" : "—"}</td><td>${isNum(i.issueSizeCr) ? cr(i.issueSizeCr) : "—"}</td></tr>`).join("")}</table></div>` : `<p class="mut">No listed IPO with prices in this group yet.</p>`) +
+      `<p class="mut sm" style="margin:8px 0 0">Day-1 open and last price are from Yahoo Finance and may differ slightly from the exchange's discovered price. Only IPOs whose prices could be fetched are listed.</p>`);
+  } else if (rpState.view === "gmp") {
+    const S = R.map(i => [i, listingMatch(i)]).filter(([, m]) => m && m.gmpP !== null).sort((a, b) => (b[0].listing || "").localeCompare(a[0].listing || ""));
+    const hit = S.filter(([, m]) => m.gmpHit === "close").length, above = S.filter(([, m]) => m.err > 0).length;
+    body = card(ic("target") + " GMP vs actual listing", (S.length ? `<p class="mut sm" style="margin:0 0 8px">GMP was within 5 points of the real day-1 open for <b>${hit} of ${S.length}</b> IPOs; the IPO opened above the GMP for ${above} and below it for ${S.length - above}.</p><div class="tw"><table class="rp"><tr><th>IPO</th><th>Listed</th><th>GMP</th><th>Day-1 open</th><th>Gap</th><th>Result</th></tr>${S.map(([i, m]) => `<tr><td>${nm(i)}</td><td>${fmtS(i.listing)}</td><td>${fmtGain(m.gmpP)}</td><td>${fmtGain(m.actual)}</td><td>${fmtPts(m.err)}</td><td>${GMP_HIT[m.gmpHit]}</td></tr>`).join("")}</table></div>` : `<p class="mut">No listed IPO with both a GMP record and a day-1 price in this group yet.</p>`) +
+      `<p class="mut sm" style="margin:8px 0 0">GMP = the last reading on or before listing day, as % of the issue price. Close = within 5 points, Near = within 10. GMP is unofficial; this table only measures how it fared.</p>`);
+  } else {
+    const top = (title, arr, fmt) => card(title, arr.length ? `<ol class="top10">${arr.slice(0, 10).map(([i, v]) => `<li>${nm(i)}<b class="num">${fmt(v, i)}</b></li>`).join("")}</ol>` : `<p class="mut">No data yet.</p>`);
+    const pool = state.ipos.filter(i => rpState.board === "all" || (rpState.board === "sme" ? /sme/i.test(i.board) : !/sme/i.test(i.board))).filter(i => i.status !== "upcoming");
+    const by = (get, filt) => pool.filter(filt || (() => true)).map(i => [i, get(i)]).filter(([, v]) => isNum(v)).sort((a, b) => b[1] - a[1]);
+    body = top("Most subscribed", by(totalTimes), v => f2(v) + "x") + top("Best day-1 open", by(i => i.listingPerf?.dayOpenGainPct), v => fmtGain(v)) + top("Worst day-1 open", by(i => i.listingPerf?.dayOpenGainPct).reverse(), v => fmtGain(v)) + top("Biggest issues (₹ Cr)", by(i => i.issueSizeCr), v => cr(v)) +
+      `<p class="mut sm">Ranked from the IPOs stored in this app (open, closed and listed in the recent window), not from all IPOs since 2004.</p>`;
+  }
+  return `${head("IPO Reports")}${tiles}${views}${rpState.view === "top" || rpState.view === "perf" || rpState.view === "gmp" ? boards : ""}${body}`;
+}
+function rpClick(t) {
+  const [k, v] = String(t.dataset.rp).split(":");
+  if (k === "view" && ["perf", "gmp", "top"].includes(v)) rpState.view = v;
+  else if (k === "board" && ["all", "main", "sme"].includes(v)) rpState.board = v;
+  else if (k === "sort" && ["name", "list", "gain", "last", "subs", "size"].includes(v)) { if (rpState.sort === v) rpState.dir = -rpState.dir; else { rpState.sort = v; rpState.dir = v === "name" ? 1 : -1; } }
   render();
 }
 function unlisted() { return `${head("Unlisted Shares")}<div class="card"><p class="mut">No reliable automatic source for unlisted (pre-IPO) prices is connected yet, so nothing is shown rather than showing guesses.</p></div>`; }
@@ -1181,8 +1230,8 @@ const MOD_LAST = store.get("modLast", {});
 const MODS = ["ipo", "stocks", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
 for (const k of Object.keys(MOD_LAST)) if (!MODS.includes(k)) delete MOD_LAST[k];
 const fixTab = t => typeof t === "string" && t.includes(":") && !MODS.includes(t.split(":")[0]) ? "ipo" : t;
-const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"], ["calendar", "Calendar"]];
-function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" || tab === "calendar" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
+const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"], ["calendar", "Calendar"], ["reports", "Reports"]];
+function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" || tab === "calendar" || tab === "reports" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
 function modTabs(m) { return m === "ipo" ? IPO_TABS : (window.TrendyModules[m]?.tabs || []); }
 function modStrip() {
   const m = modOf(state.tab); if (!m || state.sub || state.detail || state.report) return "";
@@ -1193,7 +1242,7 @@ function goTab(m, k) {
   if (!MODS.includes(m)) { m = "ipo"; k = null; }
   const tabs = modTabs(m); if (!tabs.length) return;
   if (!k || !tabs.some(t => t[0] === k)) k = tabs.some(t => t[0] === MOD_LAST[m]) ? MOD_LAST[m] : tabs[0][0];
-  if (m === "ipo") { if (k === "allot" || k === "unlisted" || k === "calendar") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
+  if (m === "ipo") { if (k === "allot" || k === "unlisted" || k === "calendar" || k === "reports") state.tab = k; else { state.tab = "ipo"; if (state.seg !== k) { state.seg = k; state.perf = null; state.showAll = false; } } }
   else state.tab = m + ":" + k;
   state.mod = m; MOD_LAST[m] = k; store.set("modLast", MOD_LAST);
   state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false;
@@ -1351,7 +1400,7 @@ function render() {
     $("#app").innerHTML = state.error ? `<div class="card errc">${ic("alert-triangle")}<p>${esc(state.error)}</p><button class="btn" data-refresh>Try again</button></div>` : `${brand()}<div class="skel-top"></div><div class="cards">${skelCards(3)}</div>`;
     return;
   }
-  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, calendar: calendarScreen, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
+  const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, calendar: calendarScreen, reports: reportsScreen, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (!state.detail && !state.report) state.dtabFor = null;   // leaving the IPO resets its tab and open blocks
@@ -1428,7 +1477,7 @@ function toast(m) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.classList.remove("show"); toastTimer = setTimeout(() => el.remove(), 300); }, 1900);
 }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear],[data-ack-lang],[data-cal]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear],[data-ack-lang],[data-cal],[data-rp]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
@@ -1438,6 +1487,7 @@ document.addEventListener("click", e => {
   if (searchClick(t)) return;
   if (aboutClick(t)) return;
   if (t.dataset.cal) return calClick(t);
+  if (t.dataset.rp) return rpClick(t);
   if (modClick(t)) return;
   if (t.dataset.allotOpen) { state.allotIpo = t.dataset.allotOpen; state.tab = "allot"; state.detail = null; render(); scrollTo(0, 0); return; }
   if (t.hasAttribute("data-more-filings")) { state.allFilings = !state.allFilings; return render(); }
