@@ -41,7 +41,7 @@ jobs:
         continue-on-error: true
         timeout-minutes: 3
         run: node pipeline/holidays.mjs
-      - name: Corporate actions (NSE: rights, buyback, bonus, split, dividend)
+      - name: "Corporate actions (NSE - rights, buyback, bonus, split, dividend)"
         continue-on-error: true
         timeout-minutes: 5
         run: node pipeline/actions.mjs

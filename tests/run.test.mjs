@@ -114,3 +114,10 @@ test("security: CSP allows no third-party script, PAN is not in localStorage, SV
   for (const f of fs.readdirSync(path.join(ROOT, "data/logos")).filter(x => x.endsWith(".svg"))) assert.ok(!UNSAFE.test(read("data/logos/" + f)), f + " is not a safe SVG");
   for (const f of fs.readdirSync(path.join(ROOT, ".github/workflows"))) { const w = read(".github/workflows/" + f); assert.ok(!/pull_request/.test(w), f + " must not run on pull requests"); assert.match(w, /^permissions: \{\}/m, f + " must start with no permissions"); }
 });
+
+test("workflow files: no unquoted ': ' inside a step name (it breaks the YAML and the whole workflow stops running)", () => {
+  for (const f of fs.readdirSync(path.join(ROOT, ".github/workflows"))) read(".github/workflows/" + f).split(/\r?\n/).forEach((l, k) => {
+    const m = l.match(/^\s*-?\s*name:\s*(.*)$/); if (!m) return;
+    const v = m[1].trim(); assert.ok(/^["']/.test(v) || !/: /.test(v), `${f}:${k + 1} unquoted ': ' in a name: ${v}`);
+  });
+});
