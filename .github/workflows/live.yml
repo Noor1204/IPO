@@ -7,7 +7,7 @@ name: Live market snapshot
 # This file must be on the default branch for the schedule and for `gh workflow run` to work.
 on:
   schedule:
-    - cron: "*/20 3-10 * * 1-5"      # 03:00-10:40 UTC = 08:30-16:10 IST, Mon-Fri; the first step exits quietly outside 09:00-15:50 IST
+    - cron: "*/10 3-10 * * 1-5"      # 03:00-10:40 UTC = 08:30-16:10 IST, Mon-Fri; the first step exits quietly outside 09:00-15:50 IST
   workflow_dispatch: {}
   push:
     branches: [main]
