@@ -10,8 +10,8 @@
 :root{
   /* ---- palette (light) ---- */
   --bg:#eceefb;--bg2:#e3e6f8;--card:#f6f5ff;--soft:#ebe8ff;--tx:#12163a;--mut:#4f5679;--bd:rgba(79,70,229,.17);--bd2:rgba(79,70,229,.32);
-  --pri:#4f46e5;--pri2:#4f46e5;--vio:#7c3aed;--ok:#047857;--bad:#be123c;--warn:#b45309;--info:#2563eb;
-  --grad:linear-gradient(135deg,#6366f1 0%,#8b5cf6 100%);--grad-ok:linear-gradient(135deg,#059669,#10b981);--grad-pre:linear-gradient(135deg,#64748b,#94a3b8);
+  --pri:#4f46e5;--pri2:#4338ca;--vio:#7c3aed;--ok:#056548;--bad:#9f1239;--warn:#92400e;--info:#1d4ed8;
+  --grad:linear-gradient(135deg,#4f46e5 0%,#7c3aed 100%);--grad-ok:linear-gradient(135deg,#065f46,#047857);--grad-pre:linear-gradient(135deg,#475569,#64748b);
   --surf:linear-gradient(160deg,#fbfaff 0%,#f1efff 100%);
   --surf-up:linear-gradient(160deg,rgba(16,185,129,.13),rgba(16,185,129,0) 55%),linear-gradient(160deg,#fbfffd,#eefaf5);
   --surf-dn:linear-gradient(160deg,rgba(244,63,94,.12),rgba(244,63,94,0) 55%),linear-gradient(160deg,#fffafb,#fbeff3);
@@ -33,11 +33,11 @@
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){
   --bg:#070b1a;--bg2:#0b1128;--card:#10173a;--soft:#1a2150;--tx:#eef0ff;--mut:#a7b0d0;--bd:rgba(129,140,248,.22);--bd2:rgba(129,140,248,.4);
   --pri:#8b8cf8;--pri2:#9ea0fb;--vio:#a78bfa;--ok:#34d399;--bad:#fb7185;--warn:#fbbf24;--info:#60a5fa;
-  --grad:linear-gradient(135deg,#6366f1 0%,#8b5cf6 100%);--grad-ok:linear-gradient(135deg,#10b981,#22c55e);--grad-pre:linear-gradient(135deg,#475569,#64748b);
+  --grad:linear-gradient(135deg,#5457e8 0%,#7c3aed 100%);--grad-ok:linear-gradient(135deg,#065f46,#047857);--grad-pre:linear-gradient(135deg,#475569,#64748b);
   --surf:linear-gradient(160deg,#171f52 0%,#10173b 55%,#0d1331 100%);
   --surf-up:linear-gradient(160deg,rgba(16,185,129,.20),rgba(16,185,129,0) 58%),linear-gradient(160deg,#122a3f,#0e1a36 60%,#0d1331);
   --surf-dn:linear-gradient(160deg,rgba(244,63,94,.20),rgba(244,63,94,0) 58%),linear-gradient(160deg,#2b1a40,#1a1538 60%,#0d1331);
-  --hero:linear-gradient(145deg,#3d41c4 0%,#2b2a8a 48%,#1a1a58 100%);
+  --hero:linear-gradient(145deg,#2e3290 0%,#25257a 48%,#181850 100%);
   --tint:rgba(129,140,248,.10);--tint2:rgba(129,140,248,.18);--track:rgba(129,140,248,.2);
   --ok-bg:rgba(52,211,153,.14);--bad-bg:rgba(251,113,133,.14);--warn-bg:rgba(251,191,36,.14);--pri-bg:rgba(129,140,248,.18);
   --glass:rgba(12,17,43,.74);--glass-bd:rgba(129,140,248,.24);
@@ -48,11 +48,11 @@
 :root[data-theme=dark]{
   --bg:#070b1a;--bg2:#0b1128;--card:#10173a;--soft:#1a2150;--tx:#eef0ff;--mut:#a7b0d0;--bd:rgba(129,140,248,.22);--bd2:rgba(129,140,248,.4);
   --pri:#8b8cf8;--pri2:#9ea0fb;--vio:#a78bfa;--ok:#34d399;--bad:#fb7185;--warn:#fbbf24;--info:#60a5fa;
-  --grad:linear-gradient(135deg,#6366f1 0%,#8b5cf6 100%);--grad-ok:linear-gradient(135deg,#10b981,#22c55e);--grad-pre:linear-gradient(135deg,#475569,#64748b);
+  --grad:linear-gradient(135deg,#5457e8 0%,#7c3aed 100%);--grad-ok:linear-gradient(135deg,#065f46,#047857);--grad-pre:linear-gradient(135deg,#475569,#64748b);
   --surf:linear-gradient(160deg,#171f52 0%,#10173b 55%,#0d1331 100%);
   --surf-up:linear-gradient(160deg,rgba(16,185,129,.20),rgba(16,185,129,0) 58%),linear-gradient(160deg,#122a3f,#0e1a36 60%,#0d1331);
   --surf-dn:linear-gradient(160deg,rgba(244,63,94,.20),rgba(244,63,94,0) 58%),linear-gradient(160deg,#2b1a40,#1a1538 60%,#0d1331);
-  --hero:linear-gradient(145deg,#3d41c4 0%,#2b2a8a 48%,#1a1a58 100%);
+  --hero:linear-gradient(145deg,#2e3290 0%,#25257a 48%,#181850 100%);
   --tint:rgba(129,140,248,.10);--tint2:rgba(129,140,248,.18);--track:rgba(129,140,248,.2);
   --ok-bg:rgba(52,211,153,.14);--bad-bg:rgba(251,113,133,.14);--warn-bg:rgba(251,191,36,.14);--pri-bg:rgba(129,140,248,.18);
   --glass:rgba(12,17,43,.74);--glass-bd:rgba(129,140,248,.24);
@@ -204,7 +204,7 @@ nav button b{display:none}
 .tile.ut::after{background:rgba(255,255,255,.14)}
 .tile.ut i{font-size:20px;margin-bottom:6px;opacity:.95}.tile.ut i .ic{font-size:22px}
 .tile.ut b{font-size:26px;font-weight:800}
-.ut1{background:linear-gradient(135deg,#4f46e5,#7c3aed)}.ut2{background:linear-gradient(135deg,#7c3aed,#c026d3)}.ut3{background:linear-gradient(135deg,#059669,#0d9488)}
+.ut1{background:linear-gradient(135deg,#4f46e5,#7c3aed)}.ut2{background:linear-gradient(135deg,#7c3aed,#a21caf)}.ut3{background:linear-gradient(135deg,#047857,#0f766e)}
 .ut-tiles{margin-bottom:14px}
 .grp{background:var(--pri-bg)!important;color:var(--pri2);border:1px solid var(--bd);font-weight:800;padding:6px 14px;margin:20px 0 12px}
 .grp.gp0{color:var(--bad);background:var(--bad-bg)!important}.grp.gp3{color:var(--mut);background:var(--tint)!important}
@@ -610,3 +610,78 @@ mark.hl{background:rgba(99,102,241,.22);color:var(--tx);font-weight:800;border-r
 .hl-flash{animation:hlflash 1.5s ease-out 1}
 @keyframes hlflash{0%{box-shadow:0 0 0 3px var(--pri),0 0 22px rgba(99,102,241,.55)}100%{box-shadow:0 0 0 0 transparent,0 0 0 transparent}}
 @media(prefers-reduced-motion:reduce){.hl-flash{animation:none}}
+
+/* ===== QA pass (round 2): stable modals, legible GMP, no card overflow ===== */
+html.locked,html.locked body{overflow:hidden;overscroll-behavior:none}
+.modal{position:fixed;inset:0;overscroll-behavior:contain;touch-action:manipulation}
+.modal.still,.modal .card.still{animation:none!important}
+.ackm{place-items:center;padding:16px;padding-top:max(16px,env(safe-area-inset-top,0px));padding-bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:200}
+.ackm .card{display:flex;flex-direction:column;max-width:440px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:hidden;padding:18px 18px 14px;border-radius:var(--r-xl);border-bottom:1px solid var(--bd);animation:ackin .22s var(--ease) both;transform:none}
+@keyframes ackin{from{opacity:0}}
+.ackbody{display:grid;min-height:0;overflow-y:auto;overscroll-behavior:contain;padding-right:2px;-webkit-overflow-scrolling:touch}
+.ackpane{grid-area:1/1;min-width:0;overflow-wrap:anywhere;line-height:1.55;font-size:14px}
+.ackpane.off{visibility:hidden}
+.ackpane .linkbtn{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:6px;text-align:left}
+.ackok{flex:none;margin-top:12px;min-height:48px;position:relative}
+.ackm .ackok:focus-visible,.ackm .linkbtn:focus-visible{outline:3px solid var(--pri);outline-offset:2px}
+
+/* --- GMP / gain-loss text: strong weight + AA contrast on every card background (light: deep emerald/rose, dark: bright) --- */
+:root{--ok-tx:#065f46;--bad-tx:#9f1239}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--ok-tx:#6ee7b7;--bad-tx:#fda4af}}
+:root[data-theme=dark]{--ok-tx:#6ee7b7;--bad-tx:#fda4af}
+.grn-t,.stat b.grn-t,.ins b.grn-t,.tile small.grn-t,.tile .v.grn-t,.tc-head .tc-chg.up{color:var(--ok-tx)}
+.red-t,.stat b.red-t,.ins b.red-t,.tile small.red-t,.tile .v.red-t,.tc-head .tc-chg.dn{color:var(--bad-tx)}
+.gmpnum,.ipoc-gmp b,.gmplbl,.tile small.grn-t,.tile small.red-t{font-weight:800;opacity:1;font-variant-numeric:tabular-nums}
+.gmplbl{font-size:13px;line-height:1.3;white-space:nowrap}
+.gmplbl.mut{font-weight:700}
+.upgmp{min-width:64px}
+.cd span.cdsub{opacity:1;font-weight:600}
+/* --- cards: nothing may poke out of a card at 320px (long closing-time lines wrap instead of overflowing) --- */
+.dots{display:flex;flex-wrap:wrap;gap:2px 10px;min-width:0;max-width:100%}
+.dots span,.dots .wait{white-space:normal;min-width:0;max-width:100%;overflow-wrap:anywhere}
+.cdline,.cd{display:flex;flex-wrap:wrap;align-items:baseline;column-gap:5px;row-gap:0;min-width:0;max-width:100%;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.cdline .ic,.cd .ic{flex:none;align-self:center}
+.cdline b,.cd b{font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd .cdsub,.cdline .cdsub{white-space:nowrap}
+.upmain,.ipoc-id,.ipoc-sub>*,.uprow>*{min-width:0}
+.upmain .sm,.upname,.ipoc-meta,.ipoc-sub .row{overflow-wrap:anywhere}
+.uprow{max-width:100%}
+.ipoc,.uprow,.closebox,.card,.tile{overflow-wrap:anywhere}
+.credit span{opacity:1}
+.datebox em{color:rgba(255,255,255,.96)}
+.uprow.closing .datebox{background:linear-gradient(135deg,#be123c,#e11d48)!important}
+.cd{font-weight:700}
+.tile.ut .mut,.tile.ut .sm,.tile.ut span{color:#fff}
+.tile small,.tile.k small{font-size:12px}
+.linkbtn{min-height:40px}
+a[href^="tel:"],a[href^="mailto:"]{display:inline-block;min-height:40px;line-height:40px;padding:0 2px}
+.datebox em{color:#fff}
+.chipb{min-height:40px;display:inline-flex;align-items:center;gap:4px}
+.ctgrid a{display:inline-block;min-height:40px;line-height:40px;padding:0 2px;overflow-wrap:anywhere;max-width:100%}
+.mlb small,.mlb small{font-size:12px}
+input[type=checkbox]{width:22px;height:22px;flex:none}
+.row>input[type=checkbox]{margin:9px 4px}
+.st-sw button,.st-rg button,.mf-chip,.mf-rng button,.mf-seg button{min-height:40px}
+.mf-fld input[type=range]{min-height:40px}
+.mf-fl{display:block;min-height:40px;padding:10px 0}
+/* chips/pills on the (dark) hero + lists: lighter tokens so text keeps >= 4.5:1 */
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .hero .st.red,:root:not([data-theme=light]) .st.red{color:var(--bad-tx)}:root:not([data-theme=light]) .st.blue{color:#bfdbfe}:root:not([data-theme=light]) .st.grn,:root:not([data-theme=light]) .badge.g,:root:not([data-theme=light]) .chip.g{color:var(--ok-tx)}:root:not([data-theme=light]) .pill{color:#dbe0ff}}
+:root[data-theme=dark] .st.red{color:var(--bad-tx)}:root[data-theme=dark] .st.blue{color:#bfdbfe}:root[data-theme=dark] .st.grn,:root[data-theme=dark] .badge.g,:root[data-theme=dark] .chip.g{color:var(--ok-tx)}:root[data-theme=dark] .pill{color:#dbe0ff}
+.st-pill.up{color:var(--ok-tx)}.st-pill.dn{color:var(--bad-tx)}
+.st-bl{color:var(--pri2)}
+.datebox span,.datebox em{color:#fff!important}
+.linkbtn{min-width:40px}
+#app .st-pill.up{color:var(--ok-tx)}#app .st-pill.dn{color:var(--bad-tx)}#app .st-bl{color:var(--pri2)}
+#app .mf-fld input[type=range]{min-height:40px}
+#app .mf-fl{display:block;min-height:40px;padding:10px 0}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .hero .bt span{color:#d5dbf4}}
+:root[data-theme=dark] .hero .bt span{color:#d5dbf4}
+.cdline,.cd{display:block;line-height:1.45}
+.cdline .ic,.cd .ic{display:inline-block;vertical-align:-3px;margin-right:4px}
+.datebox b{white-space:nowrap;font-size:clamp(15px,4.6vw,20px)}
+@media(max-width:380px){.datebox b{font-size:16px}.datebox{width:52px}}
+/* module screens (Stocks / Mutual Fund): same page padding as the IPO screens, so the sticky header lines up and never pokes out by 2px */
+@media(min-width:720px){#app[data-view=mod]{padding:20px 22px 128px}}
+@media(min-width:960px){#app[data-view=mod]{padding:92px clamp(24px,3vw,56px) 56px}}
+.stats>*,.tiles>*,.bento>*,.ins,.stat,.tile{min-width:0}
+.stat b,.tile .v,.tile b,.ins b,.bt b,.datebox b.cu{overflow-wrap:anywhere;max-width:100%}

@@ -133,7 +133,7 @@ function reasons(i) {
 const ring = (s, big) => `<div class="ring ${big ? "big" : ""} ${s === null || s === undefined ? "na" : ""}" ${s === null || s === undefined ? 'title="Score not available: the offer document has not been analysed yet"' : ""} style="--rc:${col(s)};--rp:${(s ?? 0) * 3.6}deg"><span>${s ?? "N/A"}</span></div>`;
 const hue = s => [...s].reduce((a, c) => a + c.charCodeAt(0), 0) % 360;
 const logoText = i => /^IG-/.test(i.symbol) ? i.name.split(/\s+/).map(w => w[0]).join("").slice(0, 3).toUpperCase() : i.symbol.slice(0, 3);   // IG-only entries have no exchange symbol
-const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 42%)"><span>${esc(logoText(i))}</span>${logoSrc(i.logo) ? `<img src="${esc(logoSrc(i.logo))}" alt="" referrerpolicy="no-referrer">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
+const logo = i => `<div class="logo" style="background:hsl(${hue(i.symbol)} 55% 31%)"><span>${esc(logoText(i))}</span>${logoSrc(i.logo) ? `<img src="${esc(logoSrc(i.logo))}" alt="" referrerpolicy="no-referrer">` : ""}</div>`;   // if the image fails to load it is removed and the initials show
 // ---------- where an IPO is in its journey ----------
 // bidding open -> (closing time passes) waiting for allotment -> allotment day -> waiting for listing -> listed
 const IST_OFFSET = "+05:30";
@@ -148,7 +148,7 @@ const endLabel = i => { const [h, m] = cutoffHM(i).split(":").map(Number); retur
 function phase(i, now = Date.now()) {
   if (i.status === "upcoming") return { k: "apply" };
   const end = endAt(i);
-  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: "Closes in", sub: "by " + endLabel(i) };
+  if (i.status === "live" && (end === null || now < end)) return { k: "apply", end: end && i.close === isoLocal(today) ? end : null, tl: "Closes in", sub: endLabel(i) };
   if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
   const ex = i.datesExpected ? " (exp.)" : "";
   if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: ic("bell-ringing") + " Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
@@ -159,7 +159,7 @@ function phase(i, now = Date.now()) {
 const pad2 = n => String(n).padStart(2, "0");
 const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d > 0 ? d + "d " + pad2(h) + "h " + pad2(m) + "m " : h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
 // the live countdown (numbers are updated every second by tick() at the end of this file)
-const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) return ""; return `<div class="cd${p.k === "apply" ? (p.end - Date.now() < 3600e3 ? " urgent" : "") : " soft"}" data-end="${p.end}" data-k="${p.k}">${ic("clock")} ${p.tl} <b data-cdtxt>${fmtCd(p.end - Date.now())}</b>${p.sub ? ` <span>(${p.sub})</span>` : ""}</div>`; };
+const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) return ""; return `<div class="cd${p.k === "apply" ? (p.end - Date.now() < 3600e3 ? " urgent" : "") : " soft"}" data-end="${p.end}" data-k="${p.k}">${ic("clock")} ${p.tl} <b data-cdtxt>${fmtCd(p.end - Date.now())}</b>${p.sub ? ` <span class="cdsub">· ${p.sub}</span>` : ""}</div>`; };
 // the button (or the status that replaces it once bidding is over)
 function actionBtn(i, wide) {
   const p = phase(i), w = wide ? ' style="width:100%"' : "";
@@ -392,8 +392,8 @@ function closeRow(i) {
     ${logo(i)}<div class="upmain"><div class="upname">${esc(i.name)}</div>
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${isNum(i.priceHigh) && i.priceHigh > 0 ? price(i) : "Price —"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${isNum(i.lot) && i.priceHigh ? " · ₹" + inr(i.lot * i.priceHigh) : ""}</div>
       <div class="mut sm">${N !== null && isNum(i.bids?.retail?.times) ? "Retail " + f2(i.bids.retail.times) + "x (≈1 in " + N + ")" : "Retail subscription —"}${sc.score !== null ? " · Score " + sc.score : ""}</div>
-      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">${ic("clock")} Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> (by ${endLabel(i)})</span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
-    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="mut sm">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div></div>`;
+      <div class="dots sm">${(() => { const e = endAt(i); return e && e > Date.now() ? `<span class="wait cdline${e - Date.now() < 3600e3 ? " urgent" : ""}" data-end="${e}">${ic("clock")} Closes in <b data-cdtxt>${fmtCd(e - Date.now())}</b> <span class="cdsub">· ${endLabel(i)}</span></span>` : `<span class="wait">Last day · allotment ${i.allotment ? fmtS(i.allotment) : "—"}</span>`; })()}</div></div>
+    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="gmplbl ${gcls}">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div></div>`;
 }
 function closingBlock(list) {
   if (!list.length) return "";
@@ -413,7 +413,7 @@ function upRow(i) {
       <div class="mut sm"><span class="pill sm">${i.board}</span> ${hasPrice ? price(i) : "Price band awaited"}${isNum(i.lot) ? " · Lot " + i.lot : ""}${minInv ? " · ₹" + inr(minInv) : ""}</div>
       <div class="mut sm">Closes ${i.close ? fmtS(i.close) : "—"} · Listing ${i.listing ? fmtS(i.listing) + (i.datesExpected ? "*" : "") : "—"}${isNum(i.issueSizeCr) ? " · ₹" + cr(i.issueSizeCr) + " Cr" : ""}</div>
       <div class="dots sm"><span class="${hasPrice ? "ok" : "wait"}"><i class="dot"></i>Price band</span><span class="${docOk ? "ok" : "wait"}"><i class="dot"></i>Offer doc</span>${preApply(i) ? `<span class="prea">${ic("check")} Pre-apply open</span>` : ""}${sc.score !== null ? `<span class="ok"><i class="dot"></i>Score ${sc.score}</span>` : ""}</div></div>
-    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="mut sm">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div>
+    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${gcls}">₹${g}</div><div class="gmplbl ${gcls}">GMP${isNum(gmpPct(i)) ? " " + gmpPct(i).toFixed(0) + "%" : ""}</div>` : `<div class="mut sm" style="text-align:right">No GMP<br>yet</div>`}</div>
   </div>`;
 }
 // summary + grouped list: this week / next week / later / date not announced
@@ -449,7 +449,7 @@ function filingRow(f) {
       <div class="mut sm"><span class="pill sm">${esc(TYPE_LABEL[f.type] || f.type)}</span> ${ago <= 0 ? "today" : ago === 1 ? "yesterday" : ago + " days ago"}</div>
       <div class="mut sm">${f.open ? "Opens " + fmtS(f.open) + (f.close ? " – " + fmtS(f.close) : "") : "Dates, price band & size not announced"}</div>
       <div class="dots sm"><span class="wait"><i class="dot"></i>Price band</span><span class="wait"><i class="dot"></i>Dates</span><span class="ok"><i class="dot"></i>SEBI document</span></div></div>
-    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${g >= 0 ? "grn-t" : "red-t"}">₹${g}</div><div class="mut sm">GMP</div>` : `<div class="mut sm">No GMP<br>yet</div>`}<div class="sm" style="color:var(--pri);margin-top:4px">SEBI ${ic("external-link")}</div></div></a>`;
+    <div class="upgmp">${isNum(g) ? `<div class="gmpnum ${g >= 0 ? "grn-t" : "red-t"}">₹${g}</div><div class="gmplbl ${g >= 0 ? "grn-t" : "red-t"}">GMP</div>` : `<div class="mut sm">No GMP<br>yet</div>`}<div class="sm" style="color:var(--pri);margin-top:4px">SEBI ${ic("external-link")}</div></div></a>`;
 }
 function filingsBlock() {
   const all = (state.meta?.filings || []).slice().sort((x, y) => y.date.localeCompare(x.date));
@@ -1090,7 +1090,7 @@ function countUps() {
 }
 const skelCards = n => Array.from({ length: n }, () => `<div class="card skel-card"><div class="skel-line w60"></div><div class="skel-line w40"></div><div class="skel-block"></div><div class="skel-line w80"></div></div>`).join("");
 const SKEL = `<div class="skel" role="status" aria-label="Loading"><div class="skel-line w50"></div><div class="skel-row"></div><div class="skel-row"></div><div class="skel-row"></div></div>`;
-let lastScreen = "", enterFlip = 0;
+let lastScreen = "", enterFlip = 0, shownModal = null, sheetTop = 0;
 const screenKey = () => [state.tab, state.tab === "ipo" ? state.seg : "", state.sub || "", state.detail || "", state.report || ""].join("|");
 
 // ---------- render & events ----------
@@ -1105,13 +1105,15 @@ function render() {
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
   if (state.modal && !byId(state.modal)) state.modal = null;
+  const sh0 = document.querySelector("#app .modal .card.sheet"); if (sh0) sheetTop = sh0.scrollTop;
   const ae = document.activeElement, keep = ae && ae.id && ae !== document.body ? { id: ae.id, s: ae.selectionStart, e: ae.selectionEnd } : null;
   $("#app").dataset.view = state.report ? "report" : state.detail ? "detail" : modOf(state.tab) && modOf(state.tab) !== "ipo" ? "mod" : state.tab;
   const mo = modOf(state.tab); if (mo) { state.mod = mo; if (!modLoaded[mo]) { modLoaded[mo] = true; try { TrendyModules[mo]?.load?.(hostApi()); } catch (e) { console.warn(e); } } }
   const sk = screenKey(), newScreen = sk !== lastScreen; lastScreen = sk;
   $("#app").innerHTML = staleBar() + (state.report ? reportView() : state.detail ? detail() : (screens[state.tab] || modScreen)()) + credit() +
-    (acked() ? "" : `<div class="modal"><div class="card"><div class="sm">${disclaimer()}</div><button class="btn wide" data-ack>${lang() === "hi" ? "मैं समझ गया" : "I understand"}</button></div></div>`) +
-    (state.modal ? (() => { const i = byId(state.modal), pre = preApply(i); return `<div class="modal" data-close><div class="card sheet"><button class="ib sq sheetx" data-close aria-label="Close">${ic("x")}</button><h3>${pre ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app, go to the IPO section and choose <b>${esc(i.name)}</b>.</p>${pre ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm applyl"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn wide ${pre ? "pre" : ""}" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${pre ? "Pre Apply" : "Apply"} on Groww ${ic("external-link")}</a><div class="sm otherb"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ${ic("external-link")}</a>`).join("")}</div><p class="mut sm">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn wide ghost" data-close>Got it</button></div></div>`; })() : "");
+    (state.modal ? (() => { const i = byId(state.modal), pre = preApply(i), still = shownModal === state.modal ? " still" : ""; return `<div class="modal${still}" data-close><div class="card sheet${still}"><button class="ib sq sheetx" data-close aria-label="Close">${ic("x")}</button><h3>${pre ? "Pre-apply for" : "Apply for"} ${esc(i.name)}</h3><p class="sm">Open your broker app or UPI app, go to the IPO section and choose <b>${esc(i.name)}</b>.</p>${pre ? `<p class="sm">The price band is out, so many brokers let you <b>pre-apply</b> now: your bid is placed in advance and goes in when the IPO opens${i.open ? " on <b>" + fmtD(i.open) + "</b>" : ""}. Availability depends on your broker.</p>` : ""}<ul class="sm applyl"><li>Price: ₹${i.priceHigh} (cut-off)</li><li>Min. lot: ${i.lot} shares = ₹${inr(i.lot * i.priceHigh)}</li><li>Closes: ${fmtD(i.close)}</li></ul><a class="btn wide ${pre ? "pre" : ""}" href="https://groww.in/ipo" data-track="broker/Groww" target="_blank" rel="noopener noreferrer">${pre ? "Pre Apply" : "Apply"} on Groww ${ic("external-link")}</a><div class="sm otherb"><b>Other brokers</b> <span class="mut">(opens their IPO page; log in with your own account)</span></div><div class="brokers">${BROKERS.filter(b => b[0] !== "Groww").map(([n, u]) => `<a class="chipb" data-track="broker/${esc(n)}" href="${u}" target="_blank" rel="noopener noreferrer">${n} ${ic("external-link")}</a>`).join("")}</div><p class="mut sm">You can also apply from the IPO section of UPI apps such as PhonePe, Google Pay or Paytm. Trendy IPO never asks for your login, UPI PIN or bank details.</p><button class="btn wide ghost" data-close>Got it</button></div></div>`; })() : "");
+  { const sh = document.querySelector("#app .modal .card.sheet"); if (sh && shownModal === state.modal) sh.scrollTop = sheetTop; shownModal = state.modal || null; if (!state.modal) sheetTop = 0; }
+  syncAck();
   // shimmer skeletons instead of "Loading…" text (module screens print plain loading lines while their data downloads)
   document.querySelectorAll("#app p.mut").forEach(p => { if (/^Loading/i.test(p.textContent.trim())) { const w = document.createElement("div"); w.innerHTML = SKEL; p.replaceWith(w.firstChild); } });
   const app = $("#app");
@@ -1130,6 +1132,39 @@ function render() {
   countUps();
   pushView();
 }
+// ---- first-run disclaimer: ONE persistent dialog on <body> (outside #app, so render() never rebuilds, re-animates or scrolls it).
+// Both languages are stacked in the same grid cell, so the dialog keeps one fixed height when the language is switched.
+let ackEl = null, ackPrevFocus = null;
+const ackPane = l => '<div class="ackpane" lang="' + l + '" data-l="' + l + '"><b>' + TEXT.disclaimerTitle[l] + "</b><br>" + TEXT.disclaimer[l] + "<br>" +
+  (l === "en" ? `<button class="linkbtn" data-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`) + "</div>";
+function setLock() { document.documentElement.classList.toggle("locked", !acked() || !!state.modal); }
+function syncAck() {
+  if (acked()) {
+    if (ackEl) { ackEl.remove(); ackEl = null; [...document.body.children].forEach(n => n.removeAttribute("inert")); try { ackPrevFocus && ackPrevFocus.focus({ preventScroll: true }); } catch {} }
+    setLock(); return;
+  }
+  if (!ackEl) {
+    ackPrevFocus = document.activeElement;
+    ackEl = document.createElement("div"); ackEl.className = "modal ackm"; ackEl.setAttribute("role", "dialog"); ackEl.setAttribute("aria-modal", "true"); ackEl.setAttribute("aria-label", "Disclaimer");
+    ackEl.innerHTML = '<div class="card"><div class="ackbody">' + ackPane("en") + ackPane("hi") + '</div><button class="btn wide ackok" data-ack></button></div>';
+    document.body.appendChild(ackEl);
+    [...document.body.children].forEach(n => { if (n !== ackEl && n.id !== "splash" && n.tagName !== "SCRIPT" && n.tagName !== "STYLE") n.setAttribute("inert", ""); });
+    setTimeout(() => { const b = ackEl && ackEl.querySelector("[data-ack]"); if (b) b.focus({ preventScroll: true }); }, 60);
+  }
+  const l = lang(), hi = l === "hi";
+  ackEl.querySelectorAll(".ackpane").forEach(p => { const on = p.dataset.l === l; p.classList.toggle("off", !on); if (on) p.removeAttribute("inert"); else p.setAttribute("inert", ""); p.setAttribute("aria-hidden", on ? "false" : "true"); });
+  const ok = ackEl.querySelector("[data-ack]"); if (ok.dataset.l !== l) { ok.dataset.l = l; ok.textContent = hi ? "मैं समझ गया" : "I understand"; ok.lang = l; }
+  setLock();
+}
+document.addEventListener("keydown", e => {
+  if (e.key === "Tab" && ackEl) {   // focus trap
+    const f = [...ackEl.querySelectorAll("button,a[href]")].filter(x => !x.closest("[inert]"));
+    if (!f.length) return; const first = f[0], last = f[f.length - 1];
+    if (!ackEl.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  } else if (e.key === "Escape" && state.modal && !ackEl) { state.modal = null; render(); }
+});
 let toastTimer = null;
 function toast(m) {
   render();   // some callers rely on this to redraw after a state change

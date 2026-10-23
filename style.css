@@ -311,9 +311,9 @@ a.uprow{border-left-color:#8b5cf6}
 
 /* ---- Apply = app blue (not green); Pre Apply = grey; both keep blinking ---- */
 .btn[data-apply]:not(.off){background:linear-gradient(135deg,#2563EB,#4F46E5);animation:apply-blink-blue 1.5s ease-in-out infinite}
-.btn[data-apply].pre:not(.off){background:linear-gradient(135deg,#64748b,#94a3b8);animation-name:apply-blink-grey}
+.btn[data-apply].pre:not(.off){background:linear-gradient(135deg,#475569,#64748b);animation-name:apply-blink-grey}
 .btn[data-apply]:not(.off):hover{animation-duration:.9s}
-.dots .prea{background:linear-gradient(90deg,#64748b,#94a3b8);animation:apply-blink-grey 1.5s ease-in-out infinite}
+.dots .prea{background:linear-gradient(90deg,#475569,#64748b);animation:apply-blink-grey 1.5s ease-in-out infinite}
 @keyframes apply-blink-blue{0%,100%{box-shadow:0 0 0 0 rgba(79,70,229,.6);filter:brightness(1)}50%{box-shadow:0 0 0 9px rgba(79,70,229,0);filter:brightness(1.2)}}
 @keyframes apply-blink-grey{0%,100%{box-shadow:0 0 0 0 rgba(100,116,139,.6);filter:brightness(1)}50%{box-shadow:0 0 0 9px rgba(100,116,139,0);filter:brightness(1.2)}}
 /* ---- credit line ---- */
