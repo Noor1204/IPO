@@ -12,7 +12,8 @@ const state = {
   loaded: false, error: "", meta: null, ipos: [],
   tab: "ipo", seg: "live", perf: null, showAll: false, main: true, sme: false, sort: "score", q: "", search: false, detail: null,
   cmp: store.get("cmp", []), watch: store.get("watch", []), alerts: store.get("alerts", { open: true, close: true, allot: false }),
-  allotIpo: null, modal: null, toast: "", ack: false, report: null, reportTab: "docs"
+  allotIpo: null, modal: null, toast: "", ack: false, report: null, reportTab: "docs",
+  dtab: "ov", dtabFor: null, dOpen: new Set()   // IPO detail: selected tab, the IPO it belongs to, open "See more" blocks
 };
 // Factor weights (sum 100). Missing factors are dropped and the rest re-normalised.
 const WEIGHTS = { financial: .25, gmp: .15, subscription: .20, valuation: .20, quality: .10, peers: .10 };
@@ -550,7 +551,7 @@ function applyAsCard(i, minInv, minLots) {
   const pb = a => isNum(a.priceLow) && isNum(a.priceHigh) ? `₹${px(a.priceLow)} – ₹${px(a.priceHigh)}` : isNum(a.priceHigh) ? `₹${px(a.priceHigh)}` : "—";
   const kv = (l, v) => `<div><span>${l}</span><b class="num">${v}</b></div>`;
   const t = A.length ? `<div class="aas">${A.map(a => `<div class="aa"><div class="aa-h"><b>${esc(a.category)}</b>${a.note ? `<span class="mut sm">${esc(a.note)}</span>` : ""}</div><div class="aa-g">${kv("Price band", pb(a))}${kv("Lot", isNum(a.lot) ? inr(a.lot) + " sh" : "—")}${kv("Min amount", rupee(a.minAmount))}${kv("Max amount", rupee(a.maxAmount))}</div></div>`).join("")}</div>` : "";
-  return card(ic("coins") + " Apply as", (isNum(minInv) ? `<div class="mininv"><span>Minimum investment</span><b class="num">${rupee(minInv)}</b><em>${minLots} lot${minLots > 1 ? "s" : ""}${isNum(i.lot) ? " · " + inr(i.lot * minLots) + " shares" : ""}</em></div>` : "") + t);
+  return card(ic("coins") + " Apply as", (isNum(minInv) ? `<div class="mininv"><span>Minimum investment</span><b class="num">${rupee(minInv)}</b><em>${minLots} lot${minLots > 1 ? "s" : ""}${isNum(i.lot) ? " · " + inr(i.lot * minLots) + " shares" : ""}</em></div>` : "") + (t ? mx("applyas", t, { n: 0, more: `Limits by category (${A.length})`, less: "Hide categories" }) : ""));
 }
 function anchorCard(i) {
   const a = i.anchorSummary; if (!a) return "";
@@ -577,79 +578,233 @@ function contactsCard(i) {
   return card(ic("phone") + " Contacts", `<div class="ctgrid">${html}</div>${i.contacts?.source ? `<p class="mut sm">Source: ${esc(i.contacts.source)}</p>` : ""}`);
 }
 
+// ---------- IPO detail: tabs, "See more" collapsibles, offer breakup, lot-size table ----------
+// See docs/DESIGN.md ("IPO detail page" and "See more"). The tab and the open "See more" blocks live in state (dtab, dOpen) and are reset when another IPO is opened,
+// so a re-render (data refresh, countdown end) shows exactly what the user had open. Tab changes never touch the history (levelKey ignores them).
+const DTABS = [["ov", "Overview"], ["subs", "Subscription"], ["gmp", "GMP"], ["fin", "Financials"], ["co", "Company"], ["docs", "Documents"]];
+let MXALL = false;   // the printed full report shows every block open
+// mx(key, html, {n, sel, lines, more, less}): a block that shows only its first n rows (sel = row selector, default "tr"; the header row counts) or its first `lines` text lines
+// (n = 0 hides it completely) and a button that opens the rest. fitMx() measures after every render; if nothing would be hidden the button is removed.
+const mx = (key, inner, o = {}) => {
+  const open = MXALL || state.dOpen.has(key), more = o.more || "See more", less = o.less || "See less";
+  const a = o.lines ? `data-lines="${o.lines}"` : `data-n="${o.n ?? 0}" data-sel="${o.sel || "tr"}"`;
+  return `<div class="mx${o.cls ? " " + o.cls : ""}${open ? " open" : ""}${MXALL ? " all" : ""}" id="mx-${key}" ${a}>${inner}</div>` +
+    (MXALL ? "" : `<button type="button" class="seemore" data-mx="${key}" data-lbl="${esc(more)}|${esc(less)}" aria-expanded="${open}" aria-controls="mx-${key}"><span>${esc(open ? less : more)}</span>${ic("chevron-down")}</button>`);
+};
+// a list that shows its first n items and puts the rest behind "See N more" (w wraps a group of items)
+const moreList = (key, items, n, w = h => h) => items.length <= n ? w(items.join("")) : w(items.slice(0, n).join("")) + mx(key, w(items.slice(n).join("")), { n: 0, more: `See ${items.length - n} more`, less: "See less" });
+function fitMx(root = document) {
+  root.querySelectorAll(".mx:not(.all)").forEach(el => {
+    const nx = el.nextElementSibling, btn = nx && nx.matches(".seemore") ? nx : null, open = el.classList.contains("open");
+    el.classList.remove("fit", "done", "nomore"); el.style.removeProperty("--ch"); el.style.removeProperty("--fh"); el.inert = false; if (btn) btn.hidden = false;
+    const fh = el.scrollHeight, top = el.getBoundingClientRect().top, zero = !el.dataset.lines && +el.dataset.n === 0; let ch;
+    if (el.dataset.lines) ch = Math.round((parseFloat(getComputedStyle(el).lineHeight) || 22) * +el.dataset.lines);
+    else if (zero) ch = 0;
+    else { const it = el.querySelectorAll(el.dataset.sel)[+el.dataset.n - 1]; ch = it ? Math.ceil(it.getBoundingClientRect().bottom - top) : fh; }
+    if (!zero && ch >= fh - 6) { el.classList.add("nomore"); if (btn) btn.hidden = true; return; }
+    el.style.setProperty("--ch", ch + "px"); el.style.setProperty("--fh", fh + "px"); el.classList.add("fit");
+    if (open) el.classList.add("done"); else if (zero) el.inert = true;
+  });
+}
+function toggleMx(btn) {
+  const key = btn.dataset.mx, el = document.getElementById("mx-" + key); if (!el) return;
+  const open = !el.classList.contains("open"), [m, l] = btn.dataset.lbl.split("|"), zero = el.style.getPropertyValue("--ch") === "0px";
+  if (open) state.dOpen.add(key); else state.dOpen.delete(key);
+  btn.setAttribute("aria-expanded", open); btn.firstElementChild.textContent = open ? l : m;
+  if (!el.classList.contains("fit")) { el.classList.toggle("open", open); return; }
+  if (open) {
+    el.inert = false; el.classList.add("open");
+    if (REDUCED()) el.classList.add("done"); else el.addEventListener("transitionend", ev => { if (ev.propertyName === "max-height" && el.classList.contains("open")) el.classList.add("done"); }, { once: true });
+  } else {
+    el.classList.remove("done"); void el.offsetHeight; el.classList.remove("open"); if (zero) el.inert = true;
+  }
+}
+// distance from the top of the page that sticky bars must keep clear (the fixed top bar on laptops, nothing on phones)
+const stickTop = () => { const n = document.querySelector("nav"), c = n && getComputedStyle(n); return c && c.position === "fixed" && c.top === "0px" ? n.getBoundingClientRect().height : 0; };
+function detailAfter() {
+  $("#app").style.setProperty("--stk", stickTop() + "px");
+  fitMx();
+  const bar = document.querySelector("#app .dtabs"), on = bar && bar.querySelector(".on");
+  if (on) bar.scrollLeft = on.offsetLeft - (bar.clientWidth - on.offsetWidth) / 2;
+}
+// switch the tab: no history step; if the page was scrolled past the hero, the tab bar stays pinned and the new content starts right under it
+function setDtab(k) {
+  if (!DTABS.some(t => t[0] === k) || k === state.dtab) return;
+  const a = document.getElementById("dtabtop"), y0 = a ? a.getBoundingClientRect().top + scrollY - stickTop() : 0, stuck = a && scrollY >= y0 - 2;
+  state.dtab = k; render(); if (stuck) scrollTo(0, y0);
+}
+document.addEventListener("keydown", e => {
+  const t = e.target.closest?.("[data-dtab]"); if (!t || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(e.key)) return;
+  const ks = DTABS.map(x => x[0]), c = ks.indexOf(t.dataset.dtab), nx = e.key === "Home" ? 0 : e.key === "End" ? ks.length - 1 : (c + (e.key === "ArrowRight" ? 1 : -1) + ks.length) % ks.length;
+  e.preventDefault(); setDtab(ks[nx]); document.getElementById("dt-" + ks[nx])?.focus();
+});
+let fitT = 0; window.addEventListener("resize", () => { clearTimeout(fitT); fitT = setTimeout(() => { if (document.querySelector("#app .mx, #app .dtabs")) detailAfter(); }, 150); });
+try { document.fonts?.ready.then(() => fitMx()); } catch {}
+
+// Offer breakup: share of the issue per category. From the NSE bid table (bids.*.offered + anchor shares) when we have it, else from the reservation % in the offer document.
+// The parts are the whole: percentages use the largest-remainder rule so the numbers shown add up to exactly 100.0.
+function offerParts(i) {
+  const b = i.bids || {}, f = FU(i), P = [], pos = v => isNum(v) && v > 0;
+  let anch = pos(b.anchor?.offered) ? b.anchor.offered : pos(i.anchorSummary?.totalShares) ? i.anchorSummary.totalShares : null;
+  if (anch === null) { const m = String(i.issueDetail || "").match(/anchor[^0-9]{0,40}?([0-9][0-9,]{4,})\s*(?:equity )?shares/i); if (m) anch = +m[1].replace(/,/g, ""); }
+  const nii = pos(b.nii?.offered) ? b.nii.offered : (pos(b.bnii?.offered) || pos(b.snii?.offered)) ? (b.bnii?.offered || 0) + (b.snii?.offered || 0) : null;
+  const src = [["Anchor", anch], ["QIB", b.qib?.offered], ["NII", nii], ["Retail", b.retail?.offered], ["Employees", b.employee?.offered], ["Shareholders", b.shareholders?.offered], ["Market maker", b.marketMaker?.offered]];
+  for (const [label, v] of src) if (pos(v)) P.push({ label, v, sh: v });
+  let basis = "shares";
+  if (P.length >= 2) {
+    const sum = P.reduce((a, p) => a + p.v, 0);
+    if (pos(i.issueShares) && sum < i.issueShares * 0.985) P.push({ label: "Not split", v: i.issueShares - sum, sh: i.issueShares - sum, rest: true });
+  } else {
+    P.length = 0; basis = "pct";
+    const r = f?.issue?.reservation_pct || {}, names = { anchor: "Anchor", qib: "QIB", nii: "NII", retail: "Retail", employee: "Employees", shareholders: "Shareholders" };
+    for (const k of Object.keys(names)) if (pos(r[k])) P.push({ label: names[k], v: r[k] });
+    const sum = P.reduce((a, p) => a + p.v, 0);
+    if (!P.length || sum > 100.5) return null;
+    if (sum < 99.5) P.push({ label: "Other (not stated)", v: 100 - sum, rest: true });
+    if (pos(i.issueShares)) P.forEach(p => { p.sh = Math.round(i.issueShares * p.v / 100); });
+  }
+  const tot = P.reduce((a, p) => a + p.v, 0); if (!(tot > 0)) return null;
+  const q = P.map(p => ({ p, x: p.v / tot * 1000 })); q.forEach(o => { o.f = Math.floor(o.x); });
+  let left = 1000 - q.reduce((a, o) => a + o.f, 0); [...q].sort((a, b) => (b.x - b.f) - (a.x - a.f)).forEach(o => { if (left > 0) { o.f++; left--; } });
+  q.forEach(o => { o.p.pct = o.f / 10; });
+  return { parts: P, basis };
+}
+function offerCard(i) {
+  const o = offerParts(i); if (!o) return "";
+  const cl = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8"];
+  const bar = o.parts.map((p, k) => `<i class="${p.rest ? "c0" : cl[k % 8]}" style="width:${p.pct}%"></i>`).join("");
+  const rows = o.parts.map((p, k) => `<li data-pct="${p.pct}"><span class="ob-d ${p.rest ? "c0" : cl[k % 8]}"></span><span class="ob-l">${esc(p.label)}</span><b class="num">${p.pct.toFixed(1)}%</b><span class="mut sm ob-s">${isNum(p.sh) ? inr(p.sh) + " sh" : ""}</span></li>`).join("");
+  return card(ic("chart-bar") + " Offer breakup", `<div class="obar" role="img" aria-label="Offer breakup: ${esc(o.parts.map(p => p.label + " " + p.pct + "%").join(", "))}">${bar}</div><ul class="ob">${rows}</ul>
+    <p class="mut sm" style="margin:10px 0 0">${o.basis === "shares" ? "Shares offered in each category" + (i.anchorSummary || i.bids?.anchor ? " (anchor portion included)" : "") + ", as a share of the whole issue." : "Reservation per category as stated in the offer document."}</p>`);
+}
+// IPO Lot Size: what you pay and what the GMP says you could make, per category (limits: retail up to maxRetailAmount or 2 lakh, S-HNI from 2 lakh, B-HNI from 10 lakh)
+function lotTable(i, g, minLots) {
+  if (!(isNum(i.lot) && isNum(i.priceHigh) && i.lot > 0 && i.priceHigh > 0)) return "";
+  const pr = i.priceHigh, one = i.lot * pr, L = lotsFor(i), rl = isNum(i.maxRetailAmount) && i.maxRetailAmount > 0 ? i.maxRetailAmount : 200000;
+  const mn = Math.max(1, minLots), rmax = Math.max(mn, Math.floor(rl / one)), smax = Math.max(L.s, L.b - 1);
+  const A = (i.applyAs || []).filter(a => a && a.category), R = [["Retail (min)", mn, pr], ["Retail (max)", rmax, pr], ["S-HNI (min)", L.s, pr], ["S-HNI (max)", smax, pr], ["B-HNI (min)", L.b, pr]];
+  for (const [re, lab] of [[/employee/i, "Employee (max)"], [/shareholder/i, "Shareholder (max)"]]) {
+    const a = A.find(x => re.test(x.category)); if (!a || !isNum(a.maxAmount)) continue;
+    const p = isNum(a.priceHigh) && a.priceHigh > 0 ? a.priceHigh : pr, n = Math.floor(a.maxAmount / (i.lot * p)); if (n >= 1) R.push([lab, n, p]);
+  }
+  const prof = s => !isNum(g) ? "—" : `<span class="${g * s >= 0 ? "grn-t" : "red-t"}">${g * s >= 0 ? "+" : "−"}₹${inr(Math.abs(g * s))}</span>`;
+  const body = R.map(([lab, n, p]) => { const sh = n * i.lot, am = sh * p; return `<tr data-l="${n}" data-s="${sh}" data-a="${am}" data-p="${p}"><td>${lab}${p !== pr ? `<small class="mut"> at ₹${px(p)}</small>` : ""}</td><td>${n}</td><td>${inr(sh)}</td><td>₹${inr(am)}</td><td>${prof(sh)}</td></tr>`; }).join("");
+  return card(ic("coins") + " IPO Lot Size", `<div class="tw"><table class="lot"><tr><th>Category</th><th>Lots</th><th>Shares</th><th>Amount</th><th>Profit*</th></tr>${body}</table></div>
+    <p class="mut sm" style="margin:10px 0 0">${isNum(g) ? `*Estimated from GMP (₹${g} per share); actual listing price may vary.` : "*Estimated profit appears when a GMP is available."} Amount = lots × lot size (${i.lot}) × upper price (₹${px(pr)}).</p>`);
+}
+// bar chart of one financial line over the years (oldest on the left; negative values in red)
+function finChart(title, vals, per) {
+  const v = vals.map(x => isNum(x) ? x : null); if (!v.some(x => x !== null)) return "";
+  const mxv = Math.max(...v.filter(x => x !== null).map(Math.abs), 1e-9);
+  return `<div class="fch"><div class="fch-t">${title} <span class="mut sm">₹ Cr</span></div><div class="fch-b">${v.map((x, k) => `<div class="fch-c"><b class="num${x !== null && x < 0 ? " red-t" : ""}">${x === null ? "—" : cr(x)}</b><div class="fch-bar"><i class="${x !== null && x < 0 ? "neg" : ""}" style="height:${x === null ? 0 : Math.max(4, Math.abs(x) / mxv * 100)}%"></i></div><span>${esc(per[k] ?? "")}</span></div>`).join("")}</div></div>`;
+}
+// 4-step progress: Open, Close, Allotment, Listing (done / now / next from the dates and the closing time)
+function progressCard(i) {
+  const t = i.timeline || {}, now = Date.now(), S = [["Open", i.open || t.open, false], ["Close", i.close || t.close, false], ["Allotment", i.allotment || t.allotment, i.datesExpected], ["Listing", i.listing || t.listing, i.datesExpected]];
+  let done = S.map(([, d], k) => {
+    if (i.listingPerf) return true; if (!d) return false; const n = dayDiff(d);
+    return n < 0 || (n === 0 && ((k === 0 && opensAt(i) && now >= opensAt(i)) || (k === 1 && endAt(i) && now >= endAt(i))));
+  });
+  done = done.map((_, k) => done.slice(k).some(Boolean));
+  const cur = done.indexOf(false);
+  const li = S.map(([l, d, est], k) => `<li class="${done[k] ? "done" : k === cur ? "now" : ""}"><i>${done[k] ? ic("check") : ""}</i><b>${l}</b><span>${d ? fmtS(d) + (est ? " (exp.)" : "") : "—"}</span></li>`).join("");
+  const tlItems = [["Opens", t.open, false], ["Closes", t.close, false], ["Allotment finalised", t.allotment, i.datesExpected], ["Refund initiated", t.refund, i.datesExpected], ["Shares credited to demat", t.demat, i.datesExpected], ["Listing", t.listing, i.datesExpected]];
+  const tl = `<ol class="tl">${tlItems.map(([l, d, est]) => { const n = d ? dayDiff(d) : null; return `<li class="${n === null ? "" : n < 0 ? "done" : n === 0 ? "now" : ""}"><i></i><div><b>${l}</b><span>${d ? fmtD(d) + (est ? " (exp.)" : "") : "—"}</span></div></li>`; }).join("")}</ol>
+    <p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`;
+  return card(ic("calendar-event") + " IPO Progress", `<ol class="prog" aria-label="IPO progress">${li}</ol>` + mx("tl", tl, { n: 0, more: "All dates (6)", less: "Hide dates" }));
+}
+
 function detail(forReport = false) {
   const i = byId(state.detail), sc = scoreOf(i), v = verdict(sc.score), f = FU(i), b = i.bids || {}, g = gmpNow(i), L = isNum(i.lot) && isNum(i.priceHigh) && i.lot > 0 && i.priceHigh > 0 ? lotsFor(i) : null;
+  if (!forReport && state.dtabFor !== i.symbol) { state.dtabFor = i.symbol; state.dtab = "ov"; state.dOpen = new Set(); }
+  if (!DTABS.some(t => t[0] === state.dtab)) state.dtab = "ov";
+  MXALL = forReport;
   const inW = state.watch.includes(i.symbol), t = totalTimes(i), N = retailN(i), { v: fv } = factors(i);
   const risk = N === null ? null : N > 10 ? ["LOW ALLOTMENT CHANCE", "r"] : N > 3 ? ["MODERATE ALLOTMENT CHANCE", "y"] : ["GOOD ALLOTMENT CHANCE", "g"];
   const pr = i.priceHigh, F = f?.financials || {}, K = f?.kpi || {}, per = f?.periods || [], rv = a => Array.isArray(a) ? [...a].reverse() : [];
   const fr = (label, a) => [label, ...rv(a).concat([null, null, null]).slice(0, per.length).map(x => isNum(x) ? cr(x) : "—")];
-  const rows = [["QIB", b.qib], ["NII (total)", b.nii], ["NII > ₹10L (bNII)", b.bnii], ["NII ₹2-10L (sNII)", b.snii], ["Retail", b.retail], ["Employees", b.employee]].filter(r => r[1] && isNum(r[1].offered) && r[1].offered > 0);
   const anyBid = isNum(t);
   const dwRows = (i.subHistory || []).map(h => [fmtD(h.date), isNum(h.qib) ? f2(h.qib) + "x" : "—", isNum(h.nii) ? f2(h.nii) + "x" : "—", isNum(h.retail) ? f2(h.retail) + "x" : "—", `<b>${f2(h.total)}x</b>`]);
   const gh = (i.gmp?.history || []).map(x => x.gmp);
   const pa = peerAvg(i, "pe"), p = pe(i), iss = f?.issue || {};
-  const tot = (iss.fresh_issue_cr || 0) + (iss.ofs_cr || 0);
   const minInv = isNum(i.minInvestment) ? i.minInvestment : (isNum(i.lot) && i.lot > 0 && isNum(pr) && pr > 0 ? i.lot * pr : null);
   const minLots = isNum(i.minInvestmentLots) ? i.minInvestmentLots : 1;
   const bt = (l, v, s = "", cls = "") => `<div class="bt ${cls}"><span>${l}</span><b>${v}</b>${s ? `<em>${s}</em>` : ""}</div>`;
-  const tlItems = [["Opens", i.timeline?.open, false], ["Closes", i.timeline?.close, false], ["Allotment finalised", i.timeline?.allotment, i.datesExpected], ["Refund initiated", i.timeline?.refund, i.datesExpected], ["Shares credited to demat", i.timeline?.demat, i.datesExpected], ["Listing", i.timeline?.listing, i.datesExpected]];
-  const tl = `<ol class="tl">${tlItems.map(([l, d, est]) => { const n = d ? dayDiff(d) : null; return `<li class="${n === null ? "" : n < 0 ? "done" : n === 0 ? "now" : ""}"><i></i><div><b>${l}</b><span>${d ? fmtD(d) + (est ? " (exp.)" : "") : "—"}</span></div></li>`; }).join("")}</ol>`;
-  return `<div class="top">${backBtn()}<h1>${esc(i.name)}</h1><button class="ib pillb" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}">${ic(onWebsite() ? "copy" : "share-3")}<span>${onWebsite() ? "Copy link" : "Share"}</span></button></div>
-  <div class="dgrid"><section class="card hero"><div class="hero-top">${logo(i)}<div class="hero-id"><h3>${esc(i.name)}</h3><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div><div class="mut sm">${fmtS(i.open)} to ${fmtD(i.close)}</div></div></div>
+  const H = forReport ? "h3" : "h1";
+
+  const hero = `<section class="card hero"><div class="hero-top">${logo(i)}<div class="hero-id"><${H} class="hname">${esc(i.name)}</${H}><div class="ipoc-meta"><span class="pill">${esc(i.board)}</span>${stLabel(i)}</div></div>${forReport ? "" : `<button class="ib sq" data-share aria-label="${onWebsite() ? "Copy link" : "Share"}" title="${onWebsite() ? "Copy link" : "Share"}">${ic(onWebsite() ? "copy" : "share-3")}</button>`}</div>
+  <div class="facts">${bt("Issue size", isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—")}${bt("Price band", price(i))}${bt("Lot size", isNum(i.lot) ? inr(i.lot) + " sh" : "—")}${bt("IPO dates", i.open || i.close ? fmtS(i.open) + " – " + fmtS(i.close) : "—")}${bt("Min. investment", minInv ? "₹" + inr(minInv) + `<small> · ${minLots} lot${minLots > 1 ? "s" : ""}</small>` : "—")}${bt("Listing" + (i.datesExpected ? " (exp.)" : ""), fmtD(i.listing))}</div>
   ${cdFor(i)}
-  <div class="bento">${bt("Price band", price(i))}${bt("Lot / Min invest", isNum(i.lot) ? `${i.lot} sh${minInv ? " · ₹" + inr(minInv) : ""}` : "—")}${bt("Issue size", isNum(i.issueSizeCr) ? "₹" + cr(i.issueSizeCr) + " Cr" : "—")}${bt("Listing" + (i.datesExpected ? " (exp.)" : ""), fmtD(i.listing))}</div>
+  <div class="kv3"><div><span>GMP</span><b class="${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? "₹" + g + (isNum(gmpPct(i)) ? " · " + gmpPct(i).toFixed(0) + "%" : "") : "—"}</b></div><div><span>Subscribed</span><b>${subNow(i)}</b></div><div><span>Score</span><b>${sc.score ?? "—"}</b></div></div>
   <div class="cta">${actionBtn(i, true)}</div>
-  <div class="cta2"><button class="btn ghost" data-watch="${i.symbol}">${ic("star", inW ? "fill" : "")} ${inW ? "Watching" : "Watchlist"}</button><button class="btn ghost" data-cmp="${i.symbol}">${ic(state.cmp.includes(i.symbol) ? "check" : "scale")} ${state.cmp.includes(i.symbol) ? "In compare" : "Compare"}</button></div></section>
+  <div class="cta2"><button class="btn ghost" data-watch="${i.symbol}">${ic("star", inW ? "fill" : "")} ${inW ? "Watching" : "Watchlist"}</button><button class="btn ghost" data-cmp="${i.symbol}">${ic(state.cmp.includes(i.symbol) ? "check" : "scale")} ${state.cmp.includes(i.symbol) ? "In compare" : "Compare"}</button></div></section>`;
 
-  <div class="card"><div class="tiles keyt"><button class="tile k" data-jump="fin"><div class="v">${ic("report-money")}</div>Financials</button>
-  <button class="tile k" data-jump="gmp"><div class="v num ${isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : ""}">${isNum(g) ? "₹" + g : "NA"}</div>${isNum(g) && isNum(gmpPct(i)) ? `<small class="${g >= 0 ? "grn-t" : "red-t"}">${gmpPct(i).toFixed(2)}%</small>` : ""}GMP (rumour)</button>
-  <button class="tile k" data-jump="subs"><div class="v num">${subNow(i)}</div>Subscription</button></div>
-  ${isNum(g) && L ? `<div class="gl"><div class="row"><span>GMP x Lots (RETAIL)*</span><b>₹ ${inr(g * i.lot)}</b></div><div class="row"><span>GMP x Lots (sHNI)*</span><b>₹ ${inr(g * i.lot * L.s)}</b></div><div class="row"><span>GMP x Lots (bHNI)*</span><b>₹ ${inr(g * i.lot * L.b)}</b></div></div>` : ""}</div>
+  // ----- Overview
+  const ratio = (l, x, d = 1) => `<div><span>${l}</span><b class="num">${isNum(x) ? x.toFixed(d) + (l === "P/E" ? "" : "%") : "—"}</b></div>`;
+  const ronwV = isNum(last(K.ronw)) ? last(K.ronw) : last(K.roe), ronwL = isNum(last(K.ronw)) || !isNum(last(K.roe)) ? "RoNW" : "ROE";
+  const scoreC = card(ic("trophy") + " Trendy IPO Score", `<div class="scorec"><div class="scorering">${ring(sc.score, true)}</div><div class="scoret"><span class="badge ${v.c}">${v.t}</span><p class="mut sm">${sc.score === null ? "Not enough data to score this IPO yet." : `${Object.keys(fv).length} of ${Object.keys(WEIGHTS).length} factors scored · ${sc.coverage}% of the weight had data.`} Indicative only.</p></div></div>` +
+    mx("why", `<div class="factors">${Object.keys(WEIGHTS).map(n => `<div class="factor"><div class="row"><span>${FACTOR_LABEL[n]} <small class="mut">${WEIGHTS[n] * 100}%</small></span><b class="num">${fv[n] ?? "N/A"}</b></div><div class="bar"><i style="width:${fv[n] ?? 0}%;background:${col(fv[n] ?? null)}"></i></div></div>`).join("")}</div>
+    <div class="note"><b>${ic("sparkles")} Analysis (${sc.coverage}% of score weight had data)</b><ul class="reasons">${reasons(i).map(([k, r]) => `<li class="${k}">${ic(k === "good" ? "circle-check" : k === "mid" ? "minus" : k === "low" ? "alert-triangle" : "info-circle")}<span>${esc(r)}</span></li>`).join("")}</ul></div>
+    <p class="mut sm">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p>`, { n: 0, more: "Why this score", less: "Hide details" }), "ai");
+  const lp = i.listingPerf ? card(ic("trending-up") + " Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + esc(i.listingPerf.exchange) + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : "";
+  const checks = (i.checks || []).length ? card("", (i.checks.some(c => !c.ok) ? `<div class="note warnb">${ic("alert-triangle")}<span><b>Sources disagree:</b> ${i.checks.filter(c => !c.ok).map(c => `${esc(c.field)}: NSE ${esc(c.nse)} vs InvestorGain ${esc(c.other)}`).join("; ")}</span></div>` : `<span class="mut sm okline">${ic("check")} NSE and InvestorGain agree on ${i.checks.length} checks (issue size, lot, cap price, dates).</span>`)) : "";
+  const ov = lp + progressCard(i) + scoreC + offerCard(i) +
+    (f ? card(ic("chart-bar") + " Key ratios", `<div class="kr">${ratio("P/E", p)}${ratio("EBITDA", last(K.ebitda_margin))}${ratio(ronwL, ronwV)}${ratio("PAT", last(K.pat_margin))}</div><p class="mut sm" style="margin:8px 0 0">P/E post-IPO; EBITDA and PAT margins and ${ronwL} for the latest year in the offer document.</p>`) : "") +
+    lotTable(i, g, minLots) + applyAsCard(i, minInv, minLots) + anchorCard(i) + checks;
 
-  <div class="card" id="subs"><h2>${ic("chart-bar")} Subscription</h2>${subscriptionCard(i, anyBid)}</div>
+  // ----- Subscription
+  const appDefs = [["QIB", "qib"], ["NII (total)", "nii"], ["bNII (above ₹10L)", "bnii"], ["sNII (₹2L to ₹10L)", "snii"], ["Retail", "retail"], ["Employees", "employee"], ["Shareholders", "shareholders"]];
+  const appRows = appDefs.filter(([, k]) => b[k] && isNum(b[k].applications));
+  const appTot = isNum(b.total?.applications) ? b.total.applications : (() => { const ks = [b.qib, b.nii || null, b.nii ? null : b.bnii, b.nii ? null : b.snii, b.retail, b.employee, b.shareholders].filter(x => x && isNum(x.applications)); return ks.length ? ks.reduce((a, x) => a + x.applications, 0) : null; })();
+  const appCard = appRows.length ? card(ic("users") + " Application-wise breakup", tbl(["Category", "Applications", "Times"], [...appRows.map(([l, k]) => [l, inr(b[k].applications), isNum(b[k].times) ? f2(b[k].times) + "x" : "—"]), ...(isNum(appTot) ? [[`<b>Total</b>`, `<b>${inr(appTot)}</b>`, isNum(b.total?.times) ? `<b>${f2(b.total.times)}x</b>` : "—"]] : [])]) + `<p class="mut sm" style="margin:8px 0 0">Number of applications received per category (NSE).</p>`) : "";
+  const subs = card(ic("chart-bar") + " Subscription", `<div class="subtot"><span>Total subscribed</span><b class="num">${subNow(i)}</b></div>` + subscriptionCard(i, anyBid)) +
+    (N !== null && anyBid ? card("", `<div class="alot">${ic("users")} ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">${ic("info-circle")} The final allotment is decided by the registrar's computerised lottery.</div>`) : "") +
+    appCard +
+    (dwRows.length ? card("Day-wise subscription", `<p class="mut sm" style="margin:0 0 8px">${dwRows.length} snapshot${dwRows.length > 1 ? "s" : ""} · latest ${f2(last(i.subHistory).total)}x</p>` + mx("dw", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows), { n: 0, more: "See day-wise table", less: "Hide table" })) : "") +
+    (i.demand?.byPrice && Object.keys(i.demand.byPrice).length ? card("Cumulative demand by price (NSE)", `<p class="mut sm" style="margin:0 0 8px">${Object.keys(i.demand.byPrice).length} price points${i.demand.asOn ? " · " + esc(i.demand.asOn) : ""}</p>` + mx("dp", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)])), { n: 0, more: "See demand by price", less: "Hide table" })) : "");
 
-  <div class="card" id="ai"><h2>${ic("trophy")} Trendy IPO Score</h2><div class="scorebox"><div class="scorering">${ring(sc.score, true)}<span class="badge ${v.c}">${v.t}</span></div>
-  <div class="factors">${Object.keys(WEIGHTS).map(n => `<div class="factor"><div class="row"><span>${FACTOR_LABEL[n]} <small class="mut">${WEIGHTS[n] * 100}%</small></span><b class="num">${fv[n] ?? "N/A"}</b></div><div class="bar"><i style="width:${fv[n] ?? 0}%;background:${col(fv[n] ?? null)}"></i></div></div>`).join("")}</div></div>
-  <div class="note"><b>${ic("sparkles")} Analysis (${sc.coverage}% of score weight had data)</b><ul class="reasons">${reasons(i).map(([k, r]) => `<li class="${k}">${ic(k === "good" ? "circle-check" : k === "mid" ? "minus" : k === "low" ? "alert-triangle" : "info-circle")}<span>${esc(r)}</span></li>`).join("")}</ul></div>
-  <p class="mut sm">Every factor is calculated from NSE data, the RHP and GMP; factors without data are left out and the rest are re-weighted. Indicative only.</p></div>
+  // ----- GMP
+  const gmpTab = card(ic("trending-up") + " GMP Trend", (gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`) +
+    (i.gmp ? `<div class="row sm gmpmeta"><span class="mut">Average of ${i.gmp.sources.length} source${i.gmp.sources.length > 1 ? "s" : ""}${i.gmp.rating ? " · rating " + i.gmp.rating + "/5" : ""}</span><b>${isNum(pr) ? "Est. listing ₹" + f2(pr + g) : ""}</b></div>
+    <div class="sm gmpsrc"><span class="mut">Sources:</span> ${i.gmp.sources.map(s => `${esc(s.source)}: <b>₹${s.gmp}</b>`).join(" · ")}${i.gmp.sources.length > 1 && i.gmp.min !== i.gmp.max ? ` <span class="mut">(range ₹${i.gmp.min}–₹${i.gmp.max})</span>` : ""}</div>
+    <div class="mut sm">Updated ${esc(i.gmp.updated || "—")}</div>` : `<div class="calm">${ic("info-circle")}<span>No GMP published for this IPO yet. It appears here once grey-market sources report a premium.</span></div>`)) +
+    (isNum(g) && L ? card(ic("coins") + " GMP × lots", `<div class="gl"><div class="row"><span>Retail (1 lot)</span><b class="${g >= 0 ? "grn-t" : "red-t"}">₹ ${inr(g * i.lot)}</b></div><div class="row"><span>S-HNI (${L.s} lots)</span><b class="${g >= 0 ? "grn-t" : "red-t"}">₹ ${inr(g * i.lot * L.s)}</b></div><div class="row"><span>B-HNI (${L.b} lots)</span><b class="${g >= 0 ? "grn-t" : "red-t"}">₹ ${inr(g * i.lot * L.b)}</b></div></div><p class="mut sm" style="margin:8px 0 0">Estimated from GMP (₹${g} per share) × shares; actual listing price may vary.</p>`) : "") +
+    `<div class="note gr">${ic("info-circle")} GMP is unofficial. Exp. Premium is derived from market rumors and internet sources. It does not reflect the actual IPO listing price or value. Review the RHP and consult a financial advisor.</div>`;
 
-  <div class="card" id="gmp"><h2>${ic("trending-up")} GMP Trend</h2>${gh.length > 1 ? gmpChart(i.gmp.history) : `<p class="mut sm">Trend chart fills in as the pipeline records GMP each day (${gh.length} snapshot so far).</p>`}
-  ${i.gmp ? `<div class="row sm gmpmeta"><span class="mut">Average of ${i.gmp.sources.length} source${i.gmp.sources.length > 1 ? "s" : ""}${i.gmp.rating ? " · rating " + i.gmp.rating + "/5" : ""}</span><b>${isNum(pr) ? "Est. listing ₹" + f2(pr + g) : ""}</b></div>
-  <div class="sm gmpsrc">${i.gmp.sources.map(s => `${esc(s.source)}: <b>₹${s.gmp}</b>`).join(" · ")}${i.gmp.sources.length > 1 && i.gmp.min !== i.gmp.max ? ` <span class="mut">(range ₹${i.gmp.min}–₹${i.gmp.max})</span>` : ""}</div>
-  <div class="mut sm">Updated ${esc(i.gmp.updated || "—")}</div>` : `<p class="mut sm">No GMP published for this IPO yet.</p>`}
-  <div class="note gr">Exp. Premium is derived from market rumors and internet sources. It does not reflect the actual IPO listing price or value. Review the RHP and consult a financial advisor.</div></div>
+  // ----- Financials
+  const finTab = (f ? card(ic("report-money") + " Company Financials", `<div class="fchs">${finChart("Revenue", rv(F.revenue), rv(per))}${finChart("EBITDA", rv(F.ebitda), rv(per))}${finChart("Profit after tax", rv(F.pat), rv(per))}</div>` +
+      mx("fin", tbl(["Period Ended", ...rv(per)], [fr("Total assets", F.total_assets), fr("Revenue", F.revenue), fr("EBITDA", F.ebitda), fr("Profit before tax", F.pbt), fr("Profit after tax", F.pat), fr("Net worth", F.net_worth), fr("Reserves", F.reserves), fr("Total borrowing", F.borrowings), fr("Cash & bank", F.cash_and_bank), fr("Operating cash flow", F.operating_cash_flow)]), { n: 4, more: "See all figures", less: "See less" }) +
+      `<div class="mut sm" style="text-align:right;margin-top:6px">₹ crore · ${esc(f.basis || "")} · restated, per RHP</div>`) +
+    card("Key Performance Indicator", mx("kpi", tbl(["KPI", ...rv(per)], [fr("ROCE (%)", K.roce), fr("RoNW (%)", K.ronw), fr("ROE (%)", K.roe), fr("EPS basic (₹)", K.eps_basic), fr("EPS diluted (₹)", K.eps_diluted), fr("PAT margin (%)", K.pat_margin), fr("EBITDA margin (%)", K.ebitda_margin), fr("Debt/Equity", K.debt_equity), ...(K.other || []).map(o => [`${esc(o.name)} (${esc(o.unit)})`, ...rv(o.values)])]), { n: 5, more: "See all indicators", less: "See less" }) + `<p class="mut sm">NAV/share: ${isNum(K.nav_per_share) ? "₹" + K.nav_per_share : "—"} · P/E post-IPO: ${isNum(p) ? p.toFixed(2) : "—"} · Pre-IPO P/E: ${isNum(K.pe_pre_ipo) ? K.pe_pre_ipo : "—"}</p>`, "fin") +
+    ((f.peers || []).length ? card("Peer Comparison", mx("peer", tbl(["Company", "P/E", "CMP (₹)", "EPS (₹)", "NAV (₹)", "RoNW %"], [[`<b>${esc(i.name)}</b>`, isNum(p) ? p.toFixed(2) : "—", pr, last(K.eps_diluted) ?? "—", K.nav_per_share ?? "—", last(K.ronw) ?? "—"], ...f.peers.map(x => [esc(x.name), x.pe ?? "—", x.cmp ?? "—", x.eps_diluted ?? x.eps_basic ?? "—", x.nav ?? "—", x.ronw ?? "—"])]), { n: 4, more: "See all peers", less: "See less" }) + (pa && p ? `<p class="mut sm">Peer avg P/E ${pa.toFixed(1)} → IPO at ${p < pa ? "a discount" : "a premium"} of ${Math.abs((p / pa - 1) * 100).toFixed(0)}%.</p>` : "")) : "")
+    : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)) +
+    card("Issue Details", mx("iss", tbl(["", ""], [["Issue size", isNum(i.issueSizeCr) ? `₹${cr(i.issueSizeCr)} Cr (${inr(i.issueShares)} shares)` : "—"], ["Fresh issue", isNum(iss.fresh_issue_cr) ? `₹${cr(iss.fresh_issue_cr)} Cr` : "—"], ["Offer for sale", isNum(iss.ofs_cr) ? `₹${cr(iss.ofs_cr)} Cr` : iss.ofs_shares === 0 ? "-" : "—"], ["Face value", isNum(i.faceValue) ? `₹${i.faceValue}` : "—"], ["Issue type", esc(i.issueType || "—")], ["Shares pre-issue", inr(iss.pre_issue_shares)], ["Shares post-issue", inr(iss.post_issue_shares)], ["Reservation", iss.reservation_pct ? Object.entries(iss.reservation_pct).filter(([, x]) => isNum(x)).map(([k, x]) => `${esc(k)} ${x}%`).join(" · ") || "—" : "—"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, ""), { n: 5, more: "See all details", less: "See less" })) +
+    ((iss.objects || []).length ? card("Objects of the Issue", mx("obj", tbl(["Purpose", "₹ Cr"], iss.objects.map(o => [esc(o.purpose), o.amount_cr ?? "—"])), { n: 4, more: "See all objects", less: "See less" })) : "") +
+    (f?.notes ? `<p class="mut sm">${ic("info-circle")} A few figures could not be read clearly from the offer document and are left blank (—).</p>` : "");
 
-  ${applyAsCard(i, minInv, minLots)}
-  ${anchorCard(i)}
+  // ----- Company
+  const mgrs = String(i.leadManagers || "").split(/\s*[,;]\s*/).filter(Boolean), ul = h => `<ul class="lst">${h}</ul>`;
+  const co = (f ? card("About Company", mx("about", `<p class="sub">${esc(f.about)}</p>`, { lines: 4, more: "Show more", less: "Show less" }) + `<div class="mut sm" style="margin-top:8px">${[f.headquarters && "HQ: " + esc(f.headquarters), f.founded_year && "Founded: " + f.founded_year, isNum(f.order_book_cr) && "Order book: ₹" + cr(f.order_book_cr) + " Cr"].filter(Boolean).join(" · ")}</div>`) +
+    (f.promoters?.names?.length ? card("Promoters", moreList("prom", f.promoters.names.map(n => `<li class="pro">${ic("user")} <span>${esc(n)}</span></li>`), 3, ul) + `<div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? mx("probg", `<p class="sm" style="margin:8px 0 0">${esc(f.promoters.background)}</p>`, { lines: 3, more: "Show more", less: "Show less" }) : ""}`) : "") +
+    ((f.strengths || []).length ? card("Strength Factor", moreList("str", f.strengths.map(x => `<li class="str">${ic("check")} <span>${esc(x)}</span></li>`), 3, ul)) : "") +
+    ((f.risks || []).length ? card("Risk Factor", moreList("risk", f.risks.map(x => `<li><i class="sev ${x.severity === "high" ? "h" : x.severity === "medium" ? "m" : "l"}"></i> <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`), 3, ul)) : "")
+    : card("About Company", `<p class="mut">The company profile, promoters, strengths and risks appear once the offer document has been analysed.</p>`)) +
+    (i.leadManagers ? card("Lead Manager(s)", moreList("lm", mgrs.map(m => `<li class="pro">${ic("building-bank")} <span>${esc(m)}</span></li>`), 3, ul) + `<div class="mut sm">Sponsor bank: ${esc(i.sponsorBank || "—")}</div>`) : "") +
+    contactsCard(i);
 
-  ${i.listingPerf ? card(ic("trending-up") + " Listing performance", tbl(["", ""], [["Issue price", `₹${pr}`], ["Day-1 open (" + esc(i.listingPerf.exchange) + ")", `₹${f2(i.listingPerf.dayOpen)} ${fmtGain(i.listingPerf.dayOpenGainPct)}`], ["Last price (" + fmtS(i.listingPerf.asOf) + ")", `₹${f2(i.listingPerf.ltp)} ${fmtGain(i.listingPerf.ltpGainPct)}`], ["Our score was", sc.score ?? "N/A"]].concat((m => m ? [["Our GMP at listing", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`], ["GMP vs actual day-1 open", m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—"], ["Score vs outcome", SCORE_HIT(m.scoreHit)]] : [])(listingMatch(i)))).replace(/<tr><th><\/th><th><\/th><\/tr>/, "") + `<p class="mut sm">Source: Yahoo Finance (may differ slightly from the exchange's discovered listing price).</p>`) : ""}
+  // ----- Documents
+  const groups = {}; for (const d of i.documents || []) if (safeUrl(d.url)) (groups[d.group || "Other"] ||= []).push(d);
+  const order = ["Offer document", "Price band & basis", "Anchor investors", "Application forms & centres", "Links", "Other"], rk = x => order.indexOf(x) < 0 ? 99 : order.indexOf(x), gk = Object.keys(groups).sort((a, c) => rk(a) - rk(c));
+  const docsTab = (forReport ? "" : reportCard(i)) + (gk.length ? gk.map((g2, k) => card(esc(g2), moreList("doc" + k, groups[g2].map(docRow), 3))).join("") : card("Documents", `<p class="mut sm">No documents published for this IPO yet.</p>`)) +
+    (gk.length ? `<p class="mut sm">Every file opens on the official NSE, BSE or SEBI website (nothing is stored in this app). Some NSE files come as a ZIP that your device unzips. The application form is the ASBA form: your money stays in your bank account until allotment.</p>` : "");
 
-  ${card(ic("calendar-event") + " IPO Timeline", tl + `<p class="mut sm">${i.datesExpected ? "Estimated from the close date (T+1 allotment, T+2 refund/demat, T+3 listing); holidays can move these." : "Dates announced by the issuer/exchange."}</p>`)}
-
-  ${(i.checks || []).length ? card("", (i.checks.some(c => !c.ok) ? `<div class="note warnb">${ic("alert-triangle")}<span><b>Sources disagree:</b> ${i.checks.filter(c => !c.ok).map(c => `${esc(c.field)}: NSE ${esc(c.nse)} vs InvestorGain ${esc(c.other)}`).join("; ")}</span></div>` : `<span class="mut sm okline">${ic("check")} NSE and InvestorGain agree on ${i.checks.length} checks (issue size, lot, cap price, dates).</span>`)) : ""}
-
-  ${N !== null && anyBid ? card("", `<div class="alot">${ic("users")} ≈ 1 in ${N} retail allotment</div><span class="chip ${risk[1]}">${risk[0]}</span><p class="sm">Based on retail subscription of ${f2(b.retail.times)}x (by shares). Approximately 1 in ${N} retail applications may receive an allotment if demand holds.</p><div class="note">${ic("info-circle")} The final allotment is decided by the registrar's computerised lottery.</div>`) : ""}
-
-  ${dwRows.length ? card("Day Wise Subscription (snapshots)", tbl(["Date", "QIB", "NII", "Retail", "Total"], dwRows)) : ""}
-  ${i.demand?.byPrice ? card("Cumulative Demand by Price (NSE)", tbl(["Price (₹)", "Cumulative qty"], Object.entries(i.demand.byPrice).map(([k, x]) => [esc(k), esc(x)]))) : ""}
-  ${L ? card("Lot(s) Distribution", tbl(["Category", "Lot(s)", "Qty", "Amount"], [["RETAIL", 1, inr(i.lot), inr(i.lot * pr)], ["sHNI (from ₹2L)", L.s, inr(L.s * i.lot), inr(L.s * i.lot * pr)], ["bHNI (from ₹10L)", L.b, inr(L.b * i.lot), inr(L.b * i.lot * pr)]])) : ""}
-
-  ${f ? `
-  ${card("Key Performance Indicator", tbl(["KPI", ...rv(per)], [fr("ROCE (%)", K.roce), fr("RoNW (%)", K.ronw), fr("ROE (%)", K.roe), fr("EPS basic (₹)", K.eps_basic), fr("EPS diluted (₹)", K.eps_diluted), fr("PAT margin (%)", K.pat_margin), fr("EBITDA margin (%)", K.ebitda_margin), fr("Debt/Equity", K.debt_equity), ...(K.other || []).map(o => [`${esc(o.name)} (${esc(o.unit)})`, ...rv(o.values)])].map(r => r.map((c, k) => k ? (c === "—" ? c : c) : c))) + `<p class="mut sm">NAV/share: ${isNum(K.nav_per_share) ? "₹" + K.nav_per_share : "—"} · P/E post-IPO: ${isNum(p) ? p.toFixed(2) : "—"} · Pre-IPO P/E: ${isNum(K.pe_pre_ipo) ? K.pe_pre_ipo : "—"}</p>`, "fin")}
-  ${card(ic("report-money") + " Company Financials", tbl(["Period Ended", ...rv(per)], [fr("Total assets", F.total_assets), fr("Revenue", F.revenue), fr("EBITDA", F.ebitda), fr("Profit before tax", F.pbt), fr("Profit after tax", F.pat), fr("Net worth", F.net_worth), fr("Reserves", F.reserves), fr("Total borrowing", F.borrowings), fr("Cash & bank", F.cash_and_bank), fr("Operating cash flow", F.operating_cash_flow)]) + `<div class="mut sm" style="text-align:right;margin-top:6px">₹ crore · ${esc(f.basis || "")} · restated, per RHP</div>`)}
-  ${(f.peers || []).length ? card("Peer Comparison", tbl(["Company", "P/E", "CMP (₹)", "EPS (₹)", "NAV (₹)", "RoNW %"], [[`<b>${esc(i.name)}</b>`, isNum(p) ? p.toFixed(2) : "—", pr, last(K.eps_diluted) ?? "—", K.nav_per_share ?? "—", last(K.ronw) ?? "—"], ...f.peers.map(x => [esc(x.name), x.pe ?? "—", x.cmp ?? "—", x.eps_diluted ?? x.eps_basic ?? "—", x.nav ?? "—", x.ronw ?? "—"])]) + (pa && p ? `<p class="mut sm">Peer avg P/E ${pa.toFixed(1)} → IPO at ${p < pa ? "a discount" : "a premium"} of ${Math.abs((p / pa - 1) * 100).toFixed(0)}%.</p>` : "")) : ""}
-  ${card("Issue Details", tbl(["", ""], [["Issue size", isNum(i.issueSizeCr) ? `₹${cr(i.issueSizeCr)} Cr (${inr(i.issueShares)} shares)` : "—"], ["Fresh issue", isNum(iss.fresh_issue_cr) ? `₹${cr(iss.fresh_issue_cr)} Cr` : "—"], ["Offer for sale", isNum(iss.ofs_cr) ? `₹${cr(iss.ofs_cr)} Cr` : iss.ofs_shares === 0 ? "-" : "—"], ["Face value", isNum(i.faceValue) ? `₹${i.faceValue}` : "—"], ["Issue type", esc(i.issueType || "—")], ["Shares pre-issue", inr(iss.pre_issue_shares)], ["Shares post-issue", inr(iss.post_issue_shares)], ["Reservation", iss.reservation_pct ? Object.entries(iss.reservation_pct).filter(([, x]) => isNum(x)).map(([k, x]) => `${esc(k)} ${x}%`).join(" · ") : "—"]]).replace(/<tr><th><\/th><th><\/th><\/tr>/, ""))}
-  ${(iss.objects || []).length ? card("Objects of the Issue", tbl(["Purpose", "₹ Cr"], iss.objects.map(o => [esc(o.purpose), o.amount_cr ?? "—"]))) : ""}
-  ${card("About Company", `<p class="sub">${esc(f.about)}</p><div class="mut sm">${[f.headquarters && "HQ: " + esc(f.headquarters), f.founded_year && "Founded: " + f.founded_year, isNum(f.order_book_cr) && "Order book: ₹" + cr(f.order_book_cr) + " Cr"].filter(Boolean).join(" · ")}</div>`)}
-  ${f.promoters?.names?.length ? card("Promoters", `<p class="sm">${f.promoters.names.map(esc).join(", ")}</p><div class="mut sm">Holding pre-issue ${f.promoters.holding_pre_pct ?? "—"}% → post-issue ${f.promoters.holding_post_pct ?? "—"}%</div>${f.promoters.background ? `<p class="sm">${esc(f.promoters.background)}</p>` : ""}`) : ""}
-  ${(f.strengths || []).length ? card("Strength Factor", `<ul class="lst">${f.strengths.map(x => `<li class="str">${ic("check")} <span>${esc(x)}</span></li>`).join("")}</ul>`) : ""}
-  ${(f.risks || []).length ? card("Risk Factor", `<ul class="lst">${f.risks.map(x => `<li><i class="sev ${x.severity === "high" ? "h" : x.severity === "medium" ? "m" : "l"}"></i> <b>${esc(x.title)}</b><br><span class="mut">${esc(x.detail)}</span></li>`).join("")}</ul>`) : ""}
-  ${f.notes ? `<p class="mut sm">${ic("info-circle")} A few figures could not be read clearly from the offer document and are left blank (—).</p>` : ""}` : card("Company fundamentals", `<p class="mut">${i.verification?.status === "fail" ? "The figures extracted from the offer document failed our automatic verification and are hidden until they are re-checked." : esc(i.sourceNote || "") || "Company figures have not been extracted from the offer document yet (the pipeline does this once the document is available and extraction has run)."}</p>`)}
-
-  ${forReport ? "" : reportCard(i)}
-  ${contactsCard(i)}
-  ${i.leadManagers ? card("Lead Manager(s)", `<span class="sm">${esc(i.leadManagers)}</span><div class="mut sm" style="margin-top:6px">Sponsor bank: ${esc(i.sponsorBank || "—")}</div>`) : ""}
-  </div><p class="disc">Source: NSE India + RHP. Dates marked (exp.) are estimated from the closing date (T+1 allotment, T+3 listing) and may shift for holidays. Score is indicative, not investment advice.</p>`;
+  const P = { ov, subs, gmp: gmpTab, fin: finTab, co, docs: docsTab };
+  const tabs = `<div id="dtabtop"></div><div class="dtabs" role="tablist" aria-label="IPO sections">${DTABS.map(([k, l]) => `<button type="button" role="tab" id="dt-${k}" data-dtab="${k}" aria-selected="${k === state.dtab}" aria-controls="dpanel" tabindex="${k === state.dtab ? 0 : -1}" class="${k === state.dtab ? "on" : ""}">${l}</button>`).join("")}</div>`;
+  const out = forReport
+    ? hero + `<div class="dgrid">${[ov, subs, gmpTab, finTab, co].join("")}</div>`
+    : hero + tabs + `<div class="dgrid" id="dpanel" role="tabpanel" aria-labelledby="dt-${state.dtab}">${P[state.dtab]}</div>`;
+  MXALL = false;
+  return out + `<p class="disc">Source: NSE India + RHP. Dates marked (exp.) are estimated from the closing date (T+1 allotment, T+3 listing) and may shift for holidays. Score is indicative, not investment advice.</p>`;
 }
 
 function compare() {
@@ -717,6 +872,7 @@ function trackClick(t, d) {
   if (d.open) T("ipo/" + d.open, "IPO opened: " + nm(d.open));
   else if (d.apply) T("apply/" + d.apply, "Apply clicked: " + nm(d.apply));
   else if (d.report) T("report/" + d.report, "Full report: " + nm(d.report));
+  else if (d.dtab) T("ipo/" + (state.detail || "") + "/" + d.dtab, "IPO tab: " + d.dtab + " (" + nm(state.detail) + ")");
   else if (d.tab) T("tab/" + d.tab, "Tab: " + d.tab);
   else if (d.seg) T("list/" + d.seg, "List: " + d.seg);
   else if (d.stat) T("list/" + d.stat, "List: " + d.stat);
@@ -1104,6 +1260,7 @@ function render() {
   const screens = { ipo: ipoTab, compare, allot: allotment, unlisted, settings, about: aboutPage, general: () => sectionPage("general"), share: () => sectionPage("share"), help: () => sectionPage("help"), search: searchScreen };
   if (state.detail && !byId(state.detail)) state.detail = null;           // an IPO that is no longer in the data
   if (state.report && !byId(state.report)) state.report = null;
+  if (!state.detail && !state.report) state.dtabFor = null;   // leaving the IPO resets its tab and open blocks
   if (state.modal && !byId(state.modal)) state.modal = null;
   const sh0 = document.querySelector("#app .modal .card.sheet"); if (sh0) sheetTop = sh0.scrollTop;
   const ae = document.activeElement, keep = ae && ae.id && ae !== document.body ? { id: ae.id, s: ae.selectionStart, e: ae.selectionEnd } : null;
@@ -1130,6 +1287,7 @@ function render() {
   sel("#sort", v => { state.sort = v; render(); });
   sel("#allotSel", v => { state.allotIpo = v; render(); });
   countUps();
+  detailAfter();
   pushView();
 }
 // ---- first-run disclaimer: ONE persistent dialog on <body> (outside #app, so render() never rebuilds, re-animates or scrolls it).
@@ -1174,7 +1332,7 @@ function toast(m) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.classList.remove("show"); toastTimer = setTimeout(() => el.remove(), 300); }, 1900);
 }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-sres],[data-sall],[data-srecent],[data-sclear]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear]"); if (!t) return;
   trackClick(t, t.dataset);
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
@@ -1194,6 +1352,8 @@ document.addEventListener("click", e => {
   if (t.hasAttribute("data-ack")) { state.ack = true; return render(); }
   if (t.hasAttribute("data-close") && e.target.closest(".card") && !t.matches("button")) return;
   const d = t.dataset;
+  if (d.mx) { toggleMx(t); return; }
+  if (d.dtab) { setDtab(d.dtab); return; }
   if (d.pill) { state.main = d.pill !== "sme"; state.sme = d.pill !== "main"; return render(); }
   if (d.stat) { const pf = d.stat === "gain" || d.stat === "loss"; state.seg = pf ? "listed" : d.stat; state.perf = pf ? d.stat : null; state.showAll = false; return render(); }
   if (t.hasAttribute("data-more")) { state.showAll = true; return render(); }
