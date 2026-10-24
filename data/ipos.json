@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-24T10:12:45.142Z",
+ "generatedAt": "2026-10-24T10:22:12.664Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-24T10:11:37.336Z"
+   "fetchedAt": "2026-10-24T10:21:11.401Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-24T10:11:47.465Z"
+   "fetchedAt": "2026-10-24T10:21:22.745Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-24T10:11:38.817Z"
+   "fetchedAt": "2026-10-24T10:21:12.924Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T10:11:38.692Z",
+   "subsAsOn": "2026-10-24T10:21:12.911Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -88,7 +88,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T10:11:38.692Z",
+   "fetchedAt": "2026-10-24T10:21:12.911Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -123,7 +123,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T10:11:38.692Z",
+   "subsAsOn": "2026-10-24T10:21:12.911Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -160,13 +160,13 @@
       "source": "investorgain.com",
       "gmp": 8,
       "pct": 9.76,
-      "updated": "24-Oct 11:37",
+      "updated": "24-Oct 13:37",
       "seenLow": 8,
       "seenHigh": 8
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-23",
@@ -182,7 +182,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T10:11:38.692Z",
+   "fetchedAt": "2026-10-24T10:21:12.911Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -229,7 +229,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:02.197Z",
+   "subsAsOn": "2026-10-24T10:20:36.968Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -353,7 +353,29 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 8,
+    "min": 8,
+    "max": 8,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 8,
+      "pct": 4.94,
+      "updated": "24-Oct 13:37",
+      "seenLow": 8,
+      "seenHigh": 8
+     }
+    ],
+    "rating": 1,
+    "updated": "24-Oct 13:37",
+    "history": [
+     {
+      "date": "2026-10-24",
+      "gmp": 8
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [
@@ -715,7 +737,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:02.197Z"
+   "fetchedAt": "2026-10-24T10:20:36.968Z"
   },
   {
    "symbol": "IG-2393",
@@ -749,7 +771,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T10:11:38.817Z",
+   "subsAsOn": "2026-10-24T10:21:12.924Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -782,7 +804,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T10:11:38.817Z",
+   "fetchedAt": "2026-10-24T10:21:12.924Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -817,7 +839,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T10:11:38.817Z",
+   "subsAsOn": "2026-10-24T10:21:12.924Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -850,7 +872,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T10:11:38.817Z",
+   "fetchedAt": "2026-10-24T10:21:12.924Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -897,7 +919,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:03.096Z",
+   "subsAsOn": "2026-10-24T10:20:37.864Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1033,13 +1055,13 @@
       "source": "investorgain.com",
       "gmp": 21,
       "pct": 6.36,
-      "updated": "24-Oct 11:37",
+      "updated": "24-Oct 13:37",
       "seenLow": 21,
       "seenHigh": 31
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -1395,7 +1417,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:03.096Z"
+   "fetchedAt": "2026-10-24T10:20:37.864Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -1441,7 +1463,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:03.961Z",
+   "subsAsOn": "2026-10-24T10:20:38.738Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1581,13 +1603,13 @@
       "source": "investorgain.com",
       "gmp": 33,
       "pct": 22,
-      "updated": "24-Oct 11:37",
+      "updated": "24-Oct 13:37",
       "seenLow": 18,
       "seenHigh": 38
      }
     ],
     "rating": 4,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-19",
@@ -1949,7 +1971,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:03.961Z"
+   "fetchedAt": "2026-10-24T10:20:38.738Z"
   },
   {
    "symbol": "WISCON",
@@ -1991,7 +2013,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:22.243Z",
+   "subsAsOn": "2026-10-24T10:20:55.381Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2098,7 +2120,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T10:11:22.243Z"
+   "fetchedAt": "2026-10-24T10:20:55.381Z"
   },
   {
    "symbol": "EDELALTS",
@@ -2144,7 +2166,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:09.945Z",
+   "subsAsOn": "2026-10-24T10:20:44.079Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2280,21 +2302,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 121,
-    "min": 121,
-    "max": 121,
+    "value": 105,
+    "min": 105,
+    "max": 105,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 121,
-      "pct": 7.27,
-      "updated": "24-Oct 11:37",
-      "seenLow": 121,
+      "gmp": 105,
+      "pct": 6.31,
+      "updated": "24-Oct 13:37",
+      "seenLow": 105,
       "seenHigh": 121
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -2306,7 +2328,7 @@
      },
      {
       "date": "2026-10-24",
-      "gmp": 121
+      "gmp": 105
      }
     ]
    },
@@ -2709,7 +2731,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:09.945Z"
+   "fetchedAt": "2026-10-24T10:20:44.079Z"
   },
   {
    "symbol": "CORE4",
@@ -2755,7 +2777,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:19.486Z",
+   "subsAsOn": "2026-10-24T10:20:52.903Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2874,7 +2896,7 @@
      "total": 0.08
     },
     {
-     "at": "2026-10-24T10:12:45.132Z",
+     "at": "2026-10-24T10:22:12.651Z",
      "date": "2026-10-24",
      "qib": null,
      "bnii": null,
@@ -2907,7 +2929,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T10:11:19.486Z"
+   "fetchedAt": "2026-10-24T10:20:52.903Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -3205,21 +3227,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 11,
-    "min": 11,
-    "max": 11,
+    "value": 12,
+    "min": 12,
+    "max": 12,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 11,
-      "pct": 1.59,
-      "updated": "24-Oct 11:37",
+      "gmp": 12,
+      "pct": 1.73,
+      "updated": "24-Oct 13:37",
       "seenLow": 11,
       "seenHigh": 96
      }
     ],
     "rating": 1,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -3259,7 +3281,7 @@
      },
      {
       "date": "2026-10-24",
-      "gmp": 11
+      "gmp": 12
      }
     ]
    },
@@ -3724,7 +3746,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:10:55.303Z"
+   "fetchedAt": "2026-10-24T10:20:30.681Z"
   },
   {
    "symbol": "JPL",
@@ -4092,21 +4114,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 250,
-    "min": 250,
-    "max": 250,
+    "value": 249,
+    "min": 249,
+    "max": 249,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 250,
-      "pct": 22.34,
-      "updated": "24-Oct 11:37",
+      "gmp": 249,
+      "pct": 22.25,
+      "updated": "24-Oct 13:37",
       "seenLow": 148,
       "seenHigh": 273
      }
     ],
     "rating": 4,
-    "updated": "24-Oct 11:37",
+    "updated": "24-Oct 13:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -4146,7 +4168,7 @@
      },
      {
       "date": "2026-10-24",
-      "gmp": 250
+      "gmp": 249
      }
     ]
    },
@@ -4515,7 +4537,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:01.338Z"
+   "fetchedAt": "2026-10-24T10:20:36.067Z"
   },
   {
    "symbol": "ZETWERK",
@@ -7709,7 +7731,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:27.652Z",
+   "subsAsOn": "2026-10-24T10:21:01.238Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -8254,7 +8276,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:27.652Z"
+   "fetchedAt": "2026-10-24T10:21:01.238Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -13823,7 +13845,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:31.827Z",
+   "subsAsOn": "2026-10-24T10:21:05.492Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14363,7 +14385,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:31.827Z"
+   "fetchedAt": "2026-10-24T10:21:05.492Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -14409,7 +14431,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:32.542Z",
+   "subsAsOn": "2026-10-24T10:21:06.234Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14858,7 +14880,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:32.542Z"
+   "fetchedAt": "2026-10-24T10:21:06.234Z"
   },
   {
    "symbol": "TNA",
@@ -14904,7 +14926,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:33.360Z",
+   "subsAsOn": "2026-10-24T10:21:06.989Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15374,7 +15396,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:33.360Z"
+   "fetchedAt": "2026-10-24T10:21:06.989Z"
   },
   {
    "symbol": "DSL",
@@ -15420,7 +15442,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:34.061Z",
+   "subsAsOn": "2026-10-24T10:21:07.879Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15837,7 +15859,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:34.061Z"
+   "fetchedAt": "2026-10-24T10:21:07.879Z"
   },
   {
    "symbol": "OMARA",
@@ -15882,8 +15904,8 @@
      "times": 1.06
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-24T10:11:36.600Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-24T10:21:10.663Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16324,7 +16346,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:36.600Z"
+   "fetchedAt": "2026-10-24T10:21:10.663Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -16927,7 +16949,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:34.846Z",
+   "subsAsOn": "2026-10-24T10:21:08.599Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -17182,7 +17204,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T10:11:34.846Z"
+   "fetchedAt": "2026-10-24T10:21:08.599Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -18515,7 +18537,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:37.336Z",
+   "subsAsOn": "2026-10-24T10:21:11.401Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -19080,7 +19102,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T10:11:37.336Z"
+   "fetchedAt": "2026-10-24T10:21:11.401Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -27815,7 +27837,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T10:11:14.995Z",
+   "subsAsOn": "2026-10-24T10:20:49.087Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -27909,7 +27931,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T10:11:14.995Z"
+   "fetchedAt": "2026-10-24T10:20:49.087Z"
   }
  ],
  "filings": [
