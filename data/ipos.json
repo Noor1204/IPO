@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-24T06:41:25.129Z",
+ "generatedAt": "2026-10-24T06:51:02.672Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-24T06:40:27.256Z"
+   "fetchedAt": "2026-10-24T06:49:59.368Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-24T06:40:37.525Z"
+   "fetchedAt": "2026-10-24T06:50:09.211Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-24T06:40:28.698Z"
+   "fetchedAt": "2026-10-24T06:50:00.686Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -23,6 +23,74 @@
   }
  ],
  "ipos": [
+  {
+   "symbol": "IG-2375",
+   "name": "Antala Industries",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-10-29",
+   "close": "2026-11-02",
+   "timeline": {
+    "open": "2026-10-29",
+    "close": "2026-11-02",
+    "allotment": "2026-11-03",
+    "refund": "2026-11-04",
+    "demat": "2026-11-04",
+    "listing": "2026-11-05"
+   },
+   "allotment": "2026-11-03",
+   "listing": "2026-11-05",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": 67,
+   "lot": 2000,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": 23.33,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-24T06:50:00.671Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/antala-industries-ipo/2375/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": false,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-24T06:50:00.671Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
   {
    "symbol": "IG-1936",
    "name": "Bombay Coated and Special Steels",
@@ -55,7 +123,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T06:40:28.680Z",
+   "subsAsOn": "2026-10-24T06:50:00.671Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -92,13 +160,13 @@
       "source": "investorgain.com",
       "gmp": 8,
       "pct": 9.76,
-      "updated": "24-Oct 7:37",
+      "updated": "24-Oct 10:37",
       "seenLow": 8,
       "seenHigh": 8
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-23",
@@ -114,7 +182,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T06:40:28.680Z",
+   "fetchedAt": "2026-10-24T06:50:00.671Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -161,7 +229,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:39:46.594Z",
+   "subsAsOn": "2026-10-24T06:49:18.008Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -647,7 +715,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:39:46.594Z"
+   "fetchedAt": "2026-10-24T06:49:18.008Z"
   },
   {
    "symbol": "IG-2393",
@@ -681,7 +749,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-24T06:40:28.698Z",
+   "subsAsOn": "2026-10-24T06:50:00.686Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -714,7 +782,75 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-24T06:40:28.698Z",
+   "fetchedAt": "2026-10-24T06:50:00.686Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "IG-2017",
+   "name": "Ajwa Projects",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-10-28",
+   "close": "2026-10-30",
+   "timeline": {
+    "open": "2026-10-28",
+    "close": "2026-10-30",
+    "allotment": "2026-11-02",
+    "refund": "2026-11-03",
+    "demat": "2026-11-03",
+    "listing": "2026-11-04"
+   },
+   "allotment": "2026-11-02",
+   "listing": "2026-11-04",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": 203,
+   "lot": 600,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": 38.05,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-24T06:50:00.686Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/ajwa-projects-ipo/2017/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": false,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-24T06:50:00.686Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -761,7 +897,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:39:51.877Z",
+   "subsAsOn": "2026-10-24T06:49:23.446Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -897,13 +1033,13 @@
       "source": "investorgain.com",
       "gmp": 21,
       "pct": 6.36,
-      "updated": "24-Oct 7:37",
+      "updated": "24-Oct 10:37",
       "seenLow": 21,
       "seenHigh": 31
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -1259,7 +1395,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:39:51.877Z"
+   "fetchedAt": "2026-10-24T06:49:23.446Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -1305,7 +1441,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:39:57.349Z",
+   "subsAsOn": "2026-10-24T06:49:28.786Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1437,21 +1573,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 38,
-    "min": 38,
-    "max": 38,
+    "value": 33,
+    "min": 33,
+    "max": 33,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 38,
-      "pct": 25.33,
-      "updated": "24-Oct 7:37",
+      "gmp": 33,
+      "pct": 22,
+      "updated": "24-Oct 10:37",
       "seenLow": 18,
       "seenHigh": 38
      }
     ],
     "rating": 4,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-19",
@@ -1475,7 +1611,7 @@
      },
      {
       "date": "2026-10-24",
-      "gmp": 38
+      "gmp": 33
      }
     ]
    },
@@ -1813,7 +1949,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:39:57.349Z"
+   "fetchedAt": "2026-10-24T06:49:28.786Z"
   },
   {
    "symbol": "WISCON",
@@ -1855,7 +1991,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:13.564Z",
+   "subsAsOn": "2026-10-24T06:49:45.531Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1962,7 +2098,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T06:40:13.564Z"
+   "fetchedAt": "2026-10-24T06:49:45.531Z"
   },
   {
    "symbol": "EDELALTS",
@@ -2008,7 +2144,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:02.761Z",
+   "subsAsOn": "2026-10-24T06:49:34.237Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2152,13 +2288,13 @@
       "source": "investorgain.com",
       "gmp": 121,
       "pct": 7.27,
-      "updated": "24-Oct 7:37",
+      "updated": "24-Oct 10:37",
       "seenLow": 121,
       "seenHigh": 121
      }
     ],
     "rating": 2,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -2573,7 +2709,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:02.761Z"
+   "fetchedAt": "2026-10-24T06:49:34.237Z"
   },
   {
    "symbol": "CORE4",
@@ -2619,7 +2755,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:11.499Z",
+   "subsAsOn": "2026-10-24T06:49:43.115Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2738,7 +2874,7 @@
      "total": 0.08
     },
     {
-     "at": "2026-10-24T06:41:25.112Z",
+     "at": "2026-10-24T06:51:02.659Z",
      "date": "2026-10-24",
      "qib": null,
      "bnii": null,
@@ -2771,7 +2907,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T06:40:11.499Z"
+   "fetchedAt": "2026-10-24T06:49:43.115Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -3077,13 +3213,13 @@
       "source": "investorgain.com",
       "gmp": 11,
       "pct": 1.59,
-      "updated": "24-Oct 7:37",
+      "updated": "24-Oct 10:37",
       "seenLow": 11,
       "seenHigh": 96
      }
     ],
     "rating": 1,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -3588,7 +3724,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:39:39.972Z"
+   "fetchedAt": "2026-10-24T06:49:11.149Z"
   },
   {
    "symbol": "JPL",
@@ -3964,13 +4100,13 @@
       "source": "investorgain.com",
       "gmp": 250,
       "pct": 22.34,
-      "updated": "24-Oct 7:37",
+      "updated": "24-Oct 10:37",
       "seenLow": 148,
       "seenHigh": 273
      }
     ],
     "rating": 4,
-    "updated": "24-Oct 7:37",
+    "updated": "24-Oct 10:37",
     "history": [
      {
       "date": "2026-10-15",
@@ -4379,7 +4515,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:39:40.882Z"
+   "fetchedAt": "2026-10-24T06:49:12.130Z"
   },
   {
    "symbol": "ZETWERK",
@@ -7573,7 +7709,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:18.236Z",
+   "subsAsOn": "2026-10-24T06:49:50.011Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -8118,7 +8254,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:18.236Z"
+   "fetchedAt": "2026-10-24T06:49:50.011Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -12084,119 +12220,10 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/nityas-gems-jewellery-ipo/2235/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": false,
-   "gmp": {
-    "value": 1,
-    "min": 1,
-    "max": 1,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 1,
-      "pct": 1.33,
-      "updated": "8-Oct 9:37",
-      "seenLow": 1,
-      "seenHigh": 9
-     }
-    ],
-    "rating": 1,
-    "updated": "8-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-09-30",
-      "gmp": 5
-     },
-     {
-      "date": "2026-09-30",
-      "gmp": 5
-     },
-     {
-      "date": "2026-10-01",
-      "gmp": 4
-     },
-     {
-      "date": "2026-10-05",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-06",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-07",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-08",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-09",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-12",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 1
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 1
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-09-30T12:16:49.640Z",
@@ -12238,32 +12265,7 @@
     "dayOpenGainPct": 6.67,
     "ltpGainPct": -8.15
    },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 108.42,
-     "other": 108.35,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 200,
-     "other": 200,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 75,
-     "other": 75,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-05",
-     "other": "2026-10-05",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Nityas Gems and Jewellery Limited",
     "basis": "Consolidated",
@@ -12833,115 +12835,10 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/vishal-nirmiti-ipo/1602/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": false,
-   "gmp": {
-    "value": 2,
-    "min": 2,
-    "max": 2,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 2,
-      "pct": 0.91,
-      "updated": "8-Oct 9:37",
-      "seenLow": 2,
-      "seenHigh": 20
-     }
-    ],
-    "rating": 1,
-    "updated": "8-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-09-30",
-      "gmp": 8
-     },
-     {
-      "date": "2026-10-01",
-      "gmp": 28.5
-     },
-     {
-      "date": "2026-10-05",
-      "gmp": 5
-     },
-     {
-      "date": "2026-10-06",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-07",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-08",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-09",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-12",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 2
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 2
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-09-30T12:16:49.638Z",
@@ -12983,32 +12880,7 @@
     "dayOpenGainPct": -2.27,
     "ltpGainPct": -47.32
    },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 178,
-     "other": 178,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 68,
-     "other": 68,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 220,
-     "other": 220,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-05",
-     "other": "2026-10-05",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Vishal Nirmiti Limited",
     "basis": "Standalone",
@@ -13951,7 +13823,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:22.162Z",
+   "subsAsOn": "2026-10-24T06:49:54.493Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14491,7 +14363,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:22.162Z"
+   "fetchedAt": "2026-10-24T06:49:54.493Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -14537,7 +14409,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:22.823Z",
+   "subsAsOn": "2026-10-24T06:49:55.138Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14986,7 +14858,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:22.823Z"
+   "fetchedAt": "2026-10-24T06:49:55.138Z"
   },
   {
    "symbol": "TNA",
@@ -15032,7 +14904,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:23.577Z",
+   "subsAsOn": "2026-10-24T06:49:55.844Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15502,7 +15374,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:23.577Z"
+   "fetchedAt": "2026-10-24T06:49:55.844Z"
   },
   {
    "symbol": "DSL",
@@ -15548,7 +15420,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:24.342Z",
+   "subsAsOn": "2026-10-24T06:49:56.491Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15965,7 +15837,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:24.342Z"
+   "fetchedAt": "2026-10-24T06:49:56.491Z"
   },
   {
    "symbol": "OMARA",
@@ -16010,8 +15882,8 @@
      "times": 1.06
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-24T06:40:26.502Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-24T06:49:58.627Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16452,7 +16324,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:26.502Z"
+   "fetchedAt": "2026-10-24T06:49:58.627Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -17028,7 +16900,7 @@
    },
    "allotment": "2026-10-06",
    "listing": "2026-10-08",
-   "datesExpected": true,
+   "datesExpected": false,
    "priceLow": 80,
    "priceHigh": 85,
    "lot": 1600,
@@ -17054,8 +16926,8 @@
      "times": 294.22
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-24T06:40:25.057Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-24T06:49:57.162Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -17152,10 +17024,119 @@
      "source": "BSE",
      "kind": "pdf-link",
      "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/everestims-technologies-ipo/1637/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
     }
    ],
-   "anchor": null,
-   "gmp": null,
+   "anchor": true,
+   "gmp": {
+    "value": 50,
+    "min": 50,
+    "max": 50,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 50,
+      "pct": 58.82,
+      "updated": "8-Oct 9:37",
+      "seenLow": 13,
+      "seenHigh": 55
+     }
+    ],
+    "rating": 5,
+    "updated": "8-Oct 9:37",
+    "history": [
+     {
+      "date": "2026-09-29",
+      "gmp": 16
+     },
+     {
+      "date": "2026-09-30",
+      "gmp": 20
+     },
+     {
+      "date": "2026-10-01",
+      "gmp": 10
+     },
+     {
+      "date": "2026-10-05",
+      "gmp": 42
+     },
+     {
+      "date": "2026-10-06",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-07",
+      "gmp": 55
+     },
+     {
+      "date": "2026-10-08",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-09",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-12",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 50
+     }
+    ]
+   },
    "subHistory": [
     {
      "at": "2026-10-01T13:10:32.383Z",
@@ -17179,10 +17160,29 @@
     }
    ],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Lot size",
+     "nse": 1600,
+     "other": 1600,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 85,
+     "other": 85,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-05",
+     "other": "2026-10-05",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T06:40:25.057Z"
+   "fetchedAt": "2026-10-24T06:49:57.162Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -18515,7 +18515,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:27.256Z",
+   "subsAsOn": "2026-10-24T06:49:59.368Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -19080,7 +19080,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-24T06:40:27.256Z"
+   "fetchedAt": "2026-10-24T06:49:59.368Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -27815,7 +27815,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-24T06:40:07.659Z",
+   "subsAsOn": "2026-10-24T06:49:39.256Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -27909,7 +27909,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-24T06:40:07.659Z"
+   "fetchedAt": "2026-10-24T06:49:39.256Z"
   }
  ],
  "filings": [
