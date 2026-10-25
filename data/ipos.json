@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-25T17:20:51.561Z",
+ "generatedAt": "2026-10-25T17:32:10.558Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-25T17:19:51.566Z"
+   "fetchedAt": "2026-10-25T17:29:42.262Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-25T17:20:04.698Z"
+   "fetchedAt": "2026-10-25T17:29:54.372Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-25T17:19:54.682Z"
+   "fetchedAt": "2026-10-25T17:29:44.787Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-25T17:19:54.664Z",
+   "subsAsOn": "2026-10-25T17:29:44.675Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -123,7 +123,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-25T17:19:54.664Z",
+   "fetchedAt": "2026-10-25T17:29:44.675Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -158,7 +158,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-25T17:19:54.682Z",
+   "subsAsOn": "2026-10-25T17:29:44.787Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -214,7 +214,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-25T17:19:54.682Z",
+   "fetchedAt": "2026-10-25T17:29:44.787Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -261,7 +261,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:07.972Z",
+   "subsAsOn": "2026-10-25T17:28:58.667Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -778,7 +778,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:07.972Z"
+   "fetchedAt": "2026-10-25T17:28:58.667Z"
   },
   {
    "symbol": "IG-2017",
@@ -812,7 +812,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-25T17:19:54.682Z",
+   "subsAsOn": "2026-10-25T17:29:44.787Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -868,7 +868,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-25T17:19:54.682Z",
+   "fetchedAt": "2026-10-25T17:29:44.787Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -903,7 +903,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-25T17:19:54.682Z",
+   "subsAsOn": "2026-10-25T17:29:44.787Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -959,8 +959,561 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-25T17:19:54.682Z",
+   "fetchedAt": "2026-10-25T17:29:44.787Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "SFCTECH",
+   "name": "SFC Environmental Technologies Limited",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "timeline": {
+    "open": "2026-10-27",
+    "close": "2026-10-29",
+    "allotment": "2026-10-30",
+    "refund": "2026-11-02",
+    "demat": "2026-11-02",
+    "listing": "2026-11-03"
+   },
+   "allotment": "2026-10-30",
+   "listing": "2026-11-03",
+   "datesExpected": false,
+   "priceLow": 313,
+   "priceHigh": 330,
+   "lot": 45,
+   "faceValue": 2,
+   "issueShares": 20228182,
+   "issueSizeCr": 667.53,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public offering comprising Fresh issue of aggregating up to Rs. 1500 million and offer for sale up to 1,56,82,750 Equity Shares",
+   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-25T17:29:04.176Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 313,
+     "priceHigh": 330,
+     "maxAmount": 200000,
+     "minAmount": 14850,
+     "lot": 45,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 313,
+     "priceHigh": 330,
+     "maxAmount": null,
+     "minAmount": 207900,
+     "lot": 45,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14850,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 8108114949",
+     "email": "sfcenvironmental.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://www.in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Rs. 2 per Equity Share",
+    "bidLot": "45 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, and NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, +91 8108114949, sfcenvironmental.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "IIFL Capital Services Limited, JM Financial Limited and Nuvama Wealth Management Limited",
+   "leadManagersList": [
+    "IIFL Capital Services Limited",
+    "JM Financial Limited",
+    "Nuvama Wealth Management Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
+    "anchor": null
+   },
+   "logo": null,
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SFCTECH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792670149542.PDF",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/sfc-environmental-technologies-ipo/1642/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 31,
+    "min": 30,
+    "max": 32,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 30,
+      "updated": "27-29 Oct"
+     },
+     {
+      "source": "investorgain.com",
+      "gmp": 32,
+      "pct": 9.7,
+      "updated": "25-Oct 20:37",
+      "seenLow": 21,
+      "seenHigh": 32
+     }
+    ],
+    "rating": 2,
+    "updated": "25-Oct 20:37",
+    "history": [
+     {
+      "date": "2026-10-21",
+      "gmp": 31
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 21
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 21
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 31
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 31
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 667.53,
+     "other": 667.53,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 45,
+     "other": 45,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 330,
+     "other": 330,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-29",
+     "other": "2026-10-29",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "SFC Environmental Technologies Limited",
+    "basis": "Consolidated",
+    "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
+    "sector": "Environmental Engineering & Waste Management",
+    "headquarters": "Navi Mumbai, Maharashtra",
+    "founded_year": 2005,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      904.94,
+      999.47,
+      1323.43
+     ],
+     "revenue": [
+      657.5,
+      697.86,
+      803.63
+     ],
+     "other_income": [
+      19.07,
+      29.11,
+      17.64
+     ],
+     "ebitda": [
+      193.25,
+      207.48,
+      235.81
+     ],
+     "pbt": [
+      193.45,
+      205.24,
+      211.49
+     ],
+     "pat": [
+      144.17,
+      152.01,
+      160.21
+     ],
+     "net_worth": [
+      534.3,
+      648.68,
+      804.17
+     ],
+     "reserves": [
+      528.07,
+      630,
+      785.49
+     ],
+     "borrowings": [
+      139.16,
+      83.71,
+      195.64
+     ],
+     "cash_and_bank": [
+      188.61,
+      136.05,
+      156.82
+     ],
+     "operating_cash_flow": [
+      -11.69,
+      65.51,
+      -25.8
+     ]
+    },
+    "kpi": {
+     "roce": [
+      28.56,
+      29.29,
+      22.21
+     ],
+     "ronw": [
+      30.46,
+      24.36,
+      21.25
+     ],
+     "roe": [
+      29.8,
+      24.84,
+      21.55
+     ],
+     "eps_basic": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "eps_diluted": [
+      15.16,
+      15.42,
+      16.52
+     ],
+     "pat_margin": [
+      21.93,
+      21.78,
+      19.94
+     ],
+     "ebitda_margin": [
+      29.39,
+      29.73,
+      29.34
+     ],
+     "debt_equity": [
+      -0.09,
+      -0.08,
+      0.05
+     ],
+     "current_ratio": null,
+     "nav_per_share": 86.09,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 15.93,
+     "other": [
+      {
+       "name": "Total Order Book",
+       "unit": "₹ crore",
+       "values": [
+        785.23,
+        560.39,
+        1574.52
+       ]
+      },
+      {
+       "name": "Cash Conversion Cycle",
+       "unit": "Days",
+       "values": [
+        156,
+        232,
+        242
+       ]
+      },
+      {
+       "name": "Fixed Asset Turnover",
+       "unit": "X",
+       "values": [
+        13.25,
+        10.85,
+        12.07
+       ]
+      },
+      {
+       "name": "Treatment capacity facilitated",
+       "unit": "MLD",
+       "values": [
+        13906.98,
+        15209.45,
+        17144.01
+       ]
+      },
+      {
+       "name": "Number of treatment installations",
+       "unit": "Number",
+       "values": [
+        577,
+        639,
+        705
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Thermax Limited",
+      "revenue_cr": 10694.15,
+      "face_value": 2,
+      "cmp": 3325.75,
+      "eps_basic": 63.95,
+      "eps_diluted": 63.94,
+      "nav": 492.55,
+      "pe": 52.01,
+      "ronw": 13.74
+     },
+     {
+      "name": "Praj Industries Limited",
+      "revenue_cr": 3167.88,
+      "face_value": 2,
+      "cmp": 287,
+      "eps_basic": 1.3,
+      "eps_diluted": 1.3,
+      "nav": 71.22,
+      "pe": 220.77,
+      "ronw": 1.77
+     },
+     {
+      "name": "Ion Exchange (India) Limited",
+      "revenue_cr": 2914.84,
+      "face_value": 1,
+      "cmp": 377.2,
+      "eps_basic": 12.03,
+      "eps_diluted": 12.03,
+      "nav": 91.3,
+      "pe": 31.34,
+      "ronw": 11.2
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 150,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": 15682750,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
+       "amount_cr": 42.23
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 74.92
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Sandeep Sudhakar Asolkar"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": null
+    },
+    "concentration": {
+     "top_customers_pct": 64.44,
+     "govt_share_pct": 92.35,
+     "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
+    },
+    "order_book_cr": 1570.07,
+    "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
+    "strengths": [
+     "Market leader in sequencing batch reactor technology in India with over 80% market share.",
+     "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
+     "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
+     "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
+     "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
+     "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
+    ],
+    "risks": [
+     {
+      "title": "Government Entity Dependence",
+      "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
+      "severity": "high"
+     },
+     {
+      "title": "Negative Operating Cash Flows",
+      "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer Concentration",
+      "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
+      "severity": "high"
+     },
+     {
+      "title": "Segment Concentration",
+      "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
+      "severity": "medium"
+     },
+     {
+      "title": "Working Capital and Receivable Days",
+      "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
+      "severity": "medium"
+     },
+     {
+      "title": "Technology Obsolescence Risk",
+      "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
+      "severity": "medium"
+     },
+     {
+      "title": "Loans to Subsidiaries",
+      "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
+      "severity": "medium"
+     },
+     {
+      "title": "Pending Legal Proceedings",
+      "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 75,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
+    ],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-25T17:29:04.176Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -1006,7 +1559,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:13.408Z",
+   "subsAsOn": "2026-10-25T17:29:09.533Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1523,560 +2076,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:13.408Z"
-  },
-  {
-   "symbol": "SFCTECH",
-   "name": "SFC Environmental Technologies Limited",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "timeline": {
-    "open": "2026-10-27",
-    "close": "2026-10-29",
-    "allotment": "2026-10-30",
-    "refund": "2026-11-02",
-    "demat": "2026-11-02",
-    "listing": "2026-11-03"
-   },
-   "allotment": "2026-10-30",
-   "listing": "2026-11-03",
-   "datesExpected": false,
-   "priceLow": 313,
-   "priceHigh": 330,
-   "lot": 45,
-   "faceValue": 2,
-   "issueShares": 20228182,
-   "issueSizeCr": 667.53,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public offering comprising Fresh issue of aggregating up to Rs. 1500 million and offer for sale up to 1,56,82,750 Equity Shares",
-   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:18.823Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 313,
-     "priceHigh": 330,
-     "maxAmount": 200000,
-     "minAmount": 14850,
-     "lot": 45,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 313,
-     "priceHigh": 330,
-     "maxAmount": null,
-     "minAmount": 207900,
-     "lot": 45,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14850,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": null,
-    "registrar": {
-     "name": "MUFG Intime India Private Limited",
-     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-     "phone": "+91 8108114949",
-     "email": "sfcenvironmental.ipo@in.mpms.mufg.com",
-     "contactPerson": "Shanti Gopalkrishnan",
-     "website": "https://www.in.mpms.mufg.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "bidSplit": null,
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": null,
-    "faceValue": "Rs. 2 per Equity Share",
-    "bidLot": "45 Equity Shares and in multiples thereof",
-    "maxBidQib": null,
-    "maxBidNib": null,
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, and NOH",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
-    "byPrice": {
-     "-": "-"
-    }
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, +91 8108114949, sfcenvironmental.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "IIFL Capital Services Limited, JM Financial Limited and Nuvama Wealth Management Limited",
-   "leadManagersList": [
-    "IIFL Capital Services Limited",
-    "JM Financial Limited",
-    "Nuvama Wealth Management Limited"
-   ],
-   "sponsorBank": "Axis Bank Limited and ICICI Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
-    "anchor": null
-   },
-   "logo": null,
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SFCTECH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792670149542.PDF",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/sfc-environmental-technologies-ipo/1642/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 31,
-    "min": 30,
-    "max": 32,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 30,
-      "updated": "27-29 Oct"
-     },
-     {
-      "source": "investorgain.com",
-      "gmp": 32,
-      "pct": 9.7,
-      "updated": "25-Oct 20:37",
-      "seenLow": 21,
-      "seenHigh": 32
-     }
-    ],
-    "rating": 2,
-    "updated": "25-Oct 20:37",
-    "history": [
-     {
-      "date": "2026-10-21",
-      "gmp": 31
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 21
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 31
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 31
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 667.53,
-     "other": 667.53,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 45,
-     "other": 45,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 330,
-     "other": 330,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-29",
-     "other": "2026-10-29",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "SFC Environmental Technologies Limited",
-    "basis": "Consolidated",
-    "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
-    "sector": "Environmental Engineering & Waste Management",
-    "headquarters": "Navi Mumbai, Maharashtra",
-    "founded_year": 2005,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      904.94,
-      999.47,
-      1323.43
-     ],
-     "revenue": [
-      657.5,
-      697.86,
-      803.63
-     ],
-     "other_income": [
-      19.07,
-      29.11,
-      17.64
-     ],
-     "ebitda": [
-      193.25,
-      207.48,
-      235.81
-     ],
-     "pbt": [
-      193.45,
-      205.24,
-      211.49
-     ],
-     "pat": [
-      144.17,
-      152.01,
-      160.21
-     ],
-     "net_worth": [
-      534.3,
-      648.68,
-      804.17
-     ],
-     "reserves": [
-      528.07,
-      630,
-      785.49
-     ],
-     "borrowings": [
-      139.16,
-      83.71,
-      195.64
-     ],
-     "cash_and_bank": [
-      188.61,
-      136.05,
-      156.82
-     ],
-     "operating_cash_flow": [
-      -11.69,
-      65.51,
-      -25.8
-     ]
-    },
-    "kpi": {
-     "roce": [
-      28.56,
-      29.29,
-      22.21
-     ],
-     "ronw": [
-      30.46,
-      24.36,
-      21.25
-     ],
-     "roe": [
-      29.8,
-      24.84,
-      21.55
-     ],
-     "eps_basic": [
-      15.16,
-      15.42,
-      16.52
-     ],
-     "eps_diluted": [
-      15.16,
-      15.42,
-      16.52
-     ],
-     "pat_margin": [
-      21.93,
-      21.78,
-      19.94
-     ],
-     "ebitda_margin": [
-      29.39,
-      29.73,
-      29.34
-     ],
-     "debt_equity": [
-      -0.09,
-      -0.08,
-      0.05
-     ],
-     "current_ratio": null,
-     "nav_per_share": 86.09,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 15.93,
-     "other": [
-      {
-       "name": "Total Order Book",
-       "unit": "₹ crore",
-       "values": [
-        785.23,
-        560.39,
-        1574.52
-       ]
-      },
-      {
-       "name": "Cash Conversion Cycle",
-       "unit": "Days",
-       "values": [
-        156,
-        232,
-        242
-       ]
-      },
-      {
-       "name": "Fixed Asset Turnover",
-       "unit": "X",
-       "values": [
-        13.25,
-        10.85,
-        12.07
-       ]
-      },
-      {
-       "name": "Treatment capacity facilitated",
-       "unit": "MLD",
-       "values": [
-        13906.98,
-        15209.45,
-        17144.01
-       ]
-      },
-      {
-       "name": "Number of treatment installations",
-       "unit": "Number",
-       "values": [
-        577,
-        639,
-        705
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Thermax Limited",
-      "revenue_cr": 10694.15,
-      "face_value": 2,
-      "cmp": 3325.75,
-      "eps_basic": 63.95,
-      "eps_diluted": 63.94,
-      "nav": 492.55,
-      "pe": 52.01,
-      "ronw": 13.74
-     },
-     {
-      "name": "Praj Industries Limited",
-      "revenue_cr": 3167.88,
-      "face_value": 2,
-      "cmp": 287,
-      "eps_basic": 1.3,
-      "eps_diluted": 1.3,
-      "nav": 71.22,
-      "pe": 220.77,
-      "ronw": 1.77
-     },
-     {
-      "name": "Ion Exchange (India) Limited",
-      "revenue_cr": 2914.84,
-      "face_value": 1,
-      "cmp": 377.2,
-      "eps_basic": 12.03,
-      "eps_diluted": 12.03,
-      "nav": 91.3,
-      "pe": 31.34,
-      "ronw": 11.2
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": 150,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
-     "ofs_shares": 15682750,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 2,
-     "objects": [
-      {
-       "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
-       "amount_cr": 42.23
-      },
-      {
-       "purpose": "Funding working capital requirements",
-       "amount_cr": 74.92
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Sandeep Sudhakar Asolkar"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": null
-    },
-    "concentration": {
-     "top_customers_pct": 64.44,
-     "govt_share_pct": 92.35,
-     "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
-    },
-    "order_book_cr": 1570.07,
-    "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
-    "strengths": [
-     "Market leader in sequencing batch reactor technology in India with over 80% market share.",
-     "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
-     "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
-     "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
-     "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
-     "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
-    ],
-    "risks": [
-     {
-      "title": "Government Entity Dependence",
-      "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
-      "severity": "high"
-     },
-     {
-      "title": "Negative Operating Cash Flows",
-      "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
-      "severity": "high"
-     },
-     {
-      "title": "Customer Concentration",
-      "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
-      "severity": "high"
-     },
-     {
-      "title": "Segment Concentration",
-      "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
-      "severity": "medium"
-     },
-     {
-      "title": "Working Capital and Receivable Days",
-      "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
-      "severity": "medium"
-     },
-     {
-      "title": "Technology Obsolescence Risk",
-      "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
-      "severity": "medium"
-     },
-     {
-      "title": "Loans to Subsidiaries",
-      "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
-      "severity": "medium"
-     },
-     {
-      "title": "Pending Legal Proceedings",
-      "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
-   },
-   "verification": {
-    "status": "warn",
-    "checked": 75,
-    "notFound": 0,
-    "issues": [
-     "Mar-24: reported debt/equity -0.09 vs borrowings/net worth 0.26 (RHP debt may include leases)"
-    ],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-25T17:19:18.823Z"
+   "fetchedAt": "2026-10-25T17:29:09.533Z"
   },
   {
    "symbol": "WISCON",
@@ -2118,7 +2118,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:36.183Z",
+   "subsAsOn": "2026-10-25T17:29:26.451Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2248,7 +2248,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-25T17:19:36.183Z"
+   "fetchedAt": "2026-10-25T17:29:26.451Z"
   },
   {
    "symbol": "EDELALTS",
@@ -2294,7 +2294,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:24.304Z",
+   "subsAsOn": "2026-10-25T17:29:15.028Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2868,7 +2868,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:24.304Z"
+   "fetchedAt": "2026-10-25T17:29:15.028Z"
   },
   {
    "symbol": "CORE4",
@@ -2914,7 +2914,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:33.566Z",
+   "subsAsOn": "2026-10-25T17:29:24.052Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3074,7 +3074,7 @@
      "total": 0.08
     },
     {
-     "at": "2026-10-25T17:20:51.544Z",
+     "at": "2026-10-25T17:32:10.544Z",
      "date": "2026-10-25",
      "qib": null,
      "bnii": null,
@@ -3107,7 +3107,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-25T17:19:33.566Z"
+   "fetchedAt": "2026-10-25T17:29:24.052Z"
   },
   {
    "symbol": "JPL",
@@ -4736,799 +4736,6 @@
    "fetchedAt": "2026-10-24T18:27:04.638Z"
   },
   {
-   "symbol": "TONBO",
-   "name": "Tonbo Imaging India Limited",
-   "board": "Mainboard",
-   "status": "listed",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 665,
-   "priceHigh": 700,
-   "lot": 21,
-   "faceValue": 2,
-   "issueShares": 12174000,
-   "issueSizeCr": 852.18,
-   "issueType": "100% Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Offer for Sale of up to 12,174,046 Equity Shares (including Employee Reservation Portion of up to 14,000 Equity Shares and Anchor reservation portion of 36,48,013 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 2432009,
-     "bid": 713933115,
-     "times": 293.5569379060686
-    },
-    "nii": {
-     "offered": 1824007,
-     "bid": 311801574,
-     "times": 170.9431893627601
-    },
-    "bnii": {
-     "offered": 1216005,
-     "bid": 224627487,
-     "times": 184.72579224592005
-    },
-    "snii": {
-     "offered": 608002,
-     "bid": 87174087,
-     "times": 143.3779609277601
-    },
-    "retail": {
-     "offered": 4256017,
-     "bid": 132223938,
-     "times": 31.067530510333956
-    },
-    "employee": {
-     "offered": 14000,
-     "bid": 760620,
-     "times": 54.33
-    },
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 8526033,
-     "bid": 1158719247,
-     "times": 135.90367841644525
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-19T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 665,
-     "priceHigh": 700,
-     "maxAmount": 200000,
-     "minAmount": 14700,
-     "lot": 21,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "Employee",
-     "priceLow": 600,
-     "priceHigh": 635,
-     "maxAmount": 500000,
-     "minAmount": null,
-     "lot": 21,
-     "note": "Discount Rs 65 per share"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 665,
-     "priceHigh": 700,
-     "maxAmount": null,
-     "minAmount": 205800,
-     "lot": 21,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14700,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": "1st C Main, Sarjapur Main Road, Jakkasandra Extension, Chikkayellappa Industrial Layout, Bengaluru 560 034, Karnataka, India",
-     "phone": "+91 63 64 926 273",
-     "email": "compliance@tonboimaging.com",
-     "website": "https://www.tonboimaging.com",
-     "contactPerson": "Ankita Agarwalla"
-    },
-    "registrar": {
-     "name": "KFin Technologies Limited",
-     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
-     "phone": "+91 40 6716 2222",
-     "email": "tonbo.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": "https://www.kfintech.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 177205371,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 281349873,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 38859387,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 216518484,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 2398956,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 214453554,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 7774977,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 205821,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 84639975,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 2328291,
-     "times": null
-    },
-    {
-     "id": "3(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 116335191,
-     "times": null
-    },
-    {
-     "id": "3(b)",
-     "label": "Price bids",
-     "offered": null,
-     "bid": 15888747,
-     "times": null
-    },
-    {
-     "id": "4(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 595476,
-     "times": null
-    },
-    {
-     "id": "4(b)",
-     "label": "Price Bids",
-     "offered": null,
-     "bid": 165144,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": "Rs. 65 per equity share to Eligible Employees",
-    "faceValue": "Rs. 2 per Equity Share",
-    "bidLot": "21 Equity Shares and in multiples thereof",
-    "maxBidQib": "85,12,014 Equity Shares in multiple of 21 Equity Shares",
-    "maxBidNib": "60,80,004 Equity Shares in multiple of 21 Equity Shares",
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 19-Oct-2026 19:00:00 IST",
-    "totalBids": 1160150964,
-    "timesSubscribed": 136.07,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "KFin Technologies Limited",
-    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
-    "contact": "Williams R, +91 40 6716 2222, tonbo.ipo@kfintech.com"
-   },
-   "leadManagers": "JM Financial Limited and IIFL Capital Services Limited",
-   "leadManagersList": [
-    "JM Financial Limited",
-    "IIFL Capital Services Limited"
-   ],
-   "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip"
-   },
-   "logo": "data/logos/TONBO.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Prospectus (final) — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792652985928.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/tonbo-imaging-india-ipo/2369/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 452,
-    "min": 452,
-    "max": 452,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 452,
-      "pct": 64.57,
-      "updated": "23-Oct 9:37",
-      "seenLow": 270,
-      "seenHigh": 516
-     }
-    ],
-    "rating": 5,
-    "updated": "23-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 343
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 468
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 500
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 495
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 516
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 505
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 515
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 510
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 515
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 512
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 450
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 452
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.215Z",
-     "date": "2026-10-15",
-     "qib": 3.9240496231716246,
-     "bnii": 4.553613677575339,
-     "snii": 8.69518027901224,
-     "nii": 5.934135121191969,
-     "retail": 3.190506992805715,
-     "total": 3.992078144665872
-    },
-    {
-     "at": "2026-10-16T22:05:10.352Z",
-     "date": "2026-10-16",
-     "qib": 3.9525963925297973,
-     "bnii": 11.480183058457818,
-     "snii": 20.084257946519912,
-     "nii": 14.348206448769112,
-     "retail": 7.118863012060337,
-     "total": 7.772149720743516
-    },
-    {
-     "at": "2026-10-18T23:04:07.640Z",
-     "date": "2026-10-18",
-     "qib": 3.9525963925297973,
-     "bnii": 11.480183058457818,
-     "snii": 20.084257946519912,
-     "nii": 14.348206448769112,
-     "retail": 7.118863012060337,
-     "total": 7.772149720743516
-    },
-    {
-     "at": "2026-10-19T23:49:50.207Z",
-     "date": "2026-10-19",
-     "qib": 293.5569379060686,
-     "bnii": 184.72579224592005,
-     "snii": 143.3779609277601,
-     "nii": 170.9431893627601,
-     "retail": 31.067530510333956,
-     "total": 135.90367841644525
-    }
-   ],
-   "listingPerf": {
-    "dayOpen": 1160,
-    "ltp": 1133.8,
-    "exchange": "NSE",
-    "listDate": "2026-10-23",
-    "asOf": "2026-10-23",
-    "dayOpenGainPct": 65.71,
-    "ltpGainPct": 61.97
-   },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 852.18,
-     "other": 852.18,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 21,
-     "other": 21,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 700,
-     "other": 700,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Tonbo Imaging India Limited",
-    "basis": "Consolidated",
-    "about": "Tonbo Imaging India Limited is a Bengaluru-based defence electronics original equipment manufacturer that designs and manufactures advanced electro-optics, thermal imaging, and autonomous targeting solutions. Operating an asset-light model with full in-house intellectual property ownership, the company has deployed over 28,000 systems across 24 countries worldwide.",
-    "sector": "Defence Electronics",
-    "headquarters": "Bengaluru, Karnataka",
-    "founded_year": 2003,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      574.68,
-      726.36,
-      782.5
-     ],
-     "revenue": [
-      428.19,
-      469.08,
-      362.65
-     ],
-     "other_income": [
-      3.71,
-      5.31,
-      7.29
-     ],
-     "ebitda": [
-      112.32,
-      139.06,
-      104.62
-     ],
-     "pbt": [
-      94.55,
-      99.27,
-      69.96
-     ],
-     "pat": [
-      68.54,
-      72.76,
-      50.88
-     ],
-     "net_worth": [
-      230.13,
-      490.14,
-      553.16
-     ],
-     "reserves": [
-      168.99,
-      489.41,
-      541.7
-     ],
-     "borrowings": [
-      96.36,
-      78.14,
-      116.06
-     ],
-     "cash_and_bank": [
-      115.67,
-      101.92,
-      38.63
-     ],
-     "operating_cash_flow": [
-      78.33,
-      -136.12,
-      -63.22
-     ]
-    },
-    "kpi": {
-     "roce": [
-      67.76,
-      27.41,
-      14.54
-     ],
-     "ronw": [
-      52.72,
-      20.2,
-      9.75
-     ],
-     "roe": [
-      52.72,
-      20.2,
-      9.75
-     ],
-     "eps_basic": [
-      62.61,
-      13.38,
-      9.19
-     ],
-     "eps_diluted": [
-      13.63,
-      12.7,
-      8.88
-     ],
-     "pat_margin": [
-      15.87,
-      15.34,
-      13.75
-     ],
-     "ebitda_margin": [
-      26.23,
-      29.65,
-      28.85
-     ],
-     "debt_equity": null,
-     "current_ratio": null,
-     "nav_per_share": 96.57,
-     "pe_pre_ipo": 78.83,
-     "pe_post_ipo": 78.83,
-     "weighted_avg_eps": 10.95,
-     "other": [
-      {
-       "name": "Gross Profit Margin",
-       "unit": "%",
-       "values": [
-        48.64,
-        56.38,
-        51.05
-       ]
-      },
-      {
-       "name": "Working Capital Days",
-       "unit": "Days",
-       "values": [
-        152,
-        280,
-        517
-       ]
-      },
-      {
-       "name": "Export Share in Revenue",
-       "unit": "%",
-       "values": [
-        48.61,
-        65.52,
-        5.57
-       ]
-      },
-      {
-       "name": "Net Tangible Fixed Asset Turnover",
-       "unit": "Times",
-       "values": [
-        89.45,
-        19.16,
-        14.62
-       ]
-      },
-      {
-       "name": "Confirmed Order Book",
-       "unit": "₹ crore",
-       "values": [
-        563.14,
-        218.61,
-        279.02
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Paras Defence and Space Technologies Limited",
-      "revenue_cr": 476.57,
-      "face_value": 5,
-      "cmp": 1286.95,
-      "eps_basic": 10.93,
-      "eps_diluted": 10.93,
-      "nav": 90.02,
-      "pe": 117.74,
-      "ronw": null
-     },
-     {
-      "name": "Data Patterns (India) Limited",
-      "revenue_cr": 924.77,
-      "face_value": 2,
-      "cmp": 4231,
-      "eps_basic": 48.47,
-      "eps_diluted": 48.47,
-      "nav": 310.08,
-      "pe": 87.29,
-      "ronw": 17
-     },
-     {
-      "name": "Astra Microwave Products Limited",
-      "revenue_cr": 1162.8,
-      "face_value": 2,
-      "cmp": 1701.15,
-      "eps_basic": 20.32,
-      "eps_diluted": 20.27,
-      "nav": 138.46,
-      "pe": 83.92,
-      "ronw": null
-     },
-     {
-      "name": "Zen Technologies Limited",
-      "revenue_cr": 687.69,
-      "face_value": 1,
-      "cmp": 1580.35,
-      "eps_basic": 21.52,
-      "eps_diluted": 21.52,
-      "nav": 209.22,
-      "pe": 73.44,
-      "ronw": null
-     },
-     {
-      "name": "Bharat Electronics Limited",
-      "revenue_cr": 27610.11,
-      "face_value": 1,
-      "cmp": 378.85,
-      "eps_basic": 8.29,
-      "eps_diluted": 8.29,
-      "nav": 32.82,
-      "pe": 45.7,
-      "ronw": null
-     }
-    ],
-    "issue": {
-     "price_low": 665,
-     "price_high": 700,
-     "total_issue_cr": 852.09,
-     "fresh_issue_cr": 0,
-     "ofs_cr": 852.09,
-     "fresh_issue_shares": 0,
-     "ofs_shares": 12174046,
-     "pre_issue_shares": 57280000,
-     "post_issue_shares": 57280000,
-     "face_value": 2,
-     "objects": [
-      {
-       "purpose": "Offer for Sale by Selling Shareholders and listing benefits",
-       "amount_cr": 852.09
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Arvind Kondangi Lakshmikumar",
-      "Ankit Kumar",
-      "Cecilia D'Souza"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": "The Promoters have worked together for over 21 years across global defence programs, led by Arvind Kondangi Lakshmikumar (MD & CEO), Ankit Kumar (optics & computer vision), and Cecilia D'Souza (finance & operations)."
-    },
-    "concentration": {
-     "top_customers_pct": null,
-     "govt_share_pct": 74.53,
-     "note": "Indian Government accounted for 71.19% and foreign governments 3.34% of FY26 revenue; top ten suppliers accounted for 68.77% of FY26 total expenses."
-    },
-    "order_book_cr": 314.24,
-    "litigation_note": "Bank guarantees outstanding of ₹78.93 crore and contingent liability of ₹0.58 crore disputed under Goods and Services Tax Act pending before the High Court of Jammu & Kashmir.",
-    "strengths": [
-     "Leading defence technology OEM with 100% proprietary intellectual property ownership across optics, embedded software, and electronics.",
-     "Capital-efficient asset-light model focusing on in-house R&D while outsourcing manufacturing to certified EMS partners.",
-     "Largest Indian manufacturer and exporter of thermal imaging systems, capturing 94% of India's thermal imaging export units.",
-     "Diversified portfolio of ITAR-free electro-optical systems deployed in over 24 countries across 28,000 installations.",
-     "Comprehensive product range spanning tactical weapon sights, platform systems, missile seekers, and autonomous battlefield fire control.",
-     "Robust in-house R&D infrastructure with 130 dedicated engineers comprising approximately 38% of the total workforce."
-    ],
-    "risks": [
-     {
-      "title": "Persistent negative operating cash flows",
-      "detail": "Reported negative cash flows from operations of ₹63.22 crore in FY26, ₹136.12 crore in FY25, and ₹14.68 crore in Q1 FY27.",
-      "severity": "high"
-     },
-     {
-      "title": "Lengthening working capital cycle",
-      "detail": "Working capital days increased substantially from 152 days in FY24 to 280 days in FY25 and 517 days in FY26.",
-      "severity": "high"
-     },
-     {
-      "title": "High supplier concentration",
-      "detail": "Top ten suppliers accounted for 68.77% of total expenses in FY26 and 164.00% in Q1 FY27, without long-term supply contracts.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy reliance on tactical systems revenue",
-      "detail": "Tactical systems contributed 58.37%, 77.24%, and 83.90% of revenue from operations in FY26, FY25, and FY24, respectively.",
-      "severity": "medium"
-     },
-     {
-      "title": "Sharp decline in export revenues",
-      "detail": "Export share dropped sharply from 65.52% of revenue in FY25 to 5.57% in FY26 due to changes in international procurement.",
-      "severity": "medium"
-     },
-     {
-      "title": "Cyclical government tender-based procurement",
-      "detail": "Business is highly dependent on governmental budgetary allocations and extended, multi-tiered tender cycles resulting in volatile revenue.",
-      "severity": "medium"
-     },
-     {
-      "title": "Dependence on contract manufacturers",
-      "detail": "Relies entirely on non-exclusive contract manufacturers such as Kaynes and Avalon for commercial-scale product assembly.",
-      "severity": "medium"
-     },
-     {
-      "title": "Bank guarantee exposure and tax disputes",
-      "detail": "Outstanding performance bank guarantees of ₹78.93 crore and contingent liabilities of ₹0.58 crore in disputed GST dues.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "Prospectus",
-    "notes": "FY24 financials are standalone as subsidiaries were incorporated in FY25; FY25 and FY26 are consolidated. Q1 FY27 stub period (ended June 30, 2026) is excluded from financial arrays."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 80,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "Prospectus"
-   },
-   "fetchedAt": "2026-10-20T18:21:44.724Z"
-  },
-  {
    "symbol": "ZETWERK",
    "name": "Zetwerk Manufacturing Businesses Limited",
    "board": "Mainboard",
@@ -5983,12 +5190,12 @@
    ],
    "listingPerf": {
     "dayOpen": 159.25,
-    "ltp": 138.25,
+    "ltp": 140.7,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 5.46,
-    "ltpGainPct": -8.44
+    "ltpGainPct": -6.82
    },
    "checks": [
     {
@@ -6307,6 +5514,1600 @@
     "sourceDoc": "RHP"
    },
    "fetchedAt": "2026-10-20T18:21:57.843Z"
+  },
+  {
+   "symbol": "TONBO",
+   "name": "Tonbo Imaging India Limited",
+   "board": "Mainboard",
+   "status": "listed",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 665,
+   "priceHigh": 700,
+   "lot": 21,
+   "faceValue": 2,
+   "issueShares": 12174000,
+   "issueSizeCr": 852.18,
+   "issueType": "100% Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Offer for Sale of up to 12,174,046 Equity Shares (including Employee Reservation Portion of up to 14,000 Equity Shares and Anchor reservation portion of 36,48,013 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 2432009,
+     "bid": 713933115,
+     "times": 293.5569379060686
+    },
+    "nii": {
+     "offered": 1824007,
+     "bid": 311801574,
+     "times": 170.9431893627601
+    },
+    "bnii": {
+     "offered": 1216005,
+     "bid": 224627487,
+     "times": 184.72579224592005
+    },
+    "snii": {
+     "offered": 608002,
+     "bid": 87174087,
+     "times": 143.3779609277601
+    },
+    "retail": {
+     "offered": 4256017,
+     "bid": 132223938,
+     "times": 31.067530510333956
+    },
+    "employee": {
+     "offered": 14000,
+     "bid": 760620,
+     "times": 54.33
+    },
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 8526033,
+     "bid": 1158719247,
+     "times": 135.90367841644525
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": 200000,
+     "minAmount": 14700,
+     "lot": 21,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 600,
+     "priceHigh": 635,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 21,
+     "note": "Discount Rs 65 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": null,
+     "minAmount": 205800,
+     "lot": 21,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14700,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "1st C Main, Sarjapur Main Road, Jakkasandra Extension, Chikkayellappa Industrial Layout, Bengaluru 560 034, Karnataka, India",
+     "phone": "+91 63 64 926 273",
+     "email": "compliance@tonboimaging.com",
+     "website": "https://www.tonboimaging.com",
+     "contactPerson": "Ankita Agarwalla"
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
+     "phone": "+91 40 6716 2222",
+     "email": "tonbo.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": "https://www.kfintech.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 177205371,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 281349873,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 38859387,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 216518484,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 2398956,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 214453554,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 7774977,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 205821,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 84639975,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 2328291,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 116335191,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 15888747,
+     "times": null
+    },
+    {
+     "id": "4(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 595476,
+     "times": null
+    },
+    {
+     "id": "4(b)",
+     "label": "Price Bids",
+     "offered": null,
+     "bid": 165144,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": "Rs. 65 per equity share to Eligible Employees",
+    "faceValue": "Rs. 2 per Equity Share",
+    "bidLot": "21 Equity Shares and in multiples thereof",
+    "maxBidQib": "85,12,014 Equity Shares in multiple of 21 Equity Shares",
+    "maxBidNib": "60,80,004 Equity Shares in multiple of 21 Equity Shares",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 19-Oct-2026 19:00:00 IST",
+    "totalBids": 1160150964,
+    "timesSubscribed": 136.07,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
+    "contact": "Williams R, +91 40 6716 2222, tonbo.ipo@kfintech.com"
+   },
+   "leadManagers": "JM Financial Limited and IIFL Capital Services Limited",
+   "leadManagersList": [
+    "JM Financial Limited",
+    "IIFL Capital Services Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip"
+   },
+   "logo": "data/logos/TONBO.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Prospectus (final) — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792652985928.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/tonbo-imaging-india-ipo/2369/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 452,
+    "min": 452,
+    "max": 452,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 452,
+      "pct": 64.57,
+      "updated": "23-Oct 9:37",
+      "seenLow": 270,
+      "seenHigh": 516
+     }
+    ],
+    "rating": 5,
+    "updated": "23-Oct 9:37",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 343
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 468
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 500
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 495
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 516
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 505
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 515
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 510
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 515
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 512
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 450
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 452
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 452
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 452
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.215Z",
+     "date": "2026-10-15",
+     "qib": 3.9240496231716246,
+     "bnii": 4.553613677575339,
+     "snii": 8.69518027901224,
+     "nii": 5.934135121191969,
+     "retail": 3.190506992805715,
+     "total": 3.992078144665872
+    },
+    {
+     "at": "2026-10-16T22:05:10.352Z",
+     "date": "2026-10-16",
+     "qib": 3.9525963925297973,
+     "bnii": 11.480183058457818,
+     "snii": 20.084257946519912,
+     "nii": 14.348206448769112,
+     "retail": 7.118863012060337,
+     "total": 7.772149720743516
+    },
+    {
+     "at": "2026-10-18T23:04:07.640Z",
+     "date": "2026-10-18",
+     "qib": 3.9525963925297973,
+     "bnii": 11.480183058457818,
+     "snii": 20.084257946519912,
+     "nii": 14.348206448769112,
+     "retail": 7.118863012060337,
+     "total": 7.772149720743516
+    },
+    {
+     "at": "2026-10-19T23:49:50.207Z",
+     "date": "2026-10-19",
+     "qib": 293.5569379060686,
+     "bnii": 184.72579224592005,
+     "snii": 143.3779609277601,
+     "nii": 170.9431893627601,
+     "retail": 31.067530510333956,
+     "total": 135.90367841644525
+    }
+   ],
+   "listingPerf": {
+    "dayOpen": 1160,
+    "ltp": 1155.3,
+    "exchange": "NSE",
+    "listDate": "2026-10-23",
+    "asOf": "2026-10-23",
+    "dayOpenGainPct": 65.71,
+    "ltpGainPct": 65.04
+   },
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 852.18,
+     "other": 852.18,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 21,
+     "other": 21,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 700,
+     "other": 700,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Tonbo Imaging India Limited",
+    "basis": "Consolidated",
+    "about": "Tonbo Imaging India Limited is a Bengaluru-based defence electronics original equipment manufacturer that designs and manufactures advanced electro-optics, thermal imaging, and autonomous targeting solutions. Operating an asset-light model with full in-house intellectual property ownership, the company has deployed over 28,000 systems across 24 countries worldwide.",
+    "sector": "Defence Electronics",
+    "headquarters": "Bengaluru, Karnataka",
+    "founded_year": 2003,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      574.68,
+      726.36,
+      782.5
+     ],
+     "revenue": [
+      428.19,
+      469.08,
+      362.65
+     ],
+     "other_income": [
+      3.71,
+      5.31,
+      7.29
+     ],
+     "ebitda": [
+      112.32,
+      139.06,
+      104.62
+     ],
+     "pbt": [
+      94.55,
+      99.27,
+      69.96
+     ],
+     "pat": [
+      68.54,
+      72.76,
+      50.88
+     ],
+     "net_worth": [
+      230.13,
+      490.14,
+      553.16
+     ],
+     "reserves": [
+      168.99,
+      489.41,
+      541.7
+     ],
+     "borrowings": [
+      96.36,
+      78.14,
+      116.06
+     ],
+     "cash_and_bank": [
+      115.67,
+      101.92,
+      38.63
+     ],
+     "operating_cash_flow": [
+      78.33,
+      -136.12,
+      -63.22
+     ]
+    },
+    "kpi": {
+     "roce": [
+      67.76,
+      27.41,
+      14.54
+     ],
+     "ronw": [
+      52.72,
+      20.2,
+      9.75
+     ],
+     "roe": [
+      52.72,
+      20.2,
+      9.75
+     ],
+     "eps_basic": [
+      62.61,
+      13.38,
+      9.19
+     ],
+     "eps_diluted": [
+      13.63,
+      12.7,
+      8.88
+     ],
+     "pat_margin": [
+      15.87,
+      15.34,
+      13.75
+     ],
+     "ebitda_margin": [
+      26.23,
+      29.65,
+      28.85
+     ],
+     "debt_equity": null,
+     "current_ratio": null,
+     "nav_per_share": 96.57,
+     "pe_pre_ipo": 78.83,
+     "pe_post_ipo": 78.83,
+     "weighted_avg_eps": 10.95,
+     "other": [
+      {
+       "name": "Gross Profit Margin",
+       "unit": "%",
+       "values": [
+        48.64,
+        56.38,
+        51.05
+       ]
+      },
+      {
+       "name": "Working Capital Days",
+       "unit": "Days",
+       "values": [
+        152,
+        280,
+        517
+       ]
+      },
+      {
+       "name": "Export Share in Revenue",
+       "unit": "%",
+       "values": [
+        48.61,
+        65.52,
+        5.57
+       ]
+      },
+      {
+       "name": "Net Tangible Fixed Asset Turnover",
+       "unit": "Times",
+       "values": [
+        89.45,
+        19.16,
+        14.62
+       ]
+      },
+      {
+       "name": "Confirmed Order Book",
+       "unit": "₹ crore",
+       "values": [
+        563.14,
+        218.61,
+        279.02
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Paras Defence and Space Technologies Limited",
+      "revenue_cr": 476.57,
+      "face_value": 5,
+      "cmp": 1286.95,
+      "eps_basic": 10.93,
+      "eps_diluted": 10.93,
+      "nav": 90.02,
+      "pe": 117.74,
+      "ronw": null
+     },
+     {
+      "name": "Data Patterns (India) Limited",
+      "revenue_cr": 924.77,
+      "face_value": 2,
+      "cmp": 4231,
+      "eps_basic": 48.47,
+      "eps_diluted": 48.47,
+      "nav": 310.08,
+      "pe": 87.29,
+      "ronw": 17
+     },
+     {
+      "name": "Astra Microwave Products Limited",
+      "revenue_cr": 1162.8,
+      "face_value": 2,
+      "cmp": 1701.15,
+      "eps_basic": 20.32,
+      "eps_diluted": 20.27,
+      "nav": 138.46,
+      "pe": 83.92,
+      "ronw": null
+     },
+     {
+      "name": "Zen Technologies Limited",
+      "revenue_cr": 687.69,
+      "face_value": 1,
+      "cmp": 1580.35,
+      "eps_basic": 21.52,
+      "eps_diluted": 21.52,
+      "nav": 209.22,
+      "pe": 73.44,
+      "ronw": null
+     },
+     {
+      "name": "Bharat Electronics Limited",
+      "revenue_cr": 27610.11,
+      "face_value": 1,
+      "cmp": 378.85,
+      "eps_basic": 8.29,
+      "eps_diluted": 8.29,
+      "nav": 32.82,
+      "pe": 45.7,
+      "ronw": null
+     }
+    ],
+    "issue": {
+     "price_low": 665,
+     "price_high": 700,
+     "total_issue_cr": 852.09,
+     "fresh_issue_cr": 0,
+     "ofs_cr": 852.09,
+     "fresh_issue_shares": 0,
+     "ofs_shares": 12174046,
+     "pre_issue_shares": 57280000,
+     "post_issue_shares": 57280000,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by Selling Shareholders and listing benefits",
+       "amount_cr": 852.09
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Arvind Kondangi Lakshmikumar",
+      "Ankit Kumar",
+      "Cecilia D'Souza"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "The Promoters have worked together for over 21 years across global defence programs, led by Arvind Kondangi Lakshmikumar (MD & CEO), Ankit Kumar (optics & computer vision), and Cecilia D'Souza (finance & operations)."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": 74.53,
+     "note": "Indian Government accounted for 71.19% and foreign governments 3.34% of FY26 revenue; top ten suppliers accounted for 68.77% of FY26 total expenses."
+    },
+    "order_book_cr": 314.24,
+    "litigation_note": "Bank guarantees outstanding of ₹78.93 crore and contingent liability of ₹0.58 crore disputed under Goods and Services Tax Act pending before the High Court of Jammu & Kashmir.",
+    "strengths": [
+     "Leading defence technology OEM with 100% proprietary intellectual property ownership across optics, embedded software, and electronics.",
+     "Capital-efficient asset-light model focusing on in-house R&D while outsourcing manufacturing to certified EMS partners.",
+     "Largest Indian manufacturer and exporter of thermal imaging systems, capturing 94% of India's thermal imaging export units.",
+     "Diversified portfolio of ITAR-free electro-optical systems deployed in over 24 countries across 28,000 installations.",
+     "Comprehensive product range spanning tactical weapon sights, platform systems, missile seekers, and autonomous battlefield fire control.",
+     "Robust in-house R&D infrastructure with 130 dedicated engineers comprising approximately 38% of the total workforce."
+    ],
+    "risks": [
+     {
+      "title": "Persistent negative operating cash flows",
+      "detail": "Reported negative cash flows from operations of ₹63.22 crore in FY26, ₹136.12 crore in FY25, and ₹14.68 crore in Q1 FY27.",
+      "severity": "high"
+     },
+     {
+      "title": "Lengthening working capital cycle",
+      "detail": "Working capital days increased substantially from 152 days in FY24 to 280 days in FY25 and 517 days in FY26.",
+      "severity": "high"
+     },
+     {
+      "title": "High supplier concentration",
+      "detail": "Top ten suppliers accounted for 68.77% of total expenses in FY26 and 164.00% in Q1 FY27, without long-term supply contracts.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy reliance on tactical systems revenue",
+      "detail": "Tactical systems contributed 58.37%, 77.24%, and 83.90% of revenue from operations in FY26, FY25, and FY24, respectively.",
+      "severity": "medium"
+     },
+     {
+      "title": "Sharp decline in export revenues",
+      "detail": "Export share dropped sharply from 65.52% of revenue in FY25 to 5.57% in FY26 due to changes in international procurement.",
+      "severity": "medium"
+     },
+     {
+      "title": "Cyclical government tender-based procurement",
+      "detail": "Business is highly dependent on governmental budgetary allocations and extended, multi-tiered tender cycles resulting in volatile revenue.",
+      "severity": "medium"
+     },
+     {
+      "title": "Dependence on contract manufacturers",
+      "detail": "Relies entirely on non-exclusive contract manufacturers such as Kaynes and Avalon for commercial-scale product assembly.",
+      "severity": "medium"
+     },
+     {
+      "title": "Bank guarantee exposure and tax disputes",
+      "detail": "Outstanding performance bank guarantees of ₹78.93 crore and contingent liabilities of ₹0.58 crore in disputed GST dues.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "Prospectus",
+    "notes": "FY24 financials are standalone as subsidiaries were incorporated in FY25; FY25 and FY26 are consolidated. Q1 FY27 stub period (ended June 30, 2026) is excluded from financial arrays."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 80,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "Prospectus"
+   },
+   "fetchedAt": "2026-10-20T18:21:44.724Z"
+  },
+  {
+   "symbol": "BONFIG",
+   "name": "Bonfiglioli Transmissions Limited",
+   "board": "Mainboard",
+   "status": "listed",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-21",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 558,
+   "priceHigh": 586,
+   "lot": 25,
+   "faceValue": 10,
+   "issueShares": 43239078,
+   "issueSizeCr": 2533.81,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer of offer for sale up to 4,32,39,042 Equity Shares (Including Eligible Employee Reservation of up to 50,000 Equity Shares and Anchor portion 1,29,56,712 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 8637808,
+     "bid": 1043308675,
+     "times": 120.78396220429998
+    },
+    "nii": {
+     "offered": 6478357,
+     "bid": 261705075,
+     "times": 40.39682823901184
+    },
+    "bnii": {
+     "offered": 4318905,
+     "bid": 200562075,
+     "times": 46.438177037929755
+    },
+    "snii": {
+     "offered": 2159452,
+     "bid": 61143000,
+     "times": 28.314127843545492
+    },
+    "retail": {
+     "offered": 15116165,
+     "bid": 89271650,
+     "times": 5.905707565377859
+    },
+    "employee": {
+     "offered": 50000,
+     "bid": 371425,
+     "times": 7.4285
+    },
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 30282330,
+     "bid": 1394656825,
+     "times": 46.055135948918064
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 558,
+     "priceHigh": 586,
+     "maxAmount": 200000,
+     "minAmount": 14650,
+     "lot": 25,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 529,
+     "priceHigh": 557,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 25,
+     "note": "Discount Rs 29 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 558,
+     "priceHigh": 586,
+     "maxAmount": null,
+     "minAmount": 205100,
+     "lot": 25,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14650,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "1. Thirumudivakkam, Tamil Plot No.AC7-AC11, 11.63* Owned V. Raahul per year",
+     "phone": "+91 63858 63934",
+     "email": "btl.secretarial@bonfiglioli.com",
+     "website": "https://www.bonfiglioli.in",
+     "contactPerson": "Sunil Kumar"
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "bonfigliolitransmissions.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://www.in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 351805525,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 458786975,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 93563950,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 139152225,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 1965350,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 190478150,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 8118575,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 189925,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 58776900,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 2176175,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 76815050,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 12456600,
+     "times": null
+    },
+    {
+     "id": "4(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 292100,
+     "times": null
+    },
+    {
+     "id": "4(b)",
+     "label": "Price Bids",
+     "offered": null,
+     "bid": 79325,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re.1",
+    "discount": "Rs. 29 per equity share to eligible employees",
+    "faceValue": "Rs 10 per Equity Share",
+    "bidLot": "25 Equity Shares and in multiples thereof",
+    "maxBidQib": "3,02,32,325 Equity Shares in multiple of 25 Equity Shares (Calculated at Higher Price band)",
+    "maxBidNib": "2,15,94,500 Equity Shares in multiple of 25 Equity Shares (Calculated at Higher Price band)",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND NOH and EMP",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 19-Oct-2026 19:00:00 IST",
+    "totalBids": 1395447100,
+    "timesSubscribed": 46.08,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan,+91 810 811 4949, bonfigliolitransmissions.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "Axis Capital Limited, BNP Paribas, ICICI Securities Limited and Jefferies India Private Limited",
+   "leadManagersList": [
+    "Axis Capital Limited",
+    "BNP Paribas",
+    "ICICI Securities Limited",
+    "Jefferies India Private Limited"
+   ],
+   "sponsorBank": "ICICI Bank Limited and Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BONFIG.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BONFIG.zip"
+   },
+   "logo": "data/logos/BONFIG.ico",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BONFIG.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/bonfiglioli-transmissions-ipo/2124/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 66,
+    "min": 66,
+    "max": 66,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 66,
+      "pct": 11.26,
+      "updated": "23-Oct 9:37",
+      "seenLow": 66,
+      "seenHigh": 178
+     }
+    ],
+    "rating": 3,
+    "updated": "23-Oct 9:37",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 156
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 157
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 182.5
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 159
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 129
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 132
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 131
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 127
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 137
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 132
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 66
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.221Z",
+     "date": "2026-10-15",
+     "qib": 0.07532292915054375,
+     "bnii": 0.6275433240601495,
+     "snii": 1.0302382271057657,
+     "nii": 0.7617749376886763,
+     "retail": 0.5694235277267746,
+     "total": 0.4709272701274968
+    },
+    {
+     "at": "2026-10-16T22:05:10.352Z",
+     "date": "2026-10-16",
+     "qib": 0.15946175233346238,
+     "bnii": 1.4372566657520829,
+     "snii": 2.251578178167424,
+     "nii": 1.7086971279909398,
+     "retail": 1.1560455313897406,
+     "total": 0.9915716525115471
+    },
+    {
+     "at": "2026-10-18T23:04:07.642Z",
+     "date": "2026-10-18",
+     "qib": 0.15946175233346238,
+     "bnii": 1.4372566657520829,
+     "snii": 2.251578178167424,
+     "nii": 1.7086971279909398,
+     "retail": 1.1560455313897406,
+     "total": 0.9915716525115471
+    },
+    {
+     "at": "2026-10-19T23:49:50.209Z",
+     "date": "2026-10-19",
+     "qib": 120.78396220429998,
+     "bnii": 46.438177037929755,
+     "snii": 28.314127843545492,
+     "nii": 40.39682823901184,
+     "retail": 5.905707565377859,
+     "total": 46.055135948918064
+    }
+   ],
+   "listingPerf": {
+    "dayOpen": 586,
+    "ltp": 566.05,
+    "exchange": "NSE",
+    "listDate": "2026-10-23",
+    "asOf": "2026-10-23",
+    "dayOpenGainPct": 0,
+    "ltpGainPct": -3.4
+   },
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 2533.81,
+     "other": 2533.66,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 25,
+     "other": 25,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 586,
+     "other": 586,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Bonfiglioli Transmissions Limited",
+    "basis": "Standalone",
+    "about": "Bonfiglioli Transmissions makes gear motors, gearboxes and drive systems in India for industrial automation, off-highway mobility (excavators, cranes) and wind turbine (yaw and pitch drives) customers. It is a wholly owned subsidiary of Italy's Bonfiglioli S.p.A. and runs three plants (two in Tamil Nadu, one in Maharashtra) that built about 341,133 units in 2025. It served over 930 direct customers in H1 2026.",
+    "sector": "Industrial Machinery - Power Transmission (Gearboxes and Drives)",
+    "headquarters": "Thirumudivakkam, Kancheepuram, Tamil Nadu",
+    "founded_year": 1998,
+    "periods": [
+     "Dec-23",
+     "Dec-24",
+     "Dec-25"
+    ],
+    "financials": {
+     "total_assets": [
+      1414.72,
+      1299.08,
+      1439.46
+     ],
+     "revenue": [
+      1687.33,
+      1854.18,
+      2013.53
+     ],
+     "other_income": [
+      14.47,
+      6.97,
+      10.06
+     ],
+     "ebitda": [
+      243.89,
+      295.07,
+      370.77
+     ],
+     "pbt": [
+      208.17,
+      245,
+      325.23
+     ],
+     "pat": [
+      146.67,
+      191.6,
+      237.87
+     ],
+     "net_worth": [
+      801.36,
+      860.95,
+      992.99
+     ],
+     "reserves": [
+      670.24,
+      735.62,
+      867.66
+     ],
+     "borrowings": [
+      110.79,
+      0,
+      0
+     ],
+     "cash_and_bank": [
+      260.54,
+      144.76,
+      163.2
+     ],
+     "operating_cash_flow": [
+      198.23,
+      188.35,
+      187.68
+     ]
+    },
+    "kpi": {
+     "roce": [
+      24.53,
+      30.05,
+      34.05
+     ],
+     "ronw": [
+      18.3,
+      22.25,
+      23.96
+     ],
+     "roe": [
+      19.21,
+      23.05,
+      25.66
+     ],
+     "eps_basic": [
+      7.57,
+      10.08,
+      12.65
+     ],
+     "eps_diluted": [
+      7.57,
+      10.08,
+      12.65
+     ],
+     "pat_margin": [
+      8.62,
+      10.29,
+      11.76
+     ],
+     "ebitda_margin": [
+      14.45,
+      15.91,
+      18.41
+     ],
+     "debt_equity": [
+      0.14,
+      0,
+      0
+     ],
+     "current_ratio": [
+      1.79,
+      2.23,
+      2.53
+     ],
+     "nav_per_share": 52.82,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 10.95,
+     "other": [
+      {
+       "name": "Top 10 OEM customers share of revenue",
+       "unit": "%",
+       "values": [
+        32.82,
+        34.38,
+        36.6
+       ]
+      },
+      {
+       "name": "Revenue from customers in India",
+       "unit": "%",
+       "values": [
+        76.15,
+        74.59,
+        72.49
+       ]
+      },
+      {
+       "name": "Net debt (negative = net cash)",
+       "unit": "Rs crore",
+       "values": [
+        -140.09,
+        -138.2,
+        -160.38
+       ]
+      },
+      {
+       "name": "Cash conversion cycle",
+       "unit": "days",
+       "values": [
+        80,
+        83,
+        90
+       ]
+      },
+      {
+       "name": "Fixed asset turnover",
+       "unit": "times",
+       "values": [
+        6.1,
+        6.68,
+        7.15
+       ]
+      },
+      {
+       "name": "Revenue share of Wind Industry vertical",
+       "unit": "%",
+       "values": [
+        29.69,
+        32.33,
+        31.53
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Elecon Engineering Company Limited",
+      "revenue_cr": 2366.05,
+      "face_value": 1,
+      "cmp": 480.75,
+      "eps_basic": 15.2,
+      "eps_diluted": 15.2,
+      "nav": 102.65,
+      "pe": 31.63,
+      "ronw": 14.81
+     },
+     {
+      "name": "Shanthi Gears Limited",
+      "revenue_cr": 518.72,
+      "face_value": 1,
+      "cmp": 633.3,
+      "eps_basic": 9.99,
+      "eps_diluted": 9.99,
+      "nav": 57.36,
+      "pe": 63.39,
+      "ronw": 17.42
+     },
+     {
+      "name": "Schaeffler India Limited",
+      "revenue_cr": 9685.85,
+      "face_value": 2,
+      "cmp": 3955.5,
+      "eps_basic": 73.6,
+      "eps_diluted": 73.6,
+      "nav": 386.94,
+      "pe": 53.74,
+      "ronw": 19.02
+     },
+     {
+      "name": "Timken India Limited",
+      "revenue_cr": 3478.03,
+      "face_value": 10,
+      "cmp": 3180.5,
+      "eps_basic": 55.16,
+      "eps_diluted": 55.16,
+      "nav": 403.31,
+      "pe": 57.66,
+      "ronw": 13.68
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 0,
+     "ofs_shares": 43239042,
+     "pre_issue_shares": 187995834,
+     "post_issue_shares": 187995834,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by promoter Bonfiglioli S.p.A.; company receives no proceeds",
+       "amount_cr": null
+      },
+      {
+       "purpose": "Listing of equity shares on the stock exchanges",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": 50,
+      "nii": 15,
+      "retail": 35,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Bonfiglioli S.p.A.",
+      "BON-FI S.r.l.",
+      "Sonia Bonfiglioli",
+      "Luciano Bonfiglioli"
+     ],
+     "holding_pre_pct": 100,
+     "holding_post_pct": 77,
+     "background": "Wholly owned by Bonfiglioli S.p.A. (Italy, group revenue EUR 1,172.94 million in 2025), which is controlled by the Bonfiglioli family through BON-FI S.r.l. Average cost of acquisition for the selling promoter is Rs 6.77 per share."
+    },
+    "concentration": {
+     "top_customers_pct": 36.6,
+     "govt_share_pct": null,
+     "note": "Top 10 OEM customers were 36.60% of 2025 revenue (31.72% in H1 2026). Related-party purchases were 15.18% of raw material purchases in 2025; largest supplier is group company Bonfiglioli Riduttori S.p.A."
+    },
+    "order_book_cr": null,
+    "litigation_note": "No criminal proceedings against the company. Eight cheque-bounce recovery cases filed by the company total Rs 4.31 crore. Contingent liabilities were Rs 3.08 crore at June 30, 2026 (income tax Rs 2.81 crore, indirect tax Rs 0.28 crore).",
+    "strengths": [
+     "Largest Indian maker of gearboxes and drives across industrial automation, off-highway mobility and wind, with 25% to 67.9% share in its segments (F&S report).",
+     "Backed by Bonfiglioli group brand and global R&D, with an India R&D centre of 119 engineers and the only Indian test lab for wind yaw and pitch drives.",
+     "Strong profit growth: PAT rose from Rs 146.67 crore in 2023 to Rs 237.87 crore in 2025 and EBITDA margin from 14.45% to 18.41%.",
+     "Debt-free with net cash of Rs 160.38 crore at Dec 2025; ROCE 34.05% and RoNW 23.96%.",
+     "Diversified across three verticals and over 930 customers; no single industry above 10% of Industry and Automation revenue.",
+     "Co-engineers with OEMs such as JCB, Hyundai, CNH, Nordex and Suzlon; seven or more of top 10 OEMs have been customers for over 10 years.",
+     "New products contributed 35.69% of 2025 revenue, showing a growing innovation pipeline.",
+     "Localised supply chain: about 70% of 2025 raw material purchases were domestic, with 215 Indian suppliers."
+    ],
+    "risks": [
+     {
+      "title": "Heavy dependence on promoter group for brand and technology",
+      "detail": "Company pays 6% of sales of licensed products to Bonfiglioli S.p.A. for the Bonfiglioli trade name and IP; any change in the relationship would hurt the business.",
+      "severity": "high"
+     },
+     {
+      "title": "Large related-party dealings",
+      "detail": "Related-party income was 15.59% and related-party expenses 24.83% of total income in 2025 (32.71% expenses in H1 2026); conflicts of interest possible.",
+      "severity": "high"
+     },
+     {
+      "title": "Supplier concentration with a group company",
+      "detail": "Related parties supplied 15.18% of 2025 purchases (19.98% in 2023); top 10 suppliers were 41.20%; no definitive agreements with many suppliers.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer concentration",
+      "detail": "Top 10 OEM customers were 36.60% of 2025 revenue and 37.83% in H1 2025; no long-term binding agreements with all customers.",
+      "severity": "medium"
+     },
+     {
+      "title": "Reliance on co-engineered products where IP stays with the group",
+      "detail": "Majority of revenue historically comes from co-engineered Off-Highway and Wind products whose IP is owned by the Bonfiglioli Group.",
+      "severity": "medium"
+     },
+     {
+      "title": "Administrative dependence on the group",
+      "detail": "BSPA and group companies provide corporate and administrative services for fees; professional fees to group entities were Rs 42.78 crore in 2025.",
+      "severity": "medium"
+     },
+     {
+      "title": "Offer is entirely a sale by the promoter",
+      "detail": "Up to 4,32,39,042 shares are sold by Bonfiglioli S.p.A. (about 23% of the company); the company receives no money, and the seller's average cost is only Rs 6.77 per share.",
+      "severity": "medium"
+     },
+     {
+      "title": "Missing corporate records and input cost risk",
+      "detail": "Certain RoC forms and records from incorporation and early share allotments (1999 to 2001) are untraceable; raw material price rises and plant disruptions could also hit margins.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Fiscal year ends Dec 31; periods are Dec-23, Dec-24, Dec-25. Figures are continuing operations (discontinued operations excluded from PAT/EPS/KPIs); company has no subsidiaries so restated financials treated as Standalone. H1 2026 and H1 2025 stubs ignored in arrays (H1 2026 revenue Rs 1131.87 crore, PAT Rs 148.58 crore, EPS 7.90). pat_margin is as reported (PAT / total income). debt_equity (borrowings/net worth) and current_ratio computed from balance sheet totals as not reported; borrowings exclude lease liabilities. EPS reflects 1:2 bonus issue of Jan 2026. cash_and_bank = cash plus other bank balances. Offer price, issue size and P/E blank in RHP; holding_post_pct derived assuming all 43,239,042 offered shares are sold; employee reservation up to 50,000 shares. Tables in Rs million converted to crore."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 79,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-20T18:21:51.826Z"
   },
   {
    "symbol": "SMT",
@@ -6760,12 +7561,12 @@
    ],
    "listingPerf": {
     "dayOpen": 371.1499938964844,
-    "ltp": 377.65,
+    "ltp": 375.35,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 7.89,
-    "ltpGainPct": 9.78
+    "ltpGainPct": 9.11
    },
    "checks": [
     {
@@ -7099,807 +7900,6 @@
    "fetchedAt": "2026-10-20T18:21:52.639Z"
   },
   {
-   "symbol": "BONFIG",
-   "name": "Bonfiglioli Transmissions Limited",
-   "board": "Mainboard",
-   "status": "listed",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-21",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 558,
-   "priceHigh": 586,
-   "lot": 25,
-   "faceValue": 10,
-   "issueShares": 43239078,
-   "issueSizeCr": 2533.81,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer of offer for sale up to 4,32,39,042 Equity Shares (Including Eligible Employee Reservation of up to 50,000 Equity Shares and Anchor portion 1,29,56,712 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 8637808,
-     "bid": 1043308675,
-     "times": 120.78396220429998
-    },
-    "nii": {
-     "offered": 6478357,
-     "bid": 261705075,
-     "times": 40.39682823901184
-    },
-    "bnii": {
-     "offered": 4318905,
-     "bid": 200562075,
-     "times": 46.438177037929755
-    },
-    "snii": {
-     "offered": 2159452,
-     "bid": 61143000,
-     "times": 28.314127843545492
-    },
-    "retail": {
-     "offered": 15116165,
-     "bid": 89271650,
-     "times": 5.905707565377859
-    },
-    "employee": {
-     "offered": 50000,
-     "bid": 371425,
-     "times": 7.4285
-    },
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 30282330,
-     "bid": 1394656825,
-     "times": 46.055135948918064
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-19T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 558,
-     "priceHigh": 586,
-     "maxAmount": 200000,
-     "minAmount": 14650,
-     "lot": 25,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "Employee",
-     "priceLow": 529,
-     "priceHigh": 557,
-     "maxAmount": 500000,
-     "minAmount": null,
-     "lot": 25,
-     "note": "Discount Rs 29 per share"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 558,
-     "priceHigh": 586,
-     "maxAmount": null,
-     "minAmount": 205100,
-     "lot": 25,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14650,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": "1. Thirumudivakkam, Tamil Plot No.AC7-AC11, 11.63* Owned V. Raahul per year",
-     "phone": "+91 63858 63934",
-     "email": "btl.secretarial@bonfiglioli.com",
-     "website": "https://www.bonfiglioli.in",
-     "contactPerson": "Sunil Kumar"
-    },
-    "registrar": {
-     "name": "MUFG Intime India Private Limited",
-     "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
-     "phone": "+91 810 811 4949",
-     "email": "bonfigliolitransmissions.ipo@in.mpms.mufg.com",
-     "contactPerson": "Shanti Gopalkrishnan",
-     "website": "https://www.in.mpms.mufg.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 351805525,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 458786975,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 93563950,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 139152225,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 1965350,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 190478150,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 8118575,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 189925,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 58776900,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 2176175,
-     "times": null
-    },
-    {
-     "id": "3(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 76815050,
-     "times": null
-    },
-    {
-     "id": "3(b)",
-     "label": "Price bids",
-     "offered": null,
-     "bid": 12456600,
-     "times": null
-    },
-    {
-     "id": "4(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 292100,
-     "times": null
-    },
-    {
-     "id": "4(b)",
-     "label": "Price Bids",
-     "offered": null,
-     "bid": 79325,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re.1",
-    "discount": "Rs. 29 per equity share to eligible employees",
-    "faceValue": "Rs 10 per Equity Share",
-    "bidLot": "25 Equity Shares and in multiples thereof",
-    "maxBidQib": "3,02,32,325 Equity Shares in multiple of 25 Equity Shares (Calculated at Higher Price band)",
-    "maxBidNib": "2,15,94,500 Equity Shares in multiple of 25 Equity Shares (Calculated at Higher Price band)",
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND NOH and EMP",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 19-Oct-2026 19:00:00 IST",
-    "totalBids": 1395447100,
-    "timesSubscribed": 46.08,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, L.B.S. Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan,+91 810 811 4949, bonfigliolitransmissions.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "Axis Capital Limited, BNP Paribas, ICICI Securities Limited and Jefferies India Private Limited",
-   "leadManagersList": [
-    "Axis Capital Limited",
-    "BNP Paribas",
-    "ICICI Securities Limited",
-    "Jefferies India Private Limited"
-   ],
-   "sponsorBank": "ICICI Bank Limited and Axis Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BONFIG.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BONFIG.zip"
-   },
-   "logo": "data/logos/BONFIG.ico",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BONFIG.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/bonfiglioli-transmissions-ipo/2124/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 66,
-    "min": 66,
-    "max": 66,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 66,
-      "pct": 11.26,
-      "updated": "23-Oct 9:37",
-      "seenLow": 66,
-      "seenHigh": 178
-     }
-    ],
-    "rating": 3,
-    "updated": "23-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 156
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 157
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 182.5
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 159
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 129
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 132
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 131
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 127
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 137
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 132
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 66
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.221Z",
-     "date": "2026-10-15",
-     "qib": 0.07532292915054375,
-     "bnii": 0.6275433240601495,
-     "snii": 1.0302382271057657,
-     "nii": 0.7617749376886763,
-     "retail": 0.5694235277267746,
-     "total": 0.4709272701274968
-    },
-    {
-     "at": "2026-10-16T22:05:10.352Z",
-     "date": "2026-10-16",
-     "qib": 0.15946175233346238,
-     "bnii": 1.4372566657520829,
-     "snii": 2.251578178167424,
-     "nii": 1.7086971279909398,
-     "retail": 1.1560455313897406,
-     "total": 0.9915716525115471
-    },
-    {
-     "at": "2026-10-18T23:04:07.642Z",
-     "date": "2026-10-18",
-     "qib": 0.15946175233346238,
-     "bnii": 1.4372566657520829,
-     "snii": 2.251578178167424,
-     "nii": 1.7086971279909398,
-     "retail": 1.1560455313897406,
-     "total": 0.9915716525115471
-    },
-    {
-     "at": "2026-10-19T23:49:50.209Z",
-     "date": "2026-10-19",
-     "qib": 120.78396220429998,
-     "bnii": 46.438177037929755,
-     "snii": 28.314127843545492,
-     "nii": 40.39682823901184,
-     "retail": 5.905707565377859,
-     "total": 46.055135948918064
-    }
-   ],
-   "listingPerf": {
-    "dayOpen": 586,
-    "ltp": 574.5,
-    "exchange": "NSE",
-    "listDate": "2026-10-23",
-    "asOf": "2026-10-23",
-    "dayOpenGainPct": 0,
-    "ltpGainPct": -1.96
-   },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 2533.81,
-     "other": 2533.66,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 25,
-     "other": 25,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 586,
-     "other": 586,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "Bonfiglioli Transmissions Limited",
-    "basis": "Standalone",
-    "about": "Bonfiglioli Transmissions makes gear motors, gearboxes and drive systems in India for industrial automation, off-highway mobility (excavators, cranes) and wind turbine (yaw and pitch drives) customers. It is a wholly owned subsidiary of Italy's Bonfiglioli S.p.A. and runs three plants (two in Tamil Nadu, one in Maharashtra) that built about 341,133 units in 2025. It served over 930 direct customers in H1 2026.",
-    "sector": "Industrial Machinery - Power Transmission (Gearboxes and Drives)",
-    "headquarters": "Thirumudivakkam, Kancheepuram, Tamil Nadu",
-    "founded_year": 1998,
-    "periods": [
-     "Dec-23",
-     "Dec-24",
-     "Dec-25"
-    ],
-    "financials": {
-     "total_assets": [
-      1414.72,
-      1299.08,
-      1439.46
-     ],
-     "revenue": [
-      1687.33,
-      1854.18,
-      2013.53
-     ],
-     "other_income": [
-      14.47,
-      6.97,
-      10.06
-     ],
-     "ebitda": [
-      243.89,
-      295.07,
-      370.77
-     ],
-     "pbt": [
-      208.17,
-      245,
-      325.23
-     ],
-     "pat": [
-      146.67,
-      191.6,
-      237.87
-     ],
-     "net_worth": [
-      801.36,
-      860.95,
-      992.99
-     ],
-     "reserves": [
-      670.24,
-      735.62,
-      867.66
-     ],
-     "borrowings": [
-      110.79,
-      0,
-      0
-     ],
-     "cash_and_bank": [
-      260.54,
-      144.76,
-      163.2
-     ],
-     "operating_cash_flow": [
-      198.23,
-      188.35,
-      187.68
-     ]
-    },
-    "kpi": {
-     "roce": [
-      24.53,
-      30.05,
-      34.05
-     ],
-     "ronw": [
-      18.3,
-      22.25,
-      23.96
-     ],
-     "roe": [
-      19.21,
-      23.05,
-      25.66
-     ],
-     "eps_basic": [
-      7.57,
-      10.08,
-      12.65
-     ],
-     "eps_diluted": [
-      7.57,
-      10.08,
-      12.65
-     ],
-     "pat_margin": [
-      8.62,
-      10.29,
-      11.76
-     ],
-     "ebitda_margin": [
-      14.45,
-      15.91,
-      18.41
-     ],
-     "debt_equity": [
-      0.14,
-      0,
-      0
-     ],
-     "current_ratio": [
-      1.79,
-      2.23,
-      2.53
-     ],
-     "nav_per_share": 52.82,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 10.95,
-     "other": [
-      {
-       "name": "Top 10 OEM customers share of revenue",
-       "unit": "%",
-       "values": [
-        32.82,
-        34.38,
-        36.6
-       ]
-      },
-      {
-       "name": "Revenue from customers in India",
-       "unit": "%",
-       "values": [
-        76.15,
-        74.59,
-        72.49
-       ]
-      },
-      {
-       "name": "Net debt (negative = net cash)",
-       "unit": "Rs crore",
-       "values": [
-        -140.09,
-        -138.2,
-        -160.38
-       ]
-      },
-      {
-       "name": "Cash conversion cycle",
-       "unit": "days",
-       "values": [
-        80,
-        83,
-        90
-       ]
-      },
-      {
-       "name": "Fixed asset turnover",
-       "unit": "times",
-       "values": [
-        6.1,
-        6.68,
-        7.15
-       ]
-      },
-      {
-       "name": "Revenue share of Wind Industry vertical",
-       "unit": "%",
-       "values": [
-        29.69,
-        32.33,
-        31.53
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Elecon Engineering Company Limited",
-      "revenue_cr": 2366.05,
-      "face_value": 1,
-      "cmp": 480.75,
-      "eps_basic": 15.2,
-      "eps_diluted": 15.2,
-      "nav": 102.65,
-      "pe": 31.63,
-      "ronw": 14.81
-     },
-     {
-      "name": "Shanthi Gears Limited",
-      "revenue_cr": 518.72,
-      "face_value": 1,
-      "cmp": 633.3,
-      "eps_basic": 9.99,
-      "eps_diluted": 9.99,
-      "nav": 57.36,
-      "pe": 63.39,
-      "ronw": 17.42
-     },
-     {
-      "name": "Schaeffler India Limited",
-      "revenue_cr": 9685.85,
-      "face_value": 2,
-      "cmp": 3955.5,
-      "eps_basic": 73.6,
-      "eps_diluted": 73.6,
-      "nav": 386.94,
-      "pe": 53.74,
-      "ronw": 19.02
-     },
-     {
-      "name": "Timken India Limited",
-      "revenue_cr": 3478.03,
-      "face_value": 10,
-      "cmp": 3180.5,
-      "eps_basic": 55.16,
-      "eps_diluted": 55.16,
-      "nav": 403.31,
-      "pe": 57.66,
-      "ronw": 13.68
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 0,
-     "ofs_shares": 43239042,
-     "pre_issue_shares": 187995834,
-     "post_issue_shares": 187995834,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Offer for Sale by promoter Bonfiglioli S.p.A.; company receives no proceeds",
-       "amount_cr": null
-      },
-      {
-       "purpose": "Listing of equity shares on the stock exchanges",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": 50,
-      "nii": 15,
-      "retail": 35,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Bonfiglioli S.p.A.",
-      "BON-FI S.r.l.",
-      "Sonia Bonfiglioli",
-      "Luciano Bonfiglioli"
-     ],
-     "holding_pre_pct": 100,
-     "holding_post_pct": 77,
-     "background": "Wholly owned by Bonfiglioli S.p.A. (Italy, group revenue EUR 1,172.94 million in 2025), which is controlled by the Bonfiglioli family through BON-FI S.r.l. Average cost of acquisition for the selling promoter is Rs 6.77 per share."
-    },
-    "concentration": {
-     "top_customers_pct": 36.6,
-     "govt_share_pct": null,
-     "note": "Top 10 OEM customers were 36.60% of 2025 revenue (31.72% in H1 2026). Related-party purchases were 15.18% of raw material purchases in 2025; largest supplier is group company Bonfiglioli Riduttori S.p.A."
-    },
-    "order_book_cr": null,
-    "litigation_note": "No criminal proceedings against the company. Eight cheque-bounce recovery cases filed by the company total Rs 4.31 crore. Contingent liabilities were Rs 3.08 crore at June 30, 2026 (income tax Rs 2.81 crore, indirect tax Rs 0.28 crore).",
-    "strengths": [
-     "Largest Indian maker of gearboxes and drives across industrial automation, off-highway mobility and wind, with 25% to 67.9% share in its segments (F&S report).",
-     "Backed by Bonfiglioli group brand and global R&D, with an India R&D centre of 119 engineers and the only Indian test lab for wind yaw and pitch drives.",
-     "Strong profit growth: PAT rose from Rs 146.67 crore in 2023 to Rs 237.87 crore in 2025 and EBITDA margin from 14.45% to 18.41%.",
-     "Debt-free with net cash of Rs 160.38 crore at Dec 2025; ROCE 34.05% and RoNW 23.96%.",
-     "Diversified across three verticals and over 930 customers; no single industry above 10% of Industry and Automation revenue.",
-     "Co-engineers with OEMs such as JCB, Hyundai, CNH, Nordex and Suzlon; seven or more of top 10 OEMs have been customers for over 10 years.",
-     "New products contributed 35.69% of 2025 revenue, showing a growing innovation pipeline.",
-     "Localised supply chain: about 70% of 2025 raw material purchases were domestic, with 215 Indian suppliers."
-    ],
-    "risks": [
-     {
-      "title": "Heavy dependence on promoter group for brand and technology",
-      "detail": "Company pays 6% of sales of licensed products to Bonfiglioli S.p.A. for the Bonfiglioli trade name and IP; any change in the relationship would hurt the business.",
-      "severity": "high"
-     },
-     {
-      "title": "Large related-party dealings",
-      "detail": "Related-party income was 15.59% and related-party expenses 24.83% of total income in 2025 (32.71% expenses in H1 2026); conflicts of interest possible.",
-      "severity": "high"
-     },
-     {
-      "title": "Supplier concentration with a group company",
-      "detail": "Related parties supplied 15.18% of 2025 purchases (19.98% in 2023); top 10 suppliers were 41.20%; no definitive agreements with many suppliers.",
-      "severity": "high"
-     },
-     {
-      "title": "Customer concentration",
-      "detail": "Top 10 OEM customers were 36.60% of 2025 revenue and 37.83% in H1 2025; no long-term binding agreements with all customers.",
-      "severity": "medium"
-     },
-     {
-      "title": "Reliance on co-engineered products where IP stays with the group",
-      "detail": "Majority of revenue historically comes from co-engineered Off-Highway and Wind products whose IP is owned by the Bonfiglioli Group.",
-      "severity": "medium"
-     },
-     {
-      "title": "Administrative dependence on the group",
-      "detail": "BSPA and group companies provide corporate and administrative services for fees; professional fees to group entities were Rs 42.78 crore in 2025.",
-      "severity": "medium"
-     },
-     {
-      "title": "Offer is entirely a sale by the promoter",
-      "detail": "Up to 4,32,39,042 shares are sold by Bonfiglioli S.p.A. (about 23% of the company); the company receives no money, and the seller's average cost is only Rs 6.77 per share.",
-      "severity": "medium"
-     },
-     {
-      "title": "Missing corporate records and input cost risk",
-      "detail": "Certain RoC forms and records from incorporation and early share allotments (1999 to 2001) are untraceable; raw material price rises and plant disruptions could also hit margins.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Fiscal year ends Dec 31; periods are Dec-23, Dec-24, Dec-25. Figures are continuing operations (discontinued operations excluded from PAT/EPS/KPIs); company has no subsidiaries so restated financials treated as Standalone. H1 2026 and H1 2025 stubs ignored in arrays (H1 2026 revenue Rs 1131.87 crore, PAT Rs 148.58 crore, EPS 7.90). pat_margin is as reported (PAT / total income). debt_equity (borrowings/net worth) and current_ratio computed from balance sheet totals as not reported; borrowings exclude lease liabilities. EPS reflects 1:2 bonus issue of Jan 2026. cash_and_bank = cash plus other bank balances. Offer price, issue size and P/E blank in RHP; holding_post_pct derived assuming all 43,239,042 offered shares are sold; employee reservation up to 50,000 shares. Tables in Rs million converted to crore."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 79,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-20T18:21:51.826Z"
-  },
-  {
    "symbol": "SHELLZ",
    "name": "Shellz India Limited",
    "board": "SME",
@@ -7943,7 +7943,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:41.397Z",
+   "subsAsOn": "2026-10-25T17:29:31.330Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -8492,7 +8492,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:41.397Z"
+   "fetchedAt": "2026-10-25T17:29:31.330Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -8902,12 +8902,12 @@
    ],
    "listingPerf": {
     "dayOpen": 286.1499938964844,
-    "ltp": 280.4,
+    "ltp": 279,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": -0.99,
-    "ltpGainPct": -2.98
+    "ltpGainPct": -3.46
    },
    "checks": [
     {
@@ -10415,12 +10415,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 266.6,
+    "ltp": 266.5,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": -1.62
+    "ltpGainPct": -1.66
    },
    "checks": [
     {
@@ -12516,12 +12516,12 @@
    ],
    "listingPerf": {
     "dayOpen": 76.33000183105469,
-    "ltp": 68.89,
+    "ltp": 69,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 1.77,
-    "ltpGainPct": -8.15
+    "ltpGainPct": -8
    },
    "checks": [],
    "fundamentals": {
@@ -14081,7 +14081,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:46.024Z",
+   "subsAsOn": "2026-10-25T17:29:35.427Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -14625,7 +14625,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:46.024Z"
+   "fetchedAt": "2026-10-25T17:29:35.427Z"
   },
   {
    "symbol": "PARASYNTEX",
@@ -14671,7 +14671,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:46.768Z",
+   "subsAsOn": "2026-10-25T17:29:36.183Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15120,7 +15120,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:46.768Z"
+   "fetchedAt": "2026-10-25T17:29:36.183Z"
   },
   {
    "symbol": "TNA",
@@ -15166,7 +15166,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:47.547Z",
+   "subsAsOn": "2026-10-25T17:29:37.322Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -15636,7 +15636,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:47.547Z"
+   "fetchedAt": "2026-10-25T17:29:37.322Z"
   },
   {
    "symbol": "DSL",
@@ -15682,7 +15682,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:48.438Z",
+   "subsAsOn": "2026-10-25T17:29:38.214Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16099,7 +16099,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:48.438Z"
+   "fetchedAt": "2026-10-25T17:29:38.214Z"
   },
   {
    "symbol": "OMARA",
@@ -16144,8 +16144,8 @@
      "times": 1.06
     }
    },
-   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
-   "subsAsOn": "2026-10-25T17:19:50.784Z",
+   "bidsSource": "NSE bid table (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build) (kept from previous build)",
+   "subsAsOn": "2026-10-25T17:29:41.471Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -16586,7 +16586,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:50.784Z"
+   "fetchedAt": "2026-10-25T17:29:41.471Z"
   },
   {
    "symbol": "PAPADMALJI",
@@ -17189,7 +17189,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:49.180Z",
+   "subsAsOn": "2026-10-25T17:29:38.973Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -17448,7 +17448,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-25T17:19:49.180Z"
+   "fetchedAt": "2026-10-25T17:29:38.973Z"
   },
   {
    "symbol": "SHAHINVEST",
@@ -17751,12 +17751,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 143.11,
+    "ltp": 143,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -14.31
+    "ltpGainPct": -14.37
    },
    "checks": [],
    "fundamentals": {
@@ -18382,12 +18382,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 109.14,
+    "ltp": 108.1,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -16.05
+    "ltpGainPct": -16.85
    },
    "checks": [],
    "fundamentals": {
@@ -18781,7 +18781,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:51.566Z",
+   "subsAsOn": "2026-10-25T17:29:42.262Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -19350,7 +19350,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-25T17:19:51.566Z"
+   "fetchedAt": "2026-10-25T17:29:42.262Z"
   },
   {
    "symbol": "ORIENTCABL",
@@ -19643,12 +19643,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 361.79998779296875,
-    "ltp": 341.3,
+    "ltp": 343,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 33.01,
-    "ltpGainPct": 25.48
+    "ltpGainPct": 26.1
    },
    "checks": [],
    "fundamentals": {
@@ -20359,12 +20359,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 213.55,
+    "ltp": 215,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -29.29
+    "ltpGainPct": -28.81
    },
    "checks": [],
    "fundamentals": {
@@ -21037,12 +21037,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 104.4000015258789,
-    "ltp": 100.89,
+    "ltp": 101,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": -24.89,
-    "ltpGainPct": -27.42
+    "ltpGainPct": -27.34
    },
    "checks": [],
    "fundamentals": {
@@ -21684,12 +21684,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 21.719999313354492,
-    "ltp": 20.69,
+    "ltp": 21,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": -32.13,
-    "ltpGainPct": -35.34
+    "ltpGainPct": -34.37
    },
    "checks": [],
    "fundamentals": {
@@ -24069,12 +24069,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 386,
-    "ltp": 369.4,
+    "ltp": 370.5,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": -4.69,
-    "ltpGainPct": -8.79
+    "ltpGainPct": -8.52
    },
    "checks": [],
    "fundamentals": {
@@ -24701,12 +24701,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 51.87,
+    "ltp": 52.1,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 52.56
+    "ltpGainPct": 53.24
    },
    "checks": [],
    "fundamentals": {
@@ -25345,12 +25345,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 156.86,
+    "ltp": 159,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 17.06
+    "ltpGainPct": 18.66
    },
    "checks": [],
    "fundamentals": {
@@ -25970,12 +25970,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 299.1000061035156,
-    "ltp": 284.1,
+    "ltp": 284,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": -17.38,
-    "ltpGainPct": -21.52
+    "ltpGainPct": -21.55
    },
    "checks": [],
    "fundamentals": {
@@ -26562,12 +26562,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 271.85,
+    "ltp": 270.6,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -27.51
+    "ltpGainPct": -27.84
    },
    "checks": [],
    "fundamentals": {
@@ -27191,12 +27191,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 205.41000366210938,
-    "ltp": 193.86,
+    "ltp": 194.95,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-23",
     "dayOpenGainPct": 11.03,
-    "ltpGainPct": 4.79
+    "ltpGainPct": 5.38
    },
    "checks": [],
    "fundamentals": {
@@ -28078,7 +28078,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-25T17:19:29.361Z",
+   "subsAsOn": "2026-10-25T17:29:20.162Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -28172,7 +28172,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-25T17:19:29.361Z"
+   "fetchedAt": "2026-10-25T17:29:20.162Z"
   }
  ],
  "filings": [
