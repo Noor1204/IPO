@@ -182,12 +182,16 @@
   "stale": false
  },
  "JPL": {
-  "status": "ok",
+  "status": "warn",
   "checked": 59,
-  "ungrounded": [],
-  "issues": [],
-  "sourceDoc": "RHP",
-  "stale": false
+  "ungrounded": [
+   "peer Bharti Airtel Limited.pe=40.71"
+  ],
+  "issues": [
+   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+  ],
+  "sourceDoc": "Prospectus",
+  "stale": true
  },
  "JSIPL": {
   "status": "ok",
