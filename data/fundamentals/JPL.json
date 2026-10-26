@@ -1,101 +1,286 @@
 {
  "company": "Jio Platforms Limited",
  "basis": "Consolidated",
- "about": "Jio Platforms is a technology platform built on proprietary digital technology with pan-India digital connectivity as its base layer. Through its subsidiary Reliance Jio Infocomm (RJIL) it served 533.3 million customers in India as of June 30, 2026, offering mobile, fixed broadband and digital services including entertainment, cloud and AI products. Reliance Industries Limited is its parent company.",
- "sector": "Telecom / Digital Services",
+ "about": "Jio Platforms Limited, a subsidiary of Reliance Industries Limited, is a technology platform company providing digital connectivity and digital services across India. Through its subsidiary Reliance Jio Infocomm Limited (RJIL), it operates India's largest wireless and fixed broadband network serving 533.3 million customers as of June 30, 2026. The company owns an end-to-end proprietary technology stack spanning network architecture, device engineering, operating systems, and digital applications.",
+ "sector": "Telecommunications & Digital Services",
  "headquarters": "Ahmedabad, Gujarat",
  "founded_year": 2019,
- "periods": ["Mar-24", "Mar-25", "Mar-26"],
+ "periods": [
+  "Mar-24",
+  "Mar-25",
+  "Mar-26"
+ ],
  "financials": {
-  "total_assets": [539580.4, 581233.8, 615594.0],
-  "revenue": [109558.1, 128218.4, 146885.3],
-  "other_income": [617.3, 1114.6, 2873.8],
-  "ebitda": [54958.7, 64170.0, 76255.4],
-  "pbt": [28808.0, 35127.3, 40353.1],
-  "pat": [21423.2, 26109.0, 30049.1],
-  "net_worth": [277866.1, 304022.4, 334013.4],
-  "reserves": [268927.1, 295083.4, 325074.4],
-  "borrowings": [54348.9, 73060.3, 70781.0],
-  "cash_and_bank": [2910.5, 8423.6, 16946.6],
-  "operating_cash_flow": [57661.6, 68155.7, 77556.3]
+  "total_assets": [
+   539580.4,
+   581233.8,
+   615594
+  ],
+  "revenue": [
+   109558.1,
+   128218.4,
+   146885.3
+  ],
+  "other_income": [
+   617.3,
+   1114.6,
+   2873.8
+  ],
+  "ebitda": [
+   54958.7,
+   64170,
+   76255.4
+  ],
+  "pbt": [
+   28808,
+   35127.3,
+   40353.1
+  ],
+  "pat": [
+   21423.2,
+   26109,
+   30049.1
+  ],
+  "net_worth": [
+   278286.4,
+   305047.4,
+   335976.9
+  ],
+  "reserves": [
+   269347.4,
+   296108.4,
+   327037.9
+  ],
+  "borrowings": [
+   54348.9,
+   73060.3,
+   70781
+  ],
+  "cash_and_bank": [
+   2910.5,
+   8423.6,
+   16946.6
+  ],
+  "operating_cash_flow": [
+   57661.6,
+   68155.7,
+   77556.3
+  ]
  },
  "kpi": {
-  "roce": [12.83, 12.5, 10.76],
-  "ronw": [8.02, 8.97, 9.42],
-  "roe": [null, null, null],
-  "eps_basic": [23.96, 29.21, 33.63],
-  "eps_diluted": [23.93, 29.17, 33.59],
-  "pat_margin": [19.55, 20.36, 20.46],
-  "ebitda_margin": [50.16, 50.05, 51.91],
-  "debt_equity": [null, null, null],
-  "current_ratio": [null, null, null],
+  "roce": [
+   12.83,
+   12.5,
+   10.76
+  ],
+  "ronw": [
+   8.02,
+   8.97,
+   9.42
+  ],
+  "roe": null,
+  "eps_basic": [
+   23.96,
+   29.21,
+   33.63
+  ],
+  "eps_diluted": [
+   23.93,
+   29.17,
+   33.59
+  ],
+  "pat_margin": [
+   19.55,
+   20.36,
+   20.46
+  ],
+  "ebitda_margin": [
+   50.16,
+   50.05,
+   51.91
+  ],
+  "debt_equity": null,
+  "current_ratio": null,
   "nav_per_share": 373.66,
-  "pe_pre_ipo": null,
+  "pe_pre_ipo": 33.31,
   "pe_post_ipo": null,
-  "weighted_avg_eps": 30.55,
+  "weighted_avg_eps": 30.51,
   "other": [
-   {"name": "Total customer base (RJIL)", "unit": "million", "values": [481.8, 488.2, 524.4]},
-   {"name": "ARPU (exit quarter)", "unit": "Rs per month", "values": [181.7, 206.2, 214.0]},
-   {"name": "Data traffic", "unit": "billion GB", "values": [148.5, 184.5, 241.4]},
-   {"name": "Monthly data consumption per customer (exit quarter)", "unit": "GB/month", "values": [28.7, 33.6, 42.3]},
-   {"name": "Monthly churn (exit quarter)", "unit": "%", "values": [1.52, 1.81, 1.67]},
-   {"name": "Net leverage (net debt / EBITDA)", "unit": "x", "values": [0.88, 0.71, 0.36]}
+   {
+    "name": "Total Customer Base",
+    "unit": "Million",
+    "values": [
+     481.8,
+     488.2,
+     524.4
+    ]
+   },
+   {
+    "name": "ARPU (Exit Quarter)",
+    "unit": "₹/month",
+    "values": [
+     181.7,
+     206.2,
+     214
+    ]
+   },
+   {
+    "name": "Data Traffic",
+    "unit": "Billion GB",
+    "values": [
+     148.5,
+     184.5,
+     241.4
+    ]
+   },
+   {
+    "name": "Monthly Data Consumption per Customer",
+    "unit": "GB/month",
+    "values": [
+     28.7,
+     33.6,
+     42.3
+    ]
+   },
+   {
+    "name": "Net Leverage",
+    "unit": "times",
+    "values": [
+     0.88,
+     0.71,
+     0.36
+    ]
+   },
+   {
+    "name": "EBITDA less Cash Capex",
+    "unit": "₹ crore",
+    "values": [
+     1449.1,
+     19902,
+     42071.1
+    ]
+   }
   ]
  },
  "peers": [
-  {"name": "Bharti Airtel Limited", "revenue_cr": 210972.8, "face_value": 5, "cmp": null, "eps_basic": 45.96, "eps_diluted": 44.37, "nav": 244.6, "pe": 40.71, "ronw": 20.32},
-  {"name": "Vodafone Idea Limited", "revenue_cr": 44873.0, "face_value": 10, "cmp": null, "eps_basic": 3.21, "eps_diluted": 3.21, "nav": -3.3, "pe": 3.99, "ronw": null}
+  {
+   "name": "Bharti Airtel Limited",
+   "revenue_cr": 210972.8,
+   "face_value": 5,
+   "cmp": null,
+   "eps_basic": 45.96,
+   "eps_diluted": 44.37,
+   "nav": 244.6,
+   "pe": 42.64,
+   "ronw": 20.32
+  },
+  {
+   "name": "Vodafone Idea Limited",
+   "revenue_cr": 44873,
+   "face_value": 10,
+   "cmp": null,
+   "eps_basic": 3.21,
+   "eps_diluted": 3.21,
+   "nav": -3.3,
+   "pe": 3.54,
+   "ronw": null
+  }
  ],
  "issue": {
-  "price_low": null,
-  "price_high": null,
-  "total_issue_cr": null,
-  "fresh_issue_cr": null,
-  "ofs_cr": null,
+  "price_low": 1065,
+  "price_high": 1119,
+  "total_issue_cr": 30187.6,
+  "fresh_issue_cr": 30187.6,
+  "ofs_cr": 0,
   "fresh_issue_shares": 270000000,
-  "ofs_shares": null,
-  "pre_issue_shares": null,
-  "post_issue_shares": null,
+  "ofs_shares": 0,
+  "pre_issue_shares": 8939000000,
+  "post_issue_shares": 9209000000,
   "face_value": 10,
   "objects": [
-   {"purpose": "Prepayment, in full or in part, of certain outstanding borrowings of material subsidiary RJIL", "amount_cr": 27500.0},
-   {"purpose": "General corporate purposes (not to exceed 25% of gross proceeds)", "amount_cr": null}
+   {
+    "purpose": "Prepayment, in full or in part, of certain outstanding borrowings availed by the Material Subsidiary, RJIL",
+    "amount_cr": 27500
+   },
+   {
+    "purpose": "General corporate purposes",
+    "amount_cr": 2217.9
+   }
   ],
-  "reservation_pct": {"anchor": null, "qib": null, "nii": null, "retail": null, "employee": null}
+  "reservation_pct": {
+   "anchor": null,
+   "qib": null,
+   "nii": null,
+   "retail": null,
+   "employee": null
+  }
  },
  "promoters": {
-  "names": ["Reliance Industries Limited"],
+  "names": [
+   "Reliance Industries Limited"
+  ],
   "holding_pre_pct": 66.43,
   "holding_post_pct": null,
-  "background": "Reliance Industries Limited is the parent company and Promoter; it owns the Jio trademark licensed to the company."
+  "background": "Reliance Industries Limited is India's largest private sector company by market capitalisation as of June 30, 2026, with diversified operations across energy, retail, media, and digital services."
  },
  "concentration": {
   "top_customers_pct": null,
   "govt_share_pct": null,
-  "note": "Reliance Retail Limited is the sole distributor of pre-paid connectivity services, which were 77.08% of consolidated revenue from operations in FY26. RJIL contributed 87.74% of FY26 consolidated revenue."
+  "note": "Serves over 533 million retail and enterprise customers; pre-paid connectivity services contributed 77.08% of consolidated revenue from operations in Fiscal 2026."
  },
  "order_book_cr": null,
- "litigation_note": null,
+ "litigation_note": "The Company, its subsidiaries, promoter, directors and key managerial personnel are involved in various legal proceedings pending before different courts and regulatory authorities.",
  "strengths": [
-  "Largest digital connectivity player in India: 533.3 million RJIL customers, including 284.9 million 5G customers, as of June 30, 2026.",
-  "Carried about 60% of India's wireless data traffic in Fiscal 2026, with about 1.4 times the 4G+5G subscribers of the second largest player.",
-  "High profitability: FY26 EBITDA margin of 51.91% and PAT margin of 20.46% on revenue of Rs 146,885 crore.",
-  "Revenue and EBITDA grew at 15.79% and 17.79% CAGR between Fiscal 2024 and Fiscal 2026.",
-  "Improving balance sheet: net leverage fell from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026.",
-  "Proprietary full-stack technology with 7,220 patent applications filed; end-to-end 5G standalone stack deployed at nationwide scale.",
-  "Largest fixed broadband provider in India with 28.6 million JioFiber/JioAirFiber customers and 61.73% share of net fixed broadband additions in the June 2026 quarter.",
-  "Holds 26,800.8 MHz of spectrum across low, mid and millimetre-wave bands, with about 15.8 years average remaining life."
+  "Full-stack proprietary technology architecture spanning network core, devices, operating systems, and digital applications.",
+  "Market leader carrying ~60% of India's wireless data traffic in Fiscal 2026 with 533.3 million subscribers.",
+  "Rapid nationwide 5G standalone rollout with 284.9 million 5G customers as of June 30, 2026.",
+  "High subscriber engagement with monthly data consumption reaching 43.7 GB per customer in Q1 Fiscal 2027.",
+  "Extensive nationwide reach with 1,059 Jio Centres and 6,322 Jio Points supported by Reliance Retail.",
+  "Robust financial performance with Fiscal 2026 EBITDA margin of 51.91% and PAT margin of 20.46%.",
+  "Substantial deleveraging with Net Leverage reducing from 0.88x in Fiscal 2024 to 0.36x in Fiscal 2026."
  ],
  "risks": [
-  {"title": "Sole distributor dependence on Reliance Retail", "detail": "Reliance Retail Limited is the sole distributor of pre-paid services, which made up 77.08% of FY26 consolidated revenue from operations (79.35% in FY24). Any disruption would hit revenue.", "severity": "high"},
-  {"title": "Heavy related-party dealings with the Reliance Group", "detail": "Promoter owns 66.43% pre-Issue. Revenue received in advance from Reliance Retail via recharge vouchers was Rs 1,129,351 million in FY26; transactions may not be on terms available from unrelated parties.", "severity": "high"},
-  {"title": "Licence and spectrum renewal", "detail": "RJIL's unified licence is due for renewal in October 2033 and spectrum is valid for 20 years with the majority expiring later; failure to renew or win spectrum would hurt operations.", "severity": "high"},
-  {"title": "Significant indebtedness and deferred payments", "detail": "Net leverage is 0.36x, but deferred payment liabilities were Rs 1,045,137 million and lease liabilities Rs 138,876 million at March 31, 2026; Rs 275,000 million of IPO proceeds will prepay RJIL borrowings.", "severity": "medium"},
-  {"title": "Overdependence on RJIL", "detail": "RJIL contributed 87.74% of FY26 revenue, 94.88% of EBITDA and 93.76% of PAT; any deterioration at RJIL hits consolidated results.", "severity": "medium"},
-  {"title": "Highly regulated telecom business", "detail": "Operations are subject to TRAI and DoT regulation of licensing, spectrum and tariffs; non-compliance may lead to suspension, non-renewal or additional payments, and net neutrality rules apply.", "severity": "medium"},
-  {"title": "Reliance on passive infrastructure and vendors", "detail": "The company does not own passive infrastructure such as towers and optic fibre and relies on a limited group of providers and a limited number of vendors, including related parties, for network equipment.", "severity": "medium"},
-  {"title": "Intense competition and capital intensity", "detail": "The market is highly competitive and the business needs heavy capex for spectrum and networks; FY26 ARPU was Rs 214.0 per month and satellite broadband may add competition.", "severity": "low"}
+  {
+   "title": "Dependence on Material Subsidiary RJIL",
+   "detail": "RJIL accounted for 87.74% of revenue, 94.88% of EBITDA, and 93.76% of PAT in Fiscal 2026; any operational downturn in RJIL would severely hurt group results.",
+   "severity": "high"
+  },
+  {
+   "title": "Reliance on Related Party for Prepaid Distribution",
+   "detail": "Reliance Retail is the sole distributor of prepaid connectivity services, which generated 77.08% of consolidated revenue from operations in Fiscal 2026.",
+   "severity": "high"
+  },
+  {
+   "title": "Substantial Indebtedness",
+   "detail": "Consolidated borrowings stood at ₹70,781.00 crore as of March 31, 2026, creating significant debt service commitments and covenant obligations.",
+   "severity": "high"
+  },
+  {
+   "title": "Licence and Spectrum Renewal Risk",
+   "detail": "Unified telecom licence of RJIL expires in October 2033; failure to renew licences or acquire spectrum at auctions could disrupt connectivity operations.",
+   "severity": "high"
+  },
+  {
+   "title": "Regulatory and Net Neutrality Scrutiny",
+   "detail": "The telecom business is heavily regulated by DoT and TRAI, and subject to net neutrality compliance, tariff directives, and potential licence fee disputes.",
+   "severity": "medium"
+  },
+  {
+   "title": "Dependence on Third-Party Passive Infrastructure",
+   "detail": "The company relies on a limited set of infrastructure providers for telecommunication towers and optic fibre networks rather than owning them.",
+   "severity": "medium"
+  },
+  {
+   "title": "Intense Market Competition",
+   "detail": "Intense competition from Bharti Airtel and Vodafone Idea could constrain pricing power, customer retention, and ARPU expansion.",
+   "severity": "medium"
+  },
+  {
+   "title": "Substantial Ongoing Capital Expenditure",
+   "detail": "Continuous high capex is required for 5G network densification, fixed broadband penetration, and technology updates, with risk of obsolescence.",
+   "severity": "medium"
+  }
  ],
- "source_doc": "RHP",
- "notes": "Source is the RHP; price band, issue price, P/E and post-issue shares are blank. Amounts converted from Rs million to crore. Q1 FY27 (June 2026) quarter ignored in arrays. PAT is Profit for the year per the KPI table (after share of associate/JV loss). Net worth and reserves computed from the equity statement as share capital plus reserves and surplus excluding OCI (NAV Rs 373.66 reconciles). Cash and bank is cash equivalents plus other bank balances. Borrowings are current plus non-current borrowings (excluding leases and deferred payment liabilities). Fresh issue of up to 270,000,000 shares; no offer for sale stated in the objects section."
+ "source_doc": "Prospectus",
+ "notes": "Financials for Fiscals 2024, 2025, and 2026 are audited restated consolidated figures; Q1 FY26 and Q1 FY27 stub periods are excluded from multi-year arrays."
 }
