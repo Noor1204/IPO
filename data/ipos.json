@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-26T12:01:06.197Z",
+ "generatedAt": "2026-10-26T12:11:54.462Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-26T11:59:11.491Z"
+   "fetchedAt": "2026-10-26T12:10:03.080Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-26T11:59:19.656Z"
+   "fetchedAt": "2026-10-26T12:10:11.539Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-26T11:59:12.253Z"
+   "fetchedAt": "2026-10-26T12:10:03.904Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -24,8 +24,8 @@
  ],
  "ipos": [
   {
-   "symbol": "IG-1936",
-   "name": "Bombay Coated and Special Steels",
+   "symbol": "BCSSL",
+   "name": "Bombay Coated and Special Steels Limited",
    "board": "Mainboard",
    "status": "upcoming",
    "open": "2026-10-29",
@@ -41,39 +41,141 @@
    "allotment": "2026-11-03",
    "listing": "2026-11-05",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 78,
    "priceHigh": 82,
    "lot": 182,
-   "faceValue": null,
-   "issueShares": null,
+   "faceValue": 10,
+   "issueShares": 22324390,
    "issueSizeCr": 183.06,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 1,830.57 million",
+   "upiCutoff": "02-Nov-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T11:59:12.237Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-26T12:09:19.870Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 78,
+     "priceHigh": 82,
+     "maxAmount": 200000,
+     "minAmount": 14924,
+     "lot": 182,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 78,
+     "priceHigh": 82,
+     "maxAmount": null,
+     "minAmount": 208936,
+     "lot": 182,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14924,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "Selenium, Tower B, Plot No. 31 and 32, Financial District, Nanakramguda, Serilingampally, Hyderabad 500032, Telangana, India",
+     "phone": "+91 40 6716 2222",
+     "email": "bombaycoated.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info"
    },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Rs. 10 per Equity Share",
+    "bidLot": "182 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto Rs. 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "Selenium, Tower B, Plot No. 31 and 32, Financial District, Nanakramguda, Serilingampally, Hyderabad 500032, Telangana, India",
+    "contact": "Williams R, Tel: +91 40 6716 2222, 1800 309 400 , bombaycoated.ipo@kfintech.com"
+   },
+   "leadManagers": "Smart Horizon Capital Advisors Private Limited",
+   "leadManagersList": [
+    "Smart Horizon Capital Advisors Private Limited"
+   ],
+   "sponsorBank": "Kotak Mahindra Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BCSSL.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BCSSL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BCSSL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BCSSL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BCSSL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BCSSL.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/bombay-coated-and-special-steels-ipo/1936/",
@@ -125,10 +227,35 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 183.06,
+     "other": 183.06,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 182,
+     "other": 182,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 82,
+     "other": 82,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-11-02",
+     "other": "2026-11-02",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T11:59:12.237Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-10-26T12:09:19.870Z"
   },
   {
    "symbol": "IG-2375",
@@ -162,7 +289,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T11:59:12.252Z",
+   "subsAsOn": "2026-10-26T12:10:03.904Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -222,7 +349,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T11:59:12.252Z",
+   "fetchedAt": "2026-10-26T12:10:03.904Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -269,7 +396,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:24.498Z",
+   "subsAsOn": "2026-10-26T12:09:26.403Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -790,7 +917,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T11:58:24.498Z"
+   "fetchedAt": "2026-10-26T12:09:26.403Z"
   },
   {
    "symbol": "CRL",
@@ -832,7 +959,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:59:11.491Z",
+   "subsAsOn": "2026-10-26T12:10:03.080Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -966,7 +1093,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-26T11:59:11.491Z"
+   "fetchedAt": "2026-10-26T12:10:03.080Z"
   },
   {
    "symbol": "IG-2017",
@@ -1000,7 +1127,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T11:59:12.253Z",
+   "subsAsOn": "2026-10-26T12:10:03.904Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -1060,575 +1187,8 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T11:59:12.253Z",
+   "fetchedAt": "2026-10-26T12:10:03.904Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "BLSPOLY",
-   "name": "BLS Polymers Limited",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "timeline": {
-    "open": "2026-10-27",
-    "close": "2026-10-29",
-    "allotment": "2026-10-30",
-    "refund": "2026-11-02",
-    "demat": "2026-11-02",
-    "listing": "2026-11-03"
-   },
-   "allotment": "2026-10-30",
-   "listing": "2026-11-03",
-   "datesExpected": false,
-   "priceLow": 142,
-   "priceHigh": 150,
-   "lot": 100,
-   "faceValue": 10,
-   "issueShares": 17000000,
-   "issueSizeCr": 255,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto 1,70,00,000 Equity Shares",
-   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:29.945Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 142,
-     "priceHigh": 150,
-     "maxAmount": 200000,
-     "minAmount": 15000,
-     "lot": 100,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 142,
-     "priceHigh": 150,
-     "maxAmount": null,
-     "minAmount": 210000,
-     "lot": 100,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 15000,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": null,
-     "phone": null,
-     "email": null,
-     "website": "https://blspolymers.com",
-     "contactPerson": null
-    },
-    "registrar": {
-     "name": "KFin Technologies Limited",
-     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
-     "phone": "+91 406 716 2222",
-     "email": "blsploymers.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": "https://www.kfintech.com"
-    },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
-   },
-   "anchorSummary": null,
-   "bidSplit": null,
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": null,
-    "faceValue": "Re. 10 per Equity Share",
-    "bidLot": "100 Equity Shares and in multiples thereof",
-    "maxBidQib": null,
-    "maxBidNib": null,
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
-    "byPrice": {
-     "-": "-"
-    }
-   },
-   "registrar": {
-    "name": "KFin Technologies Limited",
-    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
-    "contact": "Williams R, Tel: +91 406 716 2222/ 1800 309 4001, blsploymers.ipo@kfintech.com"
-   },
-   "leadManagers": "Unistone Capital Private Limited",
-   "leadManagersList": [
-    "Unistone Capital Private Limited"
-   ],
-   "sponsorBank": "ICICI Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
-    "anchor": null
-   },
-   "logo": "data/logos/BLSPOLY.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792388466880.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/bls-polymers-ipo/1849/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 35.5,
-    "min": 33,
-    "max": 38,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 38,
-      "updated": "27-29 Oct"
-     },
-     {
-      "source": "investorgain.com",
-      "gmp": 33,
-      "pct": 22,
-      "updated": "26-Oct 13:37",
-      "seenLow": 18,
-      "seenHigh": 38
-     }
-    ],
-    "rating": 4,
-    "updated": "26-Oct 13:37",
-    "history": [
-     {
-      "date": "2026-10-19",
-      "gmp": 18
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 30
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 30
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 38
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 38
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 36.5
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 36.5
-     },
-     {
-      "date": "2026-10-26",
-      "gmp": 35.5
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 255,
-     "other": 255,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 100,
-     "other": 100,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 150,
-     "other": 150,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-29",
-     "other": "2026-10-29",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "BLS Polymers Limited",
-    "basis": "Standalone",
-    "about": "BLS Polymers Limited manufactures multiple grades of custom formulated polymer compounds used for wire and cable insulation and 3LPE pipeline coatings. The company serves critical infrastructure industries including telecommunications, power, railways, water, and oil and gas distribution. It operates from a single manufacturing facility located in Goa and is part of the BLS Group.",
-    "sector": "Specialty Chemicals / Polymer Compounding",
-    "headquarters": null,
-    "founded_year": null,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      168.49,
-      179.14,
-      206.13
-     ],
-     "revenue": [
-      296.36,
-      328.44,
-      349.43
-     ],
-     "other_income": [
-      5.15,
-      8.26,
-      4.98
-     ],
-     "ebitda": [
-      21.05,
-      39.66,
-      46.6
-     ],
-     "pbt": [
-      9.69,
-      28.27,
-      35.99
-     ],
-     "pat": [
-      7.52,
-      21.14,
-      27.01
-     ],
-     "net_worth": [
-      46.83,
-      67.94,
-      94.93
-     ],
-     "reserves": [
-      37.23,
-      58.34,
-      49.9
-     ],
-     "borrowings": [
-      93.77,
-      73.92,
-      51.72
-     ],
-     "cash_and_bank": [
-      2.55,
-      1.72,
-      2.43
-     ],
-     "operating_cash_flow": [
-      2.65,
-      25.13,
-      38.06
-     ]
-    },
-    "kpi": {
-     "roce": [
-      12.84,
-      25.46,
-      29.51
-     ],
-     "ronw": [
-      16.06,
-      31.11,
-      28.45
-     ],
-     "roe": [
-      17.48,
-      36.83,
-      33.17
-     ],
-     "eps_basic": [
-      1.67,
-      4.69,
-      5.99
-     ],
-     "eps_diluted": [
-      1.67,
-      4.69,
-      5.99
-     ],
-     "pat_margin": [
-      2.54,
-      6.44,
-      7.73
-     ],
-     "ebitda_margin": [
-      7.1,
-      12.08,
-      13.33
-     ],
-     "debt_equity": [
-      2.05,
-      1.11,
-      0.56
-     ],
-     "current_ratio": [
-      1.26,
-      1.44,
-      1.66
-     ],
-     "nav_per_share": 21.08,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 4.84,
-     "other": [
-      {
-       "name": "Cost per Metric Tonne",
-       "unit": "₹",
-       "values": [
-        89284.79,
-        85529.64,
-        84958.5
-       ]
-      },
-      {
-       "name": "Total Purchase Quantity",
-       "unit": "MT",
-       "values": [
-        28416.66,
-        30712.3,
-        34499.03
-       ]
-      },
-      {
-       "name": "Revenue per Customer",
-       "unit": "₹ lakh",
-       "values": [
-        169.35,
-        197.85,
-        183.91
-       ]
-      },
-      {
-       "name": "Return on Total Assets",
-       "unit": "%",
-       "values": [
-        4.46,
-        11.8,
-        13.1
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Kingfa Science & Technology (India) Limited",
-      "revenue_cr": 1995.55,
-      "face_value": 10,
-      "cmp": null,
-      "eps_basic": 144.1,
-      "eps_diluted": 144.1,
-      "nav": 1155.4,
-      "pe": 46.25,
-      "ronw": 13.24
-     },
-     {
-      "name": "DDev Plastiks Industries Limited",
-      "revenue_cr": 2947.87,
-      "face_value": 1,
-      "cmp": null,
-      "eps_basic": 19.5,
-      "eps_diluted": 19.5,
-      "nav": 97.93,
-      "pe": 12.97,
-      "ronw": 19.92
-     },
-     {
-      "name": "Plastiblends India Limited",
-      "revenue_cr": 788.66,
-      "face_value": 5,
-      "cmp": null,
-      "eps_basic": 14.12,
-      "eps_diluted": 14.12,
-      "nav": 172.78,
-      "pe": 14.53,
-      "ronw": 8.17
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
-     "ofs_shares": null,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Financing capital expenditure requirement towards expansion of Goa Manufacturing Facility",
-       "amount_cr": 77.56
-      },
-      {
-       "purpose": "Funding working capital requirements",
-       "amount_cr": 89.5
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Vinod Aggarwal",
-      "Sushil Aggarwal",
-      "Madhukar Aggarwal",
-      "Diwakar Aggarwal",
-      "Karan Aggarwal"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": "Part of the BLS Group with over 3 decades of operating history across polymers, education, and digital/visa government outsourcing services."
-    },
-    "concentration": {
-     "top_customers_pct": 66.81,
-     "govt_share_pct": 0.3,
-     "note": "Top 10 customers accounted for 66.81% of Fiscal 2026 revenue, and top 5 customers accounted for 53.45%. Wire and cable segment contributed 80.93% of sales in Fiscal 2026."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026, including ₹8.00 crore bank guarantee to IOCL and tax appeal demands. Summons were previously issued by SEBI to group company BLS International Services Ltd.",
-    "strengths": [
-     "Enlisted with prominent government agencies and CPSEs, creating significant entry barriers for competitors.",
-     "Diversified portfolio offering 6 products in 127 grades across telecommunication, power, and infrastructure sectors.",
-     "Long-standing relationships with customers, with 90.84% repeat orders over the last three fiscal years.",
-     "Pan-India market presence across 23 states and union territories, with direct sales contributing over 98% of revenue.",
-     "Strategically located manufacturing facility in Goa near Mormugao port, providing logistical efficiencies.",
-     "Part of the BLS Group with access to brand recognition and group synergies.",
-     "Dedicated in-house product development and quality testing infrastructure with ISO 9001:2015 certification."
-    ],
-    "risks": [
-     {
-      "title": "Segment concentration in wire and cable polymer compounds",
-      "detail": "Derived 80.93%, 81.59%, and 80.49% of revenue from wire and cable polymer compounds in Fiscals 2026, 2025, and 2024 respectively.",
-      "severity": "high"
-     },
-     {
-      "title": "Customer concentration risk",
-      "detail": "Top 10 customers accounted for 66.81%, 64.44%, and 50.52% of revenue in Fiscals 2026, 2025, and 2024 respectively.",
-      "severity": "high"
-     },
-     {
-      "title": "Outstanding indebtedness",
-      "detail": "Total fund-based borrowings stood at ₹82.36 crore as on August 31, 2026, and promoter personal guarantees have been extended.",
-      "severity": "medium"
-     },
-     {
-      "title": "Single manufacturing facility operations",
-      "detail": "Entire manufacturing operations are conducted from a single facility at Goa, exposing business to localized disruptions or shutdowns.",
-      "severity": "high"
-     },
-     {
-      "title": "Related-party procurement and transactions",
-      "detail": "Purchased raw materials worth ₹32.35 crore from group entity Vinsul Makardi Limited in Fiscal 2026 (9.26% of revenue).",
-      "severity": "medium"
-     },
-     {
-      "title": "Capacity expansion execution risks",
-      "detail": "Proposed capex of ₹77.56 crore for expansion of Goa facility has not been appraised by any financial institution.",
-      "severity": "medium"
-     },
-     {
-      "title": "Negative operating cash flows in recent stub period",
-      "detail": "Generated negative operating cash flow of ₹6.64 crore for the three months ended June 30, 2026.",
-      "severity": "medium"
-     },
-     {
-      "title": "Contingent liabilities risk",
-      "detail": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026 (10.24% of net worth), including ₹8.00 crore bank guarantee to IOCL.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Financial data is standalone and covers FY24, FY25, and FY26. Three-month period ended June 30, 2026 stub data is excluded from the financial arrays."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 72,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-26T11:58:29.945Z"
   },
   {
    "symbol": "SFCTECH",
@@ -1674,7 +1234,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:35.172Z",
+   "subsAsOn": "2026-10-26T12:09:32.153Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2185,7 +1745,588 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T11:58:35.172Z"
+   "fetchedAt": "2026-10-26T12:09:32.153Z"
+  },
+  {
+   "symbol": "BLSPOLY",
+   "name": "BLS Polymers Limited",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "timeline": {
+    "open": "2026-10-27",
+    "close": "2026-10-29",
+    "allotment": "2026-10-30",
+    "refund": "2026-11-02",
+    "demat": "2026-11-02",
+    "listing": "2026-11-03"
+   },
+   "allotment": "2026-10-30",
+   "listing": "2026-11-03",
+   "datesExpected": false,
+   "priceLow": 142,
+   "priceHigh": 150,
+   "lot": 100,
+   "faceValue": 10,
+   "issueShares": 17000000,
+   "issueSizeCr": 255,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto 1,70,00,000 Equity Shares (including Anchor reservation portion of 51,00,000 Equity Shares)",
+   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-26T12:09:37.716Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 142,
+     "priceHigh": 150,
+     "maxAmount": 200000,
+     "minAmount": 15000,
+     "lot": 100,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 142,
+     "priceHigh": 150,
+     "maxAmount": null,
+     "minAmount": 210000,
+     "lot": 100,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 15000,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://blspolymers.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
+     "phone": "+91 406 716 2222",
+     "email": "blsploymers.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": "https://www.kfintech.com"
+    },
+    "source": "NSE issue info + offer document (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Re. 10 per Equity Share",
+    "bidLot": "100 Equity Shares and in multiples thereof",
+    "maxBidQib": "1,19,00,000 Equity Shares in multiple of 100 Equity Shares",
+    "maxBidNib": "85,00,000 Equity Shares in multiple of 100 Equity Shares",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
+    "contact": "Williams R, Tel: +91 406 716 2222/ 1800 309 4001, blsploymers.ipo@kfintech.com"
+   },
+   "leadManagers": "Unistone Capital Private Limited",
+   "leadManagersList": [
+    "Unistone Capital Private Limited"
+   ],
+   "sponsorBank": "ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BLSPOLY.zip"
+   },
+   "logo": "data/logos/BLSPOLY.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792388466880.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/bls-polymers-ipo/1849/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 35.5,
+    "min": 33,
+    "max": 38,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 38,
+      "updated": "27-29 Oct"
+     },
+     {
+      "source": "investorgain.com",
+      "gmp": 33,
+      "pct": 22,
+      "updated": "26-Oct 13:37",
+      "seenLow": 18,
+      "seenHigh": 38
+     }
+    ],
+    "rating": 4,
+    "updated": "26-Oct 13:37",
+    "history": [
+     {
+      "date": "2026-10-19",
+      "gmp": 18
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 30
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 30
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 38
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 38
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 36.5
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 36.5
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 35.5
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 255,
+     "other": 255,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 100,
+     "other": 100,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 150,
+     "other": 150,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-29",
+     "other": "2026-10-29",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "BLS Polymers Limited",
+    "basis": "Standalone",
+    "about": "BLS Polymers Limited manufactures multiple grades of custom formulated polymer compounds used for wire and cable insulation and 3LPE pipeline coatings. The company serves critical infrastructure industries including telecommunications, power, railways, water, and oil and gas distribution. It operates from a single manufacturing facility located in Goa and is part of the BLS Group.",
+    "sector": "Specialty Chemicals / Polymer Compounding",
+    "headquarters": null,
+    "founded_year": null,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      168.49,
+      179.14,
+      206.13
+     ],
+     "revenue": [
+      296.36,
+      328.44,
+      349.43
+     ],
+     "other_income": [
+      5.15,
+      8.26,
+      4.98
+     ],
+     "ebitda": [
+      21.05,
+      39.66,
+      46.6
+     ],
+     "pbt": [
+      9.69,
+      28.27,
+      35.99
+     ],
+     "pat": [
+      7.52,
+      21.14,
+      27.01
+     ],
+     "net_worth": [
+      46.83,
+      67.94,
+      94.93
+     ],
+     "reserves": [
+      37.23,
+      58.34,
+      49.9
+     ],
+     "borrowings": [
+      93.77,
+      73.92,
+      51.72
+     ],
+     "cash_and_bank": [
+      2.55,
+      1.72,
+      2.43
+     ],
+     "operating_cash_flow": [
+      2.65,
+      25.13,
+      38.06
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.84,
+      25.46,
+      29.51
+     ],
+     "ronw": [
+      16.06,
+      31.11,
+      28.45
+     ],
+     "roe": [
+      17.48,
+      36.83,
+      33.17
+     ],
+     "eps_basic": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "eps_diluted": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "pat_margin": [
+      2.54,
+      6.44,
+      7.73
+     ],
+     "ebitda_margin": [
+      7.1,
+      12.08,
+      13.33
+     ],
+     "debt_equity": [
+      2.05,
+      1.11,
+      0.56
+     ],
+     "current_ratio": [
+      1.26,
+      1.44,
+      1.66
+     ],
+     "nav_per_share": 21.08,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 4.84,
+     "other": [
+      {
+       "name": "Cost per Metric Tonne",
+       "unit": "₹",
+       "values": [
+        89284.79,
+        85529.64,
+        84958.5
+       ]
+      },
+      {
+       "name": "Total Purchase Quantity",
+       "unit": "MT",
+       "values": [
+        28416.66,
+        30712.3,
+        34499.03
+       ]
+      },
+      {
+       "name": "Revenue per Customer",
+       "unit": "₹ lakh",
+       "values": [
+        169.35,
+        197.85,
+        183.91
+       ]
+      },
+      {
+       "name": "Return on Total Assets",
+       "unit": "%",
+       "values": [
+        4.46,
+        11.8,
+        13.1
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Kingfa Science & Technology (India) Limited",
+      "revenue_cr": 1995.55,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 144.1,
+      "eps_diluted": 144.1,
+      "nav": 1155.4,
+      "pe": 46.25,
+      "ronw": 13.24
+     },
+     {
+      "name": "DDev Plastiks Industries Limited",
+      "revenue_cr": 2947.87,
+      "face_value": 1,
+      "cmp": null,
+      "eps_basic": 19.5,
+      "eps_diluted": 19.5,
+      "nav": 97.93,
+      "pe": 12.97,
+      "ronw": 19.92
+     },
+     {
+      "name": "Plastiblends India Limited",
+      "revenue_cr": 788.66,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 14.12,
+      "eps_diluted": 14.12,
+      "nav": 172.78,
+      "pe": 14.53,
+      "ronw": 8.17
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Financing capital expenditure requirement towards expansion of Goa Manufacturing Facility",
+       "amount_cr": 77.56
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 89.5
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Vinod Aggarwal",
+      "Sushil Aggarwal",
+      "Madhukar Aggarwal",
+      "Diwakar Aggarwal",
+      "Karan Aggarwal"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "Part of the BLS Group with over 3 decades of operating history across polymers, education, and digital/visa government outsourcing services."
+    },
+    "concentration": {
+     "top_customers_pct": 66.81,
+     "govt_share_pct": 0.3,
+     "note": "Top 10 customers accounted for 66.81% of Fiscal 2026 revenue, and top 5 customers accounted for 53.45%. Wire and cable segment contributed 80.93% of sales in Fiscal 2026."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026, including ₹8.00 crore bank guarantee to IOCL and tax appeal demands. Summons were previously issued by SEBI to group company BLS International Services Ltd.",
+    "strengths": [
+     "Enlisted with prominent government agencies and CPSEs, creating significant entry barriers for competitors.",
+     "Diversified portfolio offering 6 products in 127 grades across telecommunication, power, and infrastructure sectors.",
+     "Long-standing relationships with customers, with 90.84% repeat orders over the last three fiscal years.",
+     "Pan-India market presence across 23 states and union territories, with direct sales contributing over 98% of revenue.",
+     "Strategically located manufacturing facility in Goa near Mormugao port, providing logistical efficiencies.",
+     "Part of the BLS Group with access to brand recognition and group synergies.",
+     "Dedicated in-house product development and quality testing infrastructure with ISO 9001:2015 certification."
+    ],
+    "risks": [
+     {
+      "title": "Segment concentration in wire and cable polymer compounds",
+      "detail": "Derived 80.93%, 81.59%, and 80.49% of revenue from wire and cable polymer compounds in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer concentration risk",
+      "detail": "Top 10 customers accounted for 66.81%, 64.44%, and 50.52% of revenue in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Outstanding indebtedness",
+      "detail": "Total fund-based borrowings stood at ₹82.36 crore as on August 31, 2026, and promoter personal guarantees have been extended.",
+      "severity": "medium"
+     },
+     {
+      "title": "Single manufacturing facility operations",
+      "detail": "Entire manufacturing operations are conducted from a single facility at Goa, exposing business to localized disruptions or shutdowns.",
+      "severity": "high"
+     },
+     {
+      "title": "Related-party procurement and transactions",
+      "detail": "Purchased raw materials worth ₹32.35 crore from group entity Vinsul Makardi Limited in Fiscal 2026 (9.26% of revenue).",
+      "severity": "medium"
+     },
+     {
+      "title": "Capacity expansion execution risks",
+      "detail": "Proposed capex of ₹77.56 crore for expansion of Goa facility has not been appraised by any financial institution.",
+      "severity": "medium"
+     },
+     {
+      "title": "Negative operating cash flows in recent stub period",
+      "detail": "Generated negative operating cash flow of ₹6.64 crore for the three months ended June 30, 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "Contingent liabilities risk",
+      "detail": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026 (10.24% of net worth), including ₹8.00 crore bank guarantee to IOCL.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Financial data is standalone and covers FY24, FY25, and FY26. Three-month period ended June 30, 2026 stub data is excluded from the financial arrays."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 72,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-26T12:09:37.716Z"
   },
   {
    "symbol": "WISCON",
@@ -2227,7 +2368,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:52.142Z",
+   "subsAsOn": "2026-10-26T12:09:59.608Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2361,7 +2502,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-26T11:58:52.142Z"
+   "fetchedAt": "2026-10-26T12:09:59.608Z"
   },
   {
    "symbol": "EDELALTS",
@@ -2715,7 +2856,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-26T12:01:06.154Z",
+     "at": "2026-10-26T12:11:54.435Z",
      "date": "2026-10-26",
      "qib": 0.07934909308246296,
      "bnii": 0.4665604716958703,
@@ -3123,7 +3264,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T11:58:19.041Z"
+   "fetchedAt": "2026-10-26T12:09:18.883Z"
   },
   {
    "symbol": "CORE4",
@@ -3169,7 +3310,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:46.724Z",
+   "subsAsOn": "2026-10-26T12:09:56.153Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3344,7 +3485,7 @@
      "total": 0.08
     },
     {
-     "at": "2026-10-26T12:01:06.184Z",
+     "at": "2026-10-26T12:11:54.454Z",
      "date": "2026-10-26",
      "qib": null,
      "bnii": null,
@@ -3377,7 +3518,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-26T11:58:46.724Z"
+   "fetchedAt": "2026-10-26T12:09:56.153Z"
   },
   {
    "symbol": "PARASHLTH",
@@ -24326,7 +24467,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T11:58:40.302Z",
+   "subsAsOn": "2026-10-26T12:09:42.764Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -24420,7 +24561,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-26T11:58:40.302Z"
+   "fetchedAt": "2026-10-26T12:09:42.764Z"
   }
  ],
  "filings": [
