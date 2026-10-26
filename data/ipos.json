@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-26T08:42:42.891Z",
+ "generatedAt": "2026-10-26T08:52:53.566Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-26T08:40:13.995Z"
+   "fetchedAt": "2026-10-26T08:50:51.869Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-26T08:41:58.162Z"
+   "fetchedAt": "2026-10-26T08:52:04.798Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-26T08:41:48.581Z"
+   "fetchedAt": "2026-10-26T08:51:56.704Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.560Z",
+   "subsAsOn": "2026-10-26T08:51:56.686Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -84,9 +84,9 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 8,
+    "value": 8.5,
     "min": 8,
-    "max": 8,
+    "max": 9,
     "sources": [
      {
       "source": "ipowatch.in",
@@ -95,15 +95,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 8,
-      "pct": 9.76,
-      "updated": "26-Oct 9:37",
+      "gmp": 9,
+      "pct": 10.98,
+      "updated": "26-Oct 14:02",
       "seenLow": 8,
-      "seenHigh": 8
+      "seenHigh": 9
      }
     ],
-    "rating": 2,
-    "updated": "26-Oct 9:37",
+    "rating": 3,
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-23",
@@ -119,7 +119,7 @@
      },
      {
       "date": "2026-10-26",
-      "gmp": 8
+      "gmp": 8.5
      }
     ]
    },
@@ -127,7 +127,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.560Z",
+   "fetchedAt": "2026-10-26T08:51:56.686Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -162,7 +162,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.580Z",
+   "subsAsOn": "2026-10-26T08:51:56.703Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -202,7 +202,7 @@
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:30",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-24",
@@ -222,7 +222,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.580Z",
+   "fetchedAt": "2026-10-26T08:51:56.703Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -269,7 +269,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T08:40:07.238Z",
+   "subsAsOn": "2026-10-26T08:50:35.439Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -394,8 +394,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 7.5,
-    "min": 7,
+    "value": 7.75,
+    "min": 7.5,
     "max": 8,
     "sources": [
      {
@@ -405,15 +405,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 7,
-      "pct": 4.32,
-      "updated": "26-Oct 9:37",
+      "gmp": 7.5,
+      "pct": 4.63,
+      "updated": "26-Oct 14:02",
       "seenLow": 7,
-      "seenHigh": 7
+      "seenHigh": 7.5
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:37",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-24",
@@ -425,7 +425,7 @@
      },
      {
       "date": "2026-10-26",
-      "gmp": 7.5
+      "gmp": 7.75
      }
     ]
    },
@@ -790,7 +790,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T08:40:07.238Z"
+   "fetchedAt": "2026-10-26T08:50:35.439Z"
   },
   {
    "symbol": "IG-2017",
@@ -824,7 +824,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.580Z",
+   "subsAsOn": "2026-10-26T08:51:56.703Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -864,7 +864,7 @@
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:34",
+    "updated": "26-Oct 13:54",
     "history": [
      {
       "date": "2026-10-24",
@@ -884,7 +884,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.580Z",
+   "fetchedAt": "2026-10-26T08:51:56.703Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -919,7 +919,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.580Z",
+   "subsAsOn": "2026-10-26T08:51:56.703Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -959,7 +959,7 @@
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:34",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-24",
@@ -979,8 +979,575 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.580Z",
+   "fetchedAt": "2026-10-26T08:51:56.703Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "BLSPOLY",
+   "name": "BLS Polymers Limited",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-10-27",
+   "close": "2026-10-29",
+   "timeline": {
+    "open": "2026-10-27",
+    "close": "2026-10-29",
+    "allotment": "2026-10-30",
+    "refund": "2026-11-02",
+    "demat": "2026-11-02",
+    "listing": "2026-11-03"
+   },
+   "allotment": "2026-10-30",
+   "listing": "2026-11-03",
+   "datesExpected": false,
+   "priceLow": 142,
+   "priceHigh": 150,
+   "lot": 100,
+   "faceValue": 10,
+   "issueShares": 17000000,
+   "issueSizeCr": 255,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto 1,70,00,000 Equity Shares",
+   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-26T08:50:41.194Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 142,
+     "priceHigh": 150,
+     "maxAmount": 200000,
+     "minAmount": 15000,
+     "lot": 100,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 142,
+     "priceHigh": 150,
+     "maxAmount": null,
+     "minAmount": 210000,
+     "lot": 100,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 15000,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://blspolymers.com",
+     "contactPerson": null
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
+     "phone": "+91 406 716 2222",
+     "email": "blsploymers.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": "https://www.kfintech.com"
+    },
+    "source": "NSE issue info + offer document (company website from offer document cover)"
+   },
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Re. 10 per Equity Share",
+    "bidLot": "100 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
+    "contact": "Williams R, Tel: +91 406 716 2222/ 1800 309 4001, blsploymers.ipo@kfintech.com"
+   },
+   "leadManagers": "Unistone Capital Private Limited",
+   "leadManagersList": [
+    "Unistone Capital Private Limited"
+   ],
+   "sponsorBank": "ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
+    "anchor": null
+   },
+   "logo": "data/logos/BLSPOLY.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BLSPOLY.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792388466880.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/bls-polymers-ipo/1849/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 35.5,
+    "min": 33,
+    "max": 38,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 38,
+      "updated": "27-29 Oct"
+     },
+     {
+      "source": "investorgain.com",
+      "gmp": 33,
+      "pct": 22,
+      "updated": "26-Oct 14:02",
+      "seenLow": 18,
+      "seenHigh": 38
+     }
+    ],
+    "rating": 4,
+    "updated": "26-Oct 14:02",
+    "history": [
+     {
+      "date": "2026-10-19",
+      "gmp": 18
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 30
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 30
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 38
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 38
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 36.5
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 36.5
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 35.5
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 255,
+     "other": 255,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 100,
+     "other": 100,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 150,
+     "other": 150,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-29",
+     "other": "2026-10-29",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "BLS Polymers Limited",
+    "basis": "Standalone",
+    "about": "BLS Polymers Limited manufactures multiple grades of custom formulated polymer compounds used for wire and cable insulation and 3LPE pipeline coatings. The company serves critical infrastructure industries including telecommunications, power, railways, water, and oil and gas distribution. It operates from a single manufacturing facility located in Goa and is part of the BLS Group.",
+    "sector": "Specialty Chemicals / Polymer Compounding",
+    "headquarters": null,
+    "founded_year": null,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      168.49,
+      179.14,
+      206.13
+     ],
+     "revenue": [
+      296.36,
+      328.44,
+      349.43
+     ],
+     "other_income": [
+      5.15,
+      8.26,
+      4.98
+     ],
+     "ebitda": [
+      21.05,
+      39.66,
+      46.6
+     ],
+     "pbt": [
+      9.69,
+      28.27,
+      35.99
+     ],
+     "pat": [
+      7.52,
+      21.14,
+      27.01
+     ],
+     "net_worth": [
+      46.83,
+      67.94,
+      94.93
+     ],
+     "reserves": [
+      37.23,
+      58.34,
+      49.9
+     ],
+     "borrowings": [
+      93.77,
+      73.92,
+      51.72
+     ],
+     "cash_and_bank": [
+      2.55,
+      1.72,
+      2.43
+     ],
+     "operating_cash_flow": [
+      2.65,
+      25.13,
+      38.06
+     ]
+    },
+    "kpi": {
+     "roce": [
+      12.84,
+      25.46,
+      29.51
+     ],
+     "ronw": [
+      16.06,
+      31.11,
+      28.45
+     ],
+     "roe": [
+      17.48,
+      36.83,
+      33.17
+     ],
+     "eps_basic": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "eps_diluted": [
+      1.67,
+      4.69,
+      5.99
+     ],
+     "pat_margin": [
+      2.54,
+      6.44,
+      7.73
+     ],
+     "ebitda_margin": [
+      7.1,
+      12.08,
+      13.33
+     ],
+     "debt_equity": [
+      2.05,
+      1.11,
+      0.56
+     ],
+     "current_ratio": [
+      1.26,
+      1.44,
+      1.66
+     ],
+     "nav_per_share": 21.08,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 4.84,
+     "other": [
+      {
+       "name": "Cost per Metric Tonne",
+       "unit": "₹",
+       "values": [
+        89284.79,
+        85529.64,
+        84958.5
+       ]
+      },
+      {
+       "name": "Total Purchase Quantity",
+       "unit": "MT",
+       "values": [
+        28416.66,
+        30712.3,
+        34499.03
+       ]
+      },
+      {
+       "name": "Revenue per Customer",
+       "unit": "₹ lakh",
+       "values": [
+        169.35,
+        197.85,
+        183.91
+       ]
+      },
+      {
+       "name": "Return on Total Assets",
+       "unit": "%",
+       "values": [
+        4.46,
+        11.8,
+        13.1
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Kingfa Science & Technology (India) Limited",
+      "revenue_cr": 1995.55,
+      "face_value": 10,
+      "cmp": null,
+      "eps_basic": 144.1,
+      "eps_diluted": 144.1,
+      "nav": 1155.4,
+      "pe": 46.25,
+      "ronw": 13.24
+     },
+     {
+      "name": "DDev Plastiks Industries Limited",
+      "revenue_cr": 2947.87,
+      "face_value": 1,
+      "cmp": null,
+      "eps_basic": 19.5,
+      "eps_diluted": 19.5,
+      "nav": 97.93,
+      "pe": 12.97,
+      "ronw": 19.92
+     },
+     {
+      "name": "Plastiblends India Limited",
+      "revenue_cr": 788.66,
+      "face_value": 5,
+      "cmp": null,
+      "eps_basic": 14.12,
+      "eps_diluted": 14.12,
+      "nav": 172.78,
+      "pe": 14.53,
+      "ronw": 8.17
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": null,
+     "pre_issue_shares": null,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Financing capital expenditure requirement towards expansion of Goa Manufacturing Facility",
+       "amount_cr": 77.56
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 89.5
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Vinod Aggarwal",
+      "Sushil Aggarwal",
+      "Madhukar Aggarwal",
+      "Diwakar Aggarwal",
+      "Karan Aggarwal"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "Part of the BLS Group with over 3 decades of operating history across polymers, education, and digital/visa government outsourcing services."
+    },
+    "concentration": {
+     "top_customers_pct": 66.81,
+     "govt_share_pct": 0.3,
+     "note": "Top 10 customers accounted for 66.81% of Fiscal 2026 revenue, and top 5 customers accounted for 53.45%. Wire and cable segment contributed 80.93% of sales in Fiscal 2026."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026, including ₹8.00 crore bank guarantee to IOCL and tax appeal demands. Summons were previously issued by SEBI to group company BLS International Services Ltd.",
+    "strengths": [
+     "Enlisted with prominent government agencies and CPSEs, creating significant entry barriers for competitors.",
+     "Diversified portfolio offering 6 products in 127 grades across telecommunication, power, and infrastructure sectors.",
+     "Long-standing relationships with customers, with 90.84% repeat orders over the last three fiscal years.",
+     "Pan-India market presence across 23 states and union territories, with direct sales contributing over 98% of revenue.",
+     "Strategically located manufacturing facility in Goa near Mormugao port, providing logistical efficiencies.",
+     "Part of the BLS Group with access to brand recognition and group synergies.",
+     "Dedicated in-house product development and quality testing infrastructure with ISO 9001:2015 certification."
+    ],
+    "risks": [
+     {
+      "title": "Segment concentration in wire and cable polymer compounds",
+      "detail": "Derived 80.93%, 81.59%, and 80.49% of revenue from wire and cable polymer compounds in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Customer concentration risk",
+      "detail": "Top 10 customers accounted for 66.81%, 64.44%, and 50.52% of revenue in Fiscals 2026, 2025, and 2024 respectively.",
+      "severity": "high"
+     },
+     {
+      "title": "Outstanding indebtedness",
+      "detail": "Total fund-based borrowings stood at ₹82.36 crore as on August 31, 2026, and promoter personal guarantees have been extended.",
+      "severity": "medium"
+     },
+     {
+      "title": "Single manufacturing facility operations",
+      "detail": "Entire manufacturing operations are conducted from a single facility at Goa, exposing business to localized disruptions or shutdowns.",
+      "severity": "high"
+     },
+     {
+      "title": "Related-party procurement and transactions",
+      "detail": "Purchased raw materials worth ₹32.35 crore from group entity Vinsul Makardi Limited in Fiscal 2026 (9.26% of revenue).",
+      "severity": "medium"
+     },
+     {
+      "title": "Capacity expansion execution risks",
+      "detail": "Proposed capex of ₹77.56 crore for expansion of Goa facility has not been appraised by any financial institution.",
+      "severity": "medium"
+     },
+     {
+      "title": "Negative operating cash flows in recent stub period",
+      "detail": "Generated negative operating cash flow of ₹6.64 crore for the three months ended June 30, 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "Contingent liabilities risk",
+      "detail": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026 (10.24% of net worth), including ₹8.00 crore bank guarantee to IOCL.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Financial data is standalone and covers FY24, FY25, and FY26. Three-month period ended June 30, 2026 stub data is excluded from the financial arrays."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 72,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-26T08:50:41.194Z"
   },
   {
    "symbol": "SFCTECH",
@@ -1026,7 +1593,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T08:40:08.081Z",
+   "subsAsOn": "2026-10-26T08:50:46.757Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1154,8 +1721,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 32,
-    "min": 32,
+    "value": 30,
+    "min": 28,
     "max": 32,
     "sources": [
      {
@@ -1165,15 +1732,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 32,
-      "pct": 9.7,
-      "updated": "26-Oct 9:37",
+      "gmp": 28,
+      "pct": 8.48,
+      "updated": "26-Oct 14:02",
       "seenLow": 21,
       "seenHigh": 32
      }
     ],
     "rating": 2,
-    "updated": "26-Oct 9:37",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-21",
@@ -1197,7 +1764,7 @@
      },
      {
       "date": "2026-10-26",
-      "gmp": 32
+      "gmp": 30
      }
     ]
    },
@@ -1537,574 +2104,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T08:40:08.081Z"
-  },
-  {
-   "symbol": "BLSPOLY",
-   "name": "BLS Polymers Limited",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-10-27",
-   "close": "2026-10-29",
-   "timeline": {
-    "open": "2026-10-27",
-    "close": "2026-10-29",
-    "allotment": "2026-10-30",
-    "refund": "2026-11-02",
-    "demat": "2026-11-02",
-    "listing": "2026-11-03"
-   },
-   "allotment": "2026-10-30",
-   "listing": "2026-11-03",
-   "datesExpected": false,
-   "priceLow": 142,
-   "priceHigh": 150,
-   "lot": 100,
-   "faceValue": 10,
-   "issueShares": 17000000,
-   "issueSizeCr": 255,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto 1,70,00,000 Equity Shares",
-   "upiCutoff": "29-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T08:40:08.958Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 142,
-     "priceHigh": 150,
-     "maxAmount": 200000,
-     "minAmount": 15000,
-     "lot": 100,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 142,
-     "priceHigh": 150,
-     "maxAmount": null,
-     "minAmount": 210000,
-     "lot": 100,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 15000,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": null,
-     "phone": null,
-     "email": null,
-     "website": "https://blspolymers.com",
-     "contactPerson": null
-    },
-    "registrar": {
-     "name": "KFin Technologies Limited",
-     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
-     "phone": "+91 406 716 2222",
-     "email": "blsploymers.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": "https://www.kfintech.com"
-    },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
-   },
-   "anchorSummary": null,
-   "bidSplit": null,
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": null,
-    "faceValue": "Re. 10 per Equity Share",
-    "bidLot": "100 Equity Shares and in multiples thereof",
-    "maxBidQib": null,
-    "maxBidNib": null,
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
-    "byPrice": {
-     "-": "-"
-    }
-   },
-   "registrar": {
-    "name": "KFin Technologies Limited",
-    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Kurla, Mumbai - 400 070, Maharashtra, India.",
-    "contact": "Williams R, Tel: +91 406 716 2222/ 1800 309 4001, blsploymers.ipo@kfintech.com"
-   },
-   "leadManagers": "Unistone Capital Private Limited",
-   "leadManagersList": [
-    "Unistone Capital Private Limited"
-   ],
-   "sponsorBank": "ICICI Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
-    "anchor": null
-   },
-   "logo": "data/logos/BLSPOLY.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_BLSPOLY.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792388466880.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/bls-polymers-ipo/1849/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 38,
-    "min": 38,
-    "max": 38,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 38,
-      "updated": "27-29 Oct"
-     },
-     {
-      "source": "investorgain.com",
-      "gmp": 38,
-      "pct": 25.33,
-      "updated": "26-Oct 9:37",
-      "seenLow": 18,
-      "seenHigh": 38
-     }
-    ],
-    "rating": 4,
-    "updated": "26-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-19",
-      "gmp": 18
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 30
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 30
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 38
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 38
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 36.5
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 36.5
-     },
-     {
-      "date": "2026-10-26",
-      "gmp": 38
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 255,
-     "other": 255,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 100,
-     "other": 100,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 150,
-     "other": 150,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-29",
-     "other": "2026-10-29",
-     "ok": true
-    }
-   ],
-   "fundamentals": {
-    "company": "BLS Polymers Limited",
-    "basis": "Standalone",
-    "about": "BLS Polymers Limited manufactures multiple grades of custom formulated polymer compounds used for wire and cable insulation and 3LPE pipeline coatings. The company serves critical infrastructure industries including telecommunications, power, railways, water, and oil and gas distribution. It operates from a single manufacturing facility located in Goa and is part of the BLS Group.",
-    "sector": "Specialty Chemicals / Polymer Compounding",
-    "headquarters": null,
-    "founded_year": null,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      168.49,
-      179.14,
-      206.13
-     ],
-     "revenue": [
-      296.36,
-      328.44,
-      349.43
-     ],
-     "other_income": [
-      5.15,
-      8.26,
-      4.98
-     ],
-     "ebitda": [
-      21.05,
-      39.66,
-      46.6
-     ],
-     "pbt": [
-      9.69,
-      28.27,
-      35.99
-     ],
-     "pat": [
-      7.52,
-      21.14,
-      27.01
-     ],
-     "net_worth": [
-      46.83,
-      67.94,
-      94.93
-     ],
-     "reserves": [
-      37.23,
-      58.34,
-      49.9
-     ],
-     "borrowings": [
-      93.77,
-      73.92,
-      51.72
-     ],
-     "cash_and_bank": [
-      2.55,
-      1.72,
-      2.43
-     ],
-     "operating_cash_flow": [
-      2.65,
-      25.13,
-      38.06
-     ]
-    },
-    "kpi": {
-     "roce": [
-      12.84,
-      25.46,
-      29.51
-     ],
-     "ronw": [
-      16.06,
-      31.11,
-      28.45
-     ],
-     "roe": [
-      17.48,
-      36.83,
-      33.17
-     ],
-     "eps_basic": [
-      1.67,
-      4.69,
-      5.99
-     ],
-     "eps_diluted": [
-      1.67,
-      4.69,
-      5.99
-     ],
-     "pat_margin": [
-      2.54,
-      6.44,
-      7.73
-     ],
-     "ebitda_margin": [
-      7.1,
-      12.08,
-      13.33
-     ],
-     "debt_equity": [
-      2.05,
-      1.11,
-      0.56
-     ],
-     "current_ratio": [
-      1.26,
-      1.44,
-      1.66
-     ],
-     "nav_per_share": 21.08,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 4.84,
-     "other": [
-      {
-       "name": "Cost per Metric Tonne",
-       "unit": "₹",
-       "values": [
-        89284.79,
-        85529.64,
-        84958.5
-       ]
-      },
-      {
-       "name": "Total Purchase Quantity",
-       "unit": "MT",
-       "values": [
-        28416.66,
-        30712.3,
-        34499.03
-       ]
-      },
-      {
-       "name": "Revenue per Customer",
-       "unit": "₹ lakh",
-       "values": [
-        169.35,
-        197.85,
-        183.91
-       ]
-      },
-      {
-       "name": "Return on Total Assets",
-       "unit": "%",
-       "values": [
-        4.46,
-        11.8,
-        13.1
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Kingfa Science & Technology (India) Limited",
-      "revenue_cr": 1995.55,
-      "face_value": 10,
-      "cmp": null,
-      "eps_basic": 144.1,
-      "eps_diluted": 144.1,
-      "nav": 1155.4,
-      "pe": 46.25,
-      "ronw": 13.24
-     },
-     {
-      "name": "DDev Plastiks Industries Limited",
-      "revenue_cr": 2947.87,
-      "face_value": 1,
-      "cmp": null,
-      "eps_basic": 19.5,
-      "eps_diluted": 19.5,
-      "nav": 97.93,
-      "pe": 12.97,
-      "ronw": 19.92
-     },
-     {
-      "name": "Plastiblends India Limited",
-      "revenue_cr": 788.66,
-      "face_value": 5,
-      "cmp": null,
-      "eps_basic": 14.12,
-      "eps_diluted": 14.12,
-      "nav": 172.78,
-      "pe": 14.53,
-      "ronw": 8.17
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
-     "ofs_shares": null,
-     "pre_issue_shares": null,
-     "post_issue_shares": null,
-     "face_value": 10,
-     "objects": [
-      {
-       "purpose": "Financing capital expenditure requirement towards expansion of Goa Manufacturing Facility",
-       "amount_cr": 77.56
-      },
-      {
-       "purpose": "Funding working capital requirements",
-       "amount_cr": 89.5
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Vinod Aggarwal",
-      "Sushil Aggarwal",
-      "Madhukar Aggarwal",
-      "Diwakar Aggarwal",
-      "Karan Aggarwal"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": "Part of the BLS Group with over 3 decades of operating history across polymers, education, and digital/visa government outsourcing services."
-    },
-    "concentration": {
-     "top_customers_pct": 66.81,
-     "govt_share_pct": 0.3,
-     "note": "Top 10 customers accounted for 66.81% of Fiscal 2026 revenue, and top 5 customers accounted for 53.45%. Wire and cable segment contributed 80.93% of sales in Fiscal 2026."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026, including ₹8.00 crore bank guarantee to IOCL and tax appeal demands. Summons were previously issued by SEBI to group company BLS International Services Ltd.",
-    "strengths": [
-     "Enlisted with prominent government agencies and CPSEs, creating significant entry barriers for competitors.",
-     "Diversified portfolio offering 6 products in 127 grades across telecommunication, power, and infrastructure sectors.",
-     "Long-standing relationships with customers, with 90.84% repeat orders over the last three fiscal years.",
-     "Pan-India market presence across 23 states and union territories, with direct sales contributing over 98% of revenue.",
-     "Strategically located manufacturing facility in Goa near Mormugao port, providing logistical efficiencies.",
-     "Part of the BLS Group with access to brand recognition and group synergies.",
-     "Dedicated in-house product development and quality testing infrastructure with ISO 9001:2015 certification."
-    ],
-    "risks": [
-     {
-      "title": "Segment concentration in wire and cable polymer compounds",
-      "detail": "Derived 80.93%, 81.59%, and 80.49% of revenue from wire and cable polymer compounds in Fiscals 2026, 2025, and 2024 respectively.",
-      "severity": "high"
-     },
-     {
-      "title": "Customer concentration risk",
-      "detail": "Top 10 customers accounted for 66.81%, 64.44%, and 50.52% of revenue in Fiscals 2026, 2025, and 2024 respectively.",
-      "severity": "high"
-     },
-     {
-      "title": "Outstanding indebtedness",
-      "detail": "Total fund-based borrowings stood at ₹82.36 crore as on August 31, 2026, and promoter personal guarantees have been extended.",
-      "severity": "medium"
-     },
-     {
-      "title": "Single manufacturing facility operations",
-      "detail": "Entire manufacturing operations are conducted from a single facility at Goa, exposing business to localized disruptions or shutdowns.",
-      "severity": "high"
-     },
-     {
-      "title": "Related-party procurement and transactions",
-      "detail": "Purchased raw materials worth ₹32.35 crore from group entity Vinsul Makardi Limited in Fiscal 2026 (9.26% of revenue).",
-      "severity": "medium"
-     },
-     {
-      "title": "Capacity expansion execution risks",
-      "detail": "Proposed capex of ₹77.56 crore for expansion of Goa facility has not been appraised by any financial institution.",
-      "severity": "medium"
-     },
-     {
-      "title": "Negative operating cash flows in recent stub period",
-      "detail": "Generated negative operating cash flow of ₹6.64 crore for the three months ended June 30, 2026.",
-      "severity": "medium"
-     },
-     {
-      "title": "Contingent liabilities risk",
-      "detail": "Contingent liabilities totaled ₹9.72 crore as of March 31, 2026 (10.24% of net worth), including ₹8.00 crore bank guarantee to IOCL.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "Financial data is standalone and covers FY24, FY25, and FY26. Three-month period ended June 30, 2026 stub data is excluded from the financial arrays."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 72,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-26T08:40:08.958Z"
+   "fetchedAt": "2026-10-26T08:50:46.757Z"
   },
   {
    "symbol": "IG-2356",
@@ -2138,7 +2138,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.580Z",
+   "subsAsOn": "2026-10-26T08:51:56.703Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2178,7 +2178,7 @@
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:32",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-24",
@@ -2198,7 +2198,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.580Z",
+   "fetchedAt": "2026-10-26T08:51:56.703Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -2237,35 +2237,35 @@
     },
     "nii": {
      "offered": 1135647,
-     "bid": 172656,
-     "times": 0.1520331581908815
+     "bid": 183636,
+     "times": 0.16170165553204474
     },
     "bnii": {
      "offered": 757098,
-     "bid": 166410,
-     "times": 0.219799814555051
+     "bid": 177264,
+     "times": 0.23413613561256272
     },
     "snii": {
      "offered": 378549,
-     "bid": 6246,
-     "times": 0.016499845462542496
+     "bid": 6372,
+     "times": 0.016832695371008774
     },
     "retail": {
      "offered": 2649842,
-     "bid": 70164,
-     "times": 0.026478559853757317
+     "bid": 72495,
+     "times": 0.027358234943819292
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 5299684,
-     "bid": 362970,
-     "times": 0.06848898915482508
+     "bid": 376281,
+     "times": 0.07100064834054257
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T14:06:00+05:30",
+   "subsAsOn": "2026-10-26T14:18:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -2342,7 +2342,7 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 166410,
+     "bid": 177264,
      "times": null
     },
     {
@@ -2363,7 +2363,7 @@
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 6246,
+     "bid": 6372,
      "times": null
     },
     {
@@ -2377,14 +2377,14 @@
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 62685,
+     "bid": 64728,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 7479,
+     "bid": 7767,
      "times": null
     }
    ],
@@ -2402,29 +2402,29 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 26-Oct-2026 14:06:00 IST",
-    "totalBids": 362808,
+    "asOn": "As on 26-Oct-2026 14:15:00 IST",
+    "totalBids": 373311,
     "timesSubscribed": 0.07,
     "byPrice": {
-     "1585": "3,62,808",
-     "1586": "3,62,331",
-     "1588": "3,62,322",
-     "1590": "3,62,304",
-     "1592": "3,62,268",
-     "1593": "3,62,232",
-     "1598": "3,62,223",
-     "1600": "3,62,214",
-     "1601": "3,62,043",
-     "1610": "3,62,034",
-     "1620": "3,61,944",
-     "1625": "3,61,917",
-     "1640": "3,61,908",
-     "1650": "3,61,872",
-     "1660": "3,61,845",
-     "1662": "3,61,827",
-     "1664": "3,61,818",
-     "1665": "3,61,800",
-     "Cut-Off": "62,469"
+     "1585": "3,73,311",
+     "1586": "3,72,834",
+     "1588": "3,72,825",
+     "1590": "3,72,807",
+     "1592": "3,72,771",
+     "1593": "3,72,735",
+     "1598": "3,72,726",
+     "1600": "3,72,717",
+     "1601": "3,72,546",
+     "1610": "3,72,537",
+     "1620": "3,72,447",
+     "1625": "3,72,420",
+     "1640": "3,72,411",
+     "1650": "3,72,375",
+     "1660": "3,72,348",
+     "1662": "3,72,330",
+     "1664": "3,72,321",
+     "1665": "3,72,303",
+     "Cut-Off": "64,161"
     }
    },
    "registrar": {
@@ -2505,8 +2505,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 43,
-    "min": 36,
+    "value": 43.5,
+    "min": 37,
     "max": 50,
     "sources": [
      {
@@ -2516,15 +2516,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 36,
-      "pct": 2.16,
-      "updated": "26-Oct 9:37",
+      "gmp": 37,
+      "pct": 2.22,
+      "updated": "26-Oct 14:02",
       "seenLow": 33,
       "seenHigh": 121
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:37",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-21",
@@ -2544,20 +2544,20 @@
      },
      {
       "date": "2026-10-26",
-      "gmp": 43
+      "gmp": 43.5
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-10-26T08:42:42.849Z",
+     "at": "2026-10-26T08:52:53.522Z",
      "date": "2026-10-26",
      "qib": 0.07934909308246296,
-     "bnii": 0.219799814555051,
-     "snii": 0.016499845462542496,
-     "nii": 0.1520331581908815,
-     "retail": 0.026478559853757317,
-     "total": 0.06848898915482508
+     "bnii": 0.23413613561256272,
+     "snii": 0.016832695371008774,
+     "nii": 0.16170165553204474,
+     "retail": 0.027358234943819292,
+     "total": 0.07100064834054257
     }
    ],
    "listingPerf": null,
@@ -2958,7 +2958,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-26T08:40:06.258Z"
+   "fetchedAt": "2026-10-26T08:50:29.587Z"
   },
   {
    "symbol": "IG-2229",
@@ -2992,11 +2992,11 @@
     "total": {
      "offered": null,
      "bid": null,
-     "times": 0.08
+     "times": 0.18
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-26T08:41:48.580Z",
+   "subsAsOn": "2026-10-26T08:51:56.703Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -3036,7 +3036,7 @@
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:35",
+    "updated": "26-Oct 14:00",
     "history": [
      {
       "date": "2026-10-21",
@@ -3064,7 +3064,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-26T08:41:48.580Z",
+   "fetchedAt": "2026-10-26T08:51:56.703Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -3433,8 +3433,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 248.5,
-    "min": 247,
+    "value": 247,
+    "min": 244,
     "max": 250,
     "sources": [
      {
@@ -3444,15 +3444,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 247,
-      "pct": 22.07,
-      "updated": "26-Oct 9:37",
+      "gmp": 244,
+      "pct": 21.81,
+      "updated": "26-Oct 14:02",
       "seenLow": 148,
       "seenHigh": 273
      }
     ],
     "rating": 4,
-    "updated": "26-Oct 9:37",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -3500,7 +3500,7 @@
      },
      {
       "date": "2026-10-26",
-      "gmp": 248.5
+      "gmp": 247
      }
     ]
    },
@@ -4180,13 +4180,13 @@
       "source": "investorgain.com",
       "gmp": 9,
       "pct": 1.3,
-      "updated": "26-Oct 9:37",
+      "updated": "26-Oct 14:02",
       "seenLow": 9,
       "seenHigh": 96
      }
     ],
     "rating": 1,
-    "updated": "26-Oct 9:37",
+    "updated": "26-Oct 14:02",
     "history": [
      {
       "date": "2026-10-15",
@@ -5145,12 +5145,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1160,
-    "ltp": 1238.6,
+    "ltp": 1225.95,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 65.71,
-    "ltpGainPct": 76.94
+    "ltpGainPct": 75.14
    },
    "checks": [
     {
@@ -5937,12 +5937,12 @@
    ],
    "listingPerf": {
     "dayOpen": 586,
-    "ltp": 612.5,
+    "ltp": 613.8,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 0,
-    "ltpGainPct": 4.52
+    "ltpGainPct": 4.74
    },
    "checks": [
     {
@@ -6759,12 +6759,12 @@
    ],
    "listingPerf": {
     "dayOpen": 371.1499938964844,
-    "ltp": 409.85,
+    "ltp": 411,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 7.89,
-    "ltpGainPct": 19.14
+    "ltpGainPct": 19.48
    },
    "checks": [
     {
@@ -7556,12 +7556,12 @@
    ],
    "listingPerf": {
     "dayOpen": 159.25,
-    "ltp": 147.01,
+    "ltp": 148.68,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 5.46,
-    "ltpGainPct": -2.64
+    "ltpGainPct": -1.54
    },
    "checks": [
     {
@@ -8293,12 +8293,12 @@
    ],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 287.3,
+    "ltp": 287.15,
     "exchange": "NSE",
     "listDate": "2026-10-22",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 5.54,
-    "ltpGainPct": -0.59
+    "ltpGainPct": -0.64
    },
    "checks": [
     {
@@ -9814,12 +9814,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 275.55,
+    "ltp": 276.25,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 1.68
+    "ltpGainPct": 1.94
    },
    "checks": [
     {
@@ -11923,12 +11923,12 @@
    ],
    "listingPerf": {
     "dayOpen": 80,
-    "ltp": 68.95,
+    "ltp": 68.51,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 6.67,
-    "ltpGainPct": -8.07
+    "ltpGainPct": -8.65
    },
    "checks": [],
    "fundamentals": {
@@ -14302,12 +14302,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 136.07,
+    "ltp": 136.01,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -18.52
+    "ltpGainPct": -18.56
    },
    "checks": [],
    "fundamentals": {
@@ -14933,12 +14933,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 106.64,
+    "ltp": 106.88,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -17.97
+    "ltpGainPct": -17.78
    },
    "checks": [],
    "fundamentals": {
@@ -15579,12 +15579,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 450,
-    "ltp": 347,
+    "ltp": 346.55,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 65.44,
-    "ltpGainPct": 27.57
+    "ltpGainPct": 27.41
    },
    "checks": [],
    "fundamentals": {
@@ -16295,12 +16295,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 208.2,
+    "ltp": 207.55,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -31.06
+    "ltpGainPct": -31.27
    },
    "checks": [],
    "fundamentals": {
@@ -16973,12 +16973,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 142,
-    "ltp": 97.68,
+    "ltp": 97.44,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 2.16,
-    "ltpGainPct": -29.73
+    "ltpGainPct": -29.9
    },
    "checks": [],
    "fundamentals": {
@@ -17620,12 +17620,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 28.31999969482422,
-    "ltp": 21,
+    "ltp": 20.9,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-26",
     "dayOpenGainPct": -11.5,
-    "ltpGainPct": -34.37
+    "ltpGainPct": -34.69
    },
    "checks": [],
    "fundamentals": {
@@ -20005,12 +20005,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 455,
-    "ltp": 367.35,
+    "ltp": 372.25,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 12.35,
-    "ltpGainPct": -9.3
+    "ltpGainPct": -8.09
    },
    "checks": [],
    "fundamentals": {
@@ -20637,12 +20637,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 50.89,
+    "ltp": 50.8,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 49.68
+    "ltpGainPct": 49.41
    },
    "checks": [],
    "fundamentals": {
@@ -21281,12 +21281,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 161,
+    "ltp": 161.08,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 20.15
+    "ltpGainPct": 20.21
    },
    "checks": [],
    "fundamentals": {
@@ -21906,12 +21906,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 289.9,
+    "ltp": 288,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-26",
     "dayOpenGainPct": -1.91,
-    "ltpGainPct": -19.92
+    "ltpGainPct": -20.44
    },
    "checks": [],
    "fundamentals": {
@@ -22498,12 +22498,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 271.35,
+    "ltp": 270.85,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -27.64
+    "ltpGainPct": -27.77
    },
    "checks": [],
    "fundamentals": {
@@ -23127,12 +23127,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 200,
-    "ltp": 194.09,
+    "ltp": 194,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-26",
     "dayOpenGainPct": 8.11,
-    "ltpGainPct": 4.91
+    "ltpGainPct": 4.86
    },
    "checks": [],
    "fundamentals": {
@@ -24014,7 +24014,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-26T08:40:13.995Z",
+   "subsAsOn": "2026-10-26T08:50:51.869Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -24108,7 +24108,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-26T08:40:13.995Z"
+   "fetchedAt": "2026-10-26T08:50:51.869Z"
   }
  ],
  "filings": [
