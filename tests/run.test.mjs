@@ -128,3 +128,7 @@ test("sign-in ships switched off (no client ID committed by accident) and never 
   assert.ok(!/localStorage\.setItem\("(id_token|token|access_token)/.test(s) && !/store\.set\("(id_token|token)/.test(s));
   assert.ok(!/client_secret/i.test(s), "no client secret in the app");
 });
+
+test("mfapi.in history is requested with a query string (the bare URL is served from cache without CORS headers and the browser blocks it)", () => {
+  assert.match(read("app-mf.js"), /api\.mfapi\.in\/mf\/" \+ code \+ "\?src=trendy"/);
+});

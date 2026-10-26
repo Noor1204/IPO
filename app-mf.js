@@ -92,7 +92,8 @@
     if (cur && !force) return cur;
     if (cur && cur.st === "load") return cur;
     const h = HS[code] = { st: "load", pts: null };
-    fetch("https://api.mfapi.in/mf/" + code, { signal: AbortSignal.timeout ? AbortSignal.timeout(25000) : undefined })
+    fetch("https://api.mfapi.in/mf/" + code + "?src=trendy", {   // the bare /mf/<code> URL comes back from mfapi's cache without CORS headers (the browser then blocks it); with a query string it is sent with them
+      signal: AbortSignal.timeout ? AbortSignal.timeout(25000) : undefined })
       .then(r => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
       .then(j => { const pts = cleanSeries(j); if (pts.length < 2) throw new Error("no history"); h.pts = pts; h.st = "ok"; })
       .catch(e => { console.warn("mf history failed", code, e); h.st = "err"; })
