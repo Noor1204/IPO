@@ -887,3 +887,9 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 .tcx-chip[hidden]{display:none}
 
 .cgrid .cl span{min-height:2.4em;display:flex;align-items:flex-end}
+
+/* a text box gets its focus ring from its own border (or from the label around it): the global 2px outline made a second box inside it on phones */
+input:not([type=checkbox]):not([type=radio]):not([type=range]):focus-visible{outline:none}
+/* search screen: results right under the box, the credit at the bottom of the screen */
+#app.is-search{display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
+#app.is-search .credit{margin-top:auto;padding-top:18px}
