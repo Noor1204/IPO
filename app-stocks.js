@@ -791,11 +791,8 @@
     }
     return cp;
   }
-  function indexMovers(H) {
-    const L = moverSrc(H), m = L || S.movers, mini = (title, icon, list, sub) => `<div class="card st-mini"><h2>${ic(icon)} ${title}</h2><div class="st-list">${moverRows(H, list, 5, sub, true)}</div></div>`;
-    return `<p class="tl-sec st-sechd">Across all stocks, not only this index · ${srcLabel(H, L)}</p><div class="st-g2">${mini("Top gainers", "trending-up", m.gain, subValue)}${mini("Top losers", "trending-down", m.loss, subValue)}</div>
-      <div class="st-g2">${mini("Near 52-week high", "trophy", m.hi, r => isNum(r[6]) ? nf(r[6], 1) + "% below high" : "—")}${mini("Near 52-week low", "target", m.lo, r => isNum(r[6]) ? nf(r[6], 1) + "% above low" : "—")}</div>`;
-  }
+  // the market-wide gainers / losers / 52-week lists are not about one index (there is no constituent list for it), so an index page does not repeat them: they are on the Market tab
+  function indexMovers() { return ""; }
   function indexPage(slug, H) {
     if (!slugOk(slug)) return H.head("Index") + `<div class="card"><div class="st-msg"><p><b>This index could not be found.</b></p></div></div>`;
     ensureIdxH(slug, H);

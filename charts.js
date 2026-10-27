@@ -383,7 +383,7 @@
       var r = cleanRows(o.data); rows = r.rows; n = rows.length; hasOHLC = r.hasOHLC;
       hasVol = o.volume !== false && rows.some(function (x) { return x.v !== null && x.v > 0; });
       intraday = rows.some(function (x) { return x.t % DAY !== 0; });
-      ma[20] = n > 1 ? sma(rows, 20) : []; ma[50] = n > 1 ? sma(rows, 50) : [];
+      ma[20] = n > 1 ? sma(rows, 20) : []; ma[50] = n > 1 ? sma(rows, 50) : []; m20c.hidden = n < 21; m50c.hidden = n < 51;
       avail = []; var hidden = false;
       if (n > 1) {
         var want = Array.isArray(o.ranges) ? o.ranges.map(String) : ["1M", "3M", "6M", "1Y", "All"];
