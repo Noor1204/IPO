@@ -870,3 +870,12 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 
 .vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .insights .ins:last-child:nth-child(odd){grid-column:1/-1}
+
+/* rows that also carry the card class "ipoc" (tap to open) must not inherit the card's block layout, 16px padding and 14px margin */
+.brow.ipoc{display:grid;padding:6px 0;margin:0}
+.calrow.ipoc{display:flex;padding:9px 0;margin:0}
+.ut-two{grid-template-columns:1fr 1fr}
+.datebox em{overflow-wrap:normal;word-break:keep-all}
+.uprow .datebox{width:62px}.uprow .datebox em{font-size:12px;letter-spacing:-.2px;padding:0 1px}
+.outc table{min-width:540px}
+.outc th{white-space:nowrap}

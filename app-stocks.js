@@ -388,7 +388,7 @@
     if (S.idxList && cards) {
       return `<div class="card st-dsec"><div class="st-ch-h"><h2>${ic("chart-bar")} Indices</h2><button class="linkbtn st-lk" data-m="stocks" data-act="allidx">All indices ${ic("chevron-right")}</button></div>
         <div class="st-hr">${cards}</div>
-        <p class="mut sm st-foot">${lv ? snapTag(H) + ". An index missing from the snapshot shows its end-of-day level, marked EOD." : "Closing levels from NSE India, " + H.esc(H.fmtD(S.idxList.date)) + "."} BSE Sensex is not available.</p></div>`;
+        <p class="mut sm st-foot">${lv ? "An index missing from the snapshot shows its end-of-day level, marked EOD." : "Closing levels from NSE India, " + H.esc(H.fmtD(S.idxList.date)) + "."} BSE Sensex is not available.</p></div>`;
     }
     if (S.idxList === null && S.status === "ok") return `<div class="card">${S.index && Array.isArray(S.index.rows) ? "<h2>Indices</h2>" + H.tbl(["Index", "Close", "Change %"], S.index.rows.slice(0, 12).map(r => [H.esc(r[0]), px(r[1]), `<span class="${cls(r[3])}">${pct(r[3])}</span>`])) : '<p class="mut">Index data is not available right now.</p>'}</div>`;
     return "";
@@ -552,7 +552,7 @@
     ensureList(H);
     const v = mvView(), k = v.k;
     return H.head(TITLES[k]) + stale() + reg("mv-bar", () => mvBar(H, v), () => mvBarSig(v)) +
-      `<div class="card st-mvc"><label class="st-sin">${ic("search")}<input id="st-mq" type="search" data-m="stocks" placeholder="Search in this list: symbol or company" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search in this list" value="${H.esc(S.mq)}" maxlength="40"></label>` +
+      `<div class="card st-mvc"><label class="st-sin">${ic("search")}<input id="st-mq" type="search" data-m="stocks" placeholder="Search this list" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Search in this list" value="${H.esc(S.mq)}" maxlength="40"></label>` +
       reg("mv-ctl", () => mvCtl(H, v), () => mvCtlSig(v)) + reg("mv-info", () => mvInfo(H, v)) + reg("mv-list", () => mvListHtml(H, v), () => mvSig(v)) + `</div>` + foot(H);
   }
   // Movers root: a compact overview, 5 rows per list and a "See more" that opens the full list

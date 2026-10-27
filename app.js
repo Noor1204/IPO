@@ -386,7 +386,7 @@ function outcomes() {
   const close = g.filter(r => r.m.gmpHit === "close").length, near = g.filter(r => r.m.gmpHit === "near").length;
   const avg = g.length ? g.reduce((a, r) => a + Math.abs(r.m.err), 0) / g.length : null, hit = s.filter(r => r.m.scoreHit).length;
   const sum = `<div class="stats" style="margin:0 0 10px">${g.length ? `<div class="stat" style="cursor:default"><b>${close}/${g.length}</b><span>GMP close (within 5 pts)</span></div><div class="stat" style="cursor:default"><b>${close + near}/${g.length}</b><span>GMP within 10 pts</span></div><div class="stat" style="cursor:default"><b>${avg.toFixed(1)} pts</b><span>Average GMP miss</span></div>` : ""}${s.length ? `<div class="stat" style="cursor:default"><b>${hit}/${s.length}</b><span>Score matched the outcome</span></div>` : ""}</div>`;
-  return card(ic("chart-bar") + " GMP & score vs actual listing", sum + tbl(["IPO", "Score", "GMP at listing", "Actual day-1 open", "GMP vs actual", "Score"], rows.map(({ i, m }) => [esc(i.name), m.score ?? "—", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`, fmtGain(m.actual), m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—", SCORE_HIT(m.scoreHit)])) +
+  return card(ic("chart-bar") + " GMP & score vs actual listing", sum + mx("outc", '<div class="outc">' + tbl(["IPO", "Score", "GMP at listing", "Actual day-1 open", "GMP vs actual", "Score"], rows.map(({ i, m }) => [esc(i.name), m.score ?? "—", m.gmpP === null ? "—" : `₹${m.gmp} ${fmtGain(m.gmpP)}`, fmtGain(m.actual), m.gmpHit ? `${fmtPts(m.err)} ${GMP_HIT[m.gmpHit]}` : "—", SCORE_HIT(m.scoreHit)])) + '</div>', { n: 0, more: "See per-IPO table", less: "Hide table" }) +
     `<p class="mut sm"><b>GMP</b> = last grey-market reading on or before listing day, as % of the issue price. "GMP vs actual" = actual day-1 gain minus the GMP % (green = within 5 points, amber = within 10). <b>Score</b> 60+ expects no loss (day-1 open at or above the issue price), below 60 expects a loss; "Matched" means the real day-1 open agreed. Day-1 open is from Yahoo Finance and can differ slightly from the exchange's discovered listing price. GMP is rumour data; this is information, not investment advice.</p>`);
 }
 // SEBI DRHP / RHP filings = companies that have filed but not announced a price band yet
@@ -423,7 +423,7 @@ function upRow(i) {
   const minInv = isNum(i.lot) && hasPrice ? i.lot * i.priceHigh : null;
   const docOk = (i.documents || []).some(d => /prospectus|rhp|zip from (nse|bse)/i.test(d.label)) || !!i.fundamentals;
   const d = i.open ? pd(i.open) : null;
-  const when = n === null ? "Date TBA" : n <= 0 ? "Opens today" : n === 1 ? "Opens tomorrow" : `in ${n} days`;
+  const when = n === null ? "Date TBA" : n <= 0 ? "Today" : n === 1 ? "Tomorrow" : `in ${n} days`;
   const gcls = isNum(g) ? (g >= 0 ? "grn-t" : "red-t") : "mut";
   return `<div class="uprow" data-open="${i.symbol}">
     <div class="datebox">${d ? `<b>${d.getDate()}</b><span>${d.toLocaleString("en-IN", { month: "short" }).toUpperCase()}</span>` : "<b>TBA</b>"}<em>${when}</em></div>
@@ -441,7 +441,7 @@ function upDashboard() {
   const wk = ups.filter(i => { const n = dayDiff(i.open); return n !== null && n <= 7; }).length;
   const top = ups.filter(i => isNum(gmpNow(i))).sort((a, b) => gmpNow(b) - gmpNow(a))[0];
   const groups = [["This week", i => { const n = dayDiff(i.open); return n !== null && n <= 7; }], ["Next week", i => { const n = dayDiff(i.open); return n !== null && n > 7 && n <= 14; }], ["Later", i => { const n = dayDiff(i.open); return n !== null && n > 14; }], ["Dates not announced", i => dayDiff(i.open) === null]];
-  return `<div class="tiles ut-tiles"><div class="tile ut ut1"><i>${ic("calendar")}</i>Upcoming<b>${ups.length}</b></div><div class="tile ut ut2"><i>${ic("clock")}</i>Opening in 7 days<b>${wk}</b></div><div class="tile ut ut3"><i>${ic("rocket")}</i>Highest GMP<b>${top ? "₹" + gmpNow(top) : "—"}</b><span class="mut sm">${top ? esc(top.name.split(" ").slice(0, 2).join(" ")) : ""}</span></div></div>` +
+  return `<div class="tiles ut-tiles ut-two"><div class="tile ut ut2"><i>${ic("clock")}</i>Opening in 7 days<b>${wk}</b></div><div class="tile ut ut3"><i>${ic("rocket")}</i>Highest GMP<b>${top ? "₹" + gmpNow(top) : "—"}</b><span class="mut sm">${top ? esc(top.name.split(" ").slice(0, 2).join(" ")) : ""}</span></div></div>` +
     groups.map(([t, f], gi) => { const l = ups.filter(f); return l.length ? `<h2 class="grp gp${gi}">${t} (${l.length})</h2><div class="cards">${l.map(upRow).join("")}</div>` : ""; }).join("") +
     `<p class="mut sm">* Allotment/listing dates are estimates until the issuer confirms them.</p>`;
 }
@@ -964,8 +964,8 @@ function calendarScreen() {
     body = `<div class="calgrid" role="group" aria-label="${CAL_MON[m]} ${y}">${["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"].map(w => `<div class="calwd">${w}</div>`).join("")}${cells}</div>` +
       card(sel ? `${pd(sel).toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "long", year: "numeric" })}${sel === tday ? " (today)" : ""}` : "Events", sel ? (list.length ? list.map(e => calRow(e, sel)).join("") : `<p class="mut sm">No IPO events or market holidays on this day.</p>`) : `<p class="mut sm">Tap a day to see its events.</p>`);
   } else {
-    const pre = y + "-" + pad2(m + 1), days = [...new Set([...ev.keys(), ...HOL.map.keys()])].filter(d => d.startsWith(pre)).sort();
-    body = days.length ? days.map(d => `<div class="card dcard calag"><h3>${pd(d).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })}${d === tday ? ' <span class="calchip c-open">Today</span>' : ""}</h3>${calDayEvents(ev, d).map(e => calRow(e, d)).join("")}</div>`).join("") : card("", `<p class="mut sm">No IPO events or market holidays in ${CAL_MON[m]} ${y}.</p>`);
+    const pre = y + "-" + pad2(m + 1), days = [...new Set([...ev.keys(), ...HOL.map.keys()])].filter(d => d.startsWith(pre) && (pre !== tday.slice(0, 7) || d >= tday)).sort();   // this month: from today on (days already gone are noise); other months in full
+    body = days.length ? days.map(d => `<div class="card dcard calag"><h3>${pd(d).toLocaleDateString("en-IN", { weekday: "short", day: "numeric", month: "short" })}${d === tday ? ' <span class="calchip c-open">Today</span>' : ""}</h3>${calDayEvents(ev, d).map(e => calRow(e, d)).join("")}</div>`).join("") : card("", `<p class="mut sm">No ${pre === tday.slice(0, 7) ? "more " : ""}IPO events or market holidays in ${CAL_MON[m]} ${y}.</p>`);
   }
   const ups = HOL.rows.filter(h => h.d >= tday && !(!h.special && [0, 6].includes(pd(h.d).getDay()))).slice(0, 5);
   const upc = card(ic("calendar-event") + " Upcoming market holidays", HOL.st === "fail" ? `<p class="mut sm">The holiday list could not be loaded.</p>` : HOL.st !== "ok" ? `<p class="mut sm">Loading…</p>` : ups.length ? ups.map(h => { const n = dayDiff(h.d); return `<div class="row sm"><span><b>${esc(h.name)}${h.special ? "*" : ""}</b><br><span class="mut">${pd(h.d).toLocaleDateString("en-IN", { weekday: "long", day: "numeric", month: "short", year: "numeric" })}</span></span><span class="mut">${n === 0 ? "Today" : n === 1 ? "Tomorrow" : "in " + n + " days"}</span></div>`; }).join("") : `<p class="mut sm">No more holidays in NSE's current list.</p>`);

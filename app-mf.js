@@ -170,7 +170,7 @@
     if (!M.data) return wrap(h + noData(H) + foot(H));
     const { list, hidden } = filtered(), shown = list.slice(0, M.n), k = M.f.sort;
     h += '<div class="card mf-bar">' +
-      '<input id="mf-q" type="search" data-m="mf" data-f="q" placeholder="Search fund or AMC, e.g. flexi cap, HDFC" value="' + H.esc(M.q) + '" autocomplete="off" aria-label="Search funds">' +
+      '<input id="mf-q" type="search" data-m="mf" data-f="q" placeholder="Search fund or AMC" value="' + H.esc(M.q) + '" autocomplete="off" aria-label="Search funds">' +
       '<div class="mf-seg" role="group" aria-label="Plan">' + [0, 1].map(p => '<button data-m="mf" data-act="plan" data-v="' + p + '" class="' + (M.f.plan === p ? "on" : "") + '">' + planName(p) + " plan</button>").join("") + "</div>" +
       '<div class="mf-chips" role="group" aria-label="Category">' + CHIPS.map(([c, l]) => '<button data-m="mf" data-act="cat" data-v="' + c + '" class="mf-chip' + (M.f.cat === c ? " on" : "") + '">' + H.esc(l) + "</button>").join("") + "</div>" +
       '<div class="mf-sortrow"><label class="mf-sortl" for="mf-sort">Sort by</label><select id="mf-sort" data-m="mf" data-f="sort" aria-label="Sort funds">' + SORTS.map(([c, l]) => '<option value="' + c + '"' + (k === c ? " selected" : "") + ">" + H.esc(l) + "</option>").join("") + "</select></div></div>";
