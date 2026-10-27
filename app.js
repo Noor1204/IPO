@@ -1144,6 +1144,7 @@ const lang = () => store.get("lang", "en") === "hi" ? "hi" : "en";
 const langBtn = () => lang() === "en" ? `<button class="linkbtn" data-lang="hi">${ic("language")} Translate to Hindi / हिंदी में पढ़ें</button>` : `<button class="linkbtn" data-lang="en">${ic("language")} Show in English / अंग्रेज़ी में पढ़ें</button>`;
 const disclaimer = () => `<b>${TEXT.disclaimerTitle[lang()]}</b><br>${TEXT.disclaimer[lang()]}<br>${langBtn()}`;
 const about = () => `<p class="sm" style="margin:0">${TEXT.about[lang()]}</p>${langBtn()}`;
+const BUILD = (() => { try { return (new URL(document.currentScript.src).searchParams.get("v") || "local").slice(0, 7); } catch { return "local"; } })();
 const credit = () => `<div class="credit">Developed by <b>Zynora Technology</b> (Noor)<span>© 2026 Zynora Technology. All rights reserved.</span></div>`;
 // If the data file stops being refreshed, say so on every screen instead of quietly showing old numbers.
 const STALE_HOURS = 8;
@@ -1161,7 +1162,7 @@ const SIDE = [["about", "info-circle", "About"], ["general", "tools", "General"]
 const sideMenu = () => `<div class="dim" data-drawer-close></div><aside class="drawer" aria-label="Menu">
   <div class="dhead"><img src="icons/logo.svg" alt="" width="40" height="40"><div><b>Trendy <span>IPO</span></b><div class="mut sm">Menu</div></div><button class="ib dclose" data-drawer-close aria-label="Close">${ic("x")}</button></div>
   <div class="dnav">${accountRow()}${SIDE.map(([k, icn, l]) => `<button data-tab="${k}" class="${state.tab === k && !state.detail && !state.report ? "on" : ""}">${ic(icn)}<span>${l}</span></button>`).join("")}</div>
-  <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology</div></aside>`;
+  <div class="dfoot sm mut">Developed by <b>Zynora Technology</b> (Noor)<br>© 2026 Zynora Technology · build ${BUILD}<br><button type="button" class="linkb" data-hardrefresh>Update app now</button></div></aside>`;
 // ---------- About page: menu of General / Share / Help & Support, each row opens its own page ----------
 state.sub = null;
 state.applied = store.get("applied", []);
@@ -1335,6 +1336,11 @@ function goTab(m, k) {
   state.mod = m; MOD_LAST[m] = k; store.set("modLast", MOD_LAST);
   state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false;
   render(); scrollTo(0, 0);
+}
+async function hardRefresh() {
+  toast("Updating…");
+  try { for (const r of await navigator.serviceWorker.getRegistrations()) await r.unregister(); for (const k of await caches.keys()) await caches.delete(k); } catch {}
+  location.replace(location.pathname + "?u=" + Date.now());
 }
 function hostApi() {
   return { state, esc, hl, flash: flashFirst, card, tbl, store, toast, isNum, f2, inr, safeUrl, head, fmtD, render, istDay, ic,
@@ -1681,8 +1687,9 @@ function toast(m) {
   clearTimeout(toastTimer); toastTimer = setTimeout(() => { el.classList.remove("show"); toastTimer = setTimeout(() => el.remove(), 300); }, 1900);
 }
 document.addEventListener("click", e => {
-  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear],[data-ack-lang],[data-cal],[data-rp]"); if (!t) return;
+  const t = e.target.closest("[data-open],[data-back],[data-tab],[data-seg],[data-watch],[data-cmp],[data-apply],[data-close],[data-jump],[data-search],[data-share],[data-toast],[data-ack],[data-lang],[data-report],[data-report-close],[data-print],[data-rtab],[data-more-filings],[data-pill],[data-stat],[data-more],[data-goto],[data-refresh],[data-star],[data-menu],[data-drawer-close],[data-mod],[data-mtab],[data-m],[data-sub],[data-nreadall],[data-nkey],[data-applied],[data-appshare],[data-rate],[data-pansave],[data-pandel],[data-allot-open],[data-gsearch],[data-bell],[data-mx],[data-dtab],[data-sres],[data-sall],[data-srecent],[data-sclear],[data-ack-lang],[data-cal],[data-rp],[data-hardrefresh]"); if (!t) return;
   trackClick(t, t.dataset);
+  if (t.hasAttribute("data-hardrefresh")) { hardRefresh(); return; }
   if (t.hasAttribute("data-refresh")) { loadData(true); return; }
   if (t.hasAttribute("data-menu")) { if (state.drawer) goBack(); else { state.drawer = true; render(); } return; }
   if (t.hasAttribute("data-drawer-close")) { goBack(); return; }
