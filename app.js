@@ -166,9 +166,9 @@ function phase(i, now = Date.now()) {
   if (i.listingPerf || (!i.allotment && !i.listing) || (i.listing && dayDiff(i.listing) < 0)) return { k: "listed" };
   const ex = i.datesExpected ? " (exp.)" : "";
   if (i.listing && dayDiff(i.listing) === 0) { const t = new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime(); return { k: "listingToday", label: ic("bell-ringing") + " Listing today", end: t > now ? t : null, tl: "Listing in", sub: "10:00 AM" }; }
-  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", label: ic("trending-up") + " Listing on " + fmtD(i.listing) + ex, end: i.listing ? new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime() : null, tl: "Listing in", sub: "10:00 AM" };
-  if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", label: ic("circle-check") + " Allotment day: check your status" };
-  return { k: "wait", label: ic("hourglass") + " Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : ""), end: i.allotment ? new Date(i.allotment + "T00:00:00" + IST_OFFSET).getTime() : null, tl: "Allotment day starts in", sub: i.allotment ? fmtD(i.allotment) + ex : "" };
+  if (i.allotment && dayDiff(i.allotment) < 0) return { k: "listing", chk: true, label: ic("trending-up") + " Listing on " + fmtD(i.listing) + ex, end: i.listing ? new Date(i.listing + "T10:00:00" + IST_OFFSET).getTime() : null, tl: "Listing in", sub: "10:00 AM" };
+  if (i.allotment && dayDiff(i.allotment) === 0) return { k: "allotDay", chk: true, label: ic("circle-check") + " Allotment day: check your status" };
+  return { k: "wait", chk: true, label: ic("hourglass") + " Waiting for allotment" + (i.allotment ? " · " + fmtD(i.allotment) + ex : ""), end: i.allotment ? new Date(i.allotment + "T00:00:00" + IST_OFFSET).getTime() : null, tl: "Allotment day starts in", sub: i.allotment ? fmtD(i.allotment) + ex : "" };
 }
 const pad2 = n => String(n).padStart(2, "0");
 const fmtCd = ms => { const s = Math.max(0, Math.floor(ms / 1000)), d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60); return (d > 0 ? d + "d " + pad2(h) + "h " + pad2(m) + "m " : h > 0 ? h + "h " + pad2(m) + "m " : m + "m ") + pad2(s % 60) + "s"; };
@@ -178,7 +178,8 @@ const cdFor = i => { const p = phase(i); if (!p.end || p.end <= Date.now()) retu
 function actionBtn(i, wide) {
   const p = phase(i), w = wide ? ' style="width:100%"' : "";
   if (p.k === "apply") return `<button class="btn ${preApply(i) ? "pre" : ""}" data-apply="${i.symbol}"${w}>${applyLabel(i)}</button>`;
-  if (p.k === "allotDay") return `<button class="btn allotbtn" data-allot-open="${i.symbol}"${w}>${p.label}</button>`;
+  // from the day bidding closes until the day before listing the same button is always there; on listing day it goes away (phase "listingToday")
+  if (p.chk) { const sub = p.k === "allotDay" ? "Allotment day" : String(p.label).replace(/<[^>]*>/g, "").trim(); return `<button class="btn allotbtn" data-allot-open="${i.symbol}"${w}><span class="ab-t">${ic("circle-check")} Check allotment status</span><small>${esc(sub)}</small></button>`; }
   if (p.k === "listed") return "";
   return `<div class="phase ${p.k}">${p.label}</div>`;
 }
@@ -230,9 +231,12 @@ function listCard(i) {
 }
 const bellDot = () => unreadCount() ? '<i class="bdot"></i>' : "";
 const brand = () => `<header class="brand"><div class="brand-row"><span class="logomark"><img src="icons/logo.svg" alt="" width="34" height="34"></span><span class="wm">Trendy <b>IPO</b></span><span class="sp"></span><button class="ib sq" data-bell aria-label="Notifications">${ic("bell")}${bellDot()}</button><button class="ib sq menubtn" data-menu aria-label="Open menu">${ic("menu-2")}</button></div>
-<button class="gsearch" data-gsearch aria-label="Search IPOs, stocks and funds">${ic("search")}<span>Search IPOs, stocks, funds</span></button></header>`;
+${ownSearch() ? "" : `<button class="gsearch" data-gsearch aria-label="Search IPOs, stocks and funds">${ic("search")}<span>Search IPOs, stocks, funds</span></button>`}</header>`;
+// screens that already have their own search box: the header search bar is left out there, so there is only ever one search box on a screen
+const ownSearch = () => { const t = String(state.tab); return t === "search" || (!state.sub && !state.detail && !state.report && (t === "stocks:search" || t === "mf:funds" || t === "mf:compare")) || (t.startsWith("stocks:") && String(state.sub).startsWith("list:")); };
 const backBtn = () => "";
-const head = (title, extra = "") => `${brand()}<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? backBtn() : ""}<h1>${title}</h1>${extra}</div>${modStrip()}`;
+// screens with a tab strip do not repeat their name as a big title (the strip and the bottom bar already say where you are): the title stays for screen readers only
+const head = (title, extra = "") => { const strip = modStrip(); return `${brand()}${strip && !extra ? `<h1 class="vh">${title}</h1>` : `<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? backBtn() : ""}<h1>${title}</h1>${extra}</div>`}${strip}`; };
 // GMP trend: one point per day, the last one is today. Hover (mouse) or touch/drag (phone) on the chart shows that day's date and rate.
 let GCH = [];
 function gmpDay(p, k, arr) {
@@ -293,7 +297,7 @@ function insights() {
     sc && card(ic("trophy"), "Top score", score(sc) + "/100", esc(shortName(sc.name)), "", sc.symbol),
     card(ic("clock"), "Closing today", String(closingNow.length), closingNow.length ? ["Mainboard", "SME"].map(b => { const g = closingNow.filter(i => (i.board === "SME" ? "SME" : "Mainboard") === b); return g.length ? `<div class="bdline"><span class="bd ${b === "SME" ? "sme" : "main"}">${b} · ${g.length}</span> ${g.map(i => esc(shortName(i.name))).join(", ")}</div>` : ""; }).join("") : "No IPO closes today", closingNow.length ? "red-t" : "")
   ].filter(Boolean);
-  return `<div class="insights">${cards.join("")}</div>`;
+  return `<div class="insights">${cards.filter(c => !(closingNow.length === 0 && c.includes("Closing today"))).join("")}</div>`;   // an empty "Closing today: 0" tile is only wasted space
 }
 // everything that happens in the next 7 days: opens, closes, allotment, listing
 function calendarCard(status, days) {
@@ -347,7 +351,7 @@ function ipoTab() {
   <div class="stats" role="group" aria-label="IPO lists">${[["live", "Open IPOs", ""], ["upcoming", "Upcoming IPOs", ""], ["listed", "Closed IPOs", ""], ["gain", "Listed in gains", "grn-t"], ["loss", "Listed in loss", "red-t"]].map(stat).join("")}</div>
   <div class="opts"><label class="chk"><input type="checkbox" data-board="main" ${state.main ? "checked" : ""}> MainBoard</label><label class="chk"><input type="checkbox" data-board="sme" ${state.sme ? "checked" : ""}> SME</label><span class="sp"></span>
   <select id="sort" aria-label="Sort" class="sortsel"><option value="score" ${state.sort === "score" ? "selected" : ""}>Sort: Score</option><option value="gmp" ${state.sort === "gmp" ? "selected" : ""}>Sort: GMP %</option><option value="subs" ${state.sort === "subs" ? "selected" : ""}>Sort: Subscription</option><option value="date" ${state.sort === "date" ? "selected" : ""}>Sort: Open date</option></select></div>
-  ${top && state.seg !== "listed" && !state.q ? `<div class="note topnote">${ic("trophy")}<span><b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</span></div>` : ""}
+  ${top && state.seg !== "listed" && state.seg !== "live" && !state.q ? `<div class="note topnote">${ic("trophy")}<span><b>Highest score:</b> ${esc(top.name)} — ${score(top)}/100 (${verdict(score(top)).t})</span></div>` : ""}
   ${state.seg === "live" && !state.q ? insights() : ""}
   ${state.seg === "listed" && !state.q ? `<div class="two">${recentCard()}</div>` : ""}
   ${state.seg === "listed" ? outcomes() : ""}
@@ -888,13 +892,15 @@ function compare() {
   <p class="mut sm">Green tick = best of the selected IPOs on that row, red = weakest. A highlight is only a comparison of these IPOs, not advice.</p>`;
 }
 function allotment() {
-  const list = state.ipos.filter(i => i.status === "listed" || (i.status === "live" && i.close && dayDiff(i.close) <= 0));
-  const sel = byId(state.allotIpo) || list[0];
-  return `${head("Allotment Status")}<div class="card"><p class="mut">Select the IPO, then check on the registrar's official page using your PAN or application number.</p>
-  <select id="allotSel">${list.map(i => `<option value="${i.symbol}" ${sel && sel.symbol === i.symbol ? "selected" : ""}>${esc(i.name)} (${fmtS(i.allotment)})</option>`).join("")}</select>
+  // the ones waiting for allotment or not listed yet come first (the same IPOs that show the Check allotment status button); earlier listings below them
+  const waiting = state.ipos.filter(i => phase(i).chk), earlier = state.ipos.filter(i => i.status === "listed" && !phase(i).chk);
+  const list = [...waiting, ...earlier], sel = byId(state.allotIpo) || list[0];
+  const opt = i => `<option value="${i.symbol}" ${sel && sel.symbol === i.symbol ? "selected" : ""}>${esc(i.name)} (${fmtS(i.allotment)})</option>`;
+  return `${head("Allotment Status")}<div class="card"><p class="mut">Pick the IPO and check on the registrar's official page with your PAN or application number. Allotment is a computerised lottery run by the registrar.</p>
+  <select id="allotSel">${waiting.length ? `<optgroup label="Waiting for allotment or listing">${waiting.map(opt).join("")}</optgroup>` : ""}${earlier.length ? `<optgroup label="Already listed">${earlier.map(opt).join("")}</optgroup>` : ""}</select>
   ${sel ? `<div class="note"><b>Registrar:</b> ${esc(sel.registrar.name || "—")}<br>Allotment date: ${fmtD(sel.allotment)} ${sel.datesExpected ? "(expected)" : ""}<br>${esc(sel.registrar.contact || "")}</div>
   ${(r => r ? `<a class="btn wide" href="${r.url}" target="_blank" rel="noopener noreferrer">${r.kind === "status" ? "Check allotment status" : "Open the registrar's website"} ${ic("external-link")}</a>${r.kind === "status" ? "" : '<p class="mut sm">Look for "IPO status" or "allotment" on their site.</p>'}` : `<p class="mut sm">The registrar's status page is not known for this IPO. If it is listed on BSE you can check here:</p><a class="btn ghost wide" href="${BSE_STATUS}" target="_blank" rel="noopener noreferrer">BSE: application status ${ic("external-link")}</a>`)(registrarLink(sel))}` : '<p class="mut">No IPOs awaiting allotment.</p>'}</div>
-  <div class="note">Allotment is decided by the registrar's computerised lottery. Use the registrar's official website or the NSE/BSE allotment pages.</div>`;
+  `;
 }
 // ---------- market holidays (data/market/holidays.json, NSE's trading-holiday list, pipeline/holidays.mjs) ----------
 const HOL = { rows: [], map: new Map(), st: "idle", u: "" };
@@ -1310,7 +1316,7 @@ const MOD_LAST = store.get("modLast", {});
 const MODS = ["ipo", "stocks", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
 for (const k of Object.keys(MOD_LAST)) if (!MODS.includes(k)) delete MOD_LAST[k];
 const fixTab = t => typeof t === "string" && t.includes(":") && !MODS.includes(t.split(":")[0]) ? "ipo" : t;
-const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["unlisted", "Unlisted"], ["calendar", "Calendar"], ["reports", "Reports"]];
+const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["calendar", "Calendar"], ["reports", "Reports"]];
 function modOf(tab) { return tab === "ipo" || tab === "allot" || tab === "unlisted" || tab === "calendar" || tab === "reports" ? "ipo" : typeof tab === "string" && tab.includes(":") ? (MODS.includes(tab.split(":")[0]) ? tab.split(":")[0] : "ipo") : null; }
 function modTabs(m) { return m === "ipo" ? IPO_TABS : (window.TrendyModules[m]?.tabs || []); }
 function modStrip() {

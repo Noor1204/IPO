@@ -97,8 +97,8 @@ a{color:var(--pri)}
 hr{border:0;border-top:1px solid var(--bd)}
 
 /* ---------- header (glass) ---------- */
-.brand{display:block;position:sticky;top:0;z-index:20;margin:-14px -14px 12px;padding:calc(10px + env(safe-area-inset-top,0px)) 14px 10px;background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid var(--glass-bd)}
-.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.brand{display:block;position:sticky;top:0;z-index:20;margin:-14px -14px 8px;padding:calc(8px + env(safe-area-inset-top,0px)) 14px 8px;background:var(--glass);-webkit-backdrop-filter:blur(18px) saturate(1.5);backdrop-filter:blur(18px) saturate(1.5);border-bottom:1px solid var(--glass-bd)}
+.brand-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
 .logomark{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:var(--grad);box-shadow:var(--glow);overflow:hidden}
 .logomark img{width:36px;height:36px;display:block}
 .wm{font-weight:800;font-size:19px;letter-spacing:-.02em}
@@ -118,7 +118,7 @@ hr{border:0;border-top:1px solid var(--bd)}
 .report .brand{display:none}
 
 /* ---------- module tab strip, segmented control ---------- */
-.mtabs{display:flex;gap:8px;overflow-x:auto;border:0;margin:0 -14px 16px;padding:2px 14px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.mtabs{display:flex;gap:8px;overflow-x:auto;border:0;margin:0 -14px 10px;padding:2px 14px 4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
 .mtabs button{flex:0 0 auto;margin:0;padding:0 16px;min-height:40px;border:1px solid var(--bd);border-radius:var(--r-pill);background:var(--surf);color:var(--mut);font:inherit;font-size:14px;font-weight:700;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s,border-color .2s,transform .12s}
 .mtabs button.on{background:var(--pri-bg);color:var(--pri2);border-color:var(--bd2);box-shadow:inset 0 0 0 1px var(--bd2)}
 .mtabs button:hover{color:var(--tx)}
@@ -862,3 +862,11 @@ table.rp td,table.rp th{white-space:nowrap}table.rp td:first-child{white-space:n
 .duser{display:flex;align-items:center;gap:10px;padding:10px 12px;margin:0 0 6px;border-radius:14px;background:var(--soft);border:1px solid var(--bd)}
 .duser .av{flex:0 0 auto;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--grad);color:#fff;font-weight:900}
 .duser div{min-width:0;flex:1}.duser b,.duser small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.duser small{color:var(--mut);font-weight:600}
+
+/* Check allotment status button: one label, the timing in a small second line */
+.btn.allotbtn{flex-direction:column;gap:1px;padding-top:7px;padding-bottom:7px;line-height:1.2}
+.allotbtn .ab-t{display:inline-flex;align-items:center;gap:6px}
+.allotbtn small{font-size:11px;font-weight:700;opacity:.92}
+
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.insights .ins:last-child:nth-child(odd){grid-column:1/-1}
