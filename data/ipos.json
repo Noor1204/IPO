@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-28T12:04:10.634Z",
+ "generatedAt": "2026-10-28T12:15:35.690Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-28T12:01:27.561Z"
+   "fetchedAt": "2026-10-28T12:13:00.262Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-28T12:02:18.541Z"
+   "fetchedAt": "2026-10-28T12:13:10.779Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-28T12:02:06.399Z"
+   "fetchedAt": "2026-10-28T12:13:01.734Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.383Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -83,80 +83,31 @@
     }
    ],
    "anchor": false,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "2-4 Nov"
+     }
+    ],
+    "rating": 1,
+    "updated": "2-4 Nov",
+    "history": [
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.383Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-2241",
-   "name": "HGS (India)",
-   "board": "SME",
-   "status": "upcoming",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "timeline": {
-    "open": "2026-10-30",
-    "close": "2026-11-03",
-    "allotment": "2026-11-04",
-    "refund": "2026-11-05",
-    "demat": "2026-11-05",
-    "listing": "2026-11-06"
-   },
-   "allotment": "2026-11-04",
-   "listing": "2026-11-06",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 120,
-   "lot": 1200,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 34.56,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.383Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/hgs-india-ipo/2241/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": null,
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.383Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -191,7 +142,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.399Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -220,10 +171,15 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 9,
-    "min": 9,
+    "value": 4.5,
+    "min": 0,
     "max": 9,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "30-3 Nov"
+     },
      {
       "source": "investorgain.com",
       "gmp": 9,
@@ -242,7 +198,7 @@
      },
      {
       "date": "2026-10-28",
-      "gmp": 9
+      "gmp": 4.5
      }
     ]
    },
@@ -250,7 +206,98 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.399Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "IG-2241",
+   "name": "HGS (India)",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "timeline": {
+    "open": "2026-10-30",
+    "close": "2026-11-03",
+    "allotment": "2026-11-04",
+    "refund": "2026-11-05",
+    "demat": "2026-11-05",
+    "listing": "2026-11-06"
+   },
+   "allotment": "2026-11-04",
+   "listing": "2026-11-06",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": 120,
+   "lot": 1200,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": 34.56,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/hgs-india-ipo/2241/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "30-3 Nov"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 14:53",
+    "history": [
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -285,7 +332,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.399Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -313,12 +360,35 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "30-3 Nov"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 14:58",
+    "history": [
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.399Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -353,7 +423,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.399Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -393,6 +463,11 @@
       "updated": "28-Oct 15:02",
       "seenLow": 27,
       "seenHigh": 27
+     },
+     {
+      "source": "ipowatch.in",
+      "gmp": 27,
+      "updated": "30-3 Nov"
      }
     ],
     "rating": 3,
@@ -412,7 +487,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.399Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -459,7 +534,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T12:01:06.063Z",
+   "subsAsOn": "2026-10-28T12:12:09.310Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -595,6 +670,11 @@
     "min": 9,
     "max": 9,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 9,
+      "updated": "29-2 Nov"
+     },
      {
       "source": "investorgain.com",
       "gmp": 9,
@@ -981,7 +1061,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T12:01:06.063Z"
+   "fetchedAt": "2026-10-28T12:12:09.310Z"
   },
   {
    "symbol": "ANTALA",
@@ -1023,7 +1103,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T12:01:24.347Z",
+   "subsAsOn": "2026-10-28T12:12:57.178Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1112,7 +1192,42 @@
     }
    ],
    "anchor": false,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "29-2 Nov"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 15:01",
+    "history": [
+     {
+      "date": "2026-10-24",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [
@@ -1137,7 +1252,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T12:01:24.347Z"
+   "fetchedAt": "2026-10-28T12:12:57.178Z"
   },
   {
    "symbol": "MKSONS",
@@ -1438,10 +1553,15 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 12,
-    "min": 12,
+    "value": 11,
+    "min": 10,
     "max": 12,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 10,
+      "updated": "28-30 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 12,
@@ -1472,13 +1592,13 @@
      },
      {
       "date": "2026-10-28",
-      "gmp": 12
+      "gmp": 11
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-10-28T12:04:10.589Z",
+     "at": "2026-10-28T12:15:35.656Z",
      "date": "2026-10-28",
      "qib": 0.9624588235294118,
      "bnii": 1.721880588235294,
@@ -1848,7 +1968,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T12:00:56.906Z"
+   "fetchedAt": "2026-10-28T12:12:05.732Z"
   },
   {
    "symbol": "CRL",
@@ -1894,7 +2014,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T12:01:27.561Z",
+   "subsAsOn": "2026-10-28T12:13:00.262Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1937,7 +2057,7 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Wednesday, October 28 ,  2026  5:00:00 PM",
+    "asOn": "Wednesday, October 28 ,  2026  4:48:18 PM",
     "totalBids": 598400,
     "timesSubscribed": null,
     "byPrice": {
@@ -1991,10 +2111,45 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "28-30 Oct"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 14:59",
+    "history": [
+     {
+      "date": "2026-10-24",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [
     {
-     "at": "2026-10-28T12:04:10.621Z",
+     "at": "2026-10-28T12:15:35.680Z",
      "date": "2026-10-28",
      "qib": null,
      "bnii": null,
@@ -2027,7 +2182,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T12:01:27.561Z"
+   "fetchedAt": "2026-10-28T12:13:00.262Z"
   },
   {
    "symbol": "IG-2017",
@@ -2065,7 +2220,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.399Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2098,6 +2253,11 @@
     "min": 38,
     "max": 38,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 38,
+      "updated": "28-30 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 38,
@@ -2136,7 +2296,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.399Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -2459,10 +2619,15 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 15,
+    "value": 16.5,
     "min": 15,
-    "max": 15,
+    "max": 18,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 18,
+      "updated": "27-29 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 15,
@@ -2505,7 +2670,7 @@
      },
      {
       "date": "2026-10-28",
-      "gmp": 15
+      "gmp": 16.5
      }
     ]
    },
@@ -2521,7 +2686,7 @@
      "total": 0.09928145593592652
     },
     {
-     "at": "2026-10-28T12:04:10.591Z",
+     "at": "2026-10-28T12:15:35.658Z",
      "date": "2026-10-28",
      "qib": 0.07792831840492026,
      "bnii": 0.2751627553797395,
@@ -2866,7 +3031,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T12:00:57.777Z"
+   "fetchedAt": "2026-10-28T12:12:06.628Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -3173,10 +3338,15 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 47,
-    "min": 47,
+    "value": 45.5,
+    "min": 44,
     "max": 47,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 44,
+      "updated": "27-29 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 47,
@@ -3227,7 +3397,7 @@
      },
      {
       "date": "2026-10-28",
-      "gmp": 47
+      "gmp": 45.5
      }
     ]
    },
@@ -3243,7 +3413,7 @@
      "total": 9.602151260504202
     },
     {
-     "at": "2026-10-28T12:04:10.593Z",
+     "at": "2026-10-28T12:15:35.659Z",
      "date": "2026-10-28",
      "qib": 12.199264705882353,
      "bnii": 70.21205882352942,
@@ -3586,7 +3756,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T12:00:58.672Z"
+   "fetchedAt": "2026-10-28T12:12:07.487Z"
   },
   {
    "symbol": "WISCON",
@@ -3632,7 +3802,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T12:01:21.856Z",
+   "subsAsOn": "2026-10-28T12:12:53.642Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3732,7 +3902,42 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "27-29 Oct"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 14:53",
+    "history": [
+     {
+      "date": "2026-10-24",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [
     {
      "at": "2026-10-27T23:51:47.628Z",
@@ -3745,7 +3950,7 @@
      "total": 0.91
     },
     {
-     "at": "2026-10-28T12:04:10.619Z",
+     "at": "2026-10-28T12:15:35.679Z",
      "date": "2026-10-28",
      "qib": null,
      "bnii": null,
@@ -3778,7 +3983,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T12:01:21.856Z"
+   "fetchedAt": "2026-10-28T12:12:53.642Z"
   },
   {
    "symbol": "EDELALTS",
@@ -3844,7 +4049,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T17:27:00+05:30",
+   "subsAsOn": "2026-10-28T17:36:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3981,7 +4186,7 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 28-Oct-2026 17:27:00 IST",
+    "asOn": "As on 28-Oct-2026 17:36:00 IST",
     "totalBids": 27815346,
     "timesSubscribed": 5.25,
     "byPrice": {
@@ -4116,6 +4321,11 @@
     "max": 12,
     "sources": [
      {
+      "source": "ipowatch.in",
+      "gmp": 12,
+      "updated": "26-28 Oct"
+     },
+     {
       "source": "investorgain.com",
       "gmp": 12,
       "pct": 0.72,
@@ -4179,7 +4389,7 @@
      "total": 0.3297456980453929
     },
     {
-     "at": "2026-10-28T12:04:10.594Z",
+     "at": "2026-10-28T12:15:35.660Z",
      "date": "2026-10-28",
      "qib": 13.134759393605183,
      "bnii": 5.911366824374123,
@@ -4587,7 +4797,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T12:01:05.187Z"
+   "fetchedAt": "2026-10-28T12:12:08.405Z"
   },
   {
    "symbol": "IG-2229",
@@ -4625,7 +4835,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T12:02:06.399Z",
+   "subsAsOn": "2026-10-28T12:13:01.734Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -4653,12 +4863,55 @@
     }
    ],
    "anchor": true,
-   "gmp": null,
+   "gmp": {
+    "value": 0,
+    "min": 0,
+    "max": 0,
+    "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 0,
+      "updated": "23-27 Oct"
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 15:00",
+    "history": [
+     {
+      "date": "2026-10-21",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     }
+    ]
+   },
    "subHistory": [],
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T12:02:06.399Z",
+   "fetchedAt": "2026-10-28T12:13:01.734Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -4961,6 +5214,11 @@
     "min": 13,
     "max": 13,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 13,
+      "updated": "21-23 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 13,
@@ -5868,10 +6126,15 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 250,
-    "min": 250,
+    "value": 248.5,
+    "min": 247,
     "max": 250,
     "sources": [
+     {
+      "source": "ipowatch.in",
+      "gmp": 247,
+      "updated": "21-23 Oct"
+     },
      {
       "source": "investorgain.com",
       "gmp": 250,
@@ -5938,7 +6201,7 @@
      },
      {
       "date": "2026-10-28",
-      "gmp": 250
+      "gmp": 248.5
      }
     ]
    },
@@ -6770,12 +7033,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 159.25,
+    "dayOpen": 156.10000610351562,
     "ltp": 158.07,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 5.46,
+    "dayOpenGainPct": 3.38,
     "ltpGainPct": 4.68
    },
    "checks": [
@@ -7559,12 +7822,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 371.1499938964844,
+    "dayOpen": 540,
     "ltp": 471.05,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 7.89,
+    "dayOpenGainPct": 56.98,
     "ltpGainPct": 36.93
    },
    "checks": [
@@ -8344,12 +8607,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 586,
+    "dayOpen": 623,
     "ltp": 608.45,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 0,
+    "dayOpenGainPct": 6.31,
     "ltpGainPct": 3.83
    },
    "checks": [
@@ -9162,12 +9425,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1160,
+    "dayOpen": 1299,
     "ltp": 1219.5,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 65.71,
+    "dayOpenGainPct": 85.57,
     "ltpGainPct": 74.21
    },
    "checks": [
@@ -9935,12 +10198,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 305,
+    "dayOpen": 285.8500061035156,
     "ltp": 272.45,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 5.54,
+    "dayOpenGainPct": -1.09,
     "ltpGainPct": -5.73
    },
    "checks": [
@@ -13570,12 +13833,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 215,
+    "dayOpen": 90.22000122070312,
     "ltp": 98.57,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": -2.27,
+    "dayOpenGainPct": -58.99,
     "ltpGainPct": -55.2
    },
    "checks": [],
@@ -14190,12 +14453,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 80,
+    "dayOpen": 66.80000305175781,
     "ltp": 67.39,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 6.67,
+    "dayOpenGainPct": -10.93,
     "ltpGainPct": -10.15
    },
    "checks": [],
@@ -17221,12 +17484,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 450,
+    "dayOpen": 354.5,
     "ltp": 355.4,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 65.44,
+    "dayOpenGainPct": 30.33,
     "ltpGainPct": 30.66
    },
    "checks": [],
@@ -18615,12 +18878,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 142,
+    "dayOpen": 103.52999877929688,
     "ltp": 100.98,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 2.16,
+    "dayOpenGainPct": -25.52,
     "ltpGainPct": -27.35
    },
    "checks": [],
@@ -19262,12 +19525,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 28.31999969482422,
+    "dayOpen": 20.579999923706055,
     "ltp": 19.59,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": -11.5,
+    "dayOpenGainPct": -35.69,
     "ltpGainPct": -38.78
    },
    "checks": [],
@@ -21647,12 +21910,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 455,
+    "dayOpen": 380,
     "ltp": 374.2,
     "exchange": "NSE",
-    "listDate": "2026-10-01",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 12.35,
+    "dayOpenGainPct": -6.17,
     "ltpGainPct": -7.6
    },
    "checks": [],
@@ -23548,12 +23811,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 355.1000061035156,
+    "dayOpen": 285,
     "ltp": 287.4,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": -1.91,
+    "dayOpenGainPct": -21.27,
     "ltpGainPct": -20.61
    },
    "checks": [],
@@ -24769,12 +25032,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 200,
+    "dayOpen": 206,
     "ltp": 200.32,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-10-28",
     "asOf": "2026-10-28",
-    "dayOpenGainPct": 8.11,
+    "dayOpenGainPct": 11.35,
     "ltpGainPct": 8.28
    },
    "checks": [],
@@ -25657,7 +25920,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T12:01:11.218Z",
+   "subsAsOn": "2026-10-28T12:12:14.371Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -25751,7 +26014,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T12:01:11.218Z"
+   "fetchedAt": "2026-10-28T12:12:14.371Z"
   }
  ],
  "filings": [
