@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-28T04:33:06.964Z",
+ "generatedAt": "2026-10-28T04:42:23.399Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-28T04:32:11.363Z"
+   "fetchedAt": "2026-10-28T04:41:25.379Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-28T04:32:22.086Z"
+   "fetchedAt": "2026-10-28T04:41:34.710Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-28T04:32:13.572Z"
+   "fetchedAt": "2026-10-28T04:41:26.182Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -111,7 +111,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -146,7 +146,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -202,7 +202,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -237,7 +237,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -293,7 +293,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -328,7 +328,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -392,7 +392,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -439,7 +439,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:31:56.946Z",
+   "subsAsOn": "2026-10-28T04:41:06.946Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -966,7 +966,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T04:31:56.946Z"
+   "fetchedAt": "2026-10-28T04:41:06.946Z"
   },
   {
    "symbol": "ANTALA",
@@ -1008,7 +1008,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:32:08.964Z",
+   "subsAsOn": "2026-10-28T04:41:23.437Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1157,7 +1157,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T04:32:08.964Z"
+   "fetchedAt": "2026-10-28T04:41:23.437Z"
   },
   {
    "symbol": "MKSONS",
@@ -1188,23 +1188,43 @@
    "issueDetail": "Initial Public offering comprising of Fresh issue up to 1,36,00,000 Equity Shares and offer for sale up to 34,00,000 Equity shares (Including Anchor portion 51,00,000 Equity Shares)",
    "upiCutoff": "30-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 3400000,
+     "bid": 0,
+     "times": 0
+    },
+    "nii": {
+     "offered": 2550000,
+     "bid": 180726,
+     "times": 0.07087294117647058
+    },
+    "bnii": {
+     "offered": 1700000,
+     "bid": 179452,
+     "times": 0.10556
+    },
+    "snii": {
+     "offered": 850000,
+     "bid": 1274,
+     "times": 0.0014988235294117647
+    },
+    "retail": {
+     "offered": 5950000,
+     "bid": 44681,
+     "times": 0.0075094117647058825
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
+     "offered": 11900000,
+     "bid": 225407,
+     "times": 0.018941764705882352
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:31:48.826Z",
-   "subsAsOnSource": "fetched",
+   "subsAsOn": "2026-10-28T10:06:00+05:30",
+   "subsAsOnSource": "exchange",
    "applyAs": [
     {
      "category": "Regular",
@@ -1246,7 +1266,92 @@
     "source": "NSE issue info + offer document (company website from offer document cover)"
    },
    "anchorSummary": null,
-   "bidSplit": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 179452,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 1274,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 43498,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 1183,
+     "times": null
+    }
+   ],
    "nseInfo": {
     "tickSize": "Re. 1",
     "discount": null,
@@ -1261,10 +1366,13 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
+    "asOn": "As on 28-Oct-2026 10:06:00 IST",
+    "totalBids": 225407,
+    "timesSubscribed": 0.02,
     "byPrice": {
-     "-": "-"
+     "153": "2,25,407",
+     "162": "2,25,134",
+     "Cut-Off": "43,498"
     }
    },
    "registrar": {
@@ -1385,7 +1493,18 @@
      }
     ]
    },
-   "subHistory": [],
+   "subHistory": [
+    {
+     "at": "2026-10-28T04:42:23.355Z",
+     "date": "2026-10-28",
+     "qib": 0,
+     "bnii": 0.10556,
+     "snii": 0.0014988235294117647,
+     "nii": 0.07087294117647058,
+     "retail": 0.0075094117647058825,
+     "total": 0.018941764705882352
+    }
+   ],
    "listingPerf": null,
    "checks": [
     {
@@ -1746,7 +1865,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T04:31:48.826Z"
+   "fetchedAt": "2026-10-28T04:41:03.246Z"
   },
   {
    "symbol": "CRL",
@@ -1788,7 +1907,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:32:11.363Z",
+   "subsAsOn": "2026-10-28T04:41:25.379Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1831,11 +1950,11 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "",
-    "totalBids": 9600,
+    "asOn": "Wednesday, October 28 ,  2026 10:10:02 AM",
+    "totalBids": 16000,
     "timesSubscribed": null,
     "byPrice": {
-     "80": 9600
+     "80": 16000
     }
    },
    "registrar": {
@@ -1944,7 +2063,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T04:32:11.363Z"
+   "fetchedAt": "2026-10-28T04:41:25.379Z"
   },
   {
    "symbol": "IG-2017",
@@ -1978,7 +2097,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2054,7 +2173,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -2093,31 +2212,31 @@
     },
     "nii": {
      "offered": 3034231,
-     "bid": 275175,
-     "times": 0.09069019464899014
+     "bid": 349335,
+     "times": 0.11513131333771226
     },
     "bnii": {
      "offered": 2022821,
-     "bid": 112545,
-     "times": 0.05563764663309309
+     "bid": 149355,
+     "times": 0.07383500566782726
     },
     "snii": {
      "offered": 1011410,
-     "bid": 162630,
-     "times": 0.16079532533789462
+     "bid": 199980,
+     "times": 0.19772396950791468
     },
     "retail": {
      "offered": 7079872,
-     "bid": 1127565,
-     "times": 0.15926347255995588
+     "bid": 1288080,
+     "times": 0.1819354926190756
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 14159744,
-     "bid": 1405800,
-     "times": 0.09928145593592652
+     "bid": 1640475,
+     "times": 0.11585484878822667
     },
     "anchor": {
      "offered": 6068460,
@@ -2126,7 +2245,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-27T17:00:00+05:30",
+   "subsAsOn": "2026-10-28T10:06:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -2208,7 +2327,7 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 109485,
+     "bid": 146295,
      "times": null
     },
     {
@@ -2222,14 +2341,14 @@
      "id": "2.2(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 0,
+     "bid": 810,
      "times": null
     },
     {
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 161370,
+     "bid": 197910,
      "times": null
     },
     {
@@ -2243,14 +2362,14 @@
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 1041345,
+     "bid": 1189395,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 86220,
+     "bid": 98685,
      "times": null
     }
    ],
@@ -2268,27 +2387,28 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 27-Oct-2026 17:00:00 IST",
-    "totalBids": 1410480,
-    "timesSubscribed": 0.1,
+    "asOn": "As on 28-Oct-2026 10:06:00 IST",
+    "totalBids": 1643130,
+    "timesSubscribed": 0.12,
     "byPrice": {
-     "313": "14,10,480",
-     "314": "14,03,370",
-     "315": "14,03,010",
-     "316": "13,99,545",
-     "317": "13,99,500",
-     "318": "13,99,275",
-     "319": "13,98,825",
-     "320": "13,98,690",
-     "321": "13,93,830",
-     "322": "13,93,290",
-     "323": "13,93,200",
-     "324": "13,93,065",
-     "325": "13,92,840",
-     "328": "13,91,895",
-     "329": "13,91,805",
-     "330": "13,91,265",
-     "Cut-Off": "10,44,270"
+     "313": "16,43,130",
+     "314": "16,35,030",
+     "315": "16,34,625",
+     "316": "16,30,935",
+     "317": "16,30,845",
+     "318": "16,30,620",
+     "319": "16,30,170",
+     "320": "16,30,035",
+     "321": "16,24,635",
+     "322": "16,24,320",
+     "323": "16,24,185",
+     "324": "16,24,005",
+     "325": "16,23,735",
+     "327": "16,22,700",
+     "328": "16,22,655",
+     "329": "16,22,340",
+     "330": "16,21,800",
+     "Cut-Off": "11,91,240"
     }
    },
    "registrar": {
@@ -2442,14 +2562,14 @@
      "total": 0.09928145593592652
     },
     {
-     "at": "2026-10-28T04:33:06.922Z",
+     "at": "2026-10-28T04:42:23.358Z",
      "date": "2026-10-28",
      "qib": 0.0007563696333906048,
-     "bnii": 0.05563764663309309,
-     "snii": 0.16079532533789462,
-     "nii": 0.09069019464899014,
-     "retail": 0.15926347255995588,
-     "total": 0.09928145593592652
+     "bnii": 0.07383500566782726,
+     "snii": 0.19772396950791468,
+     "nii": 0.11513131333771226,
+     "retail": 0.1819354926190756,
+     "total": 0.11585484878822667
     }
    ],
    "listingPerf": null,
@@ -2787,7 +2907,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T04:31:49.756Z"
+   "fetchedAt": "2026-10-28T04:41:04.069Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -2820,40 +2940,40 @@
    "bids": {
     "qib": {
      "offered": 3400000,
-     "bid": 40908400,
-     "times": 12.031882352941176
+     "bid": 40916800,
+     "times": 12.03435294117647
     },
     "nii": {
      "offered": 2550000,
-     "bid": 33123100,
-     "times": 12.989450980392157
+     "bid": 44212900,
+     "times": 17.338392156862746
     },
     "bnii": {
      "offered": 1700000,
-     "bid": 17686000,
-     "times": 10.403529411764707
+     "bid": 25393100,
+     "times": 14.937117647058823
     },
     "snii": {
      "offered": 850000,
-     "bid": 15437100,
-     "times": 18.16129411764706
+     "bid": 18819800,
+     "times": 22.140941176470587
     },
     "retail": {
      "offered": 5950000,
-     "bid": 40234100,
-     "times": 6.762033613445378
+     "bid": 47293700,
+     "times": 7.948521008403361
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 11900000,
-     "bid": 114265600,
-     "times": 9.602151260504202
+     "bid": 132423400,
+     "times": 11.12801680672269
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-27T17:00:00+05:30",
+   "subsAsOn": "2026-10-28T10:06:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -2922,63 +3042,63 @@
      "id": "1(d)",
      "label": "Others",
      "offered": null,
-     "bid": 40904200,
+     "bid": 40912600,
      "times": null
     },
     {
      "id": "2.1(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 260900,
+     "bid": 304300,
      "times": null
     },
     {
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 16981200,
+     "bid": 24484000,
      "times": null
     },
     {
      "id": "2.1(c)",
      "label": "Others",
      "offered": null,
-     "bid": 443900,
+     "bid": 604800,
      "times": null
     },
     {
      "id": "2.2(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 27300,
+     "bid": 34300,
      "times": null
     },
     {
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 15192300,
+     "bid": 18469800,
      "times": null
     },
     {
      "id": "2.2(c)",
      "label": "Others",
      "offered": null,
-     "bid": 217500,
+     "bid": 315700,
      "times": null
     },
     {
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 36441400,
+     "bid": 42815900,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 3792700,
+     "bid": 4477800,
      "times": null
     }
    ],
@@ -2996,20 +3116,20 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 27-Oct-2026 17:00:00 IST",
-    "totalBids": 114577900,
-    "timesSubscribed": 9.63,
+    "asOn": "As on 28-Oct-2026 10:06:00 IST",
+    "totalBids": 132419600,
+    "timesSubscribed": 11.13,
     "byPrice": {
-     "142": "11,45,77,900",
-     "143": "11,44,51,400",
-     "144": "11,44,40,100",
-     "145": "11,44,34,000",
-     "146": "11,43,75,400",
-     "147": "11,43,69,300",
-     "148": "11,43,59,600",
-     "149": "11,43,40,100",
-     "150": "11,43,19,400",
-     "Cut-Off": "3,65,32,300"
+     "142": "13,24,19,600",
+     "143": "13,22,63,000",
+     "144": "13,22,50,500",
+     "145": "13,22,44,200",
+     "146": "13,21,70,700",
+     "147": "13,21,62,500",
+     "148": "13,21,47,700",
+     "149": "13,21,25,800",
+     "150": "13,21,06,600",
+     "Cut-Off": "4,28,42,100"
     }
    },
    "registrar": {
@@ -3169,14 +3289,14 @@
      "total": 9.602151260504202
     },
     {
-     "at": "2026-10-28T04:33:06.924Z",
+     "at": "2026-10-28T04:42:23.360Z",
      "date": "2026-10-28",
-     "qib": 12.031882352941176,
-     "bnii": 10.403529411764707,
-     "snii": 18.16129411764706,
-     "nii": 12.989450980392157,
-     "retail": 6.762033613445378,
-     "total": 9.602151260504202
+     "qib": 12.03435294117647,
+     "bnii": 14.937117647058823,
+     "snii": 22.140941176470587,
+     "nii": 17.338392156862746,
+     "retail": 7.948521008403361,
+     "total": 11.12801680672269
     }
    ],
    "listingPerf": null,
@@ -3512,7 +3632,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T04:31:50.609Z"
+   "fetchedAt": "2026-10-28T04:41:05.088Z"
   },
   {
    "symbol": "WISCON",
@@ -3558,7 +3678,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:32:06.633Z",
+   "subsAsOn": "2026-10-28T04:41:21.759Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3601,13 +3721,13 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Wednesday, October 28 ,  2026 10:01:00 AM",
-    "totalBids": 3460200,
+    "asOn": "Wednesday, October 28 ,  2026 10:10:02 AM",
+    "totalBids": 3475200,
     "timesSubscribed": null,
     "byPrice": {
-     "194": 3460200,
-     "200": 3459000,
-     "204": 3457800
+     "194": 3475200,
+     "200": 3474000,
+     "204": 3472800
     }
    },
    "registrar": {
@@ -3704,7 +3824,7 @@
      "total": 0.91
     },
     {
-     "at": "2026-10-28T04:33:06.948Z",
+     "at": "2026-10-28T04:42:23.386Z",
      "date": "2026-10-28",
      "qib": null,
      "bnii": null,
@@ -3737,7 +3857,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T04:32:06.633Z"
+   "fetchedAt": "2026-10-28T04:41:21.759Z"
   },
   {
    "symbol": "EDELALTS",
@@ -3775,35 +3895,35 @@
     },
     "nii": {
      "offered": 1135647,
-     "bid": 779652,
-     "times": 0.6865267112051544
+     "bid": 798966,
+     "times": 0.7035337565282169
     },
     "bnii": {
      "offered": 757098,
-     "bid": 733455,
-     "times": 0.9687715460878248
+     "bid": 743706,
+     "times": 0.9823114048643636
     },
     "snii": {
      "offered": 378549,
-     "bid": 46197,
-     "times": 0.1220370414398136
+     "bid": 55260,
+     "times": 0.14597845985592353
     },
     "retail": {
      "offered": 2649842,
-     "bid": 280287,
-     "times": 0.10577498582934379
+     "bid": 309654,
+     "times": 0.11685753339255699
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 5299684,
-     "bid": 1747548,
-     "times": 0.3297456980453929
+     "bid": 1796229,
+     "times": 0.3389313400572562
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-27T17:00:00+05:30",
+   "subsAsOn": "2026-10-28T10:06:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3880,7 +4000,7 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 488988,
+     "bid": 499239,
      "times": null
     },
     {
@@ -3901,7 +4021,7 @@
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 45261,
+     "bid": 54324,
      "times": null
     },
     {
@@ -3915,14 +4035,14 @@
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 249534,
+     "bid": 276516,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 30753,
+     "bid": 33138,
      "times": null
     }
    ],
@@ -3940,41 +4060,42 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 27-Oct-2026 17:00:00 IST",
-    "totalBids": 1749159,
-    "timesSubscribed": 0.33,
+    "asOn": "As on 28-Oct-2026 10:06:00 IST",
+    "totalBids": 1797570,
+    "timesSubscribed": 0.34,
     "byPrice": {
-     "1585": "17,49,159",
-     "1586": "17,46,477",
-     "1587": "17,46,423",
-     "1588": "17,46,414",
-     "1590": "17,46,378",
-     "1592": "17,46,000",
-     "1593": "17,45,955",
-     "1595": "17,45,937",
-     "1596": "17,45,919",
-     "1598": "17,45,892",
-     "1599": "17,45,883",
-     "1600": "17,45,847",
-     "1601": "17,44,992",
-     "1604": "17,44,983",
-     "1605": "17,44,920",
-     "1610": "17,44,866",
-     "1616": "17,44,650",
-     "1620": "17,44,623",
-     "1625": "17,44,524",
-     "1630": "17,44,461",
-     "1635": "17,44,407",
-     "1640": "17,44,398",
-     "1650": "17,44,326",
-     "1655": "17,44,236",
-     "1660": "17,44,065",
-     "1661": "17,43,939",
-     "1662": "17,43,912",
-     "1663": "17,43,903",
-     "1664": "17,43,849",
-     "1665": "17,43,768",
-     "Cut-Off": "2,50,182"
+     "1585": "17,97,570",
+     "1586": "17,94,420",
+     "1587": "17,94,231",
+     "1588": "17,94,222",
+     "1590": "17,94,186",
+     "1592": "17,93,781",
+     "1593": "17,93,736",
+     "1595": "17,93,718",
+     "1596": "17,93,691",
+     "1598": "17,93,664",
+     "1599": "17,93,655",
+     "1600": "17,93,619",
+     "1601": "17,92,647",
+     "1604": "17,92,638",
+     "1605": "17,92,575",
+     "1610": "17,92,521",
+     "1616": "17,92,305",
+     "1620": "17,92,278",
+     "1625": "17,92,170",
+     "1628": "17,92,089",
+     "1630": "17,92,080",
+     "1635": "17,92,026",
+     "1640": "17,92,017",
+     "1650": "17,91,936",
+     "1655": "17,91,837",
+     "1660": "17,91,666",
+     "1661": "17,91,540",
+     "1662": "17,91,513",
+     "1663": "17,91,495",
+     "1664": "17,91,432",
+     "1665": "17,91,351",
+     "Cut-Off": "2,76,930"
     }
    },
    "registrar": {
@@ -4128,14 +4249,14 @@
      "total": 0.3297456980453929
     },
     {
-     "at": "2026-10-28T04:33:06.925Z",
+     "at": "2026-10-28T04:42:23.361Z",
      "date": "2026-10-28",
      "qib": 0.45410861877103015,
-     "bnii": 0.9687715460878248,
-     "snii": 0.1220370414398136,
-     "nii": 0.6865267112051544,
-     "retail": 0.10577498582934379,
-     "total": 0.3297456980453929
+     "bnii": 0.9823114048643636,
+     "snii": 0.14597845985592353,
+     "nii": 0.7035337565282169,
+     "retail": 0.11685753339255699,
+     "total": 0.3389313400572562
     }
    ],
    "listingPerf": null,
@@ -4536,7 +4657,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-28T04:31:51.406Z"
+   "fetchedAt": "2026-10-28T04:41:05.983Z"
   },
   {
    "symbol": "IG-2229",
@@ -4574,7 +4695,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-28T04:32:13.572Z",
+   "subsAsOn": "2026-10-28T04:41:26.181Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -4650,7 +4771,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-28T04:32:13.572Z",
+   "fetchedAt": "2026-10-28T04:41:26.181Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -5062,12 +5183,12 @@
    ],
    "listingPerf": {
     "dayOpen": 720,
-    "ltp": 722.8,
+    "ltp": 735.55,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 3.9,
-    "ltpGainPct": 4.3
+    "ltpGainPct": 6.14
    },
    "checks": [
     {
@@ -5978,12 +6099,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1358,
-    "ltp": 1358,
+    "ltp": 1357,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 21.36,
-    "ltpGainPct": 21.36
+    "ltpGainPct": 21.27
    },
    "checks": [
     {
@@ -6773,12 +6894,12 @@
    ],
    "listingPerf": {
     "dayOpen": 156.10000610351562,
-    "ltp": 161.68,
+    "ltp": 160.2,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 3.38,
-    "ltpGainPct": 7.07
+    "ltpGainPct": 6.09
    },
    "checks": [
     {
@@ -7562,12 +7683,12 @@
    ],
    "listingPerf": {
     "dayOpen": 540,
-    "ltp": 520.95,
+    "ltp": 521.05,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 56.98,
-    "ltpGainPct": 51.44
+    "ltpGainPct": 51.47
    },
    "checks": [
     {
@@ -8347,12 +8468,12 @@
    ],
    "listingPerf": {
     "dayOpen": 623,
-    "ltp": 601,
+    "ltp": 601.25,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 6.31,
-    "ltpGainPct": 2.56
+    "ltpGainPct": 2.6
    },
    "checks": [
     {
@@ -9165,12 +9286,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1299,
-    "ltp": 1240.9,
+    "ltp": 1248.8,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 85.57,
-    "ltpGainPct": 77.27
+    "ltpGainPct": 78.4
    },
    "checks": [
     {
@@ -9938,12 +10059,12 @@
    ],
    "listingPerf": {
     "dayOpen": 285.8500061035156,
-    "ltp": 286.6,
+    "ltp": 283.9,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -1.09,
-    "ltpGainPct": -0.83
+    "ltpGainPct": -1.76
    },
    "checks": [
     {
@@ -11475,12 +11596,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 273.85,
+    "ltp": 271.15,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 1.05
+    "ltpGainPct": 0.06
    },
    "checks": [
     {
@@ -13573,12 +13694,12 @@
    ],
    "listingPerf": {
     "dayOpen": 90.22000122070312,
-    "ltp": 92.93,
+    "ltp": 91.03,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -58.99,
-    "ltpGainPct": -57.76
+    "ltpGainPct": -58.62
    },
    "checks": [],
    "fundamentals": {
@@ -14193,12 +14314,12 @@
    ],
    "listingPerf": {
     "dayOpen": 66.80000305175781,
-    "ltp": 65.97,
+    "ltp": 65.5,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -10.93,
-    "ltpGainPct": -12.04
+    "ltpGainPct": -12.67
    },
    "checks": [],
    "fundamentals": {
@@ -15947,12 +16068,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 136.01,
+    "ltp": 136.2,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -18.56
+    "ltpGainPct": -18.44
    },
    "checks": [],
    "fundamentals": {
@@ -16578,12 +16699,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 104.95,
+    "ltp": 103.05,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -19.27
+    "ltpGainPct": -20.73
    },
    "checks": [],
    "fundamentals": {
@@ -17224,12 +17345,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 354.5,
-    "ltp": 350.5,
+    "ltp": 349.45,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 30.33,
-    "ltpGainPct": 28.86
+    "ltpGainPct": 28.47
    },
    "checks": [],
    "fundamentals": {
@@ -17940,12 +18061,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 203.25,
+    "ltp": 201.8,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -32.7
+    "ltpGainPct": -33.18
    },
    "checks": [],
    "fundamentals": {
@@ -18618,12 +18739,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 103.52999877929688,
-    "ltp": 102.15,
+    "ltp": 102.1,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -25.52,
-    "ltpGainPct": -26.51
+    "ltpGainPct": -26.55
    },
    "checks": [],
    "fundamentals": {
@@ -19265,12 +19386,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 20.579999923706055,
-    "ltp": 19.95,
+    "ltp": 19.78,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -35.69,
-    "ltpGainPct": -37.66
+    "ltpGainPct": -38.19
    },
    "checks": [],
    "fundamentals": {
@@ -21650,12 +21771,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 380,
-    "ltp": 375.2,
+    "ltp": 374.4,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -6.17,
-    "ltpGainPct": -7.36
+    "ltpGainPct": -7.56
    },
    "checks": [],
    "fundamentals": {
@@ -22282,12 +22403,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 49.82,
+    "ltp": 49.61,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 46.53
+    "ltpGainPct": 45.91
    },
    "checks": [],
    "fundamentals": {
@@ -22926,12 +23047,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 164.99,
+    "ltp": 164.1,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 23.13
+    "ltpGainPct": 22.46
    },
    "checks": [],
    "fundamentals": {
@@ -23551,12 +23672,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 285,
-    "ltp": 282.6,
+    "ltp": 281.4,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": -21.27,
-    "ltpGainPct": -21.93
+    "ltpGainPct": -22.27
    },
    "checks": [],
    "fundamentals": {
@@ -24143,12 +24264,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 279.2,
+    "ltp": 277.65,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -25.55
+    "ltpGainPct": -25.96
    },
    "checks": [],
    "fundamentals": {
@@ -24772,12 +24893,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 206,
-    "ltp": 197,
+    "ltp": 194.63,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-28",
     "dayOpenGainPct": 11.35,
-    "ltpGainPct": 6.49
+    "ltpGainPct": 5.21
    },
    "checks": [],
    "fundamentals": {
@@ -25659,7 +25780,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-28T04:32:02.168Z",
+   "subsAsOn": "2026-10-28T04:41:12.615Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -25753,7 +25874,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-28T04:32:02.168Z"
+   "fetchedAt": "2026-10-28T04:41:12.615Z"
   }
  ],
  "filings": [
