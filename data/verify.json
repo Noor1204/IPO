@@ -297,10 +297,11 @@
   "issues": [
    "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
    "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
-   "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
+   "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)",
+   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
   ],
-  "sourceDoc": "RHP",
-  "stale": false
+  "sourceDoc": "Prospectus",
+  "stale": true
  },
  "PARASYNTEX": {
   "status": "warn",
