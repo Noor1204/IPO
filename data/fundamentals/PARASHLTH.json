@@ -1,110 +1,386 @@
 {
  "company": "Paras Healthcare Limited",
  "basis": "Consolidated",
- "about": "Paras Healthcare runs eight tertiary and quaternary care hospitals under the 'Paras Health' brand across Haryana, Bihar, Uttar Pradesh, Rajasthan, Jharkhand and Jammu & Kashmir, with 2,211 beds as of June 30, 2026. Cardiac, oncology, neuro, gastro, orthopaedic and renal specialties (CONGOR) made up 74.70% of FY26 revenue from operations. It had 1,084 doctors and 1,937 nurses and plans to add hospitals in Gurugram and Ludhiana.",
- "sector": "Healthcare - Hospitals",
+ "about": "Paras Healthcare Limited is a clinical specialty-led hospital chain providing tertiary and quaternary healthcare services under the 'Paras Health' brand. As of June 30, 2026, the company operated eight hospitals with an aggregate capacity of 2,211 beds across North India, Bihar, and Jharkhand. Its operations span five states and one union territory with a focused expansion pipeline to reach 3,011 beds by March 2028.",
+ "sector": "Healthcare Services / Hospitals",
  "headquarters": "Gurugram, Haryana",
  "founded_year": 1987,
- "periods": ["Mar-24", "Mar-25", "Mar-26"],
+ "periods": [
+  "Mar-24",
+  "Mar-25",
+  "Mar-26"
+ ],
  "financials": {
-  "total_assets": [1477.66, 1810.45, 2071.14],
-  "revenue": [1129.04, 1294.06, 1605.95],
-  "other_income": [21.98, 20.14, 22.83],
-  "ebitda": [154.41, 156.46, 335.58],
-  "pbt": [6.63, -50.04, 76.03],
-  "pat": [-15.33, -57.98, 43.83],
-  "net_worth": [338.51, 280.49, 394.94],
-  "reserves": [328.75, 270.73, 384.84],
-  "borrowings": [547.53, 727.93, 854.1],
-  "cash_and_bank": [160.29, 205.52, 302.73],
-  "operating_cash_flow": [92.48, 86.19, 163.51]
+  "total_assets": [
+   1477.66,
+   1810.45,
+   2071.14
+  ],
+  "revenue": [
+   1129.04,
+   1294.06,
+   1605.95
+  ],
+  "other_income": [
+   21.98,
+   20.14,
+   22.83
+  ],
+  "ebitda": [
+   154.41,
+   156.46,
+   335.58
+  ],
+  "pbt": [
+   6.63,
+   -50.04,
+   76.03
+  ],
+  "pat": [
+   -15.33,
+   -57.98,
+   43.83
+  ],
+  "net_worth": [
+   338.51,
+   280.49,
+   394.94
+  ],
+  "reserves": [
+   328.75,
+   270.73,
+   384.84
+  ],
+  "borrowings": [
+   547.53,
+   727.93,
+   854.1
+  ],
+  "cash_and_bank": [
+   160.29,
+   205.52,
+   302.73
+  ],
+  "operating_cash_flow": [
+   92.48,
+   86.19,
+   163.51
+  ]
  },
  "kpi": {
-  "roce": [5.86, 2.71, 10.76],
-  "ronw": [-8.32, -18.73, 12.98],
-  "roe": [-8.32, -18.73, 12.98],
-  "eps_basic": [-1.57, -5.94, 4.34],
-  "eps_diluted": [-1.57, -5.94, 4.34],
-  "pat_margin": [-1.33, -4.41, 2.69],
-  "ebitda_margin": [13.42, 11.91, 20.6],
-  "debt_equity": [2.73, 4.39, 3.53],
-  "current_ratio": [0.89, 0.84, 1.08],
+  "roce": [
+   5.86,
+   2.71,
+   10.76
+  ],
+  "ronw": [
+   -8.32,
+   -18.73,
+   12.98
+  ],
+  "roe": [
+   -8.32,
+   -18.73,
+   12.98
+  ],
+  "eps_basic": [
+   -1.57,
+   -5.94,
+   4.34
+  ],
+  "eps_diluted": [
+   -1.57,
+   -5.94,
+   4.34
+  ],
+  "pat_margin": [
+   -1.33,
+   -4.41,
+   2.69
+  ],
+  "ebitda_margin": [
+   13.42,
+   11.91,
+   20.6
+  ],
+  "debt_equity": [
+   2.73,
+   4.39,
+   3.53
+  ],
+  "current_ratio": null,
   "nav_per_share": 44.06,
-  "pe_pre_ipo": null,
-  "pe_post_ipo": null,
+  "pe_pre_ipo": 159.68,
+  "pe_post_ipo": 159.68,
   "weighted_avg_eps": -0.07,
   "other": [
-   {"name": "Bed occupancy rate", "unit": "%", "values": [52.46, 50.78, 61.75]},
-   {"name": "ARPOB", "unit": "Rs per day", "values": [44305.65, 48088.57, 47397.82]},
-   {"name": "Operational beds", "unit": "number", "values": [1332, 1465, 1502]},
-   {"name": "Occupied bed days", "unit": "number", "values": [254716, 268927, 338321]},
-   {"name": "Average length of stay", "unit": "days", "values": [3.14, 2.89, 2.93]},
-   {"name": "In-patient volume", "unit": "number", "values": [81047, 93170, 115496]}
+   {
+    "name": "Operational Beds",
+    "unit": "count",
+    "values": [
+     1332,
+     1465,
+     1502
+    ]
+   },
+   {
+    "name": "Bed Occupancy Rate",
+    "unit": "%",
+    "values": [
+     52.46,
+     50.78,
+     61.75
+    ]
+   },
+   {
+    "name": "ARPOB",
+    "unit": "₹ per day",
+    "values": [
+     44305.65,
+     48088.57,
+     47397.82
+    ]
+   },
+   {
+    "name": "Occupied Bed Days",
+    "unit": "count",
+    "values": [
+     254716,
+     268927,
+     338321
+    ]
+   },
+   {
+    "name": "Average Length of Stay",
+    "unit": "days",
+    "values": [
+     3.14,
+     2.89,
+     2.93
+    ]
+   },
+   {
+    "name": "Number of Surgeries",
+    "unit": "count",
+    "values": [
+     30219,
+     33072,
+     39687
+    ]
+   }
   ]
  },
  "peers": [
-  {"name": "Aster DM Quality Care Limited", "revenue_cr": 4643.22, "face_value": 10, "cmp": 691.0, "eps_basic": 7.53, "eps_diluted": 7.52, "nav": 88.32, "pe": 91.89, "ronw": 9.7},
-  {"name": "Apollo Hospitals Enterprise Limited", "revenue_cr": 25228.5, "face_value": 5, "cmp": 8010.0, "eps_basic": 135.04, "eps_diluted": 134.94, "nav": 657.58, "pe": 59.36, "ronw": 21.95},
-  {"name": "Fortis Healthcare Limited", "revenue_cr": 9127.84, "face_value": 10, "cmp": 765.0, "eps_basic": 13.8, "eps_diluted": 13.8, "nav": 131.07, "pe": 55.43, "ronw": 11.08},
-  {"name": "Global Health Limited", "revenue_cr": 4410.3, "face_value": 2, "cmp": 1331.7, "eps_basic": 20.71, "eps_diluted": 20.66, "nav": 147.06, "pe": 64.46, "ronw": 15.15},
-  {"name": "Jupiter Lifeline Hospitals Limited", "revenue_cr": 1499.79, "face_value": 2, "cmp": 254.0, "eps_basic": 5.92, "eps_diluted": 5.92, "nav": 47.1, "pe": 42.92, "ronw": 13.41},
-  {"name": "Krishna Institute of Medical Sciences Limited", "revenue_cr": 3904.6, "face_value": 2, "cmp": 701.95, "eps_basic": 6.03, "eps_diluted": 6.03, "nav": 56.17, "pe": 116.41, "ronw": 11.01},
-  {"name": "Manipal Health Enterprises Limited", "revenue_cr": 10935.6, "face_value": 2, "cmp": 667.3, "eps_basic": 7.71, "eps_diluted": 7.67, "nav": 63.26, "pe": 87.0, "ronw": 12.37},
-  {"name": "Max Healthcare Institute Limited", "revenue_cr": 10065.0, "face_value": 10, "cmp": 916.6, "eps_basic": 14.83, "eps_diluted": 14.76, "nav": 109.53, "pe": 62.1, "ronw": 14.33},
-  {"name": "Narayana Hrudayalaya Limited", "revenue_cr": 7896.04, "face_value": 10, "cmp": 1721.9, "eps_basic": 39.67, "eps_diluted": 39.67, "nav": 222.02, "pe": 43.41, "ronw": 19.74},
-  {"name": "Yatharth Hospital and Trauma Care Services Limited", "revenue_cr": 1207.17, "face_value": 10, "cmp": 1003.95, "eps_basic": 18.2, "eps_diluted": 18.2, "nav": 184.79, "pe": 55.16, "ronw": 10.36}
+  {
+   "name": "Aster DM Quality Care Limited",
+   "revenue_cr": 4643.22,
+   "face_value": 10,
+   "cmp": 691,
+   "eps_basic": 7.53,
+   "eps_diluted": 7.52,
+   "nav": 88.32,
+   "pe": 91.89,
+   "ronw": 9.7
+  },
+  {
+   "name": "Apollo Hospitals Enterprise Limited",
+   "revenue_cr": 25228.5,
+   "face_value": 5,
+   "cmp": 8010,
+   "eps_basic": 135.04,
+   "eps_diluted": 134.94,
+   "nav": 657.58,
+   "pe": 59.36,
+   "ronw": 21.95
+  },
+  {
+   "name": "Fortis Healthcare Limited",
+   "revenue_cr": 9127.84,
+   "face_value": 10,
+   "cmp": 765,
+   "eps_basic": 13.8,
+   "eps_diluted": 13.8,
+   "nav": 131.07,
+   "pe": 55.43,
+   "ronw": 11.08
+  },
+  {
+   "name": "Global Health Limited",
+   "revenue_cr": 4410.3,
+   "face_value": 2,
+   "cmp": 1331.7,
+   "eps_basic": 20.71,
+   "eps_diluted": 20.66,
+   "nav": 147.06,
+   "pe": 64.46,
+   "ronw": 15.15
+  },
+  {
+   "name": "Jupiter Lifeline Hospitals Limited",
+   "revenue_cr": 1499.79,
+   "face_value": 2,
+   "cmp": 254,
+   "eps_basic": 5.92,
+   "eps_diluted": 5.92,
+   "nav": 47.1,
+   "pe": 42.92,
+   "ronw": 13.41
+  },
+  {
+   "name": "Krishna Institute of Medical Sciences Limited",
+   "revenue_cr": 3904.6,
+   "face_value": 2,
+   "cmp": 701.95,
+   "eps_basic": 6.03,
+   "eps_diluted": 6.03,
+   "nav": 56.17,
+   "pe": 116.41,
+   "ronw": 11.01
+  },
+  {
+   "name": "Manipal Health Enterprises Limited",
+   "revenue_cr": 10935.6,
+   "face_value": 2,
+   "cmp": 667.3,
+   "eps_basic": 7.71,
+   "eps_diluted": 7.67,
+   "nav": 63.26,
+   "pe": 87,
+   "ronw": 12.37
+  },
+  {
+   "name": "Max Healthcare Institute Limited",
+   "revenue_cr": 10065,
+   "face_value": 10,
+   "cmp": 916.6,
+   "eps_basic": 14.83,
+   "eps_diluted": 14.76,
+   "nav": 109.53,
+   "pe": 62.1,
+   "ronw": 14.33
+  },
+  {
+   "name": "Narayana Hrudayalaya Limited",
+   "revenue_cr": 7896.04,
+   "face_value": 10,
+   "cmp": 1721.9,
+   "eps_basic": 39.67,
+   "eps_diluted": 39.67,
+   "nav": 222.02,
+   "pe": 43.41,
+   "ronw": 19.74
+  },
+  {
+   "name": "Yatharth Hospital and Trauma Care Services Limited",
+   "revenue_cr": 1207.17,
+   "face_value": 10,
+   "cmp": 1003.95,
+   "eps_basic": 18.2,
+   "eps_diluted": 18.2,
+   "nav": 184.79,
+   "pe": 55.16,
+   "ronw": 10.36
+  }
  ],
  "issue": {
-  "price_low": null,
-  "price_high": null,
-  "total_issue_cr": null,
-  "fresh_issue_cr": 500.0,
-  "ofs_cr": 950.0,
+  "price_low": 660,
+  "price_high": 693,
+  "total_issue_cr": 1450,
+  "fresh_issue_cr": 500,
+  "ofs_cr": 950,
   "fresh_issue_shares": null,
-  "ofs_shares": null,
+  "ofs_shares": 13708513,
   "pre_issue_shares": 100986187,
   "post_issue_shares": null,
   "face_value": 1,
   "objects": [
-   {"purpose": "Prepayment or scheduled repayment of certain outstanding borrowings availed by the Company", "amount_cr": 320.9},
-   {"purpose": "Investment in wholly owned subsidiary PMHPL (Srinagar hospital) for repayment/prepayment of its borrowings", "amount_cr": 54.1},
-   {"purpose": "General corporate purposes (capped at 25% of gross proceeds)", "amount_cr": null}
+   {
+    "purpose": "Prepayment or scheduled repayment, in full or part, of certain outstanding borrowings availed by our Company",
+    "amount_cr": 320.9
+   },
+   {
+    "purpose": "Investment in wholly owned Subsidiary, PMHPL, for repayment/prepayment of borrowings",
+    "amount_cr": 54.1
+   },
+   {
+    "purpose": "General corporate purposes",
+    "amount_cr": 101.11
+   }
   ],
-  "reservation_pct": {"anchor": null, "qib": null, "nii": null, "retail": null, "employee": null}
+  "reservation_pct": {
+   "anchor": null,
+   "qib": null,
+   "nii": null,
+   "retail": null,
+   "employee": null
+  }
  },
  "promoters": {
-  "names": ["Dr. Dharminder Kumar Nagar"],
+  "names": [
+   "Dr. Dharminder Kumar Nagar"
+  ],
   "holding_pre_pct": 72.8,
   "holding_post_pct": null,
-  "background": "Promoter and Managing Director; has led the commissioning of all the hospitals over two decades and has over 22 years of healthcare experience. Commelina Ltd (affiliate of Creador) invested in 2017 and is a selling shareholder."
+  "background": "Dr. Dharminder Kumar Nagar has over 22 years of healthcare experience, serves as co-chair of the FICCI Health Services Committee, and has led the commissioning of all company hospitals over the past 20 years."
  },
  "concentration": {
   "top_customers_pct": null,
   "govt_share_pct": 41.28,
-  "note": "Government schemes and PSUs were 41.28% of FY26 revenue from operations (30.91% in FY25, 29.76% in FY24). Five of eight hospitals in North India gave 66.07% of FY26 revenue."
+  "note": "Government Schemes and PSUs accounted for 41.28% of payor revenue in FY26, while Self-Pay accounted for 33.88% and Insurance/TPA accounted for 24.84%."
  },
  "order_book_cr": null,
- "litigation_note": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages notices to a subsidiary from Heavy Engineering Corporation. A Promoter Group member, Harbaksh Singh Khangura, appears in the CIBIL wilful defaulter database.",
+ "litigation_note": "Contingent liabilities totaled ₹398.44 crore as of June 30, 2026, comprising 89.55% of net worth, primarily consisting of corporate guarantees of ₹376.40 crore, tax disputes of ₹5.82 crore, and medical negligence claims of ₹5.98 crore.",
  "strengths": [
-  "One of the largest healthcare providers in North India, Bihar and Jharkhand with 2,211 beds across eight hospitals and a recognised 'Paras Health' brand.",
-  "Focus on high-acuity tertiary and quaternary care: CONGOR specialties gave 74.70% of FY26 revenue from operations.",
-  "Revenue from operations grew at a 19.26% CAGR from Rs 1,129.04 crore in FY24 to Rs 1,605.95 crore in FY26.",
-  "EBITDA grew from Rs 154.41 crore in FY24 to Rs 335.58 crore in FY26, with margin rising from 13.42% to 20.60%.",
-  "Bed occupancy improved from 52.46% in FY24 to 61.75% in FY26 as newer hospitals ramp up.",
-  "Seven of eight hospitals are NABH accredited, with 1,084 doctors and 1,937 nurses as of June 30, 2026.",
-  "Mix of owned, leased and revenue-share hospitals; capex per bed was Rs 7.70 million as of June 30, 2026.",
-  "Committed expansion of a 300-bed Gurugram hospital and a 500-bed Ludhiana hospital, taking capacity to 3,011 beds by March 2028."
+  "One of the largest healthcare platforms in North India, Bihar, and Jharkhand with 2,211 beds across eight hospitals.",
+  "First-mover advantages in key regional cities such as Gurugram, Panchkula, and Patna under the recognized 'Paras Health' brand.",
+  "Specialty depth with core CONGOR medical specialties contributing 74.70% of Fiscal 2026 operating revenue.",
+  "Capital-efficient operating model maintaining a low capital expenditure per bed of ₹0.77 crore.",
+  "Extensive medical talent pool consisting of 1,084 doctors and 1,937 nurses supported by high-end diagnostic infrastructure.",
+  "Cloud-first integrated technology ecosystem combining HIS, ERP, electronic health records, and digital patient engagement tools.",
+  "Experienced doctor-led senior management team with a proven 20-year execution record in hospital commissioning and scaling."
  ],
  "risks": [
-  {"title": "History of losses", "detail": "The company lost Rs 15.33 crore in FY24 and Rs 57.98 crore in FY25 on a consolidated basis; profit of Rs 43.83 crore in FY26 may not be sustained.", "severity": "high"},
-  {"title": "Loss-making subsidiaries", "detail": "Subsidiaries Paras Healthcare (Ranchi) and Plus Medicare Hospitals lost Rs 87.27 crore in FY24, Rs 82.24 crore in FY25 and Rs 52.09 crore in FY26 collectively.", "severity": "high"},
-  {"title": "High debt and leverage", "detail": "Fund-based borrowings were Rs 888.89 crore at June 30, 2026 and debt to equity (including leases) was 3.53 times in FY26 and 4.39 times in FY25.", "severity": "high"},
-  {"title": "Contingent liabilities", "detail": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages claims by Heavy Engineering Corporation on a subsidiary.", "severity": "high"},
-  {"title": "Dependence on government schemes", "detail": "Government schemes and PSUs contributed 41.28% of FY26 revenue from operations, up from 29.76% in FY24, which raises payment-delay and tariff risk.", "severity": "high"},
-  {"title": "Promoter Group member on wilful defaulter list", "detail": "Promoter Group member Harbaksh Singh Khangura appears in the CIBIL wilful defaulter database in relation to Majestic Hotels Limited defaults from 2014.", "severity": "medium"},
-  {"title": "High staff attrition", "detail": "Attrition of doctors, nurses and support staff was 60.38% in FY26, 66.74% in FY25 and 65.27% in FY24.", "severity": "medium"},
-  {"title": "Regional and specialty concentration", "detail": "Five of eight hospitals are in North India (66.07% of FY26 revenue) and CONGOR specialties gave 74.70% of FY26 revenue; six of eight hospitals are on leased premises.", "severity": "medium"}
+  {
+   "title": "History of Consolidated Net Losses",
+   "detail": "The company incurred net losses of ₹57.98 crore in FY25 and ₹15.33 crore in FY24, and cannot guarantee sustained future profitability.",
+   "severity": "high"
+  },
+  {
+   "title": "Subsidiaries Incurring Continued Operating Losses",
+   "detail": "Subsidiaries PHRPL and PMHPL collectively incurred losses of ₹52.09 crore in FY26 and ₹82.24 crore in FY25, creating operational drags.",
+   "severity": "high"
+  },
+  {
+   "title": "High Total Contingent Liabilities Relative to Net Worth",
+   "detail": "Contingent liabilities stood at ₹398.44 crore as of June 30, 2026, representing 89.55% of the company's net worth.",
+   "severity": "high"
+  },
+  {
+   "title": "Substantial Indebtedness and Repayment Obligations",
+   "detail": "Total outstanding borrowings amounted to ₹939.47 crore as of August 31, 2026, creating high finance costs and liquidity exposure.",
+   "severity": "high"
+  },
+  {
+   "title": "High Employee and Healthcare Staff Attrition Rates",
+   "detail": "The company experienced significant staff attrition of 60.38% in FY26 and 66.74% in FY25, affecting operational stability.",
+   "severity": "high"
+  },
+  {
+   "title": "Geographical Revenue Concentration in North India",
+   "detail": "Five hospitals located in North India contributed 66.07% of consolidated revenue from operations in Fiscal 2026.",
+   "severity": "medium"
+  },
+  {
+   "title": "High Specialty Concentration in CONGOR Clinical Segments",
+   "detail": "Six key CONGOR specialty areas accounted for 74.70% of consolidated revenue from operations in Fiscal 2026.",
+   "severity": "medium"
+  },
+  {
+   "title": "Operational Risks Associated with Leased Hospital Properties",
+   "detail": "Six of eight hospitals operate under leases or revenue-share arrangements, posing renewal, rent escalation, and landlord dispute risks.",
+   "severity": "medium"
+  }
  ],
- "source_doc": "RHP",
- "notes": "Consolidated, restated; FY24-FY26 audited. Source tables were garbled so figures were cross-checked (net worth = equity + other equity; borrowings = non-current incl. current maturities + current borrowings, excluding lease liabilities; cash_and_bank = cash and equivalents + other bank balances; current ratio computed from total current assets/liabilities; operating cash flow reconciled to investing and financing flows). Q1FY27 (June 30, 2026) stub ignored: revenue Rs 470.28 crore, PAT Rs 49.68 crore, basic EPS Rs 4.92 (not annualised). Price band, P/E, share counts and reservation not yet disclosed in the RHP (shown as blanks); Fresh Issue is Rs 5,000 million and Offer for Sale up to Rs 3,000 million (promoter) plus Rs 6,500 million (Commelina). pre_issue_shares is the share count as at June 30, 2026 (face value Rs 1). Peer revenue converted from Rs million."
+ "source_doc": "Prospectus",
+ "notes": "Figures are consolidated and restated. Values reported in INR million have been converted to ₹ crore. Stub periods for three months ended June 30, 2025 and June 30, 2026 are excluded from the annual financial series."
 }

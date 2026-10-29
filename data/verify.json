@@ -221,6 +221,14 @@
   "sourceDoc": "RHP",
   "stale": false
  },
+ "MAXENGS": {
+  "status": "ok",
+  "checked": 76,
+  "ungrounded": [],
+  "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
  "MKSONS": {
   "status": "fail",
   "checked": 60,
@@ -292,16 +300,15 @@
  },
  "PARASHLTH": {
   "status": "warn",
-  "checked": 117,
+  "checked": 119,
   "ungrounded": [],
   "issues": [
    "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
    "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
-   "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)",
-   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+   "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
   ],
   "sourceDoc": "Prospectus",
-  "stale": true
+  "stale": false
  },
  "PARASYNTEX": {
   "status": "warn",
