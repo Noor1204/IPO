@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-29T06:26:20.461Z",
+ "generatedAt": "2026-10-29T06:35:30.349Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-29T06:24:43.497Z"
+   "fetchedAt": "2026-10-29T06:34:33.644Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-29T06:24:52.604Z"
+   "fetchedAt": "2026-10-29T06:34:42.745Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-29T06:24:44.145Z"
+   "fetchedAt": "2026-10-29T06:34:35.044Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-29T06:24:44.145Z",
+   "subsAsOn": "2026-10-29T06:34:35.043Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -111,7 +111,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-29T06:24:44.145Z",
+   "fetchedAt": "2026-10-29T06:34:35.043Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -158,7 +158,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:23:38.341Z",
+   "subsAsOn": "2026-10-29T06:34:15.783Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -318,7 +318,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:23:38.341Z"
+   "fetchedAt": "2026-10-29T06:34:15.783Z"
   },
   {
    "symbol": "MAXENGS",
@@ -364,7 +364,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:23:43.933Z",
+   "subsAsOn": "2026-10-29T06:34:16.663Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -530,9 +530,317 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-10-29T06:23:43.933Z"
+   "fundamentals": {
+    "company": "Maxwell Engineering Solutions Limited",
+    "basis": "Standalone",
+    "about": "Maxwell Engineering Solutions Limited manufactures precision-engineered wear components including pelletizing die plates, pelletizing blades/knives, blade holders/cutter hubs, and driving bushes for underwater pelletizing systems. The company also trades related blades and components, providing customized tooling solutions. Its primary manufacturing operations are located at Waghodia GIDC in Vadodara, Gujarat.",
+    "sector": "Industrial Machinery",
+    "headquarters": "Vadodara, Gujarat",
+    "founded_year": null,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      8.51,
+      25.31,
+      47.55
+     ],
+     "revenue": [
+      10.54,
+      22.1,
+      29.45
+     ],
+     "other_income": [
+      0.32,
+      0.49,
+      1.31
+     ],
+     "ebitda": [
+      4.25,
+      11.69,
+      15.19
+     ],
+     "pbt": [
+      3.83,
+      11.06,
+      14.4
+     ],
+     "pat": [
+      3.16,
+      9.18,
+      11.86
+     ],
+     "net_worth": [
+      3.33,
+      13.01,
+      24.87
+     ],
+     "reserves": [
+      3.32,
+      10.25,
+      14.82
+     ],
+     "borrowings": [
+      3.19,
+      8.6,
+      16.73
+     ],
+     "cash_and_bank": [
+      1.24,
+      1.8,
+      2.76
+     ],
+     "operating_cash_flow": [
+      3.58,
+      7.37,
+      7.48
+     ]
+    },
+    "kpi": {
+     "roce": [
+      62.96,
+      53.31,
+      38.46
+     ],
+     "ronw": [
+      94.9,
+      70.54,
+      47.7
+     ],
+     "roe": [
+      180.58,
+      112.32,
+      62.63
+     ],
+     "eps_basic": [
+      3.16,
+      9.17,
+      11.8
+     ],
+     "eps_diluted": [
+      3.16,
+      9.17,
+      11.8
+     ],
+     "pat_margin": [
+      29.98,
+      41.52,
+      40.28
+     ],
+     "ebitda_margin": [
+      40.32,
+      52.9,
+      51.58
+     ],
+     "debt_equity": [
+      0.96,
+      0.66,
+      0.67
+     ],
+     "current_ratio": [
+      1.54,
+      2.75,
+      1.91
+     ],
+     "nav_per_share": 24.74,
+     "pe_pre_ipo": 13.39,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 9.48,
+     "other": [
+      {
+       "name": "Inventory Turnover Ratio",
+       "unit": "times",
+       "values": [
+        70.72,
+        25.15,
+        7.71
+       ]
+      },
+      {
+       "name": "Trade Receivables Turnover Ratio",
+       "unit": "times",
+       "values": [
+        13.93,
+        10.77,
+        6.58
+       ]
+      },
+      {
+       "name": "Trade Payables Turnover Ratio",
+       "unit": "times",
+       "values": [
+        8.22,
+        6.23,
+        5.53
+       ]
+      },
+      {
+       "name": "Revenue Growth Rate",
+       "unit": "%",
+       "values": [
+        1264.41,
+        109.61,
+        33.25
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Kabra Extrusion Technik Ltd.",
+      "revenue_cr": 451,
+      "face_value": 5,
+      "cmp": 678.9,
+      "eps_basic": -0.7,
+      "eps_diluted": -0.7,
+      "nav": 127.92,
+      "pe": null,
+      "ronw": -0.54
+     },
+     {
+      "name": "Omnitech Engineering Ltd.",
+      "revenue_cr": 511.3,
+      "face_value": 5,
+      "cmp": 635.6,
+      "eps_basic": 6.42,
+      "eps_diluted": 6.42,
+      "nav": 55.36,
+      "pe": 99,
+      "ronw": 11.28
+     },
+     {
+      "name": "Sunita Tools Ltd.",
+      "revenue_cr": 47.31,
+      "face_value": 10,
+      "cmp": 1059.85,
+      "eps_basic": 10.53,
+      "eps_diluted": 10.53,
+      "nav": 112.1,
+      "pe": 100.65,
+      "ronw": 10.8
+     }
+    ],
+    "issue": {
+     "price_low": 150,
+     "price_high": 158,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 3648000,
+     "ofs_shares": null,
+     "pre_issue_shares": 10050300,
+     "post_issue_shares": null,
+     "face_value": 10,
+     "objects": [
+      {
+       "purpose": "Capital expenditure for purchase of new machineries, lab equipment & other utilities",
+       "amount_cr": 18
+      },
+      {
+       "purpose": "Capital expenditure for construction of new office building and manufacturing facility",
+       "amount_cr": 6.5
+      },
+      {
+       "purpose": "Repayment / prepayment, in full or part, of certain outstanding borrowings",
+       "amount_cr": 4.3
+      },
+      {
+       "purpose": "Funding working capital requirements",
+       "amount_cr": 14
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Rajkumar Chaudhary",
+      "Vinubhai Kanjibhai Chavda"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": null
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Dependent upon a few key suppliers for raw materials; steel is sourced domestically, while critical inputs carbide and brazing filler are imported."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Application for 'MAXWELL' device mark is opposed by Shree Vallabh Metals claiming prior use since 2010. Outstanding contingent liabilities stand at ₹2.19 crore, mainly ₹2.18 crore EPCG duty savings.",
+    "strengths": [
+     "Experienced promoter and management team driving precision engineering capabilities.",
+     "Established relationships with existing industrial clients.",
+     "Comprehensive quality procedures and testing systems.",
+     "Revenue diversification across multiple domestic and international geographies.",
+     "Customized product offerings tailored to client underwater pelletizing specifications.",
+     "In-house research and development capabilities supporting component enhancement."
+    ],
+    "risks": [
+     {
+      "title": "Dependence on Few Raw Material Suppliers",
+      "detail": "The company relies heavily on a few suppliers for key raw materials like steel; any supply disruption could impair manufacturing schedules.",
+      "severity": "high"
+     },
+     {
+      "title": "Exposure to Raw Material Imports",
+      "detail": "Critical raw materials including Carbide and Brazing Filler are imported, making production costs vulnerable to forex volatility and tariff changes.",
+      "severity": "high"
+     },
+     {
+      "title": "Working Capital Intensity",
+      "detail": "Working capital requirements have surged over the past three fiscals to fund expanding inventory and receivables.",
+      "severity": "high"
+     },
+     {
+      "title": "Unhedged Foreign Exchange Fluctuations",
+      "detail": "The company engages in exports and raw material imports without derivative or hedging contracts, exposing profits to currency swings.",
+      "severity": "medium"
+     },
+     {
+      "title": "EPCG Scheme Export Obligations",
+      "detail": "The company saved ₹2.18 crore in customs duty under the EPCG scheme; failure to fulfill export obligations may trigger differential duties and penalties.",
+      "severity": "medium"
+     },
+     {
+      "title": "Opposition to Trademark Registration",
+      "detail": "The device mark 'MAXWELL' is under opposition proceedings initiated by Shree Vallabh Metals, threatening brand protection.",
+      "severity": "medium"
+     },
+     {
+      "title": "Unplaced Orders for Proposed Capital Expenditure",
+      "detail": "No firm purchase orders have been placed for the planned ₹24.50 crore capital expenditure on new machineries and construction.",
+      "severity": "medium"
+     },
+     {
+      "title": "Contingent Liabilities",
+      "detail": "Contingent liabilities totaled ₹2.19 crore as of July 31, 2026, which could adversely affect liquidity if materialized.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Restated financial figures are standalone. Four-month stub period ended July 31, 2026 has been excluded from array metrics in line with instructions."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 76,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-29T06:34:16.663Z"
   },
   {
    "symbol": "JOHSONCAB",
@@ -574,7 +882,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:24:21.130Z",
+   "subsAsOn": "2026-10-29T06:34:31.174Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -730,7 +1038,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:24:21.130Z"
+   "fetchedAt": "2026-10-29T06:34:31.174Z"
   },
   {
    "symbol": "VECTRAS",
@@ -772,7 +1080,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:24:41.780Z",
+   "subsAsOn": "2026-10-29T06:34:32.169Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -829,7 +1137,7 @@
     "rhp": null,
     "anchor": null
    },
-   "logo": null,
+   "logo": "data/logos/VECTRAS.png",
    "documents": [
     {
      "label": "Prospectus / RHP with GID (zip from BSE)",
@@ -913,7 +1221,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:24:41.780Z"
+   "fetchedAt": "2026-10-29T06:34:32.169Z"
   },
   {
    "symbol": "BCSSL",
@@ -951,8 +1259,8 @@
     },
     "nii": {
      "offered": 3520327,
-     "bid": 670670,
-     "times": 0.19051355172403017
+     "bid": 686140,
+     "times": 0.19490802985063604
     },
     "bnii": {
      "offered": 2346885,
@@ -961,25 +1269,25 @@
     },
     "snii": {
      "offered": 1173442,
-     "bid": 342888,
-     "times": 0.29220702855360553
+     "bid": 358358,
+     "times": 0.3053904666783701
     },
     "retail": {
      "offered": 8214097,
-     "bid": 3239782,
-     "times": 0.3944173047871239
+     "bid": 3418506,
+     "times": 0.41617550900604167
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 16533012,
-     "bid": 19636890,
-     "times": 1.1877382052344727
+     "bid": 19831084,
+     "times": 1.1994840383591325
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T11:51:00+05:30",
+   "subsAsOn": "2026-10-29T12:00:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -1083,7 +1391,7 @@
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 342888,
+     "bid": 358358,
      "times": null
     },
     {
@@ -1097,14 +1405,14 @@
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 3060148,
+     "bid": 3228498,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 179634,
+     "bid": 190008,
      "times": null
     }
    ],
@@ -1122,16 +1430,16 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 29-Oct-2026 11:48:00 IST",
-    "totalBids": 19531148,
-    "timesSubscribed": 1.18,
+    "asOn": "As on 29-Oct-2026 11:57:00 IST",
+    "totalBids": 19785038,
+    "timesSubscribed": 1.2,
     "byPrice": {
-     "78": "1,95,31,148",
-     "79": "1,95,15,314",
-     "80": "1,95,12,584",
-     "81": "1,95,01,846",
-     "82": "1,94,99,844",
-     "Cut-Off": "29,70,786"
+     "78": "1,97,85,038",
+     "79": "1,97,68,294",
+     "80": "1,97,65,564",
+     "81": "1,97,54,462",
+     "82": "1,97,52,460",
+     "Cut-Off": "31,83,180"
     }
    },
    "registrar": {
@@ -1269,14 +1577,14 @@
    },
    "subHistory": [
     {
-     "at": "2026-10-29T06:26:20.406Z",
+     "at": "2026-10-29T06:35:30.304Z",
      "date": "2026-10-29",
      "qib": 3.277305323982805,
      "bnii": 0.13966683497487095,
-     "snii": 0.29220702855360553,
-     "nii": 0.19051355172403017,
-     "retail": 0.3944173047871239,
-     "total": 1.1877382052344727
+     "snii": 0.3053904666783701,
+     "nii": 0.19490802985063604,
+     "retail": 0.41617550900604167,
+     "total": 1.1994840383591325
     }
    ],
    "listingPerf": null,
@@ -1626,7 +1934,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-29T06:23:14.961Z"
+   "fetchedAt": "2026-10-29T06:34:05.529Z"
   },
   {
    "symbol": "ANTALA",
@@ -1672,7 +1980,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:24:43.497Z",
+   "subsAsOn": "2026-10-29T06:34:33.644Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1715,11 +2023,11 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Thursday, October 29 ,  2026 11:53:07 AM",
-    "totalBids": 1140000,
+    "asOn": "Thursday, October 29 ,  2026 12:02:15 PM",
+    "totalBids": 1886000,
     "timesSubscribed": null,
     "byPrice": {
-     "67": 1140000
+     "67": 1886000
     }
    },
    "registrar": {
@@ -1832,7 +2140,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:24:43.497Z"
+   "fetchedAt": "2026-10-29T06:34:33.644Z"
   },
   {
    "symbol": "MKSONS",
@@ -1870,35 +2178,35 @@
     },
     "nii": {
      "offered": 2550000,
-     "bid": 3891524,
-     "times": 1.5260878431372549
+     "bid": 3938389,
+     "times": 1.544466274509804
     },
     "bnii": {
      "offered": 1700000,
-     "bid": 3397394,
-     "times": 1.9984670588235294
+     "bid": 3422146,
+     "times": 2.0130270588235293
     },
     "snii": {
      "offered": 850000,
-     "bid": 494130,
-     "times": 0.5813294117647059
+     "bid": 516243,
+     "times": 0.6073447058823529
     },
     "retail": {
      "offered": 5950000,
-     "bid": 2877329,
-     "times": 0.4835847058823529
+     "bid": 2932839,
+     "times": 0.49291411764705884
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 11900000,
-     "bid": 10041213,
-     "times": 0.8437994117647059
+     "bid": 10143588,
+     "times": 0.8524023529411765
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T11:51:00+05:30",
+   "subsAsOn": "2026-10-29T12:00:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -1981,7 +2289,7 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 3347890,
+     "bid": 3372642,
      "times": null
     },
     {
@@ -2002,7 +2310,7 @@
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 486486,
+     "bid": 508599,
      "times": null
     },
     {
@@ -2016,14 +2324,14 @@
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 2627170,
+     "bid": 2678130,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 250159,
+     "bid": 254709,
      "times": null
     }
    ],
@@ -2041,21 +2349,21 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 29-Oct-2026 11:48:00 IST",
-    "totalBids": 10021648,
-    "timesSubscribed": 0.84,
+    "asOn": "As on 29-Oct-2026 11:57:00 IST",
+    "totalBids": 10136399,
+    "timesSubscribed": 0.85,
     "byPrice": {
-     "153": "1,00,21,648",
-     "154": "99,98,625",
-     "155": "99,96,168",
-     "156": "99,86,704",
-     "157": "99,85,976",
-     "158": "99,84,793",
-     "159": "99,82,518",
-     "160": "99,80,880",
-     "161": "99,76,148",
-     "162": "99,75,602",
-     "Cut-Off": "26,06,422"
+     "153": "1,01,36,399",
+     "154": "1,01,12,921",
+     "155": "1,01,10,464",
+     "156": "1,01,01,000",
+     "157": "1,01,00,272",
+     "158": "1,00,99,089",
+     "159": "1,00,96,723",
+     "160": "1,00,95,085",
+     "161": "1,00,90,080",
+     "162": "1,00,89,534",
+     "Cut-Off": "26,73,216"
     }
    },
    "registrar": {
@@ -2192,14 +2500,14 @@
      "total": 0.6460082352941177
     },
     {
-     "at": "2026-10-29T06:26:20.408Z",
+     "at": "2026-10-29T06:35:30.307Z",
      "date": "2026-10-29",
      "qib": 0.9624588235294118,
-     "bnii": 1.9984670588235294,
-     "snii": 0.5813294117647059,
-     "nii": 1.5260878431372549,
-     "retail": 0.4835847058823529,
-     "total": 0.8437994117647059
+     "bnii": 2.0130270588235293,
+     "snii": 0.6073447058823529,
+     "nii": 1.544466274509804,
+     "retail": 0.49291411764705884,
+     "total": 0.8524023529411765
     }
    ],
    "listingPerf": null,
@@ -2562,7 +2870,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-29T06:23:15.884Z"
+   "fetchedAt": "2026-10-29T06:34:06.433Z"
   },
   {
    "symbol": "CRL",
@@ -2608,7 +2916,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:24:18.985Z",
+   "subsAsOn": "2026-10-29T06:34:30.445Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2651,7 +2959,7 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Thursday, October 29 ,  2026 11:53:07 AM",
+    "asOn": "Thursday, October 29 ,  2026 12:02:15 PM",
     "totalBids": 985600,
     "timesSubscribed": null,
     "byPrice": {
@@ -2757,7 +3065,7 @@
      "total": 0.25
     },
     {
-     "at": "2026-10-29T06:26:20.442Z",
+     "at": "2026-10-29T06:35:30.336Z",
      "date": "2026-10-29",
      "qib": null,
      "bnii": null,
@@ -2790,7 +3098,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:24:18.985Z"
+   "fetchedAt": "2026-10-29T06:34:30.445Z"
   },
   {
    "symbol": "IG-2017",
@@ -2828,7 +3136,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-29T06:24:44.145Z",
+   "subsAsOn": "2026-10-29T06:34:35.043Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2908,7 +3216,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-29T06:24:44.145Z",
+   "fetchedAt": "2026-10-29T06:34:35.043Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -2942,36 +3250,36 @@
    "bids": {
     "qib": {
      "offered": 4045641,
-     "bid": 2482110,
-     "times": 0.6135270035082203
+     "bid": 2482740,
+     "times": 0.613682726668036
     },
     "nii": {
      "offered": 3034231,
-     "bid": 3000915,
-     "times": 0.9890199526667548
+     "bid": 3128805,
+     "times": 1.0311690177840778
     },
     "bnii": {
      "offered": 2022821,
-     "bid": 1934730,
-     "times": 0.9564514111728126
+     "bid": 2032110,
+     "times": 1.0045921018221582
     },
     "snii": {
      "offered": 1011410,
-     "bid": 1066185,
-     "times": 1.0541570678557657
+     "bid": 1096695,
+     "times": 1.084322875985011
     },
     "retail": {
      "offered": 7079872,
-     "bid": 3555945,
-     "times": 0.5022611990725256
+     "bid": 3603015,
+     "times": 0.5089096243547906
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 14159744,
-     "bid": 9038970,
-     "times": 0.6383568798983936
+     "bid": 9214560,
+     "times": 0.650757527819712
     },
     "anchor": {
      "offered": 6068460,
@@ -2980,7 +3288,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T11:51:00+05:30",
+   "subsAsOn": "2026-10-29T12:00:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3048,7 +3356,7 @@
      "id": "1(d)",
      "label": "Others",
      "offered": null,
-     "bid": 57870,
+     "bid": 58500,
      "times": null
     },
     {
@@ -3062,7 +3370,7 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 1876590,
+     "bid": 1973970,
      "times": null
     },
     {
@@ -3083,28 +3391,28 @@
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 1035270,
+     "bid": 1064520,
      "times": null
     },
     {
      "id": "2.2(c)",
      "label": "Others",
      "offered": null,
-     "bid": 22725,
+     "bid": 23985,
      "times": null
     },
     {
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 3166695,
+     "bid": 3209130,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 389250,
+     "bid": 393885,
      "times": null
     }
    ],
@@ -3122,29 +3430,29 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 29-Oct-2026 11:48:00 IST",
-    "totalBids": 8973990,
-    "timesSubscribed": 0.63,
+    "asOn": "As on 29-Oct-2026 11:57:00 IST",
+    "totalBids": 9141300,
+    "timesSubscribed": 0.65,
     "byPrice": {
-     "313": "89,73,990",
-     "314": "89,37,990",
-     "315": "89,35,785",
-     "316": "89,27,820",
-     "317": "89,27,235",
-     "318": "89,26,740",
-     "319": "89,26,110",
-     "320": "89,25,885",
-     "321": "89,14,095",
-     "322": "89,13,465",
-     "323": "89,12,880",
-     "324": "89,12,610",
-     "325": "89,12,250",
-     "326": "89,10,180",
-     "327": "89,10,135",
-     "328": "89,09,235",
-     "329": "89,08,380",
-     "330": "89,04,555",
-     "Cut-Off": "31,49,415"
+     "313": "91,41,300",
+     "314": "91,02,240",
+     "315": "91,00,035",
+     "316": "90,92,025",
+     "317": "90,91,440",
+     "318": "90,90,945",
+     "319": "90,90,315",
+     "320": "90,90,090",
+     "321": "90,78,030",
+     "322": "90,77,400",
+     "323": "90,76,815",
+     "324": "90,76,545",
+     "325": "90,76,185",
+     "326": "90,74,115",
+     "327": "90,74,070",
+     "328": "90,73,170",
+     "329": "90,72,270",
+     "330": "90,68,445",
+     "Cut-Off": "32,03,010"
     }
    },
    "registrar": {
@@ -3312,14 +3620,14 @@
      "total": 0.2722644561935583
     },
     {
-     "at": "2026-10-29T06:26:20.410Z",
+     "at": "2026-10-29T06:35:30.308Z",
      "date": "2026-10-29",
-     "qib": 0.6135270035082203,
-     "bnii": 0.9564514111728126,
-     "snii": 1.0541570678557657,
-     "nii": 0.9890199526667548,
-     "retail": 0.5022611990725256,
-     "total": 0.6383568798983936
+     "qib": 0.613682726668036,
+     "bnii": 1.0045921018221582,
+     "snii": 1.084322875985011,
+     "nii": 1.0311690177840778,
+     "retail": 0.5089096243547906,
+     "total": 0.650757527819712
     }
    ],
    "listingPerf": null,
@@ -3657,7 +3965,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-29T06:23:21.481Z"
+   "fetchedAt": "2026-10-29T06:34:07.340Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -3690,40 +3998,40 @@
    "bids": {
     "qib": {
      "offered": 3400000,
-     "bid": 42487600,
-     "times": 12.49635294117647
+     "bid": 42490400,
+     "times": 12.497176470588235
     },
     "nii": {
      "offered": 2550000,
-     "bid": 578171400,
-     "times": 226.73388235294118
+     "bid": 595038100,
+     "times": 233.34827450980393
     },
     "bnii": {
      "offered": 1700000,
-     "bid": 385454200,
-     "times": 226.73776470588234
+     "bid": 397285600,
+     "times": 233.6974117647059
     },
     "snii": {
      "offered": 850000,
-     "bid": 192717200,
-     "times": 226.72611764705883
+     "bid": 197752500,
+     "times": 232.65
     },
     "retail": {
      "offered": 5950000,
-     "bid": 369388900,
-     "times": 62.08216806722689
+     "bid": 377722600,
+     "times": 63.482789915966386
     },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
      "offered": 11900000,
-     "bid": 990047900,
-     "times": 83.19730252100841
+     "bid": 1015251100,
+     "times": 85.31521848739496
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T11:51:00+05:30",
+   "subsAsOn": "2026-10-29T12:00:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -3792,63 +4100,63 @@
      "id": "1(d)",
      "label": "Others",
      "offered": null,
-     "bid": 41786800,
+     "bid": 41789600,
      "times": null
     },
     {
      "id": "2.1(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 2065700,
+     "bid": 2085800,
      "times": null
     },
     {
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 374110100,
+     "bid": 385566300,
      "times": null
     },
     {
      "id": "2.1(c)",
      "label": "Others",
      "offered": null,
-     "bid": 9278400,
+     "bid": 9633500,
      "times": null
     },
     {
      "id": "2.2(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 269600,
+     "bid": 272400,
      "times": null
     },
     {
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 189056600,
+     "bid": 194006900,
      "times": null
     },
     {
      "id": "2.2(c)",
      "label": "Others",
      "offered": null,
-     "bid": 3391000,
+     "bid": 3473200,
      "times": null
     },
     {
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 332180700,
+     "bid": 339494300,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 37208200,
+     "bid": 38228300,
      "times": null
     }
    ],
@@ -3866,20 +4174,20 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 29-Oct-2026 11:48:00 IST",
-    "totalBids": 982213200,
-    "timesSubscribed": 82.54,
+    "asOn": "As on 29-Oct-2026 11:57:00 IST",
+    "totalBids": 1010215000,
+    "timesSubscribed": 84.89,
     "byPrice": {
-     "142": "98,22,13,200",
-     "143": "98,13,11,200",
-     "144": "98,12,16,200",
-     "145": "98,11,80,600",
-     "146": "98,08,15,400",
-     "147": "98,07,61,600",
-     "148": "98,07,09,500",
-     "149": "98,05,74,600",
-     "150": "98,04,46,600",
-     "Cut-Off": "33,01,85,100"
+     "142": "1,01,02,15,000",
+     "143": "1,00,92,98,600",
+     "144": "1,00,92,03,200",
+     "145": "1,00,91,67,300",
+     "146": "1,00,87,96,100",
+     "147": "1,00,87,41,800",
+     "148": "1,00,86,88,800",
+     "149": "1,00,85,53,200",
+     "150": "1,00,84,22,400",
+     "Cut-Off": "33,79,86,100"
     }
    },
    "registrar": {
@@ -4053,14 +4361,14 @@
      "total": 35.24718487394958
     },
     {
-     "at": "2026-10-29T06:26:20.411Z",
+     "at": "2026-10-29T06:35:30.309Z",
      "date": "2026-10-29",
-     "qib": 12.49635294117647,
-     "bnii": 226.73776470588234,
-     "snii": 226.72611764705883,
-     "nii": 226.73388235294118,
-     "retail": 62.08216806722689,
-     "total": 83.19730252100841
+     "qib": 12.497176470588235,
+     "bnii": 233.6974117647059,
+     "snii": 232.65,
+     "nii": 233.34827450980393,
+     "retail": 63.482789915966386,
+     "total": 85.31521848739496
     }
    ],
    "listingPerf": null,
@@ -4396,7 +4704,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-29T06:23:27.303Z"
+   "fetchedAt": "2026-10-29T06:34:08.222Z"
   },
   {
    "symbol": "WISCON",
@@ -4442,7 +4750,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:23:55.275Z",
+   "subsAsOn": "2026-10-29T06:34:28.499Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -4485,17 +4793,17 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "Thursday, October 29 ,  2026 11:53:07 AM",
-    "totalBids": 3733200,
+    "asOn": "Thursday, October 29 ,  2026 12:02:15 PM",
+    "totalBids": 3746400,
     "timesSubscribed": null,
     "byPrice": {
-     "194": 3733200,
-     "195": 3728400,
-     "196": 3726000,
-     "198": 3724800,
-     "200": 3723600,
-     "203": 3722400,
-     "204": 3718800
+     "194": 3746400,
+     "195": 3741600,
+     "196": 3739200,
+     "198": 3738000,
+     "200": 3736800,
+     "203": 3735600,
+     "204": 3732000
     }
    },
    "registrar": {
@@ -4606,7 +4914,7 @@
      "total": 0.91
     },
     {
-     "at": "2026-10-29T06:26:20.441Z",
+     "at": "2026-10-29T06:35:30.335Z",
      "date": "2026-10-29",
      "qib": null,
      "bnii": null,
@@ -4639,7 +4947,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:23:55.275Z"
+   "fetchedAt": "2026-10-29T06:34:28.499Z"
   },
   {
    "symbol": "EDELALTS",
@@ -5410,7 +5718,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-29T06:23:32.703Z"
+   "fetchedAt": "2026-10-29T06:34:09.101Z"
   },
   {
    "symbol": "IG-2229",
@@ -5448,7 +5756,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-29T06:24:44.145Z",
+   "subsAsOn": "2026-10-29T06:34:35.043Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -5528,7 +5836,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-29T06:24:44.145Z",
+   "fetchedAt": "2026-10-29T06:34:35.043Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -5622,10 +5930,10 @@
    "contacts": {
     "company": {
      "address": "1st Floor, Tower B, Paras Twin Towers, Golf Course Road, Sector 54, Gurugram – 122 002, Haryana, India",
-     "phone": null,
-     "email": null,
-     "website": "https://parashospitals.com",
-     "contactPerson": null
+     "phone": "+91 124 430 2163",
+     "email": "cs@parashospitals.com",
+     "website": "https://www.parashospitals.com",
+     "contactPerson": "Rahul Kumar"
     },
     "registrar": {
      "name": "MUFG Intime India Private Limited",
@@ -5635,7 +5943,7 @@
      "contactPerson": "Shanti Gopalkrishnan",
      "website": "https://www.in.mpms.mufg.com"
     },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": [
@@ -5939,12 +6247,12 @@
    ],
    "listingPerf": {
     "dayOpen": 720,
-    "ltp": 771.7,
+    "ltp": 769,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 3.9,
-    "ltpGainPct": 11.36
+    "ltpGainPct": 10.97
    },
    "checks": [
     {
@@ -5975,8 +6283,8 @@
    "fundamentals": {
     "company": "Paras Healthcare Limited",
     "basis": "Consolidated",
-    "about": "Paras Healthcare runs eight tertiary and quaternary care hospitals under the 'Paras Health' brand across Haryana, Bihar, Uttar Pradesh, Rajasthan, Jharkhand and Jammu & Kashmir, with 2,211 beds as of June 30, 2026. Cardiac, oncology, neuro, gastro, orthopaedic and renal specialties (CONGOR) made up 74.70% of FY26 revenue from operations. It had 1,084 doctors and 1,937 nurses and plans to add hospitals in Gurugram and Ludhiana.",
-    "sector": "Healthcare - Hospitals",
+    "about": "Paras Healthcare Limited is a clinical specialty-led hospital chain providing tertiary and quaternary healthcare services under the 'Paras Health' brand. As of June 30, 2026, the company operated eight hospitals with an aggregate capacity of 2,211 beds across North India, Bihar, and Jharkhand. Its operations span five states and one union territory with a focused expansion pipeline to reach 3,011 beds by March 2028.",
+    "sector": "Healthcare Services / Hospitals",
     "headquarters": "Gurugram, Haryana",
     "founded_year": 1987,
     "periods": [
@@ -6082,18 +6390,23 @@
       4.39,
       3.53
      ],
-     "current_ratio": [
-      0.89,
-      0.84,
-      1.08
-     ],
+     "current_ratio": null,
      "nav_per_share": 44.06,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
+     "pe_pre_ipo": 159.68,
+     "pe_post_ipo": 159.68,
      "weighted_avg_eps": -0.07,
      "other": [
       {
-       "name": "Bed occupancy rate",
+       "name": "Operational Beds",
+       "unit": "count",
+       "values": [
+        1332,
+        1465,
+        1502
+       ]
+      },
+      {
+       "name": "Bed Occupancy Rate",
        "unit": "%",
        "values": [
         52.46,
@@ -6103,7 +6416,7 @@
       },
       {
        "name": "ARPOB",
-       "unit": "Rs per day",
+       "unit": "₹ per day",
        "values": [
         44305.65,
         48088.57,
@@ -6111,17 +6424,8 @@
        ]
       },
       {
-       "name": "Operational beds",
-       "unit": "number",
-       "values": [
-        1332,
-        1465,
-        1502
-       ]
-      },
-      {
-       "name": "Occupied bed days",
-       "unit": "number",
+       "name": "Occupied Bed Days",
+       "unit": "count",
        "values": [
         254716,
         268927,
@@ -6129,7 +6433,7 @@
        ]
       },
       {
-       "name": "Average length of stay",
+       "name": "Average Length of Stay",
        "unit": "days",
        "values": [
         3.14,
@@ -6138,12 +6442,12 @@
        ]
       },
       {
-       "name": "In-patient volume",
-       "unit": "number",
+       "name": "Number of Surgeries",
+       "unit": "count",
        "values": [
-        81047,
-        93170,
-        115496
+        30219,
+        33072,
+        39687
        ]
       }
      ]
@@ -6261,28 +6565,28 @@
      }
     ],
     "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
+     "price_low": 660,
+     "price_high": 693,
+     "total_issue_cr": 1450,
      "fresh_issue_cr": 500,
      "ofs_cr": 950,
      "fresh_issue_shares": null,
-     "ofs_shares": null,
+     "ofs_shares": 13708513,
      "pre_issue_shares": 100986187,
      "post_issue_shares": null,
      "face_value": 1,
      "objects": [
       {
-       "purpose": "Prepayment or scheduled repayment of certain outstanding borrowings availed by the Company",
+       "purpose": "Prepayment or scheduled repayment, in full or part, of certain outstanding borrowings availed by our Company",
        "amount_cr": 320.9
       },
       {
-       "purpose": "Investment in wholly owned subsidiary PMHPL (Srinagar hospital) for repayment/prepayment of its borrowings",
+       "purpose": "Investment in wholly owned Subsidiary, PMHPL, for repayment/prepayment of borrowings",
        "amount_cr": 54.1
       },
       {
-       "purpose": "General corporate purposes (capped at 25% of gross proceeds)",
-       "amount_cr": null
+       "purpose": "General corporate purposes",
+       "amount_cr": 101.11
       }
      ],
      "reservation_pct": {
@@ -6299,79 +6603,77 @@
      ],
      "holding_pre_pct": 72.8,
      "holding_post_pct": null,
-     "background": "Promoter and Managing Director; has led the commissioning of all the hospitals over two decades and has over 22 years of healthcare experience. Commelina Ltd (affiliate of Creador) invested in 2017 and is a selling shareholder."
+     "background": "Dr. Dharminder Kumar Nagar has over 22 years of healthcare experience, serves as co-chair of the FICCI Health Services Committee, and has led the commissioning of all company hospitals over the past 20 years."
     },
     "concentration": {
      "top_customers_pct": null,
      "govt_share_pct": 41.28,
-     "note": "Government schemes and PSUs were 41.28% of FY26 revenue from operations (30.91% in FY25, 29.76% in FY24). Five of eight hospitals in North India gave 66.07% of FY26 revenue."
+     "note": "Government Schemes and PSUs accounted for 41.28% of payor revenue in FY26, while Self-Pay accounted for 33.88% and Insurance/TPA accounted for 24.84%."
     },
     "order_book_cr": null,
-    "litigation_note": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages notices to a subsidiary from Heavy Engineering Corporation. A Promoter Group member, Harbaksh Singh Khangura, appears in the CIBIL wilful defaulter database.",
+    "litigation_note": "Contingent liabilities totaled ₹398.44 crore as of June 30, 2026, comprising 89.55% of net worth, primarily consisting of corporate guarantees of ₹376.40 crore, tax disputes of ₹5.82 crore, and medical negligence claims of ₹5.98 crore.",
     "strengths": [
-     "One of the largest healthcare providers in North India, Bihar and Jharkhand with 2,211 beds across eight hospitals and a recognised 'Paras Health' brand.",
-     "Focus on high-acuity tertiary and quaternary care: CONGOR specialties gave 74.70% of FY26 revenue from operations.",
-     "Revenue from operations grew at a 19.26% CAGR from Rs 1,129.04 crore in FY24 to Rs 1,605.95 crore in FY26.",
-     "EBITDA grew from Rs 154.41 crore in FY24 to Rs 335.58 crore in FY26, with margin rising from 13.42% to 20.60%.",
-     "Bed occupancy improved from 52.46% in FY24 to 61.75% in FY26 as newer hospitals ramp up.",
-     "Seven of eight hospitals are NABH accredited, with 1,084 doctors and 1,937 nurses as of June 30, 2026.",
-     "Mix of owned, leased and revenue-share hospitals; capex per bed was Rs 7.70 million as of June 30, 2026.",
-     "Committed expansion of a 300-bed Gurugram hospital and a 500-bed Ludhiana hospital, taking capacity to 3,011 beds by March 2028."
+     "One of the largest healthcare platforms in North India, Bihar, and Jharkhand with 2,211 beds across eight hospitals.",
+     "First-mover advantages in key regional cities such as Gurugram, Panchkula, and Patna under the recognized 'Paras Health' brand.",
+     "Specialty depth with core CONGOR medical specialties contributing 74.70% of Fiscal 2026 operating revenue.",
+     "Capital-efficient operating model maintaining a low capital expenditure per bed of ₹0.77 crore.",
+     "Extensive medical talent pool consisting of 1,084 doctors and 1,937 nurses supported by high-end diagnostic infrastructure.",
+     "Cloud-first integrated technology ecosystem combining HIS, ERP, electronic health records, and digital patient engagement tools.",
+     "Experienced doctor-led senior management team with a proven 20-year execution record in hospital commissioning and scaling."
     ],
     "risks": [
      {
-      "title": "History of losses",
-      "detail": "The company lost Rs 15.33 crore in FY24 and Rs 57.98 crore in FY25 on a consolidated basis; profit of Rs 43.83 crore in FY26 may not be sustained.",
+      "title": "History of Consolidated Net Losses",
+      "detail": "The company incurred net losses of ₹57.98 crore in FY25 and ₹15.33 crore in FY24, and cannot guarantee sustained future profitability.",
       "severity": "high"
      },
      {
-      "title": "Loss-making subsidiaries",
-      "detail": "Subsidiaries Paras Healthcare (Ranchi) and Plus Medicare Hospitals lost Rs 87.27 crore in FY24, Rs 82.24 crore in FY25 and Rs 52.09 crore in FY26 collectively.",
+      "title": "Subsidiaries Incurring Continued Operating Losses",
+      "detail": "Subsidiaries PHRPL and PMHPL collectively incurred losses of ₹52.09 crore in FY26 and ₹82.24 crore in FY25, creating operational drags.",
       "severity": "high"
      },
      {
-      "title": "High debt and leverage",
-      "detail": "Fund-based borrowings were Rs 888.89 crore at June 30, 2026 and debt to equity (including leases) was 3.53 times in FY26 and 4.39 times in FY25.",
+      "title": "High Total Contingent Liabilities Relative to Net Worth",
+      "detail": "Contingent liabilities stood at ₹398.44 crore as of June 30, 2026, representing 89.55% of the company's net worth.",
       "severity": "high"
      },
      {
-      "title": "Contingent liabilities",
-      "detail": "Contingent liabilities were 89.55% of net worth as of June 30, 2026, including liquidated damages claims by Heavy Engineering Corporation on a subsidiary.",
+      "title": "Substantial Indebtedness and Repayment Obligations",
+      "detail": "Total outstanding borrowings amounted to ₹939.47 crore as of August 31, 2026, creating high finance costs and liquidity exposure.",
       "severity": "high"
      },
      {
-      "title": "Dependence on government schemes",
-      "detail": "Government schemes and PSUs contributed 41.28% of FY26 revenue from operations, up from 29.76% in FY24, which raises payment-delay and tariff risk.",
+      "title": "High Employee and Healthcare Staff Attrition Rates",
+      "detail": "The company experienced significant staff attrition of 60.38% in FY26 and 66.74% in FY25, affecting operational stability.",
       "severity": "high"
      },
      {
-      "title": "Promoter Group member on wilful defaulter list",
-      "detail": "Promoter Group member Harbaksh Singh Khangura appears in the CIBIL wilful defaulter database in relation to Majestic Hotels Limited defaults from 2014.",
+      "title": "Geographical Revenue Concentration in North India",
+      "detail": "Five hospitals located in North India contributed 66.07% of consolidated revenue from operations in Fiscal 2026.",
       "severity": "medium"
      },
      {
-      "title": "High staff attrition",
-      "detail": "Attrition of doctors, nurses and support staff was 60.38% in FY26, 66.74% in FY25 and 65.27% in FY24.",
+      "title": "High Specialty Concentration in CONGOR Clinical Segments",
+      "detail": "Six key CONGOR specialty areas accounted for 74.70% of consolidated revenue from operations in Fiscal 2026.",
       "severity": "medium"
      },
      {
-      "title": "Regional and specialty concentration",
-      "detail": "Five of eight hospitals are in North India (66.07% of FY26 revenue) and CONGOR specialties gave 74.70% of FY26 revenue; six of eight hospitals are on leased premises.",
+      "title": "Operational Risks Associated with Leased Hospital Properties",
+      "detail": "Six of eight hospitals operate under leases or revenue-share arrangements, posing renewal, rent escalation, and landlord dispute risks.",
       "severity": "medium"
      }
     ],
-    "source_doc": "RHP",
-    "notes": "Consolidated, restated; FY24-FY26 audited. Source tables were garbled so figures were cross-checked (net worth = equity + other equity; borrowings = non-current incl. current maturities + current borrowings, excluding lease liabilities; cash_and_bank = cash and equivalents + other bank balances; current ratio computed from total current assets/liabilities; operating cash flow reconciled to investing and financing flows). Q1FY27 (June 30, 2026) stub ignored: revenue Rs 470.28 crore, PAT Rs 49.68 crore, basic EPS Rs 4.92 (not annualised). Price band, P/E, share counts and reservation not yet disclosed in the RHP (shown as blanks); Fresh Issue is Rs 5,000 million and Offer for Sale up to Rs 3,000 million (promoter) plus Rs 6,500 million (Commelina). pre_issue_shares is the share count as at June 30, 2026 (face value Rs 1). Peer revenue converted from Rs million."
+    "source_doc": "Prospectus",
+    "notes": "Figures are consolidated and restated. Values reported in INR million have been converted to ₹ crore. Stub periods for three months ended June 30, 2025 and June 30, 2026 are excluded from the annual financial series."
    },
    "verification": {
     "status": "warn",
-    "checked": 117,
+    "checked": 119,
     "notFound": 0,
     "issues": [
      "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
      "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
-     "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)",
-     "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+     "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
     ],
     "sourceDoc": "Prospectus"
    },
@@ -6855,12 +7157,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1358,
-    "ltp": 1425.9,
+    "ltp": 1422.7,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 21.36,
-    "ltpGainPct": 27.43
+    "ltpGainPct": 27.14
    },
    "checks": [
     {
@@ -7654,12 +7956,12 @@
    ],
    "listingPerf": {
     "dayOpen": 159.25,
-    "ltp": 162.36,
+    "ltp": 162.09,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 5.46,
-    "ltpGainPct": 7.52
+    "ltpGainPct": 7.34
    },
    "checks": [
     {
@@ -8447,12 +8749,12 @@
    ],
    "listingPerf": {
     "dayOpen": 371.1499938964844,
-    "ltp": 470.65,
+    "ltp": 472.5,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 7.89,
-    "ltpGainPct": 36.82
+    "ltpGainPct": 37.35
    },
    "checks": [
     {
@@ -9236,12 +9538,12 @@
    ],
    "listingPerf": {
     "dayOpen": 586,
-    "ltp": 625,
+    "ltp": 625.4,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 0,
-    "ltpGainPct": 6.66
+    "ltpGainPct": 6.72
    },
    "checks": [
     {
@@ -10058,12 +10360,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1160,
-    "ltp": 1202,
+    "ltp": 1200.3,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 65.71,
-    "ltpGainPct": 71.71
+    "ltpGainPct": 71.47
    },
    "checks": [
     {
@@ -10835,12 +11137,12 @@
    ],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 273.3,
+    "ltp": 277.3,
     "exchange": "NSE",
     "listDate": "2026-10-22",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 5.54,
-    "ltpGainPct": -5.43
+    "ltpGainPct": -4.05
    },
    "checks": [
     {
@@ -12380,12 +12682,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 274.65,
+    "ltp": 275.35,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 1.35
+    "ltpGainPct": 1.61
    },
    "checks": [
     {
@@ -14486,12 +14788,12 @@
    ],
    "listingPerf": {
     "dayOpen": 215,
-    "ltp": 100.5,
+    "ltp": 101.3,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-10-29",
     "dayOpenGainPct": -2.27,
-    "ltpGainPct": -54.32
+    "ltpGainPct": -53.95
    },
    "checks": [],
    "fundamentals": {
@@ -15106,12 +15408,12 @@
    ],
    "listingPerf": {
     "dayOpen": 80,
-    "ltp": 62,
+    "ltp": 62.25,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 6.67,
-    "ltpGainPct": -17.33
+    "ltpGainPct": -17
    },
    "checks": [],
    "fundamentals": {
@@ -17491,12 +17793,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 105.7,
+    "ltp": 105.75,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -18.69
+    "ltpGainPct": -18.65
    },
    "checks": [],
    "fundamentals": {
@@ -18137,12 +18439,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 450,
-    "ltp": 363,
+    "ltp": 361.3,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 65.44,
-    "ltpGainPct": 33.46
+    "ltpGainPct": 32.83
    },
    "checks": [],
    "fundamentals": {
@@ -19531,12 +19833,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 142,
-    "ltp": 102.9,
+    "ltp": 102.39,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 2.16,
-    "ltpGainPct": -25.97
+    "ltpGainPct": -26.34
    },
    "checks": [],
    "fundamentals": {
@@ -20178,12 +20480,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 28.31999969482422,
-    "ltp": 20.28,
+    "ltp": 20.15,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-10-29",
     "dayOpenGainPct": -11.5,
-    "ltpGainPct": -36.62
+    "ltpGainPct": -37.03
    },
    "checks": [],
    "fundamentals": {
@@ -22563,12 +22865,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 455,
-    "ltp": 370,
+    "ltp": 368.95,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 12.35,
-    "ltpGainPct": -8.64
+    "ltpGainPct": -8.9
    },
    "checks": [],
    "fundamentals": {
@@ -23195,12 +23497,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 50.59,
+    "ltp": 51.51,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 48.79
+    "ltpGainPct": 51.5
    },
    "checks": [],
    "fundamentals": {
@@ -23839,12 +24141,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 182.01,
+    "ltp": 181.2,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 35.83
+    "ltpGainPct": 35.22
    },
    "checks": [],
    "fundamentals": {
@@ -24464,12 +24766,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 291.6,
+    "ltp": 290.85,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-29",
     "dayOpenGainPct": -1.91,
-    "ltpGainPct": -19.45
+    "ltpGainPct": -19.65
    },
    "checks": [],
    "fundamentals": {
@@ -25056,12 +25358,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 274.2,
+    "ltp": 274.1,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -26.88
+    "ltpGainPct": -26.91
    },
    "checks": [],
    "fundamentals": {
@@ -25685,12 +25987,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 200,
-    "ltp": 199.62,
+    "ltp": 199.01,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-10-29",
     "dayOpenGainPct": 8.11,
-    "ltpGainPct": 7.9
+    "ltpGainPct": 7.57
    },
    "checks": [],
    "fundamentals": {
@@ -26572,7 +26874,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-29T06:23:49.179Z",
+   "subsAsOn": "2026-10-29T06:34:22.051Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -26666,7 +26968,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-29T06:23:49.179Z"
+   "fetchedAt": "2026-10-29T06:34:22.051Z"
   }
  ],
  "filings": [
