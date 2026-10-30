@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-10-30T02:30:58.749Z",
+ "generatedAt": "2026-10-30T02:40:43.750Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-10-30T02:29:51.168Z"
+   "fetchedAt": "2026-10-30T02:39:49.965Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-10-30T02:30:02.011Z"
+   "fetchedAt": "2026-10-30T02:39:58.850Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-10-30T02:29:53.498Z"
+   "fetchedAt": "2026-10-30T02:39:50.651Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -67,7 +67,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:36.743Z",
+   "subsAsOn": "2026-10-30T02:39:25.945Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -513,7 +513,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:36.743Z"
+   "fetchedAt": "2026-10-30T02:39:25.945Z"
   },
   {
    "symbol": "MAXENGS",
@@ -559,7 +559,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:26.126Z",
+   "subsAsOn": "2026-10-30T02:39:15.053Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -676,8 +676,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 70,
-    "min": 70,
+    "value": 55,
+    "min": 40,
     "max": 70,
     "sources": [
      {
@@ -690,7 +690,7 @@
      },
      {
       "source": "ipowatch.in",
-      "gmp": 70,
+      "gmp": 40,
       "updated": "30-3 Nov"
      }
     ],
@@ -711,7 +711,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 70
+      "gmp": 55
      }
     ]
    },
@@ -1053,7 +1053,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:26.126Z"
+   "fetchedAt": "2026-10-30T02:39:15.053Z"
   },
   {
    "symbol": "HGSINDIALT",
@@ -1099,7 +1099,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:31.459Z",
+   "subsAsOn": "2026-10-30T02:39:20.533Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1277,7 +1277,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:31.459Z"
+   "fetchedAt": "2026-10-30T02:39:20.533Z"
   },
   {
    "symbol": "JOHNSONCAB",
@@ -1319,7 +1319,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:49.515Z",
+   "subsAsOn": "2026-10-30T02:39:49.157Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1423,13 +1423,13 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 13,
-    "min": 13,
+    "value": 11.5,
+    "min": 10,
     "max": 13,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 13,
+      "gmp": 10,
       "updated": "30-3 Nov"
      },
      {
@@ -1458,7 +1458,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 13
+      "gmp": 11.5
      }
     ]
    },
@@ -1486,7 +1486,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:49.515Z"
+   "fetchedAt": "2026-10-30T02:39:49.157Z"
   },
   {
    "symbol": "VECTRAS",
@@ -1528,7 +1528,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:51.168Z",
+   "subsAsOn": "2026-10-30T02:39:49.965Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1680,7 +1680,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:51.168Z"
+   "fetchedAt": "2026-10-30T02:39:49.965Z"
   },
   {
    "symbol": "BCSSL",
@@ -2050,7 +2050,7 @@
      "total": 2.6731402602260252
     },
     {
-     "at": "2026-10-30T02:30:58.698Z",
+     "at": "2026-10-30T02:40:43.708Z",
      "date": "2026-10-30",
      "qib": 6.55461064796561,
      "bnii": 0.48848494919861857,
@@ -2407,7 +2407,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:04.253Z"
+   "fetchedAt": "2026-10-30T02:38:57.751Z"
   },
   {
    "symbol": "ANTALA",
@@ -2453,7 +2453,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:48.659Z",
+   "subsAsOn": "2026-10-30T02:39:48.358Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2606,7 +2606,7 @@
      "total": 0.82
     },
     {
-     "at": "2026-10-30T02:30:58.737Z",
+     "at": "2026-10-30T02:40:43.739Z",
      "date": "2026-10-30",
      "qib": null,
      "bnii": null,
@@ -2639,7 +2639,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:48.659Z"
+   "fetchedAt": "2026-10-30T02:39:48.358Z"
   },
   {
    "symbol": "MKSONS",
@@ -2940,13 +2940,13 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 12.25,
-    "min": 12,
-    "max": 12.5,
+    "value": 13.75,
+    "min": 12.5,
+    "max": 15,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 12,
+      "gmp": 15,
       "updated": "28-30 Oct"
      },
      {
@@ -2987,7 +2987,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 12.25
+      "gmp": 13.75
      }
     ]
    },
@@ -3013,7 +3013,7 @@
      "total": 1.1767217647058823
     },
     {
-     "at": "2026-10-30T02:30:58.701Z",
+     "at": "2026-10-30T02:40:43.711Z",
      "date": "2026-10-30",
      "qib": 0.9881529411764706,
      "bnii": 2.5209676470588236,
@@ -3383,7 +3383,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:09.836Z"
+   "fetchedAt": "2026-10-30T02:39:03.277Z"
   },
   {
    "symbol": "CRL",
@@ -3429,7 +3429,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:46.172Z",
+   "subsAsOn": "2026-10-30T02:39:46.218Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3592,7 +3592,7 @@
      "total": 0.83
     },
     {
-     "at": "2026-10-30T02:30:58.736Z",
+     "at": "2026-10-30T02:40:43.738Z",
      "date": "2026-10-30",
      "qib": null,
      "bnii": null,
@@ -3625,7 +3625,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:46.172Z"
+   "fetchedAt": "2026-10-30T02:39:46.218Z"
   },
   {
    "symbol": "IG-2017",
@@ -3663,7 +3663,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-30T02:29:53.498Z",
+   "subsAsOn": "2026-10-30T02:39:50.651Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -3692,13 +3692,13 @@
    ],
    "anchor": false,
    "gmp": {
-    "value": 5,
+    "value": 20,
     "min": 5,
-    "max": 5,
+    "max": 35,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 5,
+      "gmp": 35,
       "updated": "28-30 Oct"
      },
      {
@@ -3739,7 +3739,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 5
+      "gmp": 20
      }
     ]
    },
@@ -3747,7 +3747,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-30T02:29:53.498Z",
+   "fetchedAt": "2026-10-30T02:39:50.651Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -4050,13 +4050,13 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 19.5,
-    "min": 19,
-    "max": 20,
+    "value": 15.5,
+    "min": 12,
+    "max": 19,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 20,
+      "gmp": 12,
       "updated": "27-29 Oct"
      },
      {
@@ -4109,7 +4109,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 19.5
+      "gmp": 15.5
      }
     ]
    },
@@ -4480,7 +4480,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:15.147Z"
+   "fetchedAt": "2026-10-30T02:39:08.761Z"
   },
   {
    "symbol": "BLSPOLY",
@@ -4776,13 +4776,13 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 68,
-    "min": 68,
+    "value": 59.5,
+    "min": 51,
     "max": 68,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 68,
+      "gmp": 51,
       "updated": "27-29 Oct"
      },
      {
@@ -4843,7 +4843,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 68
+      "gmp": 59.5
      }
     ]
    },
@@ -5212,7 +5212,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-10-30T02:29:20.646Z"
+   "fetchedAt": "2026-10-30T02:39:09.604Z"
   },
   {
    "symbol": "IG-2356",
@@ -5250,7 +5250,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-30T02:29:53.498Z",
+   "subsAsOn": "2026-10-30T02:39:50.651Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -5326,7 +5326,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-30T02:29:53.498Z",
+   "fetchedAt": "2026-10-30T02:39:50.651Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -5613,13 +5613,13 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 38.5,
-    "min": 37,
-    "max": 40,
+    "value": 33.5,
+    "min": 30,
+    "max": 37,
     "sources": [
      {
       "source": "ipowatch.in",
-      "gmp": 40,
+      "gmp": 30,
       "updated": "26-28 Oct"
      },
      {
@@ -5668,7 +5668,7 @@
      },
      {
       "date": "2026-10-30",
-      "gmp": 38.5
+      "gmp": 33.5
      }
     ]
    },
@@ -6140,7 +6140,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-10-30T02:29:53.498Z",
+   "subsAsOn": "2026-10-30T02:39:50.651Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -6224,7 +6224,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-10-30T02:29:53.498Z",
+   "fetchedAt": "2026-10-30T02:39:50.651Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -27306,7 +27306,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-30T02:29:41.661Z",
+   "subsAsOn": "2026-10-30T02:39:30.901Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -27400,7 +27400,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-10-30T02:29:41.661Z"
+   "fetchedAt": "2026-10-30T02:39:30.901Z"
   }
  ],
  "filings": [
