@@ -83,7 +83,7 @@ a{color:var(--pri)}
 @keyframes dotp{0%,100%{opacity:1}50%{opacity:.35}}
 
 /* ---------- surfaces ---------- */
-.card,.stat,.ins,.uprow,.dcard,.msec,.cmp,.closebox,.astile,.st-ix,.mf-row,.mf-stat,.st-stat,.sres,.asbtn,.tile.k,.gl,.stale,.disc-box{background:var(--surf);border:1px solid var(--bd);box-shadow:var(--shadow);border-radius:var(--r-lg)}
+.card,.stat,.ins,.uprow,.dcard,.msec,.cmp,.closebox,.astile,.mf-row,.mf-stat,.sres,.asbtn,.tile.k,.gl,.stale,.disc-box{background:var(--surf);border:1px solid var(--bd);box-shadow:var(--shadow);border-radius:var(--r-lg)}
 .card{padding:16px;margin-bottom:14px}
 .card.hero,.hero{background:var(--hero);border-color:var(--bd2);box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
 .card.hero::before{content:"";position:absolute;right:-60px;top:-70px;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(167,139,250,.5),transparent 70%);pointer-events:none}
@@ -350,7 +350,7 @@ td .tnote{font-weight:500;margin-top:2px}
 .gdot{opacity:0;stroke:var(--card);stroke-width:2.5;transition:opacity .15s}.gdot.on{opacity:1;r:5;stroke:var(--card);stroke-width:2.5}
 .gread{background:var(--tint);border-radius:var(--r-sm);padding:10px 12px;font-size:13.5px;margin:10px 0 8px}
 
-/* chart panel (shared by Stocks charts) */
+/* chart panel (fund charts) */
 .tc-panel{background:var(--surf);border:1px solid var(--bd);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:14px;margin-bottom:14px;overflow:hidden}
 .tc-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;margin-bottom:12px}
 .tc-head .tc-sym{font-weight:800;font-size:16px}.tc-head .tc-px{font-weight:800;font-size:26px;letter-spacing:-.02em;font-variant-numeric:tabular-nums}.tc-head .tc-chg{font-weight:800;font-size:14px}
@@ -449,8 +449,8 @@ td .tnote{font-weight:500;margin-top:2px}
 @keyframes enterB{from{opacity:0;transform:translateY(8px)}}
 
 /* ---------- press feedback + hover lift ---------- */
-.btn,.ib,.stat,.ipoc,.uprow,.tile.k,.mrow,.mtabs button,nav button,.chk,.chipb,.sres,.nrow,.dnav button,.gsearch,.asbtn,.calrow,.brow,.st-row,.st-sw button,.mf-chip,.mf-row,.tc-chips button,.cmpcell,.starb,.pl{-webkit-tap-highlight-color:transparent;transition:transform .14s var(--ease),background-color .2s,border-color .2s,box-shadow .2s,filter .2s,color .2s}
-.btn:active,.ib:active,.stat:active,.ipoc:active,.uprow:active,.tile.k:active,.mrow:active,.mtabs button:active,nav button:active,.chk:active,.chipb:active,.sres:active,.nrow:active,.dnav button:active,.gsearch:active,.asbtn:active,.st-row:active,.st-sw button:active,.mf-chip:active:active,.tc-chips button:active,.starb:active{transform:scale(.97)}
+.btn,.ib,.stat,.ipoc,.uprow,.tile.k,.mrow,.mtabs button,nav button,.chk,.chipb,.sres,.nrow,.dnav button,.gsearch,.asbtn,.calrow,.brow,.mf-chip,.mf-row,.tc-chips button,.cmpcell,.starb,.pl{-webkit-tap-highlight-color:transparent;transition:transform .14s var(--ease),background-color .2s,border-color .2s,box-shadow .2s,filter .2s,color .2s}
+.btn:active,.ib:active,.stat:active,.ipoc:active,.uprow:active,.tile.k:active,.mrow:active,.mtabs button:active,nav button:active,.chk:active,.chipb:active,.sres:active,.nrow:active,.dnav button:active,.gsearch:active,.asbtn:active,.mf-chip:active:active,.tc-chips button:active,.starb:active{transform:scale(.97)}
 @media(hover:hover) and (pointer:fine) and (min-width:960px){
   .ipoc:hover,.uprow:hover,.stat:hover,.ins.ipoc:hover,.tile.k:hover,.sres:hover:hover,.mf-row:hover,.asbtn:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--bd2)}
   .ipoc:active,.uprow:active,.stat:active{transform:scale(.985)}
@@ -508,30 +508,24 @@ td .tnote{font-weight:500;margin-top:2px}
   .ipoc{padding:14px}
 }
 
-/* ---------- module screens (Stocks / Mutual Fund) inherit the system ---------- */
-.st-ix,.mf-stat,.st-stat,.st-read,.mf-read,.mf-rets i{background:var(--tint);border-color:var(--bd);box-shadow:none}
-.st-row:hover{background:var(--tint)}
-.st-sw button,.st-rg button,.mf-chip,.mf-rng button{background:var(--tint);border:1px solid var(--bd);color:var(--mut);border-radius:var(--r-pill);min-height:38px}
-.st-sw button.on,.st-rg button.on,.mf-chip.on,.mf-rng button.on,.mf-seg button.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--glow)}
+/* ---------- module screens (Mutual Fund) inherit the system ---------- */
+.mf-stat,.mf-read,.mf-rets i{background:var(--tint);border-color:var(--bd);box-shadow:none}
+.mf-chip,.mf-rng button{background:var(--tint);border:1px solid var(--bd);color:var(--mut);border-radius:var(--r-pill);min-height:38px}
+.mf-chip.on,.mf-rng button.on,.mf-seg button.on{background:var(--grad);border-color:transparent;color:#fff;box-shadow:var(--glow)}
 .mf-seg{border:1px solid var(--bd);border-radius:var(--r-pill);padding:4px;gap:4px;overflow:visible}.mf-seg button{background:transparent;color:var(--mut);border-radius:var(--r-pill);min-height:40px}
 .mf-row{padding:12px}
 .mf-cmpbar{background:var(--tint);border-radius:var(--r-md)}
-.mf-star,.st-star{background:var(--tint);border-color:var(--bd);border-radius:12px;min-width:40px;min-height:40px}
+.mf-star{background:var(--tint);border-color:var(--bd);border-radius:12px;min-width:40px;min-height:40px}
 .mf-cb,.mf-rm{background:var(--tint);border:1px solid var(--bd2);color:var(--pri2);border-radius:12px;min-height:36px}.mf-cb.on{background:var(--grad);color:#fff;border-color:transparent}
 .mf-ct td.mf-best{background:var(--ok-bg)!important;color:var(--ok)!important}.mf-ct td.mf-best b{color:var(--ok)!important}
-.mf-star.on,.st-star.on{color:#f59e0b;border-color:#f59e0b}
-.st-bar{border-radius:99px}
-.st-tag{background:var(--pri-bg);border-color:transparent;color:var(--pri2);border-radius:6px}
-.st-x{min-width:40px;min-height:40px}
+.mf-star.on{color:#f59e0b;border-color:#f59e0b}
 .mf-x{min-width:32px;min-height:32px}
-.mf-ax,.st-ax{font-size:12px}
+.mf-ax{font-size:12px}
 .mf-in input,.mf-fld input{background:var(--tint)}
-.st-nm small,.mf-sub,.mf-nav,.st-ex{font-size:12.5px}
-.st-big b{font-size:30px;font-weight:800;letter-spacing:-.02em}
-.st-grid>.card,.st-page>.card{box-shadow:var(--shadow)}
+.mf-sub,.mf-nav{font-size:12.5px}
 
 /* ---------- small-text floor (nothing under 12px) ---------- */
-.pill.sm,.dots,.datebox em,.datebox span,.disc,.credit span,.calday span,.calchip,.bd,.badge,.st,.tile .sm,.gax,.st-tag{font-size:max(12px,1em)}
+.pill.sm,.dots,.datebox em,.datebox span,.disc,.credit span,.calday span,.calchip,.bd,.badge,.st,.tile .sm,.gax{font-size:max(12px,1em)}
 .datebox em{font-size:12px}
 
 /* ---------- print + reduced motion ---------- */
@@ -592,7 +586,7 @@ td .tnote{font-weight:500;margin-top:2px}
 @keyframes tl-pulse{0%{box-shadow:0 0 0 0 rgba(16,185,129,.55)}80%,100%{box-shadow:0 0 0 7px rgba(16,185,129,0)}}
 @media (prefers-reduced-motion:reduce){.tl-live .tl-dot{animation:none}}
 
-/* ---- bottom bar on phones: every item shows its icon AND its name (IPO | Stocks | Mutual Fund); the active one is the gradient pill ---- */
+/* ---- bottom bar on phones: every item shows its icon AND its name (IPO | Mutual Fund); the active one is the gradient pill ---- */
 @media(max-width:959px){
   nav{padding:5px}
   nav button{flex:1 1 0;flex-direction:column;gap:3px;height:58px;padding:5px 2px 4px;border-radius:20px}
@@ -661,14 +655,13 @@ a[href^="tel:"],a[href^="mailto:"]{display:inline-block;min-height:40px;line-hei
 .mlb small,.mlb small{font-size:12px}
 input[type=checkbox]{width:22px;height:22px;flex:none}
 .row>input[type=checkbox]{margin:9px 4px}
-.st-sw button,.st-rg button,.mf-chip,.mf-rng button,.mf-seg button{min-height:40px}
+.mf-chip,.mf-rng button,.mf-seg button{min-height:40px}
 .mf-fld input[type=range]{min-height:40px}
 .mf-fl{display:block;min-height:40px;padding:10px 0}
 /* chips/pills on the (dark) hero + lists: lighter tokens so text keeps >= 4.5:1 */
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) .hero .st.red,:root:not([data-theme=light]) .st.red{color:var(--bad-tx)}:root:not([data-theme=light]) .st.blue{color:#bfdbfe}:root:not([data-theme=light]) .st.grn,:root:not([data-theme=light]) .badge.g,:root:not([data-theme=light]) .chip.g{color:var(--ok-tx)}:root:not([data-theme=light]) .pill{color:#dbe0ff}}
 :root[data-theme=dark] .st.red{color:var(--bad-tx)}:root[data-theme=dark] .st.blue{color:#bfdbfe}:root[data-theme=dark] .st.grn,:root[data-theme=dark] .badge.g,:root[data-theme=dark] .chip.g{color:var(--ok-tx)}:root[data-theme=dark] .pill{color:#dbe0ff}
 .st-pill.up{color:var(--ok-tx)}.st-pill.dn{color:var(--bad-tx)}
-.st-bl{color:var(--pri2)}
 .datebox span,.datebox em{color:#fff!important}
 .linkbtn{min-width:40px}
 #app .st-pill.up{color:var(--ok-tx)}#app .st-pill.dn{color:var(--bad-tx)}#app .st-bl{color:var(--pri2)}
@@ -680,7 +673,7 @@ input[type=checkbox]{width:22px;height:22px;flex:none}
 .cdline .ic,.cd .ic{display:inline-block;vertical-align:-3px;margin-right:4px}
 .datebox b{white-space:nowrap;font-size:clamp(15px,4.6vw,20px)}
 @media(max-width:380px){.datebox b{font-size:16px}.datebox{width:52px}}
-/* module screens (Stocks / Mutual Fund): same page padding as the IPO screens, so the sticky header lines up and never pokes out by 2px */
+/* module screens (Mutual Fund): same page padding as the IPO screens, so the sticky header lines up and never pokes out by 2px */
 @media(min-width:720px){#app[data-view=mod]{padding:20px 22px 128px}}
 @media(min-width:960px){#app[data-view=mod]{padding:92px clamp(24px,3vw,56px) 56px}}
 .stats>*,.tiles>*,.bento>*,.ins,.stat,.tile{min-width:0}

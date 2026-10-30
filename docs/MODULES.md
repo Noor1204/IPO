@@ -1,4 +1,4 @@
-# Module API (Stocks, Mutual Fund)
+# Module API (Mutual Fund)
 
 Trendy is a static vanilla-JS app (no build step, no framework). `app.js` is the shell; each extra module is one file `app-<id>.js` that registers itself, and a Node script `pipeline/<id>.mjs` that fetches its data from official free sources into `data/<id>/` (JSON files, committed by a GitHub workflow). The app only reads those JSON files with `fetch("data/<id>/...")`.
 
@@ -28,7 +28,7 @@ Trendy is a static vanilla-JS app (no build step, no framework). `app.js` is the
   };
 })();
 ```
-Tab ids are fixed (the shell and the bottom bar know them): stocks: market, movers, watch, search; mf: funds, compare, sip, watch.
+Tab ids are fixed (the shell and the bottom bar know them): mf: funds, compare, sip, watch.
 `render` runs on every re-render (typing in a search box re-renders; keep input focus by giving the input an `id` — the shell restores focus and caret for inputs with an id). Keep UI state (selected fund, query, filters) in a module-local object, not in the DOM.
 
 ## Host API `H`
@@ -41,14 +41,7 @@ Plain Node 22 ESM, no npm packages (use built-in `fetch`; for NSE archive files 
 Serve the repo folder with any static server (for example `node -e` with `http`, port of your choice, **not 8740**) and open it with the Playwright browser tools (`file:` URLs are blocked, use `http://127.0.0.1:<port>/`). Test: opens without console errors, every tab, every detail page, the Back arrow and `history.back()` from each detail page, the tab strip, 320 px and 1366 px widths, dark mode (`document.documentElement.dataset.theme = "dark"`), search/filter inputs, and "no data / fetch failed" states (rename the data file temporarily).
 
 The F&O module (app-fno.js, mod-fno.css, pipeline/fno.mjs, data/fno/) was removed in Oct 2026. The shell treats a saved `modLast` key or a history step of an unknown module (e.g. `fno:overview`) as the IPO home (`MODS` / `fixTab` in app.js), so old installs keep working.
-
-## Stocks dashboard (Market tab, Groww-style, no charts)
-Sections: Indices (scroll-snap card row, "All indices" = sub page `indices`), Net FII & DII (`data/stocks/fiidii.json`, "View more" = sub page `fiidii`), Top gainers / Top losers / Most traded by volume (chips Large / Mid / Small = NIFTY 100 / MIDCAP 150 / SMALLCAP 250 from `data/stocks/caps.json`, "See more" opens the Movers tab with that list and cap), plain 52-week high / low rows. Charts exist only on the stock and index pages. Rows come from the live snapshot when usable, else from `list.json` (columns symbol,name,series,close,chgPct,volume,valueCr,prevClose) joined with caps. `pipeline/stocks.mjs` writes `caps.json` (weekly refresh, counts validated) and `fiidii.json` (NSE `api/fiidiiTradeReact` gives only the latest day, so it accumulates one row per trading day, 60 kept). `STOCKS_FORCE=1 node pipeline/stocks.mjs` rewrites the day's files even when the trade date is unchanged.
-
-## Movers (full lists)
-The Movers tab lists every stock, not only a top 50: gainers (change > 0, % descending), losers, most active, by volume (cap chips All / Large / Mid / Small; the dashboard keeps the top 5 of each and "See more" opens this list). `Live` mode = all rows of the live snapshot (NIFTY 500 + F&O + Smallcap 500 + recent IPOs + the market's top movers), `Last close` = all main-board stocks of `list.json` (EQ, BE, BZ; SME series are not listed). Rows under Rs 10 lakh traded carry an `illiquid` tag; the toggle "Hide very low volume" (default off) hides them. First 50 rows are rendered, 100 more are appended to the DOM when the reader scrolls near the end (or with the button). The search box, mode control and rows live in separate `data-lvr` regions, so a snapshot swaps only the rows and keeps the typed text and scroll position. Search matches symbol or name, highlights with `H.hl`, and pins an exact symbol (or the most traded name starting with the text) as "Best match". Arriving from the global search ("See all in ...") scrolls to the first match and flashes it (`input` elements get `data-arrive="1"` from `prefill()`).
-
-Update: the Movers tab root is now a compact overview (status pill, Live | Last close + cap chips, six sections of exactly 5 rows each - gainers, losers, most traded, most active, 52-week high, 52-week low - and a link to the Delivery % list). "See more" (also on the dashboard) opens the full list as the sub page `list:<kind>` with the mode and cap carried over; the search box, coverage text, "Hide very low volume" toggle and the paged list live only there. A list can hold fewer than 5 rows (for example live 52-week highs).
+The Stocks module (app-stocks.js, mod-stocks.css, live.js, pipeline/stocks.mjs, pipeline/live.mjs, the live-snapshot workflow, data/stocks/ and the `live` / `live-status` branches' data) was removed in Oct 2026 the same way: `MODS` is now `["ipo", "mf"]`, so a saved `modLast` or a history step such as `stocks:market` opens the IPO home.
 
 ## IPO Calendar, market holidays, lead managers, closing time (Oct 2026)
 - **Calendar** (IPO tab strip, after Unlisted; `state.tab = "calendar"`): month grid (Mon-Sun, dots per event kind on phones, name chips from 720px) or Agenda, previous / next month, Today; tapping a day lists its events below the grid (no sub page, so no history step; opening an IPO from it is a normal detail step and Back returns to the calendar). Events come from `state.ipos` open / close / allotment / listing (allotment and listing marked "(exp.)" when estimated) plus SEBI filings that carry dates, and grey market-holiday events. An IPO date that falls on a day NSE lists as a holiday gets a warning; nothing is guessed.
@@ -68,7 +61,7 @@ Update: the Movers tab root is now a compact overview (status pill, Live | Last 
 `npm test` (Node's built-in runner, no packages) runs `tests/run.test.mjs` and then `pipeline/validate.mjs`: every script parses, no regex has lost a backslash (the heredoc bug), no inline handlers (CSP), score weights add up to 1 and match the labels, page / service-worker files exist, every `ic("name")` icon exists in the sprite, `ipos.json` and `data/market` shapes, CSV formula safety. `.github/workflows/tests.yml` runs it on code pushes only. The score maths itself runs inside app.js (browser); it is covered by the checks above, not by unit tests.
 
 ## First-run welcome screens
-`ONB` / `onbShow` in app.js: four swipeable screens (IPOs, subscription and GMP, check before you apply, stocks and funds) shown once per device (flag `onb` in localStorage, a per-device convenience only). Skip / Back / Next / Get started, swipe, arrow keys, Escape, focus trap. They are a separate element above the disclaimer dialog (z-index 300), so the disclaimer still appears right after them and neither rebuilds on `render()`. To show them again: `localStorage.removeItem("onb")`.
+`ONB` / `onbShow` in app.js: four swipeable screens (IPOs, subscription and GMP, check before you apply, mutual funds) shown once per device (flag `onb` in localStorage, a per-device convenience only). Skip / Back / Next / Get started, swipe, arrow keys, Escape, focus trap. They are a separate element above the disclaimer dialog (z-index 300), so the disclaimer still appears right after them and neither rebuilds on `render()`. To show them again: `localStorage.removeItem("onb")`.
 
 ## Optional Google sign-in
 `AUTH`, `authVerify`, `authStart`, `authReturn`, `loginShow` in app.js. Off while `AUTH.clientId` is empty (no screen, no menu row). Browser-only OAuth `id_token` flow; the token is verified in the page and never stored, only name and e-mail are kept (`user` in localStorage). CSP `connect-src` allows `https://www.googleapis.com` for Google's signing keys. Setup in ADMIN.md.

@@ -11,7 +11,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "charts.js", "live.js", "theme.css", "mod-*.css", "fonts/**", "app-stocks.js", "app-mf.js", "data/mf/**", "data/stocks/**", "data/market/**", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
+    paths: ["data/ipos.json", "data/verify.json", "data/fundamentals/**", "data/logos/**", "index.html", "style.css", "app.js", "charts.js", "theme.css", "mod-*.css", "fonts/**", "app-mf.js", "data/mf/**", "data/market/**", "boot.js", "sw.js", "manifest.webmanifest", "icons/**", "pipeline/**", ".github/workflows/**"]
 
 # no permissions by default; each job asks only for what it needs
 permissions: {}
@@ -123,19 +123,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      # GitHub's own cron is unreliable (the live workflow's schedule did not fire for hours one morning). This chain runs every ~10 minutes in market hours,
-      # so it also restarts the live-snapshot chain whenever that has not run for more than 6 minutes.
-      - name: Keep the live snapshot chain alive
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          dow=$(TZ=Asia/Kolkata date +%u); hm=$((10#$(TZ=Asia/Kolkata date +%H%M)))
-          if [ "$dow" -le 5 ] && [ "$hm" -ge 900 ] && [ "$hm" -le 1545 ]; then
-            last=$(gh run list --workflow live.yml --limit 1 --json createdAt --jq '.[0].createdAt' 2>/dev/null || true)
-            age=999999; [ -n "$last" ] && age=$(( $(date +%s) - $(date -d "$last" +%s) ))
-            echo "last live run: ${last:-none} (${age}s ago)"
-            if [ "$age" -gt 360 ]; then gh workflow run live.yml --ref main && echo "live chain restarted" || echo "could not restart the live chain"; fi
-          else echo "outside market hours"; fi
       - name: Is an IPO open?
         id: live
         run: |

@@ -1,4 +1,4 @@
-// Market holidays: NSE's official trading-holiday list for the Capital Market (equity) segment, the one IPOs and stocks trade in.
+// Market holidays: NSE's official trading-holiday list for the Capital Market (equity) segment, the one IPOs trade in.
 //   source: https://www.nseindia.com/api/holiday-master?type=trading   (what nseindia.com/resources/exchange-communication-holidays shows; needs the same cookie handshake as live.mjs / fetch-nse.mjs)
 //   output: data/market/holidays.json  { year, u, rows: [{ d: "YYYY-MM-DD", day: "Mon", name, special?, session? }] }
 //     u       = date (IST) the list was last fetched and changed

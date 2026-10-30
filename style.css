@@ -511,7 +511,7 @@ html.themefade,html.themefade *{transition:background-color .45s ease,color .45s
 .bdline .bd{margin:0 4px 0 0}
 .insn:has(.bdline){white-space:normal;overflow:visible;text-overflow:clip}
 
-/* ---- modules: bottom bar (IPO | Stocks | Mutual Fund) and the tab strip under the title ---- */
+/* ---- modules: bottom bar (IPO | Mutual Fund) and the tab strip under the title ---- */
 nav button{font-weight:800}
 nav button[data-mod] b{font-size:21px}
 .mtabs{display:flex;gap:2px;overflow-x:auto;border-bottom:2px solid var(--bd);margin:2px 0 14px;scrollbar-width:none}

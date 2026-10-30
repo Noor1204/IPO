@@ -231,9 +231,9 @@ function listCard(i) {
 }
 const bellDot = () => unreadCount() ? '<i class="bdot"></i>' : "";
 const brand = () => `<header class="brand"><div class="brand-row"><span class="logomark"><img src="icons/logo.svg" alt="" width="34" height="34"></span><span class="wm">Trendy <b>IPO</b></span><span class="sp"></span><button class="ib sq" data-bell aria-label="Notifications">${ic("bell")}${bellDot()}</button><button class="ib sq menubtn" data-menu aria-label="Open menu">${ic("menu-2")}</button></div>
-${ownSearch() ? "" : `<button class="gsearch" data-gsearch aria-label="Search IPOs, stocks and funds">${ic("search")}<span>Search IPOs, stocks, funds</span></button>`}</header>`;
-// Stocks and Mutual Fund screens (and the search screen itself) have their own search, so there the header search bar is left out: one search box per screen
-const ownSearch = () => { const t = String(state.tab); return t === "search" || t.startsWith("stocks:") || t.startsWith("mf:"); };   // Stocks and Mutual Fund have their own Search tab / search box, so the header bar is only for the IPO side
+${ownSearch() ? "" : `<button class="gsearch" data-gsearch aria-label="Search IPOs and funds">${ic("search")}<span>Search IPOs and funds</span></button>`}</header>`;
+// Mutual Fund screens (and the search screen itself) have their own search, so there the header search bar is left out: one search box per screen
+const ownSearch = () => { const t = String(state.tab); return t === "search" || t.startsWith("mf:"); };   // the fund screens have their own search box, so the header bar is only for the IPO side
 const backBtn = () => "";
 // screens with a tab strip do not repeat their name as a big title (the strip and the bottom bar already say where you are): the title stays for screen readers only
 const head = (title, extra = "") => { const strip = modStrip(); return `${brand()}${strip && !extra ? `<h1 class="vh">${title}</h1>` : `<div class="top">${state.tab !== "ipo" || state.seg !== "live" ? backBtn() : ""}<h1>${title}</h1>${extra}</div>`}${strip}`; };
@@ -913,10 +913,10 @@ async function loadHolidays() {
     const j = await r.json(), rows = (Array.isArray(j.rows) ? j.rows : []).filter(x => x && /^\d{4}-\d{2}-\d{2}$/.test(x.d) && typeof x.name === "string" && x.name && x.name.length <= 80).map(x => ({ d: x.d, name: cleanStr(x.name), special: x.special === true, session: typeof x.session === "string" ? cleanStr(x.session) : "" }));
     HOL.rows = rows; HOL.map = new Map(rows.map(x => [x.d, x])); HOL.u = /^\d{4}-\d{2}-\d{2}$/.test(j.u) ? j.u : ""; HOL.st = "ok";
   } catch { HOL.st = "fail"; }
-  if (state.loaded && (state.tab === "calendar" || (state.tab === "ipo" && state.seg === "live") || String(state.tab).startsWith("stocks:"))) render();
+  if (state.loaded && (state.tab === "calendar" || (state.tab === "ipo" && state.seg === "live"))) render();
 }
 const holOn = d => HOL.map.get(d) || null;
-// "Market closed today" strip (Stocks module, IPO Live tab). A weekend is closed anyway, so the strip is for weekday holidays and special sessions only.
+// "Market closed today" strip (IPO Live tab). A weekend is closed anyway, so the strip is for weekday holidays and special sessions only.
 function marketBanner() {
   const h = holOn(istDay()); if (!h) return "";
   const wd = pd(h.d).getDay();
@@ -1309,14 +1309,14 @@ function aboutClick(t) {
   return false;
 }
 document.addEventListener("change", e => { if (e.target.matches?.("[data-theme-toggle]")) { state.theme = e.target.checked ? "dark" : "light"; store.set("theme", state.theme); const h = document.documentElement; h.classList.add("themefade"); applyTheme(); setTimeout(() => h.classList.remove("themefade"), 600); } });
-// ---------- modules: IPO (built in), Stocks, Mutual Fund (each in its own app-<name>.js, see docs/MODULES.md) ----------
+// ---------- modules: IPO (built in) and Mutual Fund (app-mf.js, see docs/MODULES.md) ----------
 // The bottom bar picks the module, the tab strip under the title picks the screen inside it. Module screens use state.tab = "<module>:<tab>";
 // a module's detail pages use state.sub, so the phone's Back button and the Back arrow work in every module.
 window.TrendyModules = window.TrendyModules || {};
 state.mod = "ipo";
 const modLoaded = {};
 const MOD_LAST = store.get("modLast", {});
-const MODS = ["ipo", "stocks", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
+const MODS = ["ipo", "mf"];   // a removed module (an old saved "fno" key, an old history step "fno:...") falls back to the IPO home
 for (const k of Object.keys(MOD_LAST)) if (!MODS.includes(k)) delete MOD_LAST[k];
 const fixTab = t => typeof t === "string" && t.includes(":") && !MODS.includes(t.split(":")[0]) ? "ipo" : t;
 const IPO_TABS = [["live", "Live"], ["upcoming", "Upcoming"], ["listed", "Closed"], ["allot", "Allotment"], ["calendar", "Calendar"], ["reports", "Reports"]];
@@ -1351,7 +1351,6 @@ function modScreen() {
   const m = modOf(state.tab), mod = m && window.TrendyModules[m];
   if (!mod) return head("Coming soon") + card("", '<p class="mut">This section is not available yet.</p>');
   let html; try { html = mod.render(String(state.tab).split(":")[1], state.sub, hostApi()); } catch (e) { console.error(e); html = head(mod.label) + card("", '<p class="mut">This screen could not be shown. Please try again.</p>'); }
-  if (m === "stocks") { const b = marketBanner(); if (b && /class="mtabs"/.test(html)) html = html.replace(/(<div class="mtabs"[\s\S]*?<\/div>)/, x => x + b); }   // "Market closed today" under the tab strip
   return html;
 }
 function modClick(t) {
@@ -1365,21 +1364,11 @@ for (const ev of ["input", "change"]) document.addEventListener(ev, e => {
   const el = e.target.closest?.("[data-m]"); if (!el) return;
   const mod = window.TrendyModules[el.dataset.m]; try { mod && mod[ev] && mod[ev](el, hostApi()); } catch (err) { console.error(err); }
 });
-// ---------- global search (IPOs + stocks + mutual funds) ----------
-const SR = { q: "", stocks: null, sSt: "idle", mf: null, mSt: "idle" };
+// ---------- global search (IPOs + mutual funds) ----------
+const SR = { q: "", mf: null, mSt: "idle" };
 const SYM_RE = /^[A-Z0-9&_.$-]{1,20}$/;
 const srRecent = () => { const r = store.get("recentSearches", []); return Array.isArray(r) ? r.filter(x => typeof x === "string").slice(0, 6) : []; };
 const srSave = q => { q = q.trim(); if (q.length < 2) return; store.set("recentSearches", [q, ...srRecent().filter(x => x.toLowerCase() !== q.toLowerCase())].slice(0, 6)); };
-async function srLoadStocks() {
-  if (SR.sSt !== "idle") return; SR.sSt = "loading";
-  try {
-    const r = await fetch("data/stocks/list.json", { cache: "no-cache" }); if (!r.ok) throw new Error(r.status);
-    const j = await r.json(); if (!Array.isArray(j.rows)) throw new Error("bad");
-    SR.stocks = j.rows.filter(x => Array.isArray(x) && typeof x[0] === "string" && SYM_RE.test(x[0])).map(x => ({ s: x[0], n: String(x[1] || ""), ln: String(x[1] || "").toLowerCase(), ls: x[0].toLowerCase(), close: x[3], chg: x[4], v: x[6] || 0 }));
-    SR.sSt = "ok";
-  } catch (e) { SR.sSt = "fail"; }
-  srUpdate();
-}
 async function srLoadMf() {
   if (SR.mSt !== "idle") return; SR.mSt = "loading";
   try {
@@ -1393,15 +1382,10 @@ async function srLoadMf() {
   srUpdate();
 }
 function srMatches(q) {
-  const t = q.trim().toLowerCase(), out = { ipo: [], stock: [], fund: [], n: { ipo: 0, stock: 0, fund: 0 } };
+  const t = q.trim().toLowerCase(), out = { ipo: [], fund: [], n: { ipo: 0, fund: 0 } };
   if (!t) return out;
   const ip = state.ipos.filter(i => (i.name + " " + i.symbol).toLowerCase().includes(t)).sort((a, b) => (b.status === "live") - (a.status === "live") || (b.open || "").localeCompare(a.open || ""));
   out.ipo = ip.slice(0, 5); out.n.ipo = ip.length;
-  if (SR.stocks) {
-    const m = [];
-    for (const r of SR.stocks) { const rank = r.ls === t ? 0 : r.ls.startsWith(t) ? 1 : r.ln.startsWith(t) ? 2 : r.ls.includes(t) ? 3 : (" " + r.ln).includes(" " + t) ? 4 : r.ln.includes(t) ? 5 : -1; if (rank >= 0) m.push([rank, r]); }
-    m.sort((a, b) => a[0] - b[0] || b[1].v - a[1].v); out.stock = m.slice(0, 5).map(x => x[1]); out.n.stock = m.length;
-  }
   if (SR.mf) {
     const toks = t.split(/\s+/).filter(Boolean), m = SR.mf.filter(f => toks.every(k => f.s.includes(k)));
     m.sort((a, b) => a.p - b.p || (a.n.toLowerCase().startsWith(t) ? 0 : 1) - (b.n.toLowerCase().startsWith(t) ? 0 : 1) || a.n.length - b.n.length);
@@ -1421,18 +1405,17 @@ function srResults() {
     return `<section class="sr-grp"><div class="row"><h3>${title}</h3>${m.n[key] > 5 ? `<button class="linkbtn" data-sall="${seeAll}">See all ${m.n[key]} in ${title}</button>` : ""}</div>${items.length ? items.map(rowFn).join("") : failed ? `<p class="mut sm">Could not load this list. Check your connection.</p>` : `<div class="skel-row"></div><div class="skel-row"></div>`}</section>`;
   };
   const ipoRow = i => `<button class="sres" data-sres="ipo" data-id="${esc(i.symbol)}">${logo(i)}<span class="sres-m"><b>${hl(i.name, q)}</b><small>${esc(i.board)} · ${i.status === "live" ? "Open now" : i.status === "upcoming" ? "Upcoming" : "Closed"}${isNum(i.priceHigh) ? " · " + price(i) : ""}</small></span>${ic("chevron-right")}</button>`;
-  const stRow = s => `<button class="sres" data-sres="stock" data-id="${esc(s.s)}"><span class="sres-ic">${esc(s.s.slice(0, 2))}</span><span class="sres-m"><b>${hl(s.s, q)}</b><small>${hl(s.n, q)}</small></span><span class="sres-r num"><b>${isNum(s.close) ? "₹" + s.close.toLocaleString("en-IN", { minimumFractionDigits: 2, maximumFractionDigits: 2 }) : "—"}</b><small class="${isNum(s.chg) ? (s.chg >= 0 ? "grn-t" : "red-t") : ""}">${isNum(s.chg) ? (s.chg > 0 ? "+" : "") + s.chg.toFixed(2) + "%" : "—"}</small></span></button>`;
   const fRow = f => `<button class="sres" data-sres="fund" data-id="${f.c}"><span class="sres-ic">${ic("wallet")}</span><span class="sres-m"><b>${hl(f.n, fq)}</b><small>${hl(f.amc, fq)} · ${esc(f.cat)} · ${f.p ? "Regular" : "Direct"}</small></span>${ic("chevron-right")}</button>`;
-  const html = grp("IPOs", "ipo", m.ipo, ipoRow, "ipo", false, false) + grp("Stocks", "stock", m.stock, stRow, "stocks", SR.sSt === "loading" || SR.sSt === "idle", SR.sSt === "fail") + grp("Mutual funds", "fund", m.fund, fRow, "mf", SR.mSt === "loading" || SR.mSt === "idle", SR.mSt === "fail");
+  const html = grp("IPOs", "ipo", m.ipo, ipoRow, "ipo", false, false) + grp("Mutual funds", "fund", m.fund, fRow, "mf", SR.mSt === "loading" || SR.mSt === "idle", SR.mSt === "fail");
   return html || `<div class="sr-empty">${ic("search")}<p>No results for “${esc(q)}”.</p></div>`;
 }
 function srUpdate() { const el = document.getElementById("gres"); if (el && state.tab === "search") el.innerHTML = srResults(); }
 function searchScreen() {
-  return `<div class="gs-bar"><label class="gs-in">${ic("search")}<input id="gq" type="search" placeholder="Search IPOs, stocks, funds" value="${esc(SR.q)}" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" aria-label="Search IPOs, stocks and mutual funds"></label><button class="ib sq" data-back aria-label="Close search">${ic("x")}</button></div><div id="gres" aria-live="polite">${srResults()}</div>`;
+  return `<div class="gs-bar"><label class="gs-in">${ic("search")}<input id="gq" type="search" placeholder="Search IPOs and funds" value="${esc(SR.q)}" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="40" aria-label="Search IPOs and mutual funds"></label><button class="ib sq" data-back aria-label="Close search">${ic("x")}</button></div><div id="gres" aria-live="polite">${srResults()}</div>`;
 }
 function openSearch() {
   if (state.tab !== "search") { state.tab = "search"; state.detail = null; state.report = null; state.sub = null; state.modal = null; state.drawer = false; SR.q = ""; render(); scrollTo(0, 0); }
-  srLoadStocks(); srLoadMf();
+  srLoadMf();
   const q = document.getElementById("gq"); if (q) q.focus();
 }
 function prefill(id, q, tries = 12) {
@@ -1447,14 +1430,12 @@ function searchClick(t) {
   if (d.sall) {
     srSave(SR.q); const q = SR.q;
     if (d.sall === "ipo") { const first = state.ipos.find(i => (i.name + " " + i.symbol).toLowerCase().includes(q.trim().toLowerCase())); state.q = q.trim(); goTab("ipo", first ? first.status : "live"); setTimeout(() => flashFirst(".ipoc"), 120); }
-    else if (d.sall === "stocks") { goTab("stocks", "search"); prefill("st-q", q); }
     else { goTab("mf", "funds"); prefill("mf-q", q); }
     return true;
   }
   if (d.sres) {
     srSave(SR.q);
     if (d.sres === "ipo" && byId(d.id)) { state.detail = d.id; }
-    else if (d.sres === "stock" && SYM_RE.test(d.id || "")) { state.tab = "stocks:search"; state.mod = "stocks"; state.sub = "stock:" + d.id; state.detail = null; }
     else if (d.sres === "fund" && /^\d+$/.test(d.id || "")) { state.tab = "mf:funds"; state.mod = "mf"; state.sub = "fund:" + d.id; state.detail = null; }
     else return true;
     render(); scrollTo(0, 0); return true;
@@ -1514,7 +1495,7 @@ function render() {
   const app = $("#app");
   if (newScreen && !REDUCED()) { enterFlip ^= 1; app.classList.remove("enter0", "enter1"); app.classList.add("enter" + enterFlip); }
   if (keep) { const n = document.getElementById(keep.id); if (n && n !== document.activeElement) { n.focus({ preventScroll: true }); try { if (keep.s != null) n.setSelectionRange(keep.s, keep.e); } catch {} } }
-  if (newScreen && state.tab === "search") { const g = document.getElementById("gq"); if (g) { g.focus({ preventScroll: true }); srLoadStocks(); srLoadMf(); } }
+  if (newScreen && state.tab === "search") { const g = document.getElementById("gq"); if (g) { g.focus({ preventScroll: true }); srLoadMf(); } }
   const side = $("#side"); side.innerHTML = sideMenu(); side.classList.toggle("open", !!state.drawer);
   document.querySelectorAll("nav button[data-mod]").forEach(b => { b.classList.toggle("on", b.dataset.mod === state.mod); b.setAttribute("aria-current", b.dataset.mod === state.mod ? "page" : "false"); });
   document.querySelectorAll("nav .navref").forEach(b => b.classList.toggle("spin", !!state.refreshing));
@@ -1608,7 +1589,7 @@ const ONB = [
   { ic: "rocket", tone: "t1", t: "Every IPO in one place", hi: "No more hopping between apps", p: "Open, upcoming and closed IPOs with price band, lot size, dates and the minimum you need to invest, taken from NSE and the offer documents.", chips: ["Live", "Upcoming", "Closed", "SME"] },
   { ic: "chart-bar", tone: "t2", t: "Subscription and GMP, as they move", hi: "Know the demand before you bid", p: "Category-wise and day-wise subscription, who is bidding, and the GMP trend. GMP is unofficial and we say so on every screen.", chips: ["QIB · NII · Retail", "Day-wise", "GMP trend"] },
   { ic: "trophy", tone: "t3", t: "Check before you apply", hi: "Facts first, never tips", p: "Company figures and risks from the offer document, a data-based score, listing history, a calculator and reports. Information only, never advice.", chips: ["Score", "Financials", "Reports", "Calculator"] },
-  { ic: "wallet", tone: "t4", t: "Stocks and mutual funds too", hi: "Your whole market view in one app", p: "Switch from the bottom bar. Free to use, signing in is optional, and your watchlist stays on your own device.", chips: ["Free", "Sign-in optional", "Private"] },
+  { ic: "wallet", tone: "t4", t: "Mutual funds too", hi: "IPOs and funds in one app", p: "Switch from the bottom bar. Free to use, signing in is optional, and your watchlist stays on your own device.", chips: ["Free", "Sign-in optional", "Private"] },
 ];
 let onbEl = null, onbI = 0;
 function onbShow() {
@@ -1839,17 +1820,3 @@ setInterval(tick, 1000);
 
 document.addEventListener("keydown", e => { if (e.key === "Escape" && state.drawer) goBack(); });
 
-// ---------- near-live market snapshot (live.js, docs/LIVE.md) ----------
-// Started once at boot. It polls only while the page is visible and the market window is open. When a snapshot really changed (or the status changed) the
-// current module's livePatch(H) is called: it swaps the HTML of its own [data-lvr] regions and updates its charts through update(), so nothing is re-mounted,
-// inputs keep focus and the IPO screens (which have no livePatch) are never touched. The pill / line texts age by themselves (live.js, every 30 s).
-(function () {
-  const L = window.TrendyLive; if (!L) return;
-  const patch = () => {
-    const m = modOf(state.tab); if (!m || m === "ipo" || !state.loaded) return;
-    const mod = window.TrendyModules[m]; if (!mod || typeof mod.livePatch !== "function") return;
-    try { mod.livePatch(hostApi()); } catch (e) { console.warn("live patch", e); }
-  };
-  L.subscribe(patch, { status: true });
-  try { L.start(); } catch (e) { console.warn("live start", e); }
-})();

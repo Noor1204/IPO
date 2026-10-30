@@ -12,7 +12,7 @@ const read = f => fs.readFileSync(path.join(ROOT, f), "utf8");
 const json = f => JSON.parse(read(f));
 const exists = f => fs.existsSync(path.join(ROOT, f));
 const ISO = /^\d{4}-\d{2}-\d{2}$/;
-const JS = ["app.js", "app-stocks.js", "app-mf.js", "charts.js", "live.js", "boot.js", "analytics.js", "sw.js"];
+const JS = ["app.js", "app-mf.js", "charts.js", "boot.js", "analytics.js", "sw.js"];
 const PIPE = fs.readdirSync(path.join(ROOT, "pipeline")).filter(f => f.endsWith(".mjs")).map(f => "pipeline/" + f);
 
 test("every script parses", () => {
@@ -30,7 +30,7 @@ test("no regex that lost its backslash (e.g. /s+/ instead of /\\s+/)", () => {
 });
 
 test("no inline event handlers or inline scripts (strict CSP)", () => {
-  for (const f of ["app.js", "app-stocks.js", "app-mf.js"]) assert.ok(!/\son(click|change|input|load|error)\s*=/i.test(read(f)), f + " has an inline handler");
+  for (const f of ["app.js", "app-mf.js"]) assert.ok(!/\son(click|change|input|load|error)\s*=/i.test(read(f)), f + " has an inline handler");
   const html = read("index.html");
   assert.ok(!/<script(?![^>]*\bsrc=)[^>]*>\s*\S/i.test(html), "index.html has an inline script");
 });
@@ -56,7 +56,7 @@ test("page and service worker only reference files that exist", () => {
 test("every icon the code uses exists in the sprite", () => {
   const sprite = new Set([...read("index.html").matchAll(/<symbol id="ti-([a-z0-9-]+)"/g)].map(m => m[1]));
   const used = new Set();
-  for (const f of ["app.js", "app-stocks.js", "app-mf.js"]) for (const m of read(f).matchAll(/\bic\("([a-z0-9-]+)"/g)) used.add(m[1]);
+  for (const f of ["app.js", "app-mf.js"]) for (const m of read(f).matchAll(/\bic\("([a-z0-9-]+)"/g)) used.add(m[1]);
   const missing = [...used].filter(n => !sprite.has(n));
   assert.deepEqual(missing, [], "icons missing from the sprite: " + missing.join(", "));
 });
