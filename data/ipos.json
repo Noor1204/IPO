@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-01T21:14:12.278Z",
+ "generatedAt": "2026-11-01T21:23:30.044Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-01T21:13:15.857Z"
+   "fetchedAt": "2026-11-01T21:22:32.541Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-01T21:13:26.032Z"
+   "fetchedAt": "2026-11-01T21:22:43.499Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-01T21:13:17.624Z"
+   "fetchedAt": "2026-11-01T21:22:34.026Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -67,7 +67,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-01T21:12:51.948Z",
+   "subsAsOn": "2026-11-01T21:22:11.114Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -170,9 +170,9 @@
    ],
    "anchor": false,
    "gmp": {
-    "value": 5,
+    "value": 10,
     "min": 5,
-    "max": 5,
+    "max": 15,
     "sources": [
      {
       "source": "ipowatch.in",
@@ -181,15 +181,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 5,
-      "pct": 5.32,
-      "updated": "1-Nov 21:02",
+      "gmp": 15,
+      "pct": 15.96,
+      "updated": "1-Nov 23:37",
       "seenLow": 5,
-      "seenHigh": 5
+      "seenHigh": 15
      }
     ],
-    "rating": 2,
-    "updated": "1-Nov 21:02",
+    "rating": 3,
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-28",
@@ -209,7 +209,7 @@
      },
      {
       "date": "2026-11-01",
-      "gmp": 5
+      "gmp": 10
      }
     ]
    },
@@ -529,7 +529,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-01T21:12:51.948Z"
+   "fetchedAt": "2026-11-01T21:22:11.114Z"
   },
   {
    "symbol": "HGSINDIALT",
@@ -808,13 +808,13 @@
       "source": "investorgain.com",
       "gmp": 30,
       "pct": 25,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 30,
       "seenHigh": 30
      }
     ],
     "rating": 4,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-27",
@@ -864,7 +864,7 @@
      "total": 1.53
     },
     {
-     "at": "2026-11-01T21:14:12.255Z",
+     "at": "2026-11-01T21:23:30.021Z",
      "date": "2026-11-01",
      "qib": null,
      "bnii": null,
@@ -903,7 +903,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-01T21:12:57.269Z"
+   "fetchedAt": "2026-11-01T21:22:16.721Z"
   },
   {
    "symbol": "MAXENGS",
@@ -1178,7 +1178,7 @@
       "source": "investorgain.com",
       "gmp": 70,
       "pct": 44.3,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 27,
       "seenHigh": 70
      },
@@ -1189,7 +1189,7 @@
      }
     ],
     "rating": 4,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-27",
@@ -1239,7 +1239,7 @@
      "total": 4.17
     },
     {
-     "at": "2026-11-01T21:14:12.256Z",
+     "at": "2026-11-01T21:23:30.022Z",
      "date": "2026-11-01",
      "qib": null,
      "bnii": null,
@@ -1586,7 +1586,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-01T21:13:02.597Z"
+   "fetchedAt": "2026-11-01T21:22:22.354Z"
   },
   {
    "symbol": "JOHNSONCAB",
@@ -1632,7 +1632,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-01T21:13:14.024Z",
+   "subsAsOn": "2026-11-01T21:22:31.689Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -1760,13 +1760,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 2.5,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 5,
       "seenHigh": 13
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-27",
@@ -1816,7 +1816,7 @@
      "total": 1.14
     },
     {
-     "at": "2026-11-01T21:14:12.272Z",
+     "at": "2026-11-01T21:23:30.038Z",
      "date": "2026-11-01",
      "qib": null,
      "bnii": null,
@@ -1849,7 +1849,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-01T21:13:14.024Z"
+   "fetchedAt": "2026-11-01T21:22:31.689Z"
   },
   {
    "symbol": "VECTRAS",
@@ -1895,7 +1895,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-01T21:13:15.857Z",
+   "subsAsOn": "2026-11-01T21:22:32.541Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -2012,7 +2012,7 @@
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 20:55",
+    "updated": "1-Nov 23:31",
     "history": [
      {
       "date": "2026-10-27",
@@ -2062,7 +2062,7 @@
      "total": 1.2
     },
     {
-     "at": "2026-11-01T21:14:12.272Z",
+     "at": "2026-11-01T21:23:30.038Z",
      "date": "2026-11-01",
      "qib": null,
      "bnii": null,
@@ -2095,7 +2095,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-01T21:13:15.857Z"
+   "fetchedAt": "2026-11-01T21:22:32.541Z"
   },
   {
    "symbol": "BCSSL",
@@ -2411,13 +2411,13 @@
       "source": "investorgain.com",
       "gmp": 9,
       "pct": 10.98,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 7,
       "seenHigh": 9
      }
     ],
     "rating": 3,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-23",
@@ -2493,7 +2493,7 @@
      "total": 3.7848222695295934
     },
     {
-     "at": "2026-11-01T21:14:12.253Z",
+     "at": "2026-11-01T21:23:30.019Z",
      "date": "2026-11-01",
      "qib": 6.555141637498364,
      "bnii": 1.2339692826874773,
@@ -2850,7 +2850,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-01T21:12:46.650Z"
+   "fetchedAt": "2026-11-01T21:22:05.632Z"
   },
   {
    "symbol": "ANTALA",
@@ -2896,7 +2896,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-01T21:13:12.668Z",
+   "subsAsOn": "2026-11-01T21:22:30.842Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3005,7 +3005,7 @@
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 20:57",
+    "updated": "1-Nov 23:28",
     "history": [
      {
       "date": "2026-10-24",
@@ -3077,7 +3077,7 @@
      "total": 0.82
     },
     {
-     "at": "2026-11-01T21:14:12.271Z",
+     "at": "2026-11-01T21:23:30.037Z",
      "date": "2026-11-01",
      "qib": null,
      "bnii": null,
@@ -3110,7 +3110,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-01T21:13:12.668Z"
+   "fetchedAt": "2026-11-01T21:22:30.842Z"
   },
   {
    "symbol": "MKSONS",
@@ -3412,13 +3412,13 @@
       "source": "investorgain.com",
       "gmp": 5.5,
       "pct": 3.4,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 5.5,
       "seenHigh": 15
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-24",
@@ -3888,7 +3888,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-01T21:13:17.624Z",
+   "subsAsOn": "2026-11-01T21:22:34.026Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -3930,13 +3930,13 @@
       "source": "investorgain.com",
       "gmp": 1,
       "pct": 0.49,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 1,
       "seenHigh": 38
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-24",
@@ -3980,7 +3980,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-01T21:13:17.624Z",
+   "fetchedAt": "2026-11-01T21:22:34.026Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -4019,7 +4019,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-01T21:13:17.624Z",
+   "subsAsOn": "2026-11-01T21:22:34.026Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -4061,13 +4061,13 @@
       "source": "investorgain.com",
       "gmp": 5,
       "pct": 6.25,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 5,
       "seenHigh": 5
      }
     ],
     "rating": 2,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-24",
@@ -4111,7 +4111,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-01T21:13:17.624Z",
+   "fetchedAt": "2026-11-01T21:22:34.026Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -4421,13 +4421,13 @@
       "source": "investorgain.com",
       "gmp": 68,
       "pct": 45.33,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 18,
       "seenHigh": 70
      }
     ],
     "rating": 4,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-19",
@@ -5158,13 +5158,13 @@
       "source": "investorgain.com",
       "gmp": 26,
       "pct": 7.88,
-      "updated": "1-Nov 21:02",
+      "updated": "1-Nov 23:37",
       "seenLow": 10,
       "seenHigh": 32
      }
     ],
     "rating": 2,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -5621,7 +5621,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-01T21:13:17.624Z",
+   "subsAsOn": "2026-11-01T21:22:34.026Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -5661,7 +5661,7 @@
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 20:54",
+    "updated": "1-Nov 23:34",
     "history": [
      {
       "date": "2026-10-24",
@@ -5705,7 +5705,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-01T21:13:17.624Z",
+   "fetchedAt": "2026-11-01T21:22:34.026Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -5992,8 +5992,8 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 64.5,
-    "min": 64,
+    "value": 59.5,
+    "min": 54,
     "max": 65,
     "sources": [
      {
@@ -6003,15 +6003,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 64,
-      "pct": 3.84,
-      "updated": "1-Nov 21:02",
+      "gmp": 54,
+      "pct": 3.24,
+      "updated": "1-Nov 23:37",
       "seenLow": 11,
       "seenHigh": 121
      }
     ],
     "rating": 1,
-    "updated": "1-Nov 21:02",
+    "updated": "1-Nov 23:37",
     "history": [
      {
       "date": "2026-10-21",
@@ -6055,7 +6055,7 @@
      },
      {
       "date": "2026-11-01",
-      "gmp": 64.5
+      "gmp": 59.5
      }
     ]
    },
@@ -27641,7 +27641,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-01T21:13:07.547Z",
+   "subsAsOn": "2026-11-01T21:22:27.226Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -27735,7 +27735,7 @@
    "checks": [],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-01T21:13:07.547Z"
+   "fetchedAt": "2026-11-01T21:22:27.226Z"
   }
  ],
  "filings": [
