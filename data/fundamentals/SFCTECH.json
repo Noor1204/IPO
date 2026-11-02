@@ -1,8 +1,8 @@
 {
  "company": "SFC Environmental Technologies Limited",
  "basis": "Consolidated",
- "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions in wastewater treatment, wastewater recycling and reuse, and solid waste treatment. Incorporated in 2005, it holds over 80% market share in India for sequencing batch reactor technology through its proprietary C-Tech platform. The company operates across India and select international markets.",
- "sector": "Environmental Engineering & Waste Management",
+ "about": "SFC Environmental Technologies Limited is an environmental technology company providing engineering solutions and proprietary technologies in wastewater treatment (WWT), wastewater recycling & reuse (WRR), and solid waste treatment (SWT). Incorporated in 2005, it holds an over 80% market share in sequencing batch reactor (SBR) technology in India through its proprietary C-Tech process. The company operates across 23 states and five union territories in India and manages municipal solid waste facilities in Goa.",
+ "sector": "Environmental Engineering / Water & Waste Management",
  "headquarters": "Navi Mumbai, Maharashtra",
  "founded_year": 2005,
  "periods": [
@@ -110,7 +110,7 @@
   ],
   "current_ratio": null,
   "nav_per_share": 86.09,
-  "pe_pre_ipo": null,
+  "pe_pre_ipo": 19.98,
   "pe_post_ipo": null,
   "weighted_avg_eps": 15.93,
   "other": [
@@ -121,6 +121,24 @@
      785.23,
      560.39,
      1574.52
+    ]
+   },
+   {
+    "name": "Number of Treatment Installations (Cumulative)",
+    "unit": "Numbers",
+    "values": [
+     577,
+     639,
+     705
+    ]
+   },
+   {
+    "name": "Treatment Capacity Facilitated (Cumulative)",
+    "unit": "MLD",
+    "values": [
+     13906.98,
+     15209.45,
+     17144.01
     ]
    },
    {
@@ -139,24 +157,6 @@
      13.25,
      10.85,
      12.07
-    ]
-   },
-   {
-    "name": "Treatment capacity facilitated",
-    "unit": "MLD",
-    "values": [
-     13906.98,
-     15209.45,
-     17144.01
-    ]
-   },
-   {
-    "name": "Number of treatment installations",
-    "unit": "Number",
-    "values": [
-     577,
-     639,
-     705
     ]
    }
   ]
@@ -197,19 +197,19 @@
   }
  ],
  "issue": {
-  "price_low": null,
-  "price_high": null,
-  "total_issue_cr": null,
+  "price_low": 313,
+  "price_high": 330,
+  "total_issue_cr": 667.53,
   "fresh_issue_cr": 150,
-  "ofs_cr": null,
-  "fresh_issue_shares": null,
+  "ofs_cr": 517.53,
+  "fresh_issue_shares": 4545454,
   "ofs_shares": 15682750,
   "pre_issue_shares": null,
   "post_issue_shares": null,
   "face_value": 2,
   "objects": [
    {
-    "purpose": "Prepayment of all or a portion of certain outstanding borrowings availed by Company and VWTPL",
+    "purpose": "Prepayment of outstanding borrowings of Company and subsidiary Vasudha Waste Treatment",
     "amount_cr": 42.23
    },
    {
@@ -218,7 +218,7 @@
    },
    {
     "purpose": "General corporate purposes",
-    "amount_cr": null
+    "amount_cr": 20.33
    }
   ],
   "reservation_pct": {
@@ -240,60 +240,62 @@
  "concentration": {
   "top_customers_pct": 64.44,
   "govt_share_pct": 92.35,
-  "note": "Top 10 customers accounted for 64.44% of revenue in FY26. Direct or indirect government-awarded projects represented 92.35% of FY26 revenue."
+  "note": "Top 10 customers contributed 64.44% and top customer contributed 14.34% of revenue in FY26. 92.35% of FY26 revenue was directly or indirectly dependent on government entities/tenders."
  },
  "order_book_cr": 1570.07,
- "litigation_note": "Contingent liability includes ₹0.02 crore for customs notices; subsidiaries SFC Umwelttechnik GmbH and others are involved in legal proceedings in Portugal and Austria.",
+ "litigation_note": "Contingent liability includes a customs notice of ₹0.02 crore. Subsidiary SFC Umwelttechnik GmbH is involved in material litigations in Portugal and Austria.",
  "strengths": [
-  "Market leader in sequencing batch reactor technology in India with over 80% market share.",
-  "Proprietary technologies including C-Tech for wastewater treatment and OREX for municipal solid waste processing.",
-  "Strong cumulative treatment capacity of 17,464.61 MLD across 724 installations as of June 30, 2026.",
-  "Robust order book of ₹1,570.07 crore as of June 30, 2026 across WWT, WRR, and SWT segments.",
-  "High customer retention with repeat customers contributing 91.98% of FY26 revenue from operations.",
-  "Exclusive supply collaboration with DuPont for advanced tertiary wastewater treatment and recycling membranes."
+  "Market leader in sequencing batch reactor wastewater treatment in India with over 80% market share.",
+  "Proprietary C-Tech technology facilitating cumulative wastewater treatment capacity of over 17,144 MLD across 705 installations.",
+  "Integrated operations with in-house manufacturing, automation capabilities, and strategic partnerships reducing dependence on third parties.",
+  "Market leadership in solid waste treatment with proprietary OREX technology and long-term operating concession plants in Goa.",
+  "Strong recurring revenue with repeat customers accounting for 91.98% of operations revenue in Fiscal 2026.",
+  "Robust order book of ₹1,570.07 crore as of June 30, 2026 spanning WWT, WRR, and SWT segments.",
+  "Exclusive distribution partnership with DuPont for advanced membranes and wastewater recycling and reuse technologies in India.",
+  "Consistent financial profile with operating EBITDA margins around 29.3% and PAT margin of 19.94% in FY26."
  ],
  "risks": [
   {
-   "title": "Government Entity Dependence",
-   "detail": "Revenues directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 consolidated revenue.",
+   "title": "Heavy dependence on government entities and contracts",
+   "detail": "Revenue directly or indirectly attributable to government entities or tenders accounted for 92.35% of FY26 and 92.40% of FY25 revenue.",
    "severity": "high"
   },
   {
-   "title": "Negative Operating Cash Flows",
-   "detail": "Generated negative cash flows from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
+   "title": "High customer concentration",
+   "detail": "Top 10 customers accounted for 64.44% and top 5 accounted for 47.10% of revenue from operations in Fiscal 2026 without long-term contracts.",
    "severity": "high"
   },
   {
-   "title": "Customer Concentration",
-   "detail": "Top 10 customers contributed 64.44% of revenue in FY26, with the largest customer representing 14.34%.",
+   "title": "History of negative operating cash flows",
+   "detail": "The company reported negative cash flow from operating activities of ₹25.80 crore in FY26 and ₹11.69 crore in FY24.",
    "severity": "high"
   },
   {
-   "title": "Segment Concentration",
-   "detail": "Wastewater and solid waste treatment segments accounted for 84.98% of consolidated revenue from operations in FY26.",
+   "title": "Revenue concentration in WWT and SWT segments",
+   "detail": "Wastewater and solid waste treatment segments together accounted for 84.98% and 84.34% of consolidated revenue in FY26 and FY25, respectively.",
    "severity": "medium"
   },
   {
-   "title": "Working Capital and Receivable Days",
-   "detail": "Trade receivable days expanded to 282 days in FY26, with cash conversion cycle stretching to 242 days.",
+   "title": "High working capital requirements",
+   "detail": "Working capital represented 65.19% of FY26 revenue, with cash conversion cycle extending to 242 days in FY26 and 411 days in Q1 FY27.",
    "severity": "medium"
   },
   {
-   "title": "Technology Obsolescence Risk",
-   "detail": "Revenues depend heavily on proprietary C-Tech and OREX technologies, which may face displacement from newer technologies.",
+   "title": "Increasing trade receivables collection period",
+   "detail": "Trade receivable collection days expanded from 197 days in FY24 to 262 days in FY25, 282 days in FY26, and 443 days in Q1 FY27.",
    "severity": "medium"
   },
   {
-   "title": "Loans to Subsidiaries",
-   "detail": "Company has extended unsecured loans to subsidiaries that may be recalled and face repayment risks.",
+   "title": "Unsecured loans extended to subsidiaries",
+   "detail": "Subsidiaries including Hindustan Waste Treatment and Vasudha Waste Treatment have availed unsecured loans from the company that can be recalled anytime.",
    "severity": "medium"
   },
   {
-   "title": "Pending Legal Proceedings",
-   "detail": "Subsidiary SFC Umwelttechnik GmbH faces litigation in Portugal and Austria, alongside customs claims of ₹0.02 crore.",
+   "title": "Litigation risks at subsidiaries",
+   "detail": "Subsidiaries SFC Umwelttechnik GmbH, HWTPL, and VWTPL are involved in legal proceedings, including disputes before courts in Portugal and Austria.",
    "severity": "low"
   }
  ],
- "source_doc": "RHP",
- "notes": "Restated consolidated financial statements. FY24-FY26 audited periods extracted; June 30, 2025 and June 30, 2026 stub periods ignored in financial arrays."
+ "source_doc": "Prospectus",
+ "notes": "Financial data derived from Restated Consolidated Financial Information. Figures for three-month stub periods ended June 30, 2025 and June 30, 2026 have been excluded from the financial arrays."
 }
