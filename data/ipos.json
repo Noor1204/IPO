@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-04T23:53:03.667Z",
+ "generatedAt": "2026-11-05T00:01:53.558Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-04T23:52:01.073Z"
+   "fetchedAt": "2026-11-05T00:00:59.606Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-04T23:52:10.391Z"
+   "fetchedAt": "2026-11-05T00:01:08.503Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-04T23:52:02.708Z"
+   "fetchedAt": "2026-11-05T00:01:01.055Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -27,7 +27,7 @@
    "symbol": "VPFL",
    "name": "Vedant Poly Fabs Limited",
    "board": "SME",
-   "status": "live",
+   "status": "listed",
    "open": "2026-11-02",
    "close": "2026-11-04",
    "timeline": {
@@ -321,6 +321,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 6
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 6
      }
     ]
@@ -672,7 +676,7 @@
     "issues": [],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-04T23:51:48.338Z"
+   "fetchedAt": "2026-11-05T00:00:45.758Z"
   },
   {
    "symbol": "HGSINDIALT",
@@ -990,6 +994,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 26.5
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 26.5
      }
     ]
@@ -1389,6 +1397,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 96.5
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 96.5
      }
     ]
@@ -1820,7 +1832,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-04T23:52:02.707Z",
+   "subsAsOn": "2026-11-05T00:01:01.055Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -1905,6 +1917,10 @@
      {
       "date": "2026-11-04",
       "gmp": 8
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 8
      }
     ]
    },
@@ -1912,7 +1928,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-04T23:52:02.707Z",
+   "fetchedAt": "2026-11-05T00:01:01.055Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -1951,7 +1967,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-04T23:52:02.708Z",
+   "subsAsOn": "2026-11-05T00:01:01.055Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2028,6 +2044,10 @@
      {
       "date": "2026-11-04",
       "gmp": 0
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 0
      }
     ]
    },
@@ -2035,7 +2055,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-04T23:52:02.708Z",
+   "fetchedAt": "2026-11-05T00:01:01.055Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -2403,6 +2423,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 8.5
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 8.5
      }
     ]
@@ -2852,7 +2876,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-04T23:52:01.073Z",
+   "subsAsOn": "2026-11-05T00:00:59.606Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3021,6 +3045,10 @@
      {
       "date": "2026-11-04",
       "gmp": 0
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 0
      }
     ]
    },
@@ -3094,6 +3122,16 @@
      "nii": null,
      "retail": null,
      "total": 4.82
+    },
+    {
+     "at": "2026-11-05T00:01:53.548Z",
+     "date": "2026-11-05",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 4.82
     }
    ],
    "listingPerf": null,
@@ -3119,7 +3157,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-04T23:52:01.073Z"
+   "fetchedAt": "2026-11-05T00:00:59.606Z"
   },
   {
    "symbol": "MKJEWELS",
@@ -3165,7 +3203,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-04T23:51:57.979Z",
+   "subsAsOn": "2026-11-05T00:00:55.917Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3282,6 +3320,10 @@
      {
       "date": "2026-11-04",
       "gmp": 10.5
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 10.5
      }
     ]
    },
@@ -3317,7 +3359,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-04T23:51:57.979Z"
+   "fetchedAt": "2026-11-05T00:00:55.917Z"
   },
   {
    "symbol": "MKSONS",
@@ -3673,6 +3715,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 10.5
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 10.5
      }
     ]
@@ -4451,6 +4497,10 @@
      {
       "date": "2026-11-04",
       "gmp": 15.25
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 15.25
      }
     ]
    },
@@ -5210,6 +5260,10 @@
      {
       "date": "2026-11-04",
       "gmp": 69
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 69
      }
     ]
    },
@@ -5933,6 +5987,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 54
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 54
      }
     ]
@@ -6771,6 +6829,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 13
      }
     ]
@@ -7706,6 +7768,10 @@
      {
       "date": "2026-11-04",
       "gmp": 250
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 250
      }
     ]
    },
@@ -8498,6 +8564,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 66
      }
     ]
@@ -9360,6 +9430,10 @@
      {
       "date": "2026-11-04",
       "gmp": 1.2
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 1.2
      }
     ]
    },
@@ -10159,6 +10233,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 17
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 17
      }
     ]
@@ -10978,6 +11056,10 @@
      {
       "date": "2026-11-04",
       "gmp": 452
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 452
      }
     ]
    },
@@ -11789,6 +11871,10 @@
      {
       "date": "2026-11-04",
       "gmp": 13.5
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 13.5
      }
     ]
    },
@@ -12595,6 +12681,10 @@
      {
       "date": "2026-11-04",
       "gmp": 1
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 1
      }
     ]
    },
@@ -13381,6 +13471,10 @@
      },
      {
       "date": "2026-11-04",
+      "gmp": 70
+     },
+     {
+      "date": "2026-11-05",
       "gmp": 70
      }
     ]
