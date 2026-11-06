@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-05T20:36:44.195Z",
+ "generatedAt": "2026-11-06T01:29:45.255Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-05T20:35:47.145Z"
+   "fetchedAt": "2026-11-06T01:28:39.974Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-05T20:35:58.741Z"
+   "fetchedAt": "2026-11-06T01:28:51.416Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-05T20:35:51.186Z"
+   "fetchedAt": "2026-11-06T01:28:42.795Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -283,13 +283,13 @@
       "source": "investorgain.com",
       "gmp": 1,
       "pct": 1.06,
-      "updated": "5-Nov 23:37",
+      "updated": "6-Nov 6:37",
       "seenLow": 1,
       "seenHigh": 15
      }
     ],
     "rating": 1,
-    "updated": "5-Nov 23:37",
+    "updated": "6-Nov 6:37",
     "history": [
      {
       "date": "2026-10-28",
@@ -325,6 +325,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 1
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 1
      }
     ]
@@ -939,9 +943,9 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 29,
-    "min": 28,
-    "max": 30,
+    "value": 27.5,
+    "min": 27,
+    "max": 28,
     "sources": [
      {
       "source": "ipowatch.in",
@@ -950,15 +954,15 @@
      },
      {
       "source": "investorgain.com",
-      "gmp": 30,
-      "pct": 25,
-      "updated": "5-Nov 23:37",
+      "gmp": 27,
+      "pct": 22.5,
+      "updated": "6-Nov 6:37",
       "seenLow": 25,
       "seenHigh": 30
      }
     ],
     "rating": 4,
-    "updated": "5-Nov 23:37",
+    "updated": "6-Nov 6:37",
     "history": [
      {
       "date": "2026-10-27",
@@ -999,6 +1003,10 @@
      {
       "date": "2026-11-05",
       "gmp": 29
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 27.5
      }
     ]
    },
@@ -1350,7 +1358,7 @@
       "source": "investorgain.com",
       "gmp": 105,
       "pct": 66.46,
-      "updated": "5-Nov 23:37",
+      "updated": "6-Nov 6:37",
       "seenLow": 27,
       "seenHigh": 113
      },
@@ -1361,7 +1369,7 @@
      }
     ],
     "rating": 5,
-    "updated": "5-Nov 23:37",
+    "updated": "6-Nov 6:37",
     "history": [
      {
       "date": "2026-10-27",
@@ -1401,6 +1409,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 109
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 109
      }
     ]
@@ -1797,268 +1809,6 @@
    "fetchedAt": "2026-11-03T18:23:00.700Z"
   },
   {
-   "symbol": "IG-2371",
-   "name": "Johnsoncab Electricals",
-   "board": "SME",
-   "status": "listed",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "timeline": {
-    "open": "2026-10-30",
-    "close": "2026-11-03",
-    "allotment": "2026-11-04",
-    "refund": "2026-11-05",
-    "demat": "2026-11-05",
-    "listing": "2026-11-06"
-   },
-   "allotment": "2026-11-04",
-   "listing": "2026-11-06",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 200,
-   "lot": 600,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 56.02,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": {
-     "offered": null,
-     "bid": null,
-     "times": 23.82
-    }
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-05T20:35:51.186Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/johnsoncab-electricals-ipo/2371/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 8,
-    "min": 8,
-    "max": 8,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 8,
-      "updated": "30-3 Nov"
-     },
-     {
-      "source": "investorgain.com",
-      "gmp": 8,
-      "pct": 4,
-      "updated": "5-Nov 23:37",
-      "seenLow": 5,
-      "seenHigh": 13
-     }
-    ],
-    "rating": 1,
-    "updated": "5-Nov 23:37",
-    "history": [
-     {
-      "date": "2026-10-27",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-28",
-      "gmp": 5
-     },
-     {
-      "date": "2026-10-29",
-      "gmp": 11.5
-     },
-     {
-      "date": "2026-10-30",
-      "gmp": 11.5
-     },
-     {
-      "date": "2026-10-31",
-      "gmp": 7.5
-     },
-     {
-      "date": "2026-11-01",
-      "gmp": 5
-     },
-     {
-      "date": "2026-11-02",
-      "gmp": 7.5
-     },
-     {
-      "date": "2026-11-03",
-      "gmp": 9
-     },
-     {
-      "date": "2026-11-04",
-      "gmp": 8
-     },
-     {
-      "date": "2026-11-05",
-      "gmp": 8
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-05T20:35:51.186Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-1998",
-   "name": "Vectras Enprocon",
-   "board": "SME",
-   "status": "listed",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "timeline": {
-    "open": "2026-10-30",
-    "close": "2026-11-03",
-    "allotment": "2026-11-04",
-    "refund": "2026-11-05",
-    "demat": "2026-11-05",
-    "listing": "2026-11-06"
-   },
-   "allotment": "2026-11-04",
-   "listing": "2026-11-06",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 105,
-   "lot": 1200,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 53.05,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": {
-     "offered": null,
-     "bid": null,
-     "times": 4.2
-    }
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-05T20:35:51.186Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/vectras-enprocon-ipo/1998/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 0,
-    "min": 0,
-    "max": 0,
-    "sources": [
-     {
-      "source": "ipowatch.in",
-      "gmp": 0,
-      "updated": "30-3 Nov"
-     }
-    ],
-    "rating": 1,
-    "updated": "5-Nov 23:37",
-    "history": [
-     {
-      "date": "2026-10-27",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-28",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-29",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-30",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-31",
-      "gmp": 0
-     },
-     {
-      "date": "2026-11-01",
-      "gmp": 0
-     },
-     {
-      "date": "2026-11-02",
-      "gmp": 0
-     },
-     {
-      "date": "2026-11-03",
-      "gmp": 0
-     },
-     {
-      "date": "2026-11-04",
-      "gmp": 0
-     },
-     {
-      "date": "2026-11-05",
-      "gmp": 0
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-05T20:35:51.186Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
    "symbol": "BCSSL",
    "name": "Bombay Coated and Special Steels Limited",
    "board": "Mainboard",
@@ -2427,6 +2177,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 8.5
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 8.5
      }
     ]
@@ -2844,7 +2598,7 @@
    "symbol": "IG-2375",
    "name": "Antala Industries",
    "board": "SME",
-   "status": "live",
+   "status": "listed",
    "open": "2026-10-29",
    "close": "2026-11-05",
    "timeline": {
@@ -2876,7 +2630,7 @@
     }
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-05T20:35:51.186Z",
+   "subsAsOn": "2026-11-06T01:28:42.795Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -2916,7 +2670,7 @@
      }
     ],
     "rating": 1,
-    "updated": "5-Nov 23:29",
+    "updated": "6-Nov 6:33",
     "history": [
      {
       "date": "2026-10-24",
@@ -2969,6 +2723,10 @@
      {
       "date": "2026-11-05",
       "gmp": 0
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 0
      }
     ]
    },
@@ -2976,7 +2734,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-05T20:35:51.186Z",
+   "fetchedAt": "2026-11-06T01:28:42.795Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -3023,7 +2781,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-05T20:35:47.145Z",
+   "subsAsOn": "2026-11-06T01:28:39.974Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3139,6 +2897,10 @@
      {
       "date": "2026-11-05",
       "gmp": 11
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 11
      }
     ]
    },
@@ -3174,7 +2936,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-05T20:35:47.145Z"
+   "fetchedAt": "2026-11-06T01:28:39.974Z"
   },
   {
    "symbol": "MKSONS",
@@ -3529,6 +3291,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 11
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 11
      }
     ]
@@ -4306,6 +4072,10 @@
      {
       "date": "2026-11-05",
       "gmp": 15.5
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 15.5
      }
     ]
    },
@@ -5069,6 +4839,10 @@
      {
       "date": "2026-11-05",
       "gmp": 69
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 69
      }
     ]
    },
@@ -5796,6 +5570,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 54
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 54
      }
     ]
@@ -6638,6 +6416,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 13
      }
     ]
@@ -7577,6 +7359,10 @@
      {
       "date": "2026-11-05",
       "gmp": 250
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 250
      }
     ]
    },
@@ -8373,6 +8159,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 66
      }
     ]
@@ -9239,6 +9029,10 @@
      {
       "date": "2026-11-05",
       "gmp": 1.2
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 1.2
      }
     ]
    },
@@ -10042,6 +9836,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 17
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 17
      }
     ]
@@ -10865,6 +10663,10 @@
      {
       "date": "2026-11-05",
       "gmp": 452
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 452
      }
     ]
    },
@@ -11680,6 +11482,10 @@
      {
       "date": "2026-11-05",
       "gmp": 13.5
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 13.5
      }
     ]
    },
@@ -12490,6 +12296,10 @@
      {
       "date": "2026-11-05",
       "gmp": 1
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 1
      }
     ]
    },
@@ -13280,6 +13090,10 @@
      },
      {
       "date": "2026-11-05",
+      "gmp": 70
+     },
+     {
+      "date": "2026-11-06",
       "gmp": 70
      }
     ]
