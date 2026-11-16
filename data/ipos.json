@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-16T10:35:51.372Z",
+ "generatedAt": "2026-11-16T20:21:00.451Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-16T10:10:33.839Z"
+   "fetchedAt": "2026-11-16T20:18:32.524Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-16T10:34:53.826Z"
+   "fetchedAt": "2026-11-16T20:18:48.547Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-16T10:34:45.008Z"
+   "fetchedAt": "2026-11-16T20:18:39.072Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -23,6 +23,219 @@
   }
  ],
  "ipos": [
+  {
+   "symbol": "WATRANA",
+   "name": "Watrana Rentals Limited",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-11-19",
+   "close": "2026-11-23",
+   "timeline": {
+    "open": "2026-11-19",
+    "close": "2026-11-23",
+    "allotment": "2026-11-25",
+    "refund": "2026-11-26",
+    "demat": "2026-11-26",
+    "listing": "2026-11-27"
+   },
+   "allotment": "2026-11-25",
+   "listing": "2026-11-27",
+   "datesExpected": false,
+   "priceLow": 232,
+   "priceHigh": 245,
+   "lot": 600,
+   "faceValue": 10,
+   "issueShares": 4902041,
+   "issueSizeCr": 120.1,
+   "issueType": "Book Building",
+   "maxRetailAmount": null,
+   "issueDetail": "Initial Public Offer comprising of fresh issue of up to 49,02,000 Equity Shares (including Market Maker portion of 2,52,000 Equity Shares)",
+   "upiCutoff": "23-Nov-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-11-16T20:18:22.687Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 232,
+     "priceHigh": 245,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 600,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Maashitla Securities Private Limited",
+     "address": "451, Krishna Apra Business Square, Netaji Subhash Place, Pitampura, Delhi 110034",
+     "phone": "01147581432",
+     "email": "ipo@maashitla.com",
+     "contactPerson": "Mr. Mukul Agrawal",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re.1",
+    "discount": null,
+    "faceValue": "Rs.10 per Equity Share",
+    "bidLot": null,
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m. (Bidding Timings on Issue Closure upto 4:00 P.M.)",
+    "upiSubCategories": "IND (Up to Rs. 5,00,000)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND and NOH",
+    "remark": null
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "Maashitla Securities Private Limited",
+    "address": "451, Krishna Apra Business Square, Netaji Subhash Place, Pitampura, Delhi 110034",
+    "contact": "Mr. Mukul Agrawal, 01147581432, ipo@maashitla.com"
+   },
+   "leadManagers": "Oneview Corporate Advisors Private Limited",
+   "leadManagersList": [
+    "Oneview Corporate Advisors Private Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_WATRANA.zip",
+    "anchor": null
+   },
+   "logo": null,
+   "documents": [
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_WATRANA.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_WATRANA.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_WATRANA.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_WATRANA.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/watrana-rentals-ipo/1818/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 25,
+    "min": 25,
+    "max": 25,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 25,
+      "pct": 10.2,
+      "updated": "16-Nov 21:02",
+      "seenLow": 16,
+      "seenHigh": 25
+     }
+    ],
+    "rating": 3,
+    "updated": "16-Nov 21:02",
+    "history": [
+     {
+      "date": "2026-11-13",
+      "gmp": 16
+     },
+     {
+      "date": "2026-11-14",
+      "gmp": 22
+     },
+     {
+      "date": "2026-11-15",
+      "gmp": 22
+     },
+     {
+      "date": "2026-11-16",
+      "gmp": 25
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 120.1,
+     "other": 120.1,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 600,
+     "other": 600,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 245,
+     "other": 245,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-11-23",
+     "other": "2026-11-23",
+     "ok": true
+    }
+   ],
+   "fundamentals": null,
+   "verification": null,
+   "fetchedAt": "2026-11-16T20:18:22.687Z"
+  },
   {
    "symbol": "IG-2401",
    "name": "Mahanadi Coalfields",
@@ -55,7 +268,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-16T10:34:44.910Z",
+   "subsAsOn": "2026-11-16T20:18:38.876Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -84,21 +297,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 5,
-    "min": 5,
-    "max": 5,
+    "value": 3.65,
+    "min": 3.65,
+    "max": 3.65,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 5,
-      "pct": 3.68,
-      "updated": "16-Nov 15:02",
-      "seenLow": 5,
+      "gmp": 3.65,
+      "pct": 2.68,
+      "updated": "16-Nov 21:02",
+      "seenLow": 3.65,
       "seenHigh": 9.25
      }
     ],
     "rating": 1,
-    "updated": "16-Nov 15:02",
+    "updated": "16-Nov 21:02",
     "history": [
      {
       "date": "2026-11-14",
@@ -110,7 +323,7 @@
      },
      {
       "date": "2026-11-16",
-      "gmp": 5
+      "gmp": 3.65
      }
     ]
    },
@@ -118,114 +331,12 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-16T10:34:44.910Z",
+   "fetchedAt": "2026-11-16T20:18:38.876Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
-   "symbol": "IG-1818",
-   "name": "Watrana Rentals",
-   "board": "SME",
-   "status": "upcoming",
-   "open": "2026-11-19",
-   "close": "2026-11-23",
-   "timeline": {
-    "open": "2026-11-19",
-    "close": "2026-11-23",
-    "allotment": "2026-11-25",
-    "refund": "2026-11-26",
-    "demat": "2026-11-26",
-    "listing": "2026-11-27"
-   },
-   "allotment": "2026-11-25",
-   "listing": "2026-11-27",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 245,
-   "lot": 600,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 120.1,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-16T10:34:45.007Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/watrana-rentals-ipo/1818/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 22,
-    "min": 22,
-    "max": 22,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 22,
-      "pct": 8.98,
-      "updated": "16-Nov 15:02",
-      "seenLow": 16,
-      "seenHigh": 22
-     }
-    ],
-    "rating": 2,
-    "updated": "16-Nov 15:02",
-    "history": [
-     {
-      "date": "2026-11-13",
-      "gmp": 16
-     },
-     {
-      "date": "2026-11-14",
-      "gmp": 22
-     },
-     {
-      "date": "2026-11-15",
-      "gmp": 22
-     },
-     {
-      "date": "2026-11-16",
-      "gmp": 22
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-16T10:34:45.007Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-2067",
-   "name": "Crystal Crop Protection",
+   "symbol": "CRYSTALCP",
+   "name": "Crystal Crop Protection Limited",
    "board": "Mainboard",
    "status": "upcoming",
    "open": "2026-11-18",
@@ -241,39 +352,159 @@
    "allotment": "2026-11-23",
    "listing": "2026-11-26",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 259,
    "priceHigh": 272,
    "lot": 55,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 455.49,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "faceValue": 10,
+   "issueShares": 16754412,
+   "issueSizeCr": 455.72,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 3,550.03 million and Offer for sale of up to 3,702,694 Equity Shares (Including Eligible Employee Reservation of up to Rs. 25 million)",
+   "upiCutoff": "20-Nov-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-16T10:34:45.007Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-11-16T20:18:16.942Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 259,
+     "priceHigh": 272,
+     "maxAmount": 200000,
+     "minAmount": 14960,
+     "lot": 55,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 234,
+     "priceHigh": 247,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 55,
+     "note": "Discount Rs 25 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 259,
+     "priceHigh": 272,
+     "maxAmount": null,
+     "minAmount": 209440,
+     "lot": 55,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14960,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C 101, Embassy 247, LBS Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+     "phone": "+91 81081 14949",
+     "email": "crystalcrop.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info"
    },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": "Rs. 25 per equity share to Eligible Employees",
+    "faceValue": "Rs. 10 per Equity Share",
+    "bidLot": "55 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C 101, Embassy 247, LBS Marg, Vikhroli (West) Mumbai 400 083 Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, +91 81081 14949, crystalcrop.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "IIFL Capital Services Limited, DAM Capital Advisors Limited, Motilal Oswal Investment Advisors Limited",
+   "leadManagersList": [
+    "IIFL Capital Services Limited",
+    "DAM Capital Advisors Limited",
+    "Motilal Oswal Investment Advisors Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_CRYSTALCP.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1794549558966.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/crystal-crop-protection-ipo/2067/",
@@ -292,13 +523,13 @@
       "source": "investorgain.com",
       "gmp": 13,
       "pct": 4.78,
-      "updated": "16-Nov 15:02",
+      "updated": "16-Nov 21:02",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 1,
-    "updated": "16-Nov 15:02",
+    "updated": "16-Nov 21:02",
     "history": [
      {
       "date": "2026-11-13",
@@ -320,10 +551,35 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 455.72,
+     "other": 455.49,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 55,
+     "other": 55,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 272,
+     "other": 272,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-11-20",
+     "other": "2026-11-20",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-11-16T10:34:45.007Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-11-16T20:18:16.942Z"
   },
   {
    "symbol": "VPFL",
@@ -2680,12 +2936,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 80.98999786376953,
+    "dayOpen": 91,
     "ltp": 80.1,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-11-05",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -1.23,
+    "dayOpenGainPct": 10.98,
     "ltpGainPct": -2.32
    },
    "checks": [
@@ -3080,7 +3336,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-16T10:10:33.839Z",
+   "subsAsOn": "2026-11-16T20:18:32.524Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3275,7 +3531,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-16T10:10:33.839Z"
+   "fetchedAt": "2026-11-16T20:18:32.524Z"
   },
   {
    "symbol": "MKSONS",
@@ -4531,12 +4787,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 468,
+    "dayOpen": 355.1000061035156,
     "ltp": 441.3,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-11-03",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 41.82,
+    "dayOpenGainPct": 7.61,
     "ltpGainPct": 33.73
    },
    "checks": [
@@ -7978,12 +8234,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1400,
+    "dayOpen": 1358,
     "ltp": 1402,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-28",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 25.11,
+    "dayOpenGainPct": 21.36,
     "ltpGainPct": 25.29
    },
    "checks": [
@@ -8834,12 +9090,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1548.9000244140625,
+    "dayOpen": 1160,
     "ltp": 1598.9,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 121.27,
+    "dayOpenGainPct": 65.71,
     "ltpGainPct": 128.41
    },
    "checks": [
@@ -9730,12 +9986,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 179.25,
+    "dayOpen": 159.25,
     "ltp": 173.97,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 18.71,
+    "dayOpenGainPct": 5.46,
     "ltpGainPct": 15.21
    },
    "checks": [
@@ -10578,12 +10834,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 557,
+    "dayOpen": 371.1499938964844,
     "ltp": 543.25,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 61.92,
+    "dayOpenGainPct": 7.89,
     "ltpGainPct": 57.92
    },
    "checks": [
@@ -11439,12 +11695,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 792,
+    "dayOpen": 586,
     "ltp": 800.8,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 35.15,
+    "dayOpenGainPct": 0,
     "ltpGainPct": 36.66
    },
    "checks": [
@@ -12128,12 +12384,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 302.8999938964844,
+    "dayOpen": 305,
     "ltp": 291.5,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-22",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 4.81,
+    "dayOpenGainPct": 5.54,
     "ltpGainPct": 0.87
    },
    "checks": [],
@@ -15248,12 +15504,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 116.5,
+    "dayOpen": 215,
     "ltp": 118.08,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-08",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -47.05,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -46.33
    },
    "checks": [],
@@ -15868,12 +16124,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 67.37999725341797,
+    "dayOpen": 80,
     "ltp": 65.7,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-08",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -10.16,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": -12.4
    },
    "checks": [],
@@ -18899,12 +19155,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 413,
+    "dayOpen": 450,
     "ltp": 404.1,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 51.84,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 48.57
    },
    "checks": [],
@@ -20279,12 +20535,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 108.13999938964844,
+    "dayOpen": 142,
     "ltp": 106.78,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -22.2,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -23.18
    },
    "checks": [],
@@ -20926,12 +21182,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 21.799999237060547,
+    "dayOpen": 28.31999969482422,
     "ltp": 21.21,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -31.88,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -33.72
    },
    "checks": [],
@@ -23311,12 +23567,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 465.75,
+    "dayOpen": 455,
     "ltp": 478.05,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-10-01",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 15,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": 18.04
    },
    "checks": [],
@@ -25212,12 +25468,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 310.04998779296875,
+    "dayOpen": 355.1000061035156,
     "ltp": 309.2,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-09-30",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": -14.35,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -14.59
    },
    "checks": [],
@@ -26433,12 +26689,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 195.11000061035156,
+    "dayOpen": 200,
     "ltp": 189.2,
     "exchange": "NSE",
-    "listDate": "2026-11-16",
+    "listDate": "2026-09-30",
     "asOf": "2026-11-16",
-    "dayOpenGainPct": 5.46,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 2.27
    },
    "checks": [],
