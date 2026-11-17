@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-17T20:07:27.987Z",
+ "generatedAt": "2026-11-17T20:19:39.375Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-17T20:04:40.359Z"
+   "fetchedAt": "2026-11-17T20:15:43.369Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-17T20:04:51.943Z"
+   "fetchedAt": "2026-11-17T20:15:55.373Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-17T20:04:43.446Z"
+   "fetchedAt": "2026-11-17T20:15:46.845Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -67,7 +67,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-17T06:27:14.947Z",
+   "subsAsOn": "2026-11-17T20:15:29.833Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -238,7 +238,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-17T06:27:14.947Z"
+   "fetchedAt": "2026-11-17T20:15:29.833Z"
   },
   {
    "symbol": "MAHACOAL",
@@ -280,7 +280,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-17T20:04:40.359Z",
+   "subsAsOn": "2026-11-17T20:15:43.369Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -438,7 +438,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-17T20:04:40.359Z"
+   "fetchedAt": "2026-11-17T20:15:43.369Z"
   },
   {
    "symbol": "CRYSTALCP",
@@ -466,7 +466,7 @@
    "issueSizeCr": 455.72,
    "issueType": "Book Building",
    "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 3,550.03 million and Offer for sale of up to 3,702,694 Equity Shares (Including Eligible Employee Reservation of up to Rs. 25 million)",
+   "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 3,550.03 million and Offer for sale of up to 3,702,694 Equity Shares (Including Eligible Employee Reservation of up to Rs. 25 million and Anchor Allocation portion of 49,98,708 Equity Shares)",
    "upiCutoff": "20-Nov-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
     "qib": null,
@@ -484,7 +484,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-17T06:27:09.255Z",
+   "subsAsOn": "2026-11-17T20:15:28.884Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -542,8 +542,8 @@
     "discount": "Rs. 25 per equity share to Eligible Employees",
     "faceValue": "Rs. 10 per Equity Share",
     "bidLot": "55 Equity Shares and in multiples thereof",
-    "maxBidQib": null,
-    "maxBidNib": null,
+    "maxBidQib": "1,20,63,205 Equity Shares in multiple of 55 Equity Shares",
+    "maxBidNib": "86,56,395 Equity Shares in multiple of 55 Equity Shares",
     "marketTimings": "10.00 a.m. to 5.00 p.m.",
     "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
     "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
@@ -571,7 +571,7 @@
    "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
    "docs": {
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_CRYSTALCP.zip",
-    "anchor": null
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_CRYSTALCP.zip"
    },
    "logo": "data/logos/CRYSTALCP.png",
    "documents": [
@@ -606,6 +606,20 @@
     {
      "label": "Security parameters (before anchor) (zip from NSE)",
      "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_CRYSTALCP.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_CRYSTALCP.zip",
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
@@ -695,7 +709,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-17T06:27:09.255Z"
+   "fetchedAt": "2026-11-17T20:15:28.884Z"
   },
   {
    "symbol": "VPFL",
@@ -3468,7 +3482,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-17T06:27:20.587Z",
+   "subsAsOn": "2026-11-17T20:15:39.941Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -3667,7 +3681,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-17T06:27:20.587Z"
+   "fetchedAt": "2026-11-17T20:15:39.941Z"
   },
   {
    "symbol": "MKSONS",
