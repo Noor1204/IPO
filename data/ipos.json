@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-17T16:55:50.513Z",
+ "generatedAt": "2026-11-17T17:22:03.356Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-17T16:52:15.610Z"
+   "fetchedAt": "2026-11-17T17:18:26.049Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-17T16:52:26.101Z"
+   "fetchedAt": "2026-11-17T17:18:35.260Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-17T16:52:17.824Z"
+   "fetchedAt": "2026-11-17T17:18:28.097Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -280,7 +280,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-17T16:52:15.610Z",
+   "subsAsOn": "2026-11-17T17:18:26.049Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -296,16 +296,22 @@
    "minInvestment": 14960,
    "minInvestmentLots": 1,
    "contacts": {
-    "company": null,
+    "company": {
+     "address": "Jagruti Vihar, Burla, Sambalpur 768020, Odisha, India, CIN: U10102OR1992GOI003038, Registration Number: 15-03038 003038",
+     "phone": null,
+     "email": null,
+     "website": null,
+     "contactPerson": null
+    },
     "registrar": {
      "name": "KFin Technologies Limited",
      "address": "301, The Centrium, 3rd Floor57, Lal Bahadur Shastri Road, Nav PadaKurla (West), Mumbai",
      "phone": null,
      "email": "mahanadi.ipo@kfintech.com",
      "contactPerson": "mahanadi.ipo@kfintech.com",
-     "website": null
+     "website": "https://www.kfintech.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": null,
@@ -330,7 +336,11 @@
    },
    "leadManagers": "SBI Capital Markets Limited",
    "leadManagersList": [
-    "SBI Capital Markets Limited"
+    "SBI Capital Markets Limited",
+    "Axis Capital Limited",
+    "BOB Capital Markets Limited",
+    "IDBI Capital Markets & Securities Limited",
+    "IIFL Capital Services Limited"
    ],
    "sponsorBank": "ICICI BANK",
    "docs": {
@@ -428,7 +438,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-17T16:52:15.610Z"
+   "fetchedAt": "2026-11-17T17:18:26.049Z"
   },
   {
    "symbol": "CRYSTALCP",
@@ -510,10 +520,10 @@
    "contacts": {
     "company": {
      "address": "206, 2nd Floor, Span Trade Centre, Opp. Kochrab Gandhi Ashram, Near Paldi Char Rasta, Ashram Road, Ellisbridge, Ahmedabad 380 006, Gujarat, India",
-     "phone": null,
-     "email": null,
-     "website": "https://crystalcropprotection.com",
-     "contactPerson": null
+     "phone": "+91 11 4900 7100",
+     "email": "investor@crystalcrop.com",
+     "website": "https://www.crystalcropprotection.com",
+     "contactPerson": "Vikram Singh"
     },
     "registrar": {
      "name": "MUFG Intime India Private Limited",
@@ -523,7 +533,7 @@
      "contactPerson": "Shanti Gopalkrishnan",
      "website": "https://www.in.mpms.mufg.com"
     },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": null,
@@ -27711,7 +27721,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-il-jin-electronics-india-limited.png"
   },
   {
    "company": "Rediff com India Limited",
@@ -27723,7 +27733,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-rediff-com-india-limited.ico"
   },
   {
    "company": "Sitaram Denims India Ltd",
