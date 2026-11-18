@@ -84,6 +84,14 @@
   "sourceDoc": "RHP",
   "stale": false
  },
+ "CRYSTALCP": {
+  "status": "ok",
+  "checked": 87,
+  "ungrounded": [],
+  "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
  "DSL": {
   "status": "ok",
   "checked": 66,
@@ -218,6 +226,20 @@
   "checked": 67,
   "ungrounded": [],
   "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
+ "MAHACOAL": {
+  "status": "warn",
+  "checked": 78,
+  "ungrounded": [
+   "financials.cash_and_bank[Mar-26]=15128.21"
+  ],
+  "issues": [
+   "Mar-24: reported PAT margin 35.25% vs PAT/revenue 37.43% (possible swapped years, or margin quoted on total income)",
+   "Mar-25: reported PAT margin 32.77% vs PAT/revenue 34.53% (possible swapped years, or margin quoted on total income)",
+   "Mar-26: reported PAT margin 31.56% vs PAT/revenue 35.02% (possible swapped years, or margin quoted on total income)"
+  ],
   "sourceDoc": "RHP",
   "stale": false
  },
