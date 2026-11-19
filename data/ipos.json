@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T06:16:46.277Z",
+ "generatedAt": "2026-11-19T06:38:27.479Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-19T06:16:01.420Z"
+   "fetchedAt": "2026-11-19T06:35:47.151Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-19T06:15:52.372Z"
+   "fetchedAt": "2026-11-19T06:35:37.378Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -23,6 +23,74 @@
   }
  ],
  "ipos": [
+  {
+   "symbol": "IG-2349",
+   "name": "Shree Siddhivinayak Greentech Industries",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-11-25",
+   "close": "2026-11-27",
+   "timeline": {
+    "open": "2026-11-25",
+    "close": "2026-11-27",
+    "allotment": "2026-11-30",
+    "refund": "2026-12-01",
+    "demat": "2026-12-01",
+    "listing": "2026-12-02"
+   },
+   "allotment": "2026-11-30",
+   "listing": "2026-12-02",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": 142,
+   "lot": 1000,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": 93.66,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-11-19T06:35:37.191Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/shree-siddhivinayak-greentech-industries-ipo/2349/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": false,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-11-19T06:35:37.191Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
   {
    "symbol": "MAHACOAL",
    "name": "Mahanadi Coalfields Limited",
@@ -385,21 +453,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 3.1,
-    "min": 3.1,
-    "max": 3.1,
+    "value": 3,
+    "min": 3,
+    "max": 3,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 3.1,
-      "pct": 2.28,
-      "updated": "19-Nov 7:37",
-      "seenLow": 3.1,
+      "gmp": 3,
+      "pct": 2.21,
+      "updated": "19-Nov 9:37",
+      "seenLow": 3,
       "seenHigh": 9.25
      }
     ],
     "rating": 1,
-    "updated": "19-Nov 7:37",
+    "updated": "19-Nov 9:37",
     "history": [
      {
       "date": "2026-11-14",
@@ -423,13 +491,13 @@
      },
      {
       "date": "2026-11-19",
-      "gmp": 3.1
+      "gmp": 3
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-11-19T06:16:46.251Z",
+     "at": "2026-11-19T06:38:27.441Z",
      "date": "2026-11-19",
      "qib": 0,
      "bnii": 0.007881991647979206,
@@ -1070,13 +1138,13 @@
       "source": "investorgain.com",
       "gmp": 62,
       "pct": 25.31,
-      "updated": "19-Nov 7:37",
+      "updated": "19-Nov 9:37",
       "seenLow": 16,
       "seenHigh": 62
      }
     ],
     "rating": 4,
-    "updated": "19-Nov 7:37",
+    "updated": "19-Nov 9:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -1110,7 +1178,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-11-19T06:16:46.252Z",
+     "at": "2026-11-19T06:38:27.442Z",
      "date": "2026-11-19",
      "qib": null,
      "bnii": null,
@@ -1498,13 +1566,13 @@
       "source": "investorgain.com",
       "gmp": 18,
       "pct": 6.62,
-      "updated": "19-Nov 7:37",
+      "updated": "19-Nov 9:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "19-Nov 7:37",
+    "updated": "19-Nov 9:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -1548,7 +1616,7 @@
      "total": 1.4036120234581937
     },
     {
-     "at": "2026-11-19T06:16:46.248Z",
+     "at": "2026-11-19T06:38:27.437Z",
      "date": "2026-11-19",
      "qib": 2.068125820781528,
      "bnii": 1.2068138944114375,
@@ -4318,13 +4386,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 91,
-    "ltp": 83,
+    "dayOpen": 84,
+    "ltp": 83.5,
     "exchange": "NSE",
-    "listDate": "2026-11-05",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 10.98,
-    "ltpGainPct": 1.22
+    "dayOpenGainPct": 2.44,
+    "ltpGainPct": 1.83
    },
    "checks": [
     {
@@ -4896,12 +4964,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 174.65,
+    "ltp": 173.7,
     "exchange": "NSE",
     "listDate": "2026-11-04",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 5.56,
-    "ltpGainPct": 7.81
+    "ltpGainPct": 7.22
    },
    "checks": [
     {
@@ -6205,13 +6273,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 355.1000061035156,
-    "ltp": 419.9,
+    "dayOpen": 425,
+    "ltp": 420.15,
     "exchange": "NSE",
-    "listDate": "2026-11-03",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 7.61,
-    "ltpGainPct": 27.24
+    "dayOpenGainPct": 28.79,
+    "ltpGainPct": 27.32
    },
    "checks": [
     {
@@ -7025,12 +7093,12 @@
    ],
    "listingPerf": {
     "dayOpen": 248,
-    "ltp": 286.91,
+    "ltp": 286,
     "exchange": "NSE",
     "listDate": "2026-11-03",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 65.33,
-    "ltpGainPct": 91.27
+    "ltpGainPct": 90.67
    },
    "checks": [
     {
@@ -7809,12 +7877,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1675.5,
-    "ltp": 1948.2,
+    "ltp": 1950.7,
     "exchange": "NSE",
     "listDate": "2026-11-02",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 0.63,
-    "ltpGainPct": 17.01
+    "ltpGainPct": 17.16
    },
    "checks": [
     {
@@ -8707,12 +8775,12 @@
    ],
    "listingPerf": {
     "dayOpen": 721,
-    "ltp": 824.1,
+    "ltp": 827.85,
     "exchange": "NSE",
     "listDate": "2026-10-29",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 4.04,
-    "ltpGainPct": 18.92
+    "ltpGainPct": 19.46
    },
    "checks": [
     {
@@ -9701,12 +9769,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1358,
-    "ltp": 1377.1,
+    "ltp": 1378.8,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 21.36,
-    "ltpGainPct": 23.07
+    "ltpGainPct": 23.22
    },
    "checks": [
     {
@@ -10039,12 +10107,12 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
+    "allotment": "2026-10-20",
+    "refund": "2026-10-21",
+    "demat": "2026-10-21",
     "listing": "2026-10-23"
    },
-   "allotment": "2026-10-21",
+   "allotment": "2026-10-20",
    "listing": "2026-10-23",
    "datesExpected": false,
    "priceLow": 665,
@@ -10340,191 +10408,10 @@
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/tonbo-imaging-india-ipo/2369/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": true,
-   "gmp": {
-    "value": 452,
-    "min": 452,
-    "max": 452,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 452,
-      "pct": 64.57,
-      "updated": "23-Oct 9:37",
-      "seenLow": 270,
-      "seenHigh": 516
-     }
-    ],
-    "rating": 5,
-    "updated": "23-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 343
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 468
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 500
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 495
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 516
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 505
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 515
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 510
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 515
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 512
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 450
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-26",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-27",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-28",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-29",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-30",
-      "gmp": 452
-     },
-     {
-      "date": "2026-10-31",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-01",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-02",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-03",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-04",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-05",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-06",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-07",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-08",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-09",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-10",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-11",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-12",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-13",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-14",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-15",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-16",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-17",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-18",
-      "gmp": 452
-     },
-     {
-      "date": "2026-11-19",
-      "gmp": 452
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.215Z",
@@ -10568,40 +10455,15 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1160,
-    "ltp": 1501,
+    "dayOpen": 1510,
+    "ltp": 1497.6,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 65.71,
-    "ltpGainPct": 114.43
+    "dayOpenGainPct": 115.71,
+    "ltpGainPct": 113.94
    },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 852.18,
-     "other": 852.18,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 21,
-     "other": 21,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 700,
-     "other": 700,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Tonbo Imaging India Limited",
     "basis": "Consolidated",
@@ -11476,13 +11338,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 159.25,
-    "ltp": 169.1,
+    "dayOpen": 166.8000030517578,
+    "ltp": 167.86,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 5.46,
-    "ltpGainPct": 11.99
+    "dayOpenGainPct": 10.46,
+    "ltpGainPct": 11.17
    },
    "checks": [
     {
@@ -12336,13 +12198,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 371.1499938964844,
-    "ltp": 543,
+    "dayOpen": 546.9000244140625,
+    "ltp": 542.55,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 7.89,
-    "ltpGainPct": 57.85
+    "dayOpenGainPct": 58.98,
+    "ltpGainPct": 57.72
    },
    "checks": [
     {
@@ -13209,13 +13071,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 586,
-    "ltp": 818.95,
+    "dayOpen": 813.2999877929688,
+    "ltp": 814.8,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 0,
-    "ltpGainPct": 39.75
+    "dayOpenGainPct": 38.79,
+    "ltpGainPct": 39.04
    },
    "checks": [
     {
@@ -13898,13 +13760,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 305,
-    "ltp": 274.55,
+    "dayOpen": 277.3999938964844,
+    "ltp": 274.6,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 5.54,
-    "ltpGainPct": -5
+    "dayOpenGainPct": -4.01,
+    "ltpGainPct": -4.98
    },
    "checks": [],
    "fundamentals": {
@@ -15188,12 +15050,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 287.35,
+    "ltp": 288.05,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 6.03
+    "ltpGainPct": 6.29
    },
    "checks": [],
    "fundamentals": {
@@ -17018,13 +16880,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 215,
-    "ltp": 115.16,
+    "dayOpen": 115.25,
+    "ltp": 115.01,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": -2.27,
-    "ltpGainPct": -47.65
+    "dayOpenGainPct": -47.61,
+    "ltpGainPct": -47.72
    },
    "checks": [],
    "fundamentals": {
@@ -17638,13 +17500,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 80,
-    "ltp": 61.71,
+    "dayOpen": 62,
+    "ltp": 61.59,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 6.67,
-    "ltpGainPct": -17.72
+    "dayOpenGainPct": -17.33,
+    "ltpGainPct": -17.88
    },
    "checks": [],
    "fundamentals": {
@@ -19393,12 +19255,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 143.05,
+    "ltp": 143.94,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -14.34
+    "ltpGainPct": -13.81
    },
    "checks": [],
    "fundamentals": {
@@ -20024,12 +19886,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 132.1,
+    "ltp": 131.2,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": 1.62
+    "ltpGainPct": 0.92
    },
    "checks": [],
    "fundamentals": {
@@ -20669,13 +20531,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 450,
-    "ltp": 394.6,
+    "dayOpen": 390,
+    "ltp": 393,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 65.44,
-    "ltpGainPct": 45.07
+    "dayOpenGainPct": 43.38,
+    "ltpGainPct": 44.49
    },
    "checks": [],
    "fundamentals": {
@@ -21379,12 +21241,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 230.05,
+    "ltp": 229.5,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -23.82
+    "ltpGainPct": -24.01
    },
    "checks": [],
    "fundamentals": {
@@ -22049,13 +21911,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 142,
-    "ltp": 107.57,
+    "dayOpen": 108.94999694824219,
+    "ltp": 107.33,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 2.16,
-    "ltpGainPct": -22.61
+    "dayOpenGainPct": -21.62,
+    "ltpGainPct": -22.78
    },
    "checks": [],
    "fundamentals": {
@@ -22696,13 +22558,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 28.31999969482422,
-    "ltp": 20.57,
+    "dayOpen": 20.299999237060547,
+    "ltp": 20.45,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": -11.5,
-    "ltpGainPct": -35.72
+    "dayOpenGainPct": -36.56,
+    "ltpGainPct": -36.09
    },
    "checks": [],
    "fundamentals": {
@@ -25081,13 +24943,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 455,
-    "ltp": 492.95,
+    "dayOpen": 470,
+    "ltp": 493.3,
     "exchange": "NSE",
-    "listDate": "2026-10-01",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 12.35,
-    "ltpGainPct": 21.72
+    "dayOpenGainPct": 16.05,
+    "ltpGainPct": 21.8
    },
    "checks": [],
    "fundamentals": {
@@ -25714,12 +25576,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 56.67,
+    "ltp": 56.51,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 66.68
+    "ltpGainPct": 66.21
    },
    "checks": [],
    "fundamentals": {
@@ -26358,12 +26220,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 194.87,
+    "ltp": 193.23,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 45.43
+    "ltpGainPct": 44.2
    },
    "checks": [],
    "fundamentals": {
@@ -26982,13 +26844,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 355.1000061035156,
-    "ltp": 309.25,
+    "dayOpen": 318,
+    "ltp": 308.85,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": -1.91,
-    "ltpGainPct": -14.57
+    "dayOpenGainPct": -12.15,
+    "ltpGainPct": -14.68
    },
    "checks": [],
    "fundamentals": {
@@ -27575,12 +27437,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 298,
+    "ltp": 297.5,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-19",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -20.53
+    "ltpGainPct": -20.67
    },
    "checks": [],
    "fundamentals": {
@@ -28203,13 +28065,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 200,
-    "ltp": 187.67,
+    "dayOpen": 192,
+    "ltp": 186.77,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-11-19",
     "asOf": "2026-11-19",
-    "dayOpenGainPct": 8.11,
-    "ltpGainPct": 1.44
+    "dayOpenGainPct": 3.78,
+    "ltpGainPct": 0.96
    },
    "checks": [],
    "fundamentals": {
