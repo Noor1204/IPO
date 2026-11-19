@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-19T15:59:08.905Z",
+ "generatedAt": "2026-11-19T16:22:46.069Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-19T15:58:23.419Z"
+   "fetchedAt": "2026-11-19T16:22:00.020Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-19T15:58:13.469Z"
+   "fetchedAt": "2026-11-19T16:21:50.679Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -23,6 +23,96 @@
   }
  ],
  "ipos": [
+  {
+   "symbol": "IG-1810",
+   "name": "Foodlink F&B Holdings",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-11-26",
+   "close": "2026-11-30",
+   "timeline": {
+    "open": "2026-11-26",
+    "close": "2026-11-30",
+    "allotment": "2026-12-01",
+    "refund": "2026-12-02",
+    "demat": "2026-12-02",
+    "listing": "2026-12-03"
+   },
+   "allotment": "2026-12-01",
+   "listing": "2026-12-03",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": null,
+   "lot": null,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": null,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-11-19T16:21:50.562Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/foodlink-fb-ipo/1810/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 12,
+    "min": 12,
+    "max": 12,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 12,
+      "pct": null,
+      "updated": "19-Nov 19:37",
+      "seenLow": 12,
+      "seenHigh": 12
+     }
+    ],
+    "rating": 1,
+    "updated": "19-Nov 19:37",
+    "history": [
+     {
+      "date": "2026-11-19",
+      "gmp": 12
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-11-19T16:21:50.562Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
   {
    "symbol": "IG-2349",
    "name": "Shree Siddhivinayak Greentech Industries",
@@ -55,7 +145,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-19T15:58:13.456Z",
+   "subsAsOn": "2026-11-19T16:21:50.562Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -88,7 +178,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-19T15:58:13.456Z",
+   "fetchedAt": "2026-11-19T16:21:50.562Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -453,21 +543,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 2,
-    "min": 2,
-    "max": 2,
+    "value": 1.9,
+    "min": 1.9,
+    "max": 1.9,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 2,
-      "pct": 1.47,
-      "updated": "19-Nov 18:37",
-      "seenLow": 2,
+      "gmp": 1.9,
+      "pct": 1.4,
+      "updated": "19-Nov 19:37",
+      "seenLow": 1.9,
       "seenHigh": 9.25
      }
     ],
     "rating": 1,
-    "updated": "19-Nov 18:37",
+    "updated": "19-Nov 19:37",
     "history": [
      {
       "date": "2026-11-14",
@@ -491,13 +581,13 @@
      },
      {
       "date": "2026-11-19",
-      "gmp": 2
+      "gmp": 1.9
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-11-19T15:59:08.879Z",
+     "at": "2026-11-19T16:22:46.030Z",
      "date": "2026-11-19",
      "qib": 1.263095527682956,
      "bnii": 0.054624489872971256,
@@ -1146,13 +1236,13 @@
       "source": "investorgain.com",
       "gmp": 67,
       "pct": 27.35,
-      "updated": "19-Nov 18:37",
+      "updated": "19-Nov 19:37",
       "seenLow": 16,
       "seenHigh": 67
      }
     ],
     "rating": 4,
-    "updated": "19-Nov 18:37",
+    "updated": "19-Nov 19:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -1186,7 +1276,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-11-19T15:59:08.880Z",
+     "at": "2026-11-19T16:22:46.031Z",
      "date": "2026-11-19",
      "qib": null,
      "bnii": null,
@@ -1574,13 +1664,13 @@
       "source": "investorgain.com",
       "gmp": 17,
       "pct": 6.25,
-      "updated": "19-Nov 18:37",
+      "updated": "19-Nov 19:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "19-Nov 18:37",
+    "updated": "19-Nov 19:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -1624,7 +1714,7 @@
      "total": 1.4036120234581937
     },
     {
-     "at": "2026-11-19T15:59:08.877Z",
+     "at": "2026-11-19T16:22:46.026Z",
      "date": "2026-11-19",
      "qib": 2.183798411066762,
      "bnii": 3.1051599793448337,
@@ -12555,12 +12645,12 @@
    "timeline": {
     "open": "2026-10-15",
     "close": "2026-10-19",
-    "allotment": "2026-10-21",
-    "refund": "2026-10-22",
-    "demat": "2026-10-22",
+    "allotment": "2026-10-20",
+    "refund": "2026-10-21",
+    "demat": "2026-10-21",
     "listing": "2026-10-23"
    },
-   "allotment": "2026-10-21",
+   "allotment": "2026-10-20",
    "listing": "2026-10-23",
    "datesExpected": false,
    "priceLow": 558,
@@ -12851,191 +12941,10 @@
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/bonfiglioli-transmissions-ipo/2124/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
     }
    ],
-   "anchor": true,
-   "gmp": {
-    "value": 66,
-    "min": 66,
-    "max": 66,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 66,
-      "pct": 11.26,
-      "updated": "23-Oct 9:37",
-      "seenLow": 66,
-      "seenHigh": 178
-     }
-    ],
-    "rating": 3,
-    "updated": "23-Oct 9:37",
-    "history": [
-     {
-      "date": "2026-10-12",
-      "gmp": 156
-     },
-     {
-      "date": "2026-10-13",
-      "gmp": 157
-     },
-     {
-      "date": "2026-10-14",
-      "gmp": 182.5
-     },
-     {
-      "date": "2026-10-15",
-      "gmp": 159
-     },
-     {
-      "date": "2026-10-16",
-      "gmp": 129
-     },
-     {
-      "date": "2026-10-17",
-      "gmp": 132
-     },
-     {
-      "date": "2026-10-18",
-      "gmp": 131
-     },
-     {
-      "date": "2026-10-19",
-      "gmp": 127
-     },
-     {
-      "date": "2026-10-20",
-      "gmp": 137
-     },
-     {
-      "date": "2026-10-21",
-      "gmp": 132
-     },
-     {
-      "date": "2026-10-22",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-23",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-24",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-25",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-26",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-27",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-28",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-29",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-30",
-      "gmp": 66
-     },
-     {
-      "date": "2026-10-31",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-01",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-02",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-03",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-04",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-05",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-06",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-07",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-08",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-09",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-10",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-11",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-12",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-13",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-14",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-15",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-16",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-17",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-18",
-      "gmp": 66
-     },
-     {
-      "date": "2026-11-19",
-      "gmp": 66
-     }
-    ]
-   },
+   "anchor": null,
+   "gmp": null,
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.221Z",
@@ -13087,32 +12996,7 @@
     "dayOpenGainPct": 0,
     "ltpGainPct": 36.84
    },
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 2533.81,
-     "other": 2533.66,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 25,
-     "other": 25,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 586,
-     "other": 586,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-10-19",
-     "other": "2026-10-19",
-     "ok": true
-    }
-   ],
+   "checks": [],
    "fundamentals": {
     "company": "Bonfiglioli Transmissions Limited",
     "basis": "Standalone",
