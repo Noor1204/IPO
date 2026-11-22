@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-21T23:43:48.356Z",
+ "generatedAt": "2026-11-22T00:07:24.052Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-21T23:42:50.581Z"
+   "fetchedAt": "2026-11-22T00:06:31.995Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-21T23:42:43.469Z"
+   "fetchedAt": "2026-11-22T00:06:26.174Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-21T23:42:43.407Z",
+   "subsAsOn": "2026-11-22T00:06:26.158Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -95,7 +95,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-21T23:42:43.407Z",
+   "fetchedAt": "2026-11-22T00:06:26.158Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -130,7 +130,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-21T23:42:43.407Z",
+   "subsAsOn": "2026-11-22T00:06:26.158Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -186,6 +186,10 @@
      {
       "date": "2026-11-21",
       "gmp": 12
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 12
      }
     ]
    },
@@ -193,7 +197,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-21T23:42:43.407Z",
+   "fetchedAt": "2026-11-22T00:06:26.158Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -784,6 +788,10 @@
      {
       "date": "2026-11-21",
       "gmp": 0.7
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 0.7
      }
     ]
    },
@@ -811,6 +819,16 @@
     {
      "at": "2026-11-21T23:43:48.323Z",
      "date": "2026-11-21",
+     "qib": 1.3719641939892886,
+     "bnii": 0.13480337043000112,
+     "snii": 0.27103023128910886,
+     "nii": 0.18021232404970372,
+     "retail": 0.24363418713302384,
+     "total": 0.48439277787713864
+    },
+    {
+     "at": "2026-11-22T00:07:24.005Z",
+     "date": "2026-11-22",
      "qib": 1.3719641939892886,
      "bnii": 0.13480337043000112,
      "snii": 0.27103023128910886,
@@ -1502,6 +1520,10 @@
      {
       "date": "2026-11-21",
       "gmp": 65
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 65
      }
     ]
    },
@@ -1529,6 +1551,16 @@
     {
      "at": "2026-11-21T23:43:48.326Z",
      "date": "2026-11-21",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 11.1
+    },
+    {
+     "at": "2026-11-22T00:07:24.009Z",
+     "date": "2026-11-22",
      "qib": null,
      "bnii": null,
      "snii": null,
@@ -1941,6 +1973,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 14.5
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 14.5
      }
     ]
@@ -2696,6 +2732,10 @@
      {
       "date": "2026-11-21",
       "gmp": 1
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 1
      }
     ]
    },
@@ -3423,6 +3463,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 105
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 105
      }
     ]
@@ -4198,6 +4242,10 @@
      {
       "date": "2026-11-21",
       "gmp": 27
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 27
      }
     ]
    },
@@ -4713,6 +4761,10 @@
      {
       "date": "2026-11-21",
       "gmp": 8
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 8
      }
     ]
    },
@@ -4769,12 +4821,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 84.01000213623047,
+    "dayOpen": 91,
     "ltp": 83.4,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-11-05",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 2.45,
+    "dayOpenGainPct": 10.98,
     "ltpGainPct": 1.71
    },
    "checks": [
@@ -5349,6 +5401,10 @@
      {
       "date": "2026-11-21",
       "gmp": 11
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 11
      }
     ]
    },
@@ -5803,6 +5859,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 11
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 11
      }
     ]
@@ -6644,6 +6704,10 @@
      {
       "date": "2026-11-21",
       "gmp": 15.5
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 15.5
      }
     ]
    },
@@ -6680,12 +6744,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 434.3999938964844,
+    "dayOpen": 355.1000061035156,
     "ltp": 443,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-11-03",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 31.64,
+    "dayOpenGainPct": 7.61,
     "ltpGainPct": 34.24
    },
    "checks": [
@@ -7470,6 +7534,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 69
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 69
      }
     ]
@@ -8262,6 +8330,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 54
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 54
      }
     ]
@@ -9168,6 +9240,10 @@
      },
      {
       "date": "2026-11-21",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-22",
       "gmp": 13
      }
     ]
@@ -10171,6 +10247,10 @@
      {
       "date": "2026-11-21",
       "gmp": 250
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 250
      }
     ]
    },
@@ -10894,12 +10974,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1489,
+    "dayOpen": 1160,
     "ltp": 1459,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 112.71,
+    "dayOpenGainPct": 65.71,
     "ltpGainPct": 108.43
    },
    "checks": [],
@@ -11596,12 +11676,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 168,
+    "dayOpen": 159.25,
     "ltp": 170.6,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 11.26,
+    "dayOpenGainPct": 5.46,
     "ltpGainPct": 12.98
    },
    "checks": [],
@@ -12250,12 +12330,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 532,
+    "dayOpen": 371.1499938964844,
     "ltp": 526.35,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 54.65,
+    "dayOpenGainPct": 7.89,
     "ltpGainPct": 53.01
    },
    "checks": [],
@@ -13060,6 +13140,10 @@
      {
       "date": "2026-11-21",
       "gmp": 66
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 66
      }
     ]
    },
@@ -13106,12 +13190,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 791,
+    "dayOpen": 586,
     "ltp": 799,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-23",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 34.98,
+    "dayOpenGainPct": 0,
     "ltpGainPct": 36.35
    },
    "checks": [
@@ -13795,12 +13879,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 274.5,
+    "dayOpen": 305,
     "ltp": 279,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-22",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -5.02,
+    "dayOpenGainPct": 5.54,
     "ltpGainPct": -3.46
    },
    "checks": [],
@@ -16915,12 +16999,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 115,
+    "dayOpen": 215,
     "ltp": 116.6,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-08",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -47.73,
+    "dayOpenGainPct": -2.27,
     "ltpGainPct": -47
    },
    "checks": [],
@@ -17535,12 +17619,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 62.599998474121094,
+    "dayOpen": 80,
     "ltp": 62.19,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-08",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -16.53,
+    "dayOpenGainPct": 6.67,
     "ltpGainPct": -17.08
    },
    "checks": [],
@@ -20566,12 +20650,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 391,
+    "dayOpen": 450,
     "ltp": 382,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 43.75,
+    "dayOpenGainPct": 65.44,
     "ltpGainPct": 40.44
    },
    "checks": [],
@@ -21946,12 +22030,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 110,
+    "dayOpen": 142,
     "ltp": 112.1,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -20.86,
+    "dayOpenGainPct": 2.16,
     "ltpGainPct": -19.35
    },
    "checks": [],
@@ -22593,12 +22677,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 20,
+    "dayOpen": 28.31999969482422,
     "ltp": 19.2,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-05",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -37.5,
+    "dayOpenGainPct": -11.5,
     "ltpGainPct": -40
    },
    "checks": [],
@@ -24978,12 +25062,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 471.5,
+    "dayOpen": 455,
     "ltp": 479,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-10-01",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 16.42,
+    "dayOpenGainPct": 12.35,
     "ltpGainPct": 18.27
    },
    "checks": [],
@@ -26879,12 +26963,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 303.8999938964844,
+    "dayOpen": 355.1000061035156,
     "ltp": 308,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-09-30",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": -16.05,
+    "dayOpenGainPct": -1.91,
     "ltpGainPct": -14.92
    },
    "checks": [],
@@ -28100,12 +28184,12 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 189.5,
+    "dayOpen": 200,
     "ltp": 188,
     "exchange": "NSE",
-    "listDate": "2026-11-20",
+    "listDate": "2026-09-30",
     "asOf": "2026-11-20",
-    "dayOpenGainPct": 2.43,
+    "dayOpenGainPct": 8.11,
     "ltpGainPct": 1.62
    },
    "checks": [],
@@ -28976,7 +29060,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-21T23:42:43.407Z",
+   "subsAsOn": "2026-11-22T00:06:26.158Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -29009,7 +29093,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-21T23:42:43.407Z",
+   "fetchedAt": "2026-11-22T00:06:26.158Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
@@ -29889,42 +29973,6 @@
    "open": null,
    "close": null,
    "logo": "data/logos/F-anjali-labtech-limited.jpg"
-  },
-  {
-   "company": "Abakkus Asset Manager Limited",
-   "date": "2026-09-22",
-   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/abakkus-asset-manager-limited-drhp_105064.html",
-   "type": "DRHP",
-   "stage": "DRHP",
-   "gmp": null,
-   "gmpUpdated": null,
-   "open": null,
-   "close": null,
-   "logo": "data/logos/F-abakkus-asset-manager-limited.ico"
-  },
-  {
-   "company": "VARDAAN BIOTECH LIMITED",
-   "date": "2026-09-22",
-   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/vardaan-biotech-limited-drhp_104652.html",
-   "type": "DRHP",
-   "stage": "DRHP",
-   "gmp": null,
-   "gmpUpdated": null,
-   "open": null,
-   "close": null,
-   "logo": "data/logos/F-vardaan-biotech-limited.png"
-  },
-  {
-   "company": "Hi-Tech Flow Solutions Limited",
-   "date": "2026-09-22",
-   "url": "https://www.sebi.gov.in/filings/public-issues/sep-2026/hi-tech-flow-solutions-limited-drhp_104635.html",
-   "type": "DRHP",
-   "stage": "DRHP",
-   "gmp": null,
-   "gmpUpdated": null,
-   "open": null,
-   "close": null,
-   "logo": "data/logos/F-hi-tech-flow-solutions-limited.png"
   }
  ]
 }
