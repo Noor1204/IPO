@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-23T06:14:14.914Z",
+ "generatedAt": "2026-11-23T06:23:50.275Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-23T05:33:42.947Z"
+   "fetchedAt": "2026-11-23T06:22:29.355Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-23T06:13:29.241Z"
+   "fetchedAt": "2026-11-23T06:22:44.969Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-23T06:13:21.310Z"
+   "fetchedAt": "2026-11-23T06:22:34.450Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-23T06:13:21.292Z",
+   "subsAsOn": "2026-11-23T06:22:34.277Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -92,13 +92,13 @@
       "source": "investorgain.com",
       "gmp": 23,
       "pct": null,
-      "updated": "23-Nov 10:37",
+      "updated": "23-Nov 7:37",
       "seenLow": 23,
       "seenHigh": 23
      }
     ],
     "rating": 1,
-    "updated": "23-Nov 10:37",
+    "updated": "23-Nov 7:37",
     "history": [
      {
       "date": "2026-11-22",
@@ -114,150 +114,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-23T06:13:21.292Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-2247",
-   "name": "A J Packaging",
-   "board": "SME",
-   "status": "upcoming",
-   "open": "2026-12-01",
-   "close": "2026-12-03",
-   "timeline": {
-    "open": "2026-12-01",
-    "close": "2026-12-03",
-    "allotment": "2026-12-04",
-    "refund": "2026-12-07",
-    "demat": "2026-12-07",
-    "listing": "2026-12-08"
-   },
-   "allotment": "2026-12-04",
-   "listing": "2026-12-08",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 180,
-   "lot": 800,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 54,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-23T06:13:21.309Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/a-j-packaging-ipo/2247/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": null,
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-23T06:13:21.309Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-2290",
-   "name": "Matangi Rubber",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-12-01",
-   "close": "2026-12-03",
-   "timeline": {
-    "open": "2026-12-01",
-    "close": "2026-12-03",
-    "allotment": "2026-12-04",
-    "refund": "2026-12-07",
-    "demat": "2026-12-07",
-    "listing": "2026-12-08"
-   },
-   "allotment": "2026-12-04",
-   "listing": "2026-12-08",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 172,
-   "lot": 87,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 125.16,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-23T06:13:21.309Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "SEBI filing page (Addendum)",
-     "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/matangi-rubber-limited-addendum-to-the-drhp_105143.html",
-     "source": "SEBI",
-     "kind": "link",
-     "group": "Links"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/matangi-rubber-ipo/2290/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": null,
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-23T06:13:21.309Z",
+   "fetchedAt": "2026-11-23T06:22:34.277Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -292,7 +149,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-23T06:13:21.309Z",
+   "subsAsOn": "2026-11-23T06:22:34.450Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -332,7 +189,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-23T06:13:21.309Z",
+   "fetchedAt": "2026-11-23T06:22:34.450Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -354,11 +211,11 @@
    "listing": "2026-12-03",
    "datesExpected": false,
    "priceLow": null,
-   "priceHigh": 191,
-   "lot": 78,
+   "priceHigh": null,
+   "lot": null,
    "faceValue": null,
    "issueShares": null,
-   "issueSizeCr": 360.76,
+   "issueSizeCr": null,
    "issueType": null,
    "maxRetailAmount": null,
    "issueDetail": null,
@@ -367,7 +224,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-23T06:13:21.309Z",
+   "subsAsOn": "2026-11-23T06:22:34.450Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -403,14 +260,14 @@
      {
       "source": "investorgain.com",
       "gmp": 12,
-      "pct": 6.28,
-      "updated": "23-Nov 10:37",
+      "pct": null,
+      "updated": "23-Nov 7:37",
       "seenLow": 12,
       "seenHigh": 12
      }
     ],
-    "rating": 2,
-    "updated": "23-Nov 10:37",
+    "rating": 1,
+    "updated": "23-Nov 7:37",
     "history": [
      {
       "date": "2026-11-19",
@@ -438,7 +295,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-23T06:13:21.309Z",
+   "fetchedAt": "2026-11-23T06:22:34.450Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -485,7 +342,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-23T05:33:32.782Z",
+   "subsAsOn": "2026-11-23T06:22:19.157Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -618,7 +475,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-23T05:33:32.782Z"
+   "fetchedAt": "2026-11-23T06:22:19.157Z"
   },
   {
    "symbol": "MAHACOAL",
@@ -651,48 +508,48 @@
    "bids": {
     "qib": {
      "offered": 112512171,
-     "bid": 154371470,
-     "times": 1.3720424077498248
+     "bid": 162834650,
+     "times": 1.4472625366014846
     },
     "nii": {
      "offered": 84384129,
-     "bid": 22607420,
-     "times": 0.26791080583411603
+     "bid": 24797520,
+     "times": 0.29386473847469585
     },
     "bnii": {
      "offered": 56256086,
-     "bid": 11750860,
-     "times": 0.2088815777194311
+     "bid": 13148080,
+     "times": 0.2337183571569483
     },
     "snii": {
      "offered": 28128043,
-     "bid": 10856560,
-     "times": 0.3859692620634859
+     "bid": 11649440,
+     "times": 0.414157501110191
     },
     "retail": {
      "offered": 196896300,
-     "bid": 62391780,
-     "times": 0.316876345568708
+     "bid": 66127050,
+     "times": 0.33584709311449734
     },
     "employee": {
      "offered": 33091815,
-     "bid": 4177690,
-     "times": 0.12624541748465595
+     "bid": 4613290,
+     "times": 0.13940879338289544
     },
     "shareholders": {
      "offered": 66183630,
-     "bid": 24489190,
-     "times": 0.370018840006207
+     "bid": 26000700,
+     "times": 0.3928569647811702
     },
     "other": null,
     "total": {
      "offered": 493068045,
-     "bid": 268037550,
-     "times": 0.5436116834543597
+     "bid": 284373210,
+     "times": 0.5767423236685314
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-23T11:00:00+05:30",
+   "subsAsOn": "2026-11-23T11:48:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -765,7 +622,7 @@
      "id": "1(b)",
      "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
      "offered": null,
-     "bid": 11000,
+     "bid": 18370,
      "times": null
     },
     {
@@ -779,7 +636,7 @@
      "id": "1(d)",
      "label": "Others",
      "offered": null,
-     "bid": 106564920,
+     "bid": 115020730,
      "times": null
     },
     {
@@ -793,77 +650,77 @@
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 10437240,
+     "bid": 11778690,
      "times": null
     },
     {
      "id": "2.1(c)",
      "label": "Others",
      "offered": null,
-     "bid": 280060,
+     "bid": 335830,
      "times": null
     },
     {
      "id": "2.2(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 176770,
+     "bid": 199980,
      "times": null
     },
     {
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 10472990,
+     "bid": 11228800,
      "times": null
     },
     {
      "id": "2.2(c)",
      "label": "Others",
      "offered": null,
-     "bid": 206800,
+     "bid": 220660,
      "times": null
     },
     {
      "id": "3(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 55680680,
+     "bid": 58963410,
      "times": null
     },
     {
      "id": "3(b)",
      "label": "Price bids",
      "offered": null,
-     "bid": 6711100,
+     "bid": 7163640,
      "times": null
     },
     {
      "id": "4(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 3016750,
+     "bid": 3268430,
      "times": null
     },
     {
      "id": "4(b)",
      "label": "Price Bids",
      "offered": null,
-     "bid": 1160940,
+     "bid": 1344860,
      "times": null
     },
     {
      "id": "5(a)",
      "label": "Cut Off",
      "offered": null,
-     "bid": 20966220,
+     "bid": 22211420,
      "times": null
     },
     {
      "id": "5(b)",
      "label": "Price Bids",
      "offered": null,
-     "bid": 3522970,
+     "bid": 3789280,
      "times": null
     }
    ],
@@ -881,19 +738,19 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Nov-2026 11:00:00 IST",
-    "totalBids": 268329930,
-    "timesSubscribed": 0.54,
+    "asOn": "As on 23-Nov-2026 11:48:00 IST",
+    "totalBids": 284690670,
+    "timesSubscribed": 0.58,
     "byPrice": {
-     "129": "26,83,29,930",
-     "130": "26,77,47,370",
-     "131": "26,74,69,510",
-     "132": "26,74,25,070",
-     "133": "26,73,46,090",
-     "134": "26,73,06,820",
-     "135": "26,72,57,650",
-     "136": "26,71,95,720",
-     "Cut-Off": "7,97,52,530"
+     "129": "28,46,90,670",
+     "130": "28,39,69,620",
+     "131": "28,36,58,540",
+     "132": "28,36,07,060",
+     "133": "28,35,21,590",
+     "134": "28,34,79,130",
+     "135": "28,34,26,550",
+     "136": "28,33,62,310",
+     "Cut-Off": "8,45,41,050"
     }
    },
    "registrar": {
@@ -982,21 +839,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 0.5,
-    "min": 0.5,
-    "max": 0.5,
+    "value": 0.7,
+    "min": 0.7,
+    "max": 0.7,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 0.5,
-      "pct": 0.37,
-      "updated": "23-Nov 10:37",
-      "seenLow": 0.5,
+      "gmp": 0.7,
+      "pct": 0.51,
+      "updated": "23-Nov 7:37",
+      "seenLow": 0.7,
       "seenHigh": 9.25
      }
     ],
     "rating": 1,
-    "updated": "23-Nov 10:37",
+    "updated": "23-Nov 7:37",
     "history": [
      {
       "date": "2026-11-14",
@@ -1036,7 +893,7 @@
      },
      {
       "date": "2026-11-23",
-      "gmp": 0.5
+      "gmp": 0.7
      }
     ]
    },
@@ -1082,14 +939,14 @@
      "total": 0.48439277787713864
     },
     {
-     "at": "2026-11-23T06:14:14.868Z",
+     "at": "2026-11-23T06:23:50.244Z",
      "date": "2026-11-23",
-     "qib": 1.3720424077498248,
-     "bnii": 0.2088815777194311,
-     "snii": 0.3859692620634859,
-     "nii": 0.26791080583411603,
-     "retail": 0.316876345568708,
-     "total": 0.5436116834543597
+     "qib": 1.4472625366014846,
+     "bnii": 0.2337183571569483,
+     "snii": 0.414157501110191,
+     "nii": 0.29386473847469585,
+     "retail": 0.33584709311449734,
+     "total": 0.5767423236685314
     }
    ],
    "listingPerf": null,
@@ -1454,7 +1311,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-23T05:33:30.921Z"
+   "fetchedAt": "2026-11-23T06:22:11.972Z"
   },
   {
    "symbol": "WATRANA",
@@ -1487,33 +1344,33 @@
    "bids": {
     "qib": {
      "offered": null,
-     "bid": 1590000,
+     "bid": 13986600,
      "times": null,
-     "applications": 12
+     "applications": 21
     },
     "nii": {
      "offered": null,
-     "bid": 38730000,
+     "bid": 49188000,
      "times": null,
-     "applications": 10873
+     "applications": 13740
     },
     "bnii": {
      "offered": null,
-     "bid": 31687800,
+     "bid": 40560000,
      "times": null,
-     "applications": 7194
+     "applications": 9227
     },
     "snii": {
      "offered": null,
-     "bid": 7042200,
+     "bid": 8628000,
      "times": null,
-     "applications": 3679
+     "applications": 4513
     },
     "retail": {
      "offered": null,
-     "bid": 53128800,
+     "bid": 65833200,
      "times": null,
-     "applications": 44274
+     "applications": 54861
     },
     "employee": null,
     "shareholders": null,
@@ -1521,12 +1378,12 @@
     "marketMaker": null,
     "total": {
      "offered": null,
-     "bid": 93448800,
-     "times": 26.58
+     "bid": 129007800,
+     "times": 36.69
     }
    },
    "bidsSource": "NSE bid details (shares bid; shares offered per category not available)",
-   "subsAsOn": "2026-11-23T11:00:00+05:30",
+   "subsAsOn": "2026-11-23T11:48:00+05:30",
    "subsAsOnSource": "exchange",
    "applyAs": [
     {
@@ -1559,7 +1416,7 @@
      "id": "1(a)",
      "label": "Foreign Institutional Investors(FIIs)",
      "offered": null,
-     "bid": 0,
+     "bid": 857400,
      "times": null
     },
     {
@@ -1580,49 +1437,49 @@
      "id": "1(d)",
      "label": "Others",
      "offered": null,
-     "bid": 1590000,
+     "bid": 13129200,
      "times": null
     },
     {
      "id": "2.1(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 570600,
+     "bid": 642000,
      "times": null
     },
     {
      "id": "2.1(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 30841200,
+     "bid": 39549600,
      "times": null
     },
     {
      "id": "2.1(c)",
      "label": "Others",
      "offered": null,
-     "bid": 276000,
+     "bid": 368400,
      "times": null
     },
     {
      "id": "2.2(a)",
      "label": "Corporates",
      "offered": null,
-     "bid": 66600,
+     "bid": 76800,
      "times": null
     },
     {
      "id": "2.2(b)",
      "label": "Individuals(Other than RIIs)",
      "offered": null,
-     "bid": 6932400,
+     "bid": 8500800,
      "times": null
     },
     {
      "id": "2.2(c)",
      "label": "Others",
      "offered": null,
-     "bid": 43200,
+     "bid": 50400,
      "times": null
     }
    ],
@@ -1640,21 +1497,21 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "asOn": "As on 23-Nov-2026 11:00:00 IST",
-    "totalBids": 93448800,
-    "timesSubscribed": 26.58,
+    "asOn": "As on 23-Nov-2026 11:48:00 IST",
+    "totalBids": 129007800,
+    "timesSubscribed": 36.69,
     "byPrice": {
-     "232": "9,34,48,800",
-     "233": "9,32,85,600",
-     "234": "9,32,77,200",
-     "235": "9,32,70,000",
-     "238": "9,32,48,400",
-     "240": "9,32,46,000",
-     "241": "9,32,21,400",
-     "242": "9,32,19,000",
-     "243": "9,32,14,200",
-     "244": "9,32,11,800",
-     "245": "9,32,05,200"
+     "232": "12,90,07,800",
+     "233": "12,88,19,400",
+     "234": "12,88,07,400",
+     "235": "12,87,99,000",
+     "238": "12,87,73,800",
+     "240": "12,87,71,400",
+     "241": "12,87,43,200",
+     "242": "12,87,39,600",
+     "243": "12,87,28,800",
+     "244": "12,87,25,200",
+     "245": "12,87,10,200"
     }
    },
    "registrar": {
@@ -1733,13 +1590,13 @@
       "source": "investorgain.com",
       "gmp": 55,
       "pct": 22.45,
-      "updated": "23-Nov 10:37",
+      "updated": "23-Nov 7:37",
       "seenLow": 16,
       "seenHigh": 67
      }
     ],
     "rating": 4,
-    "updated": "23-Nov 10:37",
+    "updated": "23-Nov 7:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -1829,14 +1686,14 @@
      "total": 11.1
     },
     {
-     "at": "2026-11-23T06:14:14.872Z",
+     "at": "2026-11-23T06:23:50.246Z",
      "date": "2026-11-23",
      "qib": null,
      "bnii": null,
      "snii": null,
      "nii": null,
      "retail": null,
-     "total": 26.58
+     "total": 36.69
     }
    ],
    "listingPerf": null,
@@ -1868,7 +1725,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-23T05:33:31.866Z"
+   "fetchedAt": "2026-11-23T06:22:12.941Z"
   },
   {
    "symbol": "CRYSTALCP",
@@ -2201,13 +2058,13 @@
       "source": "investorgain.com",
       "gmp": 14.5,
       "pct": 5.33,
-      "updated": "23-Nov 10:37",
+      "updated": "23-Nov 7:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "23-Nov 10:37",
+    "updated": "23-Nov 7:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -3367,480 +3224,6 @@
    "fetchedAt": "2026-11-05T06:31:20.419Z"
   },
   {
-   "symbol": "HGSINDIALT",
-   "name": "HGS (India) Limited",
-   "board": "SME",
-   "status": "listed",
-   "open": "2026-10-30",
-   "close": "2026-11-03",
-   "timeline": {
-    "open": "2026-10-30",
-    "close": "2026-11-03",
-    "allotment": "2026-11-04",
-    "refund": "2026-11-05",
-    "demat": "2026-11-05",
-    "listing": "2026-11-06"
-   },
-   "allotment": "2026-11-04",
-   "listing": "2026-11-06",
-   "datesExpected": false,
-   "priceLow": 114,
-   "priceHigh": 120,
-   "lot": 1200,
-   "faceValue": 10,
-   "issueShares": 2880000,
-   "issueSizeCr": 34.56,
-   "issueType": "Book Building",
-   "maxRetailAmount": null,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 23,26,000 equity shares and Offer for Sale of up to 5,54,000 Equity Shares (including Market Maker portion of 1,45,200 Equity Shares and Anchor Allocation of 8,13,600 Equity shares)",
-   "upiCutoff": "03-Nov-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 547200,
-     "bid": 75469200,
-     "times": 137.92,
-     "applications": 95
-    },
-    "nii": {
-     "offered": 414000,
-     "bid": 175959600,
-     "times": 425.02,
-     "applications": 26693
-    },
-    "bnii": {
-     "offered": 273600,
-     "bid": 135073200,
-     "times": 493.69,
-     "applications": 15675
-    },
-    "snii": {
-     "offered": 140400,
-     "bid": 40886400,
-     "times": 291.21,
-     "applications": 11018
-    },
-    "retail": {
-     "offered": 960000,
-     "bid": 226288800,
-     "times": 235.72,
-     "applications": 94287
-    },
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "marketMaker": {
-     "offered": 145200,
-     "bid": null,
-     "times": null
-    },
-    "total": {
-     "offered": 2066400,
-     "bid": 477717600,
-     "times": 231.18
-    }
-   },
-   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
-   "subsAsOn": "2026-11-03T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 114,
-     "priceHigh": 120,
-     "maxAmount": null,
-     "minAmount": null,
-     "lot": 1200,
-     "note": "Retail individual investors"
-    }
-   ],
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": {
-    "company": null,
-    "registrar": {
-     "name": "Kfin Technologies Limited",
-     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400070, Maharashtra, India",
-     "phone": "+9140-67162222",
-     "email": "hgs.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": null
-    },
-    "source": "NSE issue info"
-   },
-   "anchorSummary": null,
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 18511200,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 10788000,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 1333200,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 44836800,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 1936800,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 131530800,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 1605600,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 651600,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 39198000,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 1036800,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re.1",
-    "discount": null,
-    "faceValue": "Rs.10 per Equity Share",
-    "bidLot": null,
-    "maxBidQib": "19,21,200 Equity shares (Calculated at Higher Price band)",
-    "maxBidNib": "13,74,000 Equity shares (Calculated at Higher Price band)",
-    "marketTimings": "10.00 a.m. to 5.00 p.m. (Bidding Timings on Issue Closure upto 4:00 P.M.)",
-    "upiSubCategories": "IND (Up to Rs. 5,00,000)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
-    "remark": null
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 03-Nov-2026 19:00:00 IST",
-    "totalBids": 477717600,
-    "timesSubscribed": 231.18,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "Kfin Technologies Limited",
-    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400070, Maharashtra, India",
-    "contact": "Williams R, +9140-67162222 , hgs.ipo@kfintech.com"
-   },
-   "leadManagers": "Hem Securities Limited",
-   "leadManagersList": [
-    "Hem Securities Limited"
-   ],
-   "sponsorBank": "Kotak Mahindra Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_HGSINDIALT.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HGSINDIALT.zip"
-   },
-   "logo": "data/logos/HGSINDIALT.png",
-   "documents": [
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HGSINDIALT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/hgs-india-ipo/2241/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 27,
-    "min": 27,
-    "max": 27,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 27,
-      "pct": 22.5,
-      "updated": "6-Nov 9:37",
-      "seenLow": 25,
-      "seenHigh": 30
-     }
-    ],
-    "rating": 4,
-    "updated": "6-Nov 9:37",
-    "history": [
-     {
-      "date": "2026-10-27",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-28",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-29",
-      "gmp": 0
-     },
-     {
-      "date": "2026-10-30",
-      "gmp": 15
-     },
-     {
-      "date": "2026-10-31",
-      "gmp": 30
-     },
-     {
-      "date": "2026-11-01",
-      "gmp": 30
-     },
-     {
-      "date": "2026-11-02",
-      "gmp": 30
-     },
-     {
-      "date": "2026-11-03",
-      "gmp": 27.5
-     },
-     {
-      "date": "2026-11-04",
-      "gmp": 26.5
-     },
-     {
-      "date": "2026-11-05",
-      "gmp": 29
-     },
-     {
-      "date": "2026-11-06",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-07",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-08",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-09",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-10",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-11",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-12",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-13",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-14",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-15",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-16",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-17",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-18",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-19",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-20",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-21",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-22",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-23",
-      "gmp": 27
-     }
-    ]
-   },
-   "subHistory": [
-    {
-     "at": "2026-10-30T23:52:13.024Z",
-     "date": "2026-10-30",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 1.53
-    },
-    {
-     "at": "2026-10-31T23:58:47.313Z",
-     "date": "2026-10-31",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 1.53
-    },
-    {
-     "at": "2026-11-01T23:57:56.691Z",
-     "date": "2026-11-01",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 1.53
-    },
-    {
-     "at": "2026-11-02T23:57:47.790Z",
-     "date": "2026-11-02",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 19.43
-    },
-    {
-     "at": "2026-11-03T23:55:20.249Z",
-     "date": "2026-11-03",
-     "qib": null,
-     "bnii": null,
-     "snii": null,
-     "nii": null,
-     "retail": null,
-     "total": 231.18
-    }
-   ],
-   "listingPerf": null,
-   "checks": [
-    {
-     "field": "Issue size (Cr)",
-     "nse": 34.56,
-     "other": 34.56,
-     "ok": true
-    },
-    {
-     "field": "Lot size",
-     "nse": 1200,
-     "other": 1200,
-     "ok": true
-    },
-    {
-     "field": "Cap price",
-     "nse": 120,
-     "other": 120,
-     "ok": true
-    },
-    {
-     "field": "Close date",
-     "nse": "2026-11-03",
-     "other": "2026-11-03",
-     "ok": true
-    }
-   ],
-   "fundamentals": null,
-   "verification": null,
-   "fetchedAt": "2026-11-04T04:02:00.405Z"
-  },
-  {
    "symbol": "MAXENGS",
    "name": "Maxwell Engineering Solutions Limited",
    "board": "SME",
@@ -4619,6 +4002,480 @@
    "fetchedAt": "2026-11-03T18:23:00.700Z"
   },
   {
+   "symbol": "HGSINDIALT",
+   "name": "HGS (India) Limited",
+   "board": "SME",
+   "status": "listed",
+   "open": "2026-10-30",
+   "close": "2026-11-03",
+   "timeline": {
+    "open": "2026-10-30",
+    "close": "2026-11-03",
+    "allotment": "2026-11-04",
+    "refund": "2026-11-05",
+    "demat": "2026-11-05",
+    "listing": "2026-11-06"
+   },
+   "allotment": "2026-11-04",
+   "listing": "2026-11-06",
+   "datesExpected": false,
+   "priceLow": 114,
+   "priceHigh": 120,
+   "lot": 1200,
+   "faceValue": 10,
+   "issueShares": 2880000,
+   "issueSizeCr": 34.56,
+   "issueType": "Book Building",
+   "maxRetailAmount": null,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue of up to 23,26,000 equity shares and Offer for Sale of up to 5,54,000 Equity Shares (including Market Maker portion of 1,45,200 Equity Shares and Anchor Allocation of 8,13,600 Equity shares)",
+   "upiCutoff": "03-Nov-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 547200,
+     "bid": 75469200,
+     "times": 137.92,
+     "applications": 95
+    },
+    "nii": {
+     "offered": 414000,
+     "bid": 175959600,
+     "times": 425.02,
+     "applications": 26693
+    },
+    "bnii": {
+     "offered": 273600,
+     "bid": 135073200,
+     "times": 493.69,
+     "applications": 15675
+    },
+    "snii": {
+     "offered": 140400,
+     "bid": 40886400,
+     "times": 291.21,
+     "applications": 11018
+    },
+    "retail": {
+     "offered": 960000,
+     "bid": 226288800,
+     "times": 235.72,
+     "applications": 94287
+    },
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "marketMaker": {
+     "offered": 145200,
+     "bid": null,
+     "times": null
+    },
+    "total": {
+     "offered": 2066400,
+     "bid": 477717600,
+     "times": 231.18
+    }
+   },
+   "bidsSource": "NSE bid details + NSE security-parameters PDF (shares offered)",
+   "subsAsOn": "2026-11-03T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 114,
+     "priceHigh": 120,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 1200,
+     "note": "Retail individual investors"
+    }
+   ],
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Kfin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400070, Maharashtra, India",
+     "phone": "+9140-67162222",
+     "email": "hgs.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 18511200,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 10788000,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 1333200,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 44836800,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 1936800,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 131530800,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 1605600,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 651600,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 39198000,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 1036800,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re.1",
+    "discount": null,
+    "faceValue": "Rs.10 per Equity Share",
+    "bidLot": null,
+    "maxBidQib": "19,21,200 Equity shares (Calculated at Higher Price band)",
+    "maxBidNib": "13,74,000 Equity shares (Calculated at Higher Price band)",
+    "marketTimings": "10.00 a.m. to 5.00 p.m. (Bidding Timings on Issue Closure upto 4:00 P.M.)",
+    "upiSubCategories": "IND (Up to Rs. 5,00,000)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
+    "remark": null
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 03-Nov-2026 19:00:00 IST",
+    "totalBids": 477717600,
+    "timesSubscribed": 231.18,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "Kfin Technologies Limited",
+    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400070, Maharashtra, India",
+    "contact": "Williams R, +9140-67162222 , hgs.ipo@kfintech.com"
+   },
+   "leadManagers": "Hem Securities Limited",
+   "leadManagersList": [
+    "Hem Securities Limited"
+   ],
+   "sponsorBank": "Kotak Mahindra Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_HGSINDIALT.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HGSINDIALT.zip"
+   },
+   "logo": "data/logos/HGSINDIALT.png",
+   "documents": [
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_HGSINDIALT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/hgs-india-ipo/2241/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 27,
+    "min": 27,
+    "max": 27,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 27,
+      "pct": 22.5,
+      "updated": "6-Nov 9:37",
+      "seenLow": 25,
+      "seenHigh": 30
+     }
+    ],
+    "rating": 4,
+    "updated": "6-Nov 9:37",
+    "history": [
+     {
+      "date": "2026-10-27",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-29",
+      "gmp": 0
+     },
+     {
+      "date": "2026-10-30",
+      "gmp": 15
+     },
+     {
+      "date": "2026-10-31",
+      "gmp": 30
+     },
+     {
+      "date": "2026-11-01",
+      "gmp": 30
+     },
+     {
+      "date": "2026-11-02",
+      "gmp": 30
+     },
+     {
+      "date": "2026-11-03",
+      "gmp": 27.5
+     },
+     {
+      "date": "2026-11-04",
+      "gmp": 26.5
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 29
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-07",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-08",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-09",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-10",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-11",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-12",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-13",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-14",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-15",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-16",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-17",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-18",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-19",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-20",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-21",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-23",
+      "gmp": 27
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-30T23:52:13.024Z",
+     "date": "2026-10-30",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 1.53
+    },
+    {
+     "at": "2026-10-31T23:58:47.313Z",
+     "date": "2026-10-31",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 1.53
+    },
+    {
+     "at": "2026-11-01T23:57:56.691Z",
+     "date": "2026-11-01",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 1.53
+    },
+    {
+     "at": "2026-11-02T23:57:47.790Z",
+     "date": "2026-11-02",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 19.43
+    },
+    {
+     "at": "2026-11-03T23:55:20.249Z",
+     "date": "2026-11-03",
+     "qib": null,
+     "bnii": null,
+     "snii": null,
+     "nii": null,
+     "retail": null,
+     "total": 231.18
+    }
+   ],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 34.56,
+     "other": 34.56,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 1200,
+     "other": 1200,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 120,
+     "other": 120,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-11-03",
+     "other": "2026-11-03",
+     "ok": true
+    }
+   ],
+   "fundamentals": null,
+   "verification": null,
+   "fetchedAt": "2026-11-04T04:02:00.405Z"
+  },
+  {
    "symbol": "BCSSL",
    "name": "Bombay Coated and Special Steels Limited",
    "board": "Mainboard",
@@ -5112,12 +4969,12 @@
    ],
    "listingPerf": {
     "dayOpen": 91,
-    "ltp": 84.63,
+    "ltp": 84.53,
     "exchange": "NSE",
     "listDate": "2026-11-05",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 10.98,
-    "ltpGainPct": 3.21
+    "ltpGainPct": 3.09
    },
    "checks": [
     {
@@ -5511,7 +5368,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-23T05:33:42.947Z",
+   "subsAsOn": "2026-11-23T06:22:29.355Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -5705,12 +5562,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 161,
+    "ltp": 160.7,
     "exchange": "NSE",
     "listDate": "2026-11-04",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 5.56,
-    "ltpGainPct": -0.62
+    "ltpGainPct": -0.8
    },
    "checks": [
     {
@@ -5734,7 +5591,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-23T05:33:42.947Z"
+   "fetchedAt": "2026-11-23T06:22:29.355Z"
   },
   {
    "symbol": "MKSONS",
@@ -7047,12 +6904,12 @@
    ],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 441.25,
+    "ltp": 440.55,
     "exchange": "NSE",
     "listDate": "2026-11-03",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 7.61,
-    "ltpGainPct": 33.71
+    "ltpGainPct": 33.5
    },
    "checks": [
     {
@@ -7882,12 +7739,12 @@
    ],
    "listingPerf": {
     "dayOpen": 248,
-    "ltp": 263.9,
+    "ltp": 263.54,
     "exchange": "NSE",
     "listDate": "2026-11-03",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 65.33,
-    "ltpGainPct": 75.93
+    "ltpGainPct": 75.69
    },
    "checks": [
     {
@@ -8682,12 +8539,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1675.5,
-    "ltp": 1825.8,
+    "ltp": 1825,
     "exchange": "NSE",
     "listDate": "2026-11-02",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 0.63,
-    "ltpGainPct": 9.66
+    "ltpGainPct": 9.61
    },
    "checks": [
     {
@@ -9087,736 +8944,6 @@
     "sourceDoc": "RHP"
    },
    "fetchedAt": "2026-10-29T18:25:23.712Z"
-  },
-  {
-   "symbol": "PARASHLTH",
-   "name": "Paras Healthcare Limited",
-   "board": "Mainboard",
-   "status": "listed",
-   "open": "2026-10-21",
-   "close": "2026-10-23",
-   "timeline": {
-    "open": "2026-10-21",
-    "close": "2026-10-23",
-    "allotment": "2026-10-26",
-    "refund": "2026-10-27",
-    "demat": "2026-10-27",
-    "listing": "2026-10-28"
-   },
-   "allotment": "2026-10-26",
-   "listing": "2026-10-28",
-   "datesExpected": false,
-   "priceLow": 660,
-   "priceHigh": 693,
-   "lot": 21,
-   "faceValue": 1,
-   "issueShares": 20923521,
-   "issueSizeCr": 1450,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9,500 million (including Anchor reservation portion of 94,15,584 Equity Shares)",
-   "upiCutoff": "23-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 6590908,
-     "bid": 20381592,
-     "times": 3.0923799877042737
-    },
-    "nii": {
-     "offered": 3295454,
-     "bid": 2166507,
-     "times": 0.657422922607932
-    },
-    "bnii": {
-     "offered": 2196970,
-     "bid": 1289883,
-     "times": 0.5871190776387479
-    },
-    "snii": {
-     "offered": 1098484,
-     "bid": 876624,
-     "times": 0.7980307405478824
-    },
-    "retail": {
-     "offered": 2196969,
-     "bid": 4395615,
-     "times": 2.000763324380089
-    },
-    "employee": null,
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 12083331,
-     "bid": 26943714,
-     "times": 2.2298250374834554
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-23T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 660,
-     "priceHigh": 693,
-     "maxAmount": 200000,
-     "minAmount": 14553,
-     "lot": 21,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 660,
-     "priceHigh": 693,
-     "maxAmount": null,
-     "minAmount": 203742,
-     "lot": 21,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14553,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": "1st Floor, Tower B, Paras Twin Towers, Golf Course Road, Sector 54, Gurugram – 122 002, Haryana, India",
-     "phone": "+91 124 430 2163",
-     "email": "cs@parashospitals.com",
-     "website": "https://www.parashospitals.com",
-     "contactPerson": "Rahul Kumar"
-    },
-    "registrar": {
-     "name": "MUFG Intime India Private Limited",
-     "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-     "phone": "+91 810 811 4949",
-     "email": "parashealthcare.ipo@in.mpms.mufg.com",
-     "contactPerson": "Shanti Gopalkrishnan",
-     "website": "https://www.in.mpms.mufg.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 7130235,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 688968,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 10389540,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 2172849,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 113043,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 1147734,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 29106,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 9408,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 846195,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 21021,
-     "times": null
-    },
-    {
-     "id": "3(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 3930360,
-     "times": null
-    },
-    {
-     "id": "3(b)",
-     "label": "Price bids",
-     "offered": null,
-     "bid": 465255,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": null,
-    "faceValue": "Re. 1 per Equity Share",
-    "bidLot": "21 Equity Shares and in multiples thereof",
-    "maxBidQib": "1,20,83,316 Equity Shares in multiple of 21 Equity Shares",
-    "maxBidNib": "54,92,403 Equity Shares in multiple of 21 Equity Shares",
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 23-Oct-2026 19:00:00 IST",
-    "totalBids": 26967906,
-    "timesSubscribed": 2.23,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, Tel: +91 810 811 4949, parashealthcare.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "JM Financial Limited, BofA Securities India Limited, Nuvama Wealth Management Limited",
-   "leadManagersList": [
-    "JM Financial Limited",
-    "BofA Securities India Limited",
-    "Nuvama Wealth Management Limited"
-   ],
-   "sponsorBank": "ICICI Bank Limited and HDFC Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip"
-   },
-   "logo": "data/logos/PARASHLTH.ico",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Prospectus (final) — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1793186546562.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    }
-   ],
-   "anchor": null,
-   "gmp": null,
-   "subHistory": [
-    {
-     "at": "2026-10-21T23:22:55.401Z",
-     "date": "2026-10-21",
-     "qib": 0.00008921380786987164,
-     "bnii": 0.047697510662412325,
-     "snii": 0.13634427083143677,
-     "nii": 0.07724641278561314,
-     "retail": 0.6934494751632818,
-     "total": 0.14719757325194519
-    },
-    {
-     "at": "2026-10-22T23:59:29.735Z",
-     "date": "2026-10-22",
-     "qib": 0.06487118315109239,
-     "bnii": 0.2215974728831072,
-     "snii": 0.3098907221224888,
-     "nii": 0.2510285381012753,
-     "retail": 1.3058131452924462,
-     "total": 0.34126715555503695
-    },
-    {
-     "at": "2026-10-23T23:54:14.377Z",
-     "date": "2026-10-23",
-     "qib": 3.0923799877042737,
-     "bnii": 0.5871190776387479,
-     "snii": 0.7980307405478824,
-     "nii": 0.657422922607932,
-     "retail": 2.000763324380089,
-     "total": 2.2298250374834554
-    }
-   ],
-   "listingPerf": {
-    "dayOpen": 721,
-    "ltp": 849,
-    "exchange": "NSE",
-    "listDate": "2026-10-29",
-    "asOf": "2026-11-23",
-    "dayOpenGainPct": 4.04,
-    "ltpGainPct": 22.51
-   },
-   "checks": [],
-   "fundamentals": {
-    "company": "Paras Healthcare Limited",
-    "basis": "Consolidated",
-    "about": "Paras Healthcare Limited is a clinical specialty-led hospital chain providing tertiary and quaternary healthcare services under the 'Paras Health' brand. As of June 30, 2026, the company operated eight hospitals with an aggregate capacity of 2,211 beds across North India, Bihar, and Jharkhand. Its operations span five states and one union territory with a focused expansion pipeline to reach 3,011 beds by March 2028.",
-    "sector": "Healthcare Services / Hospitals",
-    "headquarters": "Gurugram, Haryana",
-    "founded_year": 1987,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      1477.66,
-      1810.45,
-      2071.14
-     ],
-     "revenue": [
-      1129.04,
-      1294.06,
-      1605.95
-     ],
-     "other_income": [
-      21.98,
-      20.14,
-      22.83
-     ],
-     "ebitda": [
-      154.41,
-      156.46,
-      335.58
-     ],
-     "pbt": [
-      6.63,
-      -50.04,
-      76.03
-     ],
-     "pat": [
-      -15.33,
-      -57.98,
-      43.83
-     ],
-     "net_worth": [
-      338.51,
-      280.49,
-      394.94
-     ],
-     "reserves": [
-      328.75,
-      270.73,
-      384.84
-     ],
-     "borrowings": [
-      547.53,
-      727.93,
-      854.1
-     ],
-     "cash_and_bank": [
-      160.29,
-      205.52,
-      302.73
-     ],
-     "operating_cash_flow": [
-      92.48,
-      86.19,
-      163.51
-     ]
-    },
-    "kpi": {
-     "roce": [
-      5.86,
-      2.71,
-      10.76
-     ],
-     "ronw": [
-      -8.32,
-      -18.73,
-      12.98
-     ],
-     "roe": [
-      -8.32,
-      -18.73,
-      12.98
-     ],
-     "eps_basic": [
-      -1.57,
-      -5.94,
-      4.34
-     ],
-     "eps_diluted": [
-      -1.57,
-      -5.94,
-      4.34
-     ],
-     "pat_margin": [
-      -1.33,
-      -4.41,
-      2.69
-     ],
-     "ebitda_margin": [
-      13.42,
-      11.91,
-      20.6
-     ],
-     "debt_equity": [
-      2.73,
-      4.39,
-      3.53
-     ],
-     "current_ratio": null,
-     "nav_per_share": 44.06,
-     "pe_pre_ipo": 159.68,
-     "pe_post_ipo": 159.68,
-     "weighted_avg_eps": -0.07,
-     "other": [
-      {
-       "name": "Operational Beds",
-       "unit": "count",
-       "values": [
-        1332,
-        1465,
-        1502
-       ]
-      },
-      {
-       "name": "Bed Occupancy Rate",
-       "unit": "%",
-       "values": [
-        52.46,
-        50.78,
-        61.75
-       ]
-      },
-      {
-       "name": "ARPOB",
-       "unit": "₹ per day",
-       "values": [
-        44305.65,
-        48088.57,
-        47397.82
-       ]
-      },
-      {
-       "name": "Occupied Bed Days",
-       "unit": "count",
-       "values": [
-        254716,
-        268927,
-        338321
-       ]
-      },
-      {
-       "name": "Average Length of Stay",
-       "unit": "days",
-       "values": [
-        3.14,
-        2.89,
-        2.93
-       ]
-      },
-      {
-       "name": "Number of Surgeries",
-       "unit": "count",
-       "values": [
-        30219,
-        33072,
-        39687
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Aster DM Quality Care Limited",
-      "revenue_cr": 4643.22,
-      "face_value": 10,
-      "cmp": 691,
-      "eps_basic": 7.53,
-      "eps_diluted": 7.52,
-      "nav": 88.32,
-      "pe": 91.89,
-      "ronw": 9.7
-     },
-     {
-      "name": "Apollo Hospitals Enterprise Limited",
-      "revenue_cr": 25228.5,
-      "face_value": 5,
-      "cmp": 8010,
-      "eps_basic": 135.04,
-      "eps_diluted": 134.94,
-      "nav": 657.58,
-      "pe": 59.36,
-      "ronw": 21.95
-     },
-     {
-      "name": "Fortis Healthcare Limited",
-      "revenue_cr": 9127.84,
-      "face_value": 10,
-      "cmp": 765,
-      "eps_basic": 13.8,
-      "eps_diluted": 13.8,
-      "nav": 131.07,
-      "pe": 55.43,
-      "ronw": 11.08
-     },
-     {
-      "name": "Global Health Limited",
-      "revenue_cr": 4410.3,
-      "face_value": 2,
-      "cmp": 1331.7,
-      "eps_basic": 20.71,
-      "eps_diluted": 20.66,
-      "nav": 147.06,
-      "pe": 64.46,
-      "ronw": 15.15
-     },
-     {
-      "name": "Jupiter Lifeline Hospitals Limited",
-      "revenue_cr": 1499.79,
-      "face_value": 2,
-      "cmp": 254,
-      "eps_basic": 5.92,
-      "eps_diluted": 5.92,
-      "nav": 47.1,
-      "pe": 42.92,
-      "ronw": 13.41
-     },
-     {
-      "name": "Krishna Institute of Medical Sciences Limited",
-      "revenue_cr": 3904.6,
-      "face_value": 2,
-      "cmp": 701.95,
-      "eps_basic": 6.03,
-      "eps_diluted": 6.03,
-      "nav": 56.17,
-      "pe": 116.41,
-      "ronw": 11.01
-     },
-     {
-      "name": "Manipal Health Enterprises Limited",
-      "revenue_cr": 10935.6,
-      "face_value": 2,
-      "cmp": 667.3,
-      "eps_basic": 7.71,
-      "eps_diluted": 7.67,
-      "nav": 63.26,
-      "pe": 87,
-      "ronw": 12.37
-     },
-     {
-      "name": "Max Healthcare Institute Limited",
-      "revenue_cr": 10065,
-      "face_value": 10,
-      "cmp": 916.6,
-      "eps_basic": 14.83,
-      "eps_diluted": 14.76,
-      "nav": 109.53,
-      "pe": 62.1,
-      "ronw": 14.33
-     },
-     {
-      "name": "Narayana Hrudayalaya Limited",
-      "revenue_cr": 7896.04,
-      "face_value": 10,
-      "cmp": 1721.9,
-      "eps_basic": 39.67,
-      "eps_diluted": 39.67,
-      "nav": 222.02,
-      "pe": 43.41,
-      "ronw": 19.74
-     },
-     {
-      "name": "Yatharth Hospital and Trauma Care Services Limited",
-      "revenue_cr": 1207.17,
-      "face_value": 10,
-      "cmp": 1003.95,
-      "eps_basic": 18.2,
-      "eps_diluted": 18.2,
-      "nav": 184.79,
-      "pe": 55.16,
-      "ronw": 10.36
-     }
-    ],
-    "issue": {
-     "price_low": 660,
-     "price_high": 693,
-     "total_issue_cr": 1450,
-     "fresh_issue_cr": 500,
-     "ofs_cr": 950,
-     "fresh_issue_shares": null,
-     "ofs_shares": 13708513,
-     "pre_issue_shares": 100986187,
-     "post_issue_shares": null,
-     "face_value": 1,
-     "objects": [
-      {
-       "purpose": "Prepayment or scheduled repayment, in full or part, of certain outstanding borrowings availed by our Company",
-       "amount_cr": 320.9
-      },
-      {
-       "purpose": "Investment in wholly owned Subsidiary, PMHPL, for repayment/prepayment of borrowings",
-       "amount_cr": 54.1
-      },
-      {
-       "purpose": "General corporate purposes",
-       "amount_cr": 101.11
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Dr. Dharminder Kumar Nagar"
-     ],
-     "holding_pre_pct": 72.8,
-     "holding_post_pct": null,
-     "background": "Dr. Dharminder Kumar Nagar has over 22 years of healthcare experience, serves as co-chair of the FICCI Health Services Committee, and has led the commissioning of all company hospitals over the past 20 years."
-    },
-    "concentration": {
-     "top_customers_pct": null,
-     "govt_share_pct": 41.28,
-     "note": "Government Schemes and PSUs accounted for 41.28% of payor revenue in FY26, while Self-Pay accounted for 33.88% and Insurance/TPA accounted for 24.84%."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Contingent liabilities totaled ₹398.44 crore as of June 30, 2026, comprising 89.55% of net worth, primarily consisting of corporate guarantees of ₹376.40 crore, tax disputes of ₹5.82 crore, and medical negligence claims of ₹5.98 crore.",
-    "strengths": [
-     "One of the largest healthcare platforms in North India, Bihar, and Jharkhand with 2,211 beds across eight hospitals.",
-     "First-mover advantages in key regional cities such as Gurugram, Panchkula, and Patna under the recognized 'Paras Health' brand.",
-     "Specialty depth with core CONGOR medical specialties contributing 74.70% of Fiscal 2026 operating revenue.",
-     "Capital-efficient operating model maintaining a low capital expenditure per bed of ₹0.77 crore.",
-     "Extensive medical talent pool consisting of 1,084 doctors and 1,937 nurses supported by high-end diagnostic infrastructure.",
-     "Cloud-first integrated technology ecosystem combining HIS, ERP, electronic health records, and digital patient engagement tools.",
-     "Experienced doctor-led senior management team with a proven 20-year execution record in hospital commissioning and scaling."
-    ],
-    "risks": [
-     {
-      "title": "History of Consolidated Net Losses",
-      "detail": "The company incurred net losses of ₹57.98 crore in FY25 and ₹15.33 crore in FY24, and cannot guarantee sustained future profitability.",
-      "severity": "high"
-     },
-     {
-      "title": "Subsidiaries Incurring Continued Operating Losses",
-      "detail": "Subsidiaries PHRPL and PMHPL collectively incurred losses of ₹52.09 crore in FY26 and ₹82.24 crore in FY25, creating operational drags.",
-      "severity": "high"
-     },
-     {
-      "title": "High Total Contingent Liabilities Relative to Net Worth",
-      "detail": "Contingent liabilities stood at ₹398.44 crore as of June 30, 2026, representing 89.55% of the company's net worth.",
-      "severity": "high"
-     },
-     {
-      "title": "Substantial Indebtedness and Repayment Obligations",
-      "detail": "Total outstanding borrowings amounted to ₹939.47 crore as of August 31, 2026, creating high finance costs and liquidity exposure.",
-      "severity": "high"
-     },
-     {
-      "title": "High Employee and Healthcare Staff Attrition Rates",
-      "detail": "The company experienced significant staff attrition of 60.38% in FY26 and 66.74% in FY25, affecting operational stability.",
-      "severity": "high"
-     },
-     {
-      "title": "Geographical Revenue Concentration in North India",
-      "detail": "Five hospitals located in North India contributed 66.07% of consolidated revenue from operations in Fiscal 2026.",
-      "severity": "medium"
-     },
-     {
-      "title": "High Specialty Concentration in CONGOR Clinical Segments",
-      "detail": "Six key CONGOR specialty areas accounted for 74.70% of consolidated revenue from operations in Fiscal 2026.",
-      "severity": "medium"
-     },
-     {
-      "title": "Operational Risks Associated with Leased Hospital Properties",
-      "detail": "Six of eight hospitals operate under leases or revenue-share arrangements, posing renewal, rent escalation, and landlord dispute risks.",
-      "severity": "medium"
-     }
-    ],
-    "source_doc": "Prospectus",
-    "notes": "Figures are consolidated and restated. Values reported in INR million have been converted to ₹ crore. Stub periods for three months ended June 30, 2025 and June 30, 2026 are excluded from the annual financial series."
-   },
-   "verification": {
-    "status": "warn",
-    "checked": 119,
-    "notFound": 0,
-    "issues": [
-     "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
-     "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
-     "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
-    ],
-    "sourceDoc": "Prospectus"
-   },
-   "fetchedAt": "2026-10-24T18:27:04.638Z"
   },
   {
    "symbol": "JPL",
@@ -10396,12 +9523,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1358,
-    "ltp": 1369,
+    "ltp": 1366,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 21.36,
-    "ltpGainPct": 22.34
+    "ltpGainPct": 22.07
    },
    "checks": [
     {
@@ -10725,8 +9852,948 @@
    "fetchedAt": "2026-10-24T18:27:05.595Z"
   },
   {
-   "symbol": "BONFIG",
-   "name": "Bonfiglioli Transmissions Limited",
+   "symbol": "PARASHLTH",
+   "name": "Paras Healthcare Limited",
+   "board": "Mainboard",
+   "status": "listed",
+   "open": "2026-10-21",
+   "close": "2026-10-23",
+   "timeline": {
+    "open": "2026-10-21",
+    "close": "2026-10-23",
+    "allotment": "2026-10-26",
+    "refund": "2026-10-27",
+    "demat": "2026-10-27",
+    "listing": "2026-10-28"
+   },
+   "allotment": "2026-10-26",
+   "listing": "2026-10-28",
+   "datesExpected": false,
+   "priceLow": 660,
+   "priceHigh": 693,
+   "lot": 21,
+   "faceValue": 1,
+   "issueShares": 20923521,
+   "issueSizeCr": 1450,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Fresh Issue aggregating upto Rs. 5000 million and Offer for Sale aggregating upto Rs. 9,500 million (including Anchor reservation portion of 94,15,584 Equity Shares)",
+   "upiCutoff": "23-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 6590908,
+     "bid": 20381592,
+     "times": 3.0923799877042737
+    },
+    "nii": {
+     "offered": 3295454,
+     "bid": 2166507,
+     "times": 0.657422922607932
+    },
+    "bnii": {
+     "offered": 2196970,
+     "bid": 1289883,
+     "times": 0.5871190776387479
+    },
+    "snii": {
+     "offered": 1098484,
+     "bid": 876624,
+     "times": 0.7980307405478824
+    },
+    "retail": {
+     "offered": 2196969,
+     "bid": 4395615,
+     "times": 2.000763324380089
+    },
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 12083331,
+     "bid": 26943714,
+     "times": 2.2298250374834554
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-23T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 660,
+     "priceHigh": 693,
+     "maxAmount": 200000,
+     "minAmount": 14553,
+     "lot": 21,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 660,
+     "priceHigh": 693,
+     "maxAmount": null,
+     "minAmount": 203742,
+     "lot": 21,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14553,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "1st Floor, Tower B, Paras Twin Towers, Golf Course Road, Sector 54, Gurugram – 122 002, Haryana, India",
+     "phone": "+91 124 430 2163",
+     "email": "cs@parashospitals.com",
+     "website": "https://www.parashospitals.com",
+     "contactPerson": "Rahul Kumar"
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "parashealthcare.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://www.in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 7130235,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 688968,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 10389540,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 2172849,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 113043,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 1147734,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 29106,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 9408,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 846195,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 21021,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 3930360,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 465255,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Re. 1 per Equity Share",
+    "bidLot": "21 Equity Shares and in multiples thereof",
+    "maxBidQib": "1,20,83,316 Equity Shares in multiple of 21 Equity Shares",
+    "maxBidNib": "54,92,403 Equity Shares in multiple of 21 Equity Shares",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 23-Oct-2026 19:00:00 IST",
+    "totalBids": 26967906,
+    "timesSubscribed": 2.23,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, L B S Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, Tel: +91 810 811 4949, parashealthcare.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "JM Financial Limited, BofA Securities India Limited, Nuvama Wealth Management Limited",
+   "leadManagersList": [
+    "JM Financial Limited",
+    "BofA Securities India Limited",
+    "Nuvama Wealth Management Limited"
+   ],
+   "sponsorBank": "ICICI Bank Limited and HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip"
+   },
+   "logo": "data/logos/PARASHLTH.ico",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_PARASHLTH.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Prospectus (final) — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1793186546562.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/paras-healthcare-ipo/1728/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 13,
+    "min": 13,
+    "max": 13,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 13,
+      "pct": 1.88,
+      "updated": "28-Oct 9:37",
+      "seenLow": 9,
+      "seenHigh": 96
+     }
+    ],
+    "rating": 1,
+    "updated": "28-Oct 9:37",
+    "history": [
+     {
+      "date": "2026-10-15",
+      "gmp": 115
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 95
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 96
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 95.5
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 78
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 50
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 25
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 13
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 11
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 11
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 9.5
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 10.5
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 12
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 13
+     },
+     {
+      "date": "2026-10-29",
+      "gmp": 13
+     },
+     {
+      "date": "2026-10-30",
+      "gmp": 13
+     },
+     {
+      "date": "2026-10-31",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-01",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-02",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-03",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-04",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-07",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-08",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-09",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-10",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-11",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-12",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-13",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-14",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-15",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-16",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-17",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-18",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-19",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-20",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-21",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 13
+     },
+     {
+      "date": "2026-11-23",
+      "gmp": 13
+     }
+    ]
+   },
+   "subHistory": [
+    {
+     "at": "2026-10-21T23:22:55.401Z",
+     "date": "2026-10-21",
+     "qib": 0.00008921380786987164,
+     "bnii": 0.047697510662412325,
+     "snii": 0.13634427083143677,
+     "nii": 0.07724641278561314,
+     "retail": 0.6934494751632818,
+     "total": 0.14719757325194519
+    },
+    {
+     "at": "2026-10-22T23:59:29.735Z",
+     "date": "2026-10-22",
+     "qib": 0.06487118315109239,
+     "bnii": 0.2215974728831072,
+     "snii": 0.3098907221224888,
+     "nii": 0.2510285381012753,
+     "retail": 1.3058131452924462,
+     "total": 0.34126715555503695
+    },
+    {
+     "at": "2026-10-23T23:54:14.377Z",
+     "date": "2026-10-23",
+     "qib": 3.0923799877042737,
+     "bnii": 0.5871190776387479,
+     "snii": 0.7980307405478824,
+     "nii": 0.657422922607932,
+     "retail": 2.000763324380089,
+     "total": 2.2298250374834554
+    }
+   ],
+   "listingPerf": {
+    "dayOpen": 721,
+    "ltp": 843.45,
+    "exchange": "NSE",
+    "listDate": "2026-10-29",
+    "asOf": "2026-11-23",
+    "dayOpenGainPct": 4.04,
+    "ltpGainPct": 21.71
+   },
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 1450,
+     "other": 1450,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 21,
+     "other": 21,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 693,
+     "other": 693,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-23",
+     "other": "2026-10-23",
+     "ok": true
+    }
+   ],
+   "fundamentals": {
+    "company": "Paras Healthcare Limited",
+    "basis": "Consolidated",
+    "about": "Paras Healthcare Limited is a clinical specialty-led hospital chain providing tertiary and quaternary healthcare services under the 'Paras Health' brand. As of June 30, 2026, the company operated eight hospitals with an aggregate capacity of 2,211 beds across North India, Bihar, and Jharkhand. Its operations span five states and one union territory with a focused expansion pipeline to reach 3,011 beds by March 2028.",
+    "sector": "Healthcare Services / Hospitals",
+    "headquarters": "Gurugram, Haryana",
+    "founded_year": 1987,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      1477.66,
+      1810.45,
+      2071.14
+     ],
+     "revenue": [
+      1129.04,
+      1294.06,
+      1605.95
+     ],
+     "other_income": [
+      21.98,
+      20.14,
+      22.83
+     ],
+     "ebitda": [
+      154.41,
+      156.46,
+      335.58
+     ],
+     "pbt": [
+      6.63,
+      -50.04,
+      76.03
+     ],
+     "pat": [
+      -15.33,
+      -57.98,
+      43.83
+     ],
+     "net_worth": [
+      338.51,
+      280.49,
+      394.94
+     ],
+     "reserves": [
+      328.75,
+      270.73,
+      384.84
+     ],
+     "borrowings": [
+      547.53,
+      727.93,
+      854.1
+     ],
+     "cash_and_bank": [
+      160.29,
+      205.52,
+      302.73
+     ],
+     "operating_cash_flow": [
+      92.48,
+      86.19,
+      163.51
+     ]
+    },
+    "kpi": {
+     "roce": [
+      5.86,
+      2.71,
+      10.76
+     ],
+     "ronw": [
+      -8.32,
+      -18.73,
+      12.98
+     ],
+     "roe": [
+      -8.32,
+      -18.73,
+      12.98
+     ],
+     "eps_basic": [
+      -1.57,
+      -5.94,
+      4.34
+     ],
+     "eps_diluted": [
+      -1.57,
+      -5.94,
+      4.34
+     ],
+     "pat_margin": [
+      -1.33,
+      -4.41,
+      2.69
+     ],
+     "ebitda_margin": [
+      13.42,
+      11.91,
+      20.6
+     ],
+     "debt_equity": [
+      2.73,
+      4.39,
+      3.53
+     ],
+     "current_ratio": null,
+     "nav_per_share": 44.06,
+     "pe_pre_ipo": 159.68,
+     "pe_post_ipo": 159.68,
+     "weighted_avg_eps": -0.07,
+     "other": [
+      {
+       "name": "Operational Beds",
+       "unit": "count",
+       "values": [
+        1332,
+        1465,
+        1502
+       ]
+      },
+      {
+       "name": "Bed Occupancy Rate",
+       "unit": "%",
+       "values": [
+        52.46,
+        50.78,
+        61.75
+       ]
+      },
+      {
+       "name": "ARPOB",
+       "unit": "₹ per day",
+       "values": [
+        44305.65,
+        48088.57,
+        47397.82
+       ]
+      },
+      {
+       "name": "Occupied Bed Days",
+       "unit": "count",
+       "values": [
+        254716,
+        268927,
+        338321
+       ]
+      },
+      {
+       "name": "Average Length of Stay",
+       "unit": "days",
+       "values": [
+        3.14,
+        2.89,
+        2.93
+       ]
+      },
+      {
+       "name": "Number of Surgeries",
+       "unit": "count",
+       "values": [
+        30219,
+        33072,
+        39687
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Aster DM Quality Care Limited",
+      "revenue_cr": 4643.22,
+      "face_value": 10,
+      "cmp": 691,
+      "eps_basic": 7.53,
+      "eps_diluted": 7.52,
+      "nav": 88.32,
+      "pe": 91.89,
+      "ronw": 9.7
+     },
+     {
+      "name": "Apollo Hospitals Enterprise Limited",
+      "revenue_cr": 25228.5,
+      "face_value": 5,
+      "cmp": 8010,
+      "eps_basic": 135.04,
+      "eps_diluted": 134.94,
+      "nav": 657.58,
+      "pe": 59.36,
+      "ronw": 21.95
+     },
+     {
+      "name": "Fortis Healthcare Limited",
+      "revenue_cr": 9127.84,
+      "face_value": 10,
+      "cmp": 765,
+      "eps_basic": 13.8,
+      "eps_diluted": 13.8,
+      "nav": 131.07,
+      "pe": 55.43,
+      "ronw": 11.08
+     },
+     {
+      "name": "Global Health Limited",
+      "revenue_cr": 4410.3,
+      "face_value": 2,
+      "cmp": 1331.7,
+      "eps_basic": 20.71,
+      "eps_diluted": 20.66,
+      "nav": 147.06,
+      "pe": 64.46,
+      "ronw": 15.15
+     },
+     {
+      "name": "Jupiter Lifeline Hospitals Limited",
+      "revenue_cr": 1499.79,
+      "face_value": 2,
+      "cmp": 254,
+      "eps_basic": 5.92,
+      "eps_diluted": 5.92,
+      "nav": 47.1,
+      "pe": 42.92,
+      "ronw": 13.41
+     },
+     {
+      "name": "Krishna Institute of Medical Sciences Limited",
+      "revenue_cr": 3904.6,
+      "face_value": 2,
+      "cmp": 701.95,
+      "eps_basic": 6.03,
+      "eps_diluted": 6.03,
+      "nav": 56.17,
+      "pe": 116.41,
+      "ronw": 11.01
+     },
+     {
+      "name": "Manipal Health Enterprises Limited",
+      "revenue_cr": 10935.6,
+      "face_value": 2,
+      "cmp": 667.3,
+      "eps_basic": 7.71,
+      "eps_diluted": 7.67,
+      "nav": 63.26,
+      "pe": 87,
+      "ronw": 12.37
+     },
+     {
+      "name": "Max Healthcare Institute Limited",
+      "revenue_cr": 10065,
+      "face_value": 10,
+      "cmp": 916.6,
+      "eps_basic": 14.83,
+      "eps_diluted": 14.76,
+      "nav": 109.53,
+      "pe": 62.1,
+      "ronw": 14.33
+     },
+     {
+      "name": "Narayana Hrudayalaya Limited",
+      "revenue_cr": 7896.04,
+      "face_value": 10,
+      "cmp": 1721.9,
+      "eps_basic": 39.67,
+      "eps_diluted": 39.67,
+      "nav": 222.02,
+      "pe": 43.41,
+      "ronw": 19.74
+     },
+     {
+      "name": "Yatharth Hospital and Trauma Care Services Limited",
+      "revenue_cr": 1207.17,
+      "face_value": 10,
+      "cmp": 1003.95,
+      "eps_basic": 18.2,
+      "eps_diluted": 18.2,
+      "nav": 184.79,
+      "pe": 55.16,
+      "ronw": 10.36
+     }
+    ],
+    "issue": {
+     "price_low": 660,
+     "price_high": 693,
+     "total_issue_cr": 1450,
+     "fresh_issue_cr": 500,
+     "ofs_cr": 950,
+     "fresh_issue_shares": null,
+     "ofs_shares": 13708513,
+     "pre_issue_shares": 100986187,
+     "post_issue_shares": null,
+     "face_value": 1,
+     "objects": [
+      {
+       "purpose": "Prepayment or scheduled repayment, in full or part, of certain outstanding borrowings availed by our Company",
+       "amount_cr": 320.9
+      },
+      {
+       "purpose": "Investment in wholly owned Subsidiary, PMHPL, for repayment/prepayment of borrowings",
+       "amount_cr": 54.1
+      },
+      {
+       "purpose": "General corporate purposes",
+       "amount_cr": 101.11
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Dr. Dharminder Kumar Nagar"
+     ],
+     "holding_pre_pct": 72.8,
+     "holding_post_pct": null,
+     "background": "Dr. Dharminder Kumar Nagar has over 22 years of healthcare experience, serves as co-chair of the FICCI Health Services Committee, and has led the commissioning of all company hospitals over the past 20 years."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": 41.28,
+     "note": "Government Schemes and PSUs accounted for 41.28% of payor revenue in FY26, while Self-Pay accounted for 33.88% and Insurance/TPA accounted for 24.84%."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Contingent liabilities totaled ₹398.44 crore as of June 30, 2026, comprising 89.55% of net worth, primarily consisting of corporate guarantees of ₹376.40 crore, tax disputes of ₹5.82 crore, and medical negligence claims of ₹5.98 crore.",
+    "strengths": [
+     "One of the largest healthcare platforms in North India, Bihar, and Jharkhand with 2,211 beds across eight hospitals.",
+     "First-mover advantages in key regional cities such as Gurugram, Panchkula, and Patna under the recognized 'Paras Health' brand.",
+     "Specialty depth with core CONGOR medical specialties contributing 74.70% of Fiscal 2026 operating revenue.",
+     "Capital-efficient operating model maintaining a low capital expenditure per bed of ₹0.77 crore.",
+     "Extensive medical talent pool consisting of 1,084 doctors and 1,937 nurses supported by high-end diagnostic infrastructure.",
+     "Cloud-first integrated technology ecosystem combining HIS, ERP, electronic health records, and digital patient engagement tools.",
+     "Experienced doctor-led senior management team with a proven 20-year execution record in hospital commissioning and scaling."
+    ],
+    "risks": [
+     {
+      "title": "History of Consolidated Net Losses",
+      "detail": "The company incurred net losses of ₹57.98 crore in FY25 and ₹15.33 crore in FY24, and cannot guarantee sustained future profitability.",
+      "severity": "high"
+     },
+     {
+      "title": "Subsidiaries Incurring Continued Operating Losses",
+      "detail": "Subsidiaries PHRPL and PMHPL collectively incurred losses of ₹52.09 crore in FY26 and ₹82.24 crore in FY25, creating operational drags.",
+      "severity": "high"
+     },
+     {
+      "title": "High Total Contingent Liabilities Relative to Net Worth",
+      "detail": "Contingent liabilities stood at ₹398.44 crore as of June 30, 2026, representing 89.55% of the company's net worth.",
+      "severity": "high"
+     },
+     {
+      "title": "Substantial Indebtedness and Repayment Obligations",
+      "detail": "Total outstanding borrowings amounted to ₹939.47 crore as of August 31, 2026, creating high finance costs and liquidity exposure.",
+      "severity": "high"
+     },
+     {
+      "title": "High Employee and Healthcare Staff Attrition Rates",
+      "detail": "The company experienced significant staff attrition of 60.38% in FY26 and 66.74% in FY25, affecting operational stability.",
+      "severity": "high"
+     },
+     {
+      "title": "Geographical Revenue Concentration in North India",
+      "detail": "Five hospitals located in North India contributed 66.07% of consolidated revenue from operations in Fiscal 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "High Specialty Concentration in CONGOR Clinical Segments",
+      "detail": "Six key CONGOR specialty areas accounted for 74.70% of consolidated revenue from operations in Fiscal 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "Operational Risks Associated with Leased Hospital Properties",
+      "detail": "Six of eight hospitals operate under leases or revenue-share arrangements, posing renewal, rent escalation, and landlord dispute risks.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "Prospectus",
+    "notes": "Figures are consolidated and restated. Values reported in INR million have been converted to ₹ crore. Stub periods for three months ended June 30, 2025 and June 30, 2026 are excluded from the annual financial series."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 119,
+    "notFound": 0,
+    "issues": [
+     "Mar-24: reported debt/equity 2.73 vs borrowings/net worth 1.62 (RHP debt may include leases)",
+     "Mar-25: reported debt/equity 4.39 vs borrowings/net worth 2.60 (RHP debt may include leases)",
+     "Mar-26: reported debt/equity 3.53 vs borrowings/net worth 2.16 (RHP debt may include leases)"
+    ],
+    "sourceDoc": "Prospectus"
+   },
+   "fetchedAt": "2026-10-24T18:27:04.638Z"
+  },
+  {
+   "symbol": "SMT",
+   "name": "Sahajanand Medical Technologies Limited",
    "board": "Mainboard",
    "status": "listed",
    "open": "2026-10-15",
@@ -10740,6 +10807,1377 @@
     "listing": "2026-10-23"
    },
    "allotment": "2026-10-20",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 327,
+   "priceHigh": 344,
+   "lot": 43,
+   "faceValue": 1,
+   "issueShares": 13822093,
+   "issueSizeCr": 475.48,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Offer for sale upto 13,822,116 Equity Shares (Including Eligible Employees Reservation Portion of up to 2,50,000 Equity Shares and Anchor Allocation of 40,71,634 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 2714423,
+     "bid": 94179804,
+     "times": 34.69606763573695
+    },
+    "nii": {
+     "offered": 2035818,
+     "bid": 29808460,
+     "times": 14.642006309011906
+    },
+    "bnii": {
+     "offered": 1357212,
+     "bid": 22212725,
+     "times": 16.3664372257245
+    },
+    "snii": {
+     "offered": 678606,
+     "bid": 7595735,
+     "times": 11.193144475586717
+    },
+    "retail": {
+     "offered": 4750241,
+     "bid": 14391713,
+     "times": 3.0296805993632745
+    },
+    "employee": {
+     "offered": 250000,
+     "bid": 92794,
+     "times": 0.371176
+    },
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 9750482,
+     "bid": 138472771,
+     "times": 14.201633416686478
+    },
+    "anchor": {
+     "offered": 4071634,
+     "bid": 4071634,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": 200000,
+     "minAmount": 14792,
+     "lot": 43,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 43,
+     "note": "No discount stated"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 327,
+     "priceHigh": 344,
+     "maxAmount": null,
+     "minAmount": 207088,
+     "lot": 43,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14792,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "Sahajanand Estate, Wakharia Wadi, Near Dabholi Char Rasta, Nani Ved, Ved Road, Surat - 395004, Gujarat, India.",
+     "phone": "022 49564000",
+     "email": "investors.grievance@smt.in",
+     "website": "https://www.smtpl.com",
+     "contactPerson": "Deepshikha Singhal"
+    },
+    "registrar": {
+     "name": "MUFG Intime India Private Limited",
+     "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "sahajanandmedical.ipo@in.mpms.mufg.com",
+     "contactPerson": "Shanti Gopalkrishnan",
+     "website": "https://in.mpms.mufg.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": {
+    "bidDate": "2026-10-14",
+    "price": 344,
+    "totalShares": 4071634,
+    "totalAmountCr": 140.06
+   },
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 32379301,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 29126308,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 17203354,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 15470841,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 471022,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 20762894,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 978809,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 43946,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 7309011,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 242778,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 12366585,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 2025128,
+     "times": null
+    },
+    {
+     "id": "4(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 72541,
+     "times": null
+    },
+    {
+     "id": "4(b)",
+     "label": "Price Bids",
+     "offered": null,
+     "bid": 20253,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Re. 1 per Equity Share",
+    "bidLot": "43 Equity Shares and in multiples thereof",
+    "maxBidQib": "95,00,463 Equity Shares in multiple of 43 Equity Shares (Calculated at Higher Price band)",
+    "maxBidNib": "67,86,045 Equity Shares in multiple of 43 Equity Shares (Calculated at Higher Price band)",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 19-Oct-2026 19:00:00 IST",
+    "totalBids": 138534777,
+    "timesSubscribed": 14.21,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "MUFG Intime India Private Limited",
+    "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
+    "contact": "Shanti Gopalkrishnan, +91 810 811 4949 , Tel: +91 810 811 4949, sahajanandmedical.ipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "Motilal Oswal Investment Advisors Limited, Avendus Capital Private Limited, HSBC Securities and Capital Markets (India) Private Limited , Nuvama Wealth Management Limited",
+   "leadManagersList": [
+    "Motilal Oswal Investment Advisors Limited",
+    "Avendus Capital Private Limited",
+    "HSBC Securities and Capital Markets (India) Private Limited",
+    "Nuvama Wealth Management Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and Kotak Mahindra Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip"
+   },
+   "logo": "data/logos/SMT.ico",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791785603861.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    }
+   ],
+   "anchor": null,
+   "gmp": null,
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.218Z",
+     "date": "2026-10-15",
+     "qib": 0.371985501154389,
+     "bnii": 0.12739572004963115,
+     "snii": 0.35807670430264393,
+     "nii": 0.20428938146730208,
+     "retail": 0.40083924163005624,
+     "total": 0.3436125516666766
+    },
+    {
+     "at": "2026-10-16T22:05:10.350Z",
+     "date": "2026-10-16",
+     "qib": 1.1231484554912776,
+     "bnii": 0.3810149040827815,
+     "snii": 0.7666554672372481,
+     "nii": 0.5095617584676037,
+     "retail": 0.8246981574198025,
+     "total": 0.8243464271817537
+    },
+    {
+     "at": "2026-10-18T23:04:07.642Z",
+     "date": "2026-10-18",
+     "qib": 1.1231484554912776,
+     "bnii": 0.3810149040827815,
+     "snii": 0.7666554672372481,
+     "nii": 0.5095617584676037,
+     "retail": 0.8246981574198025,
+     "total": 0.8243464271817537
+    },
+    {
+     "at": "2026-10-19T23:49:50.210Z",
+     "date": "2026-10-19",
+     "qib": 34.69606763573695,
+     "bnii": 16.3664372257245,
+     "snii": 11.193144475586717,
+     "nii": 14.642006309011906,
+     "retail": 3.0296805993632745,
+     "total": 14.201633416686478
+    }
+   ],
+   "listingPerf": {
+    "dayOpen": 371.1499938964844,
+    "ltp": 550.75,
+    "exchange": "NSE",
+    "listDate": "2026-10-23",
+    "asOf": "2026-11-23",
+    "dayOpenGainPct": 7.89,
+    "ltpGainPct": 60.1
+   },
+   "checks": [],
+   "fundamentals": {
+    "company": "Sahajanand Medical Technologies Limited",
+    "basis": "Consolidated",
+    "about": "SMT is a Surat-based Class III medical device maker focused on vascular intervention (drug-eluting stents, PTCA balloons) and structural heart products (TAVI valves, occluders). It has two plants in India and one in Thailand, and sold in 77 countries in FY26. It claims nearly 25% share of India's DES volume. Europe is its largest market at 38.66% of FY26 revenue.",
+    "sector": "Medical Devices (Cardiovascular)",
+    "headquarters": "Surat, Gujarat",
+    "founded_year": 2001,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      970.58,
+      1094.9,
+      1276.43
+     ],
+     "revenue": [
+      901.6,
+      1024.88,
+      1210.5
+     ],
+     "other_income": [
+      6.99,
+      11.08,
+      8.22
+     ],
+     "ebitda": [
+      110.05,
+      128.02,
+      170.66
+     ],
+     "pbt": [
+      33.09,
+      40.81,
+      80.29
+     ],
+     "pat": [
+      -7.35,
+      25.15,
+      69.08
+     ],
+     "net_worth": [
+      540.09,
+      565.73,
+      695.46
+     ],
+     "reserves": [
+      530.34,
+      555.97,
+      685.65
+     ],
+     "borrowings": [
+      175.27,
+      224.96,
+      269.53
+     ],
+     "cash_and_bank": [
+      73.53,
+      101.84,
+      75.49
+     ],
+     "operating_cash_flow": [
+      41.1,
+      73.52,
+      105.19
+     ]
+    },
+    "kpi": {
+     "roce": [
+      8.05,
+      10.37,
+      11.57
+     ],
+     "ronw": [
+      -2.43,
+      3.73,
+      10.6
+     ],
+     "roe": [
+      -2.34,
+      3.68,
+      10.35
+     ],
+     "eps_basic": [
+      -1.31,
+      2.09,
+      6.67
+     ],
+     "eps_diluted": [
+      -1.31,
+      2.01,
+      6.48
+     ],
+     "pat_margin": [
+      -0.82,
+      2.45,
+      5.71
+     ],
+     "ebitda_margin": [
+      12.21,
+      12.49,
+      14.1
+     ],
+     "debt_equity": [
+      0.31,
+      0.38,
+      0.38
+     ],
+     "current_ratio": [
+      1.7,
+      1.6,
+      1.65
+     ],
+     "nav_per_share": 62.76,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 3.69,
+     "other": [
+      {
+       "name": "Net debt to EBITDA",
+       "unit": "times",
+       "values": [
+        0.86,
+        0.91,
+        1.12
+       ]
+      },
+      {
+       "name": "Europe share of revenue",
+       "unit": "%",
+       "values": [
+        29.52,
+        32.96,
+        38.66
+       ]
+      },
+      {
+       "name": "India share of revenue",
+       "unit": "%",
+       "values": [
+        34.8,
+        31.28,
+        26.13
+       ]
+      },
+      {
+       "name": "Net working capital days",
+       "unit": "days",
+       "values": [
+        144,
+        144,
+        138
+       ]
+      },
+      {
+       "name": "Countries with revenue",
+       "unit": "number",
+       "values": [
+        56,
+        76,
+        77
+       ]
+      },
+      {
+       "name": "Gross tangible fixed asset turnover",
+       "unit": "times",
+       "values": [
+        3.37,
+        3.49,
+        3.41
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Poly Medicure Limited",
+      "revenue_cr": 1875.26,
+      "face_value": 5,
+      "cmp": 1632.25,
+      "eps_basic": 31.79,
+      "eps_diluted": 31.75,
+      "nav": 306.4,
+      "pe": 51.4,
+      "ronw": 10.37
+     },
+     {
+      "name": "Laxmi Dental Limited",
+      "revenue_cr": 277.86,
+      "face_value": 2,
+      "cmp": 191.1,
+      "eps_basic": 5.27,
+      "eps_diluted": 5.26,
+      "nav": 44.27,
+      "pe": 36.35,
+      "ronw": 11.91
+     }
+    ],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": null,
+     "ofs_cr": null,
+     "fresh_issue_shares": 0,
+     "ofs_shares": 13822116,
+     "pre_issue_shares": 101646778,
+     "post_issue_shares": null,
+     "face_value": 1,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by Selling Shareholders (company receives no proceeds); listing benefits",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": 30,
+      "qib": 50,
+      "nii": 15,
+      "retail": 35,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Bhargav Dhirajlal Kotadia",
+      "Shree Hari Trust"
+     ],
+     "holding_pre_pct": 36.71,
+     "holding_post_pct": null,
+     "background": "Company was founded in 2001 by Dhirajlal Kotadia; Bhargav Kotadia is Managing Director and CEO. Samara Capital (29.61%), NHPEA Sparkle (15.24%) and Kotak Pre-IPO Fund (5.98%) are other large shareholders and sellers in the OFS."
+    },
+    "concentration": {
+     "top_customers_pct": 15.71,
+     "govt_share_pct": null,
+     "note": "Top 10 distributors were 15.71% of FY26 revenue (26.34% in FY24); top distributor 3.01%; no single customer above 10%. Top 10 countries were 78.76% of FY26 revenue."
+    },
+    "order_book_cr": null,
+    "litigation_note": "Against the Company: 2 criminal, 98 tax and 5 regulatory proceedings with quantifiable amount Rs 131.97 crore; against Directors Rs 24.85 crore (4 criminal, 4 tax); against Promoters Rs 6.10 crore (4 tax); against subsidiaries Rs 7.00 crore. No material civil litigation.",
+    "strengths": [
+     "Nearly 25% share of India's drug-eluting stent volume in FY26 and top-five DES player in Germany, Spain, Poland and Brazil, per the F&S industry report.",
+     "Diversified revenue: India 26%, Europe 39% and rest of world 35% in FY26, sold in 77 countries.",
+     "Broad Class III portfolio across stents, balloons, TAVI valves and occluders, backed by 75 clinical studies including the Lancet-published TALENT trial.",
+     "Strong R&D with 119 patents granted, 78 pending and R&D spend of about 8.6% of FY26 revenue.",
+     "Integrated manufacturing in India and Thailand, with large spare capacity (stent utilisation 78% in FY26).",
+     "Improving profitability: PAT swung from a Rs 7 crore loss in FY24 to Rs 69 crore profit in FY26; EBITDA margin up to 14.1%.",
+     "Falling distributor concentration: top 10 distributors dropped from 26% of revenue in FY24 to 16% in FY26.",
+     "Proven acquisition playbook (Imex Spain, Zarek Brazil, Vascular Concepts, Vascular Innovations) and institutional investor backing."
+    ],
+    "risks": [
+     {
+      "title": "High receivables and rising bad debts",
+      "detail": "Trade receivables were Rs 306.56 crore at June 2026 (76 days of sales); bad debts jumped to Rs 18.56 crore in FY26 from Rs 2.95 crore in FY25. Long credit is extended to distributors.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy borrowings and covenant breaches",
+      "detail": "Borrowings were Rs 320.63 crore at June 2026 (Rs 269.53 crore at March 2026), mostly short-term. The company has breached financial covenants in the past, and a subsidiary breached a term loan covenant in FY26 (waived by lender).",
+      "severity": "high"
+     },
+     {
+      "title": "Extensive regulatory and certification dependence",
+      "detail": "Products are Class III devices needing CE and Indian approvals. Many CE certificates under the old MDD expire December 31, 2027 and must move to the stricter EU MDR; only Supraflex Cruz has MDR certification so far.",
+      "severity": "high"
+     },
+     {
+      "title": "Pure offer for sale, no money to the company",
+      "detail": "The whole offer is 13,822,116 shares sold by existing investors (13.60% of pre-offer capital); the company receives nothing, so no funds go to debt reduction or growth.",
+      "severity": "medium"
+     },
+     {
+      "title": "Weak debt service coverage",
+      "detail": "Debt service coverage ratio was only 0.65 in FY26, 0.47 in FY25 and 0.12 in the June 2026 quarter, while interest coverage was 4.29 in FY26.",
+      "severity": "medium"
+     },
+     {
+      "title": "Pending litigation and tax disputes",
+      "detail": "98 tax proceedings and 2 criminal cases against the company, with quantifiable amount of Rs 131.97 crore; Directors face Rs 24.85 crore and Promoters Rs 6.10 crore.",
+      "severity": "medium"
+     },
+     {
+      "title": "International operations risk",
+      "detail": "About 74% of FY26 revenue is outside India (Europe 38.66%, rest of world 35.21%), exposing results to currency, tariff, regulatory and tender risks across 77 countries.",
+      "severity": "medium"
+     },
+     {
+      "title": "Untraceable historical corporate records",
+      "detail": "Several RoC filings and challans for share allotments since 2001 (items up to 13.68% of pre-offer capital) could not be located, which could invite regulatory action.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "FY24-FY26 restated consolidated, Rs crore (converted from INR million); June 2026 quarter stub ignored (revenue Rs 351.67 crore, PAT Rs 15.09 crore). net_worth and reserves are attributable to owners (excl. NCI). borrowings = current plus non-current (matches RHP). cash_and_bank = cash equivalents plus other bank balances. debt_equity is the RHP total borrowings/total equity; current_ratio computed from the balance sheet; weighted_avg_eps is diluted. Price band, issue size, P/E and post-issue shares are blank in the RHP. Balance sheet was reconstructed from garbled text and cross-checked to totals. Reservation percentages are SEBI limits (QIB up to 50%, anchor up to 60% of QIB, NII at least 15%, retail at least 35%); employee reservation is up to 250,000 shares."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 67,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "RHP"
+   },
+   "fetchedAt": "2026-10-20T18:21:52.639Z"
+  },
+  {
+   "symbol": "TONBO",
+   "name": "Tonbo Imaging India Limited",
+   "board": "Mainboard",
+   "status": "listed",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-20",
+    "refund": "2026-10-21",
+    "demat": "2026-10-21",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-20",
+   "listing": "2026-10-23",
+   "datesExpected": false,
+   "priceLow": 665,
+   "priceHigh": 700,
+   "lot": 21,
+   "faceValue": 2,
+   "issueShares": 12174000,
+   "issueSizeCr": 852.18,
+   "issueType": "100% Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising of Offer for Sale of up to 12,174,046 Equity Shares (including Employee Reservation Portion of up to 14,000 Equity Shares and Anchor reservation portion of 36,48,013 Equity Shares)",
+   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": {
+     "offered": 2432009,
+     "bid": 713933115,
+     "times": 293.5569379060686
+    },
+    "nii": {
+     "offered": 1824007,
+     "bid": 311801574,
+     "times": 170.9431893627601
+    },
+    "bnii": {
+     "offered": 1216005,
+     "bid": 224627487,
+     "times": 184.72579224592005
+    },
+    "snii": {
+     "offered": 608002,
+     "bid": 87174087,
+     "times": 143.3779609277601
+    },
+    "retail": {
+     "offered": 4256017,
+     "bid": 132223938,
+     "times": 31.067530510333956
+    },
+    "employee": {
+     "offered": 14000,
+     "bid": 760620,
+     "times": 54.33
+    },
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 8526033,
+     "bid": 1158719247,
+     "times": 135.90367841644525
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-10-19T19:00:00+05:30",
+   "subsAsOnSource": "exchange",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": 200000,
+     "minAmount": 14700,
+     "lot": 21,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "Employee",
+     "priceLow": 600,
+     "priceHigh": 635,
+     "maxAmount": 500000,
+     "minAmount": null,
+     "lot": 21,
+     "note": "Discount Rs 65 per share"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 665,
+     "priceHigh": 700,
+     "maxAmount": null,
+     "minAmount": 205800,
+     "lot": 21,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14700,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": {
+     "address": "1st C Main, Sarjapur Main Road, Jakkasandra Extension, Chikkayellappa Industrial Layout, Bengaluru 560 034, Karnataka, India",
+     "phone": "+91 63 64 926 273",
+     "email": "compliance@tonboimaging.com",
+     "website": "https://www.tonboimaging.com",
+     "contactPerson": "Ankita Agarwalla"
+    },
+    "registrar": {
+     "name": "KFin Technologies Limited",
+     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
+     "phone": "+91 40 6716 2222",
+     "email": "tonbo.ipo@kfintech.com",
+     "contactPerson": "Williams R",
+     "website": "https://www.kfintech.com"
+    },
+    "source": "NSE issue info + offer document"
+   },
+   "anchorSummary": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 177205371,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 281349873,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 38859387,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 216518484,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 2398956,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 214453554,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 7774977,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 205821,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 84639975,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 2328291,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 116335191,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 15888747,
+     "times": null
+    },
+    {
+     "id": "4(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 595476,
+     "times": null
+    },
+    {
+     "id": "4(b)",
+     "label": "Price Bids",
+     "offered": null,
+     "bid": 165144,
+     "times": null
+    }
+   ],
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": "Rs. 65 per equity share to Eligible Employees",
+    "faceValue": "Rs. 2 per Equity Share",
+    "bidLot": "21 Equity Shares and in multiples thereof",
+    "maxBidQib": "85,12,014 Equity Shares in multiple of 21 Equity Shares",
+    "maxBidNib": "60,80,004 Equity Shares in multiple of 21 Equity Shares",
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "asOn": "As on 19-Oct-2026 19:00:00 IST",
+    "totalBids": 1160150964,
+    "timesSubscribed": 136.07,
+    "byPrice": {}
+   },
+   "registrar": {
+    "name": "KFin Technologies Limited",
+    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
+    "contact": "Williams R, +91 40 6716 2222, tonbo.ipo@kfintech.com"
+   },
+   "leadManagers": "JM Financial Limited and IIFL Capital Services Limited",
+   "leadManagersList": [
+    "JM Financial Limited",
+    "IIFL Capital Services Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip"
+   },
+   "logo": "data/logos/TONBO.png",
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Prospectus (final) — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792652985928.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    }
+   ],
+   "anchor": null,
+   "gmp": null,
+   "subHistory": [
+    {
+     "at": "2026-10-15T12:40:36.215Z",
+     "date": "2026-10-15",
+     "qib": 3.9240496231716246,
+     "bnii": 4.553613677575339,
+     "snii": 8.69518027901224,
+     "nii": 5.934135121191969,
+     "retail": 3.190506992805715,
+     "total": 3.992078144665872
+    },
+    {
+     "at": "2026-10-16T22:05:10.352Z",
+     "date": "2026-10-16",
+     "qib": 3.9525963925297973,
+     "bnii": 11.480183058457818,
+     "snii": 20.084257946519912,
+     "nii": 14.348206448769112,
+     "retail": 7.118863012060337,
+     "total": 7.772149720743516
+    },
+    {
+     "at": "2026-10-18T23:04:07.640Z",
+     "date": "2026-10-18",
+     "qib": 3.9525963925297973,
+     "bnii": 11.480183058457818,
+     "snii": 20.084257946519912,
+     "nii": 14.348206448769112,
+     "retail": 7.118863012060337,
+     "total": 7.772149720743516
+    },
+    {
+     "at": "2026-10-19T23:49:50.207Z",
+     "date": "2026-10-19",
+     "qib": 293.5569379060686,
+     "bnii": 184.72579224592005,
+     "snii": 143.3779609277601,
+     "nii": 170.9431893627601,
+     "retail": 31.067530510333956,
+     "total": 135.90367841644525
+    }
+   ],
+   "listingPerf": {
+    "dayOpen": 1160,
+    "ltp": 1437,
+    "exchange": "NSE",
+    "listDate": "2026-10-23",
+    "asOf": "2026-11-23",
+    "dayOpenGainPct": 65.71,
+    "ltpGainPct": 105.29
+   },
+   "checks": [],
+   "fundamentals": {
+    "company": "Tonbo Imaging India Limited",
+    "basis": "Consolidated",
+    "about": "Tonbo Imaging India Limited is a Bengaluru-based defence electronics original equipment manufacturer that designs and manufactures advanced electro-optics, thermal imaging, and autonomous targeting solutions. Operating an asset-light model with full in-house intellectual property ownership, the company has deployed over 28,000 systems across 24 countries worldwide.",
+    "sector": "Defence Electronics",
+    "headquarters": "Bengaluru, Karnataka",
+    "founded_year": 2003,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      574.68,
+      726.36,
+      782.5
+     ],
+     "revenue": [
+      428.19,
+      469.08,
+      362.65
+     ],
+     "other_income": [
+      3.71,
+      5.31,
+      7.29
+     ],
+     "ebitda": [
+      112.32,
+      139.06,
+      104.62
+     ],
+     "pbt": [
+      94.55,
+      99.27,
+      69.96
+     ],
+     "pat": [
+      68.54,
+      72.76,
+      50.88
+     ],
+     "net_worth": [
+      230.13,
+      490.14,
+      553.16
+     ],
+     "reserves": [
+      168.99,
+      489.41,
+      541.7
+     ],
+     "borrowings": [
+      96.36,
+      78.14,
+      116.06
+     ],
+     "cash_and_bank": [
+      115.67,
+      101.92,
+      38.63
+     ],
+     "operating_cash_flow": [
+      78.33,
+      -136.12,
+      -63.22
+     ]
+    },
+    "kpi": {
+     "roce": [
+      67.76,
+      27.41,
+      14.54
+     ],
+     "ronw": [
+      52.72,
+      20.2,
+      9.75
+     ],
+     "roe": [
+      52.72,
+      20.2,
+      9.75
+     ],
+     "eps_basic": [
+      62.61,
+      13.38,
+      9.19
+     ],
+     "eps_diluted": [
+      13.63,
+      12.7,
+      8.88
+     ],
+     "pat_margin": [
+      15.87,
+      15.34,
+      13.75
+     ],
+     "ebitda_margin": [
+      26.23,
+      29.65,
+      28.85
+     ],
+     "debt_equity": null,
+     "current_ratio": null,
+     "nav_per_share": 96.57,
+     "pe_pre_ipo": 78.83,
+     "pe_post_ipo": 78.83,
+     "weighted_avg_eps": 10.95,
+     "other": [
+      {
+       "name": "Gross Profit Margin",
+       "unit": "%",
+       "values": [
+        48.64,
+        56.38,
+        51.05
+       ]
+      },
+      {
+       "name": "Working Capital Days",
+       "unit": "Days",
+       "values": [
+        152,
+        280,
+        517
+       ]
+      },
+      {
+       "name": "Export Share in Revenue",
+       "unit": "%",
+       "values": [
+        48.61,
+        65.52,
+        5.57
+       ]
+      },
+      {
+       "name": "Net Tangible Fixed Asset Turnover",
+       "unit": "Times",
+       "values": [
+        89.45,
+        19.16,
+        14.62
+       ]
+      },
+      {
+       "name": "Confirmed Order Book",
+       "unit": "₹ crore",
+       "values": [
+        563.14,
+        218.61,
+        279.02
+       ]
+      }
+     ]
+    },
+    "peers": [
+     {
+      "name": "Paras Defence and Space Technologies Limited",
+      "revenue_cr": 476.57,
+      "face_value": 5,
+      "cmp": 1286.95,
+      "eps_basic": 10.93,
+      "eps_diluted": 10.93,
+      "nav": 90.02,
+      "pe": 117.74,
+      "ronw": null
+     },
+     {
+      "name": "Data Patterns (India) Limited",
+      "revenue_cr": 924.77,
+      "face_value": 2,
+      "cmp": 4231,
+      "eps_basic": 48.47,
+      "eps_diluted": 48.47,
+      "nav": 310.08,
+      "pe": 87.29,
+      "ronw": 17
+     },
+     {
+      "name": "Astra Microwave Products Limited",
+      "revenue_cr": 1162.8,
+      "face_value": 2,
+      "cmp": 1701.15,
+      "eps_basic": 20.32,
+      "eps_diluted": 20.27,
+      "nav": 138.46,
+      "pe": 83.92,
+      "ronw": null
+     },
+     {
+      "name": "Zen Technologies Limited",
+      "revenue_cr": 687.69,
+      "face_value": 1,
+      "cmp": 1580.35,
+      "eps_basic": 21.52,
+      "eps_diluted": 21.52,
+      "nav": 209.22,
+      "pe": 73.44,
+      "ronw": null
+     },
+     {
+      "name": "Bharat Electronics Limited",
+      "revenue_cr": 27610.11,
+      "face_value": 1,
+      "cmp": 378.85,
+      "eps_basic": 8.29,
+      "eps_diluted": 8.29,
+      "nav": 32.82,
+      "pe": 45.7,
+      "ronw": null
+     }
+    ],
+    "issue": {
+     "price_low": 665,
+     "price_high": 700,
+     "total_issue_cr": 852.09,
+     "fresh_issue_cr": 0,
+     "ofs_cr": 852.09,
+     "fresh_issue_shares": 0,
+     "ofs_shares": 12174046,
+     "pre_issue_shares": 57280000,
+     "post_issue_shares": 57280000,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Offer for Sale by Selling Shareholders and listing benefits",
+       "amount_cr": 852.09
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Arvind Kondangi Lakshmikumar",
+      "Ankit Kumar",
+      "Cecilia D'Souza"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "The Promoters have worked together for over 21 years across global defence programs, led by Arvind Kondangi Lakshmikumar (MD & CEO), Ankit Kumar (optics & computer vision), and Cecilia D'Souza (finance & operations)."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": 74.53,
+     "note": "Indian Government accounted for 71.19% and foreign governments 3.34% of FY26 revenue; top ten suppliers accounted for 68.77% of FY26 total expenses."
+    },
+    "order_book_cr": 314.24,
+    "litigation_note": "Bank guarantees outstanding of ₹78.93 crore and contingent liability of ₹0.58 crore disputed under Goods and Services Tax Act pending before the High Court of Jammu & Kashmir.",
+    "strengths": [
+     "Leading defence technology OEM with 100% proprietary intellectual property ownership across optics, embedded software, and electronics.",
+     "Capital-efficient asset-light model focusing on in-house R&D while outsourcing manufacturing to certified EMS partners.",
+     "Largest Indian manufacturer and exporter of thermal imaging systems, capturing 94% of India's thermal imaging export units.",
+     "Diversified portfolio of ITAR-free electro-optical systems deployed in over 24 countries across 28,000 installations.",
+     "Comprehensive product range spanning tactical weapon sights, platform systems, missile seekers, and autonomous battlefield fire control.",
+     "Robust in-house R&D infrastructure with 130 dedicated engineers comprising approximately 38% of the total workforce."
+    ],
+    "risks": [
+     {
+      "title": "Persistent negative operating cash flows",
+      "detail": "Reported negative cash flows from operations of ₹63.22 crore in FY26, ₹136.12 crore in FY25, and ₹14.68 crore in Q1 FY27.",
+      "severity": "high"
+     },
+     {
+      "title": "Lengthening working capital cycle",
+      "detail": "Working capital days increased substantially from 152 days in FY24 to 280 days in FY25 and 517 days in FY26.",
+      "severity": "high"
+     },
+     {
+      "title": "High supplier concentration",
+      "detail": "Top ten suppliers accounted for 68.77% of total expenses in FY26 and 164.00% in Q1 FY27, without long-term supply contracts.",
+      "severity": "high"
+     },
+     {
+      "title": "Heavy reliance on tactical systems revenue",
+      "detail": "Tactical systems contributed 58.37%, 77.24%, and 83.90% of revenue from operations in FY26, FY25, and FY24, respectively.",
+      "severity": "medium"
+     },
+     {
+      "title": "Sharp decline in export revenues",
+      "detail": "Export share dropped sharply from 65.52% of revenue in FY25 to 5.57% in FY26 due to changes in international procurement.",
+      "severity": "medium"
+     },
+     {
+      "title": "Cyclical government tender-based procurement",
+      "detail": "Business is highly dependent on governmental budgetary allocations and extended, multi-tiered tender cycles resulting in volatile revenue.",
+      "severity": "medium"
+     },
+     {
+      "title": "Dependence on contract manufacturers",
+      "detail": "Relies entirely on non-exclusive contract manufacturers such as Kaynes and Avalon for commercial-scale product assembly.",
+      "severity": "medium"
+     },
+     {
+      "title": "Bank guarantee exposure and tax disputes",
+      "detail": "Outstanding performance bank guarantees of ₹78.93 crore and contingent liabilities of ₹0.58 crore in disputed GST dues.",
+      "severity": "low"
+     }
+    ],
+    "source_doc": "Prospectus",
+    "notes": "FY24 financials are standalone as subsidiaries were incorporated in FY25; FY25 and FY26 are consolidated. Q1 FY27 stub period (ended June 30, 2026) is excluded from financial arrays."
+   },
+   "verification": {
+    "status": "ok",
+    "checked": 80,
+    "notFound": 0,
+    "issues": [],
+    "sourceDoc": "Prospectus"
+   },
+   "fetchedAt": "2026-10-20T18:21:44.724Z"
+  },
+  {
+   "symbol": "BONFIG",
+   "name": "Bonfiglioli Transmissions Limited",
+   "board": "Mainboard",
+   "status": "listed",
+   "open": "2026-10-15",
+   "close": "2026-10-19",
+   "timeline": {
+    "open": "2026-10-15",
+    "close": "2026-10-19",
+    "allotment": "2026-10-21",
+    "refund": "2026-10-22",
+    "demat": "2026-10-22",
+    "listing": "2026-10-23"
+   },
+   "allotment": "2026-10-21",
    "listing": "2026-10-23",
    "datesExpected": false,
    "priceLow": 558,
@@ -11030,10 +12468,207 @@
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/bonfiglioli-transmissions-ipo/2124/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
     }
    ],
-   "anchor": null,
-   "gmp": null,
+   "anchor": true,
+   "gmp": {
+    "value": 66,
+    "min": 66,
+    "max": 66,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 66,
+      "pct": 11.26,
+      "updated": "23-Oct 9:37",
+      "seenLow": 66,
+      "seenHigh": 178
+     }
+    ],
+    "rating": 3,
+    "updated": "23-Oct 9:37",
+    "history": [
+     {
+      "date": "2026-10-12",
+      "gmp": 156
+     },
+     {
+      "date": "2026-10-13",
+      "gmp": 157
+     },
+     {
+      "date": "2026-10-14",
+      "gmp": 182.5
+     },
+     {
+      "date": "2026-10-15",
+      "gmp": 159
+     },
+     {
+      "date": "2026-10-16",
+      "gmp": 129
+     },
+     {
+      "date": "2026-10-17",
+      "gmp": 132
+     },
+     {
+      "date": "2026-10-18",
+      "gmp": 131
+     },
+     {
+      "date": "2026-10-19",
+      "gmp": 127
+     },
+     {
+      "date": "2026-10-20",
+      "gmp": 137
+     },
+     {
+      "date": "2026-10-21",
+      "gmp": 132
+     },
+     {
+      "date": "2026-10-22",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-23",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-24",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-25",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-26",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-27",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-28",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-29",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-30",
+      "gmp": 66
+     },
+     {
+      "date": "2026-10-31",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-01",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-02",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-03",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-04",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-05",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-06",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-07",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-08",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-09",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-10",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-11",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-12",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-13",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-14",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-15",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-16",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-17",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-18",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-19",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-20",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-21",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-22",
+      "gmp": 66
+     },
+     {
+      "date": "2026-11-23",
+      "gmp": 66
+     }
+    ]
+   },
    "subHistory": [
     {
      "at": "2026-10-15T12:40:36.221Z",
@@ -11078,14 +12713,39 @@
    ],
    "listingPerf": {
     "dayOpen": 586,
-    "ltp": 795.35,
+    "ltp": 796.5,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 0,
-    "ltpGainPct": 35.73
+    "ltpGainPct": 35.92
    },
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 2533.81,
+     "other": 2533.66,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 25,
+     "other": 25,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 586,
+     "other": 586,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-10-19",
+     "other": "2026-10-19",
+     "ok": true
+    }
+   ],
    "fundamentals": {
     "company": "Bonfiglioli Transmissions Limited",
     "basis": "Standalone",
@@ -11793,12 +13453,12 @@
    ],
    "listingPerf": {
     "dayOpen": 159.25,
-    "ltp": 181.76,
+    "ltp": 185.35,
     "exchange": "NSE",
     "listDate": "2026-10-23",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 5.46,
-    "ltpGainPct": 20.37
+    "ltpGainPct": 22.75
    },
    "checks": [],
    "fundamentals": {
@@ -12075,1377 +13735,6 @@
     "sourceDoc": "Prospectus"
    },
    "fetchedAt": "2026-10-20T18:21:57.843Z"
-  },
-  {
-   "symbol": "SMT",
-   "name": "Sahajanand Medical Technologies Limited",
-   "board": "Mainboard",
-   "status": "listed",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-20",
-    "refund": "2026-10-21",
-    "demat": "2026-10-21",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-20",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 327,
-   "priceHigh": 344,
-   "lot": 43,
-   "faceValue": 1,
-   "issueShares": 13822093,
-   "issueSizeCr": 475.48,
-   "issueType": "Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Offer for sale upto 13,822,116 Equity Shares (Including Eligible Employees Reservation Portion of up to 2,50,000 Equity Shares and Anchor Allocation of 40,71,634 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 2714423,
-     "bid": 94179804,
-     "times": 34.69606763573695
-    },
-    "nii": {
-     "offered": 2035818,
-     "bid": 29808460,
-     "times": 14.642006309011906
-    },
-    "bnii": {
-     "offered": 1357212,
-     "bid": 22212725,
-     "times": 16.3664372257245
-    },
-    "snii": {
-     "offered": 678606,
-     "bid": 7595735,
-     "times": 11.193144475586717
-    },
-    "retail": {
-     "offered": 4750241,
-     "bid": 14391713,
-     "times": 3.0296805993632745
-    },
-    "employee": {
-     "offered": 250000,
-     "bid": 92794,
-     "times": 0.371176
-    },
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 9750482,
-     "bid": 138472771,
-     "times": 14.201633416686478
-    },
-    "anchor": {
-     "offered": 4071634,
-     "bid": 4071634,
-     "times": null
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-19T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 327,
-     "priceHigh": 344,
-     "maxAmount": 200000,
-     "minAmount": 14792,
-     "lot": 43,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "Employee",
-     "priceLow": 327,
-     "priceHigh": 344,
-     "maxAmount": 500000,
-     "minAmount": null,
-     "lot": 43,
-     "note": "No discount stated"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 327,
-     "priceHigh": 344,
-     "maxAmount": null,
-     "minAmount": 207088,
-     "lot": 43,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14792,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": "Sahajanand Estate, Wakharia Wadi, Near Dabholi Char Rasta, Nani Ved, Ved Road, Surat - 395004, Gujarat, India.",
-     "phone": "022 49564000",
-     "email": "investors.grievance@smt.in",
-     "website": "https://www.smtpl.com",
-     "contactPerson": "Deepshikha Singhal"
-    },
-    "registrar": {
-     "name": "MUFG Intime India Private Limited",
-     "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-     "phone": "+91 810 811 4949",
-     "email": "sahajanandmedical.ipo@in.mpms.mufg.com",
-     "contactPerson": "Shanti Gopalkrishnan",
-     "website": "https://in.mpms.mufg.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": {
-    "bidDate": "2026-10-14",
-    "price": 344,
-    "totalShares": 4071634,
-    "totalAmountCr": 140.06
-   },
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 32379301,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 29126308,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 17203354,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 15470841,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 471022,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 20762894,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 978809,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 43946,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 7309011,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 242778,
-     "times": null
-    },
-    {
-     "id": "3(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 12366585,
-     "times": null
-    },
-    {
-     "id": "3(b)",
-     "label": "Price bids",
-     "offered": null,
-     "bid": 2025128,
-     "times": null
-    },
-    {
-     "id": "4(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 72541,
-     "times": null
-    },
-    {
-     "id": "4(b)",
-     "label": "Price Bids",
-     "offered": null,
-     "bid": 20253,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": null,
-    "faceValue": "Re. 1 per Equity Share",
-    "bidLot": "43 Equity Shares and in multiples thereof",
-    "maxBidQib": "95,00,463 Equity Shares in multiple of 43 Equity Shares (Calculated at Higher Price band)",
-    "maxBidNib": "67,86,045 Equity Shares in multiple of 43 Equity Shares (Calculated at Higher Price band)",
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 19-Oct-2026 19:00:00 IST",
-    "totalBids": 138534777,
-    "timesSubscribed": 14.21,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "MUFG Intime India Private Limited",
-    "address": "C-101, Embassy 247, Lal Bahadur Shastri Marg, Vikhroli (West), Mumbai 400 083, Maharashtra, India",
-    "contact": "Shanti Gopalkrishnan, +91 810 811 4949 , Tel: +91 810 811 4949, sahajanandmedical.ipo@in.mpms.mufg.com"
-   },
-   "leadManagers": "Motilal Oswal Investment Advisors Limited, Avendus Capital Private Limited, HSBC Securities and Capital Markets (India) Private Limited , Nuvama Wealth Management Limited",
-   "leadManagersList": [
-    "Motilal Oswal Investment Advisors Limited",
-    "Avendus Capital Private Limited",
-    "HSBC Securities and Capital Markets (India) Private Limited",
-    "Nuvama Wealth Management Limited"
-   ],
-   "sponsorBank": "Axis Bank Limited and Kotak Mahindra Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip"
-   },
-   "logo": "data/logos/SMT.ico",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_SMT.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1791785603861.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    }
-   ],
-   "anchor": null,
-   "gmp": null,
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.218Z",
-     "date": "2026-10-15",
-     "qib": 0.371985501154389,
-     "bnii": 0.12739572004963115,
-     "snii": 0.35807670430264393,
-     "nii": 0.20428938146730208,
-     "retail": 0.40083924163005624,
-     "total": 0.3436125516666766
-    },
-    {
-     "at": "2026-10-16T22:05:10.350Z",
-     "date": "2026-10-16",
-     "qib": 1.1231484554912776,
-     "bnii": 0.3810149040827815,
-     "snii": 0.7666554672372481,
-     "nii": 0.5095617584676037,
-     "retail": 0.8246981574198025,
-     "total": 0.8243464271817537
-    },
-    {
-     "at": "2026-10-18T23:04:07.642Z",
-     "date": "2026-10-18",
-     "qib": 1.1231484554912776,
-     "bnii": 0.3810149040827815,
-     "snii": 0.7666554672372481,
-     "nii": 0.5095617584676037,
-     "retail": 0.8246981574198025,
-     "total": 0.8243464271817537
-    },
-    {
-     "at": "2026-10-19T23:49:50.210Z",
-     "date": "2026-10-19",
-     "qib": 34.69606763573695,
-     "bnii": 16.3664372257245,
-     "snii": 11.193144475586717,
-     "nii": 14.642006309011906,
-     "retail": 3.0296805993632745,
-     "total": 14.201633416686478
-    }
-   ],
-   "listingPerf": {
-    "dayOpen": 371.1499938964844,
-    "ltp": 550.55,
-    "exchange": "NSE",
-    "listDate": "2026-10-23",
-    "asOf": "2026-11-23",
-    "dayOpenGainPct": 7.89,
-    "ltpGainPct": 60.04
-   },
-   "checks": [],
-   "fundamentals": {
-    "company": "Sahajanand Medical Technologies Limited",
-    "basis": "Consolidated",
-    "about": "SMT is a Surat-based Class III medical device maker focused on vascular intervention (drug-eluting stents, PTCA balloons) and structural heart products (TAVI valves, occluders). It has two plants in India and one in Thailand, and sold in 77 countries in FY26. It claims nearly 25% share of India's DES volume. Europe is its largest market at 38.66% of FY26 revenue.",
-    "sector": "Medical Devices (Cardiovascular)",
-    "headquarters": "Surat, Gujarat",
-    "founded_year": 2001,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      970.58,
-      1094.9,
-      1276.43
-     ],
-     "revenue": [
-      901.6,
-      1024.88,
-      1210.5
-     ],
-     "other_income": [
-      6.99,
-      11.08,
-      8.22
-     ],
-     "ebitda": [
-      110.05,
-      128.02,
-      170.66
-     ],
-     "pbt": [
-      33.09,
-      40.81,
-      80.29
-     ],
-     "pat": [
-      -7.35,
-      25.15,
-      69.08
-     ],
-     "net_worth": [
-      540.09,
-      565.73,
-      695.46
-     ],
-     "reserves": [
-      530.34,
-      555.97,
-      685.65
-     ],
-     "borrowings": [
-      175.27,
-      224.96,
-      269.53
-     ],
-     "cash_and_bank": [
-      73.53,
-      101.84,
-      75.49
-     ],
-     "operating_cash_flow": [
-      41.1,
-      73.52,
-      105.19
-     ]
-    },
-    "kpi": {
-     "roce": [
-      8.05,
-      10.37,
-      11.57
-     ],
-     "ronw": [
-      -2.43,
-      3.73,
-      10.6
-     ],
-     "roe": [
-      -2.34,
-      3.68,
-      10.35
-     ],
-     "eps_basic": [
-      -1.31,
-      2.09,
-      6.67
-     ],
-     "eps_diluted": [
-      -1.31,
-      2.01,
-      6.48
-     ],
-     "pat_margin": [
-      -0.82,
-      2.45,
-      5.71
-     ],
-     "ebitda_margin": [
-      12.21,
-      12.49,
-      14.1
-     ],
-     "debt_equity": [
-      0.31,
-      0.38,
-      0.38
-     ],
-     "current_ratio": [
-      1.7,
-      1.6,
-      1.65
-     ],
-     "nav_per_share": 62.76,
-     "pe_pre_ipo": null,
-     "pe_post_ipo": null,
-     "weighted_avg_eps": 3.69,
-     "other": [
-      {
-       "name": "Net debt to EBITDA",
-       "unit": "times",
-       "values": [
-        0.86,
-        0.91,
-        1.12
-       ]
-      },
-      {
-       "name": "Europe share of revenue",
-       "unit": "%",
-       "values": [
-        29.52,
-        32.96,
-        38.66
-       ]
-      },
-      {
-       "name": "India share of revenue",
-       "unit": "%",
-       "values": [
-        34.8,
-        31.28,
-        26.13
-       ]
-      },
-      {
-       "name": "Net working capital days",
-       "unit": "days",
-       "values": [
-        144,
-        144,
-        138
-       ]
-      },
-      {
-       "name": "Countries with revenue",
-       "unit": "number",
-       "values": [
-        56,
-        76,
-        77
-       ]
-      },
-      {
-       "name": "Gross tangible fixed asset turnover",
-       "unit": "times",
-       "values": [
-        3.37,
-        3.49,
-        3.41
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Poly Medicure Limited",
-      "revenue_cr": 1875.26,
-      "face_value": 5,
-      "cmp": 1632.25,
-      "eps_basic": 31.79,
-      "eps_diluted": 31.75,
-      "nav": 306.4,
-      "pe": 51.4,
-      "ronw": 10.37
-     },
-     {
-      "name": "Laxmi Dental Limited",
-      "revenue_cr": 277.86,
-      "face_value": 2,
-      "cmp": 191.1,
-      "eps_basic": 5.27,
-      "eps_diluted": 5.26,
-      "nav": 44.27,
-      "pe": 36.35,
-      "ronw": 11.91
-     }
-    ],
-    "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
-     "fresh_issue_cr": null,
-     "ofs_cr": null,
-     "fresh_issue_shares": 0,
-     "ofs_shares": 13822116,
-     "pre_issue_shares": 101646778,
-     "post_issue_shares": null,
-     "face_value": 1,
-     "objects": [
-      {
-       "purpose": "Offer for Sale by Selling Shareholders (company receives no proceeds); listing benefits",
-       "amount_cr": null
-      }
-     ],
-     "reservation_pct": {
-      "anchor": 30,
-      "qib": 50,
-      "nii": 15,
-      "retail": 35,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Bhargav Dhirajlal Kotadia",
-      "Shree Hari Trust"
-     ],
-     "holding_pre_pct": 36.71,
-     "holding_post_pct": null,
-     "background": "Company was founded in 2001 by Dhirajlal Kotadia; Bhargav Kotadia is Managing Director and CEO. Samara Capital (29.61%), NHPEA Sparkle (15.24%) and Kotak Pre-IPO Fund (5.98%) are other large shareholders and sellers in the OFS."
-    },
-    "concentration": {
-     "top_customers_pct": 15.71,
-     "govt_share_pct": null,
-     "note": "Top 10 distributors were 15.71% of FY26 revenue (26.34% in FY24); top distributor 3.01%; no single customer above 10%. Top 10 countries were 78.76% of FY26 revenue."
-    },
-    "order_book_cr": null,
-    "litigation_note": "Against the Company: 2 criminal, 98 tax and 5 regulatory proceedings with quantifiable amount Rs 131.97 crore; against Directors Rs 24.85 crore (4 criminal, 4 tax); against Promoters Rs 6.10 crore (4 tax); against subsidiaries Rs 7.00 crore. No material civil litigation.",
-    "strengths": [
-     "Nearly 25% share of India's drug-eluting stent volume in FY26 and top-five DES player in Germany, Spain, Poland and Brazil, per the F&S industry report.",
-     "Diversified revenue: India 26%, Europe 39% and rest of world 35% in FY26, sold in 77 countries.",
-     "Broad Class III portfolio across stents, balloons, TAVI valves and occluders, backed by 75 clinical studies including the Lancet-published TALENT trial.",
-     "Strong R&D with 119 patents granted, 78 pending and R&D spend of about 8.6% of FY26 revenue.",
-     "Integrated manufacturing in India and Thailand, with large spare capacity (stent utilisation 78% in FY26).",
-     "Improving profitability: PAT swung from a Rs 7 crore loss in FY24 to Rs 69 crore profit in FY26; EBITDA margin up to 14.1%.",
-     "Falling distributor concentration: top 10 distributors dropped from 26% of revenue in FY24 to 16% in FY26.",
-     "Proven acquisition playbook (Imex Spain, Zarek Brazil, Vascular Concepts, Vascular Innovations) and institutional investor backing."
-    ],
-    "risks": [
-     {
-      "title": "High receivables and rising bad debts",
-      "detail": "Trade receivables were Rs 306.56 crore at June 2026 (76 days of sales); bad debts jumped to Rs 18.56 crore in FY26 from Rs 2.95 crore in FY25. Long credit is extended to distributors.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy borrowings and covenant breaches",
-      "detail": "Borrowings were Rs 320.63 crore at June 2026 (Rs 269.53 crore at March 2026), mostly short-term. The company has breached financial covenants in the past, and a subsidiary breached a term loan covenant in FY26 (waived by lender).",
-      "severity": "high"
-     },
-     {
-      "title": "Extensive regulatory and certification dependence",
-      "detail": "Products are Class III devices needing CE and Indian approvals. Many CE certificates under the old MDD expire December 31, 2027 and must move to the stricter EU MDR; only Supraflex Cruz has MDR certification so far.",
-      "severity": "high"
-     },
-     {
-      "title": "Pure offer for sale, no money to the company",
-      "detail": "The whole offer is 13,822,116 shares sold by existing investors (13.60% of pre-offer capital); the company receives nothing, so no funds go to debt reduction or growth.",
-      "severity": "medium"
-     },
-     {
-      "title": "Weak debt service coverage",
-      "detail": "Debt service coverage ratio was only 0.65 in FY26, 0.47 in FY25 and 0.12 in the June 2026 quarter, while interest coverage was 4.29 in FY26.",
-      "severity": "medium"
-     },
-     {
-      "title": "Pending litigation and tax disputes",
-      "detail": "98 tax proceedings and 2 criminal cases against the company, with quantifiable amount of Rs 131.97 crore; Directors face Rs 24.85 crore and Promoters Rs 6.10 crore.",
-      "severity": "medium"
-     },
-     {
-      "title": "International operations risk",
-      "detail": "About 74% of FY26 revenue is outside India (Europe 38.66%, rest of world 35.21%), exposing results to currency, tariff, regulatory and tender risks across 77 countries.",
-      "severity": "medium"
-     },
-     {
-      "title": "Untraceable historical corporate records",
-      "detail": "Several RoC filings and challans for share allotments since 2001 (items up to 13.68% of pre-offer capital) could not be located, which could invite regulatory action.",
-      "severity": "medium"
-     }
-    ],
-    "source_doc": "RHP",
-    "notes": "FY24-FY26 restated consolidated, Rs crore (converted from INR million); June 2026 quarter stub ignored (revenue Rs 351.67 crore, PAT Rs 15.09 crore). net_worth and reserves are attributable to owners (excl. NCI). borrowings = current plus non-current (matches RHP). cash_and_bank = cash equivalents plus other bank balances. debt_equity is the RHP total borrowings/total equity; current_ratio computed from the balance sheet; weighted_avg_eps is diluted. Price band, issue size, P/E and post-issue shares are blank in the RHP. Balance sheet was reconstructed from garbled text and cross-checked to totals. Reservation percentages are SEBI limits (QIB up to 50%, anchor up to 60% of QIB, NII at least 15%, retail at least 35%); employee reservation is up to 250,000 shares."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 67,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
-   },
-   "fetchedAt": "2026-10-20T18:21:52.639Z"
-  },
-  {
-   "symbol": "TONBO",
-   "name": "Tonbo Imaging India Limited",
-   "board": "Mainboard",
-   "status": "listed",
-   "open": "2026-10-15",
-   "close": "2026-10-19",
-   "timeline": {
-    "open": "2026-10-15",
-    "close": "2026-10-19",
-    "allotment": "2026-10-20",
-    "refund": "2026-10-21",
-    "demat": "2026-10-21",
-    "listing": "2026-10-23"
-   },
-   "allotment": "2026-10-20",
-   "listing": "2026-10-23",
-   "datesExpected": false,
-   "priceLow": 665,
-   "priceHigh": 700,
-   "lot": 21,
-   "faceValue": 2,
-   "issueShares": 12174000,
-   "issueSizeCr": 852.18,
-   "issueType": "100% Book Building",
-   "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public Offer comprising of Offer for Sale of up to 12,174,046 Equity Shares (including Employee Reservation Portion of up to 14,000 Equity Shares and Anchor reservation portion of 36,48,013 Equity Shares)",
-   "upiCutoff": "19-Oct-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
-   "bids": {
-    "qib": {
-     "offered": 2432009,
-     "bid": 713933115,
-     "times": 293.5569379060686
-    },
-    "nii": {
-     "offered": 1824007,
-     "bid": 311801574,
-     "times": 170.9431893627601
-    },
-    "bnii": {
-     "offered": 1216005,
-     "bid": 224627487,
-     "times": 184.72579224592005
-    },
-    "snii": {
-     "offered": 608002,
-     "bid": 87174087,
-     "times": 143.3779609277601
-    },
-    "retail": {
-     "offered": 4256017,
-     "bid": 132223938,
-     "times": 31.067530510333956
-    },
-    "employee": {
-     "offered": 14000,
-     "bid": 760620,
-     "times": 54.33
-    },
-    "shareholders": null,
-    "other": null,
-    "total": {
-     "offered": 8526033,
-     "bid": 1158719247,
-     "times": 135.90367841644525
-    }
-   },
-   "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-10-19T19:00:00+05:30",
-   "subsAsOnSource": "exchange",
-   "applyAs": [
-    {
-     "category": "Regular",
-     "priceLow": 665,
-     "priceHigh": 700,
-     "maxAmount": 200000,
-     "minAmount": 14700,
-     "lot": 21,
-     "note": "Retail individual investors"
-    },
-    {
-     "category": "Employee",
-     "priceLow": 600,
-     "priceHigh": 635,
-     "maxAmount": 500000,
-     "minAmount": null,
-     "lot": 21,
-     "note": "Discount Rs 65 per share"
-    },
-    {
-     "category": "HNI",
-     "priceLow": 665,
-     "priceHigh": 700,
-     "maxAmount": null,
-     "minAmount": 205800,
-     "lot": 21,
-     "note": "Non-institutional: bid above the retail limit"
-    }
-   ],
-   "minInvestment": 14700,
-   "minInvestmentLots": 1,
-   "contacts": {
-    "company": {
-     "address": "1st C Main, Sarjapur Main Road, Jakkasandra Extension, Chikkayellappa Industrial Layout, Bengaluru 560 034, Karnataka, India",
-     "phone": "+91 63 64 926 273",
-     "email": "compliance@tonboimaging.com",
-     "website": "https://www.tonboimaging.com",
-     "contactPerson": "Ankita Agarwalla"
-    },
-    "registrar": {
-     "name": "KFin Technologies Limited",
-     "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
-     "phone": "+91 40 6716 2222",
-     "email": "tonbo.ipo@kfintech.com",
-     "contactPerson": "Williams R",
-     "website": "https://www.kfintech.com"
-    },
-    "source": "NSE issue info + offer document"
-   },
-   "anchorSummary": null,
-   "bidSplit": [
-    {
-     "id": "1(a)",
-     "label": "Foreign Institutional Investors(FIIs)",
-     "offered": null,
-     "bid": 177205371,
-     "times": null
-    },
-    {
-     "id": "1(b)",
-     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
-     "offered": null,
-     "bid": 281349873,
-     "times": null
-    },
-    {
-     "id": "1(c)",
-     "label": "Mutual funds",
-     "offered": null,
-     "bid": 38859387,
-     "times": null
-    },
-    {
-     "id": "1(d)",
-     "label": "Others",
-     "offered": null,
-     "bid": 216518484,
-     "times": null
-    },
-    {
-     "id": "2.1(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 2398956,
-     "times": null
-    },
-    {
-     "id": "2.1(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 214453554,
-     "times": null
-    },
-    {
-     "id": "2.1(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 7774977,
-     "times": null
-    },
-    {
-     "id": "2.2(a)",
-     "label": "Corporates",
-     "offered": null,
-     "bid": 205821,
-     "times": null
-    },
-    {
-     "id": "2.2(b)",
-     "label": "Individuals(Other than RIIs)",
-     "offered": null,
-     "bid": 84639975,
-     "times": null
-    },
-    {
-     "id": "2.2(c)",
-     "label": "Others",
-     "offered": null,
-     "bid": 2328291,
-     "times": null
-    },
-    {
-     "id": "3(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 116335191,
-     "times": null
-    },
-    {
-     "id": "3(b)",
-     "label": "Price bids",
-     "offered": null,
-     "bid": 15888747,
-     "times": null
-    },
-    {
-     "id": "4(a)",
-     "label": "Cut Off",
-     "offered": null,
-     "bid": 595476,
-     "times": null
-    },
-    {
-     "id": "4(b)",
-     "label": "Price Bids",
-     "offered": null,
-     "bid": 165144,
-     "times": null
-    }
-   ],
-   "nseInfo": {
-    "tickSize": "Re. 1",
-    "discount": "Rs. 65 per equity share to Eligible Employees",
-    "faceValue": "Rs. 2 per Equity Share",
-    "bidLot": "21 Equity Shares and in multiples thereof",
-    "maxBidQib": "85,12,014 Equity Shares in multiple of 21 Equity Shares",
-    "maxBidNib": "60,80,004 Equity Shares in multiple of 21 Equity Shares",
-    "marketTimings": "10.00 a.m. to 5.00 p.m.",
-    "upiSubCategories": "IND and EMP (upto 5 Lakhs)",
-    "categories": "FI, IC, MF, FII, OTH, CO, IND, NOH and EMP",
-    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
-   },
-   "anchorInvestors": null,
-   "demand": {
-    "asOn": "As on 19-Oct-2026 19:00:00 IST",
-    "totalBids": 1160150964,
-    "timesSubscribed": 136.07,
-    "byPrice": {}
-   },
-   "registrar": {
-    "name": "KFin Technologies Limited",
-    "address": "301, The Centrium, 3rd Floor, 57, Lal Bahadur Shastri Road, Nav Pada, Kurla (West), Mumbai 400 070, Maharashtra, India",
-    "contact": "Williams R, +91 40 6716 2222, tonbo.ipo@kfintech.com"
-   },
-   "leadManagers": "JM Financial Limited and IIFL Capital Services Limited",
-   "leadManagersList": [
-    "JM Financial Limited",
-    "IIFL Capital Services Limited"
-   ],
-   "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
-   "docs": {
-    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
-    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip"
-   },
-   "logo": "data/logos/TONBO.png",
-   "documents": [
-    {
-     "label": "Price band ad / basis for issue price (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Price band & basis"
-    },
-    {
-     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Offer document"
-    },
-    {
-     "label": "Bidding centres (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Application form (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Application forms & centres"
-    },
-    {
-     "label": "Security parameters (before anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Security parameters (after anchor) (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Anchor investors allocation (zip from NSE)",
-     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_TONBO.zip",
-     "source": "NSE",
-     "kind": "zip",
-     "group": "Anchor investors"
-    },
-    {
-     "label": "Prospectus (final) — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/oct-2026/1792652985928.pdf",
-     "source": "SEBI",
-     "kind": "pdf-link",
-     "group": "Offer document"
-    }
-   ],
-   "anchor": null,
-   "gmp": null,
-   "subHistory": [
-    {
-     "at": "2026-10-15T12:40:36.215Z",
-     "date": "2026-10-15",
-     "qib": 3.9240496231716246,
-     "bnii": 4.553613677575339,
-     "snii": 8.69518027901224,
-     "nii": 5.934135121191969,
-     "retail": 3.190506992805715,
-     "total": 3.992078144665872
-    },
-    {
-     "at": "2026-10-16T22:05:10.352Z",
-     "date": "2026-10-16",
-     "qib": 3.9525963925297973,
-     "bnii": 11.480183058457818,
-     "snii": 20.084257946519912,
-     "nii": 14.348206448769112,
-     "retail": 7.118863012060337,
-     "total": 7.772149720743516
-    },
-    {
-     "at": "2026-10-18T23:04:07.640Z",
-     "date": "2026-10-18",
-     "qib": 3.9525963925297973,
-     "bnii": 11.480183058457818,
-     "snii": 20.084257946519912,
-     "nii": 14.348206448769112,
-     "retail": 7.118863012060337,
-     "total": 7.772149720743516
-    },
-    {
-     "at": "2026-10-19T23:49:50.207Z",
-     "date": "2026-10-19",
-     "qib": 293.5569379060686,
-     "bnii": 184.72579224592005,
-     "snii": 143.3779609277601,
-     "nii": 170.9431893627601,
-     "retail": 31.067530510333956,
-     "total": 135.90367841644525
-    }
-   ],
-   "listingPerf": {
-    "dayOpen": 1160,
-    "ltp": 1439,
-    "exchange": "NSE",
-    "listDate": "2026-10-23",
-    "asOf": "2026-11-23",
-    "dayOpenGainPct": 65.71,
-    "ltpGainPct": 105.57
-   },
-   "checks": [],
-   "fundamentals": {
-    "company": "Tonbo Imaging India Limited",
-    "basis": "Consolidated",
-    "about": "Tonbo Imaging India Limited is a Bengaluru-based defence electronics original equipment manufacturer that designs and manufactures advanced electro-optics, thermal imaging, and autonomous targeting solutions. Operating an asset-light model with full in-house intellectual property ownership, the company has deployed over 28,000 systems across 24 countries worldwide.",
-    "sector": "Defence Electronics",
-    "headquarters": "Bengaluru, Karnataka",
-    "founded_year": 2003,
-    "periods": [
-     "Mar-24",
-     "Mar-25",
-     "Mar-26"
-    ],
-    "financials": {
-     "total_assets": [
-      574.68,
-      726.36,
-      782.5
-     ],
-     "revenue": [
-      428.19,
-      469.08,
-      362.65
-     ],
-     "other_income": [
-      3.71,
-      5.31,
-      7.29
-     ],
-     "ebitda": [
-      112.32,
-      139.06,
-      104.62
-     ],
-     "pbt": [
-      94.55,
-      99.27,
-      69.96
-     ],
-     "pat": [
-      68.54,
-      72.76,
-      50.88
-     ],
-     "net_worth": [
-      230.13,
-      490.14,
-      553.16
-     ],
-     "reserves": [
-      168.99,
-      489.41,
-      541.7
-     ],
-     "borrowings": [
-      96.36,
-      78.14,
-      116.06
-     ],
-     "cash_and_bank": [
-      115.67,
-      101.92,
-      38.63
-     ],
-     "operating_cash_flow": [
-      78.33,
-      -136.12,
-      -63.22
-     ]
-    },
-    "kpi": {
-     "roce": [
-      67.76,
-      27.41,
-      14.54
-     ],
-     "ronw": [
-      52.72,
-      20.2,
-      9.75
-     ],
-     "roe": [
-      52.72,
-      20.2,
-      9.75
-     ],
-     "eps_basic": [
-      62.61,
-      13.38,
-      9.19
-     ],
-     "eps_diluted": [
-      13.63,
-      12.7,
-      8.88
-     ],
-     "pat_margin": [
-      15.87,
-      15.34,
-      13.75
-     ],
-     "ebitda_margin": [
-      26.23,
-      29.65,
-      28.85
-     ],
-     "debt_equity": null,
-     "current_ratio": null,
-     "nav_per_share": 96.57,
-     "pe_pre_ipo": 78.83,
-     "pe_post_ipo": 78.83,
-     "weighted_avg_eps": 10.95,
-     "other": [
-      {
-       "name": "Gross Profit Margin",
-       "unit": "%",
-       "values": [
-        48.64,
-        56.38,
-        51.05
-       ]
-      },
-      {
-       "name": "Working Capital Days",
-       "unit": "Days",
-       "values": [
-        152,
-        280,
-        517
-       ]
-      },
-      {
-       "name": "Export Share in Revenue",
-       "unit": "%",
-       "values": [
-        48.61,
-        65.52,
-        5.57
-       ]
-      },
-      {
-       "name": "Net Tangible Fixed Asset Turnover",
-       "unit": "Times",
-       "values": [
-        89.45,
-        19.16,
-        14.62
-       ]
-      },
-      {
-       "name": "Confirmed Order Book",
-       "unit": "₹ crore",
-       "values": [
-        563.14,
-        218.61,
-        279.02
-       ]
-      }
-     ]
-    },
-    "peers": [
-     {
-      "name": "Paras Defence and Space Technologies Limited",
-      "revenue_cr": 476.57,
-      "face_value": 5,
-      "cmp": 1286.95,
-      "eps_basic": 10.93,
-      "eps_diluted": 10.93,
-      "nav": 90.02,
-      "pe": 117.74,
-      "ronw": null
-     },
-     {
-      "name": "Data Patterns (India) Limited",
-      "revenue_cr": 924.77,
-      "face_value": 2,
-      "cmp": 4231,
-      "eps_basic": 48.47,
-      "eps_diluted": 48.47,
-      "nav": 310.08,
-      "pe": 87.29,
-      "ronw": 17
-     },
-     {
-      "name": "Astra Microwave Products Limited",
-      "revenue_cr": 1162.8,
-      "face_value": 2,
-      "cmp": 1701.15,
-      "eps_basic": 20.32,
-      "eps_diluted": 20.27,
-      "nav": 138.46,
-      "pe": 83.92,
-      "ronw": null
-     },
-     {
-      "name": "Zen Technologies Limited",
-      "revenue_cr": 687.69,
-      "face_value": 1,
-      "cmp": 1580.35,
-      "eps_basic": 21.52,
-      "eps_diluted": 21.52,
-      "nav": 209.22,
-      "pe": 73.44,
-      "ronw": null
-     },
-     {
-      "name": "Bharat Electronics Limited",
-      "revenue_cr": 27610.11,
-      "face_value": 1,
-      "cmp": 378.85,
-      "eps_basic": 8.29,
-      "eps_diluted": 8.29,
-      "nav": 32.82,
-      "pe": 45.7,
-      "ronw": null
-     }
-    ],
-    "issue": {
-     "price_low": 665,
-     "price_high": 700,
-     "total_issue_cr": 852.09,
-     "fresh_issue_cr": 0,
-     "ofs_cr": 852.09,
-     "fresh_issue_shares": 0,
-     "ofs_shares": 12174046,
-     "pre_issue_shares": 57280000,
-     "post_issue_shares": 57280000,
-     "face_value": 2,
-     "objects": [
-      {
-       "purpose": "Offer for Sale by Selling Shareholders and listing benefits",
-       "amount_cr": 852.09
-      }
-     ],
-     "reservation_pct": {
-      "anchor": null,
-      "qib": null,
-      "nii": null,
-      "retail": null,
-      "employee": null
-     }
-    },
-    "promoters": {
-     "names": [
-      "Arvind Kondangi Lakshmikumar",
-      "Ankit Kumar",
-      "Cecilia D'Souza"
-     ],
-     "holding_pre_pct": null,
-     "holding_post_pct": null,
-     "background": "The Promoters have worked together for over 21 years across global defence programs, led by Arvind Kondangi Lakshmikumar (MD & CEO), Ankit Kumar (optics & computer vision), and Cecilia D'Souza (finance & operations)."
-    },
-    "concentration": {
-     "top_customers_pct": null,
-     "govt_share_pct": 74.53,
-     "note": "Indian Government accounted for 71.19% and foreign governments 3.34% of FY26 revenue; top ten suppliers accounted for 68.77% of FY26 total expenses."
-    },
-    "order_book_cr": 314.24,
-    "litigation_note": "Bank guarantees outstanding of ₹78.93 crore and contingent liability of ₹0.58 crore disputed under Goods and Services Tax Act pending before the High Court of Jammu & Kashmir.",
-    "strengths": [
-     "Leading defence technology OEM with 100% proprietary intellectual property ownership across optics, embedded software, and electronics.",
-     "Capital-efficient asset-light model focusing on in-house R&D while outsourcing manufacturing to certified EMS partners.",
-     "Largest Indian manufacturer and exporter of thermal imaging systems, capturing 94% of India's thermal imaging export units.",
-     "Diversified portfolio of ITAR-free electro-optical systems deployed in over 24 countries across 28,000 installations.",
-     "Comprehensive product range spanning tactical weapon sights, platform systems, missile seekers, and autonomous battlefield fire control.",
-     "Robust in-house R&D infrastructure with 130 dedicated engineers comprising approximately 38% of the total workforce."
-    ],
-    "risks": [
-     {
-      "title": "Persistent negative operating cash flows",
-      "detail": "Reported negative cash flows from operations of ₹63.22 crore in FY26, ₹136.12 crore in FY25, and ₹14.68 crore in Q1 FY27.",
-      "severity": "high"
-     },
-     {
-      "title": "Lengthening working capital cycle",
-      "detail": "Working capital days increased substantially from 152 days in FY24 to 280 days in FY25 and 517 days in FY26.",
-      "severity": "high"
-     },
-     {
-      "title": "High supplier concentration",
-      "detail": "Top ten suppliers accounted for 68.77% of total expenses in FY26 and 164.00% in Q1 FY27, without long-term supply contracts.",
-      "severity": "high"
-     },
-     {
-      "title": "Heavy reliance on tactical systems revenue",
-      "detail": "Tactical systems contributed 58.37%, 77.24%, and 83.90% of revenue from operations in FY26, FY25, and FY24, respectively.",
-      "severity": "medium"
-     },
-     {
-      "title": "Sharp decline in export revenues",
-      "detail": "Export share dropped sharply from 65.52% of revenue in FY25 to 5.57% in FY26 due to changes in international procurement.",
-      "severity": "medium"
-     },
-     {
-      "title": "Cyclical government tender-based procurement",
-      "detail": "Business is highly dependent on governmental budgetary allocations and extended, multi-tiered tender cycles resulting in volatile revenue.",
-      "severity": "medium"
-     },
-     {
-      "title": "Dependence on contract manufacturers",
-      "detail": "Relies entirely on non-exclusive contract manufacturers such as Kaynes and Avalon for commercial-scale product assembly.",
-      "severity": "medium"
-     },
-     {
-      "title": "Bank guarantee exposure and tax disputes",
-      "detail": "Outstanding performance bank guarantees of ₹78.93 crore and contingent liabilities of ₹0.58 crore in disputed GST dues.",
-      "severity": "low"
-     }
-    ],
-    "source_doc": "Prospectus",
-    "notes": "FY24 financials are standalone as subsidiaries were incorporated in FY25; FY25 and FY26 are consolidated. Q1 FY27 stub period (ended June 30, 2026) is excluded from financial arrays."
-   },
-   "verification": {
-    "status": "ok",
-    "checked": 80,
-    "notFound": 0,
-    "issues": [],
-    "sourceDoc": "Prospectus"
-   },
-   "fetchedAt": "2026-10-20T18:21:44.724Z"
   },
   {
    "symbol": "FUSIONCX",
@@ -13770,12 +14059,12 @@
    ],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 272.15,
+    "ltp": 272.3,
     "exchange": "NSE",
     "listDate": "2026-10-22",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 5.54,
-    "ltpGainPct": -5.83
+    "ltpGainPct": -5.78
    },
    "checks": [],
    "fundamentals": {
@@ -15059,12 +15348,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 289.9,
+    "ltp": 289.55,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 6.97
+    "ltpGainPct": 6.85
    },
    "checks": [],
    "fundamentals": {
@@ -16890,12 +17179,12 @@
    ],
    "listingPerf": {
     "dayOpen": 215,
-    "ltp": 113.86,
+    "ltp": 113.01,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-11-23",
     "dayOpenGainPct": -2.27,
-    "ltpGainPct": -48.25
+    "ltpGainPct": -48.63
    },
    "checks": [],
    "fundamentals": {
@@ -17510,12 +17799,12 @@
    ],
    "listingPerf": {
     "dayOpen": 80,
-    "ltp": 60.6,
+    "ltp": 60.5,
     "exchange": "NSE",
     "listDate": "2026-10-08",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 6.67,
-    "ltpGainPct": -19.2
+    "ltpGainPct": -19.33
    },
    "checks": [],
    "fundamentals": {
@@ -19895,12 +20184,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 124.05,
+    "ltp": 123.61,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -4.58
+    "ltpGainPct": -4.92
    },
    "checks": [],
    "fundamentals": {
@@ -20541,12 +20830,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 450,
-    "ltp": 376.55,
+    "ltp": 376.95,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 65.44,
-    "ltpGainPct": 38.44
+    "ltpGainPct": 38.58
    },
    "checks": [],
    "fundamentals": {
@@ -21250,12 +21539,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 256,
+    "ltp": 258,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -15.23
+    "ltpGainPct": -14.57
    },
    "checks": [],
    "fundamentals": {
@@ -21921,12 +22210,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 142,
-    "ltp": 109.9,
+    "ltp": 109.99,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 2.16,
-    "ltpGainPct": -20.94
+    "ltpGainPct": -20.87
    },
    "checks": [],
    "fundamentals": {
@@ -22568,12 +22857,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 28.31999969482422,
-    "ltp": 19.23,
+    "ltp": 19.25,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-23",
     "dayOpenGainPct": -11.5,
-    "ltpGainPct": -39.91
+    "ltpGainPct": -39.84
    },
    "checks": [],
    "fundamentals": {
@@ -24953,12 +25242,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 455,
-    "ltp": 480.75,
+    "ltp": 480.6,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 12.35,
-    "ltpGainPct": 18.7
+    "ltpGainPct": 18.67
    },
    "checks": [],
    "fundamentals": {
@@ -25585,12 +25874,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 55.54,
+    "ltp": 55.26,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 63.35
+    "ltpGainPct": 62.53
    },
    "checks": [],
    "fundamentals": {
@@ -26229,12 +26518,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 181.5,
+    "ltp": 181,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 35.45
+    "ltpGainPct": 35.07
    },
    "checks": [],
    "fundamentals": {
@@ -26854,12 +27143,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 355.1000061035156,
-    "ltp": 304,
+    "ltp": 305.5,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-23",
     "dayOpenGainPct": -1.91,
-    "ltpGainPct": -16.02
+    "ltpGainPct": -15.61
    },
    "checks": [],
    "fundamentals": {
@@ -27446,12 +27735,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 290.75,
+    "ltp": 291,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -22.47
+    "ltpGainPct": -22.4
    },
    "checks": [],
    "fundamentals": {
@@ -28075,12 +28364,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 200,
-    "ltp": 186.12,
+    "ltp": 186.41,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-23",
     "dayOpenGainPct": 8.11,
-    "ltpGainPct": 0.61
+    "ltpGainPct": 0.76
    },
    "checks": [],
    "fundamentals": {
@@ -29171,6 +29460,19 @@
    "open": null,
    "close": null,
    "logo": "data/logos/F-oswal-cables-limited.png"
+  },
+  {
+   "company": "Matangi Rubber Limited",
+   "date": "2026-10-10",
+   "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/matangi-rubber-limited-addendum-to-the-drhp_105143.html",
+   "type": "Addendum",
+   "stage": "RHP",
+   "rhpDate": "2026-11-20",
+   "gmp": null,
+   "gmpUpdated": null,
+   "open": null,
+   "close": null,
+   "logo": "data/logos/F-matangi-rubber-limited.png"
   },
   {
    "company": "Grace Renewable Energy Limited",
