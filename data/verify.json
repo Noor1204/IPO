@@ -85,12 +85,14 @@
   "stale": false
  },
  "CRYSTALCP": {
-  "status": "ok",
+  "status": "warn",
   "checked": 87,
   "ungrounded": [],
-  "issues": [],
-  "sourceDoc": "RHP",
-  "stale": false
+  "issues": [
+   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+  ],
+  "sourceDoc": "Prospectus",
+  "stale": true
  },
  "DSL": {
   "status": "ok",
