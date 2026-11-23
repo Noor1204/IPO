@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-23T14:12:44.497Z",
+ "generatedAt": "2026-11-23T14:12:45.446Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -1148,7 +1148,7 @@
      "total": 0.48439277787713864
     },
     {
-     "at": "2026-11-23T14:12:44.457Z",
+     "at": "2026-11-23T14:12:45.405Z",
      "date": "2026-11-23",
      "qib": 1.4472625366014846,
      "bnii": 0.2337183571569483,
@@ -1608,16 +1608,22 @@
    "minInvestment": null,
    "minInvestmentLots": null,
    "contacts": {
-    "company": null,
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://watranarentals.com",
+     "contactPerson": null
+    },
     "registrar": {
      "name": "Maashitla Securities Private Limited",
      "address": "451, Krishna Apra Business Square, Netaji Subhash Place, Pitampura, Delhi 110034",
      "phone": "01147581432",
      "email": "ipo@maashitla.com",
      "contactPerson": "Mr. Mukul Agrawal",
-     "website": null
+     "website": "https://www.maashitla.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document (company website from offer document cover)"
    },
    "anchorSummary": null,
    "bidSplit": [
@@ -1737,7 +1743,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_WATRANA.zip",
     "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_WATRANA.zip"
    },
-   "logo": null,
+   "logo": "data/logos/WATRANA.ico",
    "documents": [
     {
      "label": "Red Herring Prospectus (RHP) (zip from NSE)",
@@ -1895,7 +1901,7 @@
      "total": 11.1
     },
     {
-     "at": "2026-11-23T14:12:44.459Z",
+     "at": "2026-11-23T14:12:45.409Z",
      "date": "2026-11-23",
      "qib": null,
      "bnii": null,
@@ -2702,11 +2708,13 @@
     "notes": "Financial figures are restated consolidated. Stub period of three months ended June 30, 2026 is excluded from annual arrays. Pre-IPO placement of ₹84.29 crore was completed at ₹272.07 per share, reducing the fresh issue size to ₹355.00 crore."
    },
    "verification": {
-    "status": "ok",
+    "status": "warn",
     "checked": 87,
     "notFound": 0,
-    "issues": [],
-    "sourceDoc": "RHP"
+    "issues": [
+     "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+    ],
+    "sourceDoc": "Prospectus"
    },
    "fetchedAt": "2026-11-20T17:45:40.217Z"
   },
@@ -28996,7 +29004,7 @@
    "gmpUpdated": null,
    "open": null,
    "close": null,
-   "logo": null
+   "logo": "data/logos/F-pride-hotels-limited.png"
   },
   {
    "company": "Sagar Defence Engineering Limited",
