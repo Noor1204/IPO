@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-24T05:42:20.629Z",
+ "generatedAt": "2026-11-24T06:07:10.127Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-24T05:38:48.061Z"
+   "fetchedAt": "2026-11-24T06:04:52.001Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-24T05:38:57.748Z"
+   "fetchedAt": "2026-11-24T06:05:02.131Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-24T05:38:49.805Z"
+   "fetchedAt": "2026-11-24T06:04:53.632Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-24T05:38:49.794Z",
+   "subsAsOn": "2026-11-24T06:04:53.616Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -92,13 +92,13 @@
       "source": "investorgain.com",
       "gmp": 23,
       "pct": null,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 23,
       "seenHigh": 23
      }
     ],
     "rating": 1,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-22",
@@ -118,7 +118,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-24T05:38:49.794Z",
+   "fetchedAt": "2026-11-24T06:04:53.616Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -153,7 +153,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-24T05:38:49.805Z",
+   "subsAsOn": "2026-11-24T06:04:53.632Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -190,13 +190,13 @@
       "source": "investorgain.com",
       "gmp": 20,
       "pct": 11.11,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 20,
       "seenHigh": 20
      }
     ],
     "rating": 3,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -212,7 +212,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-24T05:38:49.805Z",
+   "fetchedAt": "2026-11-24T06:04:53.632Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -247,7 +247,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-24T05:38:49.805Z",
+   "subsAsOn": "2026-11-24T06:04:53.632Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -291,13 +291,13 @@
       "source": "investorgain.com",
       "gmp": 21.5,
       "pct": 12.5,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 21.5,
       "seenHigh": 21.5
      }
     ],
     "rating": 3,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -313,7 +313,75 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-24T05:38:49.805Z",
+   "fetchedAt": "2026-11-24T06:04:53.632Z",
+   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+  },
+  {
+   "symbol": "IG-2316",
+   "name": "Airpro Technology",
+   "board": "SME",
+   "status": "upcoming",
+   "open": "2026-11-27",
+   "close": "2026-12-01",
+   "timeline": {
+    "open": "2026-11-27",
+    "close": "2026-12-01",
+    "allotment": "2026-12-02",
+    "refund": "2026-12-03",
+    "demat": "2026-12-03",
+    "listing": "2026-12-04"
+   },
+   "allotment": "2026-12-02",
+   "listing": "2026-12-04",
+   "datesExpected": false,
+   "priceLow": null,
+   "priceHigh": 99,
+   "lot": 1200,
+   "faceValue": null,
+   "issueShares": null,
+   "issueSizeCr": 35.64,
+   "issueType": null,
+   "maxRetailAmount": null,
+   "issueDetail": null,
+   "upiCutoff": null,
+   "bids": {
+    "total": null
+   },
+   "bidsSource": "InvestorGain (unofficial)",
+   "subsAsOn": "2026-11-24T06:04:53.616Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": null,
+   "minInvestment": null,
+   "minInvestmentLots": null,
+   "contacts": null,
+   "anchorSummary": null,
+   "anchorInvestors": null,
+   "demand": null,
+   "registrar": {
+    "name": null,
+    "address": null,
+    "contact": null
+   },
+   "leadManagers": null,
+   "leadManagersList": null,
+   "sponsorBank": null,
+   "docs": {},
+   "documents": [
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/airpro-technology-ipo/2316/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": false,
+   "gmp": null,
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [],
+   "fundamentals": null,
+   "fetchedAt": "2026-11-24T06:04:53.616Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -348,7 +416,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-24T05:38:49.805Z",
+   "subsAsOn": "2026-11-24T06:04:53.632Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -388,75 +456,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-24T05:38:49.805Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
-  },
-  {
-   "symbol": "IG-2316",
-   "name": "Airpro Technology",
-   "board": "SME",
-   "status": "upcoming",
-   "open": "2026-11-27",
-   "close": "2026-12-01",
-   "timeline": {
-    "open": "2026-11-27",
-    "close": "2026-12-01",
-    "allotment": "2026-12-02",
-    "refund": "2026-12-03",
-    "demat": "2026-12-03",
-    "listing": "2026-12-04"
-   },
-   "allotment": "2026-12-02",
-   "listing": "2026-12-04",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 99,
-   "lot": 1200,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 35.64,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-24T05:38:49.805Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/airpro-technology-ipo/2316/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": false,
-   "gmp": null,
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-24T05:38:49.805Z",
+   "fetchedAt": "2026-11-24T06:04:53.632Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -499,7 +499,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-24T05:38:48.061Z",
+   "subsAsOn": "2026-11-24T06:04:52.001Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -603,13 +603,13 @@
       "source": "investorgain.com",
       "gmp": 15,
       "pct": 7.85,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 12,
       "seenHigh": 15
      }
     ],
     "rating": 2,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-19",
@@ -661,7 +661,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-24T05:38:48.061Z"
+   "fetchedAt": "2026-11-24T06:04:52.001Z"
   },
   {
    "symbol": "SHREESIDHI",
@@ -818,13 +818,13 @@
       "source": "investorgain.com",
       "gmp": 10,
       "pct": 7.04,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 10,
       "seenHigh": 10
      }
     ],
     "rating": 2,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -1929,13 +1929,13 @@
       "source": "investorgain.com",
       "gmp": 40,
       "pct": 16.33,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 16,
       "seenHigh": 67
      }
     ],
     "rating": 3,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -2401,13 +2401,13 @@
       "source": "investorgain.com",
       "gmp": 14,
       "pct": 5.15,
-      "updated": "24-Nov 10:02",
+      "updated": "24-Nov 9:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "24-Nov 10:02",
+    "updated": "24-Nov 9:37",
     "history": [
      {
       "date": "2026-11-13",
