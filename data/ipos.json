@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-25T15:04:21.507Z",
+ "generatedAt": "2026-11-25T15:17:36.461Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-25T08:10:35.290Z"
+   "fetchedAt": "2026-11-25T15:12:52.136Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-25T15:01:14.460Z"
+   "fetchedAt": "2026-11-25T15:13:45.141Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-25T15:01:04.997Z"
+   "fetchedAt": "2026-11-25T15:13:36.925Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -24,8 +24,8 @@
  ],
  "ipos": [
   {
-   "symbol": "IG-2232",
-   "name": "Monomark Engineering",
+   "symbol": "MONOMARK",
+   "name": "Monomark Engineering (India) Limited",
    "board": "Mainboard",
    "status": "upcoming",
    "open": "2026-12-02",
@@ -41,39 +41,141 @@
    "allotment": "2026-12-07",
    "listing": "2026-12-09",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 60,
    "priceHigh": 65,
    "lot": 225,
-   "faceValue": null,
-   "issueShares": null,
+   "faceValue": 10,
+   "issueShares": 27000000,
    "issueSizeCr": 175.5,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offer comprising Fresh Issue of up to 2,70,00,000 equity shares",
+   "upiCutoff": "04-Dec-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:01:04.982Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-11-25T15:12:41.985Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 60,
+     "priceHigh": 65,
+     "maxAmount": 200000,
+     "minAmount": 14625,
+     "lot": 225,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 60,
+     "priceHigh": 65,
+     "maxAmount": null,
+     "minAmount": 204750,
+     "lot": 225,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14625,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Center, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+     "phone": "+91 22-6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Mr. Sagar Pathare",
+     "website": null
+    },
+    "source": "NSE issue info"
    },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Rs. 10 per Equity Share",
+    "bidLot": "225 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto Rs. 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, and NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "Bigshare Services Private Limited",
+    "address": "Office No. S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Center, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+    "contact": "Mr. Sagar Pathare, +91 22-6263 8200, ipo@bigshareonline.com"
+   },
+   "leadManagers": "Holani Consultants Private Limited",
+   "leadManagersList": [
+    "Holani Consultants Private Limited"
+   ],
+   "sponsorBank": "HDFC Bank Limited and ICICI Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MONOMARK.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_MONOMARK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_MONOMARK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_MONOMARK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_MONOMARK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_MONOMARK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/monomark-engineering-ipo/2232/",
@@ -120,14 +222,39 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 175.5,
+     "other": 175.5,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 225,
+     "other": 225,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 65,
+     "other": 65,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-12-04",
+     "other": "2026-12-04",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:01:04.982Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-11-25T15:12:41.985Z"
   },
   {
-   "symbol": "IG-2247",
-   "name": "A J Packaging",
+   "symbol": "AJPACK",
+   "name": "A J Packaging Limited",
    "board": "SME",
    "status": "upcoming",
    "open": "2026-12-01",
@@ -143,39 +270,125 @@
    "allotment": "2026-12-04",
    "listing": "2026-12-08",
    "datesExpected": false,
-   "priceLow": null,
+   "priceLow": 175,
    "priceHigh": 180,
    "lot": 800,
-   "faceValue": null,
-   "issueShares": null,
+   "faceValue": 10,
+   "issueShares": 3000000,
    "issueSizeCr": 54,
-   "issueType": null,
+   "issueType": "Book Building",
    "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
+   "issueDetail": "Initial Public Offer comprising of Fresh issue of up to 27,50,000 Equity Shares and Offer for sale up to 2,50,000 Equity Shares (including Market Maker portion of 1,50,400 Equity Shares)",
+   "upiCutoff": "03-Dec-2026 (upto 5:00 PM) The cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "total": null
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
    },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:01:04.997Z",
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-11-25T15:12:36.398Z",
    "subsAsOnSource": "fetched",
-   "applyAs": null,
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 175,
+     "priceHigh": 180,
+     "maxAmount": null,
+     "minAmount": null,
+     "lot": 800,
+     "note": "Retail individual investors"
+    }
+   ],
    "minInvestment": null,
    "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Mufg Intime India Private Limited",
+     "address": "C-101, 247 Park, 1st Floor, L B S Marg, Vikhroli (West), Mumbai 400083, Maharashtra, India",
+     "phone": "+91 810 811 4949",
+     "email": "ajpackaging.smeipo@in.mpms.mufg.com",
+     "contactPerson": "Ms. Shanti Gopalkrishnan",
+     "website": null
+    },
+    "source": "NSE issue info"
    },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re.1",
+    "discount": null,
+    "faceValue": "Rs.10 per Equity Share",
+    "bidLot": null,
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m. (Bidding Timings on Issue Closure upto 4:00 P.M.)",
+    "upiSubCategories": "IND (Up to Rs. 5,00,000)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND and NOH",
+    "remark": null
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "Mufg Intime India Private Limited",
+    "address": "C-101, 247 Park, 1st Floor, L B S Marg, Vikhroli (West), Mumbai 400083, Maharashtra, India",
+    "contact": "Ms. Shanti Gopalkrishnan, +91 810 811 4949, ajpackaging.smeipo@in.mpms.mufg.com"
+   },
+   "leadManagers": "D & A Financial Service Private Limited",
+   "leadManagersList": [
+    "D & A Financial Service Private Limited"
+   ],
+   "sponsorBank": "Axis Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_AJPACK.zip",
+    "anchor": null
+   },
+   "logo": null,
    "documents": [
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_AJPACK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_AJPACK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_AJPACK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_AJPACK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
     {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/a-j-packaging-ipo/2247/",
@@ -218,10 +431,35 @@
    },
    "subHistory": [],
    "listingPerf": null,
-   "checks": [],
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 54,
+     "other": 54,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 800,
+     "other": 800,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 180,
+     "other": 180,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-12-03",
+     "other": "2026-12-03",
+     "ok": true
+    }
+   ],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:01:04.997Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "verification": null,
+   "fetchedAt": "2026-11-25T15:12:36.398Z"
   },
   {
    "symbol": "IG-2290",
@@ -255,7 +493,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:01:04.997Z",
+   "subsAsOn": "2026-11-25T15:13:36.925Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -325,7 +563,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:01:04.997Z",
+   "fetchedAt": "2026-11-25T15:13:36.925Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -372,7 +610,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T08:10:25.086Z",
+   "subsAsOn": "2026-11-25T15:12:30.844Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -527,7 +765,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T08:10:25.086Z"
+   "fetchedAt": "2026-11-25T15:12:30.844Z"
   },
   {
    "symbol": "FOODLINK",
@@ -555,7 +793,7 @@
    "issueSizeCr": 360.76,
    "issueType": "Book Building",
    "maxRetailAmount": 200000,
-   "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 1920 million and Offer for Sale of up to 8,835,382 Equity Shares",
+   "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 1920 million and Offer for Sale of up to 8,835,382 Equity Shares (Anchor Allocation portion of 84,99,483 Equity Shares)",
    "upiCutoff": "30-Nov-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
     "qib": null,
@@ -573,7 +811,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T08:10:19.192Z",
+   "subsAsOn": "2026-11-25T15:12:25.071Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -622,8 +860,8 @@
     "discount": null,
     "faceValue": "Rs. 2 per Equity Share",
     "bidLot": "78 Equity Shares and in multiples thereof",
-    "maxBidQib": null,
-    "maxBidNib": null,
+    "maxBidQib": "1,04,73,996 Equity Shares in multiple of 78 Equity Shares",
+    "maxBidNib": "48,60,726 Equity Shares in multiple of 78 Equity Shares",
     "marketTimings": "10.00 a.m. to 5.00 p.m.",
     "upiSubCategories": "IND (upto 5 Lakhs)",
     "categories": "FI, IC, MF, FII, OTH, CO, IND and NOH",
@@ -647,7 +885,7 @@
    "sponsorBank": "Axis Bank Limited and HDFC Bank Limited",
    "docs": {
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_FOODLINK.zip",
-    "anchor": null
+    "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_FOODLINK.zip"
    },
    "logo": null,
    "documents": [
@@ -682,6 +920,20 @@
     {
      "label": "Security parameters (before anchor) (zip from NSE)",
      "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_FOODLINK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Security parameters (after anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/POSTANCHOR_PARAMETERS_FOODLINK.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "Anchor investors allocation (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_FOODLINK.zip",
      "source": "NSE",
      "kind": "zip",
      "group": "Anchor investors"
@@ -779,7 +1031,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T08:10:19.192Z"
+   "fetchedAt": "2026-11-25T15:12:25.071Z"
   },
   {
    "symbol": "SHREESIDHI",
@@ -818,27 +1070,27 @@
     },
     "nii": {
      "offered": null,
-     "bid": 1424000,
+     "bid": 1576000,
      "times": null,
-     "applications": 16
+     "applications": 27
     },
     "bnii": {
      "offered": null,
-     "bid": 1390000,
+     "bid": 1514000,
      "times": null,
-     "applications": 5
+     "applications": 8
     },
     "snii": {
      "offered": null,
-     "bid": 34000,
+     "bid": 62000,
      "times": null,
-     "applications": 11
+     "applications": 19
     },
     "retail": {
      "offered": null,
-     "bid": 468000,
+     "bid": 678000,
      "times": null,
-     "applications": 234
+     "applications": 339
     },
     "employee": null,
     "shareholders": null,
@@ -846,12 +1098,12 @@
     "marketMaker": null,
     "total": {
      "offered": null,
-     "bid": 2174000,
+     "bid": 2536000,
      "times": null
     }
    },
    "bidsSource": "NSE bid details (shares bid; shares offered per category not available)",
-   "subsAsOn": "2026-11-25T08:10:13.542Z",
+   "subsAsOn": "2026-11-25T15:12:19.311Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -986,14 +1238,14 @@
    },
    "subHistory": [
     {
-     "at": "2026-11-25T15:04:21.461Z",
+     "at": "2026-11-25T15:17:36.428Z",
      "date": "2026-11-25",
      "qib": null,
      "bnii": null,
      "snii": null,
      "nii": null,
      "retail": null,
-     "total": 0.33
+     "total": 0.38
     }
    ],
    "listingPerf": null,
@@ -1025,7 +1277,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T08:10:13.542Z"
+   "fetchedAt": "2026-11-25T15:12:19.311Z"
   },
   {
    "symbol": "MAHACOAL",
@@ -5917,7 +6169,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T08:10:35.290Z",
+   "subsAsOn": "2026-11-25T15:12:52.136Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -6148,7 +6400,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T08:10:35.290Z"
+   "fetchedAt": "2026-11-25T15:12:52.136Z"
   },
   {
    "symbol": "MKSONS",
@@ -29186,7 +29438,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:01:04.981Z",
+   "subsAsOn": "2026-11-25T15:13:36.701Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -29226,7 +29478,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:01:04.981Z",
+   "fetchedAt": "2026-11-25T15:13:36.701Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
