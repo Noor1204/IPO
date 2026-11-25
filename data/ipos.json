@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-25T15:40:00.851Z",
+ "generatedAt": "2026-11-25T22:41:54.554Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-25T15:36:27.422Z"
+   "fetchedAt": "2026-11-25T22:38:57.689Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-25T15:36:20.950Z"
+   "fetchedAt": "2026-11-25T22:38:49.000Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -92,16 +92,22 @@
    "minInvestment": 14625,
    "minInvestmentLots": 1,
    "contacts": {
-    "company": null,
+    "company": {
+     "address": null,
+     "phone": null,
+     "email": null,
+     "website": "https://monomark.co.in",
+     "contactPerson": null
+    },
     "registrar": {
      "name": "Bigshare Services Private Limited",
      "address": "Office No. S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Center, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
      "phone": "+91 22-6263 8200",
      "email": "ipo@bigshareonline.com",
      "contactPerson": "Mr. Sagar Pathare",
-     "website": null
+     "website": "https://www.bigshareonline.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document (company website from offer document cover)"
    },
    "anchorSummary": null,
    "bidSplit": null,
@@ -139,7 +145,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MONOMARK.zip",
     "anchor": null
    },
-   "logo": null,
+   "logo": "data/logos/MONOMARK.png",
    "documents": [
     {
      "label": "Price band ad / basis for issue price (zip from NSE)",
@@ -177,6 +183,13 @@
      "group": "Anchor investors"
     },
     {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1795410085057.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
      "label": "GMP & schedule page",
      "url": "https://www.investorgain.com/gmp/monomark-engineering-ipo/2232/",
      "source": "InvestorGain",
@@ -194,13 +207,13 @@
       "source": "investorgain.com",
       "gmp": 21,
       "pct": 32.31,
-      "updated": "25-Nov 19:02",
+      "updated": "25-Nov 23:37",
       "seenLow": 21,
       "seenHigh": 23
      }
     ],
     "rating": 4,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-22",
@@ -407,13 +420,13 @@
       "source": "investorgain.com",
       "gmp": 24,
       "pct": 13.33,
-      "updated": "25-Nov 19:02",
+      "updated": "25-Nov 23:37",
       "seenLow": 18,
       "seenHigh": 24
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -493,7 +506,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:36:20.950Z",
+   "subsAsOn": "2026-11-25T22:38:49.000Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -529,21 +542,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 21.5,
-    "min": 21.5,
-    "max": 21.5,
+    "value": 27,
+    "min": 27,
+    "max": 27,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 21.5,
-      "pct": 12.5,
-      "updated": "25-Nov 19:02",
+      "gmp": 27,
+      "pct": 15.7,
+      "updated": "25-Nov 23:37",
       "seenLow": 21.5,
-      "seenHigh": 21.5
+      "seenHigh": 27
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -555,7 +568,7 @@
      },
      {
       "date": "2026-11-25",
-      "gmp": 21.5
+      "gmp": 27
      }
     ]
    },
@@ -563,7 +576,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:36:20.950Z",
+   "fetchedAt": "2026-11-25T22:38:49.000Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -721,13 +734,13 @@
       "source": "investorgain.com",
       "gmp": 4,
       "pct": 4.04,
-      "updated": "25-Nov 19:02",
+      "updated": "25-Nov 23:37",
       "seenLow": 4,
       "seenHigh": 4
      }
     ],
     "rating": 1,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-25",
@@ -955,21 +968,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 23,
-    "min": 23,
-    "max": 23,
+    "value": 18,
+    "min": 18,
+    "max": 18,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 23,
-      "pct": 12.04,
-      "updated": "25-Nov 19:02",
+      "gmp": 18,
+      "pct": 9.42,
+      "updated": "25-Nov 23:37",
       "seenLow": 12,
-      "seenHigh": 23
+      "seenHigh": 21
      }
     ],
-    "rating": 3,
-    "updated": "25-Nov 19:02",
+    "rating": 2,
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-19",
@@ -997,7 +1010,7 @@
      },
      {
       "date": "2026-11-25",
-      "gmp": 23
+      "gmp": 18
      }
     ]
    },
@@ -1206,21 +1219,21 @@
    ],
    "anchor": false,
    "gmp": {
-    "value": 20,
-    "min": 20,
-    "max": 20,
+    "value": 25,
+    "min": 25,
+    "max": 25,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 20,
-      "pct": 14.08,
-      "updated": "25-Nov 19:02",
+      "gmp": 25,
+      "pct": 17.61,
+      "updated": "25-Nov 23:37",
       "seenLow": 10,
-      "seenHigh": 20
+      "seenHigh": 25
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -1232,13 +1245,13 @@
      },
      {
       "date": "2026-11-25",
-      "gmp": 20
+      "gmp": 25
      }
     ]
    },
    "subHistory": [
     {
-     "at": "2026-11-25T15:40:00.806Z",
+     "at": "2026-11-25T22:41:54.520Z",
      "date": "2026-11-25",
      "qib": null,
      "bnii": null,
@@ -1398,7 +1411,7 @@
      "address": "Jagruti Vihar, Burla, Sambalpur 768020, Odisha, India, CIN: U10102OR1992GOI003038, Registration Number: 15-03038 003038",
      "phone": null,
      "email": null,
-     "website": null,
+     "website": "https://mahanadicoal.in",
      "contactPerson": null
     },
     "registrar": {
@@ -1409,7 +1422,7 @@
      "contactPerson": "Williams R",
      "website": "https://www.kfintech.com"
     },
-    "source": "NSE issue info + offer document"
+    "source": "NSE issue info + offer document (company website from offer document cover)"
    },
    "anchorSummary": null,
    "bidSplit": [
@@ -1573,7 +1586,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MAHACOAL.zip",
     "anchor": "https://nsearchives.nseindia.com/content/ipo/ANCHOR_MAHACOAL.zip"
    },
-   "logo": null,
+   "logo": "data/logos/MAHACOAL.png",
    "documents": [
     {
      "label": "Price band ad / basis for issue price (zip from NSE)",
@@ -2333,21 +2346,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 41,
-    "min": 41,
-    "max": 41,
+    "value": 22,
+    "min": 22,
+    "max": 22,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 41,
-      "pct": 16.73,
-      "updated": "25-Nov 19:02",
+      "gmp": 22,
+      "pct": 8.98,
+      "updated": "25-Nov 23:37",
       "seenLow": 16,
       "seenHigh": 67
      }
     ],
-    "rating": 3,
-    "updated": "25-Nov 19:02",
+    "rating": 2,
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -2399,7 +2412,7 @@
      },
      {
       "date": "2026-11-25",
-      "gmp": 41
+      "gmp": 22
      }
     ]
    },
@@ -2817,13 +2830,13 @@
       "source": "investorgain.com",
       "gmp": 17,
       "pct": 6.25,
-      "updated": "25-Nov 19:02",
+      "updated": "25-Nov 23:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "25-Nov 19:02",
+    "updated": "25-Nov 23:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -29438,7 +29451,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T15:36:20.935Z",
+   "subsAsOn": "2026-11-25T22:38:48.978Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -29478,7 +29491,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T15:36:20.935Z",
+   "fetchedAt": "2026-11-25T22:38:48.978Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
