@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-25T05:17:03.159Z",
+ "generatedAt": "2026-11-25T05:42:47.763Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-25T05:14:57.170Z"
+   "fetchedAt": "2026-11-25T05:39:44.785Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-25T05:15:05.371Z"
+   "fetchedAt": "2026-11-25T05:39:53.981Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-25T05:14:58.753Z"
+   "fetchedAt": "2026-11-25T05:39:46.643Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -42,11 +42,11 @@
    "listing": "2026-12-09",
    "datesExpected": false,
    "priceLow": null,
-   "priceHigh": null,
-   "lot": null,
+   "priceHigh": 65,
+   "lot": 225,
    "faceValue": null,
    "issueShares": null,
-   "issueSizeCr": null,
+   "issueSizeCr": 175.5,
    "issueType": null,
    "maxRetailAmount": null,
    "issueDetail": null,
@@ -55,7 +55,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T05:14:58.737Z",
+   "subsAsOn": "2026-11-25T05:39:46.629Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -84,21 +84,21 @@
    ],
    "anchor": true,
    "gmp": {
-    "value": 23,
-    "min": 23,
-    "max": 23,
+    "value": 17,
+    "min": 17,
+    "max": 17,
     "sources": [
      {
       "source": "investorgain.com",
-      "gmp": 23,
-      "pct": null,
-      "updated": "25-Nov 6:37",
-      "seenLow": 23,
+      "gmp": 17,
+      "pct": 26.15,
+      "updated": "25-Nov 8:37",
+      "seenLow": 17,
       "seenHigh": 23
      }
     ],
-    "rating": 1,
-    "updated": "25-Nov 6:37",
+    "rating": 4,
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-22",
@@ -114,7 +114,7 @@
      },
      {
       "date": "2026-11-25",
-      "gmp": 23
+      "gmp": 17
      }
     ]
    },
@@ -122,7 +122,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T05:14:58.737Z",
+   "fetchedAt": "2026-11-25T05:39:46.629Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -157,7 +157,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T05:14:58.753Z",
+   "subsAsOn": "2026-11-25T05:39:46.642Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -194,13 +194,13 @@
       "source": "investorgain.com",
       "gmp": 18,
       "pct": 10,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 18,
       "seenHigh": 20
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -220,7 +220,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T05:14:58.753Z",
+   "fetchedAt": "2026-11-25T05:39:46.642Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -255,7 +255,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T05:14:58.753Z",
+   "subsAsOn": "2026-11-25T05:39:46.642Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -299,13 +299,13 @@
       "source": "investorgain.com",
       "gmp": 21.5,
       "pct": 12.5,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 21.5,
       "seenHigh": 21.5
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -325,7 +325,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T05:14:58.753Z",
+   "fetchedAt": "2026-11-25T05:39:46.642Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -360,7 +360,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T05:14:58.753Z",
+   "subsAsOn": "2026-11-25T05:39:46.642Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -400,7 +400,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T05:14:58.753Z",
+   "fetchedAt": "2026-11-25T05:39:46.642Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -435,7 +435,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-25T05:14:58.753Z",
+   "subsAsOn": "2026-11-25T05:39:46.642Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -468,7 +468,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-25T05:14:58.753Z",
+   "fetchedAt": "2026-11-25T05:39:46.642Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -511,7 +511,7 @@
     "total": null
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T05:14:57.170Z",
+   "subsAsOn": "2026-11-25T05:39:44.785Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -615,13 +615,13 @@
       "source": "investorgain.com",
       "gmp": 21,
       "pct": 10.99,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 12,
       "seenHigh": 21
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-19",
@@ -677,7 +677,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T05:14:57.170Z"
+   "fetchedAt": "2026-11-25T05:39:44.785Z"
   },
   {
    "symbol": "SHREESIDHI",
@@ -834,13 +834,13 @@
       "source": "investorgain.com",
       "gmp": 20,
       "pct": 14.08,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 10,
       "seenHigh": 20
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-23",
@@ -1234,8 +1234,8 @@
      "group": "Anchor investors"
     },
     {
-     "label": "RHP — SEBI copy",
-     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1794811073968.pdf",
+     "label": "Prospectus (final) — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1795583808041.pdf",
      "source": "SEBI",
      "kind": "pdf-link",
      "group": "Offer document"
@@ -1949,13 +1949,13 @@
       "source": "investorgain.com",
       "gmp": 40,
       "pct": 16.33,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 16,
       "seenHigh": 67
      }
     ],
     "rating": 3,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -2425,13 +2425,13 @@
       "source": "investorgain.com",
       "gmp": 19,
       "pct": 6.99,
-      "updated": "25-Nov 6:37",
+      "updated": "25-Nov 8:37",
       "seenLow": 13,
       "seenHigh": 40
      }
     ],
     "rating": 2,
-    "updated": "25-Nov 6:37",
+    "updated": "25-Nov 8:37",
     "history": [
      {
       "date": "2026-11-13",
@@ -5377,13 +5377,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 91,
-    "ltp": 78.13,
+    "dayOpen": 80,
+    "ltp": 77.16,
     "exchange": "NSE",
-    "listDate": "2026-11-05",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 10.98,
-    "ltpGainPct": -4.72
+    "dayOpenGainPct": -2.44,
+    "ltpGainPct": -5.9
    },
    "checks": [
     {
@@ -5979,12 +5979,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 161.36,
+    "ltp": 160.02,
     "exchange": "NSE",
     "listDate": "2026-11-04",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 5.56,
-    "ltpGainPct": -0.4
+    "ltpGainPct": -1.22
    },
    "checks": [
     {
@@ -7336,13 +7336,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 355.1000061035156,
-    "ltp": 416.8,
+    "dayOpen": 428,
+    "ltp": 413.8,
     "exchange": "NSE",
-    "listDate": "2026-11-03",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 7.61,
-    "ltpGainPct": 26.3
+    "dayOpenGainPct": 29.7,
+    "ltpGainPct": 25.39
    },
    "checks": [
     {
@@ -8180,12 +8180,12 @@
    ],
    "listingPerf": {
     "dayOpen": 248,
-    "ltp": 261.65,
+    "ltp": 260.79,
     "exchange": "NSE",
     "listDate": "2026-11-03",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 65.33,
-    "ltpGainPct": 74.43
+    "ltpGainPct": 73.86
    },
    "checks": [
     {
@@ -8988,12 +8988,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1675.5,
-    "ltp": 1781.4,
+    "ltp": 1773.7,
     "exchange": "NSE",
     "listDate": "2026-11-02",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 0.63,
-    "ltpGainPct": 6.99
+    "ltpGainPct": 6.53
    },
    "checks": [
     {
@@ -10413,12 +10413,12 @@
    ],
    "listingPerf": {
     "dayOpen": 721,
-    "ltp": 853,
+    "ltp": 840.55,
     "exchange": "NSE",
     "listDate": "2026-10-29",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 4.04,
-    "ltpGainPct": 23.09
+    "ltpGainPct": 21.29
    },
    "checks": [],
    "fundamentals": {
@@ -11190,13 +11190,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 371.1499938964844,
-    "ltp": 540.25,
+    "dayOpen": 558,
+    "ltp": 539.7,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 7.89,
-    "ltpGainPct": 57.05
+    "dayOpenGainPct": 62.21,
+    "ltpGainPct": 56.89
    },
    "checks": [],
    "fundamentals": {
@@ -11862,13 +11862,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 1160,
-    "ltp": 1389,
+    "dayOpen": 1415,
+    "ltp": 1370.8,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 65.71,
-    "ltpGainPct": 98.43
+    "dayOpenGainPct": 102.14,
+    "ltpGainPct": 95.83
    },
    "checks": [],
    "fundamentals": {
@@ -12544,13 +12544,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 586,
-    "ltp": 813,
+    "dayOpen": 824,
+    "ltp": 818.55,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 0,
-    "ltpGainPct": 38.74
+    "dayOpenGainPct": 40.61,
+    "ltpGainPct": 39.68
    },
    "checks": [],
    "fundamentals": {
@@ -13259,13 +13259,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 159.25,
-    "ltp": 179.12,
+    "dayOpen": 183,
+    "ltp": 178.17,
     "exchange": "NSE",
-    "listDate": "2026-10-23",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 5.46,
-    "ltpGainPct": 18.62
+    "dayOpenGainPct": 21.19,
+    "ltpGainPct": 17.99
    },
    "checks": [],
    "fundamentals": {
@@ -13865,12 +13865,12 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 305,
+    "dayOpen": 272,
     "ltp": 271,
     "exchange": "NSE",
-    "listDate": "2026-10-22",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 5.54,
+    "dayOpenGainPct": -5.88,
     "ltpGainPct": -6.23
    },
    "checks": [],
@@ -15155,12 +15155,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 295.8,
+    "ltp": 296.95,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 9.15
+    "ltpGainPct": 9.58
    },
    "checks": [],
    "fundamentals": {
@@ -16985,13 +16985,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 215,
-    "ltp": 111.88,
+    "dayOpen": 112,
+    "ltp": 112.23,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": -2.27,
-    "ltpGainPct": -49.15
+    "dayOpenGainPct": -49.09,
+    "ltpGainPct": -48.99
    },
    "checks": [],
    "fundamentals": {
@@ -17605,13 +17605,13 @@
     }
    ],
    "listingPerf": {
-    "dayOpen": 80,
-    "ltp": 59.82,
+    "dayOpen": 60.20000076293945,
+    "ltp": 59.89,
     "exchange": "NSE",
-    "listDate": "2026-10-08",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 6.67,
-    "ltpGainPct": -20.24
+    "dayOpenGainPct": -19.73,
+    "ltpGainPct": -20.15
    },
    "checks": [],
    "fundamentals": {
@@ -19991,12 +19991,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 123.65,
+    "ltp": 123.25,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -4.88
+    "ltpGainPct": -5.19
    },
    "checks": [],
    "fundamentals": {
@@ -20636,13 +20636,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 450,
-    "ltp": 378.8,
+    "dayOpen": 388.8999938964844,
+    "ltp": 381,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 65.44,
-    "ltpGainPct": 39.26
+    "dayOpenGainPct": 42.98,
+    "ltpGainPct": 40.07
    },
    "checks": [],
    "fundamentals": {
@@ -21346,12 +21346,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 265.01,
+    "ltp": 262.87,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -12.25
+    "ltpGainPct": -12.96
    },
    "checks": [],
    "fundamentals": {
@@ -22016,13 +22016,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 142,
-    "ltp": 109.75,
+    "dayOpen": 110.5999984741211,
+    "ltp": 108.87,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 2.16,
-    "ltpGainPct": -21.04
+    "dayOpenGainPct": -20.43,
+    "ltpGainPct": -21.68
    },
    "checks": [],
    "fundamentals": {
@@ -22663,13 +22663,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 28.31999969482422,
-    "ltp": 19.25,
+    "dayOpen": 19.65999984741211,
+    "ltp": 19.16,
     "exchange": "NSE",
-    "listDate": "2026-10-05",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": -11.5,
-    "ltpGainPct": -39.84
+    "dayOpenGainPct": -38.56,
+    "ltpGainPct": -40.12
    },
    "checks": [],
    "fundamentals": {
@@ -25048,13 +25048,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 455,
-    "ltp": 480.25,
+    "dayOpen": 485.70001220703125,
+    "ltp": 478.55,
     "exchange": "NSE",
-    "listDate": "2026-10-01",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 12.35,
-    "ltpGainPct": 18.58
+    "dayOpenGainPct": 19.93,
+    "ltpGainPct": 18.16
    },
    "checks": [],
    "fundamentals": {
@@ -25681,12 +25681,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 53.97,
+    "ltp": 53.41,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 58.74
+    "ltpGainPct": 57.09
    },
    "checks": [],
    "fundamentals": {
@@ -26325,12 +26325,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 174.58,
+    "ltp": 173.88,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 30.28
+    "ltpGainPct": 29.76
    },
    "checks": [],
    "fundamentals": {
@@ -26949,13 +26949,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 355.1000061035156,
-    "ltp": 307.45,
+    "dayOpen": 308.8500061035156,
+    "ltp": 307.5,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": -1.91,
-    "ltpGainPct": -15.07
+    "dayOpenGainPct": -14.68,
+    "ltpGainPct": -15.06
    },
    "checks": [],
    "fundamentals": {
@@ -27542,12 +27542,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 287.6,
+    "ltp": 286.25,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-25",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -23.31
+    "ltpGainPct": -23.67
    },
    "checks": [],
    "fundamentals": {
@@ -28170,13 +28170,13 @@
    "gmp": null,
    "subHistory": [],
    "listingPerf": {
-    "dayOpen": 200,
-    "ltp": 189.33,
+    "dayOpen": 189,
+    "ltp": 188.28,
     "exchange": "NSE",
-    "listDate": "2026-09-30",
+    "listDate": "2026-11-25",
     "asOf": "2026-11-25",
-    "dayOpenGainPct": 8.11,
-    "ltpGainPct": 2.34
+    "dayOpenGainPct": 2.16,
+    "ltpGainPct": 1.77
    },
    "checks": [],
    "fundamentals": {
