@@ -1,9 +1,9 @@
 {
- "generatedAt": "2026-11-26T10:24:40.410Z",
+ "generatedAt": "2026-11-26T10:37:42.912Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
-   "fetchedAt": "2026-11-25T15:12:52.136Z"
+   "fetchedAt": "2026-11-26T10:32:59.426Z"
   },
   {
    "name": "RHP documents via NSE (official): financials, KPI, peers, risks",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-26T10:22:45.300Z"
+   "fetchedAt": "2026-11-26T10:33:33.545Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-26T10:22:39.057Z"
+   "fetchedAt": "2026-11-26T10:33:25.344Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -67,7 +67,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T15:12:41.985Z",
+   "subsAsOn": "2026-11-26T10:32:49.288Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -267,7 +267,250 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T15:12:41.985Z"
+   "fetchedAt": "2026-11-26T10:32:49.288Z"
+  },
+  {
+   "symbol": "MATANGI",
+   "name": "Matangi Rubber Limited",
+   "board": "Mainboard",
+   "status": "upcoming",
+   "open": "2026-12-01",
+   "close": "2026-12-03",
+   "timeline": {
+    "open": "2026-12-01",
+    "close": "2026-12-03",
+    "allotment": "2026-12-04",
+    "refund": "2026-12-07",
+    "demat": "2026-12-07",
+    "listing": "2026-12-08"
+   },
+   "allotment": "2026-12-04",
+   "listing": "2026-12-08",
+   "datesExpected": false,
+   "priceLow": 163,
+   "priceHigh": 172,
+   "lot": 87,
+   "faceValue": 10,
+   "issueShares": 7276744,
+   "issueSizeCr": 125.16,
+   "issueType": "Book Building",
+   "maxRetailAmount": 200000,
+   "issueDetail": "Initial Public Offering comprising of Fresh Issue up to 57,61,831 Equity shares and Offer for Sale upto 15,15,150 Equity Shares.",
+   "upiCutoff": "03-Dec-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
+   "bids": {
+    "qib": null,
+    "nii": null,
+    "bnii": null,
+    "snii": null,
+    "retail": null,
+    "employee": null,
+    "shareholders": null,
+    "other": null,
+    "total": {
+     "offered": 0,
+     "bid": 0,
+     "times": null
+    }
+   },
+   "bidsSource": "NSE bid table",
+   "subsAsOn": "2026-11-26T10:32:42.718Z",
+   "subsAsOnSource": "fetched",
+   "applyAs": [
+    {
+     "category": "Regular",
+     "priceLow": 163,
+     "priceHigh": 172,
+     "maxAmount": 200000,
+     "minAmount": 14964,
+     "lot": 87,
+     "note": "Retail individual investors"
+    },
+    {
+     "category": "HNI",
+     "priceLow": 163,
+     "priceHigh": 172,
+     "maxAmount": null,
+     "minAmount": 209496,
+     "lot": 87,
+     "note": "Non-institutional: bid above the retail limit"
+    }
+   ],
+   "minInvestment": 14964,
+   "minInvestmentLots": 1,
+   "contacts": {
+    "company": null,
+    "registrar": {
+     "name": "Bigshare Services Private Limited",
+     "address": "Office No. S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Center, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+     "phone": "+91 22 6263 8200",
+     "email": "ipo@bigshareonline.com",
+     "contactPerson": "Mr. Babu Raphael",
+     "website": null
+    },
+    "source": "NSE issue info"
+   },
+   "anchorSummary": null,
+   "bidSplit": null,
+   "nseInfo": {
+    "tickSize": "Re. 1",
+    "discount": null,
+    "faceValue": "Rs. 10 per Equity Share",
+    "bidLot": "87 Equity Shares and in multiples thereof",
+    "maxBidQib": null,
+    "maxBidNib": null,
+    "marketTimings": "10.00 a.m. to 5.00 p.m.",
+    "upiSubCategories": "IND (upto Rs. 5 Lakhs)",
+    "categories": "FI, IC, MF, FII, OTH, CO, IND, and NOH",
+    "remark": "The dedicated window provided for bid modification (modification of selected fields viz. DP ID/Client ID or Pan ID, Bank code and Location code) on T+1 day (T being last day of bidding) shall not be available now. The bid modification of selected fields shall be allowed during bidding period of IPO "
+   },
+   "anchorInvestors": null,
+   "demand": {
+    "totalBids": null,
+    "timesSubscribed": null,
+    "byPrice": {
+     "-": "-"
+    }
+   },
+   "registrar": {
+    "name": "Bigshare Services Private Limited",
+    "address": "Office No. S6-2, 6th Floor, Pinnacle Business Park, Next to Ahura Center, Mahakali Caves Road, Andheri (East), Mumbai - 400093",
+    "contact": "Mr. Babu Raphael, +91 22 6263 8200, ipo@bigshareonline.com"
+   },
+   "leadManagers": "Sarthi Capital Advisors Private Limited",
+   "leadManagersList": [
+    "Sarthi Capital Advisors Private Limited"
+   ],
+   "sponsorBank": "HDFC Bank Limited",
+   "docs": {
+    "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MATANGI.zip",
+    "anchor": null
+   },
+   "logo": null,
+   "documents": [
+    {
+     "label": "Price band ad / basis for issue price (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RATIOS_MATANGI.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Price band & basis"
+    },
+    {
+     "label": "Red Herring Prospectus (RHP) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/RHP_MATANGI.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Offer document"
+    },
+    {
+     "label": "Bidding centres (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/BIDDING_CENTERS_MATANGI.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Application form (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/FORMS_MATANGI.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Application forms & centres"
+    },
+    {
+     "label": "Security parameters (before anchor) (zip from NSE)",
+     "url": "https://nsearchives.nseindia.com/content/ipo/PREANCHOR_PARAMETERS_MATANGI.zip",
+     "source": "NSE",
+     "kind": "zip",
+     "group": "Anchor investors"
+    },
+    {
+     "label": "RHP — SEBI copy",
+     "url": "https://www.sebi.gov.in/sebi_data/attachdocs/nov-2026/1795409658818.pdf",
+     "source": "SEBI",
+     "kind": "pdf-link",
+     "group": "Offer document"
+    },
+    {
+     "label": "SEBI filing page (Addendum)",
+     "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/matangi-rubber-limited-addendum-to-the-drhp_105143.html",
+     "source": "SEBI",
+     "kind": "link",
+     "group": "Links"
+    },
+    {
+     "label": "GMP & schedule page",
+     "url": "https://www.investorgain.com/gmp/matangi-rubber-ipo/2290/",
+     "source": "InvestorGain",
+     "kind": "link",
+     "group": "Links"
+    }
+   ],
+   "anchor": true,
+   "gmp": {
+    "value": 27,
+    "min": 27,
+    "max": 27,
+    "sources": [
+     {
+      "source": "investorgain.com",
+      "gmp": 27,
+      "pct": 15.7,
+      "updated": "26-Nov 15:02",
+      "seenLow": 21.5,
+      "seenHigh": 27
+     }
+    ],
+    "rating": 3,
+    "updated": "26-Nov 15:02",
+    "history": [
+     {
+      "date": "2026-11-23",
+      "gmp": 21.5
+     },
+     {
+      "date": "2026-11-24",
+      "gmp": 21.5
+     },
+     {
+      "date": "2026-11-25",
+      "gmp": 27
+     },
+     {
+      "date": "2026-11-26",
+      "gmp": 27
+     }
+    ]
+   },
+   "subHistory": [],
+   "listingPerf": null,
+   "checks": [
+    {
+     "field": "Issue size (Cr)",
+     "nse": 125.16,
+     "other": 125.16,
+     "ok": true
+    },
+    {
+     "field": "Lot size",
+     "nse": 87,
+     "other": 87,
+     "ok": true
+    },
+    {
+     "field": "Cap price",
+     "nse": 172,
+     "other": 172,
+     "ok": true
+    },
+    {
+     "field": "Close date",
+     "nse": "2026-12-03",
+     "other": "2026-12-03",
+     "ok": true
+    }
+   ],
+   "fundamentals": null,
+   "verification": null,
+   "fetchedAt": "2026-11-26T10:32:42.718Z"
   },
   {
    "symbol": "AJPACK",
@@ -313,7 +556,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T15:12:36.398Z",
+   "subsAsOn": "2026-11-26T10:32:43.691Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -480,116 +723,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T15:12:36.398Z"
-  },
-  {
-   "symbol": "IG-2290",
-   "name": "Matangi Rubber",
-   "board": "Mainboard",
-   "status": "upcoming",
-   "open": "2026-12-01",
-   "close": "2026-12-03",
-   "timeline": {
-    "open": "2026-12-01",
-    "close": "2026-12-03",
-    "allotment": "2026-12-04",
-    "refund": "2026-12-07",
-    "demat": "2026-12-07",
-    "listing": "2026-12-08"
-   },
-   "allotment": "2026-12-04",
-   "listing": "2026-12-08",
-   "datesExpected": false,
-   "priceLow": null,
-   "priceHigh": 172,
-   "lot": 87,
-   "faceValue": null,
-   "issueShares": null,
-   "issueSizeCr": 125.16,
-   "issueType": null,
-   "maxRetailAmount": null,
-   "issueDetail": null,
-   "upiCutoff": null,
-   "bids": {
-    "total": null
-   },
-   "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T10:22:39.056Z",
-   "subsAsOnSource": "fetched",
-   "applyAs": null,
-   "minInvestment": null,
-   "minInvestmentLots": null,
-   "contacts": null,
-   "anchorSummary": null,
-   "anchorInvestors": null,
-   "demand": null,
-   "registrar": {
-    "name": null,
-    "address": null,
-    "contact": null
-   },
-   "leadManagers": null,
-   "leadManagersList": null,
-   "sponsorBank": null,
-   "docs": {},
-   "documents": [
-    {
-     "label": "SEBI filing page (Addendum)",
-     "url": "https://www.sebi.gov.in/filings/public-issues/oct-2026/matangi-rubber-limited-addendum-to-the-drhp_105143.html",
-     "source": "SEBI",
-     "kind": "link",
-     "group": "Links"
-    },
-    {
-     "label": "GMP & schedule page",
-     "url": "https://www.investorgain.com/gmp/matangi-rubber-ipo/2290/",
-     "source": "InvestorGain",
-     "kind": "link",
-     "group": "Links"
-    }
-   ],
-   "anchor": true,
-   "gmp": {
-    "value": 27,
-    "min": 27,
-    "max": 27,
-    "sources": [
-     {
-      "source": "investorgain.com",
-      "gmp": 27,
-      "pct": 15.7,
-      "updated": "26-Nov 15:02",
-      "seenLow": 21.5,
-      "seenHigh": 27
-     }
-    ],
-    "rating": 3,
-    "updated": "26-Nov 15:02",
-    "history": [
-     {
-      "date": "2026-11-23",
-      "gmp": 21.5
-     },
-     {
-      "date": "2026-11-24",
-      "gmp": 21.5
-     },
-     {
-      "date": "2026-11-25",
-      "gmp": 27
-     },
-     {
-      "date": "2026-11-26",
-      "gmp": 27
-     }
-    ]
-   },
-   "subHistory": [],
-   "listingPerf": null,
-   "checks": [],
-   "fundamentals": null,
-   "fetchedAt": "2026-11-26T10:22:39.056Z",
-   "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
+   "fetchedAt": "2026-11-26T10:32:43.691Z"
   },
   {
    "symbol": "AIRPRO",
@@ -635,7 +769,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T15:12:30.844Z",
+   "subsAsOn": "2026-11-26T10:32:37.003Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -794,7 +928,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T15:12:30.844Z"
+   "fetchedAt": "2026-11-26T10:32:37.003Z"
   },
   {
    "symbol": "FOODLINK",
@@ -825,23 +959,43 @@
    "issueDetail": "Initial Public offer comprising of Fresh issue aggregating up to Rs. 1920 million and Offer for Sale of up to 8,835,382 Equity Shares (Anchor Allocation portion of 84,99,483 Equity Shares)",
    "upiCutoff": "30-Nov-2026 (upto 5:00 PM) The new cut-off time for UPI mandate acceptance is 05:00 PM on last day of IPO bidding. Further bids with confirmed status of mandate amount blocked (RC100) shall be considered as valid applications and hence, investors are advised to submit their UPI applications in IPO well in advance to avoid any last minute technical/systemic constraints that may hamper their ability to participate in IPOs by successfully accepting the mandate.",
    "bids": {
-    "qib": null,
-    "nii": null,
-    "bnii": null,
-    "snii": null,
-    "retail": null,
+    "qib": {
+     "offered": 5613270,
+     "bid": 5666310,
+     "times": 1.0094490377266727
+    },
+    "nii": {
+     "offered": 2916467,
+     "bid": 953472,
+     "times": 0.32692706620716094
+    },
+    "bnii": {
+     "offered": 1944312,
+     "bid": 506532,
+     "times": 0.260519916556602
+    },
+    "snii": {
+     "offered": 972155,
+     "bid": 446940,
+     "times": 0.4597415021267185
+    },
+    "retail": {
+     "offered": 1944311,
+     "bid": 4193202,
+     "times": 2.156651893652816
+    },
     "employee": null,
     "shareholders": null,
     "other": null,
     "total": {
-     "offered": 0,
-     "bid": 0,
-     "times": null
+     "offered": 10474048,
+     "bid": 10812984,
+     "times": 1.0323595996504886
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T15:12:25.071Z",
-   "subsAsOnSource": "fetched",
+   "subsAsOn": "2026-11-26T16:00:00+05:30",
+   "subsAsOnSource": "exchange",
    "applyAs": [
     {
      "category": "Regular",
@@ -883,7 +1037,92 @@
     "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
-   "bidSplit": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 5666310,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 21294,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 479934,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 5304,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 444756,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 2184,
+     "times": null
+    },
+    {
+     "id": "3(a)",
+     "label": "Cut Off",
+     "offered": null,
+     "bid": 3880812,
+     "times": null
+    },
+    {
+     "id": "3(b)",
+     "label": "Price bids",
+     "offered": null,
+     "bid": 312390,
+     "times": null
+    }
+   ],
    "nseInfo": {
     "tickSize": "Re. 1",
     "discount": null,
@@ -898,10 +1137,22 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
+    "asOn": "As on 26-Nov-2026 16:00:00 IST",
+    "totalBids": 10819614,
+    "timesSubscribed": 1.03,
     "byPrice": {
-     "-": "-"
+     "181": "1,08,19,614",
+     "182": "1,07,90,598",
+     "183": "1,07,85,684",
+     "184": "1,07,84,358",
+     "185": "1,07,83,812",
+     "186": "1,07,72,970",
+     "187": "1,07,70,786",
+     "188": "1,07,69,772",
+     "189": "1,07,68,914",
+     "190": "1,07,67,822",
+     "191": "1,07,63,610",
+     "Cut-Off": "38,82,138"
     }
    },
    "registrar": {
@@ -1034,7 +1285,18 @@
      }
     ]
    },
-   "subHistory": [],
+   "subHistory": [
+    {
+     "at": "2026-11-26T10:37:42.881Z",
+     "date": "2026-11-26",
+     "qib": 1.0094490377266727,
+     "bnii": 0.260519916556602,
+     "snii": 0.4597415021267185,
+     "nii": 0.32692706620716094,
+     "retail": 2.156651893652816,
+     "total": 1.0323595996504886
+    }
+   ],
    "listingPerf": null,
    "checks": [
     {
@@ -1341,7 +1603,7 @@
     ],
     "sourceDoc": "RHP"
    },
-   "fetchedAt": "2026-11-25T15:12:25.071Z"
+   "fetchedAt": "2026-11-26T10:32:31.296Z"
   },
   {
    "symbol": "SHREESIDHI",
@@ -1380,27 +1642,27 @@
     },
     "nii": {
      "offered": null,
-     "bid": 1576000,
+     "bid": 2768000,
      "times": null,
-     "applications": 27
+     "applications": 197
     },
     "bnii": {
      "offered": null,
-     "bid": 1514000,
+     "bid": 2338000,
      "times": null,
-     "applications": 8
+     "applications": 70
     },
     "snii": {
      "offered": null,
-     "bid": 62000,
+     "bid": 430000,
      "times": null,
-     "applications": 19
+     "applications": 127
     },
     "retail": {
      "offered": null,
-     "bid": 678000,
+     "bid": 4604000,
      "times": null,
-     "applications": 339
+     "applications": 2302
     },
     "employee": null,
     "shareholders": null,
@@ -1408,13 +1670,13 @@
     "marketMaker": null,
     "total": {
      "offered": null,
-     "bid": 2536000,
-     "times": null
+     "bid": 7654000,
+     "times": 1.16
     }
    },
    "bidsSource": "NSE bid details (shares bid; shares offered per category not available)",
-   "subsAsOn": "2026-11-25T15:12:19.311Z",
-   "subsAsOnSource": "fetched",
+   "subsAsOn": "2026-11-26T15:57:00+05:30",
+   "subsAsOnSource": "exchange",
    "applyAs": [
     {
      "category": "Regular",
@@ -1441,7 +1703,78 @@
     "source": "NSE issue info"
    },
    "anchorSummary": null,
-   "bidSplit": null,
+   "bidSplit": [
+    {
+     "id": "1(a)",
+     "label": "Foreign Institutional Investors(FIIs)",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(b)",
+     "label": "Domestic Financial Institutions(Banks/ Financial Institutions(FIs)/ Insurance Companies)",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(c)",
+     "label": "Mutual funds",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "1(d)",
+     "label": "Others",
+     "offered": null,
+     "bid": 282000,
+     "times": null
+    },
+    {
+     "id": "2.1(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 442000,
+     "times": null
+    },
+    {
+     "id": "2.1(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 1808000,
+     "times": null
+    },
+    {
+     "id": "2.1(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 88000,
+     "times": null
+    },
+    {
+     "id": "2.2(a)",
+     "label": "Corporates",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    },
+    {
+     "id": "2.2(b)",
+     "label": "Individuals(Other than RIIs)",
+     "offered": null,
+     "bid": 430000,
+     "times": null
+    },
+    {
+     "id": "2.2(c)",
+     "label": "Others",
+     "offered": null,
+     "bid": 0,
+     "times": null
+    }
+   ],
    "nseInfo": {
     "tickSize": "Re.1",
     "discount": null,
@@ -1456,10 +1789,18 @@
    },
    "anchorInvestors": null,
    "demand": {
-    "totalBids": null,
-    "timesSubscribed": null,
+    "asOn": "As on 26-Nov-2026 15:57:00 IST",
+    "totalBids": 7640000,
+    "timesSubscribed": 1.16,
     "byPrice": {
-     "-": "-"
+     "130": "76,40,000",
+     "131": "60,92,000",
+     "132": "60,90,000",
+     "135": "60,86,000",
+     "137": "60,70,000",
+     "140": "60,66,000",
+     "141": "60,56,000",
+     "142": "60,53,000"
     }
    },
    "registrar": {
@@ -1562,14 +1903,14 @@
      "total": 0.38
     },
     {
-     "at": "2026-11-26T10:24:40.368Z",
+     "at": "2026-11-26T10:37:42.878Z",
      "date": "2026-11-26",
      "qib": null,
      "bnii": null,
      "snii": null,
      "nii": null,
      "retail": null,
-     "total": 0.38
+     "total": 1.16
     }
    ],
    "listingPerf": null,
@@ -1601,7 +1942,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T15:12:19.311Z"
+   "fetchedAt": "2026-11-26T10:32:30.261Z"
   },
   {
    "symbol": "MAHACOAL",
@@ -6577,7 +6918,7 @@
     }
    },
    "bidsSource": "NSE bid table",
-   "subsAsOn": "2026-11-25T15:12:52.136Z",
+   "subsAsOn": "2026-11-26T10:32:59.426Z",
    "subsAsOnSource": "fetched",
    "applyAs": [
     {
@@ -6812,7 +7153,7 @@
    ],
    "fundamentals": null,
    "verification": null,
-   "fetchedAt": "2026-11-25T15:12:52.136Z"
+   "fetchedAt": "2026-11-26T10:32:59.426Z"
   },
   {
    "symbol": "MKSONS",
@@ -29866,7 +30207,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T10:22:39.041Z",
+   "subsAsOn": "2026-11-26T10:33:25.149Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -29906,7 +30247,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-26T10:22:39.041Z",
+   "fetchedAt": "2026-11-26T10:33:25.149Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
