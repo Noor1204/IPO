@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T17:53:38.598Z",
+ "generatedAt": "2026-11-26T18:19:33.349Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-26T17:50:58.530Z"
+   "fetchedAt": "2026-11-26T18:16:22.829Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-26T17:50:52.268Z"
+   "fetchedAt": "2026-11-26T18:16:16.386Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -345,9 +345,9 @@
      "phone": "+91 22 6263 8200",
      "email": "ipo@bigshareonline.com",
      "contactPerson": "Mr. Babu Raphael",
-     "website": null
+     "website": "https://www.bigshareonline.com"
     },
-    "source": "NSE issue info"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": null,
@@ -385,7 +385,7 @@
     "rhp": "https://nsearchives.nseindia.com/content/ipo/RHP_MATANGI.zip",
     "anchor": null
    },
-   "logo": null,
+   "logo": "data/logos/MATANGI.png",
    "documents": [
     {
      "label": "Price band ad / basis for issue price (zip from NSE)",
@@ -1287,7 +1287,7 @@
    },
    "subHistory": [
     {
-     "at": "2026-11-26T17:53:38.547Z",
+     "at": "2026-11-26T18:19:33.322Z",
      "date": "2026-11-26",
      "qib": 1.0094490377266727,
      "bnii": 0.260519916556602,
@@ -1903,7 +1903,7 @@
      "total": 0.38
     },
     {
-     "at": "2026-11-26T17:53:38.544Z",
+     "at": "2026-11-26T18:19:33.320Z",
      "date": "2026-11-26",
      "qib": null,
      "bnii": null,
@@ -30207,7 +30207,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T17:50:52.252Z",
+   "subsAsOn": "2026-11-26T18:16:16.376Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -30240,7 +30240,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-26T17:50:52.252Z",
+   "fetchedAt": "2026-11-26T18:16:16.376Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -30275,7 +30275,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T17:50:52.252Z",
+   "subsAsOn": "2026-11-26T18:16:16.376Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -30315,7 +30315,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-26T17:50:52.252Z",
+   "fetchedAt": "2026-11-26T18:16:16.376Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
