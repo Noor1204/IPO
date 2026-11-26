@@ -1,5 +1,5 @@
 {
- "generatedAt": "2026-11-26T04:17:21.037Z",
+ "generatedAt": "2026-11-26T04:41:57.233Z",
  "sources": [
   {
    "name": "NSE India (official): dates, price, subscription, registrar",
@@ -11,11 +11,11 @@
   },
   {
    "name": "SEBI public issues (official): DRHP / RHP filings",
-   "fetchedAt": "2026-11-26T04:13:46.199Z"
+   "fetchedAt": "2026-11-26T04:40:08.815Z"
   },
   {
    "name": "ipowatch.in + investorgain.com: GMP (unofficial, rumour data)",
-   "fetchedAt": "2026-11-26T04:13:37.963Z"
+   "fetchedAt": "2026-11-26T04:40:02.021Z"
   },
   {
    "name": "Yahoo Finance: post-listing prices",
@@ -96,7 +96,7 @@
      "address": null,
      "phone": null,
      "email": null,
-     "website": "https://monomark.co.in",
+     "website": "https://www.monomark.co.in",
      "contactPerson": null
     },
     "registrar": {
@@ -107,7 +107,7 @@
      "contactPerson": "Mr. Sagar Pathare",
      "website": "https://www.bigshareonline.com"
     },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": null,
@@ -514,7 +514,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T04:13:37.963Z",
+   "subsAsOn": "2026-11-26T04:40:02.021Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -588,7 +588,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-26T04:13:37.963Z",
+   "fetchedAt": "2026-11-26T04:40:02.021Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   },
   {
@@ -1062,8 +1062,285 @@
      "ok": true
     }
    ],
-   "fundamentals": null,
-   "verification": null,
+   "fundamentals": {
+    "company": "Foodlink F&B Holdings (India) Limited",
+    "basis": "Consolidated",
+    "about": "Foodlink F&B Holdings (India) Limited is an India-based luxury food services company providing curated culinary experiences. Its integrated business model encompasses events catering, casual dining restaurants & cloud kitchens, and banquets and integrated F&B services. As of September 2026, it operates six centralized kitchens across India and one in Dubai, catering to high-profile events domestically and internationally.",
+    "sector": "Food Services / Hospitality & Catering",
+    "headquarters": "Mumbai, Maharashtra",
+    "founded_year": 2015,
+    "periods": [
+     "Mar-24",
+     "Mar-25",
+     "Mar-26"
+    ],
+    "financials": {
+     "total_assets": [
+      268.13,
+      318.59,
+      454.32
+     ],
+     "revenue": [
+      377.19,
+      450.86,
+      567.5
+     ],
+     "other_income": [
+      2.98,
+      4.54,
+      4.76
+     ],
+     "ebitda": [
+      30.63,
+      61.45,
+      78.43
+     ],
+     "pbt": [
+      -18.45,
+      12.03,
+      29
+     ],
+     "pat": [
+      -15.35,
+      14.26,
+      29.11
+     ],
+     "net_worth": [
+      79.59,
+      106.22,
+      229.35
+     ],
+     "reserves": [
+      77.94,
+      96.26,
+      218.89
+     ],
+     "borrowings": [
+      35.3,
+      35.88,
+      24.29
+     ],
+     "cash_and_bank": [
+      19.15,
+      19.46,
+      28.43
+     ],
+     "operating_cash_flow": [
+      23.35,
+      43.99,
+      29.91
+     ]
+    },
+    "kpi": {
+     "roce": null,
+     "ronw": [
+      -17.88,
+      15.35,
+      17.35
+     ],
+     "roe": null,
+     "eps_basic": [
+      -3.1,
+      2.88,
+      5.58
+     ],
+     "eps_diluted": [
+      -3.1,
+      2.83,
+      5.48
+     ],
+     "pat_margin": [
+      -4.04,
+      3.13,
+      5.09
+     ],
+     "ebitda_margin": [
+      8.12,
+      13.63,
+      13.82
+     ],
+     "debt_equity": null,
+     "current_ratio": null,
+     "nav_per_share": 44,
+     "pe_pre_ipo": null,
+     "pe_post_ipo": null,
+     "weighted_avg_eps": 3.23,
+     "other": [
+      {
+       "name": "Events Catering business as % of Revenue from Operations",
+       "unit": "%",
+       "values": [
+        59.42,
+        54.26,
+        52.89
+       ]
+      },
+      {
+       "name": "Casual Dining Restaurants & Cloud Kitchens business as % of Revenue from Operations",
+       "unit": "%",
+       "values": [
+        28.49,
+        22.92,
+        24.17
+       ]
+      },
+      {
+       "name": "Banquets and Integrated F&B Services business as % of Revenue from Operations",
+       "unit": "%",
+       "values": [
+        11.35,
+        21.99,
+        22.51
+       ]
+      },
+      {
+       "name": "Total number of events catered in Events Catering Business",
+       "unit": "number",
+       "values": [
+        911,
+        1012,
+        1092
+       ]
+      },
+      {
+       "name": "Number of Casual Dining Restaurants",
+       "unit": "number",
+       "values": [
+        20,
+        18,
+        21
+       ]
+      },
+      {
+       "name": "Number of Cloud Kitchens",
+       "unit": "number",
+       "values": [
+        14,
+        10,
+        13
+       ]
+      }
+     ]
+    },
+    "peers": [],
+    "issue": {
+     "price_low": null,
+     "price_high": null,
+     "total_issue_cr": null,
+     "fresh_issue_cr": 192,
+     "ofs_cr": null,
+     "fresh_issue_shares": null,
+     "ofs_shares": 8835382,
+     "pre_issue_shares": 52298600,
+     "post_issue_shares": null,
+     "face_value": 2,
+     "objects": [
+      {
+       "purpose": "Funding of capital expenditure towards setting up one Proposed Centralized Kitchen by our Company",
+       "amount_cr": 21.4
+      },
+      {
+       "purpose": "Funding of capital expenditure towards setting up two Proposed Banquets by our Company",
+       "amount_cr": 41.5
+      },
+      {
+       "purpose": "Investment in FGRCS, our Material Subsidiary, for funding of capital expenditure towards setting up four Proposed Casual Dining Restaurants",
+       "amount_cr": 50.81
+      },
+      {
+       "purpose": "Repayment or prepayment, in full or in part, of all or a portion of certain outstanding borrowings availed by our Company and FGRCS",
+       "amount_cr": 21
+      },
+      {
+       "purpose": "General Corporate Purposes",
+       "amount_cr": null
+      }
+     ],
+     "reservation_pct": {
+      "anchor": null,
+      "qib": null,
+      "nii": null,
+      "retail": null,
+      "employee": null
+     }
+    },
+    "promoters": {
+     "names": [
+      "Sanjay Manohar Vazirani"
+     ],
+     "holding_pre_pct": null,
+     "holding_post_pct": null,
+     "background": "Sanjay Manohar Vazirani is the Chairman and Managing Director, having over three decades of experience in conceptualizing, executing, developing and expanding luxury catering, food and beverages business in India and UAE."
+    },
+    "concentration": {
+     "top_customers_pct": null,
+     "govt_share_pct": null,
+     "note": "Repeat customers who availed services in at least two of the last three fiscal years were 214 in FY26, 309 in FY25, and 180 in FY24."
+    },
+    "order_book_cr": null,
+    "litigation_note": "The company, directors, promoter, and KMPs have outstanding litigations pending against them which, if determined adversely, could result in material liability, damage payments, and expenses.",
+    "strengths": [
+     "India's largest player by revenue in Fiscal 2025 among peers in organized ultra-luxury and luxury catering.",
+     "Integrated, complementary business model spanning luxury events catering, casual dining restaurants, cloud kitchens, and banqueting services.",
+     "Centralized kitchen hub-and-spoke infrastructure across key metro cities providing consistent culinary quality and operational scalability.",
+     "Diversified geographic footprint with operations across India, the United Arab Emirates, the United Kingdom, and Malaysia.",
+     "Proven track record of serving marquee clients with 214 repeat customers in Fiscal 2026.",
+     "Experienced promoter and professional leadership team possessing over three decades of culinary and hospitality domain experience."
+    ],
+    "risks": [
+     {
+      "title": "Unidentified locations for expansion objects",
+      "detail": "Locations for the proposed centralized kitchen, two banquets, and four casual dining restaurants funded by IPO proceeds have not yet been identified.",
+      "severity": "high"
+     },
+     {
+      "title": "Unplaced orders for capital expenditure",
+      "detail": "No firm orders or contracts have been placed for capex items for the proposed kitchen, banquets, and restaurants, risking delays and cost overruns.",
+      "severity": "high"
+     },
+     {
+      "title": "Past history of operational losses",
+      "detail": "The company incurred a restated loss of ₹15.35 crore in Fiscal 2024 and ₹16.15 crore for the six-month period ended September 30, 2026.",
+      "severity": "high"
+     },
+     {
+      "title": "Frequent store and kitchen closures",
+      "detail": "The group shut down 11 casual dining restaurants and 10 cloud kitchens between April 1, 2023 and the RHP date.",
+      "severity": "high"
+     },
+     {
+      "title": "High concentration in events catering",
+      "detail": "Events catering generated 52.89% of revenue in FY26 and 54.26% in FY25, exposing results to cyclical and seasonal demand shocks.",
+      "severity": "medium"
+     },
+     {
+      "title": "Subsidiaries generating zero revenue",
+      "detail": "Subsidiaries including Foodlink Global Limited and Foodlink Global Restaurants and Catering Services Limited have not generated standalone revenue in Fiscals 2024 to 2026.",
+      "severity": "medium"
+     },
+     {
+      "title": "Restrictive covenants and debt servicing",
+      "detail": "Borrowing facilities stipulate strict covenants including Current Ratio over 1.10 and TOL/TNW under 3.50; failure triggers penal charges or accelerated repayment.",
+      "severity": "medium"
+     },
+     {
+      "title": "Extensive reliance on leased properties",
+      "detail": "All centralized kitchens, banquets, and dining locations operate on leasehold premises, exposing operations to non-renewal and rental escalation risks.",
+      "severity": "medium"
+     }
+    ],
+    "source_doc": "RHP",
+    "notes": "Consolidated restated financial information. The stub period for the six months ended September 30, 2026 has been excluded from the financial arrays."
+   },
+   "verification": {
+    "status": "warn",
+    "checked": 50,
+    "notFound": 0,
+    "issues": [
+     "no peer companies extracted"
+    ],
+    "sourceDoc": "RHP"
+   },
    "fetchedAt": "2026-11-25T15:12:25.071Z"
   },
   {
@@ -1285,7 +1562,7 @@
      "total": 0.38
     },
     {
-     "at": "2026-11-26T04:17:20.993Z",
+     "at": "2026-11-26T04:41:57.198Z",
      "date": "2026-11-26",
      "qib": null,
      "bnii": null,
@@ -1443,10 +1720,10 @@
    "contacts": {
     "company": {
      "address": "Jagruti Vihar, Burla, Sambalpur 768020, Odisha, India, CIN: U10102OR1992GOI003038, Registration Number: 15-03038 003038",
-     "phone": null,
-     "email": null,
-     "website": "https://mahanadicoal.in",
-     "contactPerson": null
+     "phone": "+91 (0663) 254 2977",
+     "email": "cs.mcl@coalindia.in",
+     "website": "https://www.mahanadicoal.in",
+     "contactPerson": "Soubhagya Parida"
     },
     "registrar": {
      "name": "KFin Technologies Limited",
@@ -1456,7 +1733,7 @@
      "contactPerson": "Williams R",
      "website": "https://www.kfintech.com"
     },
-    "source": "NSE issue info + offer document (company website from offer document cover)"
+    "source": "NSE issue info + offer document"
    },
    "anchorSummary": null,
    "bidSplit": [
@@ -2968,12 +3245,12 @@
    ],
    "listingPerf": {
     "dayOpen": 278,
-    "ltp": 272,
+    "ltp": 269.7,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 2.21,
-    "ltpGainPct": 0
+    "ltpGainPct": -0.85
    },
    "checks": [
     {
@@ -3004,7 +3281,7 @@
    "fundamentals": {
     "company": "Crystal Crop Protection Limited",
     "basis": "Consolidated",
-    "about": "Established in 1994, Crystal Crop Protection Limited is an Indian crop solutions company engaged in the research, development, manufacturing, and distribution of crop protection products and seeds. Its diversified portfolio includes herbicides, fungicides, insecticides, natural crop solutions, and hybrid seeds for field and vegetable crops. The company operates manufacturing and seed processing units across Haryana, Gujarat, Jammu & Kashmir, Maharashtra, Telangana, and Karnataka, supported by a pan-India distribution network.",
+    "about": "Established in 1994, Crystal Crop Protection Limited is an Indian crop solutions company engaged in the research, development, manufacturing, and distribution of agrochemicals and hybrid seeds. Its offerings include herbicides, insecticides, fungicides, bio-stimulants, and seeds for field and vegetable crops. It operates manufacturing and seed processing units across India, supported by a pan-India network of over 14,700 distributors.",
     "sector": "Agrochemicals & Seeds",
     "headquarters": "New Delhi",
     "founded_year": 1994,
@@ -3113,9 +3390,9 @@
      ],
      "current_ratio": null,
      "nav_per_share": 160.03,
-     "pe_pre_ipo": null,
+     "pe_pre_ipo": 24.59,
      "pe_post_ipo": null,
-     "weighted_avg_eps": 10.01,
+     "weighted_avg_eps": 9.82,
      "other": [
       {
        "name": "Gross Margin",
@@ -3124,15 +3401,6 @@
         31.1,
         34.29,
         38.49
-       ]
-      },
-      {
-       "name": "Adjusted EBITDA Margin",
-       "unit": "%",
-       "values": [
-        9.38,
-        11.99,
-        15.14
        ]
       },
       {
@@ -3146,7 +3414,7 @@
       },
       {
        "name": "Number of Active Distributors",
-       "unit": "Count",
+       "unit": "Number",
        "values": [
         8992,
         12581,
@@ -3222,28 +3490,28 @@
      }
     ],
     "issue": {
-     "price_low": null,
-     "price_high": null,
-     "total_issue_cr": null,
+     "price_low": 259,
+     "price_high": 272,
+     "total_issue_cr": 455.72,
      "fresh_issue_cr": 355,
-     "ofs_cr": null,
-     "fresh_issue_shares": null,
+     "ofs_cr": 100.71,
+     "fresh_issue_shares": 13060883,
      "ofs_shares": 3702694,
      "pre_issue_shares": null,
      "post_issue_shares": null,
      "face_value": 10,
      "objects": [
       {
-       "purpose": "Repayment/pre-payment, in full or part, of certain borrowings availed by the Company",
+       "purpose": "Repayment/pre-payment, in full or part, of certain borrowings availed by our Company",
        "amount_cr": 247.94
       },
       {
-       "purpose": "Investment in Material Subsidiary Saffire Crop Science Private Limited for repayment/pre-payment of borrowings",
+       "purpose": "Investment in Material Subsidiary Saffire Crop Science for repayment/pre-payment of borrowings",
        "amount_cr": 22.06
       },
       {
-       "purpose": "Funding inorganic growth through unidentified acquisitions and strategic initiatives and general corporate purposes",
-       "amount_cr": null
+       "purpose": "Funding inorganic growth through unidentified acquisitions and general corporate purposes",
+       "amount_cr": 51.14
       }
      ],
      "reservation_pct": {
@@ -3261,74 +3529,73 @@
      ],
      "holding_pre_pct": null,
      "holding_post_pct": null,
-     "background": "Nand Kishore Aggarwal is the Founder and Chairman Emeritus with over three decades in the agri-input sector. Ankur Aggarwal is Chairman and Managing Director, leading business strategy and operations since 2006."
+     "background": "Nand Kishore Aggarwal is Founder and Chairman Emeritus with decades of agri-input experience. Ankur Aggarwal is Chairman and Managing Director, leading business strategy since 2006."
     },
     "concentration": {
      "top_customers_pct": null,
      "govt_share_pct": null,
-     "note": "The company generally enters into short-term non-exclusive supply agreements via purchase orders without volume commitments."
+     "note": "A significant portion of revenue is generated from domestic business via retail and distribution channels rather than single concentrated clients."
     },
     "order_book_cr": null,
-    "litigation_note": "Total outstanding legal proceedings against the Company, Subsidiaries, Promoters, Directors, KMPs and SMPs amount to ₹341.95 crore (16.76% of net worth as of June 30, 2026), including DGFT proceedings involving ₹75.53 crore.",
+    "litigation_note": "Outstanding legal proceedings involving the Company, Subsidiaries, Promoters, Directors, and SMPs aggregate to ₹341.95 crore (16.76% of Net Worth as of June 30, 2026), including DGFT cases of ₹75.53 crore.",
     "strengths": [
-     "Integrated crop solutions model offering agrochemical formulations, technicals, and seed products with backward integration.",
-     "Strong in-house R&D infrastructure with GLP-approved research center and extensive field research stations across India.",
-     "Pan-India distribution network comprising 14,717 active distributors and 34 distribution centers across 23 states.",
-     "Proven track record of inorganic growth and integrating marquee brands like Bavistin, Tilt, and Gramoxone.",
-     "Multi-generational promoter leadership with substantial agricultural industry expertise."
+     "Strong R&D capabilities backed by advanced technology infrastructure, 28 patents applied globally, and GLP-compliant KRDC facility.",
+     "Diversified portfolio across herbicides, insecticides, fungicides, bio-stimulants, and hybrid field and vegetable seeds.",
+     "Integrated business model spanning synthesis R&D, commercial formulation, seed processing, and pan-India distribution.",
+     "Wide pan-India distribution reach through 14,717 active distributors and 34 distribution centers across 23 states.",
+     "Established track record of successful inorganic acquisitions, integrating major brands such as Gramoxone, Bavistin, and Tilt.",
+     "Multi-generational leadership supported by experienced management and strong governance."
     ],
     "risks": [
      {
-      "title": "Criminal and regulatory proceedings under Foreign Trade Policy",
-      "detail": "Company and Promoters face proceedings for alleged violations of DGFT Handbook of Procedures involving ₹75.53 crore, representing 3.47% of net worth.",
+      "title": "Criminal and regulatory proceedings under DGFT",
+      "detail": "Company, Promoters, and Director face proceedings under DGFT involving ₹75.53 crore, representing 3.47% of Net Worth as of June 30, 2026.",
       "severity": "high"
      },
      {
-      "title": "Substantial outstanding litigation",
-      "detail": "Pending legal proceedings against Company, Subsidiaries, Promoters, and Directors amount to ₹341.95 crore, which is 16.76% of net worth as of June 30, 2026.",
+      "title": "Material outstanding legal proceedings",
+      "detail": "Outstanding legal proceedings involving Company, Subsidiaries, Promoters, Directors, and SMPs aggregate to ₹341.95 crore (16.76% of Net Worth as of June 30, 2026).",
       "severity": "high"
      },
      {
-      "title": "High dependence on Indian domestic market",
-      "detail": "Revenue is predominantly derived from domestic sales, making performance vulnerable to cyclicality and downturns in the Indian agricultural sector.",
+      "title": "Vulnerability to climatic conditions and seasonal cyclicality",
+      "detail": "Adverse weather, pest attacks, or changes in cropping patterns may sharply reduce demand for agrochemicals and seeds.",
+      "severity": "high"
+     },
+     {
+      "title": "Domestic revenue concentration",
+      "detail": "Business is heavily dependent on domestic Indian agricultural demand; economic downturns in Indian farming could materially affect operations.",
       "severity": "medium"
      },
      {
-      "title": "Vulnerability to climatic conditions and seasonality",
-      "detail": "Business is seasonal and heavily exposed to weather fluctuations, erratic rainfall, pest outbreaks, and shifts in cropping patterns.",
+      "title": "Absence of long-term supply agreements",
+      "detail": "Company primarily sells via short-term purchase orders with distributors and customers without minimum volume commitments.",
       "severity": "medium"
      },
      {
-      "title": "Absence of long-term customer contracts",
-      "detail": "Most sales to distributors and clients are based on short-term purchase orders with no long-term volume commitments.",
+      "title": "Lengthy innovation cycles and regulatory scrutiny",
+      "detail": "Developing and registering new agrochemical solutions takes 5-7 years and involves stringent testing, carrying risk of technological obsolescence.",
       "severity": "medium"
      },
      {
-      "title": "Lengthy product development and regulatory cycles",
-      "detail": "Commercializing new agrochemicals and seeds takes 5 to 7 years, subject to stringent statutory clearances and risk of competitor preemption.",
+      "title": "Delays or failures in statutory and environmental approvals",
+      "detail": "Operations require multiple environmental clearances and renewals; pending approvals include consent renewals for Haryana and Maharashtra manufacturing units.",
       "severity": "medium"
      },
      {
       "title": "Related party transactions",
-      "detail": "The company has engaged in multiple related-party transactions and may continue to do so, posing potential conflict of interest risks.",
-      "severity": "low"
-     },
-     {
-      "title": "Unavailability of historical secretarial records",
-      "detail": "Independent search confirmed the untraceability of several corporate records and RoC filings dating between 1995 and 2011.",
+      "detail": "Company regularly engages in transactions with related parties, which may pose potential conflicts of interest.",
       "severity": "low"
      }
     ],
-    "source_doc": "RHP",
-    "notes": "Financial figures are restated consolidated. Stub period of three months ended June 30, 2026 is excluded from annual arrays. Pre-IPO placement of ₹84.29 crore was completed at ₹272.07 per share, reducing the fresh issue size to ₹355.00 crore."
+    "source_doc": "Prospectus",
+    "notes": "Restated consolidated financial statements used. Stub period for three months ended June 30, 2026 is ignored in multi-year arrays."
    },
    "verification": {
-    "status": "warn",
-    "checked": 87,
+    "status": "ok",
+    "checked": 88,
     "notFound": 0,
-    "issues": [
-     "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
-    ],
+    "issues": [],
     "sourceDoc": "Prospectus"
    },
    "fetchedAt": "2026-11-20T17:45:40.217Z"
@@ -5849,12 +6116,12 @@
    ],
    "listingPerf": {
     "dayOpen": 83,
-    "ltp": 83.19,
+    "ltp": 83.42,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 1.22,
-    "ltpGainPct": 1.45
+    "ltpGainPct": 1.73
    },
    "checks": [
     {
@@ -6454,12 +6721,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 163,
+    "ltp": 162.32,
     "exchange": "NSE",
     "listDate": "2026-11-04",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 5.56,
-    "ltpGainPct": 0.62
+    "ltpGainPct": 0.2
    },
    "checks": [
     {
@@ -7822,12 +8089,12 @@
    ],
    "listingPerf": {
     "dayOpen": 248,
-    "ltp": 263.06,
+    "ltp": 261.8,
     "exchange": "NSE",
     "listDate": "2026-11-03",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 65.33,
-    "ltpGainPct": 75.37
+    "ltpGainPct": 74.53
    },
    "checks": [
     {
@@ -8654,12 +8921,12 @@
    ],
    "listingPerf": {
     "dayOpen": 426,
-    "ltp": 422.05,
+    "ltp": 420.45,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 29.09,
-    "ltpGainPct": 27.89
+    "ltpGainPct": 27.41
    },
    "checks": [
     {
@@ -9479,12 +9746,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1675.5,
-    "ltp": 1865,
+    "ltp": 1875,
     "exchange": "NSE",
     "listDate": "2026-11-02",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 0.63,
-    "ltpGainPct": 12.01
+    "ltpGainPct": 12.61
    },
    "checks": [
     {
@@ -10208,12 +10475,12 @@
    ],
    "listingPerf": {
     "dayOpen": 721,
-    "ltp": 883.05,
+    "ltp": 872.3,
     "exchange": "NSE",
     "listDate": "2026-10-29",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 4.04,
-    "ltpGainPct": 27.42
+    "ltpGainPct": 25.87
    },
    "checks": [],
    "fundamentals": {
@@ -11008,12 +11275,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1358,
-    "ltp": 1393.2,
+    "ltp": 1399.8,
     "exchange": "NSE",
     "listDate": "2026-10-28",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 21.36,
-    "ltpGainPct": 24.5
+    "ltpGainPct": 25.09
    },
    "checks": [],
    "fundamentals": {
@@ -11685,12 +11952,12 @@
    ],
    "listingPerf": {
     "dayOpen": 184.5,
-    "ltp": 190.31,
+    "ltp": 188.52,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 22.19,
-    "ltpGainPct": 26.03
+    "ltpGainPct": 24.85
    },
    "checks": [],
    "fundamentals": {
@@ -12339,12 +12606,12 @@
    ],
    "listingPerf": {
     "dayOpen": 531,
-    "ltp": 541,
+    "ltp": 539.4,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 54.36,
-    "ltpGainPct": 57.27
+    "ltpGainPct": 56.8
    },
    "checks": [],
    "fundamentals": {
@@ -13006,12 +13273,12 @@
    ],
    "listingPerf": {
     "dayOpen": 796.0999755859375,
-    "ltp": 801.75,
+    "ltp": 799.35,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 35.85,
-    "ltpGainPct": 36.82
+    "ltpGainPct": 36.41
    },
    "checks": [],
    "fundamentals": {
@@ -13706,12 +13973,12 @@
    ],
    "listingPerf": {
     "dayOpen": 1334.9000244140625,
-    "ltp": 1383.9,
+    "ltp": 1374,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 90.7,
-    "ltpGainPct": 97.7
+    "ltpGainPct": 96.29
    },
    "checks": [],
    "fundamentals": {
@@ -14936,12 +15203,12 @@
    ],
    "listingPerf": {
     "dayOpen": 271,
-    "ltp": 271.7,
+    "ltp": 272.95,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -6.23,
-    "ltpGainPct": -5.99
+    "ltpGainPct": -5.55
    },
    "checks": [],
    "fundamentals": {
@@ -15646,12 +15913,12 @@
    ],
    "listingPerf": {
     "dayOpen": 335,
-    "ltp": 288.8,
+    "ltp": 292.1,
     "exchange": "NSE",
     "listDate": "2026-10-21",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 23.62,
-    "ltpGainPct": 6.57
+    "ltpGainPct": 7.79
    },
    "checks": [],
    "fundamentals": {
@@ -17477,12 +17744,12 @@
    ],
    "listingPerf": {
     "dayOpen": 111.73999786376953,
-    "ltp": 113.08,
+    "ltp": 113.3,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -49.21,
-    "ltpGainPct": -48.6
+    "ltpGainPct": -48.5
    },
    "checks": [],
    "fundamentals": {
@@ -18097,12 +18364,12 @@
    ],
    "listingPerf": {
     "dayOpen": 61.95000076293945,
-    "ltp": 60.81,
+    "ltp": 60.59,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -17.4,
-    "ltpGainPct": -18.92
+    "ltpGainPct": -19.21
    },
    "checks": [],
    "fundamentals": {
@@ -19851,12 +20118,12 @@
    ],
    "listingPerf": {
     "dayOpen": 171,
-    "ltp": 139.99,
+    "ltp": 139.59,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 2.4,
-    "ltpGainPct": -16.17
+    "ltpGainPct": -16.41
    },
    "checks": [],
    "fundamentals": {
@@ -20482,12 +20749,12 @@
    ],
    "listingPerf": {
     "dayOpen": 148,
-    "ltp": 127.37,
+    "ltp": 126.37,
     "exchange": "NSE",
     "listDate": "2026-10-06",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 13.85,
-    "ltpGainPct": -2.02
+    "ltpGainPct": -2.79
    },
    "checks": [],
    "fundamentals": {
@@ -21128,12 +21395,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 380,
-    "ltp": 384.35,
+    "ltp": 382.4,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 39.71,
-    "ltpGainPct": 41.31
+    "ltpGainPct": 40.59
    },
    "checks": [],
    "fundamentals": {
@@ -21837,12 +22104,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 305,
-    "ltp": 268.16,
+    "ltp": 268.52,
     "exchange": "NSE",
     "listDate": "2026-10-05",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 0.99,
-    "ltpGainPct": -11.21
+    "ltpGainPct": -11.09
    },
    "checks": [],
    "fundamentals": {
@@ -22508,12 +22775,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 109.63999938964844,
-    "ltp": 109.89,
+    "ltp": 109.7,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -21.12,
-    "ltpGainPct": -20.94
+    "ltpGainPct": -21.08
    },
    "checks": [],
    "fundamentals": {
@@ -23155,12 +23422,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 19.049999237060547,
-    "ltp": 18.91,
+    "ltp": 18.86,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -40.47,
-    "ltpGainPct": -40.91
+    "ltpGainPct": -41.06
    },
    "checks": [],
    "fundamentals": {
@@ -25540,12 +25807,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 469.5,
-    "ltp": 471,
+    "ltp": 469.4,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 15.93,
-    "ltpGainPct": 16.3
+    "ltpGainPct": 15.9
    },
    "checks": [],
    "fundamentals": {
@@ -26172,12 +26439,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 55,
-    "ltp": 54.5,
+    "ltp": 54.59,
     "exchange": "NSE",
     "listDate": "2026-10-01",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 61.76,
-    "ltpGainPct": 60.29
+    "ltpGainPct": 60.56
    },
    "checks": [],
    "fundamentals": {
@@ -26816,12 +27083,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 235,
-    "ltp": 176.42,
+    "ltp": 175.8,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 75.37,
-    "ltpGainPct": 31.66
+    "ltpGainPct": 31.19
    },
    "checks": [],
    "fundamentals": {
@@ -27441,12 +27708,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 308,
-    "ltp": 316,
+    "ltp": 315.15,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": -14.92,
-    "ltpGainPct": -12.71
+    "ltpGainPct": -12.94
    },
    "checks": [],
    "fundamentals": {
@@ -28033,12 +28300,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 375,
-    "ltp": 286.3,
+    "ltp": 285.5,
     "exchange": "NSE",
     "listDate": "2026-09-30",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 0,
-    "ltpGainPct": -23.65
+    "ltpGainPct": -23.87
    },
    "checks": [],
    "fundamentals": {
@@ -28662,12 +28929,12 @@
    "subHistory": [],
    "listingPerf": {
     "dayOpen": 194.8800048828125,
-    "ltp": 193.28,
+    "ltp": 192.68,
     "exchange": "NSE",
     "listDate": "2026-11-26",
     "asOf": "2026-11-26",
     "dayOpenGainPct": 5.34,
-    "ltpGainPct": 4.48
+    "ltpGainPct": 4.15
    },
    "checks": [],
    "fundamentals": {
@@ -29537,7 +29804,7 @@
     "total": null
    },
    "bidsSource": "InvestorGain (unofficial)",
-   "subsAsOn": "2026-11-26T04:13:37.946Z",
+   "subsAsOn": "2026-11-26T04:40:01.880Z",
    "subsAsOnSource": "fetched",
    "applyAs": null,
    "minInvestment": null,
@@ -29577,7 +29844,7 @@
    "listingPerf": null,
    "checks": [],
    "fundamentals": null,
-   "fetchedAt": "2026-11-26T04:13:37.946Z",
+   "fetchedAt": "2026-11-26T04:40:01.880Z",
    "sourceNote": "Schedule from InvestorGain only (not in NSE's public API)"
   }
  ],
