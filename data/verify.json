@@ -85,14 +85,12 @@
   "stale": false
  },
  "CRYSTALCP": {
-  "status": "warn",
-  "checked": 87,
+  "status": "ok",
+  "checked": 88,
   "ungrounded": [],
-  "issues": [
-   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
-  ],
+  "issues": [],
   "sourceDoc": "Prospectus",
-  "stale": true
+  "stale": false
  },
  "DSL": {
   "status": "ok",
@@ -130,6 +128,16 @@
   "checked": 70,
   "ungrounded": [],
   "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
+ },
+ "FOODLINK": {
+  "status": "warn",
+  "checked": 50,
+  "ungrounded": [],
+  "issues": [
+   "no peer companies extracted"
+  ],
   "sourceDoc": "RHP",
   "stale": false
  },
