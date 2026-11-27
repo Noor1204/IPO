@@ -241,18 +241,25 @@
  },
  "MAHACOAL": {
   "status": "warn",
-  "checked": 78,
+  "checked": 80,
   "ungrounded": [
    "financials.cash_and_bank[Mar-26]=15128.21"
   ],
   "issues": [
    "Mar-24: reported PAT margin 35.25% vs PAT/revenue 37.43% (possible swapped years, or margin quoted on total income)",
    "Mar-25: reported PAT margin 32.77% vs PAT/revenue 34.53% (possible swapped years, or margin quoted on total income)",
-   "Mar-26: reported PAT margin 31.56% vs PAT/revenue 35.02% (possible swapped years, or margin quoted on total income)",
-   "extraction is from \"RHP\" but the best document now is \"Prospectus\": re-extract"
+   "Mar-26: reported PAT margin 31.56% vs PAT/revenue 35.02% (possible swapped years, or margin quoted on total income)"
   ],
   "sourceDoc": "Prospectus",
-  "stale": true
+  "stale": false
+ },
+ "MATANGI": {
+  "status": "ok",
+  "checked": 73,
+  "ungrounded": [],
+  "issues": [],
+  "sourceDoc": "RHP",
+  "stale": false
  },
  "MAXENGS": {
   "status": "ok",
